@@ -82,16 +82,22 @@ body {
   padding: 2.5rem 1.25rem 5rem;
 }
 
-/* ---- 配色の切り替え ---- */
+/* ---- ページ右上のボタン（言語・配色） ---- */
 
-.theme-toggle {
+.page-tools {
   position: absolute;
   top: 2.3rem;
   right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.15rem;
   height: 2.15rem;
   padding: 0;
   color: var(--text-muted);
@@ -99,12 +105,53 @@ body {
   border: 1px solid var(--border);
   border-radius: 999px;
   cursor: pointer;
+  font-family: inherit;
   transition: color 0.15s, border-color 0.15s;
 }
 
-.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
-.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 .theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
 
 /* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
 .ic-sun { display: none; }
@@ -121,7 +168,7 @@ body {
 :root[data-theme="light"] .ic-sun { display: none; }
 
 @media (max-width: 560px) {
-  .theme-toggle { top: 1.55rem; right: 1rem; }
+  .page-tools { top: 1.55rem; right: 1rem; }
 }
 
 /* ---- ヘッダー ---- */

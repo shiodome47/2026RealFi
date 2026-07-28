@@ -100,9 +100,11 @@ def check_page(path):
     if 'class="docnav"' in text and text.index('class="docnav"') < len(text) * 0.5:
         fail(rel, "docnav がページ前半にある（末尾に置く）")
 
-    # 配色の切り替え手段
+    # 配色と言語の切り替え手段
     if "theme-toggle" not in text:
         fail(rel, "配色トグルがない")
+    if "lang-toggle" not in text:
+        fail(rel, "言語トグルがない")
 
     return text
 
@@ -131,6 +133,24 @@ def main():
             fail(rel, "節が %d 個あるのに目次がない" % len(body_heads))
         if 'class="fig"' not in text:
             fail(rel, "図が 1 つもない")
+
+        # まとめは日英そろっていること
+        if 'class="l-en"' not in text:
+            fail(rel, "英語版のまとめがない")
+        else:
+            ja_block = text.split('<div class="l-ja">')[1].split('<div class="l-en"')[0]
+            en_block = text.split('<div class="l-en" lang="en">')[1]
+            for cls in ("fig", "qa", "term", "deck"):
+                n_ja = ja_block.count('class="%s"' % cls)
+                n_en = en_block.count('class="%s"' % cls)
+                if n_ja != n_en:
+                    fail(rel, ".%s の数が日英で違う（ja=%d / en=%d）" % (cls, n_ja, n_en))
+            for block, tag in ((ja_block, "日本語"), (en_block, "英語")):
+                hs = re.findall(r'<h2 id="([^"]+)"', block)
+                anchors = [a[1:] for a in re.findall(r'href="(#[^"]+)"', block)]
+                missing = [a for a in anchors if a not in hs]
+                if missing:
+                    fail(rel, "%s版の目次リンクの飛び先がない: %s" % (tag, ", ".join(missing)))
 
     # 英語全文と日本語全文は同じ分割にする
     for en in sorted(DOCS.glob("*/transcript-en.html")):

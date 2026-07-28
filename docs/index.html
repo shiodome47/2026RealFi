@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RealFi Office Hours アーカイブ</title>
+<title>RealFi Office Hours — Archive / アーカイブ</title>
 <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
@@ -12,45 +12,67 @@
 <script>
 (function () {
   var root = document.documentElement;
-  try { var saved = localStorage.getItem('theme'); if (saved) root.dataset.theme = saved; } catch (e) {}
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
   document.addEventListener('click', function (e) {
-    var btn = e.target.closest && e.target.closest('.theme-toggle');
-    if (!btn) return;
-    var cur = root.dataset.theme ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    var next = cur === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try { localStorage.setItem('theme', next); } catch (e) {}
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
   });
 })();
 </script>
 
-<button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
-  <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
-  </svg>
-  <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <circle cx="12" cy="12" r="4"/>
-    <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
-  </svg>
-</button>
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
 
-<p class="eyebrow">アーカイブ</p>
+<p class="eyebrow"><span class="l-ja">アーカイブ</span><span class="l-en">ARCHIVE</span></p>
 <h1>RealFi Office Hours</h1>
-<p class="meta">録音の文字起こしをもとに、各回の内容を日本語でまとめたものです。英語の原文と日本語の全文も各回に置いています。<br>
-各回はチャタムハウスルールで運用されているため、発言者の氏名は記載していません。</p>
+<p class="meta"><span class="l-ja">録音の文字起こしをもとに、各回の内容をまとめたものです。英語の原文と日本語の全文も各回に置いています。<br>
+各回はチャタムハウスルールで運用されているため、発言者の氏名は記載していません。</span><span class="l-en">Summaries of each session, written from the recordings. The full transcript is included in both English and Japanese.<br>
+These calls run under the Chatham House Rule, so no speaker is named.</span></p>
 
 <a class="card" href="./2026-07-24-office-hours-engineering/">
-  <h2>エンジニアリング回 — ブリッジ、ワンクリックフロー、そしてプラットフォーム構想</h2>
-  <p class="meta">2026-07-24 · Discord · 参加者 30〜35名</p>
-  <p>RealFi は、Cardano 上で利回り商品を作るだけでなく、他の開発者や他チェーンからも使える「金融インフラ」になろうとしている。プロトコルは testnet で稼働中。Cardano をハブに据えたクロスチェーン構想、複数プロトコルを署名 1 回でつなぐワンクリックフロー、USDR と sUSDR の違い、そして外部開発者向け SDK について。</p>
+  <h2><span class="l-ja">エンジニアリング回 — ブリッジ、ワンクリックフロー、そしてプラットフォーム構想</span><span class="l-en">Engineering session — the bridge, one-click flows, and the platform ambition</span></h2>
+  <p class="meta">2026-07-24 · Discord · <span class="l-ja">参加者 30〜35名</span><span class="l-en">30–35 attendees</span></p>
+  <p><span class="l-ja">RealFi は、Cardano 上で利回り商品を作るだけでなく、他の開発者や他チェーンからも使える「金融インフラ」になろうとしている。プロトコルは testnet で稼働中。Cardano をハブに据えたクロスチェーン構想、複数プロトコルを署名 1 回でつなぐワンクリックフロー、USDR と sUSDR の違い、そして外部開発者向け SDK について。</span><span class="l-en">RealFi is not just building a yield product on Cardano — it is trying to become financial infrastructure that other developers and chains can build on. The protocol is live on testnet. Covers the cross-chain design with Cardano as the hub, one-click flows that put several protocols behind a single signature, how USDR differs from sUSDR, and the SDK for outside developers.</span></p>
 </a>
 
 <footer>
-  <p>各回のページには「まとめ（日本語）」「日本語全文」「英語全文（原文）」の 3 つがあります。<br>
-  文字起こしの原本は <code>episodes/</code>、用語集と持ち帰り質問の追跡は <code>shared/</code> にあります。</p>
+  <p><span class="l-ja">各回のページには「まとめ」「日本語全文」「英語全文（原文）」の 3 つがあります。右上のボタンで言語と配色を切り替えられます。</span><span class="l-en">Each session has three pages: a summary, the full Japanese transcript, and the English original. Use the buttons in the corner to switch language and colour scheme.</span></p>
 </footer>
 
 </div>
