@@ -76,14 +76,58 @@ body {
 }
 
 .wrap {
+  position: relative;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.5rem 1.25rem 5rem;
 }
 
+/* ---- 配色の切り替え ---- */
+
+.theme-toggle {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.15rem;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .theme-toggle { top: 1.55rem; right: 1rem; }
+}
+
 /* ---- ヘッダー ---- */
 
 .eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -93,6 +137,7 @@ body {
 }
 
 h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
   font-size: 1.75rem;
   line-height: 1.45;
   margin: 0 0 0.75rem;
