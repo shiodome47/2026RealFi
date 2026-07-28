@@ -1,0 +1,2323 @@
+<title>RealFi Office Hours — エンジニアリング回</title>
+<style>
+/* RealFi Office Hours — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+.meta span + span::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（原文へのリンク） ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 2.5rem;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.docnav a {
+  font-size: 0.875rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--surface-alt);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.docnav a:hover { border-color: var(--accent); color: var(--accent); }
+
+.docnav a[aria-current="page"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.25rem;
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+h2:first-of-type { border-top: none; padding-top: 0; }
+
+h3 {
+  font-size: 1.0rem;
+  margin: 2rem 0 0.6rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+p { margin: 0 0 1.1rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.5rem; }
+
+strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.tldr ul { margin-bottom: 1rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+
+/* ===== 単一ページ版（アーカイブ 1 ファイル完結）用の追加 ===== */
+
+.pagenav {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  margin: 0 0 2.5rem; padding: .7rem .8rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+@supports not (backdrop-filter: blur(4px)) { .pagenav { background: var(--bg); } }
+.pagenav a {
+  font-size: .8125rem; padding: .3rem .8rem; border-radius: 999px;
+  text-decoration: none; color: var(--text); background: var(--surface-alt);
+  border: 1px solid var(--border);
+}
+.pagenav a:hover, .pagenav a:focus-visible { border-color: var(--accent); color: var(--accent); }
+.pagenav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.part { scroll-margin-top: 4.5rem; }
+.part + .part { margin-top: 4rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 1.5rem; padding: .8rem 0 .7rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 {
+  border: none; padding: 0; margin: 0; font-size: 1.25rem; color: var(--text);
+}
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .note:first-of-type { margin-top: 0; }
+.part h2:first-of-type { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+.part-head + .note + h2:first-of-type,
+.part-head + h2 { border-top: none; padding-top: 0; }
+a.top {
+  display: inline-block; margin-top: 2rem; font-size: .8125rem;
+  text-decoration: none; color: var(--text-muted);
+}
+a.top:hover { color: var(--accent); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+</style>
+
+<div class="wrap" id="top">
+
+<p class="eyebrow">RealFi Office Hours</p>
+<h1>エンジニアリング回 — ブリッジ、ワンクリックフロー、そしてプラットフォーム構想</h1>
+<p class="meta">
+  <span>2026-07-28</span><span>Discord</span><span>参加者 30〜35名</span>
+</p>
+
+<nav class="pagenav" aria-label="ページ内ナビゲーション">
+  <a href="#summary">まとめ（日本語）</a>
+  <a href="#ja">日本語全文</a>
+  <a href="#en">英語全文（原文）</a>
+</nav>
+
+<section class="part" id="summary">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>RealFi は、Cardano 上で利回り商品を作るだけでなく、<br>
+  他の開発者や他チェーンからも使える「金融インフラ」になろうとしている。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>プロトコルは testnet で稼働中。</strong>監査は複数ラウンド進行中で、まだ数ラウンド残っている。メインネットの日付は社内では決まっているが未公表。</li>
+  <li><strong>クロスチェーンは「入口を広げ、基盤は Cardano に置く」設計。</strong>単なる burn-and-mint ではなく、EVM 側でもネイティブな体験を提供しつつ、記録・会計・ステーキングは Cardano に集約する。</li>
+  <li><strong>ワンクリックフロー</strong>を開発中。複数プロトコルをまたぐ複数の取引を、署名 1 回で実行する。ルーピング戦略が開発動機のひとつ。</li>
+  <li><strong>USDR と sUSDR は別物。</strong>USDR がステーブルコイン（常に 1 ドル）、sUSDR はステーク時に受け取る変動トークン。交換レートの上昇が利回りになる。</li>
+  <li><strong>RealFi は「製品」であると同時に「プラットフォーム」を目指している。</strong>SDK と開発者向けドキュメントを公開し、外部開発者が RealFi を部品として使えるようにする。</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>このコールはチャタムハウスルールで運用されています。</strong>内容は共有できますが、誰が発言したかは記載しません。このページでは発言者を特定できる情報（氏名・役職・経歴・所属）を一切含めていません。会話の流れを追う必要がある全文ページでも、<code>登壇者A / B / C</code>、<code>参加者A〜L</code> といった仮のラベルのみを使っています。</p>
+</div>
+
+
+<h2>1. 現在どこまでできているのか</h2>
+
+<h3>すでにできているもの</h3>
+
+<ul>
+  <li><strong>Cardano 上のプロトコルが稼働中</strong>。現在 testnet で動いている</li>
+  <li>テストを多数実施済み。<strong>監査も相当進んでいる</strong>が、まだ数ラウンド残っている</li>
+  <li>testnet ローンチでフィードバックを取得済み。出てきた課題は「システムを堅くするのに役立つ、良い課題」と表現されました</li>
+  <li>外部パートナー向けの <strong>SDK</strong> を構築中。「かなり包括的なもの」とのこと</li>
+</ul>
+
+<h3>これから作るもの</h3>
+
+<ol>
+  <li><strong>ブリッジ</strong> — メインネットローンチ直後の最優先事項。これも監査を通す。目的は「EVM 側の資金をこちら側に呼び込むこと」</li>
+  <li><strong>EVM チェーンとの統合</strong>、および Cardano 側でのパートナー統合の拡充</li>
+  <li><strong>ガバナンストークン</strong> — 「来年の前半あたり」。設計はまだ固まっていない（後述の Q&amp;A 参照）</li>
+</ol>
+
+<p>メインネットのローンチ日については「社内では決まっているが、まだ公表できる段階ではない。そう遠くない将来に公表する」という回答にとどまりました。</p>
+
+<div class="note">
+<p><strong>監査について。</strong>「公開が近づくにつれて、むしろ意図的にペースを落としている」という説明がありました。AI ツールを使って自分たち自身で多角的に攻撃を試み、さらに複数の外部企業にも検証を依頼して、見落としがないか確認しているとのこと。「こういうことに関しては自分はかなり心配性なので」という発言もありました。</p>
+</div>
+
+
+<h2>2. クロスチェーン構想 — ハブ&amp;スポーク</h2>
+
+<p><strong>これは単なる burn-and-mint ブリッジではありません。</strong>トークンを Cardano から Ethereum などへ移すだけの仕組みではなく、<strong>EVM 側でも RealFi を直接使っているような体験を提供しながら、基盤は Cardano に置き続ける</strong>という設計です。</p>
+
+<p>具体的には、</p>
+
+<ul>
+  <li>資産管理や記録の中心は Cardano</li>
+  <li>ステーキングも Cardano 上で行う</li>
+  <li>EVM 側の操作は Cardano の処理完了を待たず、<strong>すぐ完了する</strong></li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="ハブ&スポーク構成図。複数の EVM チェーンと他チェーンが、中心にある Cardano 上の RealFi につながっている">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="30" y="52" width="160" height="46" rx="7" class="d-box"/>
+  <rect x="23" y="45" width="160" height="46" rx="7" class="d-box"/>
+  <rect x="16" y="38" width="160" height="46" rx="7" class="d-box"/>
+  <text x="96" y="66" text-anchor="middle" class="d-t">EVM 各チェーン</text>
+
+  <rect x="16" y="152" width="160" height="46" rx="7" class="d-box"/>
+  <text x="96" y="180" text-anchor="middle" class="d-t">他チェーン（将来）</text>
+
+  <path d="M180,61 L414,105" class="d-line" marker-end="url(#m1)"/>
+  <path d="M180,175 L414,140" class="d-line" marker-end="url(#m1)"/>
+
+  <rect x="420" y="62" width="244" height="120" rx="9" class="d-box-accent"/>
+  <text x="542" y="106" text-anchor="middle" class="d-t d-a">Cardano 上の RealFi</text>
+  <text x="542" y="132" text-anchor="middle" class="d-s">記録・会計・ステーキングの中心</text>
+  <text x="542" y="152" text-anchor="middle" class="d-s">＝ 正となる台帳</text>
+
+  <text x="295" y="116" text-anchor="middle" class="d-s">操作は即座に完了</text>
+  <text x="295" y="134" text-anchor="middle" class="d-s">（状態の同期は非同期）</text>
+</svg>
+<p class="figcap"><strong>入口は複数のチェーンに広げるが、基盤は Cardano に置く。</strong>ハブ&amp;スポーク型で、Cardano がハブ、他チェーンがスポークにあたります。※ 具体的なチェーン名はコール中では挙げられていません。</p>
+</div>
+
+<h3>もう一方の選択肢と、選ばなかった理由</h3>
+
+<p>クロスチェーンの構成として、2 つの方向性が挙げられました。</p>
+
+<div class="term">
+<p class="term-name">A. 分散型 <small>採用せず</small></p>
+<p>各チェーンにプロトコルのコピーを置き、チェーン間の通信はほとんど、あるいは全く行わない構成。</p>
+</div>
+
+<div class="term">
+<p class="term-name">B. ハブ&amp;スポーク <small>RealFi が採用</small></p>
+<p>中心となるプロトコルが 1 つあり、他は「子」として位置づけられる構成。RealFi ではハブが Cardano チェーンになる。</p>
+</div>
+
+<p>ハブ&amp;スポークの難しさは<strong>状態の同期</strong>です。素朴に作ると、EVM 上のあらゆる操作が Cardano への往復完了を待つことになり、体験が悪くなります。RealFi はこれを<strong>非同期で処理する方法</strong>を考案しました。状態は Cardano 上に置いたまま、他チェーン上の操作は即座に完了する。ユーザー体験を損なわずに、Cardano 上に唯一の権威を保つ、という設計です。</p>
+
+<p>競合との技術的な差別化要因を問われた際にも「<strong>真にクロスチェーンでありながら Cardano にアンカーされていること</strong>」が挙げられ、「良いユーザー体験と良いクロスチェーン機能を両立させるのは難しい。その円を四角にする作業をうまくやれていると思う」と述べられました。</p>
+
+<h3>ビルダーにとっての意味</h3>
+
+<p>RealFi の上に何かを作っている場合、<strong>そのアプリは自動的にこのブリッジの恩恵を受けます</strong>。ブリッジに接続されているだけで、アプリが EVM ユーザーからも利用可能になる、ということです。</p>
+
+
+<h2>3. ワンクリックフロー</h2>
+
+<p>社内で「one-click flows」と呼んでいる仕組みです。<strong>異なるプロトコルにまたがる複数の取引を、ユーザーの署名 1 回だけで実行する</strong>というもの。通常なら 1 つずつ操作して何度も署名するところを、1 回のクリックと署名で完了させます。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="通常は 4 回の署名が必要な一連の操作を、ワンクリックフローでは署名 1 回で実行できることを示す比較図">
+  <defs>
+    <marker id="m2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="34" class="d-s">通常</text>
+  <rect x="16" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="89" y="72" text-anchor="middle" class="d-t">USDR を購入</text>
+  <rect x="188" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="261" y="72" text-anchor="middle" class="d-t">ステーク</text>
+  <rect x="360" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="433" y="72" text-anchor="middle" class="d-t">sUSDR を受取</text>
+  <rect x="532" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="605" y="72" text-anchor="middle" class="d-t">担保に借入</text>
+
+  <path d="M166,67 L184,67" class="d-line" marker-end="url(#m2)"/>
+  <path d="M338,67 L356,67" class="d-line" marker-end="url(#m2)"/>
+  <path d="M510,67 L528,67" class="d-line" marker-end="url(#m2)"/>
+
+  <text x="89" y="112" text-anchor="middle" class="d-s d-w">署名 1</text>
+  <text x="261" y="112" text-anchor="middle" class="d-s d-w">署名 2</text>
+  <text x="433" y="112" text-anchor="middle" class="d-s d-w">署名 3</text>
+  <text x="605" y="112" text-anchor="middle" class="d-s d-w">署名 4</text>
+
+  <line x1="16" y1="140" x2="678" y2="140" class="d-box-plain"/>
+
+  <text x="16" y="180" class="d-s d-a">ワンクリックフロー</text>
+  <rect x="16" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="89" y="218" text-anchor="middle" class="d-t">USDR を購入</text>
+  <rect x="188" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="261" y="218" text-anchor="middle" class="d-t">ステーク</text>
+  <rect x="360" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="433" y="218" text-anchor="middle" class="d-t">sUSDR を受取</text>
+  <rect x="532" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="605" y="218" text-anchor="middle" class="d-t">担保に借入</text>
+
+  <path d="M16,254 L16,266 L678,266 L678,254" class="d-line-accent"/>
+  <text x="347" y="288" text-anchor="middle" class="d-t d-a">クリック 1 回・署名 1 回</text>
+</svg>
+<p class="figcap">連携先には RealFi 自身だけでなく、<strong>Liqwid</strong> や <strong>Sundae</strong> といったパートナーのプロトコルも組み込める構想です。この仕組みはブリッジとも組み合わされる予定です。</p>
+</div>
+
+<h3>ルーピング戦略</h3>
+
+<p>「これはルーピング戦略のようなものにも使えるのか」という問いに対し、<strong>「ルーピング戦略はまさにこれを考案した動機のひとつ」</strong>という答えがありました。ワンクリックで複数回のループを回し、最終的に高レバレッジのポジションができあがる、という使い方が想定されています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="預ける・借りるを繰り返して高レバレッジのポジションを作るループ戦略の図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+    <marker id="m3w" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="40" width="170" height="50" rx="7" class="d-box"/>
+  <text x="125" y="70" text-anchor="middle" class="d-t">預ける</text>
+
+  <path d="M214,65 L286,65" class="d-line" marker-end="url(#m3)"/>
+
+  <rect x="290" y="40" width="170" height="50" rx="7" class="d-box"/>
+  <text x="375" y="70" text-anchor="middle" class="d-t">借りる</text>
+
+  <path d="M375,94 L375,130 L125,130 L125,96" class="d-line" marker-end="url(#m3)"/>
+  <text x="250" y="152" text-anchor="middle" class="d-s">借りた資産を再び預ける（× N 回）</text>
+
+  <path d="M464,65 L516,65" class="d-line-accent" marker-end="url(#m3w)"/>
+
+  <rect x="520" y="34" width="150" height="62" rx="7" class="d-box-warn"/>
+  <text x="595" y="59" text-anchor="middle" class="d-t d-w">高レバレッジ</text>
+  <text x="595" y="79" text-anchor="middle" class="d-t d-w">ポジション</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>ループの回数が増えるほどレバレッジが高くなるため、その分リスクも大きくなります。この点はコール中では明示されていませんが、仕組み上そうなります。</p>
+</div>
+
+
+<h2>4. USDR と sUSDR の違い</h2>
+
+<p>Q&amp;A で最も質問が集中した論点です。<strong>この 2 つは性質がまったく違います。</strong></p>
+
+<div class="term">
+<p class="term-name">USDR <small>ステーブルコイン</small></p>
+<p>常に <strong>1 USDR = 1 米ドル</strong>。これが RealFi のステーブルコイン。</p>
+</div>
+
+<div class="term">
+<p class="term-name">sUSDR <small>ステーブルコインではない</small></p>
+<p>USDR をステークしたときに受け取る、利回り付きのトークン。<strong>1 ドル固定ではありません。</strong>時間の経過とともに USDR との交換レートが上昇することで、利回りが発生します。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="100 USDR をステークして 100 sUSDR を受け取り、時間経過後にアンステークして 105 USDR を受け取る流れの図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="24" width="150" height="50" rx="7" class="d-box"/>
+  <text x="115" y="54" text-anchor="middle" class="d-t">100 USDR</text>
+
+  <text x="255" y="42" text-anchor="middle" class="d-s">ステーク</text>
+  <path d="M194,54 L306,54" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="310" y="24" width="150" height="50" rx="7" class="d-box"/>
+  <text x="385" y="54" text-anchor="middle" class="d-t">100 sUSDR</text>
+
+  <path d="M385,80 L385,120" class="d-box-plain" marker-end="url(#m4)"/>
+  <text x="404" y="105" class="d-s">時間経過（交換レートが上昇）</text>
+
+  <rect x="310" y="126" width="150" height="50" rx="7" class="d-box"/>
+  <text x="385" y="156" text-anchor="middle" class="d-t">100 sUSDR</text>
+
+  <text x="510" y="144" text-anchor="middle" class="d-s">アンステーク</text>
+  <path d="M464,156 L556,156" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="560" y="126" width="110" height="50" rx="7" class="d-box-accent"/>
+  <text x="615" y="156" text-anchor="middle" class="d-t d-a">105 USDR</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>数値は仕組みを説明するための例で、コール中に挙げられたものではありません。実際の交換レートは異なります。利回りは、この<strong>交換レートの変化</strong>によって実現されます。</p>
+</div>
+
+<p>Q&amp;A で明確にされた sUSDR の性質：</p>
+
+<ul>
+  <li><strong>完全にファンジブル。</strong>「sUSDR という通貨は 1 種類しかない」。NFT ではなく、すべて同じ性質を持つ通常のトークン</li>
+  <li><strong>保有期間は個別に記録されない。</strong>個々のトークンに日付は埋め込まれていない。古い sUSDR と新しい sUSDR の違いはない</li>
+  <li><strong>交換レートは全員共通。</strong>sUSDR ⇄ USDR のレートは 1 つだけで、誰にとっても同じ</li>
+  <li><strong>公式レートは常に既知で、公開されている。</strong>アンステーク時に適用されるレートに「隠れているものはない」</li>
+  <li><strong>DEX で自由に売買できる。</strong>取引プールもおそらく用意される。DEX 上の価格と、アンステーク用の公式レートは別々に存在する</li>
+</ul>
+
+
+<h2>5. RealFi は「製品」であり「プラットフォーム」</h2>
+
+<p>現在の RealFi は、USDR・sUSDR・ステーキング・利回りの仕組みを提供する金融製品です。しかし将来的には、SDK と開発者向けドキュメントを公開し、<strong>外部開発者が RealFi を使ったアプリを作れるようにする</strong>方向を目指しています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="現在は RealFi が提供する商品を使う段階、将来は RealFi を部品として別のサービスを作る段階、という対比図">
+  <defs>
+    <marker id="m5" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="286" height="170" rx="9" class="d-box-plain"/>
+  <text x="159" y="56" text-anchor="middle" class="d-t">現在</text>
+  <text x="159" y="86" text-anchor="middle" class="d-s">USDR ／ sUSDR ／ ステーキング</text>
+  <text x="159" y="106" text-anchor="middle" class="d-s">／ 利回りの仕組み</text>
+  <line x1="60" y1="124" x2="258" y2="124" class="d-box-plain"/>
+  <text x="159" y="152" text-anchor="middle" class="d-t">RealFi が提供する</text>
+  <text x="159" y="174" text-anchor="middle" class="d-t">商品を使う</text>
+
+  <path d="M312,109 L368,109" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="378" y="24" width="286" height="170" rx="9" class="d-box-accent"/>
+  <text x="521" y="56" text-anchor="middle" class="d-t d-a">将来</text>
+  <text x="521" y="86" text-anchor="middle" class="d-s">SDK ／ 開発者向けドキュメント</text>
+  <text x="521" y="106" text-anchor="middle" class="d-s">／ ワークショップ</text>
+  <line x1="422" y1="124" x2="620" y2="124" class="d-box-plain"/>
+  <text x="521" y="152" text-anchor="middle" class="d-t d-a">RealFi を部品として</text>
+  <text x="521" y="174" text-anchor="middle" class="d-t d-a">別のサービスを作る</text>
+</svg>
+<p class="figcap">さらに、RealFi を利用したアプリは、RealFi のクロスチェーン機能を通じて <strong>EVM ユーザーにも提供できる可能性があります</strong>。</p>
+</div>
+
+<p>ただし現時点では準備が整っていません。「ちょうど testnet を締めくくろうとしているところなので今すぐではないが、開発者向けドキュメント、どう関わればいいか、どう上に構築すればいいかについて、間違いなく声をかけていく」「それに関するワークショップもやりたい。すべて to-do リストに入っているが、今の to-do がかなり多いというだけ」という説明でした。</p>
+
+
+<h2>6. チームカルチャー</h2>
+
+<p>社内のエンジニアは <strong>3〜4 名</strong>という小さなチームで、そこに <strong>Sundae</strong> や <strong>TxPipe</strong> といったパートナーが加わる体制です。</p>
+
+<p>チームの様子として挙げられたエピソード：testnet に移行したとき、深夜 1 時ごろにオンラインだったが、顔を上げると<strong>ほとんどのメンバーがオンラインだった</strong>。</p>
+
+<p>モチベーションについて語られた内容（発言者は伏せます）：</p>
+
+<ul>
+  <li><strong>課題そのものへの共感。</strong>「IT の世界に長くいると、もう全部見た気になってくる」。そのうえで <strong>banking the unbanked</strong>（銀行口座を持てない層に金融アクセスを届ける）という課題に惹かれた、という話</li>
+  <li><strong>新しいものを作れること。</strong>「Cardano の中でかなり独自のことをやっている」「本当に新しいものに取り組めるのがいい」</li>
+  <li><strong>チームの生産性。</strong>「小規模だが生産性が非常に高い。何かが作られていくスピードとして、ここ何年かで一番速い」</li>
+  <li><strong>信頼の水準の高さ。</strong>「何かが取りこぼされる心配がない。自分が気にしていたことを、もう誰かが見てくれている」</li>
+</ul>
+
+
+<h2>7. パートナーシップ</h2>
+
+<ul>
+  <li><strong>Sundae</strong> — 2025 年 8 月に Web3 ワークストリームを立ち上げた際からの主要パートナー。「非常に強力なパートナーシップで、ここまで来られたのは彼らのおかげ」</li>
+  <li><strong>TxPipe</strong> — 監査で協力</li>
+</ul>
+
+<p>事業の最初の数年はプライベートクレジット側の検証、つまり案件のリスクを適切に評価できることの証明に費やしており、<strong>暗号資産にフォーカスを移したのが 2025 年 8 月</strong>とのことです。</p>
+
+
+<h2>8. コミュニティに求めていること</h2>
+
+<p>開発チームが Cardano コミュニティに求めているのは、次のような協力です。</p>
+
+<ul>
+  <li><strong>testnet の不具合報告</strong></li>
+  <li><strong>RealFi を利用したアプリのアイデア</strong> — 「RealFi の上に何かを作るというアイデア、新しいものを作ること。それが見られたら本当に素晴らしい」</li>
+  <li><strong>スケーリングとクロスチェーンの専門知識</strong> — 今後直面すると予想している課題</li>
+  <li><strong>Midnight との連携アイデア</strong> — 「クロスチェーンの話題で言うと、やりたいがまだほとんど手を付けられていないのが Midnight。プライバシーの側面があるので非常に興味深い。開発経験がある人、アイデアを持っている人がいれば、ぜひ話したい」</li>
+  <li><strong>bug bounty への協力</strong> — 実施の意思はあるが「今はやることが多すぎる」状態。コミュニティの助けがあれば実現を早められる、という言い方でした</li>
+  <li><strong>SDK を使った開発</strong> — SDK の一部はオープンソース化予定（バックログ）</li>
+</ul>
+
+<p>特に強かったのは <strong>「RealFi を使って何を作れるかというアイデアを出してほしい」</strong>というメッセージです。締めくくりでも「本当に重要なのはアイデアやプロダクトそのものだけ。実装は Codex なりを SDK に向ければ簡単にやってくれる。だから最終的にどう動くかの細部より、コンセプトのほうがずっと重要」という発言がありました。</p>
+
+<p>接点としては、<strong>作る話は GitHub</strong>（まだ用意できていないが、SDK が置かれ、ソースコードの話ができる場所）、<strong>最初の接点は Discord</strong>（人が一番多いから）という整理でした。Discord にはエンジニアリング専用のチャンネルを作る構想もあります。</p>
+
+<div class="note">
+<p><strong>不具合の報告について。</strong>testnet の報酬まわりで「ステークすると USDR が消えるのに、アンステークしても戻ってこない。報告しても返信がない」という声が挙がりました。</p>
+<p>回答は、返信がない件は<strong>単純にチームの処理能力の問題</strong>で、バグ報告は全部見ており 1 件ずつ既存タスクに組み込んでいる、というもの。ただし一部のアドレスは<strong>実際にファーミング活動に関与していた</strong>ことが判明しているとも述べられました。同時に<strong>誤って判定してしまったウォレットも約 20 件あり、それらは解除済み</strong>とのことです。「公開した瞬間に攻撃される」状況で、対策を日々追加している段階だと説明されました。</p>
+</div>
+
+
+<h2>全体像</h2>
+
+<p>RealFi は、Cardano 上で利回り付きドル資産を提供し、その資産を他チェーンや他の DeFi サービスでも簡単に使えるようにする基盤を目指しています。単なるステーブルコインプロジェクトというより、次の 4 つを組み合わせた<strong>Cardano を中心とする金融プラットフォーム構想</strong>と考えると分かりやすい内容でした。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 280" role="img" aria-label="USDR/sUSDR、クロスチェーン接続、ワンクリック機能、外部開発者向け SDK の 4 つが組み合わさって、Cardano を中心とする金融プラットフォームを構成することを示す図">
+  <defs>
+    <marker id="m6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="16" width="316" height="58" rx="7" class="d-box"/>
+  <text x="174" y="42" text-anchor="middle" class="d-t">USDR ／ sUSDR</text>
+  <text x="174" y="61" text-anchor="middle" class="d-s">利回り付きのドル資産（製品）</text>
+
+  <rect x="348" y="16" width="316" height="58" rx="7" class="d-box"/>
+  <text x="506" y="42" text-anchor="middle" class="d-t">クロスチェーン接続</text>
+  <text x="506" y="61" text-anchor="middle" class="d-s">Cardano をハブに、EVM へ入口を広げる</text>
+
+  <rect x="16" y="92" width="316" height="58" rx="7" class="d-box"/>
+  <text x="174" y="118" text-anchor="middle" class="d-t">ワンクリックフロー</text>
+  <text x="174" y="137" text-anchor="middle" class="d-s">複数 DeFi を署名 1 回でつなぐ</text>
+
+  <rect x="348" y="92" width="316" height="58" rx="7" class="d-box"/>
+  <text x="506" y="118" text-anchor="middle" class="d-t">外部開発者向け SDK</text>
+  <text x="506" y="137" text-anchor="middle" class="d-s">RealFi を部品として使えるようにする</text>
+
+  <path d="M174,154 L174,196" class="d-line" marker-end="url(#m6)"/>
+  <path d="M506,154 L506,196" class="d-line" marker-end="url(#m6)"/>
+
+  <rect x="16" y="202" width="648" height="62" rx="9" class="d-box-accent"/>
+  <text x="340" y="230" text-anchor="middle" class="d-t d-a">Cardano を中心とする金融プラットフォーム</text>
+  <text x="340" y="252" text-anchor="middle" class="d-s">＝ 他の開発者・他チェーンからも使える金融インフラ</text>
+</svg>
+</div>
+
+
+<h2>Q&amp;A（チャットからの質問）</h2>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者A</span>ステークプールへの委任は testnet ウォレットでも可能か、それともメインネットのみか。</p>
+<p class="qa-a" data-by="回答">活動自体は testnet 上で行うが、<strong>カウントされる委任はメインネット側</strong>。つまり実際に保有している ADA の委任先が判定に使われる。メインネットウォレットと testnet ウォレットを紐付けるためのサイトが用意される予定。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者D</span>USDR と sUSDR という 2 つのステーブルコインがあることで、暗号資産に馴染みのないユーザーのオンボーディングに摩擦が生じないか。2 トークンの仕組みを隠して USD 残高だけを見せることは検討したか。</p>
+<p class="qa-a" data-by="回答">前提が少し違う。<strong>ステーブルコインは USDR だけ</strong>で、常に 1 USDR = 1 ドル。sUSDR はそのステーク版で、価値が変動する。ステーク時に sUSDR を購入し、アンステーク時にプロトコルに売り戻す形になり、その際の価格差が利回りになる。<strong>sUSDR はステーブルコインではない。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者F</span>ユーザーが sUSDR を自由に保有・送付・取引できる状態で、なぜ利回りが成立するのか。DEX で sUSDR を買った場合、まだ請求されていない利回りが付いてくることはあるか。</p>
+<p class="qa-a" data-by="回答">DEX で sUSDR を買った場合でも、<strong>アンステーク時に適用される公式レートは常に存在する</strong>ので、隠れているものはない。DEX 上の価格があり、それとは別にアンステーク用の公式レートがあり、そのレートは常に既知で公開されている。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者F</span>sUSDR の 1 枚 1 枚が、保有期間と利回りに応じた個別のレートを持っているのか。買う前にそれを知ることはできるのか。</p>
+<p class="qa-a" data-by="回答">いいえ。<strong>sUSDR という通貨は 1 種類しかなく、すべてファンジブル</strong>。日付は埋め込まれていない。ステーク時にその時点の交換レートで sUSDR を受け取り、アンステーク時にその時点のレートで USDR を受け取るだけ。DEX で取引することもできる。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者I</span>レートは全員同じでは。ファンジブルトークンであって NFT ではない。</p>
+<p class="qa-a" data-by="回答">その通り。<strong>レートは全員共通で、sUSDR / USDR の交換レートは 1 つだけ。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者C</span>競争の激しい市場で RealFi はどう戦うのか。技術的な優位性は何か。</p>
+<p class="qa-a" data-by="回答"><strong>真にクロスチェーンでありながら Cardano にアンカーされている点</strong>。良いユーザー体験と良いクロスチェーン機能を両立させるのは難しく、そこをうまく成立させられていると思う。<em>（詳細は「2. クロスチェーン構想」の節を参照）</em></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者E</span>AI を使ったセキュリティ強化について、最近アプローチの変化はあったか。ブロックチェーンプロジェクトの開発者に勧められるツールやサービスはあるか。</p>
+<p class="qa-a" data-by="回答">実際に起きた攻撃事例を見ながら、<strong>同じツールを使って自分たちのコードを評価している</strong>。外部監査人も AI ツールを使っている。1 年前よりは踏み込んだことをやっていると思うし、テストと監査の結果には自信がある。</p>
+<p class="qa-a" data-by="補足回答">監査は複数ラウンドを終えたが、<strong>まだかなりの回数が進行中</strong>。公開が近づくほど意図的にペースを落として、AI ツールで多角的に自分たちの実装を攻撃してみたり、複数の外部企業に検証を依頼したりしている。この件でもコミュニティからの助言は歓迎したい。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者J</span>USDR / sUSDR の対応について Rosen Bridge チームと接触はあるか。メインネットローンチ後になるか。</p>
+<p class="qa-a" data-by="回答">今はまずローンチを成功させることが最優先。<strong>その後に多くのパートナーと組んでいきたい</strong>のでタイミングの問題。ローンチ後に、単なる利回り付きステーブルコインで終わらせずユーティリティを増やす方向を検討し、そこで戦略的パートナーへのアプローチを始めることになる。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者H</span>通話の参加者が 30〜35 人しかいない。暗号資産のプロダクト以外にも広げる必要があるのでは。</p>
+<p class="qa-a" data-by="進行役">まだ非常に早い段階だから。<strong>Cardano のアクティブウォレットの 15% 以上が testnet に参加している</strong>という統計がある。Solana や Ethereum に行く前に、このコミュニティはすでに盛り上がっているし、みんな相当早いタイミングで入っている。ガバナンストークンが出れば、長期的に意味のある発言権を持つことになる。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者B</span>結局のところ、ユーザーは「暗号資産であること」を気にし続けるのか。それとも将来的には、暗号資産かどうかを意識しない摩擦のないものになるのか。</p>
+<p class="qa-a" data-by="回答">出発点が実物資産（RWA）側だったことを考えると、<strong>USDR と sUSDR はそういう資産のひとつとして位置づけようとしている</strong>。弱気相場が来ても安全な利回りが得られる、という性質。暗号資産に伴うボラティリティからは、大部分において隔離されているはず。「これは暗号資産だが、あなたのお金は安全だ」と世の中に信頼してもらえるところまで橋渡ししたい。</p>
+</div>
+
+
+<h2>持ち帰りになった質問</h2>
+
+<p>この回で回答が保留され、他チームに回された質問です。次回以降で回収される可能性があります。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者E</span>ガバナンスの実装・運用に、Cardano 既存のガバナンスプロトコルの枠組みを使う予定はあるか。</p>
+<p class="qa-a" data-by="→ プロダクトチーム">現時点で具体的な形は固まっていない。プロダクト側のほうが詳しく話せる。<br>進行役は「アイデアがあれば送ってほしい。エンジニアリングとプロダクトの両方に共有する」と募集を呼びかけました。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者B</span>何社の fintech と提携（または検討）しているか。準備金概要にある「14% を支払う private credit 資産」は fintech への融資なのか、外部でトークン化された private credit の購入なのか。</p>
+<p class="qa-a" data-by="→ treasury チーム">エンジニアリング回の範囲外として転送。「投資は 3 種類あり、ウェブサイトに記載がある。<strong>透明性ポータルで資金の行き先を確認できる</strong>」という回答のみ。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者C</span>KYC / AML といった法務・コンプライアンスにどう対応するか。将来の規制強化からユーザー資産をどう守るか。</p>
+<p class="qa-a" data-by="→ 法務チーム">法務案件として保留。進行役が次回以降に持ち越すと明言。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者D</span>銀行や証券会社のように、資金移動のインセンティブとして期間限定で高い APY を出す予定・能力はあるか。</p>
+<p class="qa-a" data-by="→ プロダクト担当">「これはプロダクト側の案件」として回答を差し控え。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者F</span>sUSDR がファンジブルで全員同じレートなら、レートが良いときに市場で買って売り抜ける裁定が成立してしまわないか。</p>
+<p class="qa-a" data-by="未解決">「sUSDR は市場で自由に買える。自由に取引可能」とのみ回答。質問者自身がチャットで「これは無限に儲かる装置ではない。ETF と同じで、スワップレートは価格に織り込まれる」と補足しましたが、<strong>進行役が「うまく伝えられなかった、オフラインで拾う」と述べて終了</strong>しました。</p>
+</div>
+
+
+<h2>この回の締めくくり</h2>
+
+<p>「この通話の後、参加者に覚えていて、他の人に伝えてほしいことは何か」という問いへの回答です。</p>
+
+<ul>
+  <li>「他チェーンと接続し、その価値を Cardano に持ち込めること。これはコミュニティのビルダーにとって非常に良い機会だと思う。<strong>良いアイデアを持ったビルダーがそれを活かせれば、RealFi にとっても Cardano にとっても、みんなにとってもプラスになる</strong>」</li>
+  <li>「<strong>コミュニティからのフィードバックが本当にありがたい</strong>。良い内容でも悪い内容でも、フィードバックはすべて良いフィードバック。使ってもらえるのが嬉しいし、もっと関わる妨げになっているものがあるなら、直せるようできるだけ早く知りたい」</li>
+  <li>「RealFi の上に何かを作ろうとするとき、<strong>本当に重要なのはアイデアやプロダクトそのものだけ</strong>。実装は Codex なりを SDK に向ければ簡単にやってくれる。だから最終的にどう動くかの細部より、コンセプトのほうがずっと重要」</li>
+</ul>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>元の文字起こしには話者ラベルもタイムスタンプもありません。加えて、このコールはチャタムハウスルールで運用されているため、<strong>氏名・役職・経歴・所属といった発言者を特定できる情報は記載していません</strong>。全文ページで使っている <code>登壇者A / B / C</code>、<code>参加者A〜L</code> は、会話の流れを追うための仮のラベルです。</p>
+<p>音声認識による固有名詞の誤変換（RealFi → “RealFire”、Cardano → “Godano” など）は、まとめと日本語全文では修正していますが、<strong>英語全文では原文のまま残しています</strong>（匿名化された箇所を除く）。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、仕組みの理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。</p>
+</div>
+<a class="top" href="#top">↑ 先頭へ</a>
+</section>
+
+<section class="part" id="ja">
+<div class="part-head"><h2>日本語全文</h2><span>英語全文を通しで訳したもの</span></div>
+<div class="note">
+<p><strong>このページについて。</strong>元の文字起こしには話者ラベルもタイムスタンプもありません。話者は文脈から推定しており、確度が低い箇所には<em>（推定）</em>を付けています。音声認識による固有名詞の誤変換（RealFi → “RealFire”、Cardano → “Godano” など）はこのページでは修正しています。原文をそのまま確認したい場合は<a href="#en">英語全文</a>をご覧ください。</p>
+<p>録音は 登壇者A の自己紹介の途中から始まっているようです。</p>
+</div>
+
+<div class="sec">自己紹介とアジェンダ</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>キャリアの大半は金融サービスのソフトウェア側でした。投資銀行やそのテクノロジー、トレーディングプラットフォームとのさまざまな統合に長く関わってきました。それが私です。暗号資産の領域でまた挑戦できるのを本当に楽しんでいます。</p>
+  <p>以上が私の紹介です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。今日のコールの準備として、大きく 4 つのことを扱おうと思っています。登壇者A、何を扱うのか説明してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>もちろんです。大枠としては、まずロードマップの概要ですね。今どこにいて、どこへ向かおうとしているのか。それからチームカルチャー。チームそのものと今後について、そして外部パートナーとの提携やさまざまな統合をどう考えているか。</p>
+  <p>そして、私たちがこの場から何を得たいと思っているか。RealFi はコミュニティに支えられたプロジェクトだと感じています。私たちのエコシステムに大きなものを引き寄せられたらと思っていますし、コミュニティにも関わってもらいたいと考えています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。さっき別のコールに出ていて、ステークプールオペレーターとのワークショップが終わったところです。コミュニティのウェブサイトもローンチしました。そこで話題にしていたのが、まさに世界観づくりの話でした。</p>
+  <p>RealFi はプロダクトである、と。ただコミュニティから聞こえてくるのは、プラットフォームとしての RealFi、その上に何が作れるのか、という話でもあります。ロードマップを説明してもらえますか。今どこにいて、どこへ連れて行こうとしているのか。</p></div>
+</div>
+
+<div class="sec">1. ロードマップ</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>では私から始めます。登壇者B、登壇者C も自由に入ってきてください。現時点でプロトコルはすでに稼働しています。テストを大量に行っていて、監査もかなり進んでいます。</p>
+  <p>その大部分は基本的に動いている状態です。testnet でローンチして、良いフィードバックをもらいましたし、いくつか課題も出ました。システムを堅くするのに役立つ、良い課題です。次のイテレーション、といっても以前から取り組んでいるものですが、それがブリッジです。登壇者B が言ったように、そこを堅くして、すでにあるものの上に積み上げていきます。</p>
+  <p>他チェーンに渡って、EVM 側の資金をこちらの世界にも引き込むことは、私たちにとって非常に重要です。メインネットのローンチを迎えたら、そこが次の焦点になります。それから、ガバナンストークンや他チェーンとの統合といったものもロードマップに入っています。</p>
+  <p>これはもう少し先の話です。いくつか動いていることがあって、Cardano 側でのパートナー統合、それから他のエコシステムのパートナーとの取り組みもあります。</p>
+  <p>今はかなり多くのことが同時に進んでいます。登壇者B、登壇者C、補足はありますか。</p></div>
+</div>
+
+<div class="sec">2. ブリッジ</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>ではブリッジについて少し話します。これは単に他チェーンへトークンを移すだけの burn-and-mint ブリッジではありません。</p>
+  <p>私たちが作っているのは、EVM やその他のチェーンの上で RealFi プロダクトの完全にネイティブな体験を提供しつつ、Cardano と密に接続されているものです。会計についても、Cardano 上で行われるステーキングについても、引き続き Cardano を source of truth（正となる台帳）として使います。</p>
+  <p>これは Cardano 上のプロトコルとしてはかなり独自だと思います。ユーザーやその上のビルダーにとって何を意味するかというと、RealFi の上に何かを作っているなら、このブリッジと私たちが提供するユーザー体験の恩恵を自動的に受けられる、ということです。</p>
+  <p>つまり RealFi を使ったアプリを持っているなら、ブリッジに接続されているだけで、そのアプリは EVM ユーザーにも使えるようになります。もう一つの側面として、社内で「ワンクリックフロー」と呼んでいるものにも取り組んでいます。</p>
+  <p>これは、異なるプロトコルにまたがる複数のトランザクションを、ユーザーの署名 1 回だけでつなげる方法です。ユーザーはウォレットで 1 回クリックして署名するだけで済みます。たとえば、USDR を購入して、USDR をステークして、それで得た sUSDR を担保に借入をする、といったこともできます。</p>
+  <p>RealFi だけでなく、Liqwid や Sundae のようなパートナーも含めた、異なるプロトコルの連なりを作れるわけです。これらの操作すべてを単一のトランザクションで発動できるので、手動で 1 つずつ進める必要がなく、このワークフロー全体が通ります。</p>
+  <p>そしてこれはブリッジとも組み合わされます。かなり面白いものだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>確認のために言い直させてください。他のエコシステムについて少し調べていたのですが、そのワンクリックというのは、ルーピング戦略のようなものにも使えるのでしょうか。それとも関係のない別の話でしょうか。</p>
+  <p>理解を助けてもらえればと。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>はい、ルーピング戦略はまさにこれを考案した動機のひとつでした。基本的にワンクリックで複数回のループを回せて、全部のトランザクションが実行され、最終的に高レバレッジのポジションができあがる、という形になります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者C、マイクを渡す前に少し事務連絡です。登壇者の皆さん、聞いている皆さん、2 つお願いがあります。1 つは Discord のチャットバブルをクリックして、話しながらチャットが見えるようにしてください。</p>
+  <p>そうすればチームに質問できますし、私たちの話がどう伝わっているか、他に何を知りたいのかが分かります。もう 1 つは、X Spaces でさんざんやってきたことへの敬意を込めて、この Discord のスペースを興味を持ちそうな人にシェアしてもらえませんか。</p>
+  <p>この Discord ルームの人数を増やしたいんです。RealFi Office Hours にエンジニアリングチームが登場するというのは、これまでで一番わくわくするコールだと思っています。もっと多くの人に来てほしいですね。</p>
+  <p>登壇者C、マイクを取ってしまってすみません。何か付け加えることはありましたか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>いえ、大丈夫です。どこまで詳しく触れたか分かりませんが、現時点でパートナー向けには、かなり包括的な SDK があって、その構築を進めています。</p>
+  <p>これは間違いなく今後も作り込んでいくものです。私たちとしてもかなり楽しみにしているものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。質問がいくつか届いています。進めながら拾いますか、それとも最後にまとめますか。</p>
+  <p>では、ロードマップと、何ができていて、何を作ろうとしているかを少し聞きました。途中から参加した人のために、ここまでに作ったもので、覚えて他の場所でシェアできるポイントをいくつか挙げてもらえますか。</p>
+  <p>それと、これから作ろうとしているもののポイントも。次のトピックに移る前に整理しておきたいので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>現時点でできているものとしては、Cardano のプロトコルが稼働しています。今 testnet で動いているのがそれです。</p>
+  <p>ブリッジについては、これから押し進めていきます。その方面を仕上げていくところです。その機能もかなり近いうちに出てくるはずです。監査も通して、すべてがきちんと動くようにします。</p>
+  <p>その先には、EVM との統合、Cardano 側でのさらなるパートナー統合があります。そして最後にガバナンストークン。来年の前半あたりに出てくるはずです。</p></div>
+</div>
+
+<div class="sec">3. チームカルチャー</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。皆さんの話を聞いていて、そして何人かとは一緒に働いたこともあるので、ぜひ知りたいことがあります。チームカルチャーについて少し話してもらえますか。今どんなふうに働いているのか。そしてコミュニティとどう働いていきたいのか、コミュニティ側は皆さんとどう関わればいいと理解すればいいのか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>では私から。今のチームには本当に恵まれていると思っています。全員が非常に高い水準にあります。みんなコミットしているし、能力も高い。良い例として、testnet に移行したとき、確か深夜 1 時ごろにオンラインでいたんです。</p>
+  <p>顔を上げると、ほとんどのメンバーがオンラインでした。それくらいコミットしていて、能力も高い。チームカルチャーの観点で言うと、大きなチームではありません。社内は 3〜4 人くらいで、それに Sundae や TxPipe のような非常に良いパートナーがいます。</p>
+  <p>でも全員が自分のやるべきことを分かっていて、全員がコミットしている。チームカルチャーとして、それがあるのは非常にありがたいです。今後については、進んでいく中でさまざまな課題を見ていくことになるので、コミュニティにも関わって助けてもらえたらと思っています。</p>
+  <p>Cardano コミュニティには膨大な知識と専門性があります。それが私たちのコミュニティが本当に持っているものの 1 つだと思います。これから直面するであろう問題、たとえばスケーリングやクロスチェーンまわりについて、経験を持つビルダーがいます。</p>
+  <p>ですので、活用できる専門性や何かがあれば、コミュニティにぜひ関わってほしい。bug bounty プログラムのようなものも含めて。Discord でつながれれば、こちらも積極的に見ている人がいます。</p>
+  <p>これをできるだけ人々の手に委ねて、一緒に作ってもらい、みんなが恩恵を受けられる価値あるものにしていきたいと思っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いきなり振るようで申し訳ないのですが、RealFi のエンジニアとして何がモチベーションになっていますか。内側から実際に何があなたを動かしているのでしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私の場合、これは解く価値のある素晴らしい問題だと思ったからです。RealFi に入ったとき、IT の世界に長くいると、もう全部見てしまった気になってくるんですね。</p>
+  <p>まず問題そのもの、banking the unbanked（銀行口座を持てない層に金融アクセスを届けること）に何か惹かれるものがありました。そこに共感したんです。そして技術的な挑戦もここまで素晴らしいものでした。それに、このコールにいるメンバーや、IO のコミュニティも含めて、みんなから学べることが本当にたくさんあります。</p>
+  <p>だから私を動かしているのは、ここで素晴らしいものを作れるチャンスがあるということ。それが私を前に進ませている一番大きなものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B <em>(推定)</em></div>
+  <div class="turn-body"><p>私の場合は……すみません。私は 2 つあります。</p>
+  <p>1 つは、Cardano の中でかなり独自だということ。本当に新しいものに取り組めるのがいいですね。もう 1 つはやはりチームです。登壇者A も言ったように、小規模ですが生産性が非常に高い。</p>
+  <p>それに、非常に幅広いトピックと、私たちが作っているすべてのシステムをカバーしています。そこに貢献できるのは実際にわくわくします。何かが作られていくスピードとしては、ここ何年かで一番速いです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者B、同じ質問をあなたにも。純粋に興味があるんです。いろいろなプロジェクトで一緒に働いてきましたが、エンジニアとして内側から何があなたを動かしていますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>新しいものを作れるチャンスがあること、ですね。私にとってはそれが一番大きなモチベーションです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ちなみに話している間にも、チャットに良い質問がいくつも来ていますよ。登壇者C、マイクを渡します。同じような質問です。あなたのモチベーションと、内側で何が起きているか。何に興味がありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>2 人がすでに言ったことを繰り返したくはないのですが、私も彼らの話にはかなり共感します。素晴らしいチームです。それと、信頼の水準が非常に高い。これも素晴らしい環境です。</p>
+  <p>何かが取りこぼされる心配がないんです。自分が気にしていたことを、もう誰かが見てくれていて、すでに考えてくれている。全員が非常に意欲的で、そういうチームで働けるのはわくわくします。</p>
+  <p>私にとっては技術的な挑戦も大きいですね。多くが自分にとっても新しい。RealFi に入るまで Cardano で仕事をしたことがなかったので、多くが本当に新しいんです。だからたくさん学んでいます。特に 登壇者B のような人からは。</p>
+  <p>それに 登壇者A はベテランですから、彼からも多くを学んでいます。エンジニアリングチームから少し広げて見ても、RealFi の他のメンバーも非常に高い水準の人たちです。</p>
+  <p>RealFi に来る前に、キャリアで大きな成功を収めた人もいます。ですので、全員から学べて、そういう人たちと協働できるというのは本当に great な機会です。</p></div>
+</div>
+
+<div class="sec">4. コミュニティとの関わり方</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>協働というのは本当に興味深いポイントですね。3 人とも、自分がコミュニティの側にいて、そこにエンジニアリングチームがいる、という状況を経験したことがあると思います。</p>
+  <p>そのとき何が良い進め方だったか、どうやってそのチームと関われたかを思い出せますか。聞いている皆さんに理解してほしいのは、皆さんがどうやって RealFi のチームと関われるのか、開発が進む中でどう一緒に働くのが一番いいのか、ということなので。</p>
+  <p>ご自身の経験を踏まえて、今後コミュニティにはどうコミュニケーションしてほしいですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>RealFi の上に、あるいは RealFi と一緒に何かを作ろうと考えているなら、一番いい接点はおそらく GitHub、あるいはそこに設けるスペースのようなものになると思います。</p>
+  <p>まだ用意できていないのですが、実際に作るという話なら、SDK が置かれるのはそこですし、ソースコードの話ができるのもそこです。それと Discord にも専用のチャンネルを作ったほうがいいでしょうね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>同感です、進行役。最初の接点はおそらく Discord になると思います。人が一番多いのがそこですから。それに、Discord でコミュニティが何を考えているのか、どう貢献できるのかを聞けるのはこちらとしても嬉しいです。</p>
+  <p>Discord で会話が立ち上がれば、良いアイデアはかなり速く動き出すと思います。そういうものには私たちも飢えていますから。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。これを映せるか分かりませんが……どうぞ、どうぞ。すみません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>そろそろチャットの質問をいくつか見始めてもいいかもしれません。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — 前半</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そうしましょう。上にスクロールして、参加者A の質問です。ステークプールへの委任は testnet ウォレットでも可能ですか、それともメインネットのみですか。</p>
+  <p>ポイントを請求する仕組みについて聞いているのだと思いますが、それはおそらくプロダクト側の質問ですね。認証やウォレットの仕組みについて、何か補足はありますか。なければ次に行きます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>いえ、testnet 上になります。活動自体は testnet で行いますが、カウントされる委任はメインネット側です。つまり実際に保有している ADA がどこに委任されているか。それが判定に使われる紐付けです。</p>
+  <p>そしてこれから紐付けの仕組みを作ります。メインネットウォレットと testnet ウォレットをリンクできるウェブサイトが用意されます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。次は 参加者B の質問です。何社の fintech と提携していますか、あるいは検討していますか。</p>
+  <p>私の見方では、異なる国のより多くの fintech と組んだほうが全体のリスクは下がるように見えます。これについて意見はありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>これは資金がどこに投資されているか、という点を突いていますよね。どちらかというとプロダクト側の質問だと思います。</p>
+  <p>ただ一般論として、この資金で行われる投資には 3 種類あります。これはウェブサイトにも記載されています。それに、資本がどこへ向かっているかを示す透明性ポータルもあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者C の質問は、もう少しうまく言い換えたほうがインパクトが出ると思うので、私のほうで言い換えます。競争の激しい市場の中で RealFi はどう位置づけられているか、という質問です。彼が本当に知りたいのは、市場で競争力を持たせる技術的な優位性は何か、ということだと思います。</p>
+  <p>伝わりますか。競争力という点で、RealFi の技術的な優位性は何だと思いますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>技術的な優位性は、おそらく真にクロスチェーンでありながら Cardano にアンカーされている点だと思います。</p>
+  <p>良いユーザー体験と良いクロスチェーン機能を両立させるのは難しいのですが、その円を四角にするような作業を、うまくやれていると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>クロスチェーン機能について、構成というかトポロジーとしてどんな選択肢があるのか、そしてその中で私たちがどれを選んだのか、どんなトレードオフを取ったのかを、少し説明してもらえますか。私の理解が合っていればですが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>はい。取りうる方向性は 2 つあります。1 つは分散型のシステムで、各チェーンに基本的にプロトコルのコピーを置き、チェーン間の通信はほとんど、あるいは全く行わないというもの。</p>
+  <p>もう 1 つはハブ&amp;スポークに近いモデルで、中心となるプロトコルが 1 つあり、他のものはより「子」に近い位置づけになります。RealFi で作っているのはこちらです。ハブになるのは Cardano チェーンです。</p>
+  <p>ただ、この方式の難しさは常に状態を同期しなければならない点にあります。避けたいのは、EVM 上のあらゆる操作が、Cardano への往復が完了するのを待たなければならない状況です。私たちはこれを非同期で行う方法を考案しました。</p>
+  <p>つまり中心は変わらず、状態は Cardano 上に置いたまま、他チェーン上の操作はすべて即座に完了します。良いユーザー体験がありながら、Cardano 上に唯一の権威も保たれる、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。順に進めていきますが、次は 参加者D の 参加者D からです。USDR と sUSDR という 2 つの異なるステーブルコインがあることで、暗号資産の外にいるユーザーのオンボーディングに摩擦が生じないか、という質問です。</p>
+  <p>ユーザーを混乱させる可能性はあると考えていますか。また、2 トークンの仕組みをある程度隠して、USD の残高だけに絞ることは検討しましたか。純粋な興味からの質問だそうです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>この 2 つの通貨のうち、ステーブルコインは USDR だけです。</p>
+  <p>USDR は常に 1 枚 1 ドルです。sUSDR はそのステーク版ですが、価値が変動します。それが最終的にプロトコルから利回りを得る仕組みになっています。ステークするときに、一定量の sUSDR を購入する形になります。</p>
+  <p>後でアンステークするときには、この sUSDR を基本的にプロトコルに売り戻すのですが、最終的により良い価格、少なくとも異なる価格が付きます。そうやって利回りが実現されます。ですので sUSDR はステーブルコインではありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。開発者への質問が 参加者E から来ています。ガバナンスの実装や運用に、Cardano 既存のガバナンスプロトコルの枠組みを使う予定はありますか。現時点の考え、あるいはどこまでいろいろなガバナンスの形を検討したのか、初期的な考えはありますか。</p>
+  <p>共有できるものがなければそれで構いません。ただ、何かあれば非常に興味深いと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>現時点では、具体的にどういう形になるかはまだ固まっていないと思います。</p>
+  <p>その詳細については、プロダクト側のほうがもう少し情報を出せるはずです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そうですね、今のところ明確な答えはありません。ただ、これを聞いている方で、私にアイデアをまとめて集めてほしいという方がいれば、検討すべきだと思うものを何でも送ってください。エンジニアリングチームとプロダクトチームの両方に共有して、少なくとも状況を把握してもらえるようにします。</p>
+  <p>それで問題ないですか、登壇者A。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい、完璧です。ありがとうございます。1 つ付け加えると、質問はどれも素晴らしいですね。私も目を通しています。ここで答えられなかった質問があれば、遠慮なく投げてください。後で見させてもらいたいです。</p></div>
+</div>
+
+<div class="sec">5. パートナーシップと統合</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ぜひ。まだ続けられますが、もう少し質問に答える前に、3 つ目の柱である統合とパートナーシップに移りましょうか。その後でまた質問に戻ります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>では、他のパートナーについて私から話せます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい、すみません、どうぞ。今どこと組んでいるのか教えてください。現在のパートナーはどこですか。それと、どういう関心表明や、その先の協業が皆さんにとって最も価値があるのかも教えてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>現在のパートナーシップですが、前にも触れた通り Sundae ですね。Sundae は本当に力を貸してくれています。この Web3 のワークストリームを立ち上げたのが、確か去年の 8 月でした。事業の最初の数年は、プライベートクレジット側を検証して、案件のリスクをきちんと評価できることを確かめることに使っていました。</p>
+  <p>去年の 8 月から今に至るまでは、基本的に暗号資産にフォーカスしてきました。ここまで来られたのは Sundae との非常に強力なパートナーシップのおかげだと思っています。監査の一部では TxPipe にも協力してもらっています。</p>
+  <p>それと、社内からもいろいろな助けがありました。感謝しています。今後についてですが、先ほども言ったように、これから直面するだろうと予想している課題があります。</p>
+  <p>スケーリングや、今取り組んでいるクロスチェーンまわりについて、専門知識をお持ちの方がいれば。社内のチームとも話はしているのですが。</p>
+  <p>専門知識やアイデアがあれば、ぜひ声をかけてください。Discord に投げてもらえれば、その分野の専門家とはぜひ関わりたいと思っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>クロスチェーンの話で言うと、やりたいと思っているのにまだほとんど手を付けられていないのが Midnight です。</p>
+  <p>プライバシーの側面などがあるので、非常に興味深いと思っています。Midnight で開発した経験がある方、あるいはそのアイデアを持っている方がいれば、ぜひ話してみたいですね。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — 中盤</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。では質問に戻りましょう。時系列で順に見ていきます。参加者B、読み方が違っていたらすみません。準備金の概要にある、14% を支払うプライベートクレジット資産について、とのことですね。</p>
+  <p>それと、何社の fintech と組んでいるかも記載がない、と。このプライベートクレジット資産は fintech 企業への融資なのか、それとも外部でトークン化されたプライベートクレジットを購入しているのか。これはおそらくこの場に適した質問ではないですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>そうですね。まあ、こう扱いましょうか。記録しておいて、treasury チームの誰かに転送するのがいいかもしれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それで問題ないですね。下にスクロールしていきましょう。参加者C が、RealFi と RWA のハードルは規制のばらつきかもしれない、と言っています。確かにその通りですね。</p>
+  <p>KYC や AML といった法務・コンプライアンスの問題にどう対応していますか。皆さんが答えたいのでなければ、これは法務側の質問だと思います。質問はこうです。将来の規制強化からユーザー資産をどう守るのか。</p>
+  <p>ただ、私たちとしてはコンプライアントでありたい、というのが本音ですよね。これについて見解はありますか。それとも、これも今後の Office Hours 用に持ち越しますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>そうですね、考えて……</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>持ち越すものにはブルーハートを付けておくことにします。</p>
+  <p>さて、参加者F の 参加者F から、エンジニアリング向けの質問です。エンジニアリングの観点から、ユーザーが sUSDR を保有し続け、しかも sUSDR を送ったり取引したりできる状態で、なぜ利回りが成立するのかを説明してもらえますか。</p>
+  <p>私の理解では、損失が影響しうるのは付随する請求可能な利回りだけで、sUSDR の担保や USDR のデペグには影響しないはずです。DEX で sUSDR を買った場合、まだ請求されていない利回りが付いてくることはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>少なくとも最後の点についてですが、DEX で sUSDR を買った場合でも、アンステーク時に適用される公式レートは常に存在します。ですので、そこに隠れているものはありません。DEX 上の価格があり、それとは別にアンステークできる公式レートがある、という形です。</p>
+  <p>そのレートは常に既知で、公開されています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>sUSDR は DEX に上場するのですか。それとも、sUSDR は報酬を得るために売るもので、ステーブルコインは USDR だけ、という理解でよかったでしょうか。自分の頭の整理のために、少しはっきりさせてもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>はい、USDR がステーブルコインで、sUSDR は普通のトークンです。取引用のプールが DEX などにできることになるでしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。参加者B が、Discord に来ているフィードバックについて聞いています。</p>
+  <p>RealFi の testnet 報酬を完了できずに困っている人がいる、と。これは分かりませんが、私自身、アンチファーミングの仕組みがウォレットをフラグしてしまったケースを皆さんと一緒に扱ったことがあります。</p>
+  <p>関係あるかもしれないし、ないかもしれません。彼が言っているのは、ステークすると USDR トークンが消えるのに、アンステークしてもトークンが戻ってこない。報告しても返信がもらえない、ということです。これは関連する問題ですか、それとも別ですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>返信がもらえていないという点については、こちらの処理能力の問題だと思います。バグ報告はすべて見ています。1 件ずつ拾って、今抱えているタスクに組み込もうとしているところです。</p>
+  <p>ただ、一部のアドレスについては、名指しはしませんが、ファーミング活動に関与していたことが分かっています。それが理由の 1 つかもしれません。もう 1 つの理由として、こちらが誤って判定してしまったウォレットもあり、それらはブロックを解除しました。</p>
+  <p>20 件ほどあって、再度有効化しています。ただ、皆さんもご存じの通り、いろいろなことをするボットが大量にいます。何かを公開した瞬間に攻撃されるわけです。</p>
+  <p>それを全部ふるいにかけようとしているところです。対策も日々追加していますし、少しずつ良くなってはいます。トークンや報酬などが受け取れていないと気づいたら、もう一度メッセージを送ってください。</p>
+  <p>こちらで確認します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それに加えて、Discord で私をタグ付けしてもらっても構いません。私がフラグを立ててエンジニアリングに持っていったときは、いつも非常に反応が早いです。ですので、返信がもらえない場合は私をタグ付けしてください。</p>
+  <p>エンジニアリングに個別のチャットを読みに来てもらうより、扱いやすい形にまとめて渡したほうがいいと思っています。まとめて「これを見てほしい」と言うほうがいい。</p>
+  <p>そのためのプロセスも、少しずつ良くなるように整えているところです。参加者G の 参加者G からの質問です。メインネットのローンチ日は決まっていますか、それともまだ流動的ですか。市場を見ると 9 月に戻ってくる感じですが、それは暗号資産にも当てはまりますね。</p>
+  <p>質問は、メインネットのローンチ日は決まっているか、それともまだ流動的か、ということですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C <em>(推定)</em></div>
+  <div class="turn-body"><p>登壇者A のほうがうまく話せると思いますが、私の知る限り、日付はまだ公表していません。</p>
+  <p>社内では言っていますが、まだ公表できる段階ではない、ということだと思います。ただ、そう遠くない将来にお知らせします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者G と 参加者K の間でいい話が出ていますね。参加者K のマニュアルが 参加者G の役に立ったとのことで。</p>
+  <p>いいですね。pre-prod に載せていました、と。なるほど、興味深い。ざっと見ていきます。参加者E の質問です。AI を使ったセキュリティ強化について、最近アプローチに変化はありましたか。</p>
+  <p>他の開発者、特にブロックチェーン系のプロジェクトに勧められるツールやサービスはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>実際に起きた攻撃などを見ていて、同じツールを使って自分たちの成果物を評価しています。</p>
+  <p>外部監査人もいて、彼らも AI ツールを使っています。1 年前にやっていたであろうことより踏み込んだことをやっていると思います。安全性を確保するために行っているテストと監査には、かなり自信があります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>補足すると、回線が少し不安定で、それであまり話せていないのですが。すでに複数のラウンドを終えていますが、監査はまだかなりの回数が進行中です。</p>
+  <p>ですので、かなり慎重にやろうとしています。公開したい時点に近づくほど、むしろペースを落としているくらいです。AI ツールを使ってさまざまな角度から自分たちの実装を自分たちで叩いてみて、さらに多くの他社にも検証してもらって、見落としがないか確認しています。</p>
+  <p>できる限りのことはやっています。それとこれも同じで、コミュニティからの意見があれば……こういうことに関しては、私はかなり心配性なんです、進行役。ですのでこの点についての助けは、どんなものでも歓迎します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>もちろんです。この件でフォローアップしたい方がいれば、私をタグ付けするか DM してください。エンジニアリングチームに持っていきます。それと、人と人との関係をより支えられるように、Discord の構造とスペースについても考えています。</p>
+  <p>エンジニアリングチームには専用のスペースを用意します。設計中ですが、広く賛同を得るまでは全部は明かしたくないですね。ただ、地区やスペースのようなもの、つまり開発者が技術リソースにアクセスして、建設的にフィードバックを返せる技術的な環境を考えています。</p>
+  <p>参加者H の指摘にも少し触れておくと、言いたいことは分かります。コールに 30〜35 人しかいない、暗号資産のプロダクト以外にももっと人を巻き込む必要があるのでは、ということですね。ただ、まだ早い段階なんです。</p>
+  <p>私たちは早期にいます。そして Cardano のアクティブウォレット全体の 15% 以上が testnet に参加しています。自分で調べていたとき、参加者L の方と話していたのですが、彼にシャウトアウトを。素晴らしい統計でした。</p>
+  <p>ですので、Solana や Ethereum やクロスチェーンに行く前に、このコミュニティはすでに盛り上がっていて、みんな本当に早い段階で入っています。そしてガバナンストークンがあるということは、長期的に意味のある発言権を持つということです。</p>
+  <p>私としては、コミュニティは実際かなりうまくやっていると思います。登壇者A、勝手に代弁してしまいますが、アクティブウォレットの数の統計は見ましたか。あれは本当にわくわくしました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>素晴らしいですね。しかも基本的に地元でこれだけの参加が得られているのは本当に良いことです。あれは本当にすごかった。見たときは、素晴らしいと思いました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者B がもう 1 つ挙げているのが、人々は暗号資産に興味がない、という点です。</p>
+  <p>RealFi は最終的に、人々が「暗号資産であること」を気にするようなものだと考えていますか。それとも長期的には、暗号資産なのか他の金融商品なのかを意識しない、ほぼ摩擦のないものになると思いますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私たちの出発点を考えると、実物資産（RWA）の側に取り組んでいたわけです。USDR と sUSDR については、そういう資産の 1 つとして位置づけようとしています。</p>
+  <p>弱気相場が来たとしても、安全な利回りが得られる、といった性質です。ですので暗号資産に伴うボラティリティからは、大部分において隔離されているはずです。うまくその溝を埋めて、「これは暗号資産だが、あなたのお金は安全だ」と世の中にも信頼してもらえるようになればと思っています。</p>
+  <p>その溝を埋められたらと願っています。それは今後の私たちにとって非常に大きなことになると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者F の 参加者F からもう 1 つ質問です。sUSDR の 1 枚 1 枚が、保有期間と利回りに応じて USDR に戻すための個別のレートを持っているのですか。</p>
+  <p>そして、買う前に潜在的なトレーダーがそれを予測できるのですか。私は USDR しか買えないと思っていましたが、間違っていたら訂正してください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>sUSDR という通貨は 1 種類しかありません。ですので sUSDR のトークンはすべてファンジブルです。</p>
+  <p>日付が埋め込まれているようなことはありません。ステークするときに、そのときの交換レートに応じた量の sUSDR を受け取る。そしてアンステークするときに、その時点の交換レートに応じた USDR を受け取る。それだけです。</p>
+  <p>そして sUSDR は DEX などで買うこともできますし、取引もできます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者J からの質問です。USDR と sUSDR を追加してもらうために Rosen Bridge チームと接触はしていますか。これはメインネットのローンチ後になるかもしれませんが。</p>
+  <p>他のチームや統合先、特に Rosen Bridge に働きかける順序はどう考えていますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>今の時点では、まず世に出して、ローンチを成功させることが最優先です。</p>
+  <p>その後には、組んでいきたいパートナーがたくさんいます。タイミングの問題ですね。ローンチ後は、これを単なる利回り付きステーブルコインで終わらせず、どうユーティリティを増やしていくかを検討し始めることになると思います。</p>
+  <p>そのあたりで、このエコシステムを育てるのに力を貸してくれる戦略的パートナーへのアプローチを始めることになるでしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。ありがとうございます。チャットの一番下の最後の質問は、レートは全員同じでは、というものです。</p>
+  <p>ファンジブルトークンであって NFT ではない、と。参加者I の 参加者I が言っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>その通りです。レートは全員同じです。sUSDR / USDR の交換レートは 1 つだけです。</p></div>
+</div>
+
+<div class="sec">6. チームがコミュニティに求めるもの</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。時間を割いていただいて、たくさんの質問に答えてもらいました。本当に感謝しています。</p>
+  <p>ここまでは皆さんが与える側でした。では逆に、何を受け取りたいですか。お願いしたいことは何でしょう。コミュニティがどう支えたり手伝ったりできるか、何かアイデアはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私からも付け加えますが……登壇者B、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>では。エンジニアリングに絞ってお答えしようと思っていました。私としては 2 つあります。1 つは RealFi の上に何かを作るというアイデア、新しいものを作るということ。それが見られたら本当に素晴らしいと思います。</p>
+  <p>そういう取り組みには喜んで手を貸しますし、サポートします。もう 1 つの領域は Midnight に関することすべてです。これは私たちが持っていないもので、今は取り組んでいませんが、将来的にはやりたいと思っています。</p>
+  <p>ですので、このコミュニティに Midnight の経験がある方、RealFi を Midnight でどうするかというアイデアを持っている方がいれば、話せたら本当にわくわくしますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者A、オープンソース化や bug bounty モデルの予定についてはどうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>それについては、いくつかのパートナーから要望をもらっているものです。バックログに入っていて、いずれ着手しなければならないものですね。SDK の一部については間違いなくオープンソース化します。</p>
+  <p>どう貢献できるかという話に戻ると、登壇者B が言っていたように、近いうちに他チェーンから資金を呼び込めるチャンスがあります。ですので、それをこちらに引き寄せるために Cardano 上に作れるユーティリティなら、どんなものでも理想的だと思います。</p>
+  <p>ぜひ関わってください。Discord で話しましょう。RealFi の提供価値を高め、向こう側からもう少し引き寄せるために何が作れるか、一緒に考えましょう。bug bounty については、今は少し慌ただしい時期で。</p>
+  <p>いろいろなことが同時に進んでいます。ですので、始められるところがあれば、投げ合えるアイデアがあれば、みんなに関わってもらいたいと思っています。bug bounty は実施します。</p>
+  <p>ただ、まだ手を回さなければならないことの 1 つ、という段階です。この部分を進めるのにコミュニティの助けも借りられれば、間違いなく実現まで持っていけると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。それなら、興味のある人に来てもらって、良い bug bounty とは何かについての経験を、具体例とともに共有してもらうワークショップのような形が考えられそうです。</p>
+  <p>その成果が 登壇者A の役に立つかもしれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>まさにその通りです。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — 後半</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者D の 参加者D からの質問です。プラットフォームの利用を促すマーケティング施策として、より高い APY を提供する予定、あるいはその能力はありますか。</p>
+  <p>これはプロダクト側かもしれませんが。彼が念頭に置いているのは、資金を移せば 6 か月間わずかに高い APY を出す銀行や証券会社のような話です。そこにはロック期間の問題も含まれていると思いますが、それに答えられるのか、プロダクト担当 の担当なのか分かりません。</p>
+  <p>どう思いますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>おそらく プロダクト担当 の担当ですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ、これは プロダクト担当 の担当です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者F が先ほどの回答へのフォローアップをしています。sUSDR がファンジブルで、レートが全員同じなら、レートが良いときにマージントレーダーが市場で sUSDR を買って売り抜けることが可能になってしまわないか、と。</p>
+  <p>私にはちょっと分かりません。分かりますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>望むなら市場で sUSDR を買うことはできます。自由に取引可能です。</p></div>
+</div>
+
+<div class="sec">7. プラットフォームとしての RealFi</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>なるほど。かなり幅広く扱えましたね。これは私の中の考えなので、皆さんの言葉にするつもりはないのですが、私はプロダクトとしての RealFi と、その上に人が構築できるプラットフォームとしての RealFi、という捉え方をしています。</p>
+  <p>最終的に、そういうイノベーションの環境を目指したいと考えているのでしょうか。他の開発者、サードパーティの開発者やプロジェクトが RealFi に統合したり、その上に構築したりできる、という見方でいいですか。</p>
+  <p>少し話してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい、すみません。まさにその通りです。進化していく中で、これまではプロトコルを立ち上げて、すべてが動くようにすることに強くフォーカスしてきました。</p>
+  <p>そして今、これをビジネス上の問題を解く機能的なプロトコルとしてだけでなく、プラットフォームとしてどう作っていくか、という部分に着手できる段階に来ています。ですので、いずれコミュニティのウェブサイト上に SDK やドキュメントツール、開発者がどう関われるか、といったものが出てくることになります。</p>
+  <p>今すぐという状態ではありません。ちょうど testnet を締めくくろうとしているところなので。ただ、その件では間違いなく声をかけていきます。開発者向けドキュメント、どう関わればいいか、どう上に構築すればいいか。</p>
+  <p>それに関するワークショップもやりたいと思っています。すべて to-do リストに入っています。ただ、今の to-do がかなり多いというだけで。</p></div>
+</div>
+
+<div class="sec">8. 持ち帰ってほしいことと締めくくり</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>素晴らしいですね。いきなり振ることになりますが、考える時間は取ってもらって構いません。</p>
+  <p>このコールの後、参加者に覚えていて、繰り返し話してほしいことを 2〜3 つ挙げるとしたら何ですか。このコールを超えて広がってほしい要点は何でしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私としては、今の RealFi の成功、そして他のチェーンと関わり、その価値を Cardano に持ち込める能力ですね。これはコミュニティのビルダーにとっても、私たちがすでに持っているものを拡大し成長させるうえでも、非常に良い機会だと思います。</p>
+  <p>あえて 1 つ挙げるなら、良いアイデアを持ったビルダーがそれを活かせるなら、それが持ち帰ってほしいことです。それが RealFi にとっても、Cardano にとっても、みんなにとってもプラスになると思うので。</p>
+  <p>それが、皆さんに持ち帰ってほしいことです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者B、登壇者C はどうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C <em>(推定)</em></div>
+  <div class="turn-body"><p>私としては、コミュニティからフィードバックをもらえることが本当にありがたい、という点ですね。それが私にとっては重要です。</p>
+  <p>良い内容でも悪い内容でも、どんなフィードバックも良いフィードバックだと思います。使ってもらえているのは素晴らしいことです。使ってほしいと思っています。そして、もっと関わることを妨げているものがあるなら、それを知りたい。</p>
+  <p>直せるように、できるだけ早く知りたいと思っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B <em>(推定)</em></div>
+  <div class="turn-body"><p>RealFi の上に何かを作ろうと考えるとき、本当に重要なのはアイデア、あるいはプロダクトやアプリ、作りたいものそのものだけだと思います。</p>
+  <p>実装自体は、Codex なり何なりを SDK に向ければ、非常に簡単にやってくれます。ですので、最終的にどう動くのかという細部よりも、コンセプトのほうがずっと重要だと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。参加者F の 参加者F から最後にもう 1 つ質問があって、それで締めましょう。ええと……すみません 参加者F、もう一度読みますね。USDR の価格はスワップレートを織り込む、と。</p>
+  <p>レートが高いときは……皆さん、この質問を読めますか。彼が言っているのは、これは無限に儲かる装置ではない、ということですね。USDR の価格はスワップレートを織り込む。だからレートが高いときは sUSDR の価格も高くなる。ETF のようなものだ、と。</p>
+  <p>参加者F、あなたの質問をうまく伝えられなかったようですみません。これはオフラインで拾わせてください。ともあれ 登壇者A、登壇者B、登壇者C、本当に素晴らしい時間でした。参加していただいてありがとうございます。</p>
+  <p>締める前に、最後に何かありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B <em>(推定)</em></div>
+  <div class="turn-body"><p>プロトコルにこれだけ関わってくれて、テストして使ってくれてありがとうございます。本当に役立つフィードバックをたくさんもらいました。ここまで非常に良い状況です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>素晴らしい。皆さん、本当にありがとうございました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>どうぞ。すみません、すみません。こちらは少し遅延があって。すみません、皆さん。1 つ言いたかったのは、みんながこれだけ関わってくれていること、それに 進行役、あなたがメッセージを届けてくれていることです。</p>
+  <p>ここまで本当に素晴らしかったです。非常に良いフィードバックがたくさん来ています。どうか関わり続けてください。ローンチしたときに、これを成功させられたらと思っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>素晴らしい。そしてもしかしたら、そう遠くないうちに南アフリカの RealFi イベントで、ビールを、飲まない方ならコーヒーを一緒に飲めるかもしれませんね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>まさに。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>では皆さん、本当にありがとうございました。感謝します。そして聞きに来てくださった皆さんもありがとうございました。</p>
+  <p>質問がある方、フォローアップしてほしい方は、私をタグ付けするか DM してください。できる限りサポートします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">全員</div>
+  <div class="turn-body"><p>皆さんありがとう。ありがとう、進行役。ありがとう、進行役。皆さんありがとう。それでは。</p></div>
+</div>
+<a class="top" href="#top">↑ 先頭へ</a>
+</section>
+
+<section class="part lang-en" id="en">
+<div class="part-head"><h2>英語全文（原文）</h2><span>匿名化以外は未編集。音声認識の誤変換もそのまま</span></div>
+<div class="note">
+<p><strong>About this page.</strong> The source transcript has no speaker labels and no timestamps. Speakers below are <strong>inferred from context</strong> and are marked <em>(inferred)</em> where the attribution is uncertain. The wording itself is unedited — including speech-recognition errors such as “RealFire” for RealFi, “Godano” for Cardano, and “TxPipeke” for TxPipe. Paragraph breaks follow the source.</p>
+<p>The recording appears to start mid-conversation, during Speaker A's self-introduction.</p>
+</div>
+
+<div class="sec">Introductions &amp; agenda</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Most of my career was in financial services on the software side. I worked a lot with investment banks, their technology, different integrations with their trading platforms. There you are. Really been enjoying the challenges in the crypto space again.</p>
+  <p>That's me.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great. And, you know, in preparation for the call today, I think we're going to kind of cover four main things. Do you want to walk us through what we're going to cover, Speaker A?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, sure. So I think high level, just giving an overview of the roadmap, like where we currently are today and where we're hoping to go. Also, team culture, just giving a bit of an idea of the team itself and the future and where we're looking at partnering and doing various integrations with external parties.</p>
+  <p>And also, yeah, what we're hoping to get out of this. So, you know, RealFi is, I feel like a community-based project. Like, we're hoping to be able to attract some big things towards our ecosystem. And yeah, just trying to get the community involved as well.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I mean, that's great. I was on a call earlier and we just finished the workshop with the stake pool operators and the community website has launched. And one of the things we were looking at is like world building and exactly that.</p>
+  <p>Like RealFi is the product. But what I'm hearing as well from the community is like RealFi the platform and what people can build on it. So do you think you could maybe walk us through the roadmap? Like where are we at today and where are you looking to get us to?</p></div>
+</div>
+
+<div class="sec">1. Roadmap</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, so maybe I'll start off and Speaker B, Speaker C, please feel free to jump in as well. So today we currently have the protocol up and running. So we're busy, we've been doing lots of testing, we've got the audits well on their way.</p>
+  <p>Most of all of that is basically up and running. We have launched in testnet, we've got some good feedback, some challenges, good challenges that's helping us harden. Next iteration, and I'll say next iteration, even though it is something we already focused on, it's the bridge, like Speaker B said, we're looking at hardening that and just building on top of what we already have.</p>
+  <p>It's very important for us to cross over and get some of the EVM capital also this side of the world. So as soon as we hit mainnet launch, that's going to be the next focus. And then, you know, there are things like governance tokens and integrations with other chains that's also on the roadmap.</p>
+  <p>That's a little bit more in the future. Yeah, I mean, there's a few things going on. Partner integrations on the Cardano side, and then also with some of the partners on some of the other ecosystems as well.</p>
+  <p>So there's quite a lot going on at the moment. Speaker B, Speaker C, do you want to add to that?</p></div>
+</div>
+
+<div class="sec">2. The bridge</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, maybe I can say a few words about the bridge. So it's not just a burn-and-mint bridge crossing the tokens over to the other chains.</p>
+  <p>What we are building is like a fully native experience for the RealFi product on EVM, all those other chains, but tightly connected to Cardano. So we will still use Cardano as the source of truth for accounting and also for all of the staking that's going to happen on Cardano.</p>
+  <p>And I think that's pretty unique for protocols on Cardano. And what that means for users or builders on top of it is, if you have something that builds on RealFi, you automatically can benefit from this bridge and the user experience that we offer.</p>
+  <p>So your app, if you have one, that uses RealFi, it would be available to EVM users also, just by being connected to the bridge. And then the other aspect to that is that we're also looking at what we call one-click flows internally.</p>
+  <p>And that's a way of connecting multiple transactions, I would say, on different protocols, but with only a single user signature. So the user only has to click once to sign in the wallet. And then, for example, you could have purchase USDR, stake USDR, and then maybe borrow against the sUSDR that you get or do some other things.</p>
+  <p>So you could have the sequence of different protocols, including RealFi, but also including our partners, like Liqwid, like Sundae. And all of these actions can be triggered with a single transaction, and you don't need to go through them manually, and it'll go through this whole workflow.</p>
+  <p>And that's going to be combined with the bridge also. So I think it's pretty cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And just to play that back to you, because I've been doing a little bit of homework in other ecosystems, is that like a one-click thing that would work with stuff like looping strategies, or isn't that not relevant or the same thing?</p>
+  <p>Just to help you understand.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, and looping strategies was actually one of the motivations that we used to come up with this. Yeah, you could have multiple loops basically in a single click, and then it would run through all the transactions, and you would end up with your highly leveraged position in the end.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And Speaker C, just a bit of housekeeping before I pass the mic to you to see what you've got to say. All of the speakers, everybody listening, I need you to do two things. One is click the chat bubble in Discord so you can see the chat as we're talking.</p>
+  <p>That way you can ask questions to the team and we can see how what we're saying is coming across and what else you want to know. And then the second thing is, in honor of XSpaces and all the times we've been on there, can everybody share this Discord space with somebody you think that would be interested?</p>
+  <p>I would love to get the numbers up in this Discord room. I think the RealFi Office Hours Engineering team getting on here is like the most exciting call we've had so far. So I'd love to see more people come in.</p>
+  <p>Speaker C, sorry for taking the mic. Did you have something else to add?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>No, no worries. I'm not sure in how much detail we have mentioned this, but for partners at the moment, we have quite a comprehensive SDK, which we are busy building out.</p>
+  <p>So that's something that we'll definitely be building out. And I think it's something that we're quite excited about.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great. I've got a couple of questions coming in. Do you want to hit them as we go or do you want to kind of leave them to the end?</p>
+  <p>Okay, so we heard a little bit about the roadmap, what's built, and what we're thinking about what we want to build. Just for the people that have joined, can you give me a couple of points of what we've built here that people could remember and share elsewhere?</p>
+  <p>And a couple of points on what we're hoping to build. So that way we can just recap before we move to the next topic.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>So in terms of what's currently built, we've got the Cardano protocol live. It's currently what's running in testnet.</p>
+  <p>The bridge is, we'll be pushing that. We'll be finalizing things on that front. And that functionality should also quite soon be coming along. We're going to audit that and make sure all those things are up and running.</p>
+  <p>And then in the future, there's some EVM integrations, some further partner integrations on the Cardano side. And then finally, the governance token that should be coming towards the latter beginning part of next year.</p></div>
+</div>
+
+<div class="sec">3. Team culture</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, great. You know, something I'd be really interested to know about just from having listened to you guys speak, and I've worked with some of you before. Can you talk a little bit about team culture, how you guys work at the minute right now, and how you would like to be working with the community and how the community should understand how to work with you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Maybe I'll go first. So I think I've been very fortunate with the team that I've currently got. I think there's a very high pedigree amongst everyone. Everyone is very committed, very capable. A good example, when we went to testnet, I remember I was online probably one o'clock the morning.</p>
+  <p>And when I looked up, most of the guys were online. So guys are very committed, very capable. So from a team culture perspective, I think we're not a massive team. We've got probably three, four internal guys, and we've got also very good partners like in Sundae and TxPipe.</p>
+  <p>But yeah, everyone knows what they need to do. Everyone is committed. So from a team culture perspective, it's very nice to have that. In terms of future, we are looking to, as we progress, looking at various challenges, hoping the community can also get involved to help.</p>
+  <p>There's a lot of knowledge and a lot of expertise in the Cardano community. I think it's one thing that we really have in our community. And if we can, we've got builders who's got experience with some of the problems that I think we're still going to be facing, like scaling and some of the cross-chain things.</p>
+  <p>So if there is expertise or anything that we can leverage, we definitely want the community to get involved, like bug bounty programs or anything like that. If we can just connect on Discord and we've got people actively monitoring it.</p>
+  <p>We're trying to bring this very much into the hands of the people so they can help us build and ensure that we've got something of value that everyone can come and benefit from.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I don't want to put you on the spot, but what motivates you as a RealFi engineer? What's actually motivating you internally?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>On my side, so I think this was an awesome problem to solve. I think when I originally joined RealFi, you know, you work in IT for quite a while and you feel like you've seen everything.</p>
+  <p>There's just something about the, firstly, the problem itself, banking the unbanked, that was something that I resonated with. But the technical challenges so far have been awesome. And I think also having exposure to a lot of the guys on the call and I mean, even in the IO community, there are just so many things that you get to learn from everyone.</p>
+  <p>So what motivates me, I think, the chance that we've got to make something awesome here. So yeah, that's the biggest thing on my side that's pushing us forward.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, for me. Sorry. For me, two things.</p>
+  <p>I think one is it's pretty unique in Cardano. So it's cool to work on something that's genuinely new. And the other one is just the team again. So like Speaker A mentioned, small team, but we're highly productive.</p>
+  <p>And we're covering a really wide range of different topics and all the systems that we're building and so on. And it's actually exciting to be contributing to that. It's the fastest that I've seen anything being built in a long time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Same question to you, Speaker B. I'm just genuinely curious. I've worked with you in different projects. What motivates you internally as an engineer?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, just the chance to build something that's new. I think for me, that's the biggest motivation.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>There's some great questions in the chat, guys, by the way, as we're talking. But Speaker C, I'm passing the mic to you. Same kind of questions, your motivations and what's happening internally. What are you interested in?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Yeah, no, I mean, I don't want to repeat everything that the guys have already said, but I definitely relate to what they've said a lot. Great team. I think there's also a very high level of trust, which is also a great environment to be in.</p>
+  <p>There's no worries about that something's going to be left behind. People are already looking at stuff that you thought that you were worrying about and someone's already thought about it. So everybody's very driven and it's exciting to work in a team like that.</p>
+  <p>I think for me as well, the technical challenge, a lot of it's new for me as well. I haven't worked on Cardano before I started at RealFi. So a lot of it's very new for me. So I'm learning a lot, especially from guys like Speaker B.</p>
+  <p>And also like Speaker A is a veteran. So I'm also learning a lot from him. And I also like looking sort of wider away from the engineering team, just the other people in RealFi as well are also very high caliber people.</p>
+  <p>Some of them were really very successful in their careers before they started at RealFi. So really just a great opportunity to learn from everybody and to be able to collaborate with people like that.</p></div>
+</div>
+
+<div class="sec">4. Working with the community</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, I think collaboration is a really interesting point there. If the three of you think back to when you've been part of communities, especially where you're part of the community and then there's an engineering team, right?</p>
+  <p>Can you think back to what were good practices or how you were able to engage with those teams? Because what I'd love everyone listening to be able to understand is how they could engage you, how they could work with you best as you're developing RealFi.</p>
+  <p>So in the future, how do you want the community to communicate with you based on your experiences?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>I think if you're thinking about building on top of or with RealFi, I think the best place to engage with us is probably going to be GitHub or some like a space there or something.</p>
+  <p>We haven't set that up yet, but for actually building it, that's where the SDK is going to be. That's where we can talk about source code and so on. And we should probably also have a dedicated channel here in the Discord.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, I echo that, Host. So I think the first point of engagement will probably be Discord, just because, I mean, that's where most of the people are. And then, yeah, like, again, you're quite keen to hear, you know, like in the Discord, what the community thinks, how they can contribute to things.</p>
+  <p>So if we spark up conversations in the Discord, we'll probably get some traction on any of the good ideas quite fast. Like we are very angry for those kind of things. So yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great. I'm not sure if we can depict the... Go ahead, go ahead. Sorry.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>I don't know if we can maybe start looking at some of the questions in the chat.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — part 1</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, I think that's great. So if we scroll up to, let's get to Participant A asks, will stake pool delegation be available using a testnet wallet or is it only supported on mainnet?</p>
+  <p>I think he's asking about the mechanism for claiming points, which is probably a product question. But did you have anything to add about how the authentication or the wallets might work? If not, we can move on.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Although no, it will be on testnet, right? So the activity is going to be on testnet, but the delegation that counts is going to be on mainnet. So it's whatever your actual ADA is delegated to. That's the link that counts.</p>
+  <p>And we're going to link, so there will be a website where you can link a mainnet wallet to a testnet wallet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Great. And the next question for Participant B. How many fintechs are you working with or considering?</p>
+  <p>In my view, it looks like more fintechs in different countries leads to less risk overall. Do we have an opinion on that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>I think, I mean, that aims at where the money is invested, right? I think it's more of a product question, I would say.</p>
+  <p>But in general, there's like three different types of investments that are going to be done with the money. But this is documented on the website as well. And there's a transparency portal that tells you where the capital is going.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I'm going to paraphrase Participant C's question because I think I can phrase it a little bit better to get more of an impact. But he's asking, how is RealFi positioned to face a competitive market? I think what he really wants to know is what is our technical edge that's going to make us competitive in the market?</p>
+  <p>Do you see what I mean? Like, what do you think RealFi's technical edge would be in terms of being competitive?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>I think on the technical edge is probably being truly cross-chain and anchored on Cardano.</p>
+  <p>So it's a challenge to combine good user experience with good cross-chain functionality. I think we're doing a good job at squaring that circle.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Can you talk me through a little bit about cross-chain functionality as a kind of topology or what the choices are, and then what the choices we have made or the trade-offs are that we have made, if I've understood it correctly.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah. So you can, I think, so there's two different directions that you could take. One is having a like a decentralized system where you have a copy of the protocol basically on each chain with little or no communication between them.</p>
+  <p>And the other one is more of a hub and spokes model where you have one central protocol and then the other ones are more like children. And that's what we're building for RealFi. So the hub is going to be the Cardano chain.</p>
+  <p>But the challenge with this is always having to synchronize the state. Because what we don't want is every action on EVM to have to wait for a round trip to Cardano basically to finish. We've come up with a way to do that asynchronously.</p>
+  <p>So there's still the central, like the state is still going to be on Cardano, but all of the actions on the other chains are going to finish immediately. You have a good user experience, but you also have the single authority on Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Thank you. Next question, just as we work through them, is from Participant D. He's asking, is there a friction point for onboarding users outside crypto by having two different stable coins, USDR and sUSDR?</p>
+  <p>Do we think that might confuse users? And has the team considered somewhat obfuscating the two coin mechanisms to focus more on USD balance solely? He's just curious.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, so of those two currencies, it's only USDR that's a stable coin.</p>
+  <p>That's always $1 for one USDR. sUSDR is the staked variant of it, but it can change in value. So that's how you would get your yield in the end from the protocol. So when you stake, you purchase some amount of sUSDR.</p>
+  <p>When you unstake later, you sell this sUSDR basically back to the protocol, but you get a better price or a different price at least in the end. And that's how this yield is realized. So sUSDR is not a stablecoin.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Thank you. Question for the devs from Participant E. Do you plan on using existing Cardano governance protocol framework to implement or manage governance? What's our current thinking or how far have we explored different types of governance and do we have any initial thoughts?</p>
+  <p>And if we don't have anything to share, that's fine. But if we have got something to share, it'd be really interesting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>At this point, I don't think we've really landed on what that specifically looks like.</p>
+  <p>Product will probably be able to provide a little bit more input on the specifics around it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, so we don't have a clear answer on that right now. But if anyone's listening to this and you want me to collate and collect your ideas, send me over anything that you think that we should consider and I will make sure that I share it with the engineering and the product team so that it's at least they've got that situational awareness.</p>
+  <p>Is that reasonable, Speaker A?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yes, perfect. Thank you. I just want to add, I think, I think the questions are great. I'm just going through them as well. So anything that we don't, please ask your questions, if they don't get answered here, we would love to look at it afterwards.</p></div>
+</div>
+
+<div class="sec">5. Partnerships &amp; integrations</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>100%. We can keep going. But before we answer some more questions, should we move on to the third pillar about integrations and partnerships? And then we'll do some more after.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>So Speaker A, I can speak on some other partners.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, sorry, go on. Tell us who works with us now. What partners do we have today? And then let us know, like, you know, what kinds of expressions of interest or later stage collaborations might be most valuable to you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, so our current partnerships, I think I mentioned it before, like Sundae, Sundaes really come on board to help us. We kicked off this Web3 Web Work stream, what was it, August last year? I think the first few years of the business, we were proving the private credit side of things and making sure that we can risk deals and things properly.</p>
+  <p>Since August last year, to where we are now is basically our focus on crypto. And I think we've had a very, very strong partnership with Sundae that's helped us get there. Also with TxPipeke with some of the audits.</p>
+  <p>And yeah, there's just been a few, even internally, there's been a lot of help that's come through. So yeah, thanks for that. And then I think going forward, like I said earlier, there are challenges that I'm foreseeing we're going to encounter going forward.</p>
+  <p>And like if there is any expertise around some of these things, like scaling, some of this cross-chain thing, the cross-chain work that we're endeavoring now, we are chatting with some of the internal teams as well.</p>
+  <p>But yeah, if there's any expertise, any ideas, please reach out, throw something on Discord and we'll definitely want to engage experts on that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, on the topic of cross-chain specifically, one that we want to look at but haven't done much is Midnight.</p>
+  <p>And I think that one's really interesting because of the privacy aspects and so on. So if anyone has experience building on Midnight or ideas for it, I think that would be a really interesting conversation.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — part 2</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great. Let's get back to the questions then. I'll just work through them chronologically. Participant B, I'm probably saying that wrong. You're saying private credit assets paying 14% on the reserves overview.</p>
+  <p>You also don't list how many fintechs you're working with. Are these private credit assets the loans to the fintech company or or is externally tokenized private credit being bought? Probably not the right forum for that kind of question.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. Well, maybe that's how we handle that. Yeah, I think we can record that and forward it on to someone from the treasury team, perhaps.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, that's fair. Let's keep scrolling down. Participant C talking about hurdles and RealFi RWAs might be varying regulations, which I guess, yeah, that's definitely true.</p>
+  <p>How does your project navigate legal and compliance issues such as KYC and AML? I think that's more of a legal question, unless you guys want to have a crack at it. But the question is, how do you keep user assets safe from future regulatory crackdowns?</p>
+  <p>But I mean, I think we want to be compliant, really, right? Do we have a view on that? Or should I bank that one as well for future office hours?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, I mean, we're going to think</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>maybe I'm going to put a blue heart next to the ones I'm banking.</p>
+  <p>Right, Participant F, he's got a question for engineering. From an engineering point of view, can you explain how the yield is possible with users retaining control over the sUSDR and even the possibility to send sUSDR around and trade sUSDR?</p>
+  <p>Loss, in my understanding, can only affect the attached claimable yield, but never the sUSDR collateral or USDR depeg. Obviously, when buying USDR off a DEX, so when buying sUSDR off a DEX, can it have attached yield not yet claimed?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>So I think that on the last point at least, buying a sUSDR of a DEX, there's always going to be an official rate that you get when you unstake. So there's nothing, I would say, hidden in that. So you're going to have a price on the DEX and then there's going to be an official rate for which you can unstake.</p>
+  <p>It's always known and published.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And is sUSDR going to be on a DEX? Or did I understand that sUSDR was something that you sell to get the reward, but it's only USDR that's the stable coin? Can you clear that up for me a little bit, just in my own head?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, so USDR is the stable coin, but sUSDR is a normal token. And there will probably be pools on DEXs and so on for trading it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, great. Participant B is asking just about the feedback we've had in Discord.</p>
+  <p>Some people have been struggling with completing the RealFi testnet rewards. Now, I don't know. I know myself, I've dealt with some issues with you guys where, you know, some of the anti-farming measures may have flagged a wallet.</p>
+  <p>So that may be connected or it may not. But what he's saying is when I stake, the USDR tokens disappear, but when I unstake, the tokens don't reappear, I'm also not getting responses when I report above. Is that related or a different issue?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Well, I mean, if you're not getting responses, I think that is more related to our capacity. We are looking at all the bug reports. We're just taking them one by one, trying to fit it into the task that we currently have on hand.</p>
+  <p>We have found, though, that some of the addresses, I won't name names, have been implicated in some farming activity. So that might be some of the reasons. Other reasons are that we have misidentified some wallets, which we did unblock.</p>
+  <p>There are a number of them, about 20 odd, which we did enable again. But I mean, obviously, as all of you know, there's a lot of bots doing all sorts of different things. And as soon as you have something in the public, then it gets attacked.</p>
+  <p>So we're just trying to sift through all of that. And we are putting in new measures every day to combat that. But we are getting better at it. So if you see that you are not getting your tokens or your rewards or whatever, please just drop us another message.</p>
+  <p>We'll look into it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>In addition to that, anyone can tag me in Discord. And when I've flagged or taken stuff to engineering, they've been super responsive, super quick, you know? So yeah, if you're not getting a response, tag me.</p>
+  <p>I can collect this in a way that makes it a little bit easier for engineering to tackle it rather than asking them to come in and read individual chats. I'd rather bundle it up and say, okay, here's what we need to have a look at.</p>
+  <p>And we're working out a process that's getting better to do that, I think, as well. Participant G asks, do you have a mainnet launch date or is it still kind of open flexible? And if you look at markets, be back in September, it also applies to crypto.</p>
+  <p>Okay, so I think the question is, do you have a mainnet launch date or is it still in flux?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C <em>(inferred)</em></div>
+  <div class="turn-body"><p>I think Speaker A can probably speak to that a bit better, but as far as I know, we haven't released the date to the public yet.</p>
+  <p>We have said it internally, but it's not something I think perhaps that we're not comfortable releasing yet. But in the not too distant future, we will make that known.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Just seeing some love in here between Participant G and Participant K because Participant K's manual helped Participant G.</p>
+  <p>That's pretty cool. Okay, so I've been putting on pre-prod. Okay, interesting. So I'm just skimming through these. Participant E asks, have there been any recent changes in approaches for AI hack hardening?</p>
+  <p>Any tools or services you would recommend for other devs, specifically blockchain-based projects?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>I mean, we're looking at the attacks and so on that have happened. We're using the same tools to assess our own work.</p>
+  <p>We have external auditors also who also use AI tools. So I think we are doing more than maybe we would have done a year ago. And I'm pretty confident in the tests and the auditing that we do to make it safe.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Okay. Yeah. Just to add to that, I think my connection is a bit choppy. That's why I'm not talking much. We have been through various rounds and we still have quite a few rounds of audits that's ongoing.</p>
+  <p>So we are trying to be extra careful, like to the point where as we get closer to the point where we want to release this to the public, we're actually slowing down just to try and hit some of our solutions ourselves as well through various angles using AI tools and then also just using a lot of other companies to also just validate to make sure that we haven't missed anything.</p>
+  <p>So yeah, we're doing as much as we can. And yeah, we again, this is also one of those things, any kind of input from the community—we can... I'm very paranoid when it comes to these things, Host. So any kind of help in this regard, yeah, we would welcome it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Absolutely. Yeah. And if anybody does want to follow up on that, just tag me, DM me, I'll bring it to the engineering team. And I think as well, I'm thinking about the structure and the space in Discord to better help those relationships between people.</p>
+  <p>So the engineering team will get their own space. I'm planning that out, but I don't want to give up all the goodies until I've got buy-in broadly. But I'm thinking about things like districts and spaces where, you know, technical environments where developers are going to be able to access the resources and give their feedback in a constructive way.</p>
+  <p>Just touching on Participant H's point, I get what you're saying. He's saying there's only like 30, 35 people on the call. Do we need to involve more people than just crypto products? But the thing is, this is early, right?</p>
+  <p>We are early. And over 15% of all active wallets are engaged in Cardano's testnet. Like when I was looking it up myself, I was talking to Participant L. So shout out to him. And that was a great statistic.</p>
+  <p>So actually, before we get to Solana or Ethereum or cross-chain, this community is buzzing and everybody's in really early. And a governance token means you're going to have a meaningful say in the long run.</p>
+  <p>So I don't know. For me, I think actually the community is doing really well. I'm going to talk for you, Speaker A. Did you see that stat about the amount of active wallets? I thought that was really exciting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Amazing. Yeah, and it's really cool to get such involvement basically at home. And yeah, that was amazing. When I saw that, yeah, brilliant.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Another thing Participant B's brought up there actually is just about people aren't interested in crypto.</p>
+  <p>But do we see RealFi as something that ultimately people are going to be concerned about crypto with? Or do you think that in the long-term future, it's something that would almost be frictionless, where it wouldn't matter whether it was crypto or another financial product?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Well, I think from a like if we look at where we started out, right, where we were tackling the real world asset side of things. The USDR and sUSDR, we are kind of positioning ourselves to be one of those assets.</p>
+  <p>If we do have a bear market, you're going to get your safe yield and those kind of things. So the volatility that comes with crypto, we should, well, for the most part, be isolated from. So yeah, hopefully we can bridge that gap and we can get the confidence of the rest of the world to also know that, yes, this is crypto, but your money is safe.</p>
+  <p>And yeah, I'm hoping we can bridge that gap. I think that that will be a very big thing for us going forward.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, another question from Participant F. Does every single sUSDR token carry with it an individual rate to swap back to USDR based on age and yield?</p>
+  <p>And could that be expected by potential traders before buying sUSDR? Well, I thought they could only buy the USDR, but you guys correct me.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, so there's only one sUSDR currency. So all tokens of sUSDR are fungible.</p>
+  <p>There's no date encoded in them. You just, when you stake, you get an amount of sUSDR according to the exchange rate. And then when you unstake, you get back USDR according to the current exchange rate at the time.</p>
+  <p>And you can definitely buy sUSDR on other, like on Dexes and so on, also. Trade it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Participant J asks, have you been in touch with the Rosen Bridge team to add USDR and sUSDR? Maybe this will have to be done after the mainnet launch.</p>
+  <p>So what's your sequencing and reaching out to other teams and integrations, particularly Rosen Bridge?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, so right now, the main thing is just getting out there and making sure that we have a successful launch.</p>
+  <p>I think subsequent to that, there's a lot of partners that we want to engage with. It's just a matter of timing. So post-launch, we'll probably start looking at how do we make this not just a yield-bearing stable coin, add more utility to it.</p>
+  <p>And that's probably where we'll start reaching out to strategic partners that can help us grow this ecosystem.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great. Thank you. And then the last question at the bottom of the chat is, isn't the rate the same for everyone?</p>
+  <p>It's a fungible token, though. It's not an NFT. Participant I is saying.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah, that's right. The rate is the same for everyone. There's one sUSDR/USDR exchange rate.</p></div>
+</div>
+
+<div class="sec">6. What the team is asking for</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, that's great. You've given your time and you've answered a lot of questions and I really appreciate you guys doing that.</p>
+  <p>In terms of... So you've given, give, gift. What would you like to get? What are the asks here? Have you got any ideas about how the community can support or help?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>I mean, for me, for me, I think I'll add it. You go, Speaker B.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Cool. Yeah, I was just going to answer that on the engineering specifically. For me, I think it's two things. One is the idea of building on RealFi, building something that's new. I think that would be really cool to see.</p>
+  <p>And we would be happy to help with that or to support that. And the other area would be anything related to Midnight. That's something that we don't have, that we're not working on right now, but we want to get to this in the future.</p>
+  <p>So maybe if there's anyone here in the community who has experience with Midnight, and has ideas for RealFi on Midnight, that would also be super exciting to talk about.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And Speaker A, what about open source or any plans for a bug bounty model or any plans for open sourcing?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, so I mean that is something that we are, like there's a few partners that have requested that I think we'll probably, it's on the backlog, it's something we need to get to, so we'll definitely be open sourcing some of our SDKs.</p>
+  <p>I think just to come back to how people can contribute, like what Speaker B was saying, I think we've got this opportunity where we can attract capital from other chains soon. So any kind of utility we can build on, Cardano, to help lure some of that across, I think would be ideal.</p>
+  <p>Like, yeah, get involved. Let's speak on Discord. Let's see what we can build to help make the RealFi offering better and also attract a little bit more from the other side. On the bug bounty side, yeah, again, I think it's just a little bit of a chaotic time.</p>
+  <p>There's a lot going on. So, you know, where we can initiate some of those things, if there's some ideas that we can throw around, we are quite keen to get everyone involved. So we will be running a bug bounty.</p>
+  <p>It's just one of the things that we need to give some attention to. And I think if we've got some of the help from the community as well to help drive some of that stuff, we'll definitely get that to fruition for us.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, that sounds great. That sounds like some kind of a workshop maybe where I could get people who are interested to come in and share some of their experiences of what makes a good bug bounty with some examples.</p>
+  <p>And maybe the output of that would be useful for you, Speaker A.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>100%, yeah.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — part 3</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay. Participant D is asking, does the team plan to or have the ability to offer higher APY rates as part of marketing incentives to use the platform?</p>
+  <p>This may be product, I don't know. But he's thinking about banks and brokerages who offer slightly higher APY for six months if you move money to their platform. I guess inherent in there as well is a locking state question, which I don't know if we can answer that or whether it's one for Product.</p>
+  <p>What do you think?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>It's probably a Product one, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, this is a Product one.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay. Participant F is following up on our earlier answer with if sUSDR is fungible and the rate is the same for all, will this not enable margin traders to buy sUSDR off the market when rates are good and sell those off?</p>
+  <p>I'm not really, yeah, I don't know. Do you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>You can buy sUSDR off the market if you want to. It's freely tradable.</p></div>
+</div>
+
+<div class="sec">7. RealFi as a platform</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, cool. So we've covered quite a lot, and this is in my mind, so I don't want to put words in your mouths, but I kind of like think about RealFi as the product, but then also RealFi as a platform that people can build on.</p>
+  <p>That's ultimately, do you think that we would want to look at that kind of innovation environment? Is that how you see it, that other developers, third-party developers, projects would be able to integrate and build on RealFi?</p>
+  <p>Can you talk about that a little bit?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yes, I'm saying, yeah, sorry. Yeah, so definitely. I think we'll, as we evolve, we've been focused very much on getting the protocol up, making sure everything works.</p>
+  <p>And we are getting to the point now where we can start attacking some of the how do we build this as a platform and not just as a functional protocol that solves the business problems. So I mean, we will see on the community website eventually the SDK and the document tools and how developers can get involved and things like that.</p>
+  <p>So we're not ready right now, just because we're just about wrapping up testnet, but we'll definitely be reaching out for some engagement around that. You know, just develop a docs and how do you get involved and how do you build on top of it.</p>
+  <p>Like I have some workshops around it as well. It's all things that's on the to-do list. It's just the current to-dos are quite high.</p></div>
+</div>
+
+<div class="sec">8. Takeaways &amp; close</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's awesome. I'll put you on the spot, but I'll give you some time to think about it.</p>
+  <p>After this call, what are the two or three things that you hope people remember and repeat? What are the takeaways here that we hope travel beyond this call?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>On my side, I think the success of RealFire right now, the ability for us to engage some of the other chains and bring some of that value to Godano, I think is a very good opportunity for builders in the community and for us to just expand and grow what we already have.</p>
+  <p>I think if anything, if there's a builder out there with a good idea that can leverage some of that, I think that would be a good takeaway because I think that'll help Realfi and also Cardano and just everyone.</p>
+  <p>So that would be my what I hope everyone takes away from this.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And Speaker B, Speaker C?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C <em>(inferred)</em></div>
+  <div class="turn-body"><p>I think for me, sorry, yeah, for me, I think just the fact that we really love getting feedback from the community, I think that for me is important.</p>
+  <p>I mean, whether it's good or bad, I think any feedback is good feedback. And it's, yeah, I think it's awesome that people are using it. We want people to use it. And if there's anything that's stopping people from engaging more, we want to know from it.</p>
+  <p>We want to know of it as soon as possible so that we can fix it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B <em>(inferred)</em></div>
+  <div class="turn-body"><p>I think when you're thinking about building on RealFire, the only thing that really matters is the idea or the product or app or whatever you want to build.</p>
+  <p>Actually, implementing it will be super easy with Codex or whatever you point it at the SDK and it's going to do it for you. So I think the concept is much more important than the details of how it'll work in the end.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Thank you. One last question from Participant F and then we can wrap up. So he's saying... I'm just sorry, Participant F, I'm just reading your question again. So the price of USDR will take swap rate into account.</p>
+  <p>So when rate is high, can you guys read the question? He says, this is not an infinite money engine. The price of USDR will take the swap rate into account. So when the rate is high, the price of sUSDR is kind of is high, kind of like an ETF.</p>
+  <p>Yeah, I probably haven't done a good job of relaying your question there, Participant F. I'll have to probably pick it up offline. But yeah, Speaker A, Speaker B, Speaker C, this is really great. Thank you so much for joining us.</p>
+  <p>Do you have any last thoughts before we sign off?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B <em>(inferred)</em></div>
+  <div class="turn-body"><p>Thanks for engaging with the protocol so much and for testing it, using it. We've had a lot of super helpful feedback. It's been really good so far.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Awesome. Thank you very much, everyone, guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Go on. Sorry. Sorry. Sorry, I got a bit of delay on my side. Sorry, guys. Yeah, I just wanted to say, like, just the fact that everyone's been so engaged and Host also for you to get the message out.</p>
+  <p>Like, it's been awesome so far. There's a lot of very good feedback that's come in. And yeah, just please stay involved. Yeah, and yeah, hopefully we can make a good success of this when we go live.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Excellent. And who knows? Soon we'll be in South Africa at a RealFi event, sharing a beer or coffee if you don't drink.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>100%.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, thank you very much, gentlemen. Appreciate it. And thank you, everybody, for coming along and listening.</p>
+  <p>And if you have any questions or want me to follow up, just tag me or DM me and I'll do my best to support.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">All</div>
+  <div class="turn-body"><p>Thank you, everyone. Thanks, Host. Thanks, Host. Thanks, everyone. Bye-bye. Bye.</p></div>
+</div>
+<a class="top" href="#top">↑ 先頭へ</a>
+</section>
+
+<footer>
+  <p>RealFi Office Hours アーカイブ<br>
+  このコールはチャタムハウスルールで運用されています。発言者の氏名は記載していません。</p>
+</footer>
+
+</div>
