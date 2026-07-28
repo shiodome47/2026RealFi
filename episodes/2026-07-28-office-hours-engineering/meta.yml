@@ -1,0 +1,38 @@
+slug: 2026-07-28-office-hours-engineering
+title: RealFi Office Hours — エンジニアリング回
+title_en: RealFi Office Hours — Engineering
+date: 2026-07-28          # ※文字起こしからは日付が特定できないため要確認
+platform: Discord
+attendees: 30-35          # 通話中の言及より（参加者H のコメント）
+
+speakers:
+  - name: 進行役
+    role: ホスト / コミュニティマネージャー
+  - name: 登壇者A
+    role: エンジニアリングリード
+  - name: 登壇者B
+    role: エンジニア（ブリッジ / クロスチェーン）
+  - name: 登壇者C
+    role: エンジニア（SDK）
+
+# チャットで質問した参加者（表記は文字起こしのまま。誤記の可能性あり）
+questioners:
+  - 参加者A
+  - 参加者B        # "参加者B" とも表記。同一人物と思われる
+  - 参加者C
+  - 参加者D
+  - 参加者E
+  - 参加者F  # 文字起こしでは "参加者F"
+  - 参加者G (参加者G)
+  - 参加者H
+  - 参加者I (参加者I)
+  - 参加者J
+
+# 話者ラベル・タイムスタンプのない生テキストから文脈で話者を推定している。
+# 詳細と不確実な箇所は shared/people.md を参照。
+speaker_labels: inferred
+timestamps: none
+
+source:
+  audio: null            # 音声ファイルの置き場が決まったらパスまたはURLを記入
+  video: null

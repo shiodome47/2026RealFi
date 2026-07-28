@@ -1,0 +1,317 @@
+Most of my career was in financial services on the software side. I worked a lot with investment banks, their technology, different integrations with their trading platforms. There you are. Really been enjoying the challenges in the crypto space again.
+
+That's me. That's great. And, you know, in preparation for the call today, I think we're going to kind of cover four main things. Do you want to walk us through what we're going to cover, Speaker A? Yeah, sure.
+
+So I think high level, just giving an overview of the roadmap, like where we currently are today and where we're hoping to go. Also, team culture, just giving a bit of an idea of the team itself and the future and where we're looking at partnering and doing various integrations with external parties.
+
+And also, yeah, what we're hoping to get out of this. So, you know, RealFi is, I feel like a community-based project. Like, we're hoping to be able to attract some big things towards our ecosystem. And yeah, just trying to get the community involved as well.
+
+I mean, that's great. I was on a call earlier and we just finished the workshop with the stake pool operators and the community website has launched. And one of the things we were looking at is like world building and exactly that.
+
+Like RealFi is the product. But what I'm hearing as well from the community is like RealFi the platform and what people can build on it. So do you think you could maybe walk us through the roadmap? Like where are we at today and where are you looking to get us to?
+
+Yeah, so maybe I'll start off and Speaker B, Speaker C, please feel free to jump in as well. So today we currently have the protocol up and running. So we're busy, we've been doing lots of testing, we've got the audits well on their way.
+
+Most of all of that is basically up and running. We have launched in testnet, we've got some good feedback, some challenges, good challenges that's helping us harden. Next iteration, and I'll say next iteration, even though it is something we already focused on, it's the bridge, like Speaker B said, we're looking at hardening that and just building on top of what we already have.
+
+It's very important for us to cross over and get some of the EVM capital also this side of the world. So as soon as we hit mainnet launch, that's going to be the next focus. And then, you know, there are things like governance tokens and integrations with other chains that's also on the roadmap.
+
+That's a little bit more in the future. Yeah, I mean, there's a few things going on. Partner integrations on the Cardano side, and then also with some of the partners on some of the other ecosystems as well.
+
+So there's quite a lot going on at the moment. Speaker B, Speaker C, do you want to add to that? Yeah, maybe I can say a few words about the bridge. So it's not just a burn-and-mint bridge crossing the tokens over to the other chains.
+
+What we are building is like a fully native experience for the RealFi product on EVM, all those other chains, but tightly connected to Cardano. So we will still use Cardano as the source of truth for accounting and also for all of the staking that's going to happen on Cardano.
+
+And I think that's pretty unique for protocols on Cardano. And what that means for users or builders on top of it is, if you have something that builds on RealFi, you automatically can benefit from this bridge and the user experience that we offer.
+
+So your app, if you have one, that uses RealFi, it would be available to EVM users also, just by being connected to the bridge. And then the other aspect to that is that we're also looking at what we call one-click flows internally.
+
+And that's a way of connecting multiple transactions, I would say, on different protocols, but with only a single user signature. So the user only has to click once to sign in the wallet. And then, for example, you could have purchase USDR, stake USDR, and then maybe borrow against the sUSDR that you get or do some other things.
+
+So you could have the sequence of different protocols, including RealFi, but also including our partners, like Liqwid, like Sundae. And all of these actions can be triggered with a single transaction, and you don't need to go through them manually, and it'll go through this whole workflow.
+
+And that's going to be combined with the bridge also. So I think it's pretty cool. And just to play that back to you, because I've been doing a little bit of homework in other ecosystems, is that like a one-click thing that would work with stuff like looping strategies, or isn't that not relevant or the same thing?
+
+Just to help you understand. Yeah, and looping strategies was actually one of the motivations that we used to come up with this. Yeah, you could have multiple loops basically in a single click, and then it would run through all the transactions, and you would end up with your highly leveraged position in the end.
+
+And Speaker C, just a bit of housekeeping before I pass the mic to you to see what you've got to say. All of the speakers, everybody listening, I need you to do two things. One is click the chat bubble in Discord so you can see the chat as we're talking.
+
+That way you can ask questions to the team and we can see how what we're saying is coming across and what else you want to know. And then the second thing is, in honor of XSpaces and all the times we've been on there, can everybody share this Discord space with somebody you think that would be interested?
+
+I would love to get the numbers up in this Discord room. I think the RealFi Office Hours Engineering team getting on here is like the most exciting call we've had so far. So I'd love to see more people come in.
+
+Speaker C, sorry for taking the mic. Did you have something else to add? No, no worries. I'm not sure in how much detail we have mentioned this, but for partners at the moment, we have quite a comprehensive SDK, which we are busy building out.
+
+So that's something that we'll definitely be building out. And I think it's something that we're quite excited about. That's great. I've got a couple of questions coming in. Do you want to hit them as we go or do you want to kind of leave them to the end?
+
+Okay, so we heard a little bit about the roadmap, what's built, and what we're thinking about what we want to build. Just for the people that have joined, can you give me a couple of points of what we've built here that people could remember and share elsewhere?
+
+And a couple of points on what we're hoping to build. So that way we can just recap before we move to the next topic. So in terms of what's currently built, we've got the Cardano protocol live. It's currently what's running in testnet.
+
+The bridge is, we'll be pushing that. We'll be finalizing things on that front. And that functionality should also quite soon be coming along. We're going to audit that and make sure all those things are up and running.
+
+And then in the future, there's some EVM integrations, some further partner integrations on the Cardano side. And then finally, the governance token that should be coming towards the latter beginning part of next year.
+
+Okay, great. You know, something I'd be really interested to know about just from having listened to you guys speak, and I've worked with some of you before. Can you talk a little bit about team culture, how you guys work at the minute right now, and how you would like to be working with the community and how the community should understand how to work with you.
+
+Maybe I'll go first. So I think I've been very fortunate with the team that I've currently got. I think there's a very high pedigree amongst everyone. Everyone is very committed, very capable. A good example, when we went to testnet, I remember I was online probably one o'clock the morning.
+
+And when I looked up, most of the guys were online. So guys are very committed, very capable. So from a team culture perspective, I think we're not a massive team. We've got probably three, four internal guys, and we've got also very good partners like in Sundae and TxPipe.
+
+But yeah, everyone knows what they need to do. Everyone is committed. So from a team culture perspective, it's very nice to have that. In terms of future, we are looking to, as we progress, looking at various challenges, hoping the community can also get involved to help.
+
+There's a lot of knowledge and a lot of expertise in the Cardano community. I think it's one thing that we really have in our community. And if we can, we've got builders who's got experience with some of the problems that I think we're still going to be facing, like scaling and some of the cross-chain things.
+
+So if there is expertise or anything that we can leverage, we definitely want the community to get involved, like bug bounty programs or anything like that. If we can just connect on Discord and we've got people actively monitoring it.
+
+We're trying to bring this very much into the hands of the people so they can help us build and ensure that we've got something of value that everyone can come and benefit from. I don't want to put you on the spot, but what motivates you as a RealFi engineer?
+
+What's actually motivating you internally? On my side, so I think this was an awesome problem to solve. I think when I originally joined RealFi, you know, you work in IT for quite a while and you feel like you've seen everything.
+
+There's just something about the, firstly, the problem itself, banking the unbanked, that was something that I resonated with. But the technical challenges so far have been awesome. And I think also having exposure to a lot of the guys on the call and I mean, even in the IO community, there are just so many things that you get to learn from everyone.
+
+So what motivates me, I think, the chance that we've got to make something awesome here. So yeah, that's the biggest thing on my side that's pushing us forward. Yeah, for me. Sorry. For me, two things.
+
+I think one is it's pretty unique in Cardano. So it's cool to work on something that's genuinely new. And the other one is just the team again. So like Speaker A mentioned, small team, but we're highly productive.
+
+And we're covering a really wide range of different topics and all the systems that we're building and so on. And it's actually exciting to be contributing to that. It's the fastest that I've seen anything being built in a long time.
+
+Same question to you, Speaker B. I'm just genuinely curious. I've worked with you in different projects. What motivates you internally as an engineer? Yeah, just the chance to build something that's new. I think for me, that's the biggest motivation.
+
+There's some great questions in the chat, guys, by the way, as we're talking. But Speaker C, I'm passing the mic to you. Same kind of questions, your motivations and what's happening internally. What are you interested in?
+
+Yeah, no, I mean, I don't want to repeat everything that the guys have already said, but I definitely relate to what they've said a lot. Great team. I think there's also a very high level of trust, which is also a great environment to be in.
+
+There's no worries about that something's going to be left behind. People are already looking at stuff that you thought that you were worrying about and someone's already thought about it. So everybody's very driven and it's exciting to work in a team like that.
+
+I think for me as well, the technical challenge, a lot of it's new for me as well. I haven't worked on Cardano before I started at RealFi. So a lot of it's very new for me. So I'm learning a lot, especially from guys like Speaker B.
+
+And also like Speaker A is a veteran. So I'm also learning a lot from him. And I also like looking sort of wider away from the engineering team, just the other people in RealFi as well are also very high caliber people.
+
+Some of them were really very successful in their careers before they started at RealFi. So really just a great opportunity to learn from everybody and to be able to collaborate with people like that.
+
+Yeah, I think collaboration is a really interesting point there. If the three of you think back to when you've been part of communities, especially where you're part of the community and then there's an engineering team, right?
+
+Can you think back to what were good practices or how you were able to engage with those teams? Because what I'd love everyone listening to be able to understand is how they could engage you, how they could work with you best as you're developing RealFi.
+
+So in the future, how do you want the community to communicate with you based on your experiences? I think if you're thinking about building on top of or with RealFi, I think the best place to engage with us is probably going to be GitHub or some like a space there or something.
+
+We haven't set that up yet, but for actually building it, that's where the SDK is going to be. That's where we can talk about source code and so on. And we should probably also have a dedicated channel here in the Discord.
+
+Yeah, I echo that, Host. So I think the first point of engagement will probably be Discord, just because, I mean, that's where most of the people are. And then, yeah, like, again, you're quite keen to hear, you know, like in the Discord, what the community thinks, how they can contribute to things.
+
+So if we spark up conversations in the Discord, we'll probably get some traction on any of the good ideas quite fast. Like we are very angry for those kind of things. So yeah. That's great. I'm not sure if we can depict the...
+
+Go ahead, go ahead. Sorry. I don't know if we can maybe start looking at some of the questions in the chat. Yeah, I think that's great. So if we scroll up to, let's get to Participant A asks, will stake pool delegation be available using a testnet wallet or is it only supported on mainnet?
+
+I think he's asking about the mechanism for claiming points, which is probably a product question. But did you have anything to add about how the authentication or the wallets might work? If not, we can move on.
+
+Although no, it will be on testnet, right? So the activity is going to be on testnet, but the delegation that counts is going to be on mainnet. So it's whatever your actual ADA is delegated to. That's the link that counts.
+
+And we're going to link, so there will be a website where you can link a mainnet wallet to a testnet wallet. Great. And the next question for Participant B. How many fintechs are you working with or considering?
+
+In my view, it looks like more fintechs in different countries leads to less risk overall. Do we have an opinion on that? I think, I mean, that aims at where the money is invested, right? I think it's more of a product question, I would say.
+
+But in general, there's like three different types of investments that are going to be done with the money. But this is documented on the website as well. And there's a transparency portal that tells you where the capital is going.
+
+I'm going to paraphrase Participant C's question because I think I can phrase it a little bit better to get more of an impact. But he's asking, how is RealFi positioned to face a competitive market? I think what he really wants to know is what is our technical edge that's going to make us competitive in the market?
+
+Do you see what I mean? Like, what do you think RealFi's technical edge would be in terms of being competitive? I think on the technical edge is probably being truly cross-chain and anchored on Cardano.
+
+So it's a challenge to combine good user experience with good cross-chain functionality. I think we're doing a good job at squaring that circle. Can you talk me through a little bit about cross-chain functionality as a kind of topology or what the choices are, and then what the choices we have made or the trade-offs are that we have made, if I've understood it correctly.
+
+Yeah. So you can, I think, so there's two different directions that you could take. One is having a like a decentralized system where you have a copy of the protocol basically on each chain with little or no communication between them.
+
+And the other one is more of a hub and spokes model where you have one central protocol and then the other ones are more like children. And that's what we're building for RealFi. So the hub is going to be the Cardano chain.
+
+But the challenge with this is always having to synchronize the state. Because what we don't want is every action on EVM to have to wait for a round trip to Cardano basically to finish. We've come up with a way to do that asynchronously.
+
+So there's still the central, like the state is still going to be on Cardano, but all of the actions on the other chains are going to finish immediately. You have a good user experience, but you also have the single authority on Cardano.
+
+Thank you. Next question, just as we work through them, is from Participant D. He's asking, is there a friction point for onboarding users outside crypto by having two different stable coins, USDR and sUSDR?
+
+Do we think that might confuse users? And has the team considered somewhat obfuscating the two coin mechanisms to focus more on USD balance solely? He's just curious. Yeah, so of those two currencies, it's only USDR that's a stable coin.
+
+That's always $1 for one USDR. sUSDR is the staked variant of it, but it can change in value. So that's how you would get your yield in the end from the protocol. So when you stake, you purchase some amount of sUSDR.
+
+When you unstake later, you sell this sUSDR basically back to the protocol, but you get a better price or a different price at least in the end. And that's how this yield is realized. So sUSDR is not a stablecoin.
+
+Thank you. Question for the devs from Participant E. Do you plan on using existing Cardano governance protocol framework to implement or manage governance? What's our current thinking or how far have we explored different types of governance and do we have any initial thoughts?
+
+And if we don't have anything to share, that's fine. But if we have got something to share, it'd be really interesting. At this point, I don't think we've really landed on what that specifically looks like.
+
+Product will probably be able to provide a little bit more input on the specifics around it. Yeah, so we don't have a clear answer on that right now. But if anyone's listening to this and you want me to collate and collect your ideas, send me over anything that you think that we should consider and I will make sure that I share it with the engineering and the product team so that it's at least they've got that situational awareness.
+
+Is that reasonable, Speaker A? Yes, perfect. Thank you. I just want to add, I think, I think the questions are great. I'm just going through them as well. So anything that we don't, please ask your questions, if they don't get answered here, we would love to look at it afterwards.
+
+100%. We can keep going. But before we answer some more questions, should we move on to the third pillar about integrations and partnerships? And then we'll do some more after. So Speaker A, I can speak on some other partners.
+
+Yeah, sorry, go on. Tell us who works with us now. What partners do we have today? And then let us know, like, you know, what kinds of expressions of interest or later stage collaborations might be most valuable to you.
+
+Yeah, so our current partnerships, I think I mentioned it before, like Sundae, Sundaes really come on board to help us. We kicked off this Web3 Web Work stream, what was it, August last year? I think the first few years of the business, we were proving the private credit side of things and making sure that we can risk deals and things properly.
+
+Since August last year, to where we are now is basically our focus on crypto. And I think we've had a very, very strong partnership with Sundae that's helped us get there. Also with TxPipeke with some of the audits.
+
+And yeah, there's just been a few, even internally, there's been a lot of help that's come through. So yeah, thanks for that. And then I think going forward, like I said earlier, there are challenges that I'm foreseeing we're going to encounter going forward.
+
+And like if there is any expertise around some of these things, like scaling, some of this cross-chain thing, the cross-chain work that we're endeavoring now, we are chatting with some of the internal teams as well.
+
+But yeah, if there's any expertise, any ideas, please reach out, throw something on Discord and we'll definitely want to engage experts on that. Yeah, on the topic of cross-chain specifically, one that we want to look at but haven't done much is Midnight.
+
+And I think that one's really interesting because of the privacy aspects and so on. So if anyone has experience building on Midnight or ideas for it, I think that would be a really interesting conversation.
+
+That's great. Let's get back to the questions then. I'll just work through them chronologically. Participant B, I'm probably saying that wrong. You're saying private credit assets paying 14% on the reserves overview.
+
+You also don't list how many fintechs you're working with. Are these private credit assets the loans to the fintech company or or is externally tokenized private credit being bought? Probably not the right forum for that kind of question.
+
+Yeah. Well, maybe that's how we handle that. Yeah, I think we can record that and forward it on to someone from the treasury team, perhaps. Okay, that's fair. Let's keep scrolling down. Participant C talking about hurdles and RealFi RWAs might be varying regulations, which I guess, yeah, that's definitely true.
+
+How does your project navigate legal and compliance issues such as KYC and AML? I think that's more of a legal question, unless you guys want to have a crack at it. But the question is, how do you keep user assets safe from future regulatory crackdowns?
+
+But I mean, I think we want to be compliant, really, right? Do we have a view on that? Or should I bank that one as well for future office hours? Yeah, I mean, we're going to think maybe I'm going to put a blue heart next to the ones I'm banking.
+
+Right, Participant F, he's got a question for engineering. From an engineering point of view, can you explain how the yield is possible with users retaining control over the sUSDR and even the possibility to send sUSDR around and trade sUSDR?
+
+Loss, in my understanding, can only affect the attached claimable yield, but never the sUSDR collateral or USDR depeg. Obviously, when buying USDR off a DEX, so when buying sUSDR off a DEX, can it have attached yield not yet claimed?
+
+So I think that on the last point at least, buying a sUSDR of a DEX, there's always going to be an official rate that you get when you unstake. So there's nothing, I would say, hidden in that. So you're going to have a price on the DEX and then there's going to be an official rate for which you can unstake.
+
+It's always known and published. And is sUSDR going to be on a DEX? Or did I understand that sUSDR was something that you sell to get the reward, but it's only USDR that's the stable coin? Can you clear that up for me a little bit, just in my own head?
+
+Yeah, so USDR is the stable coin, but sUSDR is a normal token. And there will probably be pools on DEXs and so on for trading it. Okay, great. Participant B is asking just about the feedback we've had in Discord.
+
+Some people have been struggling with completing the RealFi testnet rewards. Now, I don't know. I know myself, I've dealt with some issues with you guys where, you know, some of the anti-farming measures may have flagged a wallet.
+
+So that may be connected or it may not. But what he's saying is when I stake, the USDR tokens disappear, but when I unstake, the tokens don't reappear, I'm also not getting responses when I report above. Is that related or a different issue?
+
+Well, I mean, if you're not getting responses, I think that is more related to our capacity. We are looking at all the bug reports. We're just taking them one by one, trying to fit it into the task that we currently have on hand.
+
+We have found, though, that some of the addresses, I won't name names, have been implicated in some farming activity. So that might be some of the reasons. Other reasons are that we have misidentified some wallets, which we did unblock.
+
+There are a number of them, about 20 odd, which we did enable again. But I mean, obviously, as all of you know, there's a lot of bots doing all sorts of different things. And as soon as you have something in the public, then it gets attacked.
+
+So we're just trying to sift through all of that. And we are putting in new measures every day to combat that. But we are getting better at it. So if you see that you are not getting your tokens or your rewards or whatever, please just drop us another message.
+
+We'll look into it. In addition to that, anyone can tag me in Discord. And when I've flagged or taken stuff to engineering, they've been super responsive, super quick, you know? So yeah, if you're not getting a response, tag me.
+
+I can collect this in a way that makes it a little bit easier for engineering to tackle it rather than asking them to come in and read individual chats. I'd rather bundle it up and say, okay, here's what we need to have a look at.
+
+And we're working out a process that's getting better to do that, I think, as well. Participant G asks, do you have a mainnet launch date or is it still kind of open flexible? And if you look at markets, be back in September, it also applies to crypto.
+
+Okay, so I think the question is, do you have a mainnet launch date or is it still in flux? I think Speaker A can probably speak to that a bit better, but as far as I know, we haven't released the date to the public yet.
+
+We have said it internally, but it's not something I think perhaps that we're not comfortable releasing yet. But in the not too distant future, we will make that known. Just seeing some love in here between Participant G and Participant K because Participant K's manual helped Participant G.
+
+That's pretty cool. Okay, so I've been putting on pre-prod. Okay, interesting. So I'm just skimming through these. Participant E asks, have there been any recent changes in approaches for AI hack hardening?
+
+Any tools or services you would recommend for other devs, specifically blockchain-based projects? I mean, we're looking at the attacks and so on that have happened. We're using the same tools to assess our own work.
+
+We have external auditors also who also use AI tools. So I think we are doing more than maybe we would have done a year ago. And I'm pretty confident in the tests and the auditing that we do to make it safe.
+
+Okay. Yeah. Just to add to that, I think my connection is a bit choppy. That's why I'm not talking much. We have been through various rounds and we still have quite a few rounds of audits that's ongoing.
+
+So we are trying to be extra careful, like to the point where as we get closer to the point where we want to release this to the public, we're actually slowing down just to try and hit some of our solutions ourselves as well through various angles using AI tools and then also just using a lot of other companies to also just validate to make sure that we haven't missed anything.
+
+So yeah, we're doing as much as we can. And yeah, we again, this is also one of those things, any kind of input from the community—we can... I'm very paranoid when it comes to these things, Host. So any kind of help in this regard, yeah, we would welcome it.
+
+Absolutely. Yeah. And if anybody does want to follow up on that, just tag me, DM me, I'll bring it to the engineering team. And I think as well, I'm thinking about the structure and the space in Discord to better help those relationships between people.
+
+So the engineering team will get their own space. I'm planning that out, but I don't want to give up all the goodies until I've got buy-in broadly. But I'm thinking about things like districts and spaces where, you know, technical environments where developers are going to be able to access the resources and give their feedback in a constructive way.
+
+Just touching on Participant H's point, I get what you're saying. He's saying there's only like 30, 35 people on the call. Do we need to involve more people than just crypto products? But the thing is, this is early, right?
+
+We are early. And over 15% of all active wallets are engaged in Cardano's testnet. Like when I was looking it up myself, I was talking to Participant L. So shout out to him. And that was a great statistic.
+
+So actually, before we get to Solana or Ethereum or cross-chain, this community is buzzing and everybody's in really early. And a governance token means you're going to have a meaningful say in the long run.
+
+So I don't know. For me, I think actually the community is doing really well. I'm going to talk for you, Speaker A. Did you see that stat about the amount of active wallets? I thought that was really exciting.
+
+Amazing. Yeah, and it's really cool to get such involvement basically at home. And yeah, that was amazing. When I saw that, yeah, brilliant. Another thing Participant B's brought up there actually is just about people aren't interested in crypto.
+
+But do we see RealFi as something that ultimately people are going to be concerned about crypto with? Or do you think that in the long-term future, it's something that would almost be frictionless, where it wouldn't matter whether it was crypto or another financial product?
+
+Well, I think from a like if we look at where we started out, right, where we were tackling the real world asset side of things. The USDR and sUSDR, we are kind of positioning ourselves to be one of those assets.
+
+If we do have a bear market, you're going to get your safe yield and those kind of things. So the volatility that comes with crypto, we should, well, for the most part, be isolated from. So yeah, hopefully we can bridge that gap and we can get the confidence of the rest of the world to also know that, yes, this is crypto, but your money is safe.
+
+And yeah, I'm hoping we can bridge that gap. I think that that will be a very big thing for us going forward. Okay, another question from Participant F. Does every single sUSDR token carry with it an individual rate to swap back to USDR based on age and yield?
+
+And could that be expected by potential traders before buying sUSDR? Well, I thought they could only buy the USDR, but you guys correct me. Yeah, so there's only one sUSDR currency. So all tokens of sUSDR are fungible.
+
+There's no date encoded in them. You just, when you stake, you get an amount of sUSDR according to the exchange rate. And then when you unstake, you get back USDR according to the current exchange rate at the time.
+
+And you can definitely buy sUSDR on other, like on Dexes and so on, also. Trade it. Participant J asks, have you been in touch with the Rosen Bridge team to add USDR and sUSDR? Maybe this will have to be done after the mainnet launch.
+
+So what's your sequencing and reaching out to other teams and integrations, particularly Rosen Bridge? Yeah, so right now, the main thing is just getting out there and making sure that we have a successful launch.
+
+I think subsequent to that, there's a lot of partners that we want to engage with. It's just a matter of timing. So post-launch, we'll probably start looking at how do we make this not just a yield-bearing stable coin, add more utility to it.
+
+And that's probably where we'll start reaching out to strategic partners that can help us grow this ecosystem. That's great. Thank you. And then the last question at the bottom of the chat is, isn't the rate the same for everyone?
+
+It's a fungible token, though. It's not an NFT. Participant I is saying. Yeah, that's right. The rate is the same for everyone. There's one sUSDR/USDR exchange rate. Okay, that's great. You've given your time and you've answered a lot of questions and I really appreciate you guys doing that.
+
+In terms of... So you've given, give, gift. What would you like to get? What are the asks here? Have you got any ideas about how the community can support or help? I mean, for me, for me, I think I'll add it.
+
+You go, Speaker B. Cool. Yeah, I was just going to answer that on the engineering specifically. For me, I think it's two things. One is the idea of building on RealFi, building something that's new. I think that would be really cool to see.
+
+And we would be happy to help with that or to support that. And the other area would be anything related to Midnight. That's something that we don't have, that we're not working on right now, but we want to get to this in the future.
+
+So maybe if there's anyone here in the community who has experience with Midnight, and has ideas for RealFi on Midnight, that would also be super exciting to talk about. And Speaker A, what about open source or any plans for a bug bounty model or any plans for open sourcing?
+
+Yeah, so I mean that is something that we are, like there's a few partners that have requested that I think we'll probably, it's on the backlog, it's something we need to get to, so we'll definitely be open sourcing some of our SDKs.
+
+I think just to come back to how people can contribute, like what Speaker B was saying, I think we've got this opportunity where we can attract capital from other chains soon. So any kind of utility we can build on, Cardano, to help lure some of that across, I think would be ideal.
+
+Like, yeah, get involved. Let's speak on Discord. Let's see what we can build to help make the RealFi offering better and also attract a little bit more from the other side. On the bug bounty side, yeah, again, I think it's just a little bit of a chaotic time.
+
+There's a lot going on. So, you know, where we can initiate some of those things, if there's some ideas that we can throw around, we are quite keen to get everyone involved. So we will be running a bug bounty.
+
+It's just one of the things that we need to give some attention to. And I think if we've got some of the help from the community as well to help drive some of that stuff, we'll definitely get that to fruition for us.
+
+Okay, that sounds great. That sounds like some kind of a workshop maybe where I could get people who are interested to come in and share some of their experiences of what makes a good bug bounty with some examples.
+
+And maybe the output of that would be useful for you, Speaker A. 100%, yeah. Okay. Participant D is asking, does the team plan to or have the ability to offer higher APY rates as part of marketing incentives to use the platform?
+
+This may be product, I don't know. But he's thinking about banks and brokerages who offer slightly higher APY for six months if you move money to their platform. I guess inherent in there as well is a locking state question, which I don't know if we can answer that or whether it's one for Product.
+
+What do you think? It's probably a Product one, yeah. Yeah, this is a Product one. Okay. Participant F is following up on our earlier answer with if sUSDR is fungible and the rate is the same for all, will this not enable margin traders to buy sUSDR off the market when rates are good and sell those off?
+
+I'm not really, yeah, I don't know. Do you know? You can buy sUSDR off the market if you want to. It's freely tradable. Okay, cool. So we've covered quite a lot, and this is in my mind, so I don't want to put words in your mouths, but I kind of like think about RealFi as the product, but then also RealFi as a platform that people can build on.
+
+That's ultimately, do you think that we would want to look at that kind of innovation environment? Is that how you see it, that other developers, third-party developers, projects would be able to integrate and build on RealFi?
+
+Can you talk about that a little bit? Yes, I'm saying, yeah, sorry. Yeah, so definitely. I think we'll, as we evolve, we've been focused very much on getting the protocol up, making sure everything works.
+
+And we are getting to the point now where we can start attacking some of the how do we build this as a platform and not just as a functional protocol that solves the business problems. So I mean, we will see on the community website eventually the SDK and the document tools and how developers can get involved and things like that.
+
+So we're not ready right now, just because we're just about wrapping up testnet, but we'll definitely be reaching out for some engagement around that. You know, just develop a docs and how do you get involved and how do you build on top of it.
+
+Like I have some workshops around it as well. It's all things that's on the to-do list. It's just the current to-dos are quite high. That's awesome. I'll put you on the spot, but I'll give you some time to think about it.
+
+After this call, what are the two or three things that you hope people remember and repeat? What are the takeaways here that we hope travel beyond this call? On my side, I think the success of RealFire right now, the ability for us to engage some of the other chains and bring some of that value to Godano, I think is a very good opportunity for builders in the community and for us to just expand and grow what we already have.
+
+I think if anything, if there's a builder out there with a good idea that can leverage some of that, I think that would be a good takeaway because I think that'll help Realfi and also Cardano and just everyone.
+
+So that would be my what I hope everyone takes away from this. And Speaker B, Speaker C? I think for me, sorry, yeah, for me, I think just the fact that we really love getting feedback from the community, I think that for me is important.
+
+I mean, whether it's good or bad, I think any feedback is good feedback. And it's, yeah, I think it's awesome that people are using it. We want people to use it. And if there's anything that's stopping people from engaging more, we want to know from it.
+
+We want to know of it as soon as possible so that we can fix it. I think when you're thinking about building on RealFire, the only thing that really matters is the idea or the product or app or whatever you want to build.
+
+Actually, implementing it will be super easy with Codex or whatever you point it at the SDK and it's going to do it for you. So I think the concept is much more important than the details of how it'll work in the end.
+
+Thank you. One last question from Participant F and then we can wrap up. So he's saying... I'm just sorry, Participant F, I'm just reading your question again. So the price of USDR will take swap rate into account.
+
+So when rate is high, can you guys read the question? He says, this is not an infinite money engine. The price of USDR will take the swap rate into account. So when the rate is high, the price of sUSDR is kind of is high, kind of like an ETF.
+
+Yeah, I probably haven't done a good job of relaying your question there, Participant F. I'll have to probably pick it up offline. But yeah, Speaker A, Speaker B, Speaker C, this is really great. Thank you so much for joining us.
+
+Do you have any last thoughts before we sign off? Thanks for engaging with the protocol so much and for testing it, using it. We've had a lot of super helpful feedback. It's been really good so far. Awesome.
+
+Thank you very much, everyone, guys. Go on. Sorry. Sorry. Sorry, I got a bit of delay on my side. Sorry, guys. Yeah, I just wanted to say, like, just the fact that everyone's been so engaged and Host also for you to get the message out.
+
+Like, it's been awesome so far. There's a lot of very good feedback that's come in. And yeah, just please stay involved. Yeah, and yeah, hopefully we can make a good success of this when we go live. Excellent.
+
+And who knows? Soon we'll be in South Africa at a RealFi event, sharing a beer or coffee if you don't drink. 100%. Okay, thank you very much, gentlemen. Appreciate it. And thank you, everybody, for coming along and listening.
+
+And if you have any questions or want me to follow up, just tag me or DM me and I'll do my best to support. Thank you, everyone. Thanks, Host. Thanks, Host. Thanks, everyone. Bye-bye. Bye.
