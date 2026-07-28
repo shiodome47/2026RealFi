@@ -53,4 +53,4 @@ GitHub Pages の公開元を **`docs/`** にすれば公開できる。設定は
 
 ## 収録済み
 
-- [2026-07-28 エンジニアリング回](docs/2026-07-28-office-hours-engineering/) — クロスチェーン構想、ワンクリックフロー、USDR と sUSDR、プラットフォーム化
+- [2026-07-24 エンジニアリング回](docs/2026-07-24-office-hours-engineering/) — クロスチェーン構想、ワンクリックフロー、USDR と sUSDR、プラットフォーム化
