@@ -10,12 +10,12 @@
 <div class="wrap">
 
 <p class="eyebrow">RealFi Office Hours</p>
-<h1>エンジニアリング回 — ブリッジ、ワンクリックフロー、コミュニティへの要望</h1>
+<h1>エンジニアリング回 — ブリッジ、ワンクリックフロー、そしてプラットフォーム構想</h1>
 <p class="meta">
   <span>2026-07-28</span>
   <span>Discord</span>
   <span>参加者 30〜35名</span>
-  <span>登壇: 進行役, 登壇者A, 登壇者B, 登壇者C</span>
+  <span>進行役 1 名＋開発チーム 3 名</span>
 </p>
 
 <nav class="docnav">
@@ -26,38 +26,37 @@
   <a href="../">← 一覧</a>
 </nav>
 
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>RealFi は、Cardano 上で利回り商品を作るだけでなく、<br>
+  他の開発者や他チェーンからも使える「金融インフラ」になろうとしている。</p>
+</div>
+
 <div class="tldr">
 <h2>この回の要点</h2>
 <ul>
   <li><strong>プロトコルは testnet で稼働中。</strong>監査は複数ラウンド進行中で、まだ数ラウンド残っている。メインネットの日付は社内では決まっているが未公表。</li>
-  <li><strong>次の焦点はブリッジ。</strong>単なる burn-and-mint ではなく、EVM 側でもネイティブな体験を提供しつつ、会計とステーキングは Cardano を「正となる台帳」に据える設計。Cardano のプロトコルとしてはかなり珍しい構成。</li>
-  <li><strong>ワンクリックフロー</strong>という仕組みを開発中。複数プロトコルをまたぐ複数の取引を、ユーザーの署名 1 回で実行する。ルーピング戦略が開発動機のひとつ。</li>
-  <li><strong>USDR と sUSDR は別物。</strong>USDR がステーブルコイン（常に 1 ドル）で、sUSDR はステーク後に受け取る変動トークン。この価格差が利回りになる。sUSDR はステーブルコインではない。</li>
-  <li><strong>コミュニティに求めているもの</strong>は 3 つ。RealFi の上に何かを作ること、<strong>Midnight</strong> の知見（未着手領域）、そしてスケーリングとクロスチェーンの専門知識。bug bounty も実施予定だが時期未定。</li>
+  <li><strong>クロスチェーンは「入口を広げ、基盤は Cardano に置く」設計。</strong>単なる burn-and-mint ではなく、EVM 側でもネイティブな体験を提供しつつ、記録・会計・ステーキングは Cardano に集約する。</li>
+  <li><strong>ワンクリックフロー</strong>を開発中。複数プロトコルをまたぐ複数の取引を、署名 1 回で実行する。ルーピング戦略が開発動機のひとつ。</li>
+  <li><strong>USDR と sUSDR は別物。</strong>USDR がステーブルコイン（常に 1 ドル）、sUSDR はステーク時に受け取る変動トークン。交換レートの上昇が利回りになる。</li>
+  <li><strong>RealFi は「製品」であると同時に「プラットフォーム」を目指している。</strong>SDK と開発者向けドキュメントを公開し、外部開発者が RealFi を部品として使えるようにする。</li>
 </ul>
 </div>
 
-<h2>登壇者</h2>
-
-<ul>
-  <li><strong>進行役</strong> — ホスト / コミュニティマネージャー。進行とチャットの質問の取りまとめ</li>
-  <li><strong>登壇者A</strong> — エンジニアリングリード。金融サービスのソフトウェア出身で、投資銀行のトレーディング基盤の統合を長く担当</li>
-  <li><strong>登壇者B</strong> — エンジニア。ブリッジとクロスチェーン設計の中心。技術的な質問への回答の大半を担当</li>
-  <li><strong>登壇者C</strong> — エンジニア。SDK の構築を担当。RealFi 参加前は Cardano 未経験</li>
-</ul>
-
-<p>冒頭で 登壇者A が示した通り、この回は<strong>ロードマップ / チームカルチャー / パートナーシップと統合 / コミュニティへの要望</strong>の 4 本柱に、チャットからの Q&amp;A を挟む形で進行しました。</p>
+<div class="note">
+<p><strong>このコールはチャタムハウスルールで運用されています。</strong>内容は共有できますが、誰が発言したかは記載しません。このページでは発言者を特定できる情報（氏名・役職・経歴・所属）を一切含めていません。会話の流れを追う必要がある全文ページでも、<code>登壇者A / B / C</code>、<code>参加者A〜L</code> といった仮のラベルのみを使っています。</p>
+</div>
 
 
-<h2>1. ロードマップ</h2>
+<h2>1. 現在どこまでできているのか</h2>
 
 <h3>すでにできているもの</h3>
 
 <ul>
   <li><strong>Cardano 上のプロトコルが稼働中</strong>。現在 testnet で動いている</li>
-  <li>テストを多数実施済み。<strong>監査も相当進んでいる</strong></li>
-  <li>testnet ローンチでフィードバックを取得済み。登壇者A は出てきた課題を「システムを堅くするのに役立つ、良い課題」と表現</li>
-  <li>外部パートナー向けの <strong>SDK</strong> を構築中（登壇者C 担当）。「かなり包括的なもの」とのこと</li>
+  <li>テストを多数実施済み。<strong>監査も相当進んでいる</strong>が、まだ数ラウンド残っている</li>
+  <li>testnet ローンチでフィードバックを取得済み。出てきた課題は「システムを堅くするのに役立つ、良い課題」と表現されました</li>
+  <li>外部パートナー向けの <strong>SDK</strong> を構築中。「かなり包括的なもの」とのこと</li>
 </ul>
 
 <h3>これから作るもの</h3>
@@ -71,25 +70,55 @@
 <p>メインネットのローンチ日については「社内では決まっているが、まだ公表できる段階ではない。そう遠くない将来に公表する」という回答にとどまりました。</p>
 
 <div class="note">
-<p><strong>監査について補足。</strong>登壇者A は「公開が近づくにつれて、むしろ意図的にペースを落としている」と述べています。AI ツールを使って自分たち自身で多角的に攻撃を試み、さらに複数の外部企業にも検証を依頼して、見落としがないか確認しているとのこと。「こういうことに関しては自分はかなり心配性なので」という言い方をしていました。</p>
+<p><strong>監査について。</strong>「公開が近づくにつれて、むしろ意図的にペースを落としている」という説明がありました。AI ツールを使って自分たち自身で多角的に攻撃を試み、さらに複数の外部企業にも検証を依頼して、見落としがないか確認しているとのこと。「こういうことに関しては自分はかなり心配性なので」という発言もありました。</p>
 </div>
 
 
-<h2>2. ブリッジ — この回の技術的な山場</h2>
+<h2>2. クロスチェーン構想 — ハブ&amp;スポーク</h2>
 
-<p>登壇者B の説明が最も踏み込んでいた部分です。</p>
+<p><strong>これは単なる burn-and-mint ブリッジではありません。</strong>トークンを Cardano から Ethereum などへ移すだけの仕組みではなく、<strong>EVM 側でも RealFi を直接使っているような体験を提供しながら、基盤は Cardano に置き続ける</strong>という設計です。</p>
 
-<p><strong>これは単なる burn-and-mint ブリッジではありません。</strong>トークンを他チェーンに移すだけの仕組みではなく、<strong>EVM や他チェーンの上で RealFi プロダクトの「完全にネイティブな体験」を提供しつつ、Cardano と密結合させる</strong>という設計です。</p>
+<p>具体的には、</p>
 
-<p>会計もステーキングも、引き続き <strong>Cardano を source of truth（正となる台帳）</strong>として扱います。登壇者B はこれを「Cardano 上のプロトコルとしてはかなり独自だと思う」と評しました。</p>
+<ul>
+  <li>資産管理や記録の中心は Cardano</li>
+  <li>ステーキングも Cardano 上で行う</li>
+  <li>EVM 側の操作は Cardano の処理完了を待たず、<strong>すぐ完了する</strong></li>
+</ul>
 
-<h3>ビルダーにとっての意味</h3>
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="ハブ&スポーク構成図。複数の EVM チェーンと他チェーンが、中心にある Cardano 上の RealFi につながっている">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
 
-<p>RealFi の上に何かを作っている場合、<strong>そのアプリは自動的にこのブリッジの恩恵を受けます</strong>。ブリッジに接続されているだけで、あなたのアプリが EVM ユーザーからも利用可能になる、ということです。</p>
+  <rect x="30" y="52" width="160" height="46" rx="7" class="d-box"/>
+  <rect x="23" y="45" width="160" height="46" rx="7" class="d-box"/>
+  <rect x="16" y="38" width="160" height="46" rx="7" class="d-box"/>
+  <text x="96" y="66" text-anchor="middle" class="d-t">EVM 各チェーン</text>
 
-<h3>設計の選択：ハブ&amp;スポーク</h3>
+  <rect x="16" y="152" width="160" height="46" rx="7" class="d-box"/>
+  <text x="96" y="180" text-anchor="middle" class="d-t">他チェーン（将来）</text>
 
-<p>進行役 が「クロスチェーンの構成にはどんな選択肢があって、どれを選んだのか」と尋ねたのに対し、登壇者B は 2 つの方向性を挙げました。</p>
+  <path d="M180,61 L414,105" class="d-line" marker-end="url(#m1)"/>
+  <path d="M180,175 L414,140" class="d-line" marker-end="url(#m1)"/>
+
+  <rect x="420" y="62" width="244" height="120" rx="9" class="d-box-accent"/>
+  <text x="542" y="106" text-anchor="middle" class="d-t d-a">Cardano 上の RealFi</text>
+  <text x="542" y="132" text-anchor="middle" class="d-s">記録・会計・ステーキングの中心</text>
+  <text x="542" y="152" text-anchor="middle" class="d-s">＝ 正となる台帳</text>
+
+  <text x="295" y="116" text-anchor="middle" class="d-s">操作は即座に完了</text>
+  <text x="295" y="134" text-anchor="middle" class="d-s">（状態の同期は非同期）</text>
+</svg>
+<p class="figcap"><strong>入口は複数のチェーンに広げるが、基盤は Cardano に置く。</strong>ハブ&amp;スポーク型で、Cardano がハブ、他チェーンがスポークにあたります。※ 具体的なチェーン名はコール中では挙げられていません。</p>
+</div>
+
+<h3>もう一方の選択肢と、選ばなかった理由</h3>
+
+<p>クロスチェーンの構成として、2 つの方向性が挙げられました。</p>
 
 <div class="term">
 <p class="term-name">A. 分散型 <small>採用せず</small></p>
@@ -98,38 +127,106 @@
 
 <div class="term">
 <p class="term-name">B. ハブ&amp;スポーク <small>RealFi が採用</small></p>
-<p>中心となるプロトコルが 1 つあり、他は「子」として位置づけられる構成。<strong>RealFi ではハブが Cardano チェーン</strong>になる。</p>
+<p>中心となるプロトコルが 1 つあり、他は「子」として位置づけられる構成。RealFi ではハブが Cardano チェーンになる。</p>
 </div>
 
-<p>ハブ&amp;スポークの難しさは<strong>状態の同期</strong>です。素朴に作ると、EVM 上のあらゆる操作が Cardano への往復完了を待つことになり、体験が悪くなります。</p>
+<p>ハブ&amp;スポークの難しさは<strong>状態の同期</strong>です。素朴に作ると、EVM 上のあらゆる操作が Cardano への往復完了を待つことになり、体験が悪くなります。RealFi はこれを<strong>非同期で処理する方法</strong>を考案しました。状態は Cardano 上に置いたまま、他チェーン上の操作は即座に完了する。ユーザー体験を損なわずに、Cardano 上に唯一の権威を保つ、という設計です。</p>
 
-<p>RealFi はこれを<strong>非同期で処理する方法</strong>を考案しました。状態は Cardano 上に置いたまま、他チェーン上の操作は<strong>即座に完了する</strong>。ユーザー体験を損なわずに、Cardano 上に唯一の権威を保つ、という設計です。</p>
+<p>競合との技術的な差別化要因を問われた際にも「<strong>真にクロスチェーンでありながら Cardano にアンカーされていること</strong>」が挙げられ、「良いユーザー体験と良いクロスチェーン機能を両立させるのは難しい。その円を四角にする作業をうまくやれていると思う」と述べられました。</p>
 
-<p>登壇者B は、競合との技術的な差別化要因を問われた際にも「<strong>真にクロスチェーンでありながら Cardano にアンカーされていること</strong>」を挙げ、「良いユーザー体験と良いクロスチェーン機能を両立させるのは難しい。その円を四角にする作業をうまくやれていると思う」と述べました。</p>
+<h3>ビルダーにとっての意味</h3>
+
+<p>RealFi の上に何かを作っている場合、<strong>そのアプリは自動的にこのブリッジの恩恵を受けます</strong>。ブリッジに接続されているだけで、アプリが EVM ユーザーからも利用可能になる、ということです。</p>
 
 
 <h2>3. ワンクリックフロー</h2>
 
-<p>社内で「one-click flows」と呼んでいる仕組みです。<strong>異なるプロトコルにまたがる複数のトランザクションを、ユーザーの署名 1 回だけで実行する</strong>というもの。</p>
+<p>社内で「one-click flows」と呼んでいる仕組みです。<strong>異なるプロトコルにまたがる複数の取引を、ユーザーの署名 1 回だけで実行する</strong>というもの。通常なら 1 つずつ操作して何度も署名するところを、1 回のクリックと署名で完了させます。</p>
 
-<p>登壇者B が挙げた例：</p>
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="通常は 4 回の署名が必要な一連の操作を、ワンクリックフローでは署名 1 回で実行できることを示す比較図">
+  <defs>
+    <marker id="m2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" class="d-head"/>
+    </marker>
+  </defs>
 
-<ol>
-  <li>USDR を購入する</li>
-  <li>USDR をステークする</li>
-  <li>受け取った sUSDR を担保に借入をする</li>
-</ol>
+  <text x="16" y="34" class="d-s">通常</text>
+  <rect x="16" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="89" y="72" text-anchor="middle" class="d-t">USDR を購入</text>
+  <rect x="188" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="261" y="72" text-anchor="middle" class="d-t">ステーク</text>
+  <rect x="360" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="433" y="72" text-anchor="middle" class="d-t">sUSDR を受取</text>
+  <rect x="532" y="44" width="146" height="46" rx="7" class="d-box"/>
+  <text x="605" y="72" text-anchor="middle" class="d-t">担保に借入</text>
 
-<p>この一連の流れを、ウォレットで 1 回クリックして署名するだけで通せます。連携先には RealFi 自身だけでなく、<strong>Liqwid</strong> や <strong>Sundae</strong> といったパートナーのプロトコルも含まれます。</p>
+  <path d="M166,67 L184,67" class="d-line" marker-end="url(#m2)"/>
+  <path d="M338,67 L356,67" class="d-line" marker-end="url(#m2)"/>
+  <path d="M510,67 L528,67" class="d-line" marker-end="url(#m2)"/>
 
-<p>進行役 が「これは<strong>ルーピング戦略</strong>のようなものにも使えるのか」と尋ねたところ、登壇者B は「<strong>ルーピング戦略はまさにこれを考案した動機のひとつ</strong>」と答えました。ワンクリックで複数回のループを回し、最終的に高レバレッジのポジションができあがる、という使い方が想定されています。</p>
+  <text x="89" y="112" text-anchor="middle" class="d-s d-w">署名 1</text>
+  <text x="261" y="112" text-anchor="middle" class="d-s d-w">署名 2</text>
+  <text x="433" y="112" text-anchor="middle" class="d-s d-w">署名 3</text>
+  <text x="605" y="112" text-anchor="middle" class="d-s d-w">署名 4</text>
 
-<p>この仕組みはブリッジとも組み合わされる予定です。</p>
+  <line x1="16" y1="140" x2="678" y2="140" class="d-box-plain"/>
+
+  <text x="16" y="180" class="d-s d-a">ワンクリックフロー</text>
+  <rect x="16" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="89" y="218" text-anchor="middle" class="d-t">USDR を購入</text>
+  <rect x="188" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="261" y="218" text-anchor="middle" class="d-t">ステーク</text>
+  <rect x="360" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="433" y="218" text-anchor="middle" class="d-t">sUSDR を受取</text>
+  <rect x="532" y="190" width="146" height="46" rx="7" class="d-box-accent"/>
+  <text x="605" y="218" text-anchor="middle" class="d-t">担保に借入</text>
+
+  <path d="M16,254 L16,266 L678,266 L678,254" class="d-line-accent"/>
+  <text x="347" y="288" text-anchor="middle" class="d-t d-a">クリック 1 回・署名 1 回</text>
+</svg>
+<p class="figcap">連携先には RealFi 自身だけでなく、<strong>Liqwid</strong> や <strong>Sundae</strong> といったパートナーのプロトコルも組み込める構想です。この仕組みはブリッジとも組み合わされる予定です。</p>
+</div>
+
+<h3>ルーピング戦略</h3>
+
+<p>「これはルーピング戦略のようなものにも使えるのか」という問いに対し、<strong>「ルーピング戦略はまさにこれを考案した動機のひとつ」</strong>という答えがありました。ワンクリックで複数回のループを回し、最終的に高レバレッジのポジションができあがる、という使い方が想定されています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="預ける・借りるを繰り返して高レバレッジのポジションを作るループ戦略の図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+    <marker id="m3w" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="40" width="170" height="50" rx="7" class="d-box"/>
+  <text x="125" y="70" text-anchor="middle" class="d-t">預ける</text>
+
+  <path d="M214,65 L286,65" class="d-line" marker-end="url(#m3)"/>
+
+  <rect x="290" y="40" width="170" height="50" rx="7" class="d-box"/>
+  <text x="375" y="70" text-anchor="middle" class="d-t">借りる</text>
+
+  <path d="M375,94 L375,130 L125,130 L125,96" class="d-line" marker-end="url(#m3)"/>
+  <text x="250" y="152" text-anchor="middle" class="d-s">借りた資産を再び預ける（× N 回）</text>
+
+  <path d="M464,65 L516,65" class="d-line-accent" marker-end="url(#m3w)"/>
+
+  <rect x="520" y="34" width="150" height="62" rx="7" class="d-box-warn"/>
+  <text x="595" y="59" text-anchor="middle" class="d-t d-w">高レバレッジ</text>
+  <text x="595" y="79" text-anchor="middle" class="d-t d-w">ポジション</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>ループの回数が増えるほどレバレッジが高くなるため、その分リスクも大きくなります。この点はコール中では明示されていませんが、仕組み上そうなります。</p>
+</div>
 
 
 <h2>4. USDR と sUSDR の違い</h2>
 
-<p>Q&amp;A で最も質問が集中した論点なので、ここにまとめます。<strong>この 2 つは性質がまったく違います。</strong></p>
+<p>Q&amp;A で最も質問が集中した論点です。<strong>この 2 つは性質がまったく違います。</strong></p>
 
 <div class="term">
 <p class="term-name">USDR <small>ステーブルコイン</small></p>
@@ -138,82 +235,172 @@
 
 <div class="term">
 <p class="term-name">sUSDR <small>ステーブルコインではない</small></p>
-<p>USDR をステークすると受け取るトークン。<strong>価値が変動する</strong>。ステーク時に交換レートに応じた量の sUSDR を受け取り、アンステーク時にその時点のレートで USDR に戻す。<strong>この価格差が利回りとして実現される</strong>という仕組み。</p>
+<p>USDR をステークしたときに受け取る、利回り付きのトークン。<strong>1 ドル固定ではありません。</strong>時間の経過とともに USDR との交換レートが上昇することで、利回りが発生します。</p>
 </div>
 
-<p>登壇者B が Q&amp;A で明確にした性質：</p>
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="100 USDR をステークして 100 sUSDR を受け取り、時間経過後にアンステークして 105 USDR を受け取る流れの図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="40" y="24" width="150" height="50" rx="7" class="d-box"/>
+  <text x="115" y="54" text-anchor="middle" class="d-t">100 USDR</text>
+
+  <text x="255" y="42" text-anchor="middle" class="d-s">ステーク</text>
+  <path d="M194,54 L306,54" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="310" y="24" width="150" height="50" rx="7" class="d-box"/>
+  <text x="385" y="54" text-anchor="middle" class="d-t">100 sUSDR</text>
+
+  <path d="M385,80 L385,120" class="d-box-plain" marker-end="url(#m4)"/>
+  <text x="404" y="105" class="d-s">時間経過（交換レートが上昇）</text>
+
+  <rect x="310" y="126" width="150" height="50" rx="7" class="d-box"/>
+  <text x="385" y="156" text-anchor="middle" class="d-t">100 sUSDR</text>
+
+  <text x="510" y="144" text-anchor="middle" class="d-s">アンステーク</text>
+  <path d="M464,156 L556,156" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="560" y="126" width="110" height="50" rx="7" class="d-box-accent"/>
+  <text x="615" y="156" text-anchor="middle" class="d-t d-a">105 USDR</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>数値は仕組みを説明するための例で、コール中に挙げられたものではありません。実際の交換レートは異なります。利回りは、この<strong>交換レートの変化</strong>によって実現されます。</p>
+</div>
+
+<p>Q&amp;A で明確にされた sUSDR の性質：</p>
 
 <ul>
-  <li><strong>sUSDR は完全にファンジブル。</strong>「sUSDR という通貨は 1 種類しかない」。個々のトークンに日付やレートは埋め込まれていない（NFT ではない）</li>
+  <li><strong>完全にファンジブル。</strong>「sUSDR という通貨は 1 種類しかない」。NFT ではなく、すべて同じ性質を持つ通常のトークン</li>
+  <li><strong>保有期間は個別に記録されない。</strong>個々のトークンに日付は埋め込まれていない。古い sUSDR と新しい sUSDR の違いはない</li>
   <li><strong>交換レートは全員共通。</strong>sUSDR ⇄ USDR のレートは 1 つだけで、誰にとっても同じ</li>
   <li><strong>公式レートは常に既知で、公開されている。</strong>アンステーク時に適用されるレートに「隠れているものはない」</li>
-  <li><strong>DEX で自由に取引できる。</strong>sUSDR の取引プールもおそらく用意される。DEX 上の価格と、アンステーク用の公式レートは別々に存在する</li>
+  <li><strong>DEX で自由に売買できる。</strong>取引プールもおそらく用意される。DEX 上の価格と、アンステーク用の公式レートは別々に存在する</li>
 </ul>
 
 
-<h2>5. チームカルチャー</h2>
+<h2>5. RealFi は「製品」であり「プラットフォーム」</h2>
 
-<p>登壇者A によれば、社内のエンジニアは <strong>3〜4 名</strong>という小さなチームで、そこに <strong>Sundae</strong> や <strong>TxPipe</strong> といったパートナーが加わる体制です。</p>
+<p>現在の RealFi は、USDR・sUSDR・ステーキング・利回りの仕組みを提供する金融製品です。しかし将来的には、SDK と開発者向けドキュメントを公開し、<strong>外部開発者が RealFi を使ったアプリを作れるようにする</strong>方向を目指しています。</p>
 
-<p>登壇者A が挙げたエピソード：testnet に移行したとき、深夜 1 時ごろにオンラインだったが、顔を上げると<strong>ほとんどのメンバーがオンラインだった</strong>。</p>
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="現在は RealFi が提供する商品を使う段階、将来は RealFi を部品として別のサービスを作る段階、という対比図">
+  <defs>
+    <marker id="m5" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
 
-<h3>各自のモチベーション</h3>
+  <rect x="16" y="24" width="286" height="170" rx="9" class="d-box-plain"/>
+  <text x="159" y="56" text-anchor="middle" class="d-t">現在</text>
+  <text x="159" y="86" text-anchor="middle" class="d-s">USDR ／ sUSDR ／ ステーキング</text>
+  <text x="159" y="106" text-anchor="middle" class="d-s">／ 利回りの仕組み</text>
+  <line x1="60" y1="124" x2="258" y2="124" class="d-box-plain"/>
+  <text x="159" y="152" text-anchor="middle" class="d-t">RealFi が提供する</text>
+  <text x="159" y="174" text-anchor="middle" class="d-t">商品を使う</text>
 
-<p>進行役 が「エンジニアとして何が内側からあなたを動かしているのか」と尋ねた場面です。</p>
+  <path d="M312,109 L368,109" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="378" y="24" width="286" height="170" rx="9" class="d-box-accent"/>
+  <text x="521" y="56" text-anchor="middle" class="d-t d-a">将来</text>
+  <text x="521" y="86" text-anchor="middle" class="d-s">SDK ／ 開発者向けドキュメント</text>
+  <text x="521" y="106" text-anchor="middle" class="d-s">／ ワークショップ</text>
+  <line x1="422" y1="124" x2="620" y2="124" class="d-box-plain"/>
+  <text x="521" y="152" text-anchor="middle" class="d-t d-a">RealFi を部品として</text>
+  <text x="521" y="174" text-anchor="middle" class="d-t d-a">別のサービスを作る</text>
+</svg>
+<p class="figcap">さらに、RealFi を利用したアプリは、RealFi のクロスチェーン機能を通じて <strong>EVM ユーザーにも提供できる可能性があります</strong>。</p>
+</div>
+
+<p>ただし現時点では準備が整っていません。「ちょうど testnet を締めくくろうとしているところなので今すぐではないが、開発者向けドキュメント、どう関わればいいか、どう上に構築すればいいかについて、間違いなく声をかけていく」「それに関するワークショップもやりたい。すべて to-do リストに入っているが、今の to-do がかなり多いというだけ」という説明でした。</p>
+
+
+<h2>6. チームカルチャー</h2>
+
+<p>社内のエンジニアは <strong>3〜4 名</strong>という小さなチームで、そこに <strong>Sundae</strong> や <strong>TxPipe</strong> といったパートナーが加わる体制です。</p>
+
+<p>チームの様子として挙げられたエピソード：testnet に移行したとき、深夜 1 時ごろにオンラインだったが、顔を上げると<strong>ほとんどのメンバーがオンラインだった</strong>。</p>
+
+<p>モチベーションについて語られた内容（発言者は伏せます）：</p>
 
 <ul>
-  <li><strong>登壇者A</strong> — 「IT の世界に長くいると、もう全部見た気になってくる」。そのうえで、<strong>banking the unbanked</strong>（銀行口座を持てない層に金融アクセスを届ける）という課題そのものに共感したこと、そして技術的な挑戦が素晴らしいこと。IO コミュニティを含め、周囲から学べることが多い点も挙げました</li>
-  <li><strong>登壇者B</strong> — 「Cardano の中でかなり独自のことをやっている。<strong>本当に新しいものに取り組めるのがいい</strong>」。加えてチーム。「小規模だが生産性が非常に高い。何かが作られていくスピードとして、ここ何年かで一番速い」</li>
-  <li><strong>登壇者C</strong> — チームの<strong>信頼の水準の高さ</strong>。「何かが取りこぼされる心配がない。自分が気にしていたことを、もう誰かが見てくれている」。また Cardano が初めてなので学ぶことが多く、登壇者B や 登壇者A から学べる環境であること。エンジニアリング以外のメンバーも、RealFi に来る前にキャリアで大きな成功を収めた人が多いと述べました</li>
+  <li><strong>課題そのものへの共感。</strong>「IT の世界に長くいると、もう全部見た気になってくる」。そのうえで <strong>banking the unbanked</strong>（銀行口座を持てない層に金融アクセスを届ける）という課題に惹かれた、という話</li>
+  <li><strong>新しいものを作れること。</strong>「Cardano の中でかなり独自のことをやっている」「本当に新しいものに取り組めるのがいい」</li>
+  <li><strong>チームの生産性。</strong>「小規模だが生産性が非常に高い。何かが作られていくスピードとして、ここ何年かで一番速い」</li>
+  <li><strong>信頼の水準の高さ。</strong>「何かが取りこぼされる心配がない。自分が気にしていたことを、もう誰かが見てくれている」</li>
 </ul>
 
 
-<h2>6. パートナーシップと、求めている協力</h2>
-
-<h3>現在のパートナー</h3>
+<h2>7. パートナーシップ</h2>
 
 <ul>
-  <li><strong>Sundae</strong> — 2025 年 8 月に Web3 ワークストリームを立ち上げた際からの主要パートナー。登壇者A は「非常に強力なパートナーシップで、ここまで来られたのは彼らのおかげ」と述べています</li>
+  <li><strong>Sundae</strong> — 2025 年 8 月に Web3 ワークストリームを立ち上げた際からの主要パートナー。「非常に強力なパートナーシップで、ここまで来られたのは彼らのおかげ」</li>
   <li><strong>TxPipe</strong> — 監査で協力</li>
 </ul>
 
-<p>登壇者A によれば、事業の最初の数年は private credit（プライベートクレジット）側の検証、つまり案件のリスクを適切に評価できることの証明に費やしており、<strong>暗号資産にフォーカスを移したのが 2025 年 8 月</strong>とのことです。</p>
+<p>事業の最初の数年はプライベートクレジット側の検証、つまり案件のリスクを適切に評価できることの証明に費やしており、<strong>暗号資産にフォーカスを移したのが 2025 年 8 月</strong>とのことです。</p>
 
-<h3>コミュニティに求めている専門知識</h3>
 
-<div class="term">
-<p class="term-name">Midnight <small>登壇者B からの最も具体的な要望</small></p>
-<p>「クロスチェーンの話題で言うと、<strong>やりたいがまだほとんど手を付けられていないのが Midnight</strong>。プライバシーの側面があるので非常に興味深い。<strong>Midnight での開発経験がある人、あるいは RealFi × Midnight のアイデアを持っている人がいれば、ぜひ話したい</strong>」</p>
-</div>
+<h2>8. コミュニティに求めていること</h2>
+
+<p>開発チームが Cardano コミュニティに求めているのは、次のような協力です。</p>
 
 <ul>
-  <li><strong>スケーリング</strong> — 今後直面すると予想している課題</li>
-  <li><strong>クロスチェーン</strong> — 現在進めている作業まわり</li>
-  <li><strong>bug bounty の設計</strong> — 実施する意思はあるが「今はやることが多すぎる」状態。コミュニティの助けがあれば実現を早められる、という言い方でした</li>
+  <li><strong>testnet の不具合報告</strong></li>
+  <li><strong>RealFi を利用したアプリのアイデア</strong> — 「RealFi の上に何かを作るというアイデア、新しいものを作ること。それが見られたら本当に素晴らしい」</li>
+  <li><strong>スケーリングとクロスチェーンの専門知識</strong> — 今後直面すると予想している課題</li>
+  <li><strong>Midnight との連携アイデア</strong> — 「クロスチェーンの話題で言うと、やりたいがまだほとんど手を付けられていないのが Midnight。プライバシーの側面があるので非常に興味深い。開発経験がある人、アイデアを持っている人がいれば、ぜひ話したい」</li>
+  <li><strong>bug bounty への協力</strong> — 実施の意思はあるが「今はやることが多すぎる」状態。コミュニティの助けがあれば実現を早められる、という言い方でした</li>
+  <li><strong>SDK を使った開発</strong> — SDK の一部はオープンソース化予定（バックログ）</li>
 </ul>
 
-<p>進行役 はこれを受けて、<strong>「良い bug bounty とは何か」を経験者に共有してもらうワークショップ</strong>を提案し、登壇者A が「100%」と同意しています。</p>
+<p>特に強かったのは <strong>「RealFi を使って何を作れるかというアイデアを出してほしい」</strong>というメッセージです。締めくくりでも「本当に重要なのはアイデアやプロダクトそのものだけ。実装は Codex なりを SDK に向ければ簡単にやってくれる。だから最終的にどう動くかの細部より、コンセプトのほうがずっと重要」という発言がありました。</p>
 
-<h3>オープンソース化</h3>
-
-<p>複数のパートナーから要望があり、<strong>SDK の一部はオープンソース化する予定</strong>。ただし現状はバックログにある状態です。</p>
-
-
-<h2>7. コミュニティとの関わり方</h2>
-
-<p>「今後どうやってコミュニティとコミュニケーションしたいか」という質問への回答です。</p>
-
-<ul>
-  <li><strong>作る話は GitHub</strong>（登壇者B）— 「RealFi の上に、あるいは RealFi と一緒に何かを作ろうと考えているなら、一番いい接点はおそらく GitHub。<strong>まだ用意できていない</strong>が、SDK が置かれるのはそこだし、ソースコードの話ができるのもそこ」。加えて Discord にも専用チャンネルを作るべき、と述べています</li>
-  <li><strong>最初の接点は Discord</strong>（登壇者A）— 「人が一番多いのがそこだから」。Discord で会話が立ち上がれば、良いアイデアはかなり速く動き出す、という見方です</li>
-</ul>
-
-<p>進行役 側でも、エンジニアリングチーム専用のスペースを含む Discord の構造を設計中とのこと。開発者が技術リソースにアクセスし、建設的にフィードバックを返せる場を想定しています。</p>
+<p>接点としては、<strong>作る話は GitHub</strong>（まだ用意できていないが、SDK が置かれ、ソースコードの話ができる場所）、<strong>最初の接点は Discord</strong>（人が一番多いから）という整理でした。Discord にはエンジニアリング専用のチャンネルを作る構想もあります。</p>
 
 <div class="note">
 <p><strong>不具合の報告について。</strong>testnet の報酬まわりで「ステークすると USDR が消えるのに、アンステークしても戻ってこない。報告しても返信がない」という声が挙がりました。</p>
-<p>登壇者A の回答は、返信がない件は<strong>単純にチームの処理能力の問題</strong>で、バグ報告は全部見ており 1 件ずつ既存タスクに組み込んでいる、というもの。ただし一部のアドレスは<strong>実際にファーミング活動に関与していた</strong>ことが判明しているとも述べました。同時に<strong>誤って判定してしまったウォレットも約 20 件あり、それらは解除済み</strong>とのことです。「公開した瞬間に攻撃される」状況で、対策を日々追加している段階だと説明されました。</p>
-<p>進行役 は「返信がなければ自分をタグ付けしてほしい。個別のチャットをエンジニアに読ませるより、まとめて渡したほうが速い」と補足しています。</p>
+<p>回答は、返信がない件は<strong>単純にチームの処理能力の問題</strong>で、バグ報告は全部見ており 1 件ずつ既存タスクに組み込んでいる、というもの。ただし一部のアドレスは<strong>実際にファーミング活動に関与していた</strong>ことが判明しているとも述べられました。同時に<strong>誤って判定してしまったウォレットも約 20 件あり、それらは解除済み</strong>とのことです。「公開した瞬間に攻撃される」状況で、対策を日々追加している段階だと説明されました。</p>
+</div>
+
+
+<h2>全体像</h2>
+
+<p>RealFi は、Cardano 上で利回り付きドル資産を提供し、その資産を他チェーンや他の DeFi サービスでも簡単に使えるようにする基盤を目指しています。単なるステーブルコインプロジェクトというより、次の 4 つを組み合わせた<strong>Cardano を中心とする金融プラットフォーム構想</strong>と考えると分かりやすい内容でした。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 280" role="img" aria-label="USDR/sUSDR、クロスチェーン接続、ワンクリック機能、外部開発者向け SDK の 4 つが組み合わさって、Cardano を中心とする金融プラットフォームを構成することを示す図">
+  <defs>
+    <marker id="m6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="16" width="316" height="58" rx="7" class="d-box"/>
+  <text x="174" y="42" text-anchor="middle" class="d-t">USDR ／ sUSDR</text>
+  <text x="174" y="61" text-anchor="middle" class="d-s">利回り付きのドル資産（製品）</text>
+
+  <rect x="348" y="16" width="316" height="58" rx="7" class="d-box"/>
+  <text x="506" y="42" text-anchor="middle" class="d-t">クロスチェーン接続</text>
+  <text x="506" y="61" text-anchor="middle" class="d-s">Cardano をハブに、EVM へ入口を広げる</text>
+
+  <rect x="16" y="92" width="316" height="58" rx="7" class="d-box"/>
+  <text x="174" y="118" text-anchor="middle" class="d-t">ワンクリックフロー</text>
+  <text x="174" y="137" text-anchor="middle" class="d-s">複数 DeFi を署名 1 回でつなぐ</text>
+
+  <rect x="348" y="92" width="316" height="58" rx="7" class="d-box"/>
+  <text x="506" y="118" text-anchor="middle" class="d-t">外部開発者向け SDK</text>
+  <text x="506" y="137" text-anchor="middle" class="d-s">RealFi を部品として使えるようにする</text>
+
+  <path d="M174,154 L174,196" class="d-line" marker-end="url(#m6)"/>
+  <path d="M506,154 L506,196" class="d-line" marker-end="url(#m6)"/>
+
+  <rect x="16" y="202" width="648" height="62" rx="9" class="d-box-accent"/>
+  <text x="340" y="230" text-anchor="middle" class="d-t d-a">Cardano を中心とする金融プラットフォーム</text>
+  <text x="340" y="252" text-anchor="middle" class="d-s">＝ 他の開発者・他チェーンからも使える金融インフラ</text>
+</svg>
 </div>
 
 
@@ -221,43 +408,43 @@
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者A</span>ステークプールへの委任は testnet ウォレットでも可能か、それともメインネットのみか。</p>
-<p class="qa-a" data-by="登壇者B">活動自体は testnet 上で行うが、<strong>カウントされる委任はメインネット側</strong>。つまり実際に保有している ADA の委任先が判定に使われる。メインネットウォレットと testnet ウォレットを紐付けるためのサイトが用意される予定。</p>
+<p class="qa-a" data-by="回答">活動自体は testnet 上で行うが、<strong>カウントされる委任はメインネット側</strong>。つまり実際に保有している ADA の委任先が判定に使われる。メインネットウォレットと testnet ウォレットを紐付けるためのサイトが用意される予定。</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者D</span>USDR と sUSDR という 2 つのステーブルコインがあることで、暗号資産に馴染みのないユーザーのオンボーディングに摩擦が生じないか。2 トークンの仕組みを隠して USD 残高だけを見せることは検討したか。</p>
-<p class="qa-a" data-by="登壇者B">前提が少し違う。<strong>ステーブルコインは USDR だけ</strong>で、常に 1 USDR = 1 ドル。sUSDR はそのステーク版で、価値が変動する。ステーク時に sUSDR を購入し、アンステーク時にプロトコルに売り戻す形になり、その際の価格差が利回りになる。<strong>sUSDR はステーブルコインではない。</strong></p>
+<p class="qa-a" data-by="回答">前提が少し違う。<strong>ステーブルコインは USDR だけ</strong>で、常に 1 USDR = 1 ドル。sUSDR はそのステーク版で、価値が変動する。ステーク時に sUSDR を購入し、アンステーク時にプロトコルに売り戻す形になり、その際の価格差が利回りになる。<strong>sUSDR はステーブルコインではない。</strong></p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者F</span>ユーザーが sUSDR を自由に保有・送付・取引できる状態で、なぜ利回りが成立するのか。DEX で sUSDR を買った場合、まだ請求されていない利回りが付いてくることはあるか。</p>
-<p class="qa-a" data-by="登壇者B">DEX で sUSDR を買った場合でも、<strong>アンステーク時に適用される公式レートは常に存在する</strong>ので、隠れているものはない。DEX 上の価格があり、それとは別にアンステーク用の公式レートがあり、そのレートは常に既知で公開されている。</p>
+<p class="qa-a" data-by="回答">DEX で sUSDR を買った場合でも、<strong>アンステーク時に適用される公式レートは常に存在する</strong>ので、隠れているものはない。DEX 上の価格があり、それとは別にアンステーク用の公式レートがあり、そのレートは常に既知で公開されている。</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者F</span>sUSDR の 1 枚 1 枚が、保有期間と利回りに応じた個別のレートを持っているのか。買う前にそれを知ることはできるのか。</p>
-<p class="qa-a" data-by="登壇者B">いいえ。<strong>sUSDR という通貨は 1 種類しかなく、すべてファンジブル</strong>。日付は埋め込まれていない。ステーク時にその時点の交換レートで sUSDR を受け取り、アンステーク時にその時点のレートで USDR を受け取るだけ。DEX で取引することもできる。</p>
+<p class="qa-a" data-by="回答">いいえ。<strong>sUSDR という通貨は 1 種類しかなく、すべてファンジブル</strong>。日付は埋め込まれていない。ステーク時にその時点の交換レートで sUSDR を受け取り、アンステーク時にその時点のレートで USDR を受け取るだけ。DEX で取引することもできる。</p>
 </div>
 
 <div class="qa">
-<p class="qa-q"><span class="qa-who">参加者I (参加者I)</span>レートは全員同じでは。ファンジブルトークンであって NFT ではない。</p>
-<p class="qa-a" data-by="登壇者B">その通り。<strong>レートは全員共通で、sUSDR / USDR の交換レートは 1 つだけ。</strong></p>
+<p class="qa-q"><span class="qa-who">参加者I</span>レートは全員同じでは。ファンジブルトークンであって NFT ではない。</p>
+<p class="qa-a" data-by="回答">その通り。<strong>レートは全員共通で、sUSDR / USDR の交換レートは 1 つだけ。</strong></p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者C</span>競争の激しい市場で RealFi はどう戦うのか。技術的な優位性は何か。</p>
-<p class="qa-a" data-by="登壇者B"><strong>真にクロスチェーンでありながら Cardano にアンカーされている点</strong>。良いユーザー体験と良いクロスチェーン機能を両立させるのは難しく、そこをうまく成立させられていると思う。<em>（詳細は「2. ブリッジ」の節を参照）</em></p>
+<p class="qa-a" data-by="回答"><strong>真にクロスチェーンでありながら Cardano にアンカーされている点</strong>。良いユーザー体験と良いクロスチェーン機能を両立させるのは難しく、そこをうまく成立させられていると思う。<em>（詳細は「2. クロスチェーン構想」の節を参照）</em></p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者E</span>AI を使ったセキュリティ強化について、最近アプローチの変化はあったか。ブロックチェーンプロジェクトの開発者に勧められるツールやサービスはあるか。</p>
-<p class="qa-a" data-by="登壇者B">実際に起きた攻撃事例を見ながら、<strong>同じツールを使って自分たちのコードを評価している</strong>。外部監査人も AI ツールを使っている。1 年前よりは踏み込んだことをやっていると思うし、テストと監査の結果には自信がある。</p>
-<p class="qa-a" data-by="登壇者A">監査は複数ラウンドを終えたが、<strong>まだかなりの回数が進行中</strong>。公開が近づくほど意図的にペースを落として、AI ツールで多角的に自分たちの実装を攻撃してみたり、複数の外部企業に検証を依頼したりしている。この件でもコミュニティからの助言は歓迎したい。</p>
+<p class="qa-a" data-by="回答">実際に起きた攻撃事例を見ながら、<strong>同じツールを使って自分たちのコードを評価している</strong>。外部監査人も AI ツールを使っている。1 年前よりは踏み込んだことをやっていると思うし、テストと監査の結果には自信がある。</p>
+<p class="qa-a" data-by="補足回答">監査は複数ラウンドを終えたが、<strong>まだかなりの回数が進行中</strong>。公開が近づくほど意図的にペースを落として、AI ツールで多角的に自分たちの実装を攻撃してみたり、複数の外部企業に検証を依頼したりしている。この件でもコミュニティからの助言は歓迎したい。</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者J</span>USDR / sUSDR の対応について Rosen Bridge チームと接触はあるか。メインネットローンチ後になるか。</p>
-<p class="qa-a" data-by="登壇者A">今はまずローンチを成功させることが最優先。<strong>その後に多くのパートナーと組んでいきたい</strong>のでタイミングの問題。ローンチ後に、単なる利回り付きステーブルコインで終わらせずユーティリティを増やす方向を検討し、そこで戦略的パートナーへのアプローチを始めることになる。</p>
+<p class="qa-a" data-by="回答">今はまずローンチを成功させることが最優先。<strong>その後に多くのパートナーと組んでいきたい</strong>のでタイミングの問題。ローンチ後に、単なる利回り付きステーブルコインで終わらせずユーティリティを増やす方向を検討し、そこで戦略的パートナーへのアプローチを始めることになる。</p>
 </div>
 
 <div class="qa">
@@ -267,7 +454,7 @@
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者B</span>結局のところ、ユーザーは「暗号資産であること」を気にし続けるのか。それとも将来的には、暗号資産かどうかを意識しない摩擦のないものになるのか。</p>
-<p class="qa-a" data-by="登壇者A">出発点が実物資産（RWA）側だったことを考えると、<strong>USDR と sUSDR はそういう資産のひとつとして位置づけようとしている</strong>。弱気相場が来ても安全な利回りが得られる、という性質。暗号資産に伴うボラティリティからは、大部分において隔離されているはず。「これは暗号資産だが、あなたのお金は安全だ」と世の中に信頼してもらえるところまで橋渡ししたい。</p>
+<p class="qa-a" data-by="回答">出発点が実物資産（RWA）側だったことを考えると、<strong>USDR と sUSDR はそういう資産のひとつとして位置づけようとしている</strong>。弱気相場が来ても安全な利回りが得られる、という性質。暗号資産に伴うボラティリティからは、大部分において隔離されているはず。「これは暗号資産だが、あなたのお金は安全だ」と世の中に信頼してもらえるところまで橋渡ししたい。</p>
 </div>
 
 
@@ -277,7 +464,7 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">参加者E</span>ガバナンスの実装・運用に、Cardano 既存のガバナンスプロトコルの枠組みを使う予定はあるか。</p>
-<p class="qa-a" data-by="登壇者A → プロダクトチーム">現時点で具体的な形は固まっていない。プロダクト側のほうが詳しく話せる。<br>進行役 は「アイデアがあれば送ってほしい。エンジニアリングとプロダクトの両方に共有する」と募集を呼びかけました。</p>
+<p class="qa-a" data-by="→ プロダクトチーム">現時点で具体的な形は固まっていない。プロダクト側のほうが詳しく話せる。<br>進行役は「アイデアがあれば送ってほしい。エンジニアリングとプロダクトの両方に共有する」と募集を呼びかけました。</p>
 </div>
 
 <div class="qa pending">
@@ -287,36 +474,35 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">参加者C</span>KYC / AML といった法務・コンプライアンスにどう対応するか。将来の規制強化からユーザー資産をどう守るか。</p>
-<p class="qa-a" data-by="→ 法務チーム">法務案件として保留。進行役 が次回以降に持ち越すと明言。</p>
+<p class="qa-a" data-by="→ 法務チーム">法務案件として保留。進行役が次回以降に持ち越すと明言。</p>
 </div>
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">参加者D</span>銀行や証券会社のように、資金移動のインセンティブとして期間限定で高い APY を出す予定・能力はあるか。</p>
-<p class="qa-a" data-by="→ プロダクト担当（プロダクト）">登壇者A・登壇者B とも「これはプロダクト側の案件」として回答を差し控え。</p>
+<p class="qa-a" data-by="→ プロダクト担当">「これはプロダクト側の案件」として回答を差し控え。</p>
 </div>
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">参加者F</span>sUSDR がファンジブルで全員同じレートなら、レートが良いときに市場で買って売り抜ける裁定が成立してしまわないか。</p>
-<p class="qa-a" data-by="未解決">登壇者B は「sUSDR は市場で自由に買える。自由に取引可能」とのみ回答。参加者F 自身がチャットで「これは無限に儲かる装置ではない。ETF と同じで、スワップレートは価格に織り込まれる」と補足しましたが、<strong>進行役 が「うまく伝えられなかった、オフラインで拾う」と述べて終了</strong>しました。</p>
+<p class="qa-a" data-by="未解決">「sUSDR は市場で自由に買える。自由に取引可能」とのみ回答。質問者自身がチャットで「これは無限に儲かる装置ではない。ETF と同じで、スワップレートは価格に織り込まれる」と補足しましたが、<strong>進行役が「うまく伝えられなかった、オフラインで拾う」と述べて終了</strong>しました。</p>
 </div>
 
 
 <h2>この回の締めくくり</h2>
 
-<p>進行役 が「この通話の後、参加者に覚えていて、他の人に伝えてほしいことは何か」と尋ねた際の回答です。</p>
+<p>「この通話の後、参加者に覚えていて、他の人に伝えてほしいことは何か」という問いへの回答です。</p>
 
 <ul>
-  <li><strong>登壇者A</strong> — 「他チェーンと接続し、その価値を Cardano に持ち込めること。これはコミュニティのビルダーにとって非常に良い機会だと思う。<strong>良いアイデアを持ったビルダーがそれを活かせれば、RealFi にとっても Cardano にとっても、みんなにとってもプラスになる</strong>」</li>
-  <li><strong>登壇者C</strong> — 「<strong>コミュニティからのフィードバックが本当にありがたい</strong>。良い内容でも悪い内容でも、フィードバックはすべて良いフィードバック。使ってもらえるのが嬉しいし、もっと関わる妨げになっているものがあるなら、直せるようできるだけ早く知りたい」</li>
-  <li><strong>登壇者B</strong> — 「RealFi の上に何かを作ろうとするとき、<strong>本当に重要なのはアイデアやプロダクトそのものだけ</strong>。実装は Codex なりを SDK に向ければ簡単にやってくれる。だから最終的にどう動くかの細部より、コンセプトのほうがずっと重要」</li>
+  <li>「他チェーンと接続し、その価値を Cardano に持ち込めること。これはコミュニティのビルダーにとって非常に良い機会だと思う。<strong>良いアイデアを持ったビルダーがそれを活かせれば、RealFi にとっても Cardano にとっても、みんなにとってもプラスになる</strong>」</li>
+  <li>「<strong>コミュニティからのフィードバックが本当にありがたい</strong>。良い内容でも悪い内容でも、フィードバックはすべて良いフィードバック。使ってもらえるのが嬉しいし、もっと関わる妨げになっているものがあるなら、直せるようできるだけ早く知りたい」</li>
+  <li>「RealFi の上に何かを作ろうとするとき、<strong>本当に重要なのはアイデアやプロダクトそのものだけ</strong>。実装は Codex なりを SDK に向ければ簡単にやってくれる。だから最終的にどう動くかの細部より、コンセプトのほうがずっと重要」</li>
 </ul>
-
-<p>進行役 の締めは「そう遠くないうちに南アフリカの RealFi イベントで、ビールかコーヒーを一緒に飲めるかもしれない」でした。</p>
 
 
 <div class="note">
-<p><strong>このページについて。</strong>元の文字起こしには話者ラベルもタイムスタンプもありません。話者は発言内容と役割から推定しています。進行役（進行）、登壇者B（ブリッジと USDR/sUSDR の技術説明）、登壇者A（チーム・パートナー・運用）については確度が高いものの、短い相槌や一部の発言は推定に留まります。判断に迷った箇所は <code>shared/people.md</code> に記録しています。</p>
-<p>また、音声認識による固有名詞の誤変換（RealFi → “RealFire”、Cardano → “Godano” など）は、まとめと日本語全文では修正していますが、<strong>英語全文では原文のまま残しています</strong>。</p>
+<p><strong>このページについて。</strong>元の文字起こしには話者ラベルもタイムスタンプもありません。加えて、このコールはチャタムハウスルールで運用されているため、<strong>氏名・役職・経歴・所属といった発言者を特定できる情報は記載していません</strong>。全文ページで使っている <code>登壇者A / B / C</code>、<code>参加者A〜L</code> は、会話の流れを追うための仮のラベルです。</p>
+<p>音声認識による固有名詞の誤変換（RealFi → “RealFire”、Cardano → “Godano” など）は、まとめと日本語全文では修正していますが、<strong>英語全文では原文のまま残しています</strong>（匿名化された箇所を除く）。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、仕組みの理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
 <p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
 </div>
 

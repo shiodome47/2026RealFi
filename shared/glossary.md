@@ -11,13 +11,10 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | RealFire, Realfi, Real Fi | RealFi |
 | Godano, Cordano | Cardano |
 | TxPipeke, TX Pipe | TxPipe |
-| 参加者F | 参加者F（推定・要確認） |
-| 参加者B | 参加者B（同一人物と思われる） |
-| 参加者E | 参加者E |
 | Dexes | DEX |
 | XSpaces | X Spaces |
-| プロダクト担当 | プロダクト担当（人名。プロダクト側の担当者と思われる） |
-| みなさん | （不明。"thanks, guys" 前後の呼びかけが崩れたもの） |
+
+**人名・ハンドル名の誤変換**も毎回発生するが、それらは修正するのではなく**匿名化して置き換える**。同一人物が複数の綴りで出てくることがあるので、まとめて同じラベルに寄せる。手順は `shared/speakers.md` を参照。
 
 ## プロダクト用語
 

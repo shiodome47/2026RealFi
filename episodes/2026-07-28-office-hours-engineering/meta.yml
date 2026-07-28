@@ -3,33 +3,34 @@ title: RealFi Office Hours — エンジニアリング回
 title_en: RealFi Office Hours — Engineering
 date: 2026-07-28          # ※文字起こしからは日付が特定できないため要確認
 platform: Discord
-attendees: 30-35          # 通話中の言及より（参加者H のコメント）
+attendees: 30-35          # 通話中の言及より
+
+# チャタムハウスルールのため実名は保持しない。
+# ラベルの付け方は shared/speakers.md を参照。
+chatham_house_rule: true
 
 speakers:
-  - name: 進行役
-    role: ホスト / コミュニティマネージャー
-  - name: 登壇者A
-    role: エンジニアリングリード
-  - name: 登壇者B
-    role: エンジニア（ブリッジ / クロスチェーン）
-  - name: 登壇者C
-    role: エンジニア（SDK）
+  - 進行役                 # 司会・チャットの質問の読み上げ
+  - 登壇者A
+  - 登壇者B
+  - 登壇者C
 
-# チャットで質問した参加者（表記は文字起こしのまま。誤記の可能性あり）
-questioners:
+questioners:              # チャットで質問したコミュニティメンバー（登場順）
   - 参加者A
-  - 参加者B        # "参加者B" とも表記。同一人物と思われる
+  - 参加者B
   - 参加者C
   - 参加者D
   - 参加者E
-  - 参加者F  # 文字起こしでは "参加者F"
-  - 参加者G (参加者G)
+  - 参加者F
+  - 参加者G
   - 参加者H
-  - 参加者I (参加者I)
+  - 参加者I
   - 参加者J
+  - 参加者K
+  - 参加者L
 
 # 話者ラベル・タイムスタンプのない生テキストから文脈で話者を推定している。
-# 詳細と不確実な箇所は shared/people.md を参照。
+# 推定の確度は shared/speakers.md を参照。
 speaker_labels: inferred
 timestamps: none
 
