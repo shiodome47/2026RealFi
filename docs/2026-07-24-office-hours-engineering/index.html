@@ -18,13 +18,7 @@
   <span>進行役 1 名＋開発チーム 3 名</span>
 </p>
 
-<nav class="docnav">
-  <span class="docnav-label">このページは内容をまとめた日本語版です。正確な内容は全文をご確認ください。</span>
-  <a href="./" aria-current="page">まとめ（日本語）</a>
-  <a href="./transcript-ja.html">日本語全文</a>
-  <a href="./transcript-en.html">英語全文（原文）</a>
-  <a href="../">← 一覧</a>
-</nav>
+<!--content-->
 
 <div class="thesis">
   <span class="label">一言でいうと</span>
@@ -43,12 +37,28 @@
 </ul>
 </div>
 
-<div class="note">
-<p><strong>このコールはチャタムハウスルールで運用されています。</strong>内容は共有できますが、誰が発言したかは記載しません。このページでは発言者を特定できる情報（氏名・役職・経歴・所属）を一切含めていません。会話の流れを追う必要がある全文ページでも、<code>登壇者A / B / C</code>、<code>参加者A〜L</code> といった仮のラベルのみを使っています。</p>
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#now"><span class="n">01</span>現在どこまでできているのか</a></li>
+  <li><a href="#crosschain"><span class="n">02</span>クロスチェーン構想 — ハブ&amp;スポーク</a></li>
+  <li><a href="#oneclick"><span class="n">03</span>ワンクリックフロー</a></li>
+  <li><a href="#tokens"><span class="n">04</span>USDR と sUSDR の違い</a></li>
+  <li><a href="#platform"><span class="n">05</span>製品からプラットフォームへ</a></li>
+  <li><a href="#team"><span class="n">06</span>チームカルチャー</a></li>
+  <li><a href="#partners"><span class="n">07</span>パートナーシップ</a></li>
+  <li><a href="#asks"><span class="n">08</span>コミュニティに求めていること</a></li>
+  <li><a href="#overview"><span class="n">09</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">10</span>Q&amp;A（チャットからの質問）</a></li>
+  <li><a href="#pending"><span class="n">11</span>持ち帰りになった質問</a></li>
+  <li><a href="#closing"><span class="n">12</span>この回の締めくくり</a></li>
+</ol>
 </div>
 
 
-<h2>1. 現在どこまでできているのか</h2>
+
+<h2 id="now">1. 現在どこまでできているのか</h2>
+<p class="deck">testnet で稼働中。監査は複数ラウンド進行中で、次の焦点はブリッジ。</p>
 
 <h3>すでにできているもの</h3>
 
@@ -74,7 +84,8 @@
 </div>
 
 
-<h2>2. クロスチェーン構想 — ハブ&amp;スポーク</h2>
+<h2 id="crosschain">2. クロスチェーン構想 — ハブ&amp;スポーク</h2>
+<p class="deck">入口は複数のチェーンに広げるが、基盤は Cardano に置く。この回の技術的な山場。</p>
 
 <p><strong>これは単なる burn-and-mint ブリッジではありません。</strong>トークンを Cardano から Ethereum などへ移すだけの仕組みではなく、<strong>EVM 側でも RealFi を直接使っているような体験を提供しながら、基盤は Cardano に置き続ける</strong>という設計です。</p>
 
@@ -139,7 +150,8 @@
 <p>RealFi の上に何かを作っている場合、<strong>そのアプリは自動的にこのブリッジの恩恵を受けます</strong>。ブリッジに接続されているだけで、アプリが EVM ユーザーからも利用可能になる、ということです。</p>
 
 
-<h2>3. ワンクリックフロー</h2>
+<h2 id="oneclick">3. ワンクリックフロー</h2>
+<p class="deck">複数プロトコルをまたぐ取引を、ユーザーの署名 1 回で実行する仕組み。</p>
 
 <p>社内で「one-click flows」と呼んでいる仕組みです。<strong>異なるプロトコルにまたがる複数の取引を、ユーザーの署名 1 回だけで実行する</strong>というもの。通常なら 1 つずつ操作して何度も署名するところを、1 回のクリックと署名で完了させます。</p>
 
@@ -224,7 +236,8 @@
 </div>
 
 
-<h2>4. USDR と sUSDR の違い</h2>
+<h2 id="tokens">4. USDR と sUSDR の違い</h2>
+<p class="deck">ステーブルコインは USDR だけ。sUSDR は交換レートが動き、その上昇が利回りになる。</p>
 
 <p>Q&amp;A で最も質問が集中した論点です。<strong>この 2 つは性質がまったく違います。</strong></p>
 
@@ -281,7 +294,8 @@
 </ul>
 
 
-<h2>5. RealFi は「製品」であり「プラットフォーム」</h2>
+<h2 id="platform">5. RealFi は「製品」であり「プラットフォーム」</h2>
+<p class="deck">SDK と開発者向けドキュメントを公開し、外部開発者が RealFi を部品として使えるようにする。</p>
 
 <p>現在の RealFi は、USDR・sUSDR・ステーキング・利回りの仕組みを提供する金融製品です。しかし将来的には、SDK と開発者向けドキュメントを公開し、<strong>外部開発者が RealFi を使ったアプリを作れるようにする</strong>方向を目指しています。</p>
 
@@ -317,7 +331,8 @@
 <p>ただし現時点では準備が整っていません。「ちょうど testnet を締めくくろうとしているところなので今すぐではないが、開発者向けドキュメント、どう関わればいいか、どう上に構築すればいいかについて、間違いなく声をかけていく」「それに関するワークショップもやりたい。すべて to-do リストに入っているが、今の to-do がかなり多いというだけ」という説明でした。</p>
 
 
-<h2>6. チームカルチャー</h2>
+<h2 id="team">6. チームカルチャー</h2>
+<p class="deck">社内は 3〜4 名。パートナーと組んで開発している。</p>
 
 <p>社内のエンジニアは <strong>3〜4 名</strong>という小さなチームで、そこに <strong>Sundae</strong> や <strong>TxPipe</strong> といったパートナーが加わる体制です。</p>
 
@@ -333,7 +348,8 @@
 </ul>
 
 
-<h2>7. パートナーシップ</h2>
+<h2 id="partners">7. パートナーシップ</h2>
+<p class="deck">Sundae と TxPipe。暗号資産にフォーカスを移したのは 2025 年 8 月。</p>
 
 <ul>
   <li><strong>Sundae</strong> — 2025 年 8 月に Web3 ワークストリームを立ち上げた際からの主要パートナー。「非常に強力なパートナーシップで、ここまで来られたのは彼らのおかげ」</li>
@@ -343,7 +359,8 @@
 <p>事業の最初の数年はプライベートクレジット側の検証、つまり案件のリスクを適切に評価できることの証明に費やしており、<strong>暗号資産にフォーカスを移したのが 2025 年 8 月</strong>とのことです。</p>
 
 
-<h2>8. コミュニティに求めていること</h2>
+<h2 id="asks">8. コミュニティに求めていること</h2>
+<p class="deck">アイデア、Midnight の知見、スケーリングの専門知識、そして bug bounty への協力。</p>
 
 <p>開発チームが Cardano コミュニティに求めているのは、次のような協力です。</p>
 
@@ -366,7 +383,8 @@
 </div>
 
 
-<h2>全体像</h2>
+<h2 id="overview">全体像</h2>
+<p class="deck">4 つの要素が組み合わさって、Cardano を中心とする金融プラットフォームになる。</p>
 
 <p>RealFi は、Cardano 上で利回り付きドル資産を提供し、その資産を他チェーンや他の DeFi サービスでも簡単に使えるようにする基盤を目指しています。単なるステーブルコインプロジェクトというより、次の 4 つを組み合わせた<strong>Cardano を中心とする金融プラットフォーム構想</strong>と考えると分かりやすい内容でした。</p>
 
@@ -404,7 +422,8 @@
 </div>
 
 
-<h2>Q&amp;A（チャットからの質問）</h2>
+<h2 id="qa">Q&amp;A（チャットからの質問）</h2>
+<p class="deck">コール中にチャットから出た質問と、その場で返された回答。</p>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者A</span>ステークプールへの委任は testnet ウォレットでも可能か、それともメインネットのみか。</p>
@@ -458,7 +477,8 @@
 </div>
 
 
-<h2>持ち帰りになった質問</h2>
+<h2 id="pending">持ち帰りになった質問</h2>
+<p class="deck">回答が保留され、他チームに回された 5 件。次回以降で回収される可能性がある。</p>
 
 <p>この回で回答が保留され、他チームに回された質問です。次回以降で回収される可能性があります。</p>
 
@@ -488,7 +508,8 @@
 </div>
 
 
-<h2>この回の締めくくり</h2>
+<h2 id="closing">この回の締めくくり</h2>
+<p class="deck">「参加者に覚えて、他の人に伝えてほしいこと」として挙げられたこと。</p>
 
 <p>「この通話の後、参加者に覚えていて、他の人に伝えてほしいことは何か」という問いへの回答です。</p>
 
@@ -506,8 +527,22 @@
 <p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
 </div>
 
+<div class="note">
+<p><strong>このコールはチャタムハウスルールで運用されています。</strong>内容は共有できますが、誰が発言したかは記載しません。このページでは発言者を特定できる情報（氏名・役職・経歴・所属）を一切含めていません。会話の流れを追う必要がある全文ページでも、<code>登壇者A / B / C</code>、<code>参加者A〜L</code> といった仮のラベルのみを使っています。</p>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">このページは内容をまとめた日本語版です。正確な内容は全文をご確認ください。</span>
+  <a href="./" aria-current="page">まとめ（日本語）</a>
+  <a href="./transcript-ja.html">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 一覧</a>
+</nav>
+
 <footer>
-  <p>RealFi Office Hours アーカイブ · <a href="../">全回の一覧</a></p>
+  <p>RealFi Office Hours アーカイブ</p>
 </footer>
 
 </div>
