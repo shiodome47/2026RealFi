@@ -765,6 +765,7 @@ footer {
 
 
 
+
 </style>
 
 <div class="wrap" id="top">
@@ -837,7 +838,7 @@ footer {
 <h2>この回の要点</h2>
 <ul>
   <li><strong>Cardano のアクティブウォレットの約 14%（7 分の 1）</strong>が RealFi の testnet でアクティブだった。直近エポック（7/23〜28）で約 2,600 ウォレット。<strong>同じ頃にアクティブだった Cardano のウォレットが約 20,000</strong>（＝ Cardano の総ウォレット数ではない）。</li>
-  <li><strong>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。</strong>それらは <strong>230 万 ADA</strong> を保有。ただしこれは<strong>実際の重なりではなく、機械的に確認できた最低人数</strong>。ウォレット連携の実装後は必ず増える。</li>
+  <li><strong>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。</strong>それらは <strong>230 万 ADA</strong> を保有。ただしこれは人数でも実際の重なりでもなく、<strong>機械的に関連付けられたステーク資格情報の件数</strong>。ウォレット連携の実装後は増える。</li>
   <li><strong>SPO プログラム参加プールの 84% が委任を増やした。</strong>参加していない同規模プールは 17%。ただし<strong>因果関係は発表者自身が留保している</strong>。</li>
   <li>数字はすべて<strong>ファーミングウォレットを除外した「実在ウォレットの最良推定」</strong>。算出方法の詳細は後日共有される。</li>
   <li>流動性は<strong>3 つの層</strong>で設計されており、「将来を予測することに依存しない」運用が強調された。</li>
@@ -849,7 +850,7 @@ footer {
 <ol>
   <li><a href="#now"><span class="n">01</span>3 週間で何が起きたか</a></li>
   <li><a href="#share"><span class="n">02</span>「7 分の 1」の中身</a></li>
-  <li><a href="#linked"><span class="n">03</span>メインネットとの紐付けは「下限」</a></li>
+  <li><a href="#linked"><span class="n">03</span>メインネットとの紐付けが示すもの</a></li>
   <li><a href="#spo"><span class="n">04</span>SPO プログラムの効果</a></li>
   <li><a href="#caveats"><span class="n">05</span>この数字が言っていないこと</a></li>
   <li><a href="#liquidity"><span class="n">06</span>流動性の 3 つの視点</a></li>
@@ -932,13 +933,13 @@ footer {
 </div>
 
 
-<h2 id="linked">3. メインネットとの紐付けは「下限」</h2>
-<p class="deck">これは実際の重なりではなく、オンチェーンで機械的に確認できた最低人数。</p>
+<h2 id="linked">3. メインネットとの紐付けが示すもの</h2>
+<p class="deck">一致したのはステーク資格情報どうし。人数でも、実際の重なりでもない。</p>
 
-<p>testnet ウォレットとメインネットウォレットのうち、<strong>暗号鍵を使って対応付けられたものが約 340 個</strong>。それらがメインネット上で <strong>230 万 ADA</strong> を保有しています。</p>
+<p>testnet ウォレットとメインネットウォレットのうち、<strong>暗号鍵を使って対応付けられたものが約 340 件</strong>。それらがメインネット上で <strong>230 万 ADA</strong> を保有しています。</p>
 
 <div class="fig">
-<svg viewBox="0 0 680 210" role="img" aria-label="testnet ウォレットのうち約340個がメインネットと紐付き、それらが230万 ADA を保有することを示す図。この数字は下限であることを注記">
+<svg viewBox="0 0 680 210" role="img" aria-label="testnet ウォレットのうち約340件がステーク資格情報でメインネットと一致し、それらが230万 ADA を保有することを示す図">
   <defs>
     <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
       <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
@@ -950,11 +951,11 @@ footer {
   <text x="110" y="74" text-anchor="middle" class="d-s">使い捨てのものを多く含む</text>
 
   <path d="M204,58 L256,58" class="d-line" marker-end="url(#m2)"/>
-  <text x="230" y="20" text-anchor="middle" class="d-s">ステークキーで照合</text>
+  <text x="230" y="20" text-anchor="middle" class="d-s">ステーク資格情報で照合</text>
 
   <rect x="260" y="30" width="180" height="56" rx="7" class="d-box-accent"/>
-  <text x="350" y="55" text-anchor="middle" class="d-t d-a">約 340 個</text>
-  <text x="350" y="74" text-anchor="middle" class="d-s">メインネットでアクティブ</text>
+  <text x="350" y="55" text-anchor="middle" class="d-t d-a">約 340 件</text>
+  <text x="350" y="74" text-anchor="middle" class="d-s">ステーク資格情報が一致</text>
 
   <path d="M444,58 L496,58" class="d-line" marker-end="url(#m2)"/>
 
@@ -963,21 +964,39 @@ footer {
   <text x="580" y="74" text-anchor="middle" class="d-s">保有額</text>
 
   <rect x="20" y="118" width="640" height="66" rx="7" class="d-box-warn"/>
-  <text x="340" y="144" text-anchor="middle" class="d-t d-w">この数字は「下限」</text>
+  <text x="340" y="144" text-anchor="middle" class="d-t d-w">実際の重なりは、これより大きい可能性</text>
   <text x="340" y="166" text-anchor="middle" class="d-s">ウォレット連携が実装されれば増える。「上がらざるを得ない。これが今後もっとも小さい値になる」</text>
 </svg>
-<p class="figcap">照合は<strong>ステークキーが共通かどうか</strong>で行われます。共有していないウォレットは、たとえ持ち主が同一人物でも機械的にはつながりません。だから実際の重なりはこれより大きい、という論理です。</p>
+<p class="figcap">照合は<strong>ステーク資格情報が共通かどうか</strong>で行われます。共有していないウォレットは、持ち主が同じでも機械的にはつながりません。だから実際の重なりはこれより大きい、という論理です。</p>
 </div>
 
-<div class="note">
-<p><span class="badge">補足</span><strong>なぜ 340 しか照合できないのか。</strong>ステークキーが同じということは、<strong>同じシードから作られたウォレット</strong>だということです。ここから 2 通りの人が生まれます。</p>
-<p><strong>照合される人</strong> — Lace のようなウォレットでは、<strong>同じウォレットのままネットワークを Preprod に切り替えて</strong>使えます。本人の感覚としては「同じウォレットのテストネット版を使っただけ」で、ステークキーが共通だとは意識していない可能性が高い。この人たちは自動的に照合されます。</p>
-<p><strong>照合されない人</strong> — 「テストネットは別のシードで分けておこう」と考えた人。メインネットで活発に使っていても、機械的にはつながりません。</p>
-<p>つまりこの約 340 という数字は、<strong>メインネット利用者との実際の重なりではなく、オンチェーン上で機械的に確認できた最低人数</strong>です。しかも取りこぼしは<strong>ランダムではなく偏っています</strong> — ウォレットを用途ごとに分けて管理する慎重な人ほど、この数に入りません。</p>
+<details class="explain">
+<summary>照合の仕組み — なぜ約 340 件なのか</summary>
+<div class="explain-body">
+
+<p><span class="badge">補足</span>以下はこちらで足した解説です。</p>
+
+<h4>アドレスの中身</h4>
+<p>Cardano のアドレスには、資金を動かすための情報（<strong>支払い資格情報</strong>）と、委任に使う情報（<strong>ステーク資格情報</strong>）が別々に入っています。</p>
+<p>ネットワークが違えば、表示されるアドレスの文字列も変わります。メインネットは <code>stake1…</code>、Preprod は <code>stake_test1…</code> で始まります。<strong>ただし文字列が違っても、中に入っているステーク資格情報が同じであれば一致します。</strong>ネットワークを示す部分を除いて突き合わせれば、両ネットワークの活動を機械的に関連付けられます。</p>
+
+<h4>一致する場合</h4>
+<p>Lace などで、<strong>同じウォレットアカウントのままネットワークを Preprod に切り替えて</strong>使った場合。本人の感覚は「同じウォレットのテストネット版を使っただけ」で、ステーク資格情報が共通になっていることは意識していないことが多いはずです。</p>
+
+<h4>一致しない場合</h4>
+<p>テストネット用に<strong>別のシードフレーズ</strong>でウォレットを作った場合。あるいは<strong>同じシードでも別のアカウント</strong>を使った場合。どちらもステーク資格情報が変わるため、メインネットを普段使っている人でも関連付けられません。</p>
+<p>つまり「シードを分けたかどうか」だけの話ではありません。<strong>ウォレットの作り方や操作の違いでも一致しなくなります。</strong></p>
+
+<h4>だから「人数」ではない</h4>
+<p>一致するのはステーク資格情報どうしであって、人ではありません。1 人が複数のウォレットを持つこともあれば、取引所などを通じて複数人が 1 つに集約されることもあります。</p>
+<p>約 340 は、<strong>オンチェーンで機械的に関連付けられたステーク資格情報の件数</strong>と捉えるのが正確です。実際の利用者の重なりは、これより多い可能性があります。</p>
+
 </div>
+</details>
 
 <div class="note">
-<p><strong>数字の揺れについて。</strong>この紐付け数はコール中で <strong>339 → 359 → 340</strong> と 3 通りに述べられています。スライドを読み上げながらの発言で、3 通りの数字が出ています。このページでは「約 340」と表記しています。</p>
+<p><strong>集計方法について。</strong>コールでは「暗号鍵を使って対応付けた」と説明され、ステークキーへの言及もありました。集計の単位や条件を含む詳しい方法論は、後日共有されることになっています（第 11 節）。</p>
+<p><strong>数字の揺れについて。</strong>この件数はコール中で <strong>339 → 359 → 340</strong> と 3 通りに述べられています。スライドを読み上げながらの発言でした。このページでは「約 340」と表記しています。</p>
 </div>
 
 
@@ -1340,7 +1359,7 @@ footer {
 <h2>Key points</h2>
 <ul>
   <li><strong>About 14% of active Cardano wallets — one in seven</strong> — were active on RealFi's testnet. Roughly 2,600 wallets in the last epoch (23–28 July), against <strong>about 20,000 Cardano wallets active in the same period</strong> — not Cardano’s total wallet count.</li>
-  <li><strong>Around 340 testnet wallets map to mainnet wallets via cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong>. This is <strong>not the real overlap but the minimum confirmable on-chain</strong> — it can only rise once wallet linking ships.</li>
+  <li><strong>Around 340 testnet wallets map to mainnet wallets via cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong>. This is not a headcount or the real overlap but <strong>the number of stake credentials matched mechanically on-chain</strong> — it can only rise once wallet linking ships.</li>
   <li><strong>84% of pools in the SPO programme grew their delegation</strong>, against 17% of comparable pools outside it. The speaker who presented this <strong>declined to claim causation</strong>.</li>
   <li>Every figure is a <strong>best estimate of genuine wallets</strong>, with suspected farming wallets stripped out. The methodology will be shared later.</li>
   <li>Liquidity is designed in <strong>three layers</strong>, and the team stressed that none of it depends on predicting the future.</li>
@@ -1352,7 +1371,7 @@ footer {
 <ol>
   <li><a href="#en-now"><span class="n">01</span>What happened in three weeks</a></li>
   <li><a href="#en-share"><span class="n">02</span>What “one in seven” means</a></li>
-  <li><a href="#en-linked"><span class="n">03</span>The mainnet link is a floor</a></li>
+  <li><a href="#en-linked"><span class="n">03</span>What the mainnet link shows</a></li>
   <li><a href="#en-spo"><span class="n">04</span>The SPO accelerator programme</a></li>
   <li><a href="#en-caveats"><span class="n">05</span>What the numbers do not say</a></li>
   <li><a href="#en-liquidity"><span class="n">06</span>Liquidity in three layers</a></li>
@@ -1435,13 +1454,13 @@ footer {
 </div>
 
 
-<h2 id="en-linked">3. The mainnet link is a floor</h2>
-<p class="deck">Not the real overlap — the minimum that could be confirmed mechanically on-chain.</p>
+<h2 id="en-linked">3. What the mainnet link shows</h2>
+<p class="deck">What matched are stake credentials — not people, and not the real overlap.</p>
 
-<p><strong>Around 340 testnet wallets were mapped to mainnet wallets using cryptographic keys</strong>, and those wallets hold <strong>2.3 million ADA</strong> on mainnet.</p>
+<p><strong>Around 340 matches were made between testnet and mainnet using cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong> on mainnet.</p>
 
 <div class="fig">
-<svg viewBox="0 0 680 210" role="img" aria-label="Diagram showing about 340 testnet wallets mapping to mainnet and holding 2.3 million ADA, with a note that this is a floor">
+<svg viewBox="0 0 680 210" role="img" aria-label="Diagram showing about 340 stake credentials matched between testnet and mainnet, holding 2.3 million ADA">
   <defs>
     <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
       <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
@@ -1453,11 +1472,11 @@ footer {
   <text x="110" y="74" text-anchor="middle" class="d-s">many are throwaway</text>
 
   <path d="M204,58 L256,58" class="d-line" marker-end="url(#e2)"/>
-  <text x="230" y="20" text-anchor="middle" class="d-s">matched on stake key</text>
+  <text x="230" y="20" text-anchor="middle" class="d-s">matched on stake credential</text>
 
   <rect x="260" y="30" width="180" height="56" rx="7" class="d-box-accent"/>
   <text x="350" y="55" text-anchor="middle" class="d-t d-a">about 340</text>
-  <text x="350" y="74" text-anchor="middle" class="d-s">active on mainnet</text>
+  <text x="350" y="74" text-anchor="middle" class="d-s">stake credentials matched</text>
 
   <path d="M444,58 L496,58" class="d-line" marker-end="url(#e2)"/>
 
@@ -1466,21 +1485,39 @@ footer {
   <text x="580" y="74" text-anchor="middle" class="d-s">held on mainnet</text>
 
   <rect x="20" y="118" width="640" height="66" rx="7" class="d-box-warn"/>
-  <text x="340" y="144" text-anchor="middle" class="d-t d-w">This figure is a floor</text>
+  <text x="340" y="144" text-anchor="middle" class="d-t d-w">The real overlap may be larger</text>
   <text x="340" y="166" text-anchor="middle" class="d-s">“It can't help but go up. This is the least we'll ever be able to do.”</text>
 </svg>
-<p class="figcap">The match is made on <strong>a shared stake key</strong>. Wallets that don't share one can't be connected mechanically, even when the same person holds both. The real overlap is therefore larger than this.</p>
+<p class="figcap">The match is made on <strong>a shared stake credential</strong>. Wallets that don't share one can't be connected mechanically, even when the same person holds both. The real overlap is therefore larger than this.</p>
 </div>
 
-<div class="note">
-<p><span class="badge">added</span><strong>Why only 340 could be matched.</strong> A shared stake key means <strong>the wallets came from the same seed</strong>. That splits people into two groups.</p>
-<p><strong>Counted</strong> — wallets like Lace let you <strong>keep the same wallet and switch the network to Preprod</strong>. To the user it just feels like “the testnet version of my wallet”, and they may never think about the stake key being shared. These get matched automatically.</p>
-<p><strong>Not counted</strong> — anyone who decided to generate a separate seed for testnet. They can be heavy mainnet users and still never connect mechanically.</p>
-<p>So the ~340 is <strong>not the real overlap with mainnet users — it is the minimum that could be confirmed on-chain</strong>. And the undercount is <strong>not random</strong>: the more carefully someone separates wallets by purpose, the less likely they are to appear in it.</p>
+<details class="explain">
+<summary>How the matching works — and why it lands at ~340</summary>
+<div class="explain-body">
+
+<p><span class="badge">added</span>Written here to explain the mechanism.</p>
+
+<h4>What is inside an address</h4>
+<p>A Cardano address carries two separate things: the credential used to move funds (the <strong>payment credential</strong>) and the one used for delegation (the <strong>stake credential</strong>).</p>
+<p>Change network and the displayed string changes too — mainnet reads <code>stake1…</code>, Preprod reads <code>stake_test1…</code>. <strong>But two different strings can still carry the same stake credential.</strong> Compare them with the network portion set aside and activity on both networks can be linked mechanically.</p>
+
+<h4>When it matches</h4>
+<p>Wallets like Lace let you <strong>keep the same wallet account and just switch the network to Preprod</strong>. To the user it feels like “the testnet version of my wallet”, and they are unlikely to be thinking about the stake credential being shared.</p>
+
+<h4>When it doesn't</h4>
+<p>If someone generated a <strong>separate seed phrase</strong> for testnet — or used <strong>a different account from the same seed</strong> — the stake credential differs, and a heavy mainnet user still won't be linked.</p>
+<p>So this is not only about whether someone deliberately separated seeds. <strong>Ordinary differences in how a wallet was set up or operated will also break the match.</strong></p>
+
+<h4>Which is why it isn't a headcount</h4>
+<p>What matches are stake credentials, not people. One person may hold several; conversely an exchange or shared wallet can consolidate many people behind one.</p>
+<p>The accurate reading of ~340 is <strong>the number of stake credentials mechanically linked across the two networks</strong>. The real overlap in users may well be higher.</p>
+
 </div>
+</details>
 
 <div class="note">
-<p><strong>On the inconsistency.</strong> The linked-wallet count is given three different ways during the call — <strong>339, then 359, then 340</strong>. The speaker was reading from slides and three figures were spoken. This page uses “around 340”.</p>
+<p><strong>On the method.</strong> The call described it as “mapped using cryptographic keys” and referred to stake keys. The fuller methodology, including what exactly was being counted, is due to be shared later (section 11).</p>
+<p><strong>On the inconsistency.</strong> The count is given three ways during the call — <strong>339, then 359, then 340</strong> — read aloud from slides. This page uses “around 340”.</p>
 </div>
 
 
