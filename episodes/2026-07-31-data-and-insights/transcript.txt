@@ -1,0 +1,561 @@
+Actually had some emojis so I could see if people could hear me.Uh, right.Speaker A and the guys are coming over.
+
+Got a really interesting, uh, office hours for you this week, so looking forward to this one.Ah, someone did emoji.Great.Um, if everybody...Well, you know, it's standard, right?
+
+Um, time and effort's gone into getting this RealF- office hours, uh, organized.I really appreciate the team for, for coming in and spending time with us and, and so we pay them for that.
+
+If we could all just tweet the hell out of this and share it in channels to let other people know, um, that would be great.
+
+So if you're listening and you wanna support this office hours, please share it and invite people to come in and join.
+
+Um, don't wanna put any pressure on you, but a stretch target is at least 50 people listening.That would be, uh, that'll be my goal.All right, let's see if we can get, uh, Speaker A up here, and Speaker C.
+
+Give me a second.I'm gonna try and find add speaker.Invite to speak.There we go.Okay.And where's Speaker A?I think this is Speaker A.Hey, Speaker C.How you doing?Hey.How's it going?It's going great.
+
+It's going great, guys.Um, right.We've got Speaker A up here and we've got Speaker C.Uh, we are waiting for Speaker B, so we'll give him, yeah...Oh, is that Speaker B there?I'm gonna take a wild guess that it is.
+
+Uh, give me two secs.Yeah.Yeah, that's me.Okay.Brilliant.So we, you know, we've had, uh, three Realfi office hours before this.
+
+We've, um, spoken to the marketing team, uh, the product team and engineering.Um, I'll be posting a summary of this afterwards, and today we're gonna do data and insights and, uh...
+
+But first of all, we'll introduce the team.
+
+So Speaker A, do you wanna kick off and then we'll go around the room and it would be great to hear a little bit about who you guys are, your origin story in Realfi and, um, and the function that you fulfill.
+
+We've got some lag maybe.Can you hear me, Speaker A?Hey, Participant B.Oh, Participant B is in chat so if anybody wants to, um, yeah...I like, I like what you're doing, Speaker B.
+
+You've got your camera on, so I'm gonna meet you.I'm gonna meet you where you are.Yeah, we can't hear you, Speaker A.Um, give me two secs.Yeah, Speaker A's mic has gone.Yeah.Host, can you hear me?
+
+Yes, we can hear you.Great.Okay.One second.Maybe you've got push...It might be push to talk.You might have a push to talk function on.Yeah, I'm gonna switch off my headphones.One sec.Okay.Yeah.
+
+How, how's that?Yeah.A little bit echoey, but, uh, it works.Okay, cool.Let's go with that.Um, yeah, so, so my name's Speaker A.I lead the data team here at Realfi.
+
+I've been at Realfi for about two and a half years.
+
+Um, yeah, and my, my origin story, well, I'm based in Cape Town and I, I start-- I worked previously at, um, you know, I worked at a couple of large tech companies so I've never actually worked in the, um, in the Web3 space.
+
+So Realfi is where I've really sunk my teeth into it and it's been really exciting.Yeah.And I work with, uh, Speaker B and, um, Speaker C on a day-to-day basis.That's great.Thank you, Speaker A.
+
+And, uh, Speaker B, uh, tell us a little bit about yourself and your origin story.Um, sure.Yeah.So I'm Speaker B.I'm the data engineer on the team.
+
+Uh, before Realfi, I worked for a FinTech startup that was based in East Africa, and basically putting together a platform to do du- data-driven due diligence on private credit deals, and then I got into Realfi, uh, about nine months ago.
+
+And then I basically...I'm in charge of putting together yet another data platform that is then geared towards stablecoin.That's great.Thank you.And last, but definitely not least, Speaker C.Yeah.
+
+Uh, I'm the analyst.Uh, I predominantly work, uh, with the investment and treasury teams at Realfi.I've been here for about a year and a half now, also based in Cape Town.
+
+Um, prior to this, directly prior to this, I was, uh, working with a lender based in Cape Town for small and medium enterprises doing business-to-business lending.
+
+And before that, um, was actually in portfolio management in the Web3 and the traditional finance spaces.So that's my background.Okay, great.
+
+So we've got some, um, some names and some faces and some, uh, some instances.So Speaker A, talk us through what we're gonna cover on this call.
+
+What are the, what are the kind of high level themes that you wanted to bring?Sure.So what I want to cover is, um, you know, big data insights.
+
+We've been looking at a test net and, and how it's performing.We've been looking at the, um, the SPO program that Host's writing.
+
+So I really just wanna present some insights just to give you all a feeling of, of, yeah, how the first three weeks of Realfi test net have been.
+
+And then Speaker C wants to talk a little bit to kind of his focus area, which has been supporting the investment team and working on kind of the DeFi ecosystem and liquidity.
+
+And yeah, I think, I guess otherwise we're open to questions.It's a great point.
+
+Um, if anyone's listening, uh, there's a chat bubble in the top right I think, so you can ask questions as we're talking.Um, we'll go through them like we did last week.
+
+Um- So I think, Speaker A, you can kick us off.You can share screen if you want, but, uh, we're starting with, uh, network level tractions.Or is that right?
+
+Are you looking at what's happening on-chain or are we starting somewhere else?No, no, that's right.Let me share my screen for you.Yeah.Um, okay.There we go.
+
+I'm, I'm putting you on max so I can get the full experience.Thank you.Okay, can you, can you see my screen?Not yet.It's still loading.Okay.Let me know once it's working.Hmm.
+
+There is a streaming error.Do you want me to present?Is there?Let me see.Yeah.If, if you can, if you can do that then I, I can just ask you when to switch slides.Yes.Give me a sec.
+
+I was trying to find the...Yeah, here we go.Okay.Sorry, um, my f- face is all over.Okay.Can we see this?It's loading.Yeah, we got it.Great.So just, uh, yeah, tell me when to click.Yeah.
+
+So, yeah, as I said, we've been running tests in it for three weeks.We launched on the 6th July.
+
+The SPO accelerated program launched on 22 July, so it's really just looking at how we've been performing across those two, uh, kind of launch, uh, milestones and, yeah, looking on-chain and also at our off-chain data.
+
+So Host, first slide, please.Yeah.So the, the real take-home here, if there's three numbers you, you take...
+
+sorry, four numbers you take away from, from this talk, I think they should be, if we look at the number of wallets that have been active on our testnet, that, that appears to be approximately one in seven of Cardano, of active Cardano wallets across the ecosystem.
+
+So that kind of gives you a scale of the share of Cardano we are kind of interacting with right now.Obviously, these are testnet wallets.
+
+They are not mainnet wallets, so they can't in all cases be linked one-to-one.You know, they're, they're different populations.But in some cases they can be linked one-to-one.
+
+So what I can see is that of our testnet wallets, 339 of those are, can be linked to active Cardano mainnet wallets.And what's worth remembering, yeah, Host, you said it perfectly, it's a flaw.
+
+Because a lot of people will create a testnet wallet that are throwaway.They, they aren't linked, they don't share stake keys or...
+
+sorry, can't remember the exact terminology, but with the, the mainnet wallets.But, um, so, so once we implement wallet linking in the future, this number will probably go up.
+
+But we can say for sure 339 of these wallets are active on mainnet.And these wallets, if you look at the 339 wallets, they hold currently 2.3 million, uh, ADA.
+
+So that just again gives you a scale of the activity we've, we're currently having on testnet.
+
+And then finally, related to the SPO program, 84% of pro- of SPOs in our accelerator program have increased delegation, um, yeah, over, uh, since, since the launch of the program.
+
+So, so those are the high level figures.Host, first slide.And that's compared to pools that aren't part of the program, which is, um...Can you just touch on that?So like 84%- Yeah, sure ...have grown.
+
+Hmm.Yeah, exactly.Okay.Well, what we're trying to do here is get a feeling for what's the impact of the accelerator program on, on delegation.
+
+And the way I've done that is I compared, uh, SPOs in the program to SP- to comparable, sorry, SPOs that aren't in the program.So that's comparable in terms of size.
+
+So comparable SPOs not in the program, 17% of them increased delegation over the two-week period, compared to 84% of SPOs in the program.
+
+So that difference gives you a feeling of, um, gives you a feeling of, uh, kind of the impact of the program.And just two points on that.
+
+Um, that's the SPOs that are on the, the website, the, uh, the SPO profile community website that we've got.Not all the SPOs have registered, uh, or got onboarded.
+
+It's only those that participated in the workshop and that are on the website.
+
+And the second thing, which is kind of an apology to SPOs, but also I think exciting, and we were talking about this, Speaker A, is that this is so far with none of the crews having been formed and none of the campaign stuff getting applied, which, uh, I owe the SPOs, but it's because I've been so busy.
+
+Well, I'll get to that later.But so there's more to come.There's a lot more growth here that I think, uh, we can potentially do.But yeah, sorry to interrupt you, Speaker A.I'll, I'll hit the next slide.
+
+Sure.Maybe just quickly, I see a question from Participant A.Um- Yeah ...I, I'll have to share details on the exact methodology, um, later.It got pretty complex.I was using Claude to help me with it.
+
+So, so I'll, I'll be able to share details at, at a future date.I can't remember them off the top of my head.Okay.
+
+So, so for the first, um, yeah, the first slide, this really just shows you wallets that have been active on our testnet.
+
+And what's worth noting here is, is this is what we believe is, is our current best guess of real wallets.
+
+Because what we are doing is we are, we, we, we're, we, we're removing what we believe to be farming wallets from this.
+
+So as you can see, a strong upward, uh, trend and, you know, you see the big s- this is cumulative, so total people who have used the testnet since launch, so of course it's gonna be upwards.
+
+But what you can see is those- Big increases, especially around 22 July, which is the launch of the accelerator program.So just to show you, testnet active users is growing steadily still.
+
+So that's good.We haven't flattened out.Um, next slide.Yeah, and as I said, I, I kind of looked at over the last epoch, so from 23 to 28 July, how many wallets were active on our testnet.
+
+So that was about 2.6 thousand, and you compare that to the 20,000 active Cardano wallets.So that's essentially equivalent to 14% of active Cardano wallets, um, that were active on our testnet.
+
+Again, these are slightly different populations, there may be some people active on testnet who were never active on mainnet, but it just gives you a sense of scale of activity on our testnet versus Cardano.
+
+And again, this is removing who we believe to be farming, farming wallets.So this is our best estimate of real genuine users.Next one, Host.Cool.
+
+Um, and then as I said, I've been able to connect for 359 testnet wallets to mainnet wallets.Um, and again, this is just a floor.
+
+When we implement wallet linking later, this number will certainly go up.It can't help but go up.This is the, the least we'll ever be able to do.
+
+This is, is mapped using cryptographic keys, and we can see that they hold 2.3 million ADA on mainnet.Host, I don't know if you have any comment on those.
+
+I mean, I've given the numbers, but if you wanna frame that, what, what that means for you.
+
+Uh, you know, I'm, uh, I re- I really think that ultimately, I'm going off as a-- I'm shooting from the hip here, but my experience in Cardano, I think of like the product 2030 vision, and it's fantastic.
+
+Um, no criticism, but as I read it, it, it didn't name the game at the top, if you go and read it, and I think the name is growth.And I wrote an article, sorry for shilling my article.
+
+I wrote an article about numbers come before strategy, and the point was, if the name of the game is growth, how do we define it?And we define it by capital productivity, right?
+
+That's how you could do in blockchains now, one.
+
+And if you wanna drive, um, growth and capital productivity, and in fact, if you want to help people, uh, self-organize in an ecosystem, you need some kind of an access.
+
+And so I think that we need a small set of units of account, and one of them is like TVL, for example, right?
+
+And so when I was talking to Speaker A -- And by the way, I, I should actually shout out, Speaker A, you and your team were fantastic 'cause I came to you with this request for data with no brief, and you've put all of this together, so I, I really do appreciate that, actually.
+
+Um, just to- You're welcome ...just, just so that it's said.Yeah, I really do.
+
+Um, but yeah, ultimately, I, I think that VeoFi can contribute to Cardano and, and its TVL, and, uh, I'll save it till the-- towards the end, but I think there are ways that we can think about how do we make the capital that isn't that active in Cardano more active?
+
+How can we get it involved?Um, so yeah.This is what I'm thinking about here.It's like, yeah.And, and look, Host, I'm not trying to throw you under the bus.Yeah.
+
+I, I think you, you, you, you would, you would've loved me to be able to tell you that we are gonna attract this much TVL.
+
+I, I couldn't, I couldn't when mainnet launches, and I couldn't in, in all honesty, give you that number 'cause, you know, we, we don't know who's gonna join mainnet.
+
+You know, there's too many unknowns.
+
+But what I can tell you is how much TVL is currently held by people who are using testnet, and this is, this is the best I could do for you, but I think it's still indicative.
+
+That's-- But there's interesting stuff.There's like alpha growth thing.Does it pass?Doesn't it pass?That would be interesting.There's Japan, and I think there's, um...
+
+I'm thinking about ways that SPOs can be empowered to present or to delegate as this kind of stuff.So there's definitely pieces on the board.But as you say, um, it's not certain, so you know.
+
+But this is the fun, right?Can-- The fun of VeoFi and getting back involved in, um, building something from the ground up is that kind of nostalgia.So I, I'll stop gushing, but I just really...
+
+I like, I like being back in, in, into the place like building cool shit and, and working with people in the community, you know.So, um, yeah.Okay, next slide.Yeah, next slide.Yeah, I won't.Okay.
+
+Okay, perfect.Uh, I think I love this chart.I think it tells a very clear story.
+
+This is showing, um, new, new delegators arriving at, um, at, at, at the pools every kind of five-- each five-day window.
+
+And what we see here again is that compe- comparison between SPOs in the program versus comparable SPOs not in the program, and you see a very clear divergence around the, the launch of the accelerator program.
+
+So, so yeah, essentially SPOs in the accelerator program got significantly more new delegation than those outside.Uh, and yeah, I mean, there's some other figures on the right that corroborated.
+
+You can look at it from various angles, how many SPOs attracted delegation versus didn't.Eighty-four in the program did, seventeen percent only, seventeen percent that weren't in the program grew.
+
+So yeah, you can chop this up in terms of, uh, net growth, gross, but it all really tells the same stories.
+
+Pools in the accelerator program gain delegators while those not didn't, or to a lesser degree did.
+
+And you know what VeoFi is doing here is, um, giving SPOs an opportunity to differentiate their pools, an opportunity to market their pools.It's, it's not a guarantee, right?
+
+It's like, I think maybe I could have made that clear at the very beginning 'cause I got at least one DM where someone was upset with me.
+
+But it's like, what I'm trying to do here is have a win for VeoFi and a win, a win for the SPOs.So the...So it's a win-win situation.
+
+So it is about performance, it is about like, look, you've got a reason to differentiate.You can offer people a real say in how VeoFi is developed, right?Um, with the stablecoin infrastructure.
+
+But you're gonna need to go out and take that message to delegators, and we're gonna need to help you go out there and, and talk to people, right?
+
+So my key point here is participating is going to be strongly linked to your performance if you're trying to, if you're trying to raise that profile and get more delegation into your pool.
+
+Uh, sorry Speaker A, I'm interrupting you too much.Next slide.Yeah.And, and look, I, I think maybe it's worth...It's a good point.
+
+Look, as you can see, this program is, is SPOs in the program gained delegation, those outside didn't, but I can't necessarily see why.
+
+I can see that something happened on 22 July, whether that's just by virtue of being in the program.
+
+A lot of the problem with this is probably those people in the program went out there, as you said, and, and, and made an effort.
+
+Like, you know, there's probably quite a few causes underlying this, but I think the, the end result is clear.I, I think I said this to you when we first met.Yeah.
+
+It's like, why was Cardano successful?Because there was a whiteboard video, sure, right?
+
+And, and there was some incentives, you know, and there was academic research, there was banking the unbanked, so you're doing something good, and there was a, a business opportunity.
+
+But my belief is it was the stake pool operators that went out and relayed that vision, that went out and explained that to people, which is why I think the stake pool operator really is the core community in Cardano, and, and why I was thinking that it was a great way to bootstrap community with VeoFi, you know?
+
+Um, agreed.But Host, next slide, and then, uh, yeah, I think we close it down.Yeah.So here I'm just showing a leaderboard.
+
+We're looking at, um, over the epoch just after the accelerator program launched, I looked at kind of how much delegation each pool in the program attracted, and in here we can see the top five.
+
+So essentially Pool 1, Pool 2, Pool 3, Pool 4, sorry, I'm probably butchering the names, and Pool 5.Those were our top five.And yeah, congratulations.Uh, well done.Uh, 840k ADA from Pool 1.
+
+Uh, I think there's a, there's...One thing is we don't want to just bias the leaderboard to the pools that are already big to start with.
+
+So I think it's also interesting on the table on the right to look not just at absolute amount of new ADA, but also percentage of stake at the start of the epoch.
+
+But still, yeah, I think they're still storing and just, uh, well done to the, to the leaders there.I don't know if anyone, I don't know if you are in the call here.Yes, I see you there.Yeah.Nice.
+
+Yeah.Um, yeah.Next slide.But I think that's, yeah, that's it just about.That's really just repeating those four numbers.Mm.
+
+Since you 1 in 7 wallets on Cardano, active wallets on Cardano, are active on the testnet.340 real wallets on our testnet can be linked to mainnet.
+
+2.3 million ADA and 84% of SPO programs grew delegation compared to, um, non-SPO, non, non-accelerator programs.So yeah, I think that just shows the good impact we're having in the market shares.
+
+Thank you, Speaker A.Yeah, I think- Well- I think it's great.It's, you know, it's not, um...I think it's an amazing starting point.Um, we wanted something where SPOs could attract delegation.
+
+This shows that it does work, and it's just gonna be a case of how well I can support, and the SPOs involved can self-organize to use this, um, base as a kind of je- um, what's it called?
+
+A, a jumping point, a starting point, you know, to, to go out there and do it.So I...This is really good.Um, any questions before we move on?In chat?Mm.See the audio is not good.Apologies for that.
+
+Yeah.I, it was a little bit scrappy, but I, I think I've got the...
+
+I've got, I can write a summary afterwards, and I didn't wanna stop you mid flow to, to start troubleshooting, um, the, the, the mic and the audio.Um, okay, great.
+
+So we've talked about, um, the on-chain kind of metrics, which I think anyone can verify, I think, right?Uh, I'll follow up with you afterwards about the methodology that you mentioned.
+
+Um, and we've talked about the SPO accelerator program, and we've got, uh, Speaker C on the call.
+
+And Speaker C, will you can tell us a little bit about kind of, um, some insights into DeFi and, uh, liquidity and, and walk us through some of your ideas?Yeah.
+
+Host, I mean, not insights, um, rather more a, a general chat, I suppose.Mm.I think, um, in, in some of these previous office hours I've seen questions around, you know, the portfolio liquidity.
+
+And so I thought it was maybe worthwhile to just give a generic overview of how we think about liquidity specifically from the three angles that we look at it from.
+
+Um, I think any of the very specific questions would more likely be, uh, for the investment team when they do the office hours themselves.
+
+But yeah, I think just, just to, to start off, like, when we look at liquidity itself, it, it's one word that encompasses three things, and that's the aggregate portfolio that we have, the underlying components of that portfolio, and then the secondary market liquidity, uh, which is DeFi indexes.
+
+Um, and so I think, you know, I may be keeping it high level, but- The important thing that we really want to get across is that the team is constantly thinking about calibrating the asset liquidity to the TVL, uh, because we treat time to cash as a property really of every position instead of an afterthought, because the underlyings have different horizons, right?
+
+And what's important to note there really is that none of that calibrational thinking depends on predicting anything.
+
+So one could really build out a version of this where things rest on being right about the future, you know, trying to forecast things, trying to predict where spreads would go, where the sentiment would hold, whether rates would go up or down.
+
+But the way that we view these things is that we work off what's known, and we try and flex parameters around that.
+
+So things like settlement windows, term lengths, redemption terms, so that we're not really reliant on our view of some future states which may not occur.I don't know if that make, makes sense.
+
+That's, that's at the aggregate portfolio.The, the second view really is the underlying or the underlying instruments or assets.
+
+Um, I can talk about it a little bit more, but I'd prefer if the investment team focuses on that.I can answer any questions rather, so I won't focus on that.
+
+Um, but the third maybe more important thing is the on-chain liquidity in the DEXs, and you know, how USDR is actually, um, by swaps.
+
+So really here we've done a lot of thinking with our partners on this.So what types of pools would, uh, hold USDR?The venues that this is available on, how they get managed as things change.
+
+And we've done a lot of modeling around optimizing the specific sizing of these pools against the specific types of AMMs that would hold these, these, uh, pairs rather should I say.
+
+Um, and the thinking really is just to make sure that enough depth sits there so that people that actually trade this aren't being spread thin.
+
+Uh, and making sure that the price that they're expecting to get is the price that they get, um, or at least attempt to do that.
+
+And, uh, the way that we achieve this really is not only in the pool depth itself or attempt to achieve this, uh, but, uh, by running our own stability fund, by having our own chain stability fund, and the peg stability module which runs underneath all of that.
+
+And if people have read the doc store is the peg stability module itself is just a framework that runs continuously, uh, which is designed to maintain the USDR at peg.
+
+And I think I'm gonna stop there to keep it generic.Can you zoom out high level for me?Because, um, I'd love to be able to, uh, understand like the flywheel.
+
+Could you walk me through a flywheel, um, in simple terms so that like someone like me could understand it?You're talking about flywheel?Yeah.What do you mean?What do you mean exactly?
+
+Um, what are the steps, uh, that build growth?So, um, the, the idea is that, uh, you need a cycle that builds on itself, you know?So each step can't help but add more value to the next.I'm- Yeah.
+
+I think- ...I'm doing this off the cuff, so if you don't have it, it's fine.No, no worry.I mean, of course.Um, look, liquidity is, is what really underpins this whole thing, right?Um- Mm-hmm ...
+
+and composability of the, of that liquidity as well.
+
+So I don't know how much I'm allowed to say or what, what I can and can't say, but I think really what it comes down to is we, we maybe would like to understand, uh, how people are going to be using USD on sUSD on the secondary market.
+
+Um, yeah, I'm gonna, I'm gonna stop there.I, I, I can try, Speaker C, if you don't mind.Yeah.Yeah, yeah.Um, I mean, I think when we were planning this project, look, the...
+
+We've only launched test net now, so we've only really started collecting data recently.
+
+Prior to this, what we were spending our time on was looking at, at, at other stable coins, what drives their growth.
+
+Uh, you know, a- and I think the learning we came back to again and again is that what's important is, is DeFi integrations.
+
+Um, and specifically what came up strongly for a lot of yield bearing stable coins was, uh, the ability to do looping, to get leverage, and this all hinges on, on secondary market depth, you know?
+
+So, so I think our key here is really just to make sure, as Speaker C said, that we have high liquidity and that we can support kind of these DeFi use cases, multiple int- integrations so that kind of...
+
+That kicks off the flywheel really.'Cause, 'cause leverage and looping drives growth, drives TVL, and to do that you need depth.Speaker C, I don't know if you agree with that.Yeah, 100%.
+
+No, you worded it better than I would have.I think, I think that's really interesting because I think two things.Um, first of all, you're really smart, right?
+
+So you're able to understand all of this, and I think that like visuals in which people can explain their strategies would be really interesting.
+
+Because I know like if I wasn't part of the RealFi community and I was just evaluating like what are opportunities that are out in the community, and I have done in the past, not necessarily being able to track everything that's going on.
+
+Something like a flywheel or a visual representation where someone can walk through what they're doing or what value or utility is being created is definitely something I'd like to see coming out of the community.
+
+Um, and it can cross borders, it can cross languages, you know?
+
+Um, sorry Speaker C, I was, uh, I was just thinking there, but like, have you seen great content like that, um, where people would demonstrate or model strategies just generally in DeFi?
+
+Are there sources or examples of that, or am I just riffing off Um, no, I don't think so.But, um, I don't, I don't think we've, we've looked at this extensively as yet.
+
+I'm only thinking selfishly, like the kind of community content and advocacy that supports DFL.But I, I'll take it offline.
+
+I'll, I'll, I'll wait until that thought's kind of formed more fully in my head, you know?Um, hey, Participant H.Yeah, we are...
+
+I'm recording for the purposes of writing summaries rather than, uh, writing full transcripts because there's an element of, um, improv, right, with all these calls.Uh, it's not all, uh, planned.
+
+Um, Participant C from Japan says, "This question comes up quite often.
+
+I think there were two wallets involved, the mainnet delegation wallet and the wallet used to complete the testnet tasks, and if they need to be linked.
+
+I believe the team will provide an official form." Is there-- have we got any clarity on that about the claiming points and the connection between pre-prod and main wallets?
+
+Um, I don't want to speak for the product team or the eng team.I, I know they're working on this.There will be a method of doing it.
+
+Um, I, I think the engineering team just actually demoed it or today, actually.So, so there definitely will be a way to do it.Um, I just can't speak to the specifics.But yes, you'll, you'll link them.
+
+Okay, great.Um, do we have any other questions in chat?Okay, cool.
+
+Um, so Speaker C, uh, walk me through, by the way, um, some of the-- Can you walk me through some of the asset portfolio just so we can revisit some of those things?
+
+I mean, I guess what I'm interested in or I was gonna underline, but I'm not putting words in your mouth, was the real world asset aspect of it.
+
+And when I first started talking to the founder, that RealFi would be resilient to crypto cycles.Could we touch on that briefly?Um, yeah, I think we could touch on some things.Hmm.Yeah.
+
+What would you like to that?I think if, if resilience to crypto cycles was one attribute or, or interesting differentiator about RealFi, and that it's not synthetic, right?
+
+Um, how would somebody explain that to like a normie?How would I go and tell my wife?Yeah, I mean, look, the, the portfolio itself is just made up of a different mix of assets.
+
+Um, and you know, those, again, you can just refer to the Docusource if you'd like to read more around it.
+
+But, you know, we've got a different mix of some, uh, tokenized market mon- money market funds.
+
+Uh, we've got floating rate corporate bonds, potentially, uh, investment grade CLO ETFs, and direct private credit deals or institutional private credit funds.
+
+And the way that this is composed, again, is dependent on the investment team, and I think they would be more suited to speak to it.
+
+But from everything that I've just noted, you'll notice that none of it relies on any crypto-native, uh, allocation itself.So yeah, the, the, the exposure is not crypto-centric.Hmm.
+
+And Speaker B, I'm putting you on the spot, but, uh, I haven't got around to you.Did you have any, um...You've been listening the whole time.
+
+Uh, did you have anything to add or something we may have missed that we should have covered?I...No, from, from my side, I think that's it.
+
+I mean, like, you know, Speaker C summarized the, like the investment strategy pretty well at a high level.
+
+Um, you know, we can delve into the specifics on how they want to rebalance against, like between different asset classes depending on the scenario, but then that might be getting a little bit too technical.
+
+Um, otherwise, I'm happy to talk about data engineering stuff, but we might lose half of the audience probably, so.
+
+Um, well, I mean, I, I don't-- I mean, maybe what is interesting to the audience, Speaker B, is, is kind of the transparency aspect.
+
+I would say you're quite close to that, the transparency portal, how we share what, what we're investing in.Yeah, tell us about the transparency portal.Hmm.Um, no, that's a good point.
+
+The-- I think at a high level, the transparency, that there is something with RealFi that's quite important for the success and growth of Stablecoin is the fact that we want to be transparent, and we want to inspire confidence in all of our users and as you as your and you as your holders.
+
+And so there are different ways to do that.One is to be very transparent about the platform and its smart contracts, of course, and all that will be on chain, so that can be audited.
+
+The Web 3.0 can be audited.
+
+The other thing that we're striving to do is, uh, to make everything that happens outside of the chain also transparent and also available to our users and to, to po- to potential investors.
+
+Uh, so what that means, and this is where the data, my data engineering bit comes in, is that we have data sources and source of information from a di- very diverse set that sort of need to converge in one beautiful database or many databases or schema so that we can actually, uh, you know, harmonize all that information and present it to the outside audience, so to speak.
+
+And then like the, the output of this for, for a normal user would be that on a daily basis or in real time, depending on, you know, which, uh, which thing we look at, you will see on the app fresh information about the portfolio, about the activity of the platform, about where things stand, et cetera, et cetera.
+
+So all these things are sort of linked and wired together so that at least the basic information is always up to date and available to anyone who wants to see it.That's great, thank you.
+
+I got a, I got a question from, um, uh, Participant D.Is it possible to say how many people total are working on RealFi and, uh, when did work start?Was it two and a, two and a half years ago?
+
+I mean, I know the founder for like...He was here before I joined Cardano, so he's been around five and a half years thinking about solving these kind of problems.
+
+Um, but do you know when RealFi, um, officially started, Speaker A?Uh, I mean, I couldn't tell you.I, I didn't join at the start.
+
+I, I, I think, I think as you said, like, the start is a, is a, is a, it's not a, not a definite point.I mean, the founder's been thinking about it, as you said, for years.
+
+But when I joined two and a half years ago, that's when we started hiring kind of the, the engineering team, the data team, the investment team.
+
+So I would say two and a half years ago, I think that was kind of when it moved maybe more from a strategic phase to kind of really getting serious about building.
+
+And then I would say, oh, maybe about a year ago is when we really started pushing harder on, on, on the kind of smart contracts and the Web3 side of it.
+
+Before we were just getting kind of familiar with the investing process and, and well, not...
+
+I mean, obviously our, our investment team has been familiar for it longer, but I'm saying getting the data integrations going, getting our processes and operations going.
+
+I, I think the founder would probably be best ba- uh, placed to speak about the full history of RealFi, but yeah.Hmm.I, I have a question.I can see people are typing.
+
+This is more in the back of my mind, Speaker A, but when we get to main net I just wanna be, like, registry maxing and getting us on as many kinda analytical platforms, um, and spaces.
+
+Because just looking back at Cardano, I feel like sometimes, um, we may have suffered a little bit because we weren't visible enough.
+
+It was nobody's job to make, uh, us vili- visible to all of the analysts, you know?And, and showing up in, like, DefiLlama, Dune, and, and all of these kind of portals.
+
+Is, is that something on your mind?Do you think we'd be, um, attacking that as aggressively as I'd like?Yeah.Yeah.It, it, it's on, it's on Speaker B's to-do list.Uh, Dune, DefiLlama.
+
+I don't know if you've got any, any others on your list, uh, Speaker B?Um, no.That's, uh, for now that covers it.
+
+Are we open if anyone has suggestions, um, about where we might want to have integrations in terms of data and, and analysis?
+
+Just blow up my DMs and I will happily share that with the team, 'cause I think that, you know, visibility there is important.Um- Yeah.I mean, maybe let me add to that.
+
+The, the, the challenge isn't in pushing the data to these places, the challenge is in, in having the data and, and, and transforming it.
+
+And, and once we've got that, I think sharing integration endpoints with our various analytic platforms, you know, I don't think that's really the hard part, so, so yeah, open to any suggestions there.
+
+Uh, Participant E is asking about Pagan.Um, would be really nice, interesting combination.I think we touched on it before.
+
+I'm sure the teams are talking, but do you have anything specific to say about Pagan, or should we move on to the next question?Not from my side.
+
+Uh, Participant F is asking, are there plans to link to the community page from the main f- the main RealFi site or app?I think I mentioned this in chat.
+
+Um, the main website at the minute is, uh, targeted at institutional players, and obviously I've been pitching the community hub and beach jump in the community during test net.
+
+So I've got a website built up to demonstrate, um, and it is demonstrating that, as Speaker A showed at the beginning of the call, the success that we're having.
+
+So it is long-term relationships that we're trying to build based on performance and participation.
+
+Um, the website is, you know, yeah, I would love to get it all, uh, linked up, but I'm trying to tackle the problems or the opportunities in the order of how much can we get done now, uh, and what's achievable, versus, like, w- what is worth the fight?
+
+Do I wanna go and...You know.
+
+So the answer is, in the future, but not at this minute, because the best way to move forward was to get a community hub built rather than trying to get into discussions around legal and audiences and this kind of stuff.
+
+Um, Participant I.Okay, cool.No, I think, I think that's a lot of questions.I'm really...Oh, sorry, go on.I got some feedback.I think maybe when I'm talking it's, uh, blowing your mic up.
+
+Um, Speaker A, this has been really, really interesting.Um, thank you guys for coming on the call.Um, if there are any more...Hang on, I've got, uh, someone's asking to come up.
+
+Yeah, let's try, let's see if it's speaker.If they're still there.Hello, Participant G.The first, the first person to come to the stage and ask a question on Discord, so that's the honor.
+
+Have you got a question?Yeah, Midnight City is really interesting.It's something I'm exploring at the moment.Uh, I've got to schedule some more calls with the guy.I have some ideas.
+
+Um, I think NFT community's really interesting, too.
+
+Um, this is part of the, the calls that I'm having, is, um, looking at who we can work with and, uh, what might plug into the community, but I'm looking to through the lens of how is it gonna support SPAs, and how if we have the SPAs now, which we do, in Discord, and we've run the workshop and we're gonna form crews so they can self-organize, then we wanna plug community into that, right?
+
+So in my mind, it's about how do we get the community involved with SPAs, where SPAs are in some senses, uh, leaders or pioneers of- The workshop outcomes that we put together.
+
+If you're an SPO and you weren't in that Miro workshop, then definitely go and have a look at it.
+
+It's in the SPO, uh, announcements, and that's essentially how I'm gonna drive or plan, um, supporting SPOs through the assets and the ideas and the crews that they've suggested.
+
+So it's really what you guys are saying you think that you need and want and, and what you're willing to do that I'm gonna build out, um, the campaign over the next sort of 30, 35 days.
+
+Uh, there's a good Midnight Ambassador SPO segment there.Mm-hmm.Okay, great.Uh, right.Well, I think Participant G, uh, we can't hear you, so, um, I'm sorry we didn't get to your question.
+
+Uh, Speaker A and Speaker C, I really appreciate you coming on the call.I'm gonna share a summary afterwards and, uh, with your permission I'll, I'll link to the, uh, the slides.Um, so thank you very much.
+
+Was there anything else you wanted to, to talk about?Or is there anything the community could do for you?
+
+Anything you're particularly interested in hearing about or contributions you'd like to receive?Yeah.I, I mean, I just want to say firstly, thank you very much for the opportunity.
+
+It's been, it's been cool to talk with everyone.Um, yeah, I, I think just keep giving from my side, keep giving, keep giving feedback on the Discord channel.
+
+You know, like we can see the data on, you know, what people are doing on chain, whether they're dropping off on the DApp, et cetera.
+
+But, but it's, it's, you know, seeing, seeing it written in text is, is, is another story altogether.So just, just keep, keep, keep using it, keep giving feedback.
+
+That, that's, that's really great for me.I mean, for us as a whole.So yeah, that's it.And we're gonna still work on some more data stuff, right?Like, uh, I'll take it off lines.
+
+I don't want to ma- make any promises on your behalf, I won't do that, but, but, uh, this is just the beginning is, is my main point, right?Yeah.This is the starting point, so yeah.Okay, great.
+
+I'm curious to know what other people are curious to know.So if, if my report is interesting to you, if there's any other numbers you wish you had, um, yeah, I, I can look into getting them.Yeah.
+
+It's a great shout out.You know what, what numbers should we be looking at?
+
+In my mind, like when we talked Speaker A, it was, um, SPOs, validators, delegators, the relationship with them on chain and, and the growth, maybe like the wallets and then like activity of the wallets, like what's happening there.
+
+But if people have got opinions, and Participant J, shout out to him 'cause he originally, um, brought up the, the wallets being something like 16% of, uh, and as you said, one in seven, um, in Cardano being associated and active with Verifi.
+
+And I was like, ah, that is such a great, um, headline.And then that, and then you and me were talking and then it came out of this, you know?So yeah, any numbers or- Yeah ...
+
+or yeah, we c- we can bring to Speaker A, that would be great.All right, everyone, thank you very much.I'll post a summary shortly.
+
+And, uh, Speaker A, Speaker C, Speaker B, thank you for coming to the Verifi office hours.Um, and we'll see you again soon.Hello.Can you hear me now?Yes.How's it going?Okay.Thank you so much.Uh, I'm good.
+
+Thank you for the help.Just in the nick of time.Okay.I had to switch to my laptop 'cause I don't know why I ca- you guys can't hear me on my phone.
+
+So, uh, my question is, uh, the vision, 'cause what I understand by Verifi is this like beginning vision of banking the unbanked is what Verifi is here to address.
+
+And to what I am interacting with-- Sorry, am I correct or sh- or should I go on?Yeah.Yeah, please.Uh, I mean, I, I think, I think you're correct.I would say.Okay.Yeah.Okay.
+
+And what I'm interacting with, uh, on the test net part is the aspect of providing the liquidity that can flow into these banking the unbanked.
+
+So what I'm saying there is more like what I see, understand in the Web3 aspect where Verifi have to, let's say, over-collateralize liquidity to borrow a loan.
+
+So 'cause banking the unbanked is like giving access to these informal markets.And Speaker B said something regarding, uh, private capital.
+
+Let's say like 'cause we know that the, this banking the unbanked address the informal market of, uh, this market, not the formal market.Formal market can get access to bank and loans and all that.
+
+While the informal market don't have access to, which is what Verifi is here to address.So if Verifi is addressing that aspect, how is Verifi planning to tackle those things?
+
+Because bringing people in that has no credit to validate or like line of credits you can vouch or, okay, if I want to borrow a loan, I don't have a loan to over-collateralize anything.
+
+'Cause here in Africa, I would say that if I want $1,000 of loan, uh, in DeFi, I have to provide 2,000 to get 1,000.But me coming to get a loan is because I don't have that capital.
+
+But you guys can verify 'cause I'm coming from the informal market, which is there is no credit line that is being attached to my identity.Is there any, uh, framework around that?
+
+And is that where people coming to Verifi to build is going to address?Um, so, so I know there are other teams looking at it from the kind of the on-chain identity angle.
+
+Um, but I think the way I look at it more is in terms of the, the, the, it's the asset allocation, it's the deals we're doing.If we're investing in, for example, um, a fintech in, in Africa then...
+
+So, so we aren't directly connecting with the unbanked.It's more that we can provide a f- credit to a fintech in Africa, and they then give loans out to the unbanked.
+
+So it's really just about making sure capital's flowing to institutions who can then lend to the unbanked.
+
+Speaker C, I don't know, you've been looking at the, the, the kind of the, the private credit deals.I don't know if you, if you've got anything to say on, on that front.No.Okay.Now, now I understand.
+
+Instead of, like, building that wheel, you just need to integrate to, like, fintech product.They already do that in, in the demographic that they are operating at.Correct.
+
+Actually, I mean, that's not to say that an on-chain kind of credit isn't part of it.You know, it's just right ...Like I said, there are other people looking at that.
+
+But right now, uh, yeah, I, I'd say giving money to microfinance institutes in Africa is really kind of the, um, the most direct way of doing that, or easiest right now.Mm.Okay.Thank you for that.
+
+Sure.Any, anyone else wanna be brave enough to put your hand up and come ask some more questions, or are we good?Well, that was fun.Thank you so much for coming up to the stage.
+
+Um, I love it when we get a bit of an audio conversation going.Um, I have to-- makes my job easier, right?Okay.Well, thank you everyone for coming.
+
+Um, we'll wrap it up, Speaker A, unless we see any hands coming up in the next couple of minutes.Uh, but yeah, next time, let's see who we've got next time, shall we?
+
+Um, I've got to schedule, uh, the next office hours, but I do have a rough outline.So we are on data.So after this we've got partnerships.He's actually in the, in the audience.
+
+Um, he's gonna talk about partnerships.And then after this we'll, we'll have leadership.And then we'll have the investments team.
+
+So we've kind of got a rotation of going, like, product, marketing, engineering, data, partnerships, leadership, and investments.So lots more to come.
+
+And, uh, yeah, I'm really glad everyone's here, and looking forward to, to building this out with you guys.Thank you, Speaker A.Thank you, Speaker C.And thank you, Speaker B.Thank you.Goodbye.Thanks.Thanks.
+
+Cheers.

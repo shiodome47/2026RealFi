@@ -13,6 +13,13 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | TxPipeke, TX Pipe | TxPipe |
 | Dexes | DEX |
 | XSpaces | X Spaces |
+| VeoFi, Verifi, RealF- | RealFi |
+| Docusource, doc store | docs（公式ドキュメント） |
+| SPAs | SPO |
+| Midnight City | Midnight |
+| DFL | RealFi（文脈から。DeFi との混同の可能性もあり） |
+| Pagan | 不明。プロジェクト名と思われるが特定できない |
+| beach jump | 不明。「聞き取れなかった」ものとして扱う |
 
 **人名・ハンドル名の誤変換**も毎回発生するが、それらは修正するのではなく**匿名化して置き換える**。同一人物が複数の綴りで出てくることがあるので、まとめて同じラベルに寄せる。手順は `shared/speakers.md` を参照。
 
@@ -35,6 +42,19 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | **banking the unbanked** | RealFi のミッション。銀行口座を持てない層に金融アクセスを届ける | 訳さず注釈をつける |
 | **anti-farming** | エアドロップ狙いの不正な複数ウォレット運用を検知・遮断する仕組み | アンチファーミング |
 | **depeg** | ステーブルコインが 1 ドルの固定を外れること | デペグ |
+| **TVL** | Total Value Locked。プロトコルに預けられている資産の総額 | 訳さない |
+| **peg stability module（PSM）** | USDR を 1 ドルに保つために常時動く仕組み | ペッグ安定化モジュール |
+| **stability fund** | ペッグ維持のために RealFi 自身が運用する資金 | 安定化ファンド |
+| **AMM** | 自動マーケットメイカー。DEX の値付けの仕組み | 訳さない |
+| **time to cash** | ある資産を現金化するまでにかかる時間。RealFi では全ポジションの「性質」として扱う | 現金化までの時間 |
+| **epoch** | Cardano の 5 日周期 | エポック |
+| **SPO accelerator program** | ステークプールオペレーター向けの支援プログラム。2026-07-22 開始 | SPO アクセラレータープログラム |
+| **farming wallet** | エアドロップ狙いで大量作成されたウォレット。集計から除外される | ファーミングウォレット |
+| **capital productivity** | 資本がどれだけ活発に使われているか | 資本の生産性 |
+| **money market fund** | 短期の安全資産で運用するファンド。トークン化されたものを保有 | マネー・マーケット・ファンド |
+| **CLO ETF** | ローン担保証券に投資する ETF。投資適格のものを検討 | 訳さない |
+| **DefiLlama / Dune** | DeFi の統計・分析プラットフォーム。掲載が to-do リストにある | 訳さない |
+| **registry maxing** | 各種の分析プラットフォームに漏れなく掲載されること（進行役の造語的表現） | 訳さない・注釈をつける |
 
 ## 組織・プロダクト名
 

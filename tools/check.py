@@ -16,9 +16,15 @@ DOCS = ROOT / "docs"
 
 # 匿名化の漏れ検出。新しい回で新しい名前が出たらここに足す。
 NAMES = [
+    # 2026-07-24 エンジニアリング回
     "Nathan", "Jan", "Peter", "Ben", "Clay", "Lewis", "Damien", "Scoot",
     "Chris", "Frog", "Fogg", "Sean", "Tom", "NEMO", "OYSTR", "TDSP",
     "NVStake", "Strait", "Straight", "K-Man", "Dotare", "Chick",
+    # 2026-07-31 データ回
+    "Liam", "Vlad", "Olivier", "Oliver", "Olivia", "Shiadome", "Shiodome",
+    "Yoda", "Panda", "Msku", "Junaid", "Sonny", "Larry", "John",
+    "OConnor", "Connor", "Oyster", "Fluid", "KTOP", "Namu", "Strap",
+    "Hedge", "Meta",
 ]
 
 VOID = {"meta", "link", "br", "hr", "img", "input", "source"}

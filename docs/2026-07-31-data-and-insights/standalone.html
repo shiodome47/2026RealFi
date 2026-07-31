@@ -1,0 +1,3053 @@
+<title>RealFi Office Hours — Data &amp; Insights / データ回</title>
+<style>
+/* RealFi Office Hours — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+.meta span + span::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.1rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.5rem; }
+
+strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours</p>
+<h1><span class="l-ja">データ回 — testnet 3 週間の数字と、その読み方</span><span class="l-en">Data &amp; Insights — three weeks of testnet, and how to read the numbers</span></h1>
+<p class="meta">
+  <span>2026-07-31</span><span>Discord</span><span><span class="l-ja">データ・分析チーム</span><span class="l-en">the data and analysis team</span></span>
+</p>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>testnet 開始から 3 週間。Cardano のアクティブウォレットのおよそ 7 分の 1 が RealFi に触れており、<br>
+  SPO 支援プログラムに参加したプールは、参加していないプールより明確に多く委任を集めた。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>Cardano のアクティブウォレットの約 14%（7 分の 1）</strong>が RealFi の testnet でアクティブだった。直近エポック（7/23〜28）で約 2,600 ウォレット、Cardano 全体は約 20,000。</li>
+  <li><strong>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。</strong>それらは <strong>230 万 ADA</strong> を保有。ただしこれは<strong>下限</strong>で、ウォレット連携の実装後は必ず増える。</li>
+  <li><strong>SPO プログラム参加プールの 84% が委任を増やした。</strong>参加していない同規模プールは 17%。ただし<strong>因果関係は発表者自身が留保している</strong>。</li>
+  <li>数字はすべて<strong>ファーミングウォレットを除外した「実在ウォレットの最良推定」</strong>。算出方法の詳細は後日共有される。</li>
+  <li>流動性は<strong>3 つの層</strong>で設計されており、「将来を予測することに依存しない」運用が強調された。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#now"><span class="n">01</span>3 週間で何が起きたか</a></li>
+  <li><a href="#share"><span class="n">02</span>「7 分の 1」の中身</a></li>
+  <li><a href="#linked"><span class="n">03</span>メインネットとの紐付けは「下限」</a></li>
+  <li><a href="#spo"><span class="n">04</span>SPO プログラムの効果</a></li>
+  <li><a href="#caveats"><span class="n">05</span>この数字が言っていないこと</a></li>
+  <li><a href="#liquidity"><span class="n">06</span>流動性の 3 つの視点</a></li>
+  <li><a href="#flywheel"><span class="n">07</span>フライホイール</a></li>
+  <li><a href="#transparency"><span class="n">08</span>透明性ポータル</a></li>
+  <li><a href="#unbanked"><span class="n">09</span>銀行口座を持たない層にどう届くのか</a></li>
+  <li><a href="#carryover"><span class="n">10</span>前回からの持ち越し</a></li>
+  <li><a href="#qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#closing"><span class="n">12</span>この回の締めくくり</a></li>
+</ol>
+</div>
+
+
+<h2 id="now">1. 3 週間で何が起きたか</h2>
+<p class="deck">testnet が 7/6 に、SPO 支援プログラムが 7/22 に開始。その 2 つの節目をまたいだ数字。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 190" role="img" aria-label="7月6日の testnet ローンチ、7月22日の SPO プログラム開始、7月23日から28日の計測期間を示す時系列図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <line x1="30" y1="96" x2="640" y2="96" class="d-line" marker-end="url(#m1)"/>
+
+  <circle cx="70" cy="96" r="6" class="d-box-accent"/>
+  <text x="70" y="70" text-anchor="middle" class="d-t">7/6</text>
+  <text x="70" y="128" text-anchor="middle" class="d-s">testnet ローンチ</text>
+
+  <circle cx="370" cy="96" r="6" class="d-box-accent"/>
+  <text x="370" y="70" text-anchor="middle" class="d-t">7/22</text>
+  <text x="370" y="128" text-anchor="middle" class="d-s">SPO アクセラレーター開始</text>
+  <text x="370" y="146" text-anchor="middle" class="d-s">（ここで伸びが加速）</text>
+
+  <rect x="500" y="82" width="120" height="28" rx="6" class="d-box"/>
+  <text x="560" y="101" text-anchor="middle" class="d-s">7/23–28</text>
+  <text x="560" y="140" text-anchor="middle" class="d-s">直近エポックの計測</text>
+
+  <text x="220" y="34" text-anchor="middle" class="d-s">← 3 週間 →</text>
+</svg>
+<p class="figcap">オンチェーンとオフチェーンの両方のデータを見ている。<strong>crews の組成もキャンペーン施策も、まだ何も適用されていない段階</strong>の数字であることが明示された。</p>
+</div>
+
+<p>持ち帰ってほしい数字として 4 つが挙げられました。</p>
+
+<ul>
+  <li>Cardano のアクティブウォレットの<strong>約 7 分の 1</strong>が RealFi の testnet でアクティブ</li>
+  <li>testnet ウォレットのうち<strong>約 340 個</strong>がメインネットのウォレットと紐付け可能</li>
+  <li>それらのウォレットが保有する <strong>230 万 ADA</strong></li>
+  <li>SPO プログラム参加プールの<strong>84%</strong>が委任を増やした</li>
+</ul>
+
+
+<h2 id="share">2. 「7 分の 1」の中身</h2>
+<p class="deck">直近エポックで約 2,600 ウォレット。Cardano 全体の約 20,000 に対して約 14%。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 200" role="img" aria-label="Cardano のアクティブウォレット約2万に対し、RealFi testnet でアクティブなウォレットが約2600、およそ14%であることを示す図">
+  <rect x="30" y="40" width="620" height="52" rx="7" class="d-box"/>
+  <rect x="30" y="40" width="87" height="52" rx="7" class="d-box-accent"/>
+  <text x="73" y="72" text-anchor="middle" class="d-t d-a">14%</text>
+  <text x="390" y="72" text-anchor="middle" class="d-s">アクティブな Cardano ウォレット 約 20,000</text>
+
+  <text x="30" y="126" class="d-t">約 2,600</text>
+  <text x="30" y="148" class="d-s">直近エポック（7/23–28）に RealFi testnet でアクティブだったウォレット</text>
+  <text x="30" y="176" class="d-s">※ ファーミングと判断したウォレットを除外した「実在ウォレットの最良推定」</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>2,600 ÷ 20,000 は約 13% です。コール中では「14%」「7 分の 1」と表現されており、概数として述べられたものと考えられます。</p>
+</div>
+
+<p>この数字については、発表者自身が注意点を添えています。<strong>testnet とメインネットは母集団が違う</strong>ため、厳密な比較ではありません。「testnet ではアクティブでもメインネットでは一度もアクティブでなかった人もいるかもしれない」とのことです。あくまで規模感をつかむための数字、という位置づけでした。</p>
+
+
+<h2 id="linked">3. メインネットとの紐付けは「下限」</h2>
+<p class="deck">暗号鍵で確実に対応付けられたのが約 340 個。この数字は今後増えることしかない。</p>
+
+<p>testnet ウォレットとメインネットウォレットのうち、<strong>暗号鍵を使って対応付けられたものが約 340 個</strong>。それらがメインネット上で <strong>230 万 ADA</strong> を保有しています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="testnet ウォレットのうち約340個がメインネットと紐付き、それらが230万 ADA を保有することを示す図。この数字は下限であることを注記">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="180" height="56" rx="7" class="d-box"/>
+  <text x="110" y="55" text-anchor="middle" class="d-t">testnet ウォレット</text>
+  <text x="110" y="74" text-anchor="middle" class="d-s">使い捨てのものを多く含む</text>
+
+  <path d="M204,58 L256,58" class="d-line" marker-end="url(#m2)"/>
+  <text x="230" y="42" text-anchor="middle" class="d-s">暗号鍵で対応付け</text>
+
+  <rect x="260" y="30" width="180" height="56" rx="7" class="d-box-accent"/>
+  <text x="350" y="55" text-anchor="middle" class="d-t d-a">約 340 個</text>
+  <text x="350" y="74" text-anchor="middle" class="d-s">メインネットでアクティブ</text>
+
+  <path d="M444,58 L496,58" class="d-line" marker-end="url(#m2)"/>
+
+  <rect x="500" y="30" width="160" height="56" rx="7" class="d-box-accent"/>
+  <text x="580" y="55" text-anchor="middle" class="d-t d-a">230 万 ADA</text>
+  <text x="580" y="74" text-anchor="middle" class="d-s">保有額</text>
+
+  <rect x="20" y="118" width="640" height="66" rx="7" class="d-box-warn"/>
+  <text x="340" y="144" text-anchor="middle" class="d-t d-w">この数字は「下限」</text>
+  <text x="340" y="166" text-anchor="middle" class="d-s">ウォレット連携が実装されれば増える。「上がらざるを得ない。これが今後もっとも小さい値になる」</text>
+</svg>
+<p class="figcap">使い捨ての testnet ウォレットを作る人が多く、それらはステークキーを共有していないため紐付けられません。だから実際の重なりはこれより大きい、という論理です。</p>
+</div>
+
+<div class="note">
+<p><strong>数字の揺れについて。</strong>この紐付け数はコール中で <strong>339 → 359 → 340</strong> と 3 通りに述べられています。スライドを見ながらの発言であり、どれが正確な値かは文字起こしからは確定できません。このページでは「約 340」と表記しています。</p>
+</div>
+
+
+<h2 id="spo">4. SPO アクセラレータープログラムの効果</h2>
+<p class="deck">参加プールの 84% が委任を増やし、非参加の同規模プールは 17%。</p>
+
+<p>比較の方法は、<strong>プログラム参加の SPO と、規模が同等で参加していない SPO</strong> を突き合わせるというものでした。2 週間の期間で見ています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 200" role="img" aria-label="SPO アクセラレータープログラム参加プールの84パーセントが委任を増やしたのに対し、非参加の同規模プールは17パーセントだったことを示す棒グラフ">
+  <text x="20" y="42" class="d-s">プログラム参加</text>
+  <rect x="20" y="52" width="620" height="34" rx="6" class="d-box"/>
+  <rect x="20" y="52" width="521" height="34" rx="6" class="d-box-accent"/>
+  <text x="556" y="75" class="d-t d-a">84%</text>
+
+  <text x="20" y="122" class="d-s">非参加（規模が同等のプール）</text>
+  <rect x="20" y="132" width="620" height="34" rx="6" class="d-box"/>
+  <rect x="20" y="132" width="105" height="34" rx="6" class="d-box"/>
+  <text x="140" y="155" class="d-t">17%</text>
+
+  <text x="20" y="190" class="d-s">2 週間で委任が増えたプールの割合</text>
+</svg>
+<p class="figcap">リーダーボード上位のプールでは、<strong>1 位が 84 万 ADA</strong> の新規委任を集めています。ただし「もともと大きいプールに偏らないよう、絶対額だけでなくエポック開始時点のステークに対する割合でも見るべき」という注意も添えられました。</p>
+</div>
+
+<p>集計の対象について 2 つの限定があります。<strong>コミュニティサイトに掲載されている SPO のみ</strong>が対象で、ワークショップに参加して登録した人たちに限られます。そして<strong>crews の組成もキャンペーン施策もまだ適用されていない</strong>段階の数字です。「ここからさらに伸ばせる余地が相当ある」と述べられました。</p>
+
+<p>プログラムの位置づけについては、「SPO に自分のプールを<strong>差別化する機会・マーケティングする機会</strong>を提供するもので、保証ではない」と明確にされました。「怒っている DM を少なくとも 1 通もらった」という言及もあり、期待値のずれがあったことがうかがえます。</p>
+
+
+<h2 id="caveats">5. この数字が言っていないこと</h2>
+<p class="deck">相関は明確だが因果は未確定。発表者自身がそう留保している。</p>
+
+<p>この回で印象的だったのは、数字を出した側が自分でブレーキをかけている点です。</p>
+
+<ul>
+  <li><strong>因果関係は分からない。</strong>「7 月 22 日に何かが起きたことは分かるが、なぜかは必ずしも分からない。プログラムにいること自体によるものなのか、参加した人たちが実際に外に出て努力したからなのか。背後にはおそらくいくつもの要因がある」</li>
+  <li><strong>メインネットでの TVL は予測していない。</strong>「『これだけの TVL を集められます』と言ってほしかったんだろうと思うが、正直なところその数字は出せない。誰がメインネットに来るか分からない」。示されたのは<strong>今 testnet を使っている人が現在保有している額</strong>であって、将来の予測ではありません</li>
+  <li><strong>算出方法はまだ公開されていない。</strong>「かなり複雑になった」ため後日共有されます。<strong>算出には Claude を使ったと述べられています</strong></li>
+</ul>
+
+
+<h2 id="liquidity">6. 流動性の 3 つの視点</h2>
+<p class="deck">「流動性」という 1 語に 3 つの層がある。予測に依存しない設計が強調された。</p>
+
+<div class="term">
+<p class="term-name">① ポートフォリオ全体 <small>aggregate portfolio</small></p>
+<p>資産の流動性を TVL に対して常に調整し続ける。<strong>現金化までの時間（time to cash）を、後付けではなくあらゆるポジションの性質として扱う</strong>。個々の資産で時間軸が違うため。</p>
+</div>
+
+<div class="term">
+<p class="term-name">② 個々の資産 <small>underlying instruments</small></p>
+<p>この層については「投資チームが自分たちの回で話すほうが適している」として深追いされませんでした。</p>
+</div>
+
+<div class="term">
+<p class="term-name">③ 二次流通の流動性 <small>secondary market / DEX</small></p>
+<p>どういう種類のプールが USDR を保有するか、どの venue で利用可能にするか、AMM の種類に応じたプールサイズの最適化。<strong>実際に取引する人がスプレッドで削られないだけの深さ</strong>を確保することが狙い。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="流動性を、ポートフォリオ全体、個々の資産、二次流通の3層で捉え、その下に安定化ファンドとペッグ安定化モジュールが支えとしてあることを示す図">
+  <rect x="20" y="20" width="640" height="42" rx="7" class="d-box"/>
+  <text x="340" y="40" text-anchor="middle" class="d-t">① ポートフォリオ全体</text>
+  <text x="340" y="56" text-anchor="middle" class="d-s">現金化までの時間を TVL に合わせて調整し続ける</text>
+
+  <rect x="20" y="70" width="640" height="42" rx="7" class="d-box"/>
+  <text x="340" y="90" text-anchor="middle" class="d-t">② 個々の資産</text>
+  <text x="340" y="106" text-anchor="middle" class="d-s">投資チームの担当領域として今回は深入りせず</text>
+
+  <rect x="20" y="120" width="640" height="42" rx="7" class="d-box-accent"/>
+  <text x="340" y="140" text-anchor="middle" class="d-t d-a">③ 二次流通（DEX）</text>
+  <text x="340" y="156" text-anchor="middle" class="d-s">プールの深さ・venue・AMM に応じたサイズ最適化</text>
+
+  <rect x="20" y="172" width="640" height="36" rx="7" class="d-box-warn"/>
+  <text x="340" y="195" text-anchor="middle" class="d-t d-w">安定化ファンド ＋ peg stability module（常時稼働）</text>
+</svg>
+<p class="figcap">peg stability module は「USDR をペッグに保つよう設計された、常時動き続けるフレームワーク」と説明されました。</p>
+</div>
+
+<p>もっとも特徴的だったのは、<strong>「この調整の考え方は、何かを予測することに依存していない」</strong>という説明です。スプレッドの動きや金利の方向を当てにいく設計も作れるが、そうはせず、<strong>既知のものを起点に、決済期間・期間の長さ・償還条件といったパラメータを動かす</strong>という方針だと述べられました。</p>
+
+
+<h2 id="flywheel">7. フライホイール</h2>
+<p class="deck">深さがあるからルーピングができ、ルーピングが TVL を押し上げ、それがさらに深さを呼ぶ。</p>
+
+<p>「成長のサイクルを簡単な言葉で説明してほしい」という求めに対して出てきた説明です。他のステーブルコインの成長要因を調べた結果、<strong>繰り返し戻ってきた学びは「DeFi 統合が重要」だった</strong>とのことでした。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="二次流通の深さ、ルーピングとレバレッジ、TVL の成長、DeFi 統合の拡大が循環するフライホイールの図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="30" y="20" width="250" height="52" rx="7" class="d-box-accent"/>
+  <text x="155" y="43" text-anchor="middle" class="d-t d-a">二次流通の深さ</text>
+  <text x="155" y="61" text-anchor="middle" class="d-s">DEX プールの流動性</text>
+
+  <path d="M284,46 L396,46" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="400" y="20" width="250" height="52" rx="7" class="d-box"/>
+  <text x="525" y="43" text-anchor="middle" class="d-t">ルーピング／レバレッジ</text>
+  <text x="525" y="61" text-anchor="middle" class="d-s">利回り付きステーブルコインの主用途</text>
+
+  <path d="M525,76 L525,124" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="400" y="128" width="250" height="52" rx="7" class="d-box"/>
+  <text x="525" y="151" text-anchor="middle" class="d-t">TVL の成長</text>
+  <text x="525" y="169" text-anchor="middle" class="d-s">預けられる資産が増える</text>
+
+  <path d="M396,154 L284,154" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="30" y="128" width="250" height="52" rx="7" class="d-box"/>
+  <text x="155" y="151" text-anchor="middle" class="d-t">DeFi 統合の拡大</text>
+  <text x="155" y="169" text-anchor="middle" class="d-s">連携先が増える</text>
+
+  <path d="M155,124 L155,76" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <text x="340" y="212" text-anchor="middle" class="d-s">「レバレッジとルーピングが成長を駆動し、TVL を駆動する。そのためには深さが必要」</text>
+</svg>
+<p class="figcap">進行役からは「戦略を説明できるビジュアルがコミュニティから出てくるといい。それは国境も言語も越えられる」という要望も出ました。</p>
+</div>
+
+
+<h2 id="transparency">8. 透明性ポータル</h2>
+<p class="deck">オンチェーンは監査可能。問題はチェーンの外側をどう見せるか。</p>
+
+<p>ステーブルコインの成功と成長にとって透明性が重要だ、という前提が語られました。手段は 2 つに分かれます。</p>
+
+<ul>
+  <li><strong>オンチェーン</strong> — プラットフォームとスマートコントラクトはすべてオンチェーンなので監査できる</li>
+  <li><strong>オフチェーン</strong> — ここが難所。<strong>非常に多様な情報源からのデータを 1 つ（または複数）のデータベースに集約し、整合させて外部に提示する</strong>必要がある</li>
+</ul>
+
+<p>一般ユーザーにとっての出力は、<strong>アプリ上で日次あるいはリアルタイムに更新される情報</strong>です。ポートフォリオの状況、プラットフォームの活動状況、現状がどうなっているか。「基本的な情報は常に最新で、見たい人が誰でも見られる状態」を目指すとのことでした。</p>
+
+<p>関連して、<strong>DefiLlama や Dune といった分析プラットフォームへの掲載</strong>がデータエンジニアリングの to-do リストに入っていることも共有されました。「難しいのはこうした場所にデータを押し出すことではなく、<strong>データを持つこと、そしてそれを変換すること</strong>」という指摘は、この節の要点と重なります。</p>
+
+
+<h2 id="unbanked">9. 銀行口座を持たない層にどう届くのか</h2>
+<p class="deck">RealFi は個人に直接貸さない。現地のフィンテックに与信を出し、そこが個人に貸す。</p>
+
+<p>この回でもっとも踏み込んだやり取りは、音声でステージに上がった参加者からの質問でした。</p>
+
+<p>質問の骨子はこうです。<strong>DeFi では過剰担保が必要だが、借りに来る人はその資本がないから借りに来る。</strong>「アフリカでは 1,000 ドル借りたければ 2,000 ドル差し入れる必要がある。インフォーマルな市場から来る人には、身元に紐付いた与信枠が存在しない。そこに枠組みはあるのか」</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 190" role="img" aria-label="RealFi が現地のフィンテックやマイクロファイナンス機関に与信を提供し、そこが銀行口座を持たない個人に融資するという資本の流れの図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="46" width="180" height="60" rx="7" class="d-box-accent"/>
+  <text x="110" y="72" text-anchor="middle" class="d-t d-a">RealFi</text>
+  <text x="110" y="92" text-anchor="middle" class="d-s">資産配分・案件の選定</text>
+
+  <path d="M204,76 L246,76" class="d-line" marker-end="url(#m4)"/>
+  <text x="225" y="60" text-anchor="middle" class="d-s">与信</text>
+
+  <rect x="250" y="46" width="180" height="60" rx="7" class="d-box"/>
+  <text x="340" y="72" text-anchor="middle" class="d-t">現地のフィンテック</text>
+  <text x="340" y="92" text-anchor="middle" class="d-s">マイクロファイナンス機関</text>
+
+  <path d="M434,76 L476,76" class="d-line" marker-end="url(#m4)"/>
+  <text x="455" y="60" text-anchor="middle" class="d-s">融資</text>
+
+  <rect x="480" y="46" width="180" height="60" rx="7" class="d-box"/>
+  <text x="570" y="72" text-anchor="middle" class="d-t">銀行口座を持たない層</text>
+  <text x="570" y="92" text-anchor="middle" class="d-s">インフォーマルな市場</text>
+
+  <text x="340" y="150" text-anchor="middle" class="d-s">RealFi は個人と直接つながるのではなく、貸せる機関に資本を流す</text>
+  <text x="340" y="170" text-anchor="middle" class="d-s">オンチェーンの信用は「他のチームが見ている」領域</text>
+</svg>
+<p class="figcap">質問者は「車輪を作り直すのではなく、すでにその層で事業をしているフィンテックに統合すればいい、ということですね」と自分で言い直し、回答者が「その通り」と応じました。</p>
+</div>
+
+<p>ただし「オンチェーンの信用がその一部にならない、という意味ではない」とも付け加えられています。<strong>今の時点でもっとも直接的・現実的な方法として、現地機関への資金供給が選ばれている</strong>という説明でした。</p>
+
+
+<h2 id="carryover">10. 前回からの持ち越し</h2>
+<p class="deck">エンジニアリング回で保留になった 5 件のうち、進んだのは 2 件。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">前回の保留 → 今回で確認</span>testnet ウォレットとメインネットウォレットの紐付けは必要か。公式の手段は用意されるのか。</p>
+<p class="qa-a" data-by="今回の回答">エンジニアリング回では「リンクできるウェブサイトが用意される」とされていました。今回、<strong>「エンジニアリングチームが今日デモしたところ。方法は必ず用意される」</strong>と確認されました。ただし具体的な手順はまだ説明できない段階です。<br><strong>この質問は 2 回続けて出ています。</strong>公式案内が出るまで繰り返し聞かれる可能性が高そうです。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">前回の保留 → 今回で一部前進</span>提携している fintech の社数と、private credit の中身は。</p>
+<p class="qa-a" data-by="今回の回答"><strong>資産クラスの内訳が示されました</strong> — トークン化されたマネー・マーケット・ファンド、変動利付社債、投資適格の CLO ETF（可能性）、直接のプライベートクレジット案件または機関投資家向けファンド。「いずれも暗号資産ネイティブな配分に依存していない」。<br>さらに、上の第 9 節の通り<strong>与信の流れ方が明確になりました</strong>。ただし<strong>社数と国の分散は未回答</strong>のままです。</p>
+</div>
+
+<p>残る 3 件 — <strong>ガバナンスの枠組み、KYC / AML、マーケティング目的の高 APY</strong> — は今回触れられませんでした。<strong>メインネットのローンチ日</strong>も同様に未公表のままです。</p>
+
+
+<h2 id="qa">11. Q&amp;A</h2>
+<p class="deck">チャットと音声から出た質問。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者D</span>RealFi では合計何人が働いているのか。いつ始まったのか。</p>
+<p class="qa-a" data-by="回答">人数は回答されませんでした。時期については「<strong>2 年半前</strong>にエンジニアリング・データ・投資の各チームの採用を始めた。そこが戦略のフェーズから本気で作るフェーズに移った時期」「<strong>1 年ほど前</strong>からスマートコントラクトと Web3 側を本格化」。創業者はそれ以前から数年考えていたとのことです。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者F</span>RealFi の本体サイトやアプリからコミュニティページにリンクする予定はあるか。</p>
+<p class="qa-a" data-by="回答">本体サイトは今のところ機関投資家向け。<strong>将来的にはやりたいが今ではない</strong>。「法務や対象読者についての議論に入るより、まずコミュニティハブを作るほうが前に進める最善の方法だった」。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者A</span>数値の算出方法について。</p>
+<p class="qa-a" data-by="後日共有">「かなり複雑になったので後日詳細を共有する。今すぐには思い出せない」。進行役も「方法論については後でフォローアップする」と述べました。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者E</span>あるプロジェクトとの連携について。</p>
+<p class="qa-a" data-by="回答なし">「私からは特にありません」とのみ。<span class="badge">補足</span>質問中のプロジェクト名は音声認識で崩れており、何を指しているか特定できませんでした。</p>
+</div>
+
+
+<h2 id="closing">12. この回の締めくくり</h2>
+<p class="deck">求めているのはフィードバックと、「どんな数字を見るべきか」という意見。</p>
+
+<ul>
+  <li><strong>Discord でのフィードバックを続けてほしい。</strong>「オンチェーンで人が何をしているか、DApp のどこで離脱しているかというデータは見える。でも文章で書かれたものを読むのはまったく別の話」</li>
+  <li><strong>どんな数字が欲しいか教えてほしい。</strong>「今回のレポートが面白いと感じてもらえたなら、他にどんな数字が欲しいか教えてほしい。取りに行けるか検討する」</li>
+  <li><strong>分析プラットフォームの提案も歓迎。</strong>DefiLlama と Dune 以外に載せるべき先があれば</li>
+</ul>
+
+<p>今回の数値そのものについても、もともとはコミュニティの参加者が「Cardano のウォレットの 16% ほどが RealFi に関連してアクティブだ」と指摘したのが発端だった、と明かされました。<strong>コミュニティ側の指摘が、そのまま公式の分析テーマになった</strong>という流れです。</p>
+
+<p>今後の Office Hours は<strong>パートナーシップ → リーダーシップ → 投資チーム</strong>の順で予定されています。</p>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>元の文字起こしには話者ラベルもタイムスタンプもありません。また、このコールはチャタムハウスルールで運用されているため、<strong>氏名・役職・経歴・所属といった発言者を特定できる情報は記載していません</strong>。全文ページで使っている <code>登壇者A / B / C</code>、<code>参加者A〜K</code> は、会話の流れを追うための仮のラベルです。リーダーボード上位のステークプール名も <code>上位プール 1〜5</code> に置き換えています。</p>
+<p><strong>スライドについて。</strong>コール中は画面共有が行われていましたが、資料は公開されておらず、内容の大半は読み上げられていません。<strong>このページの数値は、すべて音声で述べられたものだけ</strong>です。グラフの目盛りなど読み上げられていない情報は補完していません。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">IN ONE LINE</span>
+  <p>Three weeks into testnet: roughly one in seven active Cardano wallets has touched RealFi,<br>
+  and pools in the SPO support programme clearly out-gained pools outside it.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>About 14% of active Cardano wallets — one in seven</strong> — were active on RealFi's testnet. Roughly 2,600 wallets in the last epoch (23–28 July), against about 20,000 across Cardano.</li>
+  <li><strong>Around 340 testnet wallets map to mainnet wallets via cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong>. This is explicitly <strong>a floor</strong> — it can only rise once wallet linking ships.</li>
+  <li><strong>84% of pools in the SPO programme grew their delegation</strong>, against 17% of comparable pools outside it. The speaker who presented this <strong>declined to claim causation</strong>.</li>
+  <li>Every figure is a <strong>best estimate of genuine wallets</strong>, with suspected farming wallets stripped out. The methodology will be shared later.</li>
+  <li>Liquidity is designed in <strong>three layers</strong>, and the team stressed that none of it depends on predicting the future.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">WHAT THE CALL COVERED</p>
+<ol>
+  <li><a href="#en-now"><span class="n">01</span>What happened in three weeks</a></li>
+  <li><a href="#en-share"><span class="n">02</span>What “one in seven” means</a></li>
+  <li><a href="#en-linked"><span class="n">03</span>The mainnet link is a floor</a></li>
+  <li><a href="#en-spo"><span class="n">04</span>The SPO accelerator programme</a></li>
+  <li><a href="#en-caveats"><span class="n">05</span>What the numbers do not say</a></li>
+  <li><a href="#en-liquidity"><span class="n">06</span>Liquidity in three layers</a></li>
+  <li><a href="#en-flywheel"><span class="n">07</span>The flywheel</a></li>
+  <li><a href="#en-transparency"><span class="n">08</span>The transparency portal</a></li>
+  <li><a href="#en-unbanked"><span class="n">09</span>How this reaches the unbanked</a></li>
+  <li><a href="#en-carryover"><span class="n">10</span>Carried over from last time</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#en-closing"><span class="n">12</span>Closing</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-now">1. What happened in three weeks</h2>
+<p class="deck">Testnet launched 6 July, the SPO programme 22 July. These figures span both milestones.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 190" role="img" aria-label="Timeline showing the testnet launch on 6 July, the SPO programme launch on 22 July, and the measurement window of 23 to 28 July">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <line x1="30" y1="96" x2="640" y2="96" class="d-line" marker-end="url(#e1)"/>
+
+  <circle cx="70" cy="96" r="6" class="d-box-accent"/>
+  <text x="70" y="70" text-anchor="middle" class="d-t">6 Jul</text>
+  <text x="70" y="128" text-anchor="middle" class="d-s">testnet launch</text>
+
+  <circle cx="370" cy="96" r="6" class="d-box-accent"/>
+  <text x="370" y="70" text-anchor="middle" class="d-t">22 Jul</text>
+  <text x="370" y="128" text-anchor="middle" class="d-s">SPO accelerator launch</text>
+  <text x="370" y="146" text-anchor="middle" class="d-s">(growth steepens here)</text>
+
+  <rect x="500" y="82" width="120" height="28" rx="6" class="d-box"/>
+  <text x="560" y="101" text-anchor="middle" class="d-s">23–28 Jul</text>
+  <text x="560" y="140" text-anchor="middle" class="d-s">last epoch measured</text>
+
+  <text x="220" y="34" text-anchor="middle" class="d-s">← three weeks →</text>
+</svg>
+<p class="figcap">Both on-chain and off-chain data were used. It was stated explicitly that <strong>no crews have been formed and no campaign work has been applied yet</strong> — these are pre-campaign numbers.</p>
+</div>
+
+<p>Four numbers were offered as the take-home.</p>
+
+<ul>
+  <li><strong>Roughly one in seven</strong> active Cardano wallets was active on RealFi's testnet</li>
+  <li><strong>Around 340</strong> testnet wallets can be linked to mainnet wallets</li>
+  <li>Those wallets hold <strong>2.3 million ADA</strong></li>
+  <li><strong>84%</strong> of pools in the SPO programme increased their delegation</li>
+</ul>
+
+
+<h2 id="en-share">2. What “one in seven” means</h2>
+<p class="deck">About 2,600 wallets in the last epoch, against roughly 20,000 across Cardano.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 200" role="img" aria-label="Bar showing about 2,600 wallets active on RealFi testnet as roughly 14 percent of about 20,000 active Cardano wallets">
+  <rect x="30" y="40" width="620" height="52" rx="7" class="d-box"/>
+  <rect x="30" y="40" width="87" height="52" rx="7" class="d-box-accent"/>
+  <text x="73" y="72" text-anchor="middle" class="d-t d-a">14%</text>
+  <text x="390" y="72" text-anchor="middle" class="d-s">about 20,000 active Cardano wallets</text>
+
+  <text x="30" y="126" class="d-t">about 2,600</text>
+  <text x="30" y="148" class="d-s">wallets active on RealFi testnet in the last epoch (23–28 July)</text>
+  <text x="30" y="176" class="d-s">Suspected farming wallets removed — a best estimate of genuine wallets</text>
+</svg>
+<p class="figcap"><span class="badge">added</span>2,600 ÷ 20,000 is closer to 13%. The call used “14%” and “one in seven”, which appear to be spoken approximations.</p>
+</div>
+
+<p>The speaker attached his own caveat: <strong>testnet and mainnet are different populations</strong>, so this is not a strict comparison. “There may be some people active on testnet who were never active on mainnet.” It was offered as a sense of scale, not a precise ratio.</p>
+
+
+<h2 id="en-linked">3. The mainnet link is a floor</h2>
+<p class="deck">Around 340 wallets map with certainty via cryptographic keys. That number can only go up.</p>
+
+<p><strong>Around 340 testnet wallets were mapped to mainnet wallets using cryptographic keys</strong>, and those wallets hold <strong>2.3 million ADA</strong> on mainnet.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="Diagram showing about 340 testnet wallets mapping to mainnet and holding 2.3 million ADA, with a note that this is a floor">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="180" height="56" rx="7" class="d-box"/>
+  <text x="110" y="55" text-anchor="middle" class="d-t">testnet wallets</text>
+  <text x="110" y="74" text-anchor="middle" class="d-s">many are throwaway</text>
+
+  <path d="M204,58 L256,58" class="d-line" marker-end="url(#e2)"/>
+  <text x="230" y="42" text-anchor="middle" class="d-s">key mapping</text>
+
+  <rect x="260" y="30" width="180" height="56" rx="7" class="d-box-accent"/>
+  <text x="350" y="55" text-anchor="middle" class="d-t d-a">about 340</text>
+  <text x="350" y="74" text-anchor="middle" class="d-s">active on mainnet</text>
+
+  <path d="M444,58 L496,58" class="d-line" marker-end="url(#e2)"/>
+
+  <rect x="500" y="30" width="160" height="56" rx="7" class="d-box-accent"/>
+  <text x="580" y="55" text-anchor="middle" class="d-t d-a">2.3M ADA</text>
+  <text x="580" y="74" text-anchor="middle" class="d-s">held on mainnet</text>
+
+  <rect x="20" y="118" width="640" height="66" rx="7" class="d-box-warn"/>
+  <text x="340" y="144" text-anchor="middle" class="d-t d-w">This figure is a floor</text>
+  <text x="340" y="166" text-anchor="middle" class="d-s">“It can't help but go up. This is the least we'll ever be able to do.”</text>
+</svg>
+<p class="figcap">Many people create throwaway testnet wallets that share no stake keys with a mainnet wallet, so they cannot be matched. The real overlap is therefore larger than this.</p>
+</div>
+
+<div class="note">
+<p><strong>On the inconsistency.</strong> The linked-wallet count is given three different ways during the call — <strong>339, then 359, then 340</strong>. The speaker was reading from slides, and the transcript does not settle which is correct. This page uses “around 340”.</p>
+</div>
+
+
+<h2 id="en-spo">4. The SPO accelerator programme</h2>
+<p class="deck">84% of pools in the programme grew delegation, against 17% of comparable pools outside it.</p>
+
+<p>The comparison was built by matching <strong>SPOs in the programme against SPOs of comparable size that were not</strong>, over a two-week window.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 200" role="img" aria-label="Bar chart comparing 84 percent of pools in the SPO accelerator programme growing delegation against 17 percent of comparable pools outside it">
+  <text x="20" y="42" class="d-s">In the programme</text>
+  <rect x="20" y="52" width="620" height="34" rx="6" class="d-box"/>
+  <rect x="20" y="52" width="521" height="34" rx="6" class="d-box-accent"/>
+  <text x="556" y="75" class="d-t d-a">84%</text>
+
+  <text x="20" y="122" class="d-s">Not in the programme (comparable size)</text>
+  <rect x="20" y="132" width="620" height="34" rx="6" class="d-box"/>
+  <rect x="20" y="132" width="105" height="34" rx="6" class="d-box"/>
+  <text x="140" y="155" class="d-t">17%</text>
+
+  <text x="20" y="190" class="d-s">Share of pools whose delegation grew over two weeks</text>
+</svg>
+<p class="figcap">On the leaderboard, <strong>the top pool attracted 840k ADA</strong> in new delegation. A caveat was added: to avoid biasing towards pools that were already large, it is worth reading the table by percentage of stake at the start of the epoch, not only by absolute new ADA.</p>
+</div>
+
+<p>Two limits on the sample. Only <strong>SPOs listed on the community website</strong> are included — those who attended the workshop and registered. And these are numbers from before <strong>any crews were formed or any campaign work applied</strong>. “There's a lot more growth here that we can potentially do.”</p>
+
+<p>On what the programme is: it gives SPOs <strong>an opportunity to differentiate and market their pools — not a guarantee</strong>. “I got at least one DM where someone was upset with me”, which suggests expectations had drifted.</p>
+
+
+<h2 id="en-caveats">5. What the numbers do not say</h2>
+<p class="deck">The correlation is clear; causation is not. The person presenting said so himself.</p>
+
+<p>What stood out on this call is that the person presenting the numbers applied the brakes himself.</p>
+
+<ul>
+  <li><strong>Causation is unclear.</strong> “I can see that something happened on 22 July, but I can't necessarily see why — whether that's just by virtue of being in the programme, or because those people went out there and made an effort. There's probably quite a few causes underlying this”</li>
+  <li><strong>No TVL forecast for mainnet.</strong> “You would've loved me to be able to tell you that we are gonna attract this much TVL. I couldn't, in all honesty, give you that number — we don't know who's gonna join mainnet.” What was shown is <strong>TVL currently held by people already using testnet</strong>, not a projection</li>
+  <li><strong>The methodology is not published yet.</strong> “It got pretty complex” and will be shared later. <strong>Claude was used to help produce it</strong></li>
+</ul>
+
+
+<h2 id="en-liquidity">6. Liquidity in three layers</h2>
+<p class="deck">One word covering three things — and a design that deliberately avoids forecasting.</p>
+
+<div class="term">
+<p class="term-name">1. The aggregate portfolio <small>calibration against TVL</small></p>
+<p>Asset liquidity is constantly calibrated against TVL. <strong>Time to cash is treated as a property of every position rather than an afterthought</strong>, because the underlyings have different horizons.</p>
+</div>
+
+<div class="term">
+<p class="term-name">2. The underlying instruments <small>deferred</small></p>
+<p>Left for the investment team's own session — “I'd prefer if the investment team focuses on that.”</p>
+</div>
+
+<div class="term">
+<p class="term-name">3. Secondary market liquidity <small>on-chain, in the DEXs</small></p>
+<p>Which pool types hold USDR, which venues it trades on, and pool sizing modelled against the specific AMMs involved. The aim is <strong>enough depth that people trading it aren't spread thin</strong>.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="Diagram of liquidity as three layers — aggregate portfolio, underlying instruments, secondary market — supported underneath by a stability fund and peg stability module">
+  <rect x="20" y="20" width="640" height="42" rx="7" class="d-box"/>
+  <text x="340" y="40" text-anchor="middle" class="d-t">1. The aggregate portfolio</text>
+  <text x="340" y="56" text-anchor="middle" class="d-s">time to cash, calibrated continuously against TVL</text>
+
+  <rect x="20" y="70" width="640" height="42" rx="7" class="d-box"/>
+  <text x="340" y="90" text-anchor="middle" class="d-t">2. The underlying instruments</text>
+  <text x="340" y="106" text-anchor="middle" class="d-s">left to the investment team's own session</text>
+
+  <rect x="20" y="120" width="640" height="42" rx="7" class="d-box-accent"/>
+  <text x="340" y="140" text-anchor="middle" class="d-t d-a">3. Secondary market (DEXs)</text>
+  <text x="340" y="156" text-anchor="middle" class="d-s">pool depth, venues, sizing modelled against AMM type</text>
+
+  <rect x="20" y="172" width="640" height="36" rx="7" class="d-box-warn"/>
+  <text x="340" y="195" text-anchor="middle" class="d-t d-w">Stability fund + peg stability module (running continuously)</text>
+</svg>
+<p class="figcap">The peg stability module was described as “a framework that runs continuously, designed to maintain the USDR at peg”.</p>
+</div>
+
+<p>The most distinctive claim was that <strong>“none of that calibrational thinking depends on predicting anything”</strong>. A version could be built that rests on being right about spreads, sentiment or rates — instead, the approach is to <strong>work off what is known and flex parameters around it</strong>: settlement windows, term lengths, redemption terms.</p>
+
+
+<h2 id="en-flywheel">7. The flywheel</h2>
+<p class="deck">Depth enables looping, looping drives TVL, and that draws more depth.</p>
+
+<p>This came out of a request to explain the growth cycle in plain terms. From studying what drives growth for other stablecoins, <strong>the learning they came back to again and again was that DeFi integrations matter most</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="Flywheel diagram cycling through secondary market depth, looping and leverage, TVL growth, and wider DeFi integration">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="30" y="20" width="250" height="52" rx="7" class="d-box-accent"/>
+  <text x="155" y="43" text-anchor="middle" class="d-t d-a">Secondary market depth</text>
+  <text x="155" y="61" text-anchor="middle" class="d-s">liquidity in the DEX pools</text>
+
+  <path d="M284,46 L396,46" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="400" y="20" width="250" height="52" rx="7" class="d-box"/>
+  <text x="525" y="43" text-anchor="middle" class="d-t">Looping / leverage</text>
+  <text x="525" y="61" text-anchor="middle" class="d-s">the main use for yield-bearing stables</text>
+
+  <path d="M525,76 L525,124" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="400" y="128" width="250" height="52" rx="7" class="d-box"/>
+  <text x="525" y="151" text-anchor="middle" class="d-t">TVL growth</text>
+  <text x="525" y="169" text-anchor="middle" class="d-s">more capital deposited</text>
+
+  <path d="M396,154 L284,154" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="30" y="128" width="250" height="52" rx="7" class="d-box"/>
+  <text x="155" y="151" text-anchor="middle" class="d-t">Wider DeFi integration</text>
+  <text x="155" y="169" text-anchor="middle" class="d-s">more places it plugs into</text>
+
+  <path d="M155,124 L155,76" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <text x="340" y="212" text-anchor="middle" class="d-s">“Leverage and looping drives growth, drives TVL, and to do that you need depth.”</text>
+</svg>
+<p class="figcap">The host added a request: visuals from the community explaining strategies would be valuable, because “it can cross borders, it can cross languages”.</p>
+</div>
+
+
+<h2 id="en-transparency">8. The transparency portal</h2>
+<p class="deck">On-chain is auditable. The hard part is showing what happens off-chain.</p>
+
+<p>Transparency was framed as important to the success and growth of the stablecoin. The work splits in two.</p>
+
+<ul>
+  <li><strong>On-chain</strong> — the platform and its smart contracts are all on chain, so they can be audited</li>
+  <li><strong>Off-chain</strong> — the difficult half. Data from <strong>a very diverse set of sources has to converge into one database or schema</strong> so it can be harmonised and presented outward</li>
+</ul>
+
+<p>For an ordinary user the output is <strong>information in the app refreshed daily or in real time</strong> — the portfolio, platform activity, where things stand. The goal is that “at least the basic information is always up to date and available to anyone who wants to see it”.</p>
+
+<p>Related: getting listed on <strong>DefiLlama, Dune and similar analytics platforms</strong> is on the data engineering to-do list. “The challenge isn't in pushing the data to these places, the challenge is in having the data and transforming it” — which is the same point as the section above.</p>
+
+
+<h2 id="en-unbanked">9. How this reaches the unbanked</h2>
+<p class="deck">RealFi does not lend to individuals. It extends credit to local fintechs, who lend onward.</p>
+
+<p>The sharpest exchange of the call came from a participant who came up to the stage over audio.</p>
+
+<p>The question: <strong>DeFi requires over-collateralisation, but people borrow precisely because they don't have that capital.</strong> “Here in Africa, if I want $1,000 of loan in DeFi, I have to provide 2,000. But me coming to get a loan is because I don't have that capital. Coming from the informal market, there is no credit line attached to my identity. Is there any framework around that?”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 190" role="img" aria-label="Diagram of capital flowing from RealFi to local fintechs and microfinance institutions, which then lend to unbanked individuals">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="46" width="180" height="60" rx="7" class="d-box-accent"/>
+  <text x="110" y="72" text-anchor="middle" class="d-t d-a">RealFi</text>
+  <text x="110" y="92" text-anchor="middle" class="d-s">asset allocation, deal selection</text>
+
+  <path d="M204,76 L246,76" class="d-line" marker-end="url(#e4)"/>
+  <text x="225" y="60" text-anchor="middle" class="d-s">credit</text>
+
+  <rect x="250" y="46" width="180" height="60" rx="7" class="d-box"/>
+  <text x="340" y="72" text-anchor="middle" class="d-t">Local fintechs</text>
+  <text x="340" y="92" text-anchor="middle" class="d-s">microfinance institutions</text>
+
+  <path d="M434,76 L476,76" class="d-line" marker-end="url(#e4)"/>
+  <text x="455" y="60" text-anchor="middle" class="d-s">loans</text>
+
+  <rect x="480" y="46" width="180" height="60" rx="7" class="d-box"/>
+  <text x="570" y="72" text-anchor="middle" class="d-t">Unbanked borrowers</text>
+  <text x="570" y="92" text-anchor="middle" class="d-s">the informal market</text>
+
+  <text x="340" y="150" text-anchor="middle" class="d-s">RealFi does not connect to individuals — capital flows to institutions that can lend</text>
+  <text x="340" y="170" text-anchor="middle" class="d-s">On-chain credit is “what other teams are looking at”</text>
+</svg>
+<p class="figcap">The questioner restated it himself — “instead of building that wheel, you just need to integrate to a fintech product; they already do that in the demographic they operate in” — and the answer was “correct”.</p>
+</div>
+
+<p>It was added that this “is not to say that an on-chain kind of credit isn't part of it”. Funding local institutions is simply <strong>the most direct and easiest route available right now</strong>.</p>
+
+
+<h2 id="en-carryover">10. Carried over from last time</h2>
+<p class="deck">Of the five questions left open at the engineering session, two moved.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Open since last time → confirmed</span>Do the testnet wallet and the mainnet wallet need to be linked, and will there be an official way to do it?</p>
+<p class="qa-a" data-by="This session">The engineering session said a website for linking would be provided. This time it was confirmed that <strong>“the engineering team just demoed it today — there will definitely be a way to do it”</strong>, though the specifics still cannot be described.<br><strong>This question has now been asked twice in a row.</strong> It will likely keep coming until an official guide exists.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Open since last time → partly answered</span>How many fintechs, and what exactly is in the private credit?</p>
+<p class="qa-a" data-by="This session"><strong>The asset mix was named</strong> — tokenised money market funds, floating rate corporate bonds, potentially investment grade CLO ETFs, and direct private credit deals or institutional private credit funds. “None of it relies on any crypto-native allocation.”<br>Section 9 also clarified <strong>how the credit actually flows</strong>. The <strong>number of fintechs and their geographic spread remain unanswered</strong>.</p>
+</div>
+
+<p>The remaining three — <strong>the governance framework, KYC / AML, and marketing-driven APY</strong> — were not touched. <strong>The mainnet launch date</strong> likewise remains unannounced.</p>
+
+
+<h2 id="en-qa">11. Q&amp;A</h2>
+<p class="deck">Questions from the chat and from the floor.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant D</span>How many people work on RealFi in total, and when did it start?</p>
+<p class="qa-a" data-by="Answer">The headcount was not given. On timing: “<strong>two and a half years ago</strong> is when we started hiring the engineering team, the data team, the investment team — when it moved from a strategic phase to really getting serious about building”, and “<strong>about a year ago</strong> is when we really started pushing harder on smart contracts and the Web3 side”. The founder had been thinking about the problem for years before that.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant F</span>Are there plans to link to the community page from the main RealFi site or app?</p>
+<p class="qa-a" data-by="Answer">The main site currently targets institutional players. <strong>In the future, but not right now</strong> — “the best way to move forward was to get a community hub built rather than trying to get into discussions around legal and audiences.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Participant A</span>What exactly is the methodology behind these figures?</p>
+<p class="qa-a" data-by="To be shared">“It got pretty complex. I'll be able to share details at a future date — I can't remember them off the top of my head.” The host also committed to following up on the methodology.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Participant E</span>A question about a combination with another project.</p>
+<p class="qa-a" data-by="No answer">“Not from my side.” <span class="badge">added</span>The project name is garbled by speech recognition and could not be identified.</p>
+</div>
+
+
+<h2 id="en-closing">12. Closing</h2>
+<p class="deck">What they want back: feedback, and opinions on which numbers to track.</p>
+
+<ul>
+  <li><strong>Keep giving feedback on Discord.</strong> “We can see the data on what people are doing on chain, whether they're dropping off on the DApp. But seeing it written in text is another story altogether”</li>
+  <li><strong>Say which numbers you want.</strong> “If there's any other numbers you wish you had, I can look into getting them”</li>
+  <li><strong>Suggest analytics platforms.</strong> Beyond DefiLlama and Dune, if there are others worth appearing on</li>
+</ul>
+
+<p>The headline figure itself came from the community: a participant originally raised that around 16% of Cardano wallets appeared to be active with RealFi, which became the basis for this analysis. <strong>A community observation turned directly into the official data topic.</strong></p>
+
+<p>The rotation ahead is <strong>partnerships → leadership → the investment team</strong>.</p>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source transcript has no speaker labels and no timestamps. The call also runs under the Chatham House Rule, so <strong>no names, roles, backgrounds or affiliations that could identify a speaker appear anywhere</strong>. The labels used on the full-transcript pages — <code>Speaker A / B / C</code>, <code>Participant A–K</code> — are placeholders. Leaderboard stake pool names have been replaced with <code>Pool 1–5</code>.</p>
+<p><strong>On the slides.</strong> Slides were screen-shared during the call but not published, and most of their contents were not read aloud. <strong>Every figure on this page is one that was spoken.</strong> Nothing has been filled in from the visuals.</p>
+<p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the call</strong>.</p>
+<p>For the exact wording see the <a href="#en">English transcript</a>.</p>
+</div>
+</div>
+</section>
+
+<section class="part" id="ja">
+<div class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></div>
+<div class="note">
+<p><strong>このページについて。</strong>元の文字起こしには話者ラベルもタイムスタンプもありません。話者は文脈から推定しており、確度が低い箇所には<em>（推定）</em>を付けています。音声認識による固有名詞の誤変換（RealFi → “VeoFi” / “Verifi”、SPO → “SPAs” など）はこのページでは修正しています。原文をそのまま確認したい場合は<a href="#en">英語全文</a>をご覧ください。</p>
+<p>コール中はスライドが画面共有されていましたが、公開はされておらず、内容も大半は読み上げられていません。スライドに言及しているだけで中身が語られていない箇所は、補完していません。</p>
+</div>
+
+<div class="sec">冒頭</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>絵文字を出してもらって、声が届いているか確認していました。はい。登壇者A たちがこちらに来ています。</p>
+  <p>今週は本当に面白い Office Hours をお届けします。楽しみですね。誰か絵文字を出してくれました。ありがとうございます。</p>
+  <p>この RealFi の Office Hours を準備するのに、時間と労力がかかっています。来てくれて、時間を割いてくれるチームには本当に感謝しています。</p>
+  <p>皆さんもぜひ、この場のことを思い切りツイートして、各チャンネルで共有して、他の人にも知らせてもらえるとありがたいです。</p>
+  <p>聞いていて、この Office Hours を応援したいと思ってくれるなら、ぜひシェアして、人を誘ってください。</p>
+  <p>プレッシャーをかけるつもりはありませんが、目標は最低でも 50 人に聞いてもらうことです。それが私の目標ということで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>では、登壇者A と 登壇者C を上げてみましょう。少し待ってください。スピーカーの追加を探しています。「発言に招待」ですね。ありました。登壇者A はどこでしょう。これが 登壇者A だと思います。こんにちは、登壇者C。調子はどうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>どうも。そちらはどうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>絶好調です。絶好調ですよ。さて、登壇者A と 登壇者C が上がりました。登壇者B を待っているところです。あ、あれが 登壇者B でしょうか。当てずっぽうですが、そうだと思います。少し待ってください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>はい。はい、私です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>わかりました。素晴らしい。さて、これまでに RealFi の Office Hours を 3 回やってきました。</p>
+  <p>マーケティングチーム、プロダクトチーム、そしてエンジニアリングと話しました。この回のまとめも後で投稿します。そして今日は、データとインサイトの回です。</p>
+  <p>まずはチームの紹介からいきましょう。</p>
+  <p>登壇者A、口火を切ってもらえますか。そのあと順番に回していきます。皆さんが何者で、RealFi に来た経緯、そしてどんな役割を担っているのかを聞かせてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>少し遅延があるかもしれません。登壇者A、聞こえますか。こんにちは、参加者B。参加者B はチャットにいますので、何かあれば……。登壇者B、いいですね。</p>
+  <p>カメラをオンにしてくれているので、こちらも合わせます。登壇者A、声が聞こえません。少し待ってください。登壇者A のマイクが落ちていますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>進行役、聞こえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい、聞こえています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>よかった。少しお待ちを。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>プッシュ・トゥ・トークになっているかもしれません。プッシュ・トゥ・トークの設定が入っているのでは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ヘッドホンを切ってみます。少し待ってください。はい。どうでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい。少し反響がありますが、聞こえます。それでいきましょう。</p></div>
+</div>
+
+<div class="sec">自己紹介</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。私は 登壇者A です。RealFi でデータチームを率いています。</p>
+  <p>RealFi には 2 年半ほどいます。</p>
+  <p>経緯としては、ケープタウンを拠点にしていて、以前は大手のテック企業を何社か経験しました。Web3 の領域で働いたことは実はなかったんです。</p>
+  <p>なので RealFi で初めて本格的に取り組むことになりました。とても刺激的です。日々、登壇者B と 登壇者C と一緒に仕事をしています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます、登壇者A。では 登壇者B、ご自身のことと経緯を少し聞かせてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>はい。私は 登壇者B です。チームのデータエンジニアです。</p>
+  <p>RealFi の前は、東アフリカを拠点とするフィンテックのスタートアップで働いていて、プライベートクレジット案件のデューデリジェンスをデータで行うプラットフォームを作っていました。そして 9 か月ほど前に RealFi に入りました。</p>
+  <p>今はまた別のデータプラットフォーム、今度はステーブルコイン向けのものを構築する役割を担っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。そして最後になりましたが、登壇者C。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>はい。私はアナリストです。主に RealFi の投資チームと treasury チームと一緒に働いています。ここに来て 1 年半ほどで、同じくケープタウン拠点です。</p>
+  <p>その直前は、ケープタウンの中小企業向け融資会社で、法人間の融資に携わっていました。</p>
+  <p>さらにその前は、Web3 と伝統的金融の両方でポートフォリオ運用をしていました。そういう経歴です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。名前と顔と背景が揃いましたね。では 登壇者A、今日のコールで何を扱うのか説明してもらえますか。</p>
+  <p>どんな大きなテーマを持ってきてくれたのでしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。扱いたいのはデータから見えてくることです。</p>
+  <p>testnet がどう動いているかを見てきました。それから進行役が進めている SPO プログラムについても見ています。</p>
+  <p>RealFi の testnet の最初の 3 週間がどうだったか、その感触を皆さんに持ってもらえるような内容を出したいと思っています。</p>
+  <p>そのあと 登壇者C が自身の領域について話します。投資チームの支援と、DeFi エコシステム・流動性まわりですね。</p>
+  <p>それ以外は、質問を受ける形でいいかと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いい進め方ですね。</p>
+  <p>聞いている方は、右上にチャットのバブルがあると思うので、話している最中でも質問してください。先週と同じように拾っていきます。</p>
+  <p>では 登壇者A、始めてください。画面共有してもらっても構いません。まずはネットワークレベルの数字からでしたね。合っていますか。</p>
+  <p>オンチェーンで何が起きているかを見るところからでしょうか。それとも別のところからでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>いえ、その通りです。画面を共有します。はい。えーと、いきますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>最大表示にします。しっかり見たいので。ありがとうございます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>画面は見えていますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>まだですね。読み込み中です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>わかりました。動いたら教えてください。うーん。ストリーミングのエラーが出ています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>こちらで表示しましょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>出ていますか。見てみます。はい。そうしてもらえるなら、スライドを切り替えるタイミングを私が言う形にします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい。少し待ってください。探していたのは……ありました。すみません、私の顔が全面に出ていますね。これは見えますか。読み込み中です。はい、出ました。よかった。ではクリックするタイミングを教えてください。</p></div>
+</div>
+
+<div class="sec">testnet 3 週間 — 主要な数字</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。先ほど言ったように、testnet は 3 週間動いています。ローンチは 7 月 6 日でした。</p>
+  <p>SPO アクセラレータープログラムのローンチが 7 月 22 日です。この 2 つの節目をまたいで、どういう動きになっているかを見ていきます。オンチェーンのデータと、オフチェーンのデータの両方です。</p>
+  <p>では 進行役、最初のスライドをお願いします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。ここでの一番の要点、この話から 3 つ……いえ、4 つの数字を持ち帰るとしたら、こうなると思います。</p>
+  <p>私たちの testnet でアクティブだったウォレットの数を見ると、それはエコシステム全体のアクティブな Cardano ウォレットの、おおよそ 7 分の 1 に相当するようです。</p>
+  <p>つまり今、Cardano のうちどれくらいの範囲と関わっているのか、その規模感が分かります。もちろんこれは testnet のウォレットです。</p>
+  <p>メインネットのウォレットではないので、すべてが 1 対 1 で紐付けられるわけではありません。母集団が違います。ただ、一部は 1 対 1 で紐付けられます。</p>
+  <p>見えている範囲では、testnet ウォレットのうち 339 個が、アクティブな Cardano メインネットウォレットと紐付けられます。そして覚えておくべきなのは、進行役がうまく言ってくれた通り、これは下限だということです。</p>
+  <p>多くの人は使い捨ての testnet ウォレットを作るからです。それらは紐付いていないし、ステークキーを共有していません。</p>
+  <p>正確な用語が出てきませんが、メインネットのウォレットとは別物です。ですので、将来ウォレット連携を実装すれば、この数字はおそらく上がります。</p>
+  <p>ただ、この 339 個については確実にメインネットでアクティブだと言えます。そしてこの 339 個のウォレットは、現在 230 万 ADA を保有しています。</p>
+  <p>これもまた、今 testnet で起きている活動の規模を示しています。</p>
+  <p>そして最後に SPO プログラム関連ですが、アクセラレータープログラムに参加している SPO の 84% が、プログラムのローンチ以降、委任を増やしています。</p>
+  <p>以上が全体像の数字です。進行役、最初のスライドを。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それは、プログラムに参加していないプールと比べて、ということですよね。少し触れてもらえますか。84% が……</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい、増えた、ということですね。まさにその通りです。ここでやろうとしているのは、アクセラレータープログラムが委任にどんな影響を与えたのか、その感触をつかむことです。</p>
+  <p>やり方としては、プログラムに参加している SPO と、参加していない同等の SPO を比較しました。同等というのは規模の面でです。</p>
+  <p>プログラムに参加していない同等の SPO は、2 週間で委任が増えたのが 17%。それに対してプログラム参加の SPO は 84% でした。</p>
+  <p>この差が、プログラムの影響の大きさを示していると考えられます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それについて 2 点補足させてください。</p>
+  <p>これは私たちが持っている SPO プロフィールのコミュニティサイトに載っている SPO が対象です。すべての SPO が登録・オンボードしているわけではありません。</p>
+  <p>ワークショップに参加して、サイトに掲載されている人たちだけです。</p>
+  <p>もう 1 点は、SPO の皆さんへのお詫びでもあり、同時に期待できる話でもあるのですが、登壇者A とも話していた通り、これは crews がまだ 1 つも組成されておらず、キャンペーン施策も何も適用されていない段階での数字だということです。SPO の皆さんには申し訳ないのですが、私が忙しすぎたためです。</p>
+  <p>その話は後でします。ですので、まだ先があります。ここからさらに伸ばせる余地が相当あると思っています。話を遮ってすみません、登壇者A。次のスライドにいきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>大丈夫です。ちょっとだけ、参加者A から質問が来ているようですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい……</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>正確な方法論の詳細は、後日共有させてください。かなり複雑になってしまって。算出には Claude を使いました。</p>
+  <p>ですので、詳細はまた別の機会に共有できます。今すぐには思い出せません。</p>
+  <p>では最初のスライドですが、これは testnet でアクティブだったウォレットを示しているだけです。</p>
+  <p>ここで注目してほしいのは、これが現時点で私たちが「実在するウォレット」と考えているものの最良の推定だ、という点です。</p>
+  <p>というのも、ファーミングウォレットだと判断したものをここから除外しているからです。</p>
+  <p>ご覧の通り強い上昇トレンドです。これは累積なので、ローンチ以降に testnet を使った人の総数です。もちろん右肩上がりにはなります。</p>
+  <p>ただ見てほしいのは、大きく伸びている箇所、特に 7 月 22 日あたりです。アクセラレータープログラムのローンチ日ですね。testnet のアクティブユーザーは今も着実に増えています。</p>
+  <p>これは良いことです。頭打ちになっていません。次のスライドを。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい、先ほど言ったように、直近のエポック、7 月 23 日から 28 日について、testnet でアクティブだったウォレット数を見ました。</p>
+  <p>約 2,600 でした。これをアクティブな Cardano ウォレット 20,000 と比べます。つまりアクティブな Cardano ウォレットの 14% に相当する数が、私たちの testnet でアクティブだったということです。</p>
+  <p>繰り返しますが母集団は少し違います。testnet ではアクティブでもメインネットでは一度もアクティブでなかった人もいるかもしれません。ただ、Cardano に対する testnet の活動規模の感覚はつかめます。</p>
+  <p>そしてこれも、ファーミングだと判断したウォレットを除外した数字です。実在する本物のユーザーの最良の推定ということになります。次をお願いします、進行役。</p>
+  <p>そして先ほど言ったように、359 個の testnet ウォレットをメインネットウォレットと接続できました。これも繰り返しますが下限です。</p>
+  <p>後でウォレット連携を実装すれば、この数字は確実に上がります。上がらざるを得ません。これが今後もっとも小さい値になります。</p>
+  <p>これは暗号鍵を使って対応付けたもので、これらがメインネット上で 230 万 ADA を保有していることが分かります。進行役、これについて何かコメントがあれば。</p>
+  <p>数字は出しましたが、これが何を意味するのか、位置づけを話してもらえれば。</p></div>
+</div>
+
+<div class="sec">この数字が意味すること</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そうですね、思いつきで話しますが、Cardano での経験から言うと、プロダクトの 2030 ビジョンがあって、あれは素晴らしいものです。</p>
+  <p>批判ではないのですが、読んだ限り、冒頭でゲームの名前を明示していないと感じました。私はその名前は「成長」だと思っています。それについて記事を書きました。自分の記事の宣伝ですみません。</p>
+  <p>「数字は戦略に先立つ」という趣旨の記事で、要点は、ゲームの名前が成長なら、それをどう定義するのか、ということです。私たちはそれを資本の生産性で定義します。</p>
+  <p>ブロックチェーンにおいては今それができる、というのが 1 つ。</p>
+  <p>そして成長と資本の生産性を高めたいなら、さらに言えばエコシステムの中で人々が自己組織化するのを助けたいなら、何らかの入口が必要です。</p>
+  <p>だから少数の共通の物差しが必要だと思っていて、その 1 つが例えば TVL です。</p>
+  <p>登壇者A と話していたときに……ちなみにこれは言っておくべきですが、登壇者A、あなたとチームは本当に素晴らしかった。私がブリーフもなしにデータをくださいと持ち込んだのに、これだけのものをまとめてくれた。本当に感謝しています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>どういたしまして……</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>言っておきたかったので。本当に感謝しています。</p>
+  <p>ともあれ、最終的には RealFi が Cardano と、その TVL に貢献できると思っています。最後のほうで話しますが、Cardano の中であまり活発でない資本を、どうすればもっと活発にできるかを考える方法があると思っています。</p>
+  <p>どうやって巻き込むか。ここで考えているのはそういうことです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ただ、進行役、あなたを困らせるつもりはないのですが。</p>
+  <p>「これだけの TVL を集められます」と私に言ってほしかったんだろうと思います。</p>
+  <p>でも言えませんでした。メインネットがローンチしたときにどうなるか、正直なところその数字は出せません。誰がメインネットに来るか分からないからです。</p>
+  <p>不確定な要素が多すぎます。</p>
+  <p>ただ言えるのは、testnet を使っている人たちが現在どれだけの TVL を保有しているか、ということです。これが私にできる精一杯でしたが、それでも示唆的だとは思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いや、面白い話があります。アルファ的な成長の話とか。通るのか、通らないのか。それは興味深い。日本の話もありますし。</p>
+  <p>SPO がこういうことを提示したり委任を集めたりできるようにする方法も考えています。ですので、盤面には駒が確かにあります。ただ、おっしゃる通り確実ではありません。</p>
+  <p>でもそこが面白いところですよね。RealFi の面白さ、そしてゼロから何かを作ることに戻ってきた、その懐かしさのようなもの。褒めすぎるのはやめますが、本当に……</p>
+  <p>こういう場所に戻ってきて、面白いものを作って、コミュニティの人たちと一緒に work するのが好きなんです。では次のスライドを。はい、次のスライドで。</p></div>
+</div>
+
+<div class="sec">SPO アクセラレータープログラム</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>わかりました。このチャートは気に入っています。非常に明快な話をしていると思います。</p>
+  <p>これは 5 日ごとの窓で、各プールに新しく来た委任者を示しています。</p>
+  <p>ここでもプログラム参加の SPO と、参加していない同等の SPO を比較しています。アクセラレータープログラムのローンチのあたりで、はっきりと分岐しているのが見えます。</p>
+  <p>つまり、アクセラレータープログラムに参加している SPO のほうが、参加していないところより明らかに多くの新規委任を得たということです。右側にある他の数字もそれを裏付けています。</p>
+  <p>いろいろな角度から見られます。委任を集めた SPO とそうでない SPO の数。プログラム参加は 84%、参加していないところは 17% しか増えていません。</p>
+  <p>純増で見るか総額で見るかで切り方は変わりますが、どれも同じ話をしています。</p>
+  <p>アクセラレータープログラムのプールは委任者を獲得し、そうでないところは獲得しなかった、あるいは程度が小さかった、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ここで RealFi がやっているのは、SPO に自分のプールを差別化する機会、マーケティングする機会を提供することです。保証ではありません。</p>
+  <p>最初にもっとはっきり言っておくべきだったかもしれません。実際、怒っている DM を少なくとも 1 通もらいました。</p>
+  <p>私がやろうとしているのは、RealFi にとっての勝ちと、SPO にとっての勝ちを両立させることです。つまり win-win の状況です。</p>
+  <p>ですのでこれはパフォーマンスの話です。差別化する理由がある、ということ。RealFi がどう развива……どう開発されていくかについて、人々に本当の発言権を提供できます。ステーブルコインのインフラを通じて。</p>
+  <p>ただ、そのメッセージを委任者に届けに行く必要がありますし、こちらもそれを手伝う必要があります。</p>
+  <p>ここでの要点は、プロフィールを上げてプールへの委任を増やしたいなら、参加することがパフォーマンスに強く結びつく、ということです。</p>
+  <p>すみません 登壇者A、遮りすぎですね。次のスライドを。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。ただ、ここは触れておく価値があると思います。良い指摘です。</p>
+  <p>ご覧の通り、プログラム参加の SPO は委任を増やし、そうでないところは増やしませんでした。ただ、なぜかは必ずしも分かりません。</p>
+  <p>7 月 22 日に何かが起きたことは分かります。それがプログラムにいること自体によるものなのかどうか。</p>
+  <p>この分析の難しいところは、おそらくプログラムに参加した人たちが、おっしゃる通り実際に外に出て努力したからだろう、という点です。</p>
+  <p>背後にはおそらくいくつもの要因があります。ただ、結果そのものは明確だと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>最初に会ったときにも言ったと思います。</p>
+  <p>なぜ Cardano は成功したのか。ホワイトボードの動画があったから、というのはあります。</p>
+  <p>インセンティブもあったし、学術研究もあったし、banking the unbanked という良いことをやっているという要素もあったし、ビジネス機会もあった。</p>
+  <p>でも私の考えでは、そのビジョンを外に伝え、人々に説明して回ったのはステークプールオペレーターだったんです。だからステークプールオペレーターこそが Cardano の中核コミュニティだと思っていますし、だからこそ RealFi でコミュニティを立ち上げるのに良い方法だと考えました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>同感です。では 進行役、次のスライドをお願いして、そのあたりで締めましょうか。はい。ここではリーダーボードを出しています。</p>
+  <p>アクセラレータープログラムのローンチ直後のエポックについて、プログラム内の各プールがどれだけ委任を集めたかを見ました。ここに上位 5 つが出ています。</p>
+  <p>上位プール 1、上位プール 2、上位プール 3、上位プール 4、名前の読みを間違えていたらすみません、そして上位プール 5 です。これが上位 5 つでした。おめでとうございます。上位プール 1 は 84 万 ADA です。</p>
+  <p>ただ 1 つ言えるのは、もともと大きいプールにリーダーボードが偏るのは避けたい、ということです。</p>
+  <p>ですので右の表のように、新規 ADA の絶対額だけでなく、エポック開始時点のステークに対する割合で見るのも興味深いと思います。</p>
+  <p>とはいえ、上位の皆さんはお見事でした。この場にいらっしゃるでしょうか。はい、見えますね。いいですね。</p>
+  <p>次のスライドを。ただ、もうこれでほぼ終わりです。あとは先ほどの 4 つの数字を繰り返すだけです。</p>
+  <p>Cardano のアクティブウォレットの 7 分の 1 が testnet でアクティブ。testnet 上の実在ウォレット 340 個がメインネットと紐付けられる。</p>
+  <p>230 万 ADA。そして SPO プログラム参加の 84% が委任を増やした、非参加と比べて。市場でそれなりの影響を与えられていることを示していると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます、登壇者A。素晴らしいと思います。出発点として非常に良い。SPO が委任を集められる何かが欲しかったわけですから。</p>
+  <p>それが機能することが示されました。あとは、私がどれだけ支援できるか、そして参加している SPO がこの土台をどう使って自己組織化できるか、という話になります。</p>
+  <p>つまり跳躍台、出発点として使って、外に出ていくということです。これは本当に良い結果です。次に移る前に、何か質問はありますか。チャットで。音声がよくないですね。申し訳ありません。</p>
+  <p>少し途切れがちでしたが、内容は取れていると思います。</p>
+  <p>後でまとめを書きますし、話の途中でマイクや音声のトラブルシューティングを始めたくなかったので。</p>
+  <p>さて、オンチェーンの指標について話しました。これは誰でも検証できるものですよね。方法論については後でフォローアップさせてください。</p>
+  <p>そして SPO アクセラレータープログラムについても話しました。そして 登壇者C がコールにいます。</p>
+  <p>登壇者C、DeFi と流動性についての見方や、考えていることを聞かせてもらえますか。</p></div>
+</div>
+
+<div class="sec">流動性 — 3 つの視点</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>はい。進行役、インサイトというより、一般的な話という感じになると思います。これまでの Office Hours で、ポートフォリオの流動性についての質問をいくつか見かけました。</p>
+  <p>ですので、私たちが流動性をどう捉えているか、見ている 3 つの視点から概観を話すのは意味があるかなと思いました。</p>
+  <p>非常に具体的な質問については、投資チームが自分たちの回で話すほうが適していると思います。</p>
+  <p>まず出発点として、流動性という 1 つの言葉には 3 つのものが含まれています。私たちが持っているポートフォリオ全体、そのポートフォリオを構成する個々の資産、そして二次流通の流動性、つまり DeFi の側です。</p>
+  <p>高いレベルの話に留めますが、伝えたい重要な点は、チームが資産の流動性を TVL に対して常に調整し続けている、ということです。私たちは現金化までの時間を、後付けではなく、あらゆるポジションの性質として扱っています。個々の資産で時間軸が違うからです。</p>
+  <p>ここで重要なのは、その調整の考え方が、何かを予測することに依存していないという点です。</p>
+  <p>将来を当てることに賭けるようなやり方も作れるでしょう。スプレッドがどう動くか、センチメントがどこで保たれるか、金利が上がるか下がるかを予測しようとする、というような。</p>
+  <p>でも私たちの見方は、既知のものを起点にして、その周りのパラメータを動かす、というものです。</p>
+  <p>決済期間、期間の長さ、償還条件といったものです。起こらないかもしれない未来の状態についての見立てに依存しないようにするためです。伝わっているでしょうか。</p>
+  <p>これがポートフォリオ全体の話です。2 つ目の視点は、個々の資産や商品そのものです。</p>
+  <p>もう少し話すこともできますが、そこは投資チームに focus してもらったほうがいいと思います。質問には答えられますので、ここでは深追いしません。</p>
+  <p>3 つ目、おそらくより重要なのは、DEX 上のオンチェーンの流動性です。USDR が実際にどうスワップされるか、という話です。</p>
+  <p>ここについてはパートナーとかなり検討を重ねてきました。どういう種類のプールが USDR を保有するのか。どの venue で利用できるようにするか。状況が変わったときにどう管理するか。</p>
+  <p>そして、どういう種類の AMM がこのペアを保有するかに対して、プールのサイズをどう最適化するかのモデリングも相当やりました。</p>
+  <p>考え方としては、実際に取引する人がスプレッドで薄く削られないよう、十分な深さがそこにあるようにする、ということです。</p>
+  <p>そして、期待している価格で実際に取引できるようにする。少なくともそれを目指す、ということです。</p>
+  <p>これを実現する手段はプールの深さだけではなく、自前の安定化ファンドを運用すること、オンチェーンの安定化ファンドを持つこと、そしてその下で動く peg stability module です。</p>
+  <p>ドキュメントを読んだ方はご存知だと思いますが、peg stability module 自体は常時動き続けるフレームワークで、USDR をペッグに保つように設計されています。</p>
+  <p>一般的な話に留めるため、ここで止めておきます。</p></div>
+</div>
+
+<div class="sec">フライホイール</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>高いレベルに引いて説明してもらえますか。フライホイールを理解したいんです。</p>
+  <p>私のような人間でも分かるように、簡単な言葉でフライホイールを説明してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>フライホイールの話ですか。どういう意味でしょう。具体的にどういうことでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>成長を築いていくステップは何か、ということです。考え方としては、自分自身を強化していくサイクルが必要で、各ステップが次のステップに価値を足さずにいられない、というものです。</p>
+  <p>思いつきで振っているので、用意がなければ大丈夫です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>いえ、大丈夫です。もちろん。流動性が全体を下支えしているものです。そして、その流動性の composability も。</p>
+  <p>どこまで話していいのか、何を言えて何を言えないのか分からないのですが、要するに、人々が二次流通で USDR や sUSDR をどう使っていくのかを理解したい、ということになると思います。</p>
+  <p>ここで止めておきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>よければ私が試してみます、登壇者C。このプロジェクトを計画していたときの話ですが。</p>
+  <p>testnet をローンチしたばかりなので、データを集め始めたのは本当に最近です。</p>
+  <p>それ以前に時間を使っていたのは、他のステーブルコインを見て、何が成長を駆動しているのかを調べることでした。</p>
+  <p>何度も何度も戻ってきた学びは、重要なのは DeFi 統合だ、ということです。</p>
+  <p>特に利回り付きのステーブルコインについて強く出てきたのは、ルーピングができること、レバレッジをかけられることでした。そしてこれはすべて二次流通の深さにかかっています。</p>
+  <p>ですので私たちの要点は、登壇者C が言ったように、高い流動性を確保し、こうした DeFi のユースケースと複数の統合を支えられるようにすることです。</p>
+  <p>それがフライホイールを回し始めます。レバレッジとルーピングが成長を駆動し、TVL を駆動する。そしてそのためには深さが必要だ、ということです。登壇者C、この見方で合っていますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>はい、まったくその通りです。私が言うよりうまく言葉にしてくれました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>これは本当に興味深いですね。2 つ思うことがあります。まず、皆さんは本当に頭がいい。</p>
+  <p>これだけのことを理解できるわけです。それで思うのですが、人が自分の戦略を説明できるビジュアルがあると面白いと思うんです。</p>
+  <p>というのも、もし私が RealFi のコミュニティの一員でなくて、コミュニティにどんな機会があるかを評価する立場だったら——実際に過去にそういう立場だったこともありますが——起きていることを全部追いかけるのは簡単ではありません。</p>
+  <p>フライメイールのようなもの、あるいは誰かが自分のやっていることや、生まれている価値・実用性を説明できる視覚表現は、コミュニティから出てきてほしいものです。</p>
+  <p>それは国境も言語も越えられますから。</p>
+  <p>すみません 登壇者C、今考えていたのですが、DeFi 全般で人が戦略を実演したりモデル化したりしている、そういう優れたコンテンツを見たことはありますか。</p>
+  <p>参考になる情報源や例はありますか。それとも私が勝手に話しているだけでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>いえ、思いつきません。ただ、私たちもこれについて広く調べたことはまだないと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>これは半ば自分の都合で考えていることで、RealFi を支えるコミュニティのコンテンツやアドボカシーという意味です。この話はオフラインでやりましょう。</p>
+  <p>自分の頭の中でもう少し形になるまで待ちます。参加者H、こんにちは。</p>
+  <p>録音はしていますが、それは全文の書き起こしではなくまとめを書くためです。この種のコールには即興の要素がありますから。すべてが計画通りというわけではありません。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — ウォレットの紐付け</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>日本からの 参加者C がこう書いています。「この質問はよく出ます。</p>
+  <p>メインネットの委任用ウォレットと、testnet のタスクを完了するために使うウォレットの 2 つがあって、それらを紐付ける必要があるのかどうか。</p>
+  <p>チームから公式のフォームが提供されると理解しています」。ポイントの請求と、pre-prod とメインネットのウォレットの接続について、何か明確になっていることはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役 <em>(推定)</em></div>
+  <div class="turn-body"><p>プロダクトチームやエンジニアリングチームを代弁したくはないのですが、彼らが取り組んでいることは知っています。方法は必ず用意されます。</p>
+  <p>エンジニアリングチームが今日デモしたところだと思います。ですので、確実にやり方は用意されます。ただ具体的な内容については私からは話せません。でも、はい、紐付けはできるようになります。</p></div>
+</div>
+
+<div class="sec">ポートフォリオと暗号資産のサイクル</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>わかりました。他にチャットで質問はありますか。大丈夫そうですね。</p>
+  <p>では 登壇者C、資産ポートフォリオについて少し説明してもらえますか。以前の話を振り返る意味でも。</p>
+  <p>私が関心を持っている、というか下線を引きたかったのは——言葉を押しつけるつもりはありませんが——実物資産の側面です。</p>
+  <p>創業者と最初に話したとき、RealFi は暗号資産のサイクルに対して耐性がある、という話でした。そこに少し触れてもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>はい、いくつか触れられると思います。どのあたりがいいでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>暗号資産のサイクルへの耐性が RealFi の特徴、あるいは興味深い差別化要因の 1 つで、それが合成的なものではない、ということでしたよね。</p>
+  <p>それを暗号資産に詳しくない人にどう説明すればいいでしょうか。妻にどう伝えればいいか、という感じで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>そうですね。ポートフォリオ自体は、異なる資産の組み合わせでできています。</p>
+  <p>詳しく読みたい方はドキュメントを参照してもらえれば。</p>
+  <p>トークン化されたマネー・マーケット・ファンドがいくらか。</p>
+  <p>変動利付の社債、可能性としては投資適格の CLO ETF、そして直接のプライベートクレジット案件、あるいは機関投資家向けのプライベートクレジットファンドです。</p>
+  <p>この構成の仕方は投資チーム次第なので、彼らが話すほうが適していると思います。</p>
+  <p>ただ、今挙げたものを見ればお分かりの通り、どれも暗号資産ネイティブな配分に依存していません。ですので、エクスポージャーは暗号資産中心ではありません。</p></div>
+</div>
+
+<div class="sec">透明性ポータル</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ところで 登壇者B、急に振ることになりますが、まだ回っていませんでした。ずっと聞いていてくれましたね。</p>
+  <p>何か付け加えることや、扱うべきだったのに漏れていることはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>いえ、私の側からは以上です。</p>
+  <p>登壇者C が投資戦略を高いレベルでうまくまとめてくれたと思います。</p>
+  <p>シナリオに応じて資産クラス間でどうリバランスしたいか、といった具体に踏み込むこともできますが、少し技術的になりすぎるかもしれません。</p>
+  <p>あとはデータエンジニアリングの話なら喜んでしますが、聴衆の半分を失うかもしれないので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いや、聴衆にとって面白いのは、登壇者B、透明性の側面かもしれません。</p>
+  <p>あなたはそこに近いところにいますよね。透明性ポータル、何に投資しているかをどう共有するか。透明性ポータルについて聞かせてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>いい指摘ですね。</p>
+  <p>高いレベルで言うと、RealFi においてステーブルコインの成功と成長にとって非常に重要なのは、透明であろうとしていること、そしてすべてのユーザーと保有者に信頼を持ってもらいたいということです。</p>
+  <p>そのための方法はいくつかあります。1 つはプラットフォームとそのスマートコントラクトについて非常に透明であること。それらはすべてオンチェーンなので監査できます。</p>
+  <p>Web3 の部分は監査可能です。</p>
+  <p>もう 1 つ私たちが目指しているのは、チェーンの外で起きていることについても透明にして、ユーザーや潜在的な投資家が見られるようにすることです。</p>
+  <p>それが何を意味するか——ここが私のデータエンジニアリングの出番なのですが——非常に多様な情報源からのデータがあって、それを 1 つの、あるいは複数のデータベースやスキーマに集約する必要がある、ということです。そうすることで情報を整合させ、外部に提示できるようになります。</p>
+  <p>そして一般のユーザーにとっての出力は、日次あるいはリアルタイムで——何を見るかによりますが——アプリ上でポートフォリオの最新情報、プラットフォームの活動状況、現状がどうなっているか、といったものが見られる、という形になります。</p>
+  <p>こうしたものがすべてつながって配線されているので、少なくとも基本的な情報は常に最新で、見たい人が誰でも見られる状態になります。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — チームの規模と沿革</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ありがとうございます。</p>
+  <p>参加者D から質問が来ています。RealFi で働いている人は合計で何人か、そしていつ始まったのか。2 年半前でしょうか。</p>
+  <p>創業者のことは以前から知っていて、私が Cardano に来る前からいましたから、こういう問題を解こうと考えて 5 年半ほどになります。</p>
+  <p>ただ、RealFi が正式にいつ始まったかは分かりますか、登壇者A。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>いえ、私には言えません。最初からいたわけではないので。</p>
+  <p>おっしゃる通り、開始時点は明確な一点ではないと思います。創業者は何年も前から考えていたわけですし。</p>
+  <p>ただ、私が 2 年半前に入ったとき、それがエンジニアリングチーム、データチーム、投資チームの採用を始めた時期でした。</p>
+  <p>ですので 2 年半前、というのが、戦略のフェーズから本気で作るフェーズに移った時期だと思います。</p>
+  <p>そして 1 年ほど前から、スマートコントラクトと Web3 側を本格的に押し進め始めました。</p>
+  <p>それ以前は投資のプロセスに慣れていくところで、いや……</p>
+  <p>もちろん投資チームはもっと前から慣れていましたが、私が言っているのはデータ統合を立ち上げたり、プロセスやオペレーションを回し始めたりする部分です。</p>
+  <p>RealFi の全体の沿革については、創業者が話すのが一番適していると思います。</p></div>
+</div>
+
+<div class="sec">分析プラットフォームへの掲載</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>私からも質問があります。皆さんが入力しているのが見えますが。</p>
+  <p>これは頭の片隅にあることなのですが、登壇者A、メインネットに行ったら、できるだけ多くの分析プラットフォームに載せていきたいんです。</p>
+  <p>Cardano を振り返ると、十分に可視化されていなかったせいで少し損をしたのではないかと感じることがあるので。</p>
+  <p>アナリストたちに見えるようにするのが誰の仕事でもなかった、ということです。DefiLlama や Dune、そういったポータルに出ていくこと。</p>
+  <p>それは意識されていますか。私が望むくらい積極的に取り組めそうでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。それは 登壇者B の to-do リストに入っています。Dune、DefiLlama。</p>
+  <p>他にリストにあるものはありますか、登壇者B。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者B</div>
+  <div class="turn-body"><p>いえ、今のところそれで網羅しています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>データや分析の統合先として、こういうところがあるという提案があれば歓迎します。</p>
+  <p>私の DM にどんどん送ってください。喜んでチームに共有します。可視性は重要だと思うので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。それに 1 つ付け加えると。</p>
+  <p>難しいのはこうした場所にデータを押し出すことではなく、データを持つこと、そしてそれを変換することです。</p>
+  <p>それができてしまえば、各分析プラットフォームに統合用のエンドポイントを共有するのは、そこまで難しい部分ではないと思います。ですので提案は歓迎します。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — チャットから</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者E が、あるプロジェクトとの組み合わせについて質問しています。面白い組み合わせになりそうですね。以前にも触れたと思います。</p>
+  <p>チーム同士は話していると思いますが、これについて何か具体的に言えることはありますか。それとも次の質問に移りましょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>私からは特にありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者F が、RealFi の本体サイトやアプリからコミュニティページにリンクする予定はあるか、と聞いています。チャットでも触れたと思いますが。</p>
+  <p>本体のウェブサイトは今のところ機関投資家向けです。私は testnet の期間中、コミュニティハブを推してきました。</p>
+  <p>ですのでそれを示すためのウェブサイトを作りましたし、実際に、コールの冒頭で 登壇者A が示した通りの成果が出ていることを示しています。</p>
+  <p>つまり、パフォーマンスと参加に基づく長期的な関係を築こうとしているわけです。</p>
+  <p>リンクをすべてつなげたいのは山々ですが、今できることと実現可能なことの順番で、問題や機会に取り組もうとしています。どれが戦う価値のあるものか、という判断も含めて。</p>
+  <p>ですので答えは、将来的にはやりますが今すぐではありません。法務や対象読者についての議論に入るより、まずコミュニティハブを作るほうが前に進める最善の方法だったからです。</p>
+  <p>参加者I。はい。かなり質問が出ましたね。あ、すみません、どうぞ。フィードバックが入っています。私が話すとそちらのマイクが割れているのかもしれません。</p>
+  <p>登壇者A、本当に興味深い内容でした。皆さん、コールに来てくれてありがとうございます。他に何か……ちょっと待ってください、ステージに上がりたいという人がいます。</p>
+  <p>やってみましょう。まだいるでしょうか。こんにちは、参加者G。Discord で最初にステージに上がって質問した人ということになりますね。光栄です。</p>
+  <p>質問はありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>Midnight は本当に面白いですね。今まさに探っているところです。もう少し打ち合わせを入れる必要があります。いくつかアイデアもあります。</p>
+  <p>NFT のコミュニティも非常に興味深いと思います。</p>
+  <p>これは私が今しているいくつかの打ち合わせの一部で、誰と組めるか、何がコミュニティに接続できるかを見ています。ただ私は、それが SPO をどう支えるかというレンズで見ています。SPO は今 Discord にいますし、ワークショップも実施しました。これから crews を組成して自己組織化できるようにするので、そこにコミュニティを接続したいと考えています。</p>
+  <p>私の中では、どうやってコミュニティを SPO と関わらせるか、という話です。SPO はある意味でリーダーであり先駆者ですから。ワークショップで出てきた成果物もあります。</p>
+  <p>SPO の方で、あの Miro のワークショップに参加していなかったなら、ぜひ見てみてください。</p>
+  <p>SPO のアナウンスに置いてあります。皆さんが提案してくれた資産やアイデアや crews を通じて SPO を支援していく、その計画の中身がそこにあります。</p>
+  <p>つまり、皆さんが必要だ・欲しいと言っていること、そして自分たちがやると言ってくれていることをもとに、今後 30〜35 日でキャンペーンを組み立てていきます。</p>
+  <p>Midnight のアンバサダーと SPO の組み合わせは良さそうですね。わかりました。参加者G、声が聞こえないので、質問を拾えなくて申し訳ありません。</p>
+  <p>登壇者A、登壇者C、コールに来てくれて本当にありがとうございました。後でまとめを共有しますし、許可をいただければスライドにもリンクします。ありがとうございました。</p>
+  <p>他に話したかったことはありますか。あるいはコミュニティにしてほしいことは。</p>
+  <p>特に聞きたいことや、受け取りたい貢献はありますか。</p></div>
+</div>
+
+<div class="sec">チームが求めていること</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。まず、この機会をいただいて本当にありがとうございました。</p>
+  <p>皆さんと話せて楽しかったです。私の側からは、Discord のチャンネルでフィードバックを出し続けてほしい、ということですね。</p>
+  <p>オンチェーンで人が何をしているか、DApp のどこで離脱しているか、といったデータは見えます。</p>
+  <p>でも、文章で書かれたものを読むのはまったく別の話です。ですので、使い続けて、フィードバックを出し続けてください。</p>
+  <p>それが私にとって、いえチーム全体にとって本当にありがたいことです。以上です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>データまわりはこれからもやっていきますよね。オフラインで進めます。</p>
+  <p>勝手に約束するつもりはありませんが、これはまだ始まりだ、というのが私の言いたいことです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。これが出発点です。</p>
+  <p>私は、他の人が何を知りたいと思っているかを知りたいです。今回のレポートが面白いと感じてもらえたなら、他にどんな数字が欲しいか教えてください。取りに行けるか検討します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いい呼びかけですね。どんな数字を見るべきでしょうか。</p>
+  <p>私の中では、登壇者A と話したときは、SPO、バリデーター、委任者、オンチェーンでの関係性と成長、それからウォレットとその活動、といったところでした。</p>
+  <p>ただ皆さんに意見があれば。参加者J にも感謝を。もともと、Cardano のウォレットの 16% ほどが、いや、おっしゃる通り 7 分の 1 が RealFi に関連してアクティブだ、という話を出してくれたのは彼です。</p>
+  <p>それを見て、これは素晴らしい見出しになると思いました。そこから 登壇者A と話して、今回のものにつながったわけです。ですので、どんな数字でも、</p>
+  <p>登壇者A に持っていけるものがあればありがたいです。皆さん、本当にありがとうございました。まとめは近いうちに投稿します。</p>
+  <p>登壇者A、登壇者C、登壇者B、RealFi の Office Hours に来てくれてありがとうございました。またお会いしましょう。</p></div>
+</div>
+
+<div class="sec">会場からの質問 — banking the unbanked</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>もしもし。今聞こえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい。調子はどうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>ありがとうございます。大丈夫です。助けてくれてありがとうございます。ぎりぎり間に合いました。ノートパソコンに切り替えました。なぜか電話だと声が届かなくて。</p>
+  <p>質問なのですが、ビジョンについてです。私の理解では、RealFi は banking the unbanked という最初のビジョンに取り組んでいるのだと思っています。</p>
+  <p>そして私が触れているのは……すみません、この理解で合っていますか。それとも続けたほうがいいでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>はい、どうぞ。その理解で合っていると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>わかりました。私が testnet で触れているのは、banking the unbanked に流れ込む流動性を提供する側面です。</p>
+  <p>つまり Web3 の文脈で私が理解しているのは、ローンを借りるには過剰担保を差し入れる必要がある、ということです。</p>
+  <p>banking the unbanked というのは、そうしたインフォーマルな市場へのアクセスを提供することですよね。そして 登壇者B が民間資本について何か言っていました。</p>
+  <p>banking the unbanked が対象にしているのはフォーマルな市場ではなくインフォーマルな市場です。フォーマルな市場は銀行やローンにアクセスできます。</p>
+  <p>一方でインフォーマルな市場はアクセスできない。そこが RealFi の取り組む領域のはずです。RealFi がそこに取り組むなら、どうやって解決する計画なのでしょうか。</p>
+  <p>というのも、検証できる信用も、担保にできる与信枠も持っていない人を連れてくるわけですから。ローンを借りたいのに、過剰担保に入れられるものがない。</p>
+  <p>ここアフリカでは、DeFi で 1,000 ドル借りたければ 2,000 ドル差し入れる必要があります。でもローンを借りに来るのは、その資本がないからです。</p>
+  <p>私はインフォーマルな市場から来ていて、自分の身元に紐付いた与信枠が存在しません。そこについて何か枠組みはありますか。</p>
+  <p>そして、RealFi の上に作りに来る人たちが取り組むのは、そこなのでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>オンチェーンのアイデンティティという角度から見ているチームが他にあることは知っています。</p>
+  <p>ただ私の見方はもっと、資産配分の話、私たちがやっている案件の話です。たとえばアフリカのフィンテックに投資するなら……</p>
+  <p>つまり私たちは銀行口座を持たない人と直接つながっているわけではありません。アフリカのフィンテックに与信を提供し、そこが銀行口座を持たない人に融資する、という形です。</p>
+  <p>ですので要するに、そうした人たちに貸せる機関に資本が流れるようにする、という話です。</p>
+  <p>登壇者C、プライベートクレジット案件を見てきていますが、この点について何かありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者C</div>
+  <div class="turn-body"><p>特にありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>なるほど、理解しました。車輪を作り直すのではなく、フィンテックのプロダクトに統合すればいい、ということですね。彼らはすでに、自分たちが事業を行っている層に対してそれをやっているわけですから。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>その通りです。とはいえ、オンチェーンの信用がその一部にならない、という意味ではありません。先ほど言った通り、それを見ている人たちは他にいます。</p>
+  <p>ただ今の時点では、アフリカのマイクロファイナンス機関に資金を出すのが、もっとも直接的な、あるいは今できるもっとも簡単な方法だと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>わかりました。ありがとうございました。</p></div>
+</div>
+
+<div class="sec">締めくくり</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>他に、勇気を出して手を挙げて質問したい方はいますか。それとも大丈夫でしょうか。楽しかったですね。ステージに上がってくれてありがとうございました。</p>
+  <p>音声でのやり取りができるのは good ですね。私の仕事も楽になりますし。では皆さん、来てくれてありがとうございました。</p>
+  <p>登壇者A、この数分で手が挙がらなければ、これで締めましょう。次回は誰に来てもらうか、見てみましょう。</p>
+  <p>次回の Office Hours はこれから調整しますが、大まかな流れはあります。今回がデータでした。次はパートナーシップです。実は今この場にいます。</p>
+  <p>その次はリーダーシップ、そして投資チームです。</p>
+  <p>つまりプロダクト、マーケティング、エンジニアリング、データ、パートナーシップ、リーダーシップ、投資、というローテーションになっています。まだまだ続きます。</p>
+  <p>皆さんが来てくれて本当に嬉しいですし、これから一緒に作っていくのが楽しみです。登壇者A、登壇者C、登壇者B、ありがとうございました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">全員</div>
+  <div class="turn-body"><p>ありがとうございました。さようなら。ありがとう。ありがとう。それでは。</p></div>
+</div>
+</section>
+
+<section class="part lang-en" id="en">
+<div class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">匿名化以外は未編集</span><span class="l-en">Unedited apart from anonymisation</span></span></div>
+<div class="note">
+<p><strong>About this page.</strong> The source transcript has no speaker labels and no timestamps. Speakers below are <strong>inferred from context</strong> and marked <em>(inferred)</em> where the attribution is uncertain. The wording is unedited apart from anonymisation — including speech-recognition errors such as “VeoFi” and “Verifi” for RealFi, and “SPAs” for SPOs.</p>
+<p>Slides were screen-shared during this call but not shared publicly, and their contents were mostly not read aloud. Where the speakers refer to a slide without describing it, nothing has been filled in.</p>
+</div>
+
+<div class="sec">Opening</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Actually had some emojis so I could see if people could hear me.Uh, right.Speaker A and the guys are coming over.</p>
+  <p>Got a really interesting, uh, office hours for you this week, so looking forward to this one.Ah, someone did emoji.Great.Um, if everybody...Well, you know, it's standard, right?</p>
+  <p>Um, time and effort's gone into getting this RealF- office hours, uh, organized.I really appreciate the team for, for coming in and spending time with us and, and so we pay them for that.</p>
+  <p>If we could all just tweet the hell out of this and share it in channels to let other people know, um, that would be great.</p>
+  <p>So if you're listening and you wanna support this office hours, please share it and invite people to come in and join.</p>
+  <p>Um, don't wanna put any pressure on you, but a stretch target is at least 50 people listening.That would be, uh, that'll be my goal.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>All right, let's see if we can get, uh, Speaker A up here, and Speaker C.Give me a second.I'm gonna try and find add speaker.Invite to speak.There we go.Okay.And where's Speaker A?I think this is Speaker A.Hey, Speaker C.How you doing?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Hey.How's it going?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>It's going great.It's going great, guys.Um, right.We've got Speaker A up here and we've got Speaker C.Uh, we are waiting for Speaker B, so we'll give him, yeah...Oh, is that Speaker B there?I'm gonna take a wild guess that it is.Uh, give me two secs.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Yeah.Yeah, that's me.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay.Brilliant.So we, you know, we've had, uh, three Realfi office hours before this.</p>
+  <p>We've, um, spoken to the marketing team, uh, the product team and engineering.Um, I'll be posting a summary of this afterwards, and today we're gonna do data and insights and, uh...</p>
+  <p>But first of all, we'll introduce the team.</p>
+  <p>So Speaker A, do you wanna kick off and then we'll go around the room and it would be great to hear a little bit about who you guys are, your origin story in Realfi and, um, and the function that you fulfill.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>We've got some lag maybe.Can you hear me, Speaker A?Hey, Participant B.Oh, Participant B is in chat so if anybody wants to, um, yeah...I like, I like what you're doing, Speaker B.</p>
+  <p>You've got your camera on, so I'm gonna meet you.I'm gonna meet you where you are.Yeah, we can't hear you, Speaker A.Um, give me two secs.Yeah, Speaker A's mic has gone.Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Host, can you hear me?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yes, we can hear you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Great.Okay.One second.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Maybe you've got push...It might be push to talk.You might have a push to talk function on.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, I'm gonna switch off my headphones.One sec.Okay.Yeah.How, how's that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah.A little bit echoey, but, uh, it works.Okay, cool.Let's go with that.</p></div>
+</div>
+
+<div class="sec">Introductions</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Um, yeah, so, so my name's Speaker A.I lead the data team here at Realfi.</p>
+  <p>I've been at Realfi for about two and a half years.</p>
+  <p>Um, yeah, and my, my origin story, well, I'm based in Cape Town and I, I start-- I worked previously at, um, you know, I worked at a couple of large tech companies so I've never actually worked in the, um, in the Web3 space.</p>
+  <p>So Realfi is where I've really sunk my teeth into it and it's been really exciting.Yeah.And I work with, uh, Speaker B and, um, Speaker C on a day-to-day basis.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great.Thank you, Speaker A.And, uh, Speaker B, uh, tell us a little bit about yourself and your origin story.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Um, sure.Yeah.So I'm Speaker B.I'm the data engineer on the team.</p>
+  <p>Uh, before Realfi, I worked for a FinTech startup that was based in East Africa, and basically putting together a platform to do du- data-driven due diligence on private credit deals, and then I got into Realfi, uh, about nine months ago.</p>
+  <p>And then I basically...I'm in charge of putting together yet another data platform that is then geared towards stablecoin.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great.Thank you.And last, but definitely not least, Speaker C.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Yeah.Uh, I'm the analyst.Uh, I predominantly work, uh, with the investment and treasury teams at Realfi.I've been here for about a year and a half now, also based in Cape Town.</p>
+  <p>Um, prior to this, directly prior to this, I was, uh, working with a lender based in Cape Town for small and medium enterprises doing business-to-business lending.</p>
+  <p>And before that, um, was actually in portfolio management in the Web3 and the traditional finance spaces.So that's my background.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, great.So we've got some, um, some names and some faces and some, uh, some instances.So Speaker A, talk us through what we're gonna cover on this call.</p>
+  <p>What are the, what are the kind of high level themes that you wanted to bring?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Sure.So what I want to cover is, um, you know, big data insights.</p>
+  <p>We've been looking at a test net and, and how it's performing.We've been looking at the, um, the SPO program that Host's writing.</p>
+  <p>So I really just wanna present some insights just to give you all a feeling of, of, yeah, how the first three weeks of Realfi test net have been.</p>
+  <p>And then Speaker C wants to talk a little bit to kind of his focus area, which has been supporting the investment team and working on kind of the DeFi ecosystem and liquidity.</p>
+  <p>And yeah, I think, I guess otherwise we're open to questions.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>It's a great point.</p>
+  <p>Um, if anyone's listening, uh, there's a chat bubble in the top right I think, so you can ask questions as we're talking.Um, we'll go through them like we did last week.</p>
+  <p>Um- So I think, Speaker A, you can kick us off.You can share screen if you want, but, uh, we're starting with, uh, network level tractions.Or is that right?</p>
+  <p>Are you looking at what's happening on-chain or are we starting somewhere else?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>No, no, that's right.Let me share my screen for you.Yeah.Um, okay.There we go.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I'm, I'm putting you on max so I can get the full experience.Thank you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Okay, can you, can you see my screen?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Not yet.It's still loading.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Okay.Let me know once it's working.Hmm.There is a streaming error.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Do you want me to present?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Is there?Let me see.Yeah.If, if you can, if you can do that then I, I can just ask you when to switch slides.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yes.Give me a sec.I was trying to find the...Yeah, here we go.Okay.Sorry, um, my f- face is all over.Okay.Can we see this?It's loading.Yeah, we got it.Great.So just, uh, yeah, tell me when to click.</p></div>
+</div>
+
+<div class="sec">Three weeks of testnet — the headline numbers</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah.So, yeah, as I said, we've been running tests in it for three weeks.We launched on the 6th July.</p>
+  <p>The SPO accelerated program launched on 22 July, so it's really just looking at how we've been performing across those two, uh, kind of launch, uh, milestones and, yeah, looking on-chain and also at our off-chain data.</p>
+  <p>So Host, first slide, please.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah.So the, the real take-home here, if there's three numbers you, you take...</p>
+  <p>sorry, four numbers you take away from, from this talk, I think they should be, if we look at the number of wallets that have been active on our testnet, that, that appears to be approximately one in seven of Cardano, of active Cardano wallets across the ecosystem.</p>
+  <p>So that kind of gives you a scale of the share of Cardano we are kind of interacting with right now.Obviously, these are testnet wallets.</p>
+  <p>They are not mainnet wallets, so they can't in all cases be linked one-to-one.You know, they're, they're different populations.But in some cases they can be linked one-to-one.</p>
+  <p>So what I can see is that of our testnet wallets, 339 of those are, can be linked to active Cardano mainnet wallets.And what's worth remembering, yeah, Host, you said it perfectly, it's a flaw.</p>
+  <p>Because a lot of people will create a testnet wallet that are throwaway.They, they aren't linked, they don't share stake keys or...</p>
+  <p>sorry, can't remember the exact terminology, but with the, the mainnet wallets.But, um, so, so once we implement wallet linking in the future, this number will probably go up.</p>
+  <p>But we can say for sure 339 of these wallets are active on mainnet.And these wallets, if you look at the 339 wallets, they hold currently 2.3 million, uh, ADA.</p>
+  <p>So that just again gives you a scale of the activity we've, we're currently having on testnet.</p>
+  <p>And then finally, related to the SPO program, 84% of pro- of SPOs in our accelerator program have increased delegation, um, yeah, over, uh, since, since the launch of the program.</p>
+  <p>So, so those are the high level figures.Host, first slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And that's compared to pools that aren't part of the program, which is, um...Can you just touch on that?So like 84%-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, sure ...have grown.Hmm.Yeah, exactly.Okay.Well, what we're trying to do here is get a feeling for what's the impact of the accelerator program on, on delegation.</p>
+  <p>And the way I've done that is I compared, uh, SPOs in the program to SP- to comparable, sorry, SPOs that aren't in the program.So that's comparable in terms of size.</p>
+  <p>So comparable SPOs not in the program, 17% of them increased delegation over the two-week period, compared to 84% of SPOs in the program.</p>
+  <p>So that difference gives you a feeling of, um, gives you a feeling of, uh, kind of the impact of the program.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And just two points on that.</p>
+  <p>Um, that's the SPOs that are on the, the website, the, uh, the SPO profile community website that we've got.Not all the SPOs have registered, uh, or got onboarded.</p>
+  <p>It's only those that participated in the workshop and that are on the website.</p>
+  <p>And the second thing, which is kind of an apology to SPOs, but also I think exciting, and we were talking about this, Speaker A, is that this is so far with none of the crews having been formed and none of the campaign stuff getting applied, which, uh, I owe the SPOs, but it's because I've been so busy.</p>
+  <p>Well, I'll get to that later.But so there's more to come.There's a lot more growth here that I think, uh, we can potentially do.But yeah, sorry to interrupt you, Speaker A.I'll, I'll hit the next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Sure.Maybe just quickly, I see a question from Participant A.Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>I, I'll have to share details on the exact methodology, um, later.It got pretty complex.I was using Claude to help me with it.</p>
+  <p>So, so I'll, I'll be able to share details at, at a future date.I can't remember them off the top of my head.Okay.</p>
+  <p>So, so for the first, um, yeah, the first slide, this really just shows you wallets that have been active on our testnet.</p>
+  <p>And what's worth noting here is, is this is what we believe is, is our current best guess of real wallets.</p>
+  <p>Because what we are doing is we are, we, we, we're, we, we're removing what we believe to be farming wallets from this.</p>
+  <p>So as you can see, a strong upward, uh, trend and, you know, you see the big s- this is cumulative, so total people who have used the testnet since launch, so of course it's gonna be upwards.</p>
+  <p>But what you can see is those- Big increases, especially around 22 July, which is the launch of the accelerator program.So just to show you, testnet active users is growing steadily still.</p>
+  <p>So that's good.We haven't flattened out.Um, next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, and as I said, I, I kind of looked at over the last epoch, so from 23 to 28 July, how many wallets were active on our testnet.</p>
+  <p>So that was about 2.6 thousand, and you compare that to the 20,000 active Cardano wallets.So that's essentially equivalent to 14% of active Cardano wallets, um, that were active on our testnet.</p>
+  <p>Again, these are slightly different populations, there may be some people active on testnet who were never active on mainnet, but it just gives you a sense of scale of activity on our testnet versus Cardano.</p>
+  <p>And again, this is removing who we believe to be farming, farming wallets.So this is our best estimate of real genuine users.Next one, Host.Cool.</p>
+  <p>Um, and then as I said, I've been able to connect for 359 testnet wallets to mainnet wallets.Um, and again, this is just a floor.</p>
+  <p>When we implement wallet linking later, this number will certainly go up.It can't help but go up.This is the, the least we'll ever be able to do.</p>
+  <p>This is, is mapped using cryptographic keys, and we can see that they hold 2.3 million ADA on mainnet.Host, I don't know if you have any comment on those.</p>
+  <p>I mean, I've given the numbers, but if you wanna frame that, what, what that means for you.</p></div>
+</div>
+
+<div class="sec">Why these numbers matter</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Uh, you know, I'm, uh, I re- I really think that ultimately, I'm going off as a-- I'm shooting from the hip here, but my experience in Cardano, I think of like the product 2030 vision, and it's fantastic.</p>
+  <p>Um, no criticism, but as I read it, it, it didn't name the game at the top, if you go and read it, and I think the name is growth.And I wrote an article, sorry for shilling my article.</p>
+  <p>I wrote an article about numbers come before strategy, and the point was, if the name of the game is growth, how do we define it?And we define it by capital productivity, right?</p>
+  <p>That's how you could do in blockchains now, one.</p>
+  <p>And if you wanna drive, um, growth and capital productivity, and in fact, if you want to help people, uh, self-organize in an ecosystem, you need some kind of an access.</p>
+  <p>And so I think that we need a small set of units of account, and one of them is like TVL, for example, right?</p>
+  <p>And so when I was talking to Speaker A -- And by the way, I, I should actually shout out, Speaker A, you and your team were fantastic 'cause I came to you with this request for data with no brief, and you've put all of this together, so I, I really do appreciate that, actually.</p>
+  <p>Um, just to-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>You're welcome ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>just, just so that it's said.Yeah, I really do.</p>
+  <p>Um, but yeah, ultimately, I, I think that VeoFi can contribute to Cardano and, and its TVL, and, uh, I'll save it till the-- towards the end, but I think there are ways that we can think about how do we make the capital that isn't that active in Cardano more active?</p>
+  <p>How can we get it involved?Um, so yeah.This is what I'm thinking about here.It's like, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>And, and look, Host, I'm not trying to throw you under the bus.Yeah.</p>
+  <p>I, I think you, you, you, you would, you would've loved me to be able to tell you that we are gonna attract this much TVL.</p>
+  <p>I, I couldn't, I couldn't when mainnet launches, and I couldn't in, in all honesty, give you that number 'cause, you know, we, we don't know who's gonna join mainnet.</p>
+  <p>You know, there's too many unknowns.</p>
+  <p>But what I can tell you is how much TVL is currently held by people who are using testnet, and this is, this is the best I could do for you, but I think it's still indicative.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's-- But there's interesting stuff.There's like alpha growth thing.Does it pass?Doesn't it pass?That would be interesting.There's Japan, and I think there's, um...</p>
+  <p>I'm thinking about ways that SPOs can be empowered to present or to delegate as this kind of stuff.So there's definitely pieces on the board.But as you say, um, it's not certain, so you know.</p>
+  <p>But this is the fun, right?Can-- The fun of VeoFi and getting back involved in, um, building something from the ground up is that kind of nostalgia.So I, I'll stop gushing, but I just really...</p>
+  <p>I like, I like being back in, in, into the place like building cool shit and, and working with people in the community, you know.So, um, yeah.Okay, next slide.Yeah, next slide.Yeah, I won't.Okay.</p></div>
+</div>
+
+<div class="sec">The SPO accelerator program</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Okay, perfect.Uh, I think I love this chart.I think it tells a very clear story.</p>
+  <p>This is showing, um, new, new delegators arriving at, um, at, at, at the pools every kind of five-- each five-day window.</p>
+  <p>And what we see here again is that compe- comparison between SPOs in the program versus comparable SPOs not in the program, and you see a very clear divergence around the, the launch of the accelerator program.</p>
+  <p>So, so yeah, essentially SPOs in the accelerator program got significantly more new delegation than those outside.Uh, and yeah, I mean, there's some other figures on the right that corroborated.</p>
+  <p>You can look at it from various angles, how many SPOs attracted delegation versus didn't.Eighty-four in the program did, seventeen percent only, seventeen percent that weren't in the program grew.</p>
+  <p>So yeah, you can chop this up in terms of, uh, net growth, gross, but it all really tells the same stories.</p>
+  <p>Pools in the accelerator program gain delegators while those not didn't, or to a lesser degree did.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And you know what VeoFi is doing here is, um, giving SPOs an opportunity to differentiate their pools, an opportunity to market their pools.It's, it's not a guarantee, right?</p>
+  <p>It's like, I think maybe I could have made that clear at the very beginning 'cause I got at least one DM where someone was upset with me.</p>
+  <p>But it's like, what I'm trying to do here is have a win for VeoFi and a win, a win for the SPOs.So the...So it's a win-win situation.</p>
+  <p>So it is about performance, it is about like, look, you've got a reason to differentiate.You can offer people a real say in how VeoFi is developed, right?Um, with the stablecoin infrastructure.</p>
+  <p>But you're gonna need to go out and take that message to delegators, and we're gonna need to help you go out there and, and talk to people, right?</p>
+  <p>So my key point here is participating is going to be strongly linked to your performance if you're trying to, if you're trying to raise that profile and get more delegation into your pool.</p>
+  <p>Uh, sorry Speaker A, I'm interrupting you too much.Next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah.And, and look, I, I think maybe it's worth...It's a good point.</p>
+  <p>Look, as you can see, this program is, is SPOs in the program gained delegation, those outside didn't, but I can't necessarily see why.</p>
+  <p>I can see that something happened on 22 July, whether that's just by virtue of being in the program.</p>
+  <p>A lot of the problem with this is probably those people in the program went out there, as you said, and, and, and made an effort.</p>
+  <p>Like, you know, there's probably quite a few causes underlying this, but I think the, the end result is clear.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I, I think I said this to you when we first met.Yeah.</p>
+  <p>It's like, why was Cardano successful?Because there was a whiteboard video, sure, right?</p>
+  <p>And, and there was some incentives, you know, and there was academic research, there was banking the unbanked, so you're doing something good, and there was a, a business opportunity.</p>
+  <p>But my belief is it was the stake pool operators that went out and relayed that vision, that went out and explained that to people, which is why I think the stake pool operator really is the core community in Cardano, and, and why I was thinking that it was a great way to bootstrap community with VeoFi, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Um, agreed.But Host, next slide, and then, uh, yeah, I think we close it down.Yeah.So here I'm just showing a leaderboard.</p>
+  <p>We're looking at, um, over the epoch just after the accelerator program launched, I looked at kind of how much delegation each pool in the program attracted, and in here we can see the top five.</p>
+  <p>So essentially Pool 1, Pool 2, Pool 3, Pool 4, sorry, I'm probably butchering the names, and Pool 5.Those were our top five.And yeah, congratulations.Uh, well done.Uh, 840k ADA from Pool 1.</p>
+  <p>Uh, I think there's a, there's...One thing is we don't want to just bias the leaderboard to the pools that are already big to start with.</p>
+  <p>So I think it's also interesting on the table on the right to look not just at absolute amount of new ADA, but also percentage of stake at the start of the epoch.</p>
+  <p>But still, yeah, I think they're still storing and just, uh, well done to the, to the leaders there.I don't know if anyone, I don't know if you are in the call here.Yes, I see you there.Yeah.Nice.</p>
+  <p>Yeah.Um, yeah.Next slide.But I think that's, yeah, that's it just about.That's really just repeating those four numbers.Mm.</p>
+  <p>Since you 1 in 7 wallets on Cardano, active wallets on Cardano, are active on the testnet.340 real wallets on our testnet can be linked to mainnet.</p>
+  <p>2.3 million ADA and 84% of SPO programs grew delegation compared to, um, non-SPO, non, non-accelerator programs.So yeah, I think that just shows the good impact we're having in the market shares.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Thank you, Speaker A.Yeah, I think- Well- I think it's great.It's, you know, it's not, um...I think it's an amazing starting point.Um, we wanted something where SPOs could attract delegation.</p>
+  <p>This shows that it does work, and it's just gonna be a case of how well I can support, and the SPOs involved can self-organize to use this, um, base as a kind of je- um, what's it called?</p>
+  <p>A, a jumping point, a starting point, you know, to, to go out there and do it.So I...This is really good.Um, any questions before we move on?In chat?Mm.See the audio is not good.Apologies for that.</p>
+  <p>Yeah.I, it was a little bit scrappy, but I, I think I've got the...</p>
+  <p>I've got, I can write a summary afterwards, and I didn't wanna stop you mid flow to, to start troubleshooting, um, the, the, the mic and the audio.Um, okay, great.</p>
+  <p>So we've talked about, um, the on-chain kind of metrics, which I think anyone can verify, I think, right?Uh, I'll follow up with you afterwards about the methodology that you mentioned.</p>
+  <p>Um, and we've talked about the SPO accelerator program, and we've got, uh, Speaker C on the call.</p>
+  <p>And Speaker C, will you can tell us a little bit about kind of, um, some insights into DeFi and, uh, liquidity and, and walk us through some of your ideas?</p></div>
+</div>
+
+<div class="sec">Liquidity — three angles</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Yeah.Host, I mean, not insights, um, rather more a, a general chat, I suppose.Mm.I think, um, in, in some of these previous office hours I've seen questions around, you know, the portfolio liquidity.</p>
+  <p>And so I thought it was maybe worthwhile to just give a generic overview of how we think about liquidity specifically from the three angles that we look at it from.</p>
+  <p>Um, I think any of the very specific questions would more likely be, uh, for the investment team when they do the office hours themselves.</p>
+  <p>But yeah, I think just, just to, to start off, like, when we look at liquidity itself, it, it's one word that encompasses three things, and that's the aggregate portfolio that we have, the underlying components of that portfolio, and then the secondary market liquidity, uh, which is DeFi indexes.</p>
+  <p>Um, and so I think, you know, I may be keeping it high level, but- The important thing that we really want to get across is that the team is constantly thinking about calibrating the asset liquidity to the TVL, uh, because we treat time to cash as a property really of every position instead of an afterthought, because the underlyings have different horizons, right?</p>
+  <p>And what's important to note there really is that none of that calibrational thinking depends on predicting anything.</p>
+  <p>So one could really build out a version of this where things rest on being right about the future, you know, trying to forecast things, trying to predict where spreads would go, where the sentiment would hold, whether rates would go up or down.</p>
+  <p>But the way that we view these things is that we work off what's known, and we try and flex parameters around that.</p>
+  <p>So things like settlement windows, term lengths, redemption terms, so that we're not really reliant on our view of some future states which may not occur.I don't know if that make, makes sense.</p>
+  <p>That's, that's at the aggregate portfolio.The, the second view really is the underlying or the underlying instruments or assets.</p>
+  <p>Um, I can talk about it a little bit more, but I'd prefer if the investment team focuses on that.I can answer any questions rather, so I won't focus on that.</p>
+  <p>Um, but the third maybe more important thing is the on-chain liquidity in the DEXs, and you know, how USDR is actually, um, by swaps.</p>
+  <p>So really here we've done a lot of thinking with our partners on this.So what types of pools would, uh, hold USDR?The venues that this is available on, how they get managed as things change.</p>
+  <p>And we've done a lot of modeling around optimizing the specific sizing of these pools against the specific types of AMMs that would hold these, these, uh, pairs rather should I say.</p>
+  <p>Um, and the thinking really is just to make sure that enough depth sits there so that people that actually trade this aren't being spread thin.</p>
+  <p>Uh, and making sure that the price that they're expecting to get is the price that they get, um, or at least attempt to do that.</p>
+  <p>And, uh, the way that we achieve this really is not only in the pool depth itself or attempt to achieve this, uh, but, uh, by running our own stability fund, by having our own chain stability fund, and the peg stability module which runs underneath all of that.</p>
+  <p>And if people have read the doc store is the peg stability module itself is just a framework that runs continuously, uh, which is designed to maintain the USDR at peg.</p>
+  <p>And I think I'm gonna stop there to keep it generic.</p></div>
+</div>
+
+<div class="sec">The flywheel</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Can you zoom out high level for me?Because, um, I'd love to be able to, uh, understand like the flywheel.</p>
+  <p>Could you walk me through a flywheel, um, in simple terms so that like someone like me could understand it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>You're talking about flywheel?Yeah.What do you mean?What do you mean exactly?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, what are the steps, uh, that build growth?So, um, the, the idea is that, uh, you need a cycle that builds on itself, you know?So each step can't help but add more value to the next.I'm- Yeah.</p>
+  <p>I think- ...I'm doing this off the cuff, so if you don't have it, it's fine.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>No, no worry.I mean, of course.Um, look, liquidity is, is what really underpins this whole thing, right?Um- Mm-hmm ...and composability of the, of that liquidity as well.</p>
+  <p>So I don't know how much I'm allowed to say or what, what I can and can't say, but I think really what it comes down to is we, we maybe would like to understand, uh, how people are going to be using USD on sUSD on the secondary market.</p>
+  <p>Um, yeah, I'm gonna, I'm gonna stop there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>I, I, I can try, Speaker C, if you don't mind.Yeah.Yeah, yeah.Um, I mean, I think when we were planning this project, look, the...</p>
+  <p>We've only launched test net now, so we've only really started collecting data recently.</p>
+  <p>Prior to this, what we were spending our time on was looking at, at, at other stable coins, what drives their growth.</p>
+  <p>Uh, you know, a- and I think the learning we came back to again and again is that what's important is, is DeFi integrations.</p>
+  <p>Um, and specifically what came up strongly for a lot of yield bearing stable coins was, uh, the ability to do looping, to get leverage, and this all hinges on, on secondary market depth, you know?</p>
+  <p>So, so I think our key here is really just to make sure, as Speaker C said, that we have high liquidity and that we can support kind of these DeFi use cases, multiple int- integrations so that kind of...</p>
+  <p>That kicks off the flywheel really.'Cause, 'cause leverage and looping drives growth, drives TVL, and to do that you need depth.Speaker C, I don't know if you agree with that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Yeah, 100%.No, you worded it better than I would have.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I think, I think that's really interesting because I think two things.Um, first of all, you're really smart, right?</p>
+  <p>So you're able to understand all of this, and I think that like visuals in which people can explain their strategies would be really interesting.</p>
+  <p>Because I know like if I wasn't part of the RealFi community and I was just evaluating like what are opportunities that are out in the community, and I have done in the past, not necessarily being able to track everything that's going on.</p>
+  <p>Something like a flywheel or a visual representation where someone can walk through what they're doing or what value or utility is being created is definitely something I'd like to see coming out of the community.</p>
+  <p>Um, and it can cross borders, it can cross languages, you know?</p>
+  <p>Um, sorry Speaker C, I was, uh, I was just thinking there, but like, have you seen great content like that, um, where people would demonstrate or model strategies just generally in DeFi?</p>
+  <p>Are there sources or examples of that, or am I just riffing off</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Um, no, I don't think so.But, um, I don't, I don't think we've, we've looked at this extensively as yet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I'm only thinking selfishly, like the kind of community content and advocacy that supports DFL.But I, I'll take it offline.</p>
+  <p>I'll, I'll, I'll wait until that thought's kind of formed more fully in my head, you know?Um, hey, Participant H.Yeah, we are...</p>
+  <p>I'm recording for the purposes of writing summaries rather than, uh, writing full transcripts because there's an element of, um, improv, right, with all these calls.Uh, it's not all, uh, planned.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — wallet linking</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, Participant C from Japan says, "This question comes up quite often.</p>
+  <p>I think there were two wallets involved, the mainnet delegation wallet and the wallet used to complete the testnet tasks, and if they need to be linked.</p>
+  <p>I believe the team will provide an official form." Is there-- have we got any clarity on that about the claiming points and the connection between pre-prod and main wallets?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host <em>(inferred)</em></div>
+  <div class="turn-body"><p>Um, I don't want to speak for the product team or the eng team.I, I know they're working on this.There will be a method of doing it.</p>
+  <p>Um, I, I think the engineering team just actually demoed it or today, actually.So, so there definitely will be a way to do it.Um, I just can't speak to the specifics.But yes, you'll, you'll link them.</p></div>
+</div>
+
+<div class="sec">The portfolio and crypto cycles</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, great.Um, do we have any other questions in chat?Okay, cool.</p>
+  <p>Um, so Speaker C, uh, walk me through, by the way, um, some of the-- Can you walk me through some of the asset portfolio just so we can revisit some of those things?</p>
+  <p>I mean, I guess what I'm interested in or I was gonna underline, but I'm not putting words in your mouth, was the real world asset aspect of it.</p>
+  <p>And when I first started talking to the founder, that RealFi would be resilient to crypto cycles.Could we touch on that briefly?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Um, yeah, I think we could touch on some things.Hmm.Yeah.What would you like to that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I think if, if resilience to crypto cycles was one attribute or, or interesting differentiator about RealFi, and that it's not synthetic, right?</p>
+  <p>Um, how would somebody explain that to like a normie?How would I go and tell my wife?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>Yeah, I mean, look, the, the portfolio itself is just made up of a different mix of assets.</p>
+  <p>Um, and you know, those, again, you can just refer to the Docusource if you'd like to read more around it.</p>
+  <p>But, you know, we've got a different mix of some, uh, tokenized market mon- money market funds.</p>
+  <p>Uh, we've got floating rate corporate bonds, potentially, uh, investment grade CLO ETFs, and direct private credit deals or institutional private credit funds.</p>
+  <p>And the way that this is composed, again, is dependent on the investment team, and I think they would be more suited to speak to it.</p>
+  <p>But from everything that I've just noted, you'll notice that none of it relies on any crypto-native, uh, allocation itself.So yeah, the, the, the exposure is not crypto-centric.</p></div>
+</div>
+
+<div class="sec">The transparency portal</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Hmm.And Speaker B, I'm putting you on the spot, but, uh, I haven't got around to you.Did you have any, um...You've been listening the whole time.</p>
+  <p>Uh, did you have anything to add or something we may have missed that we should have covered?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>I...No, from, from my side, I think that's it.</p>
+  <p>I mean, like, you know, Speaker C summarized the, like the investment strategy pretty well at a high level.</p>
+  <p>Um, you know, we can delve into the specifics on how they want to rebalance against, like between different asset classes depending on the scenario, but then that might be getting a little bit too technical.</p>
+  <p>Um, otherwise, I'm happy to talk about data engineering stuff, but we might lose half of the audience probably, so.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, well, I mean, I, I don't-- I mean, maybe what is interesting to the audience, Speaker B, is, is kind of the transparency aspect.</p>
+  <p>I would say you're quite close to that, the transparency portal, how we share what, what we're investing in.Yeah, tell us about the transparency portal.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Hmm.Um, no, that's a good point.</p>
+  <p>The-- I think at a high level, the transparency, that there is something with RealFi that's quite important for the success and growth of Stablecoin is the fact that we want to be transparent, and we want to inspire confidence in all of our users and as you as your and you as your holders.</p>
+  <p>And so there are different ways to do that.One is to be very transparent about the platform and its smart contracts, of course, and all that will be on chain, so that can be audited.</p>
+  <p>The Web 3.0 can be audited.</p>
+  <p>The other thing that we're striving to do is, uh, to make everything that happens outside of the chain also transparent and also available to our users and to, to po- to potential investors.</p>
+  <p>Uh, so what that means, and this is where the data, my data engineering bit comes in, is that we have data sources and source of information from a di- very diverse set that sort of need to converge in one beautiful database or many databases or schema so that we can actually, uh, you know, harmonize all that information and present it to the outside audience, so to speak.</p>
+  <p>And then like the, the output of this for, for a normal user would be that on a daily basis or in real time, depending on, you know, which, uh, which thing we look at, you will see on the app fresh information about the portfolio, about the activity of the platform, about where things stand, et cetera, et cetera.</p>
+  <p>So all these things are sort of linked and wired together so that at least the basic information is always up to date and available to anyone who wants to see it.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — team size and history</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's great, thank you.</p>
+  <p>I got a, I got a question from, um, uh, Participant D.Is it possible to say how many people total are working on RealFi and, uh, when did work start?Was it two and a, two and a half years ago?</p>
+  <p>I mean, I know the founder for like...He was here before I joined Cardano, so he's been around five and a half years thinking about solving these kind of problems.</p>
+  <p>Um, but do you know when RealFi, um, officially started, Speaker A?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Uh, I mean, I couldn't tell you.I, I didn't join at the start.</p>
+  <p>I, I, I think, I think as you said, like, the start is a, is a, is a, it's not a, not a definite point.I mean, the founder's been thinking about it, as you said, for years.</p>
+  <p>But when I joined two and a half years ago, that's when we started hiring kind of the, the engineering team, the data team, the investment team.</p>
+  <p>So I would say two and a half years ago, I think that was kind of when it moved maybe more from a strategic phase to kind of really getting serious about building.</p>
+  <p>And then I would say, oh, maybe about a year ago is when we really started pushing harder on, on, on the kind of smart contracts and the Web3 side of it.</p>
+  <p>Before we were just getting kind of familiar with the investing process and, and well, not...</p>
+  <p>I mean, obviously our, our investment team has been familiar for it longer, but I'm saying getting the data integrations going, getting our processes and operations going.</p>
+  <p>I, I think the founder would probably be best ba- uh, placed to speak about the full history of RealFi, but yeah.</p></div>
+</div>
+
+<div class="sec">Getting on the analytics platforms</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Hmm.I, I have a question.I can see people are typing.</p>
+  <p>This is more in the back of my mind, Speaker A, but when we get to main net I just wanna be, like, registry maxing and getting us on as many kinda analytical platforms, um, and spaces.</p>
+  <p>Because just looking back at Cardano, I feel like sometimes, um, we may have suffered a little bit because we weren't visible enough.</p>
+  <p>It was nobody's job to make, uh, us vili- visible to all of the analysts, you know?And, and showing up in, like, DefiLlama, Dune, and, and all of these kind of portals.</p>
+  <p>Is, is that something on your mind?Do you think we'd be, um, attacking that as aggressively as I'd like?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah.Yeah.It, it, it's on, it's on Speaker B's to-do list.Uh, Dune, DefiLlama.</p>
+  <p>I don't know if you've got any, any others on your list, uh, Speaker B?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker B</div>
+  <div class="turn-body"><p>Um, no.That's, uh, for now that covers it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Are we open if anyone has suggestions, um, about where we might want to have integrations in terms of data and, and analysis?</p>
+  <p>Just blow up my DMs and I will happily share that with the team, 'cause I think that, you know, visibility there is important.Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah.I mean, maybe let me add to that.</p>
+  <p>The, the, the challenge isn't in pushing the data to these places, the challenge is in, in having the data and, and, and transforming it.</p>
+  <p>And, and once we've got that, I think sharing integration endpoints with our various analytic platforms, you know, I don't think that's really the hard part, so, so yeah, open to any suggestions there.</p></div>
+</div>
+
+<div class="sec">Q&amp;A from the chat</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Uh, Participant E is asking about Pagan.Um, would be really nice, interesting combination.I think we touched on it before.</p>
+  <p>I'm sure the teams are talking, but do you have anything specific to say about Pagan, or should we move on to the next question?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>Not from my side.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Uh, Participant F is asking, are there plans to link to the community page from the main f- the main RealFi site or app?I think I mentioned this in chat.</p>
+  <p>Um, the main website at the minute is, uh, targeted at institutional players, and obviously I've been pitching the community hub and beach jump in the community during test net.</p>
+  <p>So I've got a website built up to demonstrate, um, and it is demonstrating that, as Speaker A showed at the beginning of the call, the success that we're having.</p>
+  <p>So it is long-term relationships that we're trying to build based on performance and participation.</p>
+  <p>Um, the website is, you know, yeah, I would love to get it all, uh, linked up, but I'm trying to tackle the problems or the opportunities in the order of how much can we get done now, uh, and what's achievable, versus, like, w- what is worth the fight?</p>
+  <p>Do I wanna go and...You know.</p>
+  <p>So the answer is, in the future, but not at this minute, because the best way to move forward was to get a community hub built rather than trying to get into discussions around legal and audiences and this kind of stuff.</p>
+  <p>Um, Participant I.Okay, cool.No, I think, I think that's a lot of questions.I'm really...Oh, sorry, go on.I got some feedback.I think maybe when I'm talking it's, uh, blowing your mic up.</p>
+  <p>Um, Speaker A, this has been really, really interesting.Um, thank you guys for coming on the call.Um, if there are any more...Hang on, I've got, uh, someone's asking to come up.</p>
+  <p>Yeah, let's try, let's see if it's speaker.If they're still there.Hello, Participant G.The first, the first person to come to the stage and ask a question on Discord, so that's the honor.</p>
+  <p>Have you got a question?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, Midnight City is really interesting.It's something I'm exploring at the moment.Uh, I've got to schedule some more calls with the guy.I have some ideas.</p>
+  <p>Um, I think NFT community's really interesting, too.</p>
+  <p>Um, this is part of the, the calls that I'm having, is, um, looking at who we can work with and, uh, what might plug into the community, but I'm looking to through the lens of how is it gonna support SPAs, and how if we have the SPAs now, which we do, in Discord, and we've run the workshop and we're gonna form crews so they can self-organize, then we wanna plug community into that, right?</p>
+  <p>So in my mind, it's about how do we get the community involved with SPAs, where SPAs are in some senses, uh, leaders or pioneers of- The workshop outcomes that we put together.</p>
+  <p>If you're an SPO and you weren't in that Miro workshop, then definitely go and have a look at it.</p>
+  <p>It's in the SPO, uh, announcements, and that's essentially how I'm gonna drive or plan, um, supporting SPOs through the assets and the ideas and the crews that they've suggested.</p>
+  <p>So it's really what you guys are saying you think that you need and want and, and what you're willing to do that I'm gonna build out, um, the campaign over the next sort of 30, 35 days.</p>
+  <p>Uh, there's a good Midnight Ambassador SPO segment there.Mm-hmm.Okay, great.Uh, right.Well, I think Participant G, uh, we can't hear you, so, um, I'm sorry we didn't get to your question.</p>
+  <p>Uh, Speaker A and Speaker C, I really appreciate you coming on the call.I'm gonna share a summary afterwards and, uh, with your permission I'll, I'll link to the, uh, the slides.Um, so thank you very much.</p>
+  <p>Was there anything else you wanted to, to talk about?Or is there anything the community could do for you?</p>
+  <p>Anything you're particularly interested in hearing about or contributions you'd like to receive?</p></div>
+</div>
+
+<div class="sec">What the team is asking for</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah.I, I mean, I just want to say firstly, thank you very much for the opportunity.</p>
+  <p>It's been, it's been cool to talk with everyone.Um, yeah, I, I think just keep giving from my side, keep giving, keep giving feedback on the Discord channel.</p>
+  <p>You know, like we can see the data on, you know, what people are doing on chain, whether they're dropping off on the DApp, et cetera.</p>
+  <p>But, but it's, it's, you know, seeing, seeing it written in text is, is, is another story altogether.So just, just keep, keep, keep using it, keep giving feedback.</p>
+  <p>That, that's, that's really great for me.I mean, for us as a whole.So yeah, that's it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And we're gonna still work on some more data stuff, right?Like, uh, I'll take it off lines.</p>
+  <p>I don't want to ma- make any promises on your behalf, I won't do that, but, but, uh, this is just the beginning is, is my main point, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah.This is the starting point, so yeah.Okay, great.</p>
+  <p>I'm curious to know what other people are curious to know.So if, if my report is interesting to you, if there's any other numbers you wish you had, um, yeah, I, I can look into getting them.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah.It's a great shout out.You know what, what numbers should we be looking at?</p>
+  <p>In my mind, like when we talked Speaker A, it was, um, SPOs, validators, delegators, the relationship with them on chain and, and the growth, maybe like the wallets and then like activity of the wallets, like what's happening there.</p>
+  <p>But if people have got opinions, and Participant J, shout out to him 'cause he originally, um, brought up the, the wallets being something like 16% of, uh, and as you said, one in seven, um, in Cardano being associated and active with Verifi.</p>
+  <p>And I was like, ah, that is such a great, um, headline.And then that, and then you and me were talking and then it came out of this, you know?So yeah, any numbers or- Yeah ...</p>
+  <p>or yeah, we c- we can bring to Speaker A, that would be great.All right, everyone, thank you very much.I'll post a summary shortly.</p>
+  <p>And, uh, Speaker A, Speaker C, Speaker B, thank you for coming to the Verifi office hours.Um, and we'll see you again soon.</p></div>
+</div>
+
+<div class="sec">A question from the floor — banking the unbanked</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Hello.Can you hear me now?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yes.How's it going?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Okay.Thank you so much.Uh, I'm good.Thank you for the help.Just in the nick of time.Okay.I had to switch to my laptop 'cause I don't know why I ca- you guys can't hear me on my phone.</p>
+  <p>So, uh, my question is, uh, the vision, 'cause what I understand by Verifi is this like beginning vision of banking the unbanked is what Verifi is here to address.</p>
+  <p>And to what I am interacting with-- Sorry, am I correct or sh- or should I go on?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah.Yeah, please.Uh, I mean, I, I think, I think you're correct.I would say.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Okay.Yeah.Okay.And what I'm interacting with, uh, on the test net part is the aspect of providing the liquidity that can flow into these banking the unbanked.</p>
+  <p>So what I'm saying there is more like what I see, understand in the Web3 aspect where Verifi have to, let's say, over-collateralize liquidity to borrow a loan.</p>
+  <p>So 'cause banking the unbanked is like giving access to these informal markets.And Speaker B said something regarding, uh, private capital.</p>
+  <p>Let's say like 'cause we know that the, this banking the unbanked address the informal market of, uh, this market, not the formal market.Formal market can get access to bank and loans and all that.</p>
+  <p>While the informal market don't have access to, which is what Verifi is here to address.So if Verifi is addressing that aspect, how is Verifi planning to tackle those things?</p>
+  <p>Because bringing people in that has no credit to validate or like line of credits you can vouch or, okay, if I want to borrow a loan, I don't have a loan to over-collateralize anything.</p>
+  <p>'Cause here in Africa, I would say that if I want $1,000 of loan, uh, in DeFi, I have to provide 2,000 to get 1,000.But me coming to get a loan is because I don't have that capital.</p>
+  <p>But you guys can verify 'cause I'm coming from the informal market, which is there is no credit line that is being attached to my identity.Is there any, uh, framework around that?</p>
+  <p>And is that where people coming to Verifi to build is going to address?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Um, so, so I know there are other teams looking at it from the kind of the on-chain identity angle.</p>
+  <p>Um, but I think the way I look at it more is in terms of the, the, the, it's the asset allocation, it's the deals we're doing.If we're investing in, for example, um, a fintech in, in Africa then...</p>
+  <p>So, so we aren't directly connecting with the unbanked.It's more that we can provide a f- credit to a fintech in Africa, and they then give loans out to the unbanked.</p>
+  <p>So it's really just about making sure capital's flowing to institutions who can then lend to the unbanked.</p>
+  <p>Speaker C, I don't know, you've been looking at the, the, the kind of the, the private credit deals.I don't know if you, if you've got anything to say on, on that front.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker C</div>
+  <div class="turn-body"><p>No.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Okay.Now, now I understand.Instead of, like, building that wheel, you just need to integrate to, like, fintech product.They already do that in, in the demographic that they are operating at.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Correct.Actually, I mean, that's not to say that an on-chain kind of credit isn't part of it.You know, it's just right ...Like I said, there are other people looking at that.</p>
+  <p>But right now, uh, yeah, I, I'd say giving money to microfinance institutes in Africa is really kind of the, um, the most direct way of doing that, or easiest right now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Mm.Okay.Thank you for that.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Sure.Any, anyone else wanna be brave enough to put your hand up and come ask some more questions, or are we good?Well, that was fun.Thank you so much for coming up to the stage.</p>
+  <p>Um, I love it when we get a bit of an audio conversation going.Um, I have to-- makes my job easier, right?Okay.Well, thank you everyone for coming.</p>
+  <p>Um, we'll wrap it up, Speaker A, unless we see any hands coming up in the next couple of minutes.Uh, but yeah, next time, let's see who we've got next time, shall we?</p>
+  <p>Um, I've got to schedule, uh, the next office hours, but I do have a rough outline.So we are on data.So after this we've got partnerships.He's actually in the, in the audience.</p>
+  <p>Um, he's gonna talk about partnerships.And then after this we'll, we'll have leadership.And then we'll have the investments team.</p>
+  <p>So we've kind of got a rotation of going, like, product, marketing, engineering, data, partnerships, leadership, and investments.So lots more to come.</p>
+  <p>And, uh, yeah, I'm really glad everyone's here, and looking forward to, to building this out with you guys.Thank you, Speaker A.Thank you, Speaker C.And thank you, Speaker B.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">All</div>
+  <div class="turn-body"><p>Thank you.Goodbye.Thanks.Thanks.Cheers.</p></div>
+</div>
+</section>
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">このページには 3 つの版が入っています。</span><span class="l-en">This page contains all three versions.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">RealFi Office Hours アーカイブ<br>このコールはチャタムハウスルールで運用されています。発言者の氏名は記載していません。</span><span class="l-en">RealFi Office Hours archive<br>These calls run under the Chatham House Rule, so no speaker is named.</span></p>
+</footer>
+
+</div>

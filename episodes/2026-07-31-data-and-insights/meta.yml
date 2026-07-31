@@ -1,0 +1,49 @@
+slug: 2026-07-31-data-and-insights
+title: RealFi Office Hours — データ回
+title_en: RealFi Office Hours — Data & Insights
+date: 2026-07-31
+platform: Discord
+series: 4回目（product / marketing / engineering に続く）
+
+# チャタムハウスルールのため実名は保持しない。
+# ラベルの付け方は shared/speakers.md を参照。ラベルは回ごとに独立して振る。
+chatham_house_rule: true
+
+speakers:
+  - 進行役                 # 司会・チャットの質問の読み上げ
+  - 登壇者A                # データチーム
+  - 登壇者B                # データエンジニアリング
+  - 登壇者C                # アナリスト
+
+questioners:              # チャット・音声で質問したコミュニティメンバー（登場順）
+  - 参加者A
+  - 参加者B
+  - 参加者C
+  - 参加者D
+  - 参加者E
+  - 参加者F
+  - 参加者G
+  - 参加者H
+  - 参加者I
+  - 参加者J
+  - 参加者K                # 唯一、音声でステージに上がって質問した人
+
+# リーダーボード上位のステークプールは「上位プール 1〜5」に置換している。
+pools_anonymized: true
+
+# 資料について
+slides:
+  shown: true             # コール中に画面共有された
+  shared_publicly: false  # 参加者限定。内容はコール中に詳しく読み上げられていない
+  note: |
+    スライドの数値のうち、音声で読み上げられたものだけを記録している。
+    グラフの目盛りなど読み上げられていない情報は推測で補っていない。
+
+# 話者ラベル・タイムスタンプのない生テキストから文脈で話者を推定している。
+# 推定の確度は shared/speakers.md を参照。
+speaker_labels: inferred
+timestamps: none
+
+source:
+  audio: null
+  video: null
