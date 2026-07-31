@@ -488,6 +488,67 @@ code {
 
 .tldr ul { margin-bottom: 1rem; }
 
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
 /* ---- 用語カード ---- */
 
 .term {
@@ -696,6 +757,7 @@ footer {
 .jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
 .jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
 
 
 
@@ -974,7 +1036,51 @@ footer {
 
 
 <h2 id="liquidity">6. 流動性の 3 つの視点</h2>
-<p class="deck">「流動性」という 1 語に 3 つの層がある。予測に依存しない設計が強調された。</p>
+<p class="deck">USDR をいつでも 1 ドル付近で現金化できるように、流動性を 3 段階で管理する。</p>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+
+<h4>そもそも「流動性」とは</h4>
+<p>ここでの流動性は、<strong>必要なときに、どれくらい早く現金（米ドル相当）に戻せるか</strong>という意味です。</p>
+<p>たとえば 100 万ドル分の資産を持っていても、中身が「すぐ売れる短期資産」「数日かかる融資」「数か月返ってこない投資」の混ざりものなら、全部を同じ 100 万ドルとしては扱えません。<strong>この節は、その扱いをどう設計しているかという話</strong>です。</p>
+
+<h4>① ポートフォリオ全体 — いつまでに、いくら現金化できるか</h4>
+<p>USDR の引き出しが増えたときに備えて、資産を「現金化までの時間」で分類し、配分を調整します。すぐ現金化できるものは多めに、長く拘束されるものは増やしすぎない、という具合です。</p>
+<p>「現金化までの時間を TVL に対して調整し続ける」というのは、<strong>預けられている USDR の総量に見合うだけ、すぐ使える資産を確保しておく</strong>という意味になります。</p>
+
+<h4>② 個々の資産 — 実際に何に投資しているか</h4>
+<p>資産ごとに「いつ返ってくるか」「途中で売れるか」「担保はあるか」が違います。この回では深掘りされませんでしたが、<strong>資産クラスの名前自体は別の場面で挙がっています</strong>（第 10 節）— トークン化されたマネー・マーケット・ファンド、変動利付社債、投資適格の CLO ETF、直接のプライベートクレジット案件など。</p>
+
+<h4>③ 二次流通 — DEX で売買するときの話</h4>
+<p>USDR を他のトークンに交換したいとき、プールが小さいと価格が大きく動き、1 USDR を 1 ドル相当で売れなくなります（スリッページ）。そこで<strong>どの DEX にプールを置くか、どのペアにするか、いくら入れるか</strong>を設計します。</p>
+<p>「スプレッドで削られないだけの深さ」とは、<strong>売買したときに価格差で大きく損をしない程度の流動性を用意しておく</strong>ということです。</p>
+
+<h4>peg stability module とは</h4>
+<p>USDR の価格が 1 ドルからずれたときに、1 ドル付近へ戻すための仕組みです。一般的なペッグ安定化では、価格が下がれば「安く買って 1 ドル相当で償還する」経路が働き、買いが入って価格が戻る——という動きになります。<strong>ただし RealFi のものが具体的にどう動くかは、このコールでは説明されていません。</strong></p>
+<p>「常時稼働」とは、誰かが都度判断するのではなく、<strong>あらかじめ決めたルールでいつでも作動する</strong>ということです。</p>
+
+<h4>「予測に依存しない」とは</h4>
+<p>この節で一番わかりにくい部分です。<strong>「金利が上がるはず」「売りが増えるはず」と未来を当てにいって配分を決めるのではない</strong>、という意味です。</p>
+<p>代わりに、今わかっている数字を使います — 7 日以内に現金化できる資産はいくらか、30 日以内に返済される融資はいくらか、途中解約できるか、現在の TVL はいくらか、DEX プールの取引量はいくらか。それを見て機械的に配分を変える、という設計です。</p>
+
+<h4>たとえるなら</h4>
+<p>レストランに置き換えると分かりやすくなります。USDR の引き出しは<strong>お客さんからの注文</strong>です。</p>
+<ol>
+  <li>店全体として、すぐ出せる料理をどれだけ持っておくか（① ポートフォリオ全体）</li>
+  <li>個々の食材が、いつ届くか・どれだけ日持ちするか（② 個々の資産）</li>
+  <li>店頭ですぐ出せる量が足りているか（③ 二次流通）</li>
+</ol>
+<p>そして<strong>「今日は流行りそうだから大量に仕込む」という予想はしません。</strong>冷蔵庫に今何があるか、何時に食材が届くか、それで今どれだけの注文をさばけるか——を見て調整します。</p>
+
+<h4>一言でまとめると</h4>
+<p><strong>USDR の裏付け資産を「いつ現金化できるか」で分類して管理し、DEX にも十分な流動性を置いて、USDR を 1 ドル付近で売買・償還できる状態を保つ。その調整は未来予測ではなく、返済期限や償還条件といった既知のデータを基準に行う。</strong></p>
+
+</div>
+</details>
 
 <div class="term">
 <p class="term-name">① ポートフォリオ全体 <small>aggregate portfolio</small></p>
@@ -1012,6 +1118,10 @@ footer {
 </div>
 
 <p>もっとも特徴的だったのは、<strong>「この調整の考え方は、何かを予測することに依存していない」</strong>という説明です。スプレッドの動きや金利の方向を当てにいく設計も作れるが、そうはせず、<strong>既知のものを起点に、決済期間・期間の長さ・償還条件といったパラメータを動かす</strong>という方針だと述べられました。</p>
+
+<div class="note">
+<p><span class="badge">補足</span><strong>このコールで分からないこと。</strong>peg stability module について語られたのは「常時動き続けるフレームワークで、USDR をペッグに保つよう設計されている」という説明までです。<strong>実際にどの資産を保有し、誰が資金を出し、どの条件で償還できるのか</strong>は説明されていません。安全性を判断するうえで本当に重要なのはそこなので、今後の回で確認したい点として記録しています。</p>
+</div>
 
 
 <h2 id="flywheel">7. フライホイール</h2>
@@ -1403,7 +1513,51 @@ footer {
 
 
 <h2 id="en-liquidity">6. Liquidity in three layers</h2>
-<p class="deck">One word covering three things — and a design that deliberately avoids forecasting.</p>
+<p class="deck">Keeping USDR redeemable near $1 at any time, by managing liquidity at three levels.</p>
+
+<details class="explain">
+<summary>Heavy on jargon — open for a plain-language walkthrough</summary>
+<div class="explain-body">
+
+<p><span class="badge">added</span>Everything below was written to explain the section. None of it was said on the call.</p>
+
+<h4>What “liquidity” means here</h4>
+<p>How <strong>quickly something can be turned back into cash</strong> when it is needed.</p>
+<p>If you hold $1M of assets but the mix is “sells today”, “repays in a few days” and “locked up for months”, you cannot treat all of it as the same $1M. <strong>This section is about how that difference is managed.</strong></p>
+
+<h4>1. The aggregate portfolio — how much converts to cash, and by when</h4>
+<p>Assets are sorted by how long they take to turn into cash, and the mix is adjusted so that withdrawals can be met: plenty of the fast stuff, not too much of the locked-up stuff.</p>
+<p>“Calibrating time to cash against TVL” means <strong>holding enough readily available assets to match the amount of USDR actually deposited.</strong></p>
+
+<h4>2. The underlying instruments — what the money is actually in</h4>
+<p>Each asset differs in when it repays, whether it can be sold early, and whether it is collateralised. This session didn't go into it, but <strong>the asset classes are named elsewhere</strong> (section 10) — tokenised money market funds, floating rate corporate bonds, investment grade CLO ETFs, direct private credit deals.</p>
+
+<h4>3. Secondary market — what happens when you trade on a DEX</h4>
+<p>If the pool is thin, swapping USDR moves the price and you can no longer sell 1 USDR for about $1 (slippage). So the design covers <strong>which DEXs hold pools, which pairs, and how much sits in them.</strong></p>
+<p>“Enough depth that traders aren't spread thin” means <strong>enough liquidity that you don't lose meaningfully to the price gap when you trade.</strong></p>
+
+<h4>What the peg stability module is</h4>
+<p>A mechanism for pulling USDR back towards $1 when it drifts. In the general pattern, a dip makes it profitable to buy cheap and redeem at par, buying pressure appears, and the price recovers. <strong>How RealFi's specifically works was not described on this call.</strong></p>
+<p>“Running continuously” means it acts <strong>on pre-set rules rather than someone deciding case by case.</strong></p>
+
+<h4>What “not dependent on predicting anything” means</h4>
+<p>The hardest line in the section. It means <strong>the allocation is not set by betting that rates will rise or that selling will pick up.</strong></p>
+<p>Instead it works off currently known figures — how much converts to cash within 7 days, how much repays within 30, what can be exited early, what TVL is now, what volume the DEX pools are doing — and shifts the mix mechanically from those.</p>
+
+<h4>An analogy</h4>
+<p>Think of a restaurant. Withdrawals of USDR are <strong>customer orders.</strong></p>
+<ol>
+  <li>How much food the kitchen can serve immediately (1. the aggregate portfolio)</li>
+  <li>When each ingredient arrives and how long it keeps (2. the underlying instruments)</li>
+  <li>Whether enough is ready at the counter right now (3. the secondary market)</li>
+</ol>
+<p>And crucially, <strong>you don't over-prep on a hunch that today will be busy.</strong> You look at what is in the fridge, when deliveries land, and how many orders that lets you serve.</p>
+
+<h4>The short version</h4>
+<p><strong>Sort the assets backing USDR by how quickly they convert to cash, keep enough liquidity on DEXs that USDR trades and redeems near $1, and drive that calibration from known data — maturities and redemption terms — rather than from a forecast.</strong></p>
+
+</div>
+</details>
 
 <div class="term">
 <p class="term-name">1. The aggregate portfolio <small>calibration against TVL</small></p>
@@ -1441,6 +1595,10 @@ footer {
 </div>
 
 <p>The most distinctive claim was that <strong>“none of that calibrational thinking depends on predicting anything”</strong>. A version could be built that rests on being right about spreads, sentiment or rates — instead, the approach is to <strong>work off what is known and flex parameters around it</strong>: settlement windows, term lengths, redemption terms.</p>
+
+<div class="note">
+<p><span class="badge">added</span><strong>What this call doesn't tell us.</strong> On the peg stability module we get as far as “a framework that runs continuously, designed to maintain the USDR at peg”. <strong>What it actually holds, who funds it, and on what terms redemption works</strong> were not covered — and that is the part that determines how safe the peg really is. Logged as something to ask about in a later session.</p>
+</div>
 
 
 <h2 id="en-flywheel">7. The flywheel</h2>
