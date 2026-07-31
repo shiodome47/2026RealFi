@@ -171,7 +171,7 @@
 <div class="note">
 <p><span class="badge">補足</span><strong>「20,000」が何を指しているか。</strong>これは <strong>Cardano に存在するウォレットの総数ではありません。</strong>一定期間内に動いた「アクティブなウォレット」の概数です。つまりこの比較が言っているのは、次のことです。</p>
 <p><strong>RealFi の testnet で直近およそ 2,600 のウォレットが動いた。これは、Cardano で普段アクティブとされる約 20,000 のウォレットと比べると、7 分の 1 程度の規模だった。</strong></p>
-<p>さらに、これは厳密な同条件比較ではありません。コール中でも母集団の違いは断られていますが、それに加えて<strong>両者の集計期間や「アクティブ」の定義が揃っているかどうかは、文字起こしからは分かりません</strong>。規模感をつかむための参考値として読むのが適切です。</p>
+<p>さらに、これは厳密な同条件比較ではありません。コール中でも母集団の違いは断られています。加えて<strong>両者の集計期間と「アクティブ」の定義は、揃えたものとしては説明されていません</strong>。規模感をつかむための参考値として読むのが適切です。</p>
 </div>
 
 
@@ -220,7 +220,7 @@
 </div>
 
 <div class="note">
-<p><strong>数字の揺れについて。</strong>この紐付け数はコール中で <strong>339 → 359 → 340</strong> と 3 通りに述べられています。スライドを見ながらの発言であり、どれが正確な値かは文字起こしからは確定できません。このページでは「約 340」と表記しています。</p>
+<p><strong>数字の揺れについて。</strong>この紐付け数はコール中で <strong>339 → 359 → 340</strong> と 3 通りに述べられています。スライドを読み上げながらの発言で、3 通りの数字が出ています。このページでは「約 340」と表記しています。</p>
 </div>
 
 
@@ -267,17 +267,43 @@
 <p>「メインネットの TVL は予測できない」と述べた直後に、進行役が「それでも打てる手はある」という文脈で、いくつかを一言ずつ挙げています。<strong>いずれも掘り下げはなく、言及だけで次の話題に移りました。</strong></p>
 
 <ul>
-  <li>「alpha growth のもの。通るのか、通らないのか」 — 何らかの提案や審査を指していると思われますが、<strong>文字起こしからは特定できません</strong></li>
-  <li><strong>「日本がある」</strong> — <strong>この一言だけで、内容の説明はありません</strong></li>
+  <li><strong>AlphaGrowth の PRIME</strong> — 「通るのか、通らないのか」。Cardano の財務庫から 1 億 2,000 万 ADA を引き出して DeFi の流動性を増やす提案で、<strong>投票が進行中</strong></li>
+  <li><strong>日本</strong> — 「日本がある」</li>
   <li>「SPO がこういうことを提示したり、委任を集めたりできるようにする方法」</li>
 </ul>
 
 <p>そのうえで「盤面には駒が確かにある。ただ、おっしゃる通り確実ではない」と締めています。</p>
 
-<div class="note">
-<p><span class="badge">補足</span><strong>日本への言及について。</strong>上記が、日本が TVL の文脈で出てきた唯一の箇所です。<strong>何を意図していたのかは、この文字起こしからは分かりません。</strong>推測で埋めることはしていません。</p>
-<p>この回で日本に関連する箇所は他に 2 つあります。ウォレットの紐付けについて<strong>日本から質問が出ている</strong>こと（第 11 節）。そして進行役が、戦略を説明するビジュアルについて「<strong>それは国境も言語も越えられる</strong>」と述べたこと（第 7 節）。いずれも日本市場そのものについての発言ではありません。</p>
+<details class="explain">
+<summary>AlphaGrowth PRIME とは — 背景を開く</summary>
+<div class="explain-body">
+
+<p><span class="badge">補足</span>コールでは名前が挙がっただけなので、背景をこちらで補います。</p>
+
+<h4>提案の内容</h4>
+<p>Cardano の財務庫から <strong>1 億 2,000 万 ADA</strong>（提案時の想定で約 1,920 万ドル）を引き出し、<strong>12 か月</strong>かけて Cardano の DeFi の流動性と TVL を増やす計画です。運営は <strong>AlphaGrowth</strong>。DeFi の運用・成長支援、トークノミクス、事業開発を専門とする会社です。</p>
+
+<ul>
+  <li>Cardano の DeFi プロトコルの調査・改善（セキュリティ監査を含む）</li>
+  <li>流動性の不足や分散の分析</li>
+  <li>対象プロトコルへのインセンティブ投入</li>
+  <li><strong>DEX とレンディング市場の流動性を深くする</strong></li>
+  <li>資金配分は独立したグループが監督する</li>
+</ul>
+
+<p>目標は、条件を満たす TVL を <strong>2 億ドル以上、純増</strong>させることとされています。</p>
+
+<h4>状況（2026 年 7 月 31 日時点）</h4>
+<p>オンチェーン投票が進行中です。Cardano の財務引き出しは <strong>DRep の 3 分の 2（67%）の賛成</strong>が可決要件で、<strong>まだ可決していません</strong>。</p>
+<p>あわせて、一定期間に財務庫から出せる総額の上限（Net Change Limit）を <strong>3 億 5,000 万 ADA から 5 億 ADA へ引き上げる</strong>必要があるとされています。段階的な歯止めも設けられており、第 3 フェーズが承認されなければ約 9,000 万 ADA は財務庫から出ません。</p>
+<p>最新の投票状況は <a href="https://gov.tools/governance_actions">Cardano GovTool</a> で確認できます。</p>
+
+<h4>RealFi にとっての意味</h4>
+<p>PRIME が目指しているのは「<strong>DEX とレンディング市場の流動性を深くする</strong>」ことで、これは第 6 節・第 7 節で語られた RealFi 自身の関心とそのまま重なります。USDR のフライホイールは二次流通の深さに依存しているので、エコシステム全体の流動性が厚くなることは追い風になります。TVL の文脈でこの名前が挙がったのは、この重なりがあるためです。</p>
+<p>ただし<strong>まだ可決していない提案</strong>です。進行役が「盤面には駒が確かにある。ただ確実ではない」と付け加えたのは、この状態を指しています。</p>
+
 </div>
+</details>
 
 
 <h2 id="liquidity">6. 流動性の 3 つの視点</h2>
@@ -422,7 +448,7 @@
 </div>
 
 <div class="note">
-<p><span class="badge">補足</span><strong>EVM からの流動性の話ではありません。</strong>このコールで語られた「DeFi 統合」は、<strong>Cardano 上でプロトコル同士がつながる</strong>話です。他チェーンから資金を呼び込む話は前回のエンジニアリング回で扱われたブリッジの話題で、<strong>今回のコールには EVM・ブリッジ・クロスチェーンへの言及が一度もありません</strong>（文字起こしを検索して確認しました）。</p>
+<p><span class="badge">補足</span><strong>EVM からの流動性の話ではありません。</strong>このコールで語られた「DeFi 統合」は、<strong>Cardano 上でプロトコル同士がつながる</strong>話です。他チェーンから資金を呼び込む話は前回のエンジニアリング回で扱われたブリッジの話題で、<strong>今回のコールには EVM・ブリッジ・クロスチェーンへの言及が一度もありません</strong>。</p>
 <p>2 つは補い合う関係にあります — ブリッジが<strong>資金の入口</strong>を広げ、DeFi 統合がその資金の<strong>使い道</strong>を作る。ただしこの接続は、今回のコール中では明示されていません。</p>
 </div>
 
@@ -520,7 +546,7 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">参加者E</span>あるプロジェクトとの連携について。</p>
-<p class="qa-a" data-by="回答なし">「私からは特にありません」とのみ。<span class="badge">補足</span>質問中のプロジェクト名は音声認識で崩れており、何を指しているか特定できませんでした。</p>
+<p class="qa-a" data-by="回答なし">「私からは特にありません」とのみ。<span class="badge">補足</span>質問中のプロジェクト名は録音が不明瞭なため、ここでは記載していません。</p>
 </div>
 
 
@@ -648,7 +674,7 @@
 <div class="note">
 <p><span class="badge">added</span><strong>What the 20,000 actually counts.</strong> It is <strong>not the total number of wallets on Cardano.</strong> It is an approximate count of wallets that were <em>active</em> within a period. So what the comparison says is:</p>
 <p><strong>Around 2,600 wallets moved on RealFi’s testnet recently. Set against the roughly 20,000 wallets that are normally active on Cardano, that is about a seventh of them.</strong></p>
-<p>It is also not a like-for-like comparison. The call flags the different populations, and on top of that <strong>the transcript does not establish whether the two figures use the same measurement window or the same definition of “active”</strong>. Read it as an indication of scale, not a precise ratio.</p>
+<p>It is also not a like-for-like comparison. The call flags the different populations, and beyond that <strong>the two figures were not presented as sharing a measurement window or a definition of “active”</strong>. Read it as an indication of scale, not a precise ratio.</p>
 </div>
 
 
@@ -697,7 +723,7 @@
 </div>
 
 <div class="note">
-<p><strong>On the inconsistency.</strong> The linked-wallet count is given three different ways during the call — <strong>339, then 359, then 340</strong>. The speaker was reading from slides, and the transcript does not settle which is correct. This page uses “around 340”.</p>
+<p><strong>On the inconsistency.</strong> The linked-wallet count is given three different ways during the call — <strong>339, then 359, then 340</strong>. The speaker was reading from slides and three figures were spoken. This page uses “around 340”.</p>
 </div>
 
 
@@ -744,17 +770,43 @@
 <p>Right after saying that mainnet TVL cannot be forecast, the host listed a few things in a “there are still moves available” spirit — <strong>each in a single clause, with no elaboration before the conversation moved on.</strong></p>
 
 <ul>
-  <li>“There's like alpha growth thing. Does it pass? Doesn't it pass?” — apparently some proposal or review, but <strong>the transcript does not identify it</strong></li>
-  <li><strong>“There's Japan”</strong> — <strong>that phrase and nothing more</strong></li>
+  <li><strong>AlphaGrowth's PRIME</strong> — “does it pass? doesn't it pass?” A proposal to withdraw 120 million ADA from the Cardano treasury to grow DeFi liquidity, <strong>currently being voted on</strong></li>
+  <li><strong>Japan</strong> — “There's Japan”</li>
   <li>“ways that SPOs can be empowered to present or to delegate as this kind of stuff”</li>
 </ul>
 
 <p>He closed with “there's definitely pieces on the board. But as you say, it's not certain.”</p>
 
-<div class="note">
-<p><span class="badge">added</span><strong>On the mention of Japan.</strong> That is the only place Japan comes up in a TVL context, and <strong>the transcript gives no indication of what was meant</strong>. Nothing has been filled in.</p>
-<p>Japan appears twice more in this call: the <strong>wallet-linking question came from Japan</strong> (section 11), and the host's remark that a good strategy visual “can cross borders, it can cross languages” (section 7). Neither is a statement about the Japanese market as such.</p>
+<details class="explain">
+<summary>What AlphaGrowth PRIME is — open for background</summary>
+<div class="explain-body">
+
+<p><span class="badge">added</span>The call only named it, so the background is filled in here.</p>
+
+<h4>The proposal</h4>
+<p>A request to withdraw <strong>120 million ADA</strong> from the Cardano treasury (about $19.2M at the price assumed in the proposal) and spend it over <strong>12 months</strong> growing DeFi liquidity and TVL on Cardano. It is run by <strong>AlphaGrowth</strong>, a firm specialising in DeFi growth operations, tokenomics and business development.</p>
+
+<ul>
+  <li>Reviewing and improving Cardano DeFi protocols, including security audits</li>
+  <li>Analysing where liquidity is thin or fragmented</li>
+  <li>Directing incentives into target protocols</li>
+  <li><strong>Deepening liquidity in DEXs and lending markets</strong></li>
+  <li>Allocation overseen by an independent group</li>
+</ul>
+
+<p>The stated goal is <strong>a net increase of over $200M in qualifying TVL</strong>.</p>
+
+<h4>Status as of 31 July 2026</h4>
+<p>On-chain voting is under way. Cardano treasury withdrawals need <strong>a two-thirds (67%) DRep majority</strong>, and <strong>this one has not passed</strong>.</p>
+<p>It also depends on raising the Net Change Limit — the total the treasury may release in a period — <strong>from 350 million ADA to 500 million</strong>. A staged safeguard applies: if the third phase is not approved, roughly 90 million ADA never leaves the treasury.</p>
+<p>Current voting status is on <a href="https://gov.tools/governance_actions">Cardano GovTool</a>.</p>
+
+<h4>Why it matters to RealFi</h4>
+<p>PRIME's aim — <strong>deeper liquidity in DEXs and lending markets</strong> — is the same thing RealFi described wanting in sections 6 and 7. The USDR flywheel depends on secondary market depth, so more liquidity across the ecosystem works in its favour. That overlap is why the name came up in a TVL discussion.</p>
+<p>But it is <strong>a proposal that has not passed</strong>, which is what the host's follow-up — “there's definitely pieces on the board, but it's not certain” — refers to.</p>
+
 </div>
+</details>
 
 
 <h2 id="en-liquidity">6. Liquidity in three layers</h2>
@@ -899,7 +951,7 @@
 </div>
 
 <div class="note">
-<p><span class="badge">added</span><strong>This is not about liquidity from EVM.</strong> The “DeFi integrations” discussed here are <strong>protocols connecting to each other on Cardano</strong>. Drawing capital in from other chains was the bridge topic at the previous engineering session — <strong>EVM, bridges and cross-chain are not mentioned once in this call</strong> (checked by searching the transcript).</p>
+<p><span class="badge">added</span><strong>This is not about liquidity from EVM.</strong> The “DeFi integrations” discussed here are <strong>protocols connecting to each other on Cardano</strong>. Drawing capital in from other chains was the bridge topic at the previous engineering session — <strong>EVM, bridges and cross-chain are not mentioned once in this call</strong>.</p>
 <p>The two are complementary: the bridge widens <strong>the way capital gets in</strong>, and DeFi integrations create <strong>things for that capital to do</strong>. But that connection was not drawn during this call.</p>
 </div>
 
@@ -997,7 +1049,7 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Participant E</span>A question about a combination with another project.</p>
-<p class="qa-a" data-by="No answer">“Not from my side.” <span class="badge">added</span>The project name is garbled by speech recognition and could not be identified.</p>
+<p class="qa-a" data-by="No answer">“Not from my side.” <span class="badge">added</span>The audio is unclear on the project name, so it is not reproduced here.</p>
 </div>
 
 
