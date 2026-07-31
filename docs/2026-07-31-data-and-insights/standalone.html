@@ -698,6 +698,8 @@ footer {
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
 
+
+
 </style>
 
 <div class="wrap" id="top">
@@ -770,7 +772,7 @@ footer {
 <h2>この回の要点</h2>
 <ul>
   <li><strong>Cardano のアクティブウォレットの約 14%（7 分の 1）</strong>が RealFi の testnet でアクティブだった。直近エポック（7/23〜28）で約 2,600 ウォレット。<strong>同じ頃にアクティブだった Cardano のウォレットが約 20,000</strong>（＝ Cardano の総ウォレット数ではない）。</li>
-  <li><strong>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。</strong>それらは <strong>230 万 ADA</strong> を保有。ただしこれは<strong>下限</strong>で、ウォレット連携の実装後は必ず増える。</li>
+  <li><strong>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。</strong>それらは <strong>230 万 ADA</strong> を保有。ただしこれは<strong>実際の重なりではなく、機械的に確認できた最低人数</strong>。ウォレット連携の実装後は必ず増える。</li>
   <li><strong>SPO プログラム参加プールの 84% が委任を増やした。</strong>参加していない同規模プールは 17%。ただし<strong>因果関係は発表者自身が留保している</strong>。</li>
   <li>数字はすべて<strong>ファーミングウォレットを除外した「実在ウォレットの最良推定」</strong>。算出方法の詳細は後日共有される。</li>
   <li>流動性は<strong>3 つの層</strong>で設計されており、「将来を予測することに依存しない」運用が強調された。</li>
@@ -866,7 +868,7 @@ footer {
 
 
 <h2 id="linked">3. メインネットとの紐付けは「下限」</h2>
-<p class="deck">暗号鍵で確実に対応付けられたのが約 340 個。この数字は今後増えることしかない。</p>
+<p class="deck">これは実際の重なりではなく、オンチェーンで機械的に確認できた最低人数。</p>
 
 <p>testnet ウォレットとメインネットウォレットのうち、<strong>暗号鍵を使って対応付けられたものが約 340 個</strong>。それらがメインネット上で <strong>230 万 ADA</strong> を保有しています。</p>
 
@@ -883,7 +885,7 @@ footer {
   <text x="110" y="74" text-anchor="middle" class="d-s">使い捨てのものを多く含む</text>
 
   <path d="M204,58 L256,58" class="d-line" marker-end="url(#m2)"/>
-  <text x="230" y="42" text-anchor="middle" class="d-s">暗号鍵で対応付け</text>
+  <text x="230" y="20" text-anchor="middle" class="d-s">ステークキーで照合</text>
 
   <rect x="260" y="30" width="180" height="56" rx="7" class="d-box-accent"/>
   <text x="350" y="55" text-anchor="middle" class="d-t d-a">約 340 個</text>
@@ -899,7 +901,14 @@ footer {
   <text x="340" y="144" text-anchor="middle" class="d-t d-w">この数字は「下限」</text>
   <text x="340" y="166" text-anchor="middle" class="d-s">ウォレット連携が実装されれば増える。「上がらざるを得ない。これが今後もっとも小さい値になる」</text>
 </svg>
-<p class="figcap">使い捨ての testnet ウォレットを作る人が多く、それらはステークキーを共有していないため紐付けられません。だから実際の重なりはこれより大きい、という論理です。</p>
+<p class="figcap">照合は<strong>ステークキーが共通かどうか</strong>で行われます。共有していないウォレットは、たとえ持ち主が同一人物でも機械的にはつながりません。だから実際の重なりはこれより大きい、という論理です。</p>
+</div>
+
+<div class="note">
+<p><span class="badge">補足</span><strong>なぜ 340 しか照合できないのか。</strong>ステークキーが同じということは、<strong>同じシードから作られたウォレット</strong>だということです。ここから 2 通りの人が生まれます。</p>
+<p><strong>照合される人</strong> — Lace のようなウォレットでは、<strong>同じウォレットのままネットワークを Preprod に切り替えて</strong>使えます。本人の感覚としては「同じウォレットのテストネット版を使っただけ」で、ステークキーが共通だとは意識していない可能性が高い。この人たちは自動的に照合されます。</p>
+<p><strong>照合されない人</strong> — 「テストネットは別のシードで分けておこう」と考えた人。メインネットで活発に使っていても、機械的にはつながりません。</p>
+<p>つまりこの約 340 という数字は、<strong>メインネット利用者との実際の重なりではなく、オンチェーン上で機械的に確認できた最低人数</strong>です。しかも取りこぼしは<strong>ランダムではなく偏っています</strong> — ウォレットを用途ごとに分けて管理する慎重な人ほど、この数に入りません。</p>
 </div>
 
 <div class="note">
@@ -1160,7 +1169,7 @@ footer {
 <h2>Key points</h2>
 <ul>
   <li><strong>About 14% of active Cardano wallets — one in seven</strong> — were active on RealFi's testnet. Roughly 2,600 wallets in the last epoch (23–28 July), against <strong>about 20,000 Cardano wallets active in the same period</strong> — not Cardano’s total wallet count.</li>
-  <li><strong>Around 340 testnet wallets map to mainnet wallets via cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong>. This is explicitly <strong>a floor</strong> — it can only rise once wallet linking ships.</li>
+  <li><strong>Around 340 testnet wallets map to mainnet wallets via cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong>. This is <strong>not the real overlap but the minimum confirmable on-chain</strong> — it can only rise once wallet linking ships.</li>
   <li><strong>84% of pools in the SPO programme grew their delegation</strong>, against 17% of comparable pools outside it. The speaker who presented this <strong>declined to claim causation</strong>.</li>
   <li>Every figure is a <strong>best estimate of genuine wallets</strong>, with suspected farming wallets stripped out. The methodology will be shared later.</li>
   <li>Liquidity is designed in <strong>three layers</strong>, and the team stressed that none of it depends on predicting the future.</li>
@@ -1256,7 +1265,7 @@ footer {
 
 
 <h2 id="en-linked">3. The mainnet link is a floor</h2>
-<p class="deck">Around 340 wallets map with certainty via cryptographic keys. That number can only go up.</p>
+<p class="deck">Not the real overlap — the minimum that could be confirmed mechanically on-chain.</p>
 
 <p><strong>Around 340 testnet wallets were mapped to mainnet wallets using cryptographic keys</strong>, and those wallets hold <strong>2.3 million ADA</strong> on mainnet.</p>
 
@@ -1273,7 +1282,7 @@ footer {
   <text x="110" y="74" text-anchor="middle" class="d-s">many are throwaway</text>
 
   <path d="M204,58 L256,58" class="d-line" marker-end="url(#e2)"/>
-  <text x="230" y="42" text-anchor="middle" class="d-s">key mapping</text>
+  <text x="230" y="20" text-anchor="middle" class="d-s">matched on stake key</text>
 
   <rect x="260" y="30" width="180" height="56" rx="7" class="d-box-accent"/>
   <text x="350" y="55" text-anchor="middle" class="d-t d-a">about 340</text>
@@ -1289,7 +1298,14 @@ footer {
   <text x="340" y="144" text-anchor="middle" class="d-t d-w">This figure is a floor</text>
   <text x="340" y="166" text-anchor="middle" class="d-s">“It can't help but go up. This is the least we'll ever be able to do.”</text>
 </svg>
-<p class="figcap">Many people create throwaway testnet wallets that share no stake keys with a mainnet wallet, so they cannot be matched. The real overlap is therefore larger than this.</p>
+<p class="figcap">The match is made on <strong>a shared stake key</strong>. Wallets that don't share one can't be connected mechanically, even when the same person holds both. The real overlap is therefore larger than this.</p>
+</div>
+
+<div class="note">
+<p><span class="badge">added</span><strong>Why only 340 could be matched.</strong> A shared stake key means <strong>the wallets came from the same seed</strong>. That splits people into two groups.</p>
+<p><strong>Counted</strong> — wallets like Lace let you <strong>keep the same wallet and switch the network to Preprod</strong>. To the user it just feels like “the testnet version of my wallet”, and they may never think about the stake key being shared. These get matched automatically.</p>
+<p><strong>Not counted</strong> — anyone who decided to generate a separate seed for testnet. They can be heavy mainnet users and still never connect mechanically.</p>
+<p>So the ~340 is <strong>not the real overlap with mainnet users — it is the minimum that could be confirmed on-chain</strong>. And the undercount is <strong>not random</strong>: the more carefully someone separates wallets by purpose, the less likely they are to appear in it.</p>
 </div>
 
 <div class="note">
