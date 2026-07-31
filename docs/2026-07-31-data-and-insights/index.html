@@ -79,7 +79,7 @@
 <div class="tldr">
 <h2>この回の要点</h2>
 <ul>
-  <li><strong>Cardano のアクティブウォレットの約 14%（7 分の 1）</strong>が RealFi の testnet でアクティブだった。直近エポック（7/23〜28）で約 2,600 ウォレット、Cardano 全体は約 20,000。</li>
+  <li><strong>Cardano のアクティブウォレットの約 14%（7 分の 1）</strong>が RealFi の testnet でアクティブだった。直近エポック（7/23〜28）で約 2,600 ウォレット。<strong>同じ頃にアクティブだった Cardano のウォレットが約 20,000</strong>（＝ Cardano の総ウォレット数ではない）。</li>
   <li><strong>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。</strong>それらは <strong>230 万 ADA</strong> を保有。ただしこれは<strong>下限</strong>で、ウォレット連携の実装後は必ず増える。</li>
   <li><strong>SPO プログラム参加プールの 84% が委任を増やした。</strong>参加していない同規模プールは 17%。ただし<strong>因果関係は発表者自身が留保している</strong>。</li>
   <li>数字はすべて<strong>ファーミングウォレットを除外した「実在ウォレットの最良推定」</strong>。算出方法の詳細は後日共有される。</li>
@@ -148,23 +148,31 @@
 
 
 <h2 id="share">2. 「7 分の 1」の中身</h2>
-<p class="deck">直近エポックで約 2,600 ウォレット。Cardano 全体の約 20,000 に対して約 14%。</p>
+<p class="deck">直近エポックで約 2,600 ウォレット。「一定期間に動いた」Cardano ウォレット約 20,000 に対して約 14%。</p>
 
 <div class="fig">
-<svg viewBox="0 0 680 200" role="img" aria-label="Cardano のアクティブウォレット約2万に対し、RealFi testnet でアクティブなウォレットが約2600、およそ14%であることを示す図">
+<svg viewBox="0 0 680 224" role="img" aria-label="一定期間にアクティブだった Cardano ウォレット約2万に対し、RealFi testnet でアクティブなウォレットが約2600、およそ14パーセントであることを示す図。2万は Cardano の総ウォレット数ではない">
   <rect x="30" y="40" width="620" height="52" rx="7" class="d-box"/>
   <rect x="30" y="40" width="87" height="52" rx="7" class="d-box-accent"/>
   <text x="73" y="72" text-anchor="middle" class="d-t d-a">14%</text>
-  <text x="390" y="72" text-anchor="middle" class="d-s">アクティブな Cardano ウォレット 約 20,000</text>
+  <text x="392" y="72" text-anchor="middle" class="d-s">アクティブな Cardano ウォレット 約 20,000</text>
 
-  <text x="30" y="126" class="d-t">約 2,600</text>
-  <text x="30" y="148" class="d-s">直近エポック（7/23–28）に RealFi testnet でアクティブだったウォレット</text>
-  <text x="30" y="176" class="d-s">※ ファーミングと判断したウォレットを除外した「実在ウォレットの最良推定」</text>
+  <text x="30" y="114" class="d-s d-w">※ 一定期間に動いたウォレットの数。Cardano の総ウォレット数ではない</text>
+
+  <text x="30" y="152" class="d-t">約 2,600</text>
+  <text x="30" y="174" class="d-s">直近エポック（7/23–28）に RealFi testnet でアクティブだったウォレット</text>
+  <text x="30" y="202" class="d-s">※ ファーミングと判断したウォレットを除外した「実在ウォレットの最良推定」</text>
 </svg>
 <p class="figcap"><span class="badge">補足</span>2,600 ÷ 20,000 は約 13% です。コール中では「14%」「7 分の 1」と表現されており、概数として述べられたものと考えられます。</p>
 </div>
 
 <p>この数字については、発表者自身が注意点を添えています。<strong>testnet とメインネットは母集団が違う</strong>ため、厳密な比較ではありません。「testnet ではアクティブでもメインネットでは一度もアクティブでなかった人もいるかもしれない」とのことです。あくまで規模感をつかむための数字、という位置づけでした。</p>
+
+<div class="note">
+<p><span class="badge">補足</span><strong>「20,000」が何を指しているか。</strong>これは <strong>Cardano に存在するウォレットの総数ではありません。</strong>一定期間内に動いた「アクティブなウォレット」の概数です。つまりこの比較が言っているのは、次のことです。</p>
+<p><strong>RealFi の testnet で直近およそ 2,600 のウォレットが動いた。これは、Cardano で普段アクティブとされる約 20,000 のウォレットと比べると、7 分の 1 程度の規模だった。</strong></p>
+<p>さらに、これは厳密な同条件比較ではありません。コール中でも母集団の違いは断られていますが、それに加えて<strong>両者の集計期間や「アクティブ」の定義が揃っているかどうかは、文字起こしからは分かりません</strong>。規模感をつかむための参考値として読むのが適切です。</p>
+</div>
 
 
 <h2 id="linked">3. メインネットとの紐付けは「下限」</h2>
@@ -461,7 +469,7 @@
 <div class="tldr">
 <h2>Key points</h2>
 <ul>
-  <li><strong>About 14% of active Cardano wallets — one in seven</strong> — were active on RealFi's testnet. Roughly 2,600 wallets in the last epoch (23–28 July), against about 20,000 across Cardano.</li>
+  <li><strong>About 14% of active Cardano wallets — one in seven</strong> — were active on RealFi's testnet. Roughly 2,600 wallets in the last epoch (23–28 July), against <strong>about 20,000 Cardano wallets active in the same period</strong> — not Cardano’s total wallet count.</li>
   <li><strong>Around 340 testnet wallets map to mainnet wallets via cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong>. This is explicitly <strong>a floor</strong> — it can only rise once wallet linking ships.</li>
   <li><strong>84% of pools in the SPO programme grew their delegation</strong>, against 17% of comparable pools outside it. The speaker who presented this <strong>declined to claim causation</strong>.</li>
   <li>Every figure is a <strong>best estimate of genuine wallets</strong>, with suspected farming wallets stripped out. The methodology will be shared later.</li>
@@ -530,23 +538,31 @@
 
 
 <h2 id="en-share">2. What “one in seven” means</h2>
-<p class="deck">About 2,600 wallets in the last epoch, against roughly 20,000 across Cardano.</p>
+<p class="deck">About 2,600 wallets in the last epoch, against roughly 20,000 Cardano wallets that were active at all.</p>
 
 <div class="fig">
-<svg viewBox="0 0 680 200" role="img" aria-label="Bar showing about 2,600 wallets active on RealFi testnet as roughly 14 percent of about 20,000 active Cardano wallets">
+<svg viewBox="0 0 680 224" role="img" aria-label="Bar showing about 2,600 wallets active on RealFi testnet as roughly 14 percent of about 20,000 Cardano wallets active in a period. The 20,000 is not Cardano's total wallet count">
   <rect x="30" y="40" width="620" height="52" rx="7" class="d-box"/>
   <rect x="30" y="40" width="87" height="52" rx="7" class="d-box-accent"/>
   <text x="73" y="72" text-anchor="middle" class="d-t d-a">14%</text>
-  <text x="390" y="72" text-anchor="middle" class="d-s">about 20,000 active Cardano wallets</text>
+  <text x="392" y="72" text-anchor="middle" class="d-s">about 20,000 active Cardano wallets</text>
 
-  <text x="30" y="126" class="d-t">about 2,600</text>
-  <text x="30" y="148" class="d-s">wallets active on RealFi testnet in the last epoch (23–28 July)</text>
-  <text x="30" y="176" class="d-s">Suspected farming wallets removed — a best estimate of genuine wallets</text>
+  <text x="30" y="114" class="d-s d-w">Wallets that moved in a period — not Cardano’s total wallet count</text>
+
+  <text x="30" y="152" class="d-t">about 2,600</text>
+  <text x="30" y="174" class="d-s">wallets active on RealFi testnet in the last epoch (23–28 July)</text>
+  <text x="30" y="202" class="d-s">Suspected farming wallets removed — a best estimate of genuine wallets</text>
 </svg>
 <p class="figcap"><span class="badge">added</span>2,600 ÷ 20,000 is closer to 13%. The call used “14%” and “one in seven”, which appear to be spoken approximations.</p>
 </div>
 
 <p>The speaker attached his own caveat: <strong>testnet and mainnet are different populations</strong>, so this is not a strict comparison. “There may be some people active on testnet who were never active on mainnet.” It was offered as a sense of scale, not a precise ratio.</p>
+
+<div class="note">
+<p><span class="badge">added</span><strong>What the 20,000 actually counts.</strong> It is <strong>not the total number of wallets on Cardano.</strong> It is an approximate count of wallets that were <em>active</em> within a period. So what the comparison says is:</p>
+<p><strong>Around 2,600 wallets moved on RealFi’s testnet recently. Set against the roughly 20,000 wallets that are normally active on Cardano, that is about a seventh of them.</strong></p>
+<p>It is also not a like-for-like comparison. The call flags the different populations, and on top of that <strong>the transcript does not establish whether the two figures use the same measurement window or the same definition of “active”</strong>. Read it as an indication of scale, not a precise ratio.</p>
+</div>
 
 
 <h2 id="en-linked">3. The mainnet link is a floor</h2>
