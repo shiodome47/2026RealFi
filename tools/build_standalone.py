@@ -68,7 +68,13 @@ def build(d):
     head = re.sub(r">\s*\n\s*<span", "><span", head)
 
     meta = ROOT / "episodes" / d.name / "meta.yml"
-    chatham = meta.exists() and "chatham_house_rule: true" in meta.read_text()
+    meta_text = meta.read_text() if meta.exists() else ""
+    chatham = "chatham_house_rule: true" in meta_text
+    m = re.search(r"^\s*video:\s*(https?://\S+)", meta_text, re.M)
+    source_link = ""
+    if m:
+        source_link = ('\n  <a href="%s"><span class="l-ja">元の録画</span>'
+                       '<span class="l-en">Original recording</span></a>' % m.group(1))
     if chatham:
         en_label, en_label_en = "匿名化以外は未編集", "Unedited apart from anonymisation"
     else:
@@ -130,7 +136,7 @@ def build(d):
   <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
   <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
   <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
-  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>{source_link}
 </nav>
 
 <footer>
