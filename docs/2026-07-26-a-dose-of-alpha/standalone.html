@@ -891,14 +891,14 @@ footer {
 
   <rect x="20" y="30" width="200" height="96" rx="8" class="d-box"/>
   <text x="120" y="58" text-anchor="middle" class="d-t">立法</text>
-  <text x="120" y="82" text-anchor="middle" class="d-s">ハードフォーク・info action</text>
-  <text x="120" y="100" text-anchor="middle" class="d-s">財務庫の引き出しを投票</text>
+  <text x="120" y="82" text-anchor="middle" class="d-s">正統性のある投票の層が</text>
+  <text x="120" y="100" text-anchor="middle" class="d-s">財務庫・ハードフォークを決める</text>
   <text x="120" y="118" text-anchor="middle" class="d-a">稼働済み</text>
 
   <rect x="240" y="30" width="200" height="96" rx="8" class="d-box"/>
   <text x="340" y="58" text-anchor="middle" class="d-t">司法</text>
   <text x="340" y="82" text-anchor="middle" class="d-s">憲法が「正しさ」を定める</text>
-  <text x="340" y="100" text-anchor="middle" class="d-s">DRep が正統性を担保</text>
+  <text x="340" y="100" text-anchor="middle" class="d-s">合憲性がそこで測られる</text>
   <text x="340" y="118" text-anchor="middle" class="d-a">稼働済み</text>
 
   <rect x="460" y="30" width="200" height="96" rx="8" class="d-box-plain"/>
@@ -911,8 +911,81 @@ footer {
   <text x="340" y="196" text-anchor="middle" class="d-s">立法と司法が先にあることで初めて、行政に正統性が生まれる</text>
   <text x="340" y="216" text-anchor="middle" class="d-s">（アメリカの連合規約 → 憲法という順番のたとえで説明された）</text>
 </svg>
-<p class="figcap">「行政機能がなければ、良いマーケティングも成長も採用も得られないし、実行して達成するための単一の戦略の声も得られない」という説明でした。</p>
+<p class="figcap">「行政機能がなければ、良いマーケティングも成長も採用も得られないし、実行して達成するための単一の戦略の声も得られない」という説明でした。<strong>この図は番組で語られた比喩をそのまま描いたものです。</strong>Cardano の実際のガバナンス機関とは 1 対 1 では対応しないので、下の折りたたみで補足します。</p>
 </div>
+
+<details class="explain">
+<summary>「三権分立」というたとえは、どこまで正確か — 実際のガバナンス機関を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。番組中の発言ではありません。</p>
+
+<h4>番組の説明の筋は通っています</h4>
+<p>憲法で正統なルールを定める → その下に正統な投票主体を作る → その承認を受けて執行機関を作る、という<strong>順序の議論としては妥当</strong>です。最初から強い中央の執行機関を置くと「誰がその権限を与えたのか」を説明できない、という指摘でもあります。</p>
+<p>ただし<strong>「立法府と司法府は完成した、あとは行政府だけ」と読むと、現状を実際より整ったものに見せてしまいます。</strong></p>
+
+<h4>実際は「三権分立」ではなく、3 つの批准機関による共同承認</h4>
+<p>Cardano のガバナンスには 3 つの投票機関があり、<strong>同じ一つの提案を、それぞれ違う基準で批准します</strong>。CIP-1694 自身がこの 3 つを「異なるガバナンス機関」と呼び、ガバナンスアクションの種類ごとに、そのうち少なくとも 2 つの批准を求める設計になっています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="DReps、Constitutional Committee、SPOs の 3 機関が同じガバナンスアクションを別々の基準で批准し、行政機能だけが未整備であることを示す図">
+  <defs>
+    <marker id="m5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="190" y="14" width="300" height="42" rx="8" class="d-box-accent"/>
+  <text x="340" y="40" text-anchor="middle" class="d-t">ガバナンスアクション（1 つの提案）</text>
+
+  <path d="M340 58 L340 74 L116 74 L116 86" class="d-line" marker-end="url(#m5)"/>
+  <path d="M340 58 L340 86" class="d-line" marker-end="url(#m5)"/>
+  <path d="M340 58 L340 74 L564 74 L564 86" class="d-line" marker-end="url(#m5)"/>
+
+  <rect x="16" y="90" width="200" height="98" rx="8" class="d-box"/>
+  <text x="116" y="114" text-anchor="middle" class="d-t">DReps</text>
+  <text x="116" y="134" text-anchor="middle" class="d-s">ADA 保有者の代表</text>
+  <text x="116" y="154" text-anchor="middle" class="d-s">政策・経済・戦略の観点</text>
+  <text x="116" y="174" text-anchor="middle" class="d-s">全種類のアクションに投票</text>
+
+  <rect x="240" y="90" width="200" height="98" rx="8" class="d-box"/>
+  <text x="340" y="114" text-anchor="middle" class="d-t">CC</text>
+  <text x="340" y="134" text-anchor="middle" class="d-s">Constitutional Committee</text>
+  <text x="340" y="154" text-anchor="middle" class="d-s">憲法に適合するかを判断</text>
+  <text x="340" y="174" text-anchor="middle" class="d-s">賛否のみ。提案は修正できない</text>
+
+  <rect x="464" y="90" width="200" height="98" rx="8" class="d-box"/>
+  <text x="564" y="114" text-anchor="middle" class="d-t">SPOs</text>
+  <text x="564" y="134" text-anchor="middle" class="d-s">ステークプールの運用者</text>
+  <text x="564" y="154" text-anchor="middle" class="d-s">ハードフォーク・CC 関連</text>
+  <text x="564" y="174" text-anchor="middle" class="d-s">ネットワーク運用の観点</text>
+
+  <text x="340" y="214" text-anchor="middle" class="d-s">三権が別々に働くのではなく、同じ提案を別々の基準で共同批准する</text>
+  <text x="340" y="234" text-anchor="middle" class="d-s">アクションの種類ごとに、どの機関の批准が要るかが決まる</text>
+
+  <rect x="190" y="250" width="300" height="42" rx="8" class="d-box-plain"/>
+  <text x="340" y="276" text-anchor="middle" class="d-w">行政機能 —— まだ常設の主体がない</text>
+</svg>
+<p class="figcap">番組の比喩を、実際のガバナンス機関に置き直した図です。<span class="badge">補足</span></p>
+</div>
+
+<h4>DReps は「立法府」なのか</h4>
+<p>半分は当たっています。財務庫の引き出し、憲法改正、プロトコルパラメータの変更、ハードフォーク、Info Action、CC の更新まで、<strong>すべての種類のアクションに投票できる</strong>ので、政策を決める主体としては議会にいちばん近い存在です。</p>
+<p>ただし国会とは違い、<strong>一般的な法律を制定する仕組みはなく、条文を審議して修正するわけでもありません</strong>。予算執行や行政監督の体系もありませんし、DReps だけで決まる提案ばかりでもありません。「立法府そのもの」ではなく、<strong>コミュニティを代表する主要な批准機関</strong>と言うほうが実態に近いです。</p>
+
+<h4>CC は「司法府」なのか</h4>
+<p>これも半分です。憲法を解釈して提案の合憲性を判断する点は憲法裁判所に似ています。</p>
+<p>けれど CC は、<strong>紛争を裁かず、制裁も科さず、過去の行為を審理せず、提案を修正することもできません</strong>。原則として賛否を投票するだけです。「司法府」というより<strong>合憲性を事前に審査する委員会</strong>にあたります。</p>
+
+<h4>SPOs が抜けると構造を読み違えます</h4>
+<p>番組では触れられませんが、SPOs も独立した 3 つ目の機関です。CC への不信任、CC の更新、ハードフォーク、Info Action などに投票します。とくに<strong>ハードフォークは実際にノードを更新する SPO の協力なしには成立しない</strong>ので、明示的な承認主体として組み込まれています。国家の三権には対応しない、Cardano 独自の存在です。</p>
+
+<h4>なぜ「分立」ではないのか</h4>
+<p>財務庫の引き出しや憲法改正では、DReps が支持しても CC が違憲と判断すれば成立せず、逆に CC が合憲としても DReps の支持がなければ成立しません。<strong>議会が法律を作った後で、裁判所が別の事件として違憲審査する</strong>という国家の仕組みとは順序が違います。三権分立というより、<strong>複数の鍵をそろえて初めて開く共同承認</strong>に近い構造です。</p>
+
+<h4>正確に言い直すと</h4>
+<p>憲法・代表投票・合憲性審査・ネットワーク承認の仕組みは<strong>稼働しました</strong>。一方で、法律体系、立法手続き、一般的な司法、行政の執行は<strong>まだ十分に分化していません</strong>。番組の「第三の府が要る」という主張は、その未分化な部分のうち<strong>執行を担う主体</strong>に焦点を当てたもの、と読むのが正確です。</p>
+</div>
+</details>
 
 <p>たとえに使われたのがアメリカ独立後の連合規約です。行政権が弱すぎて、全員が必要だと同意していたことすらできなかった —— <strong>独立戦争の最中に、冬の野外にいる兵に靴を届けられなかった</strong>という例が挙げられました。それでも国は崩壊せず、連合規約を憲法に置き換えた。Cardano も同じ段階にいる、という位置づけです。</p>
 
@@ -1436,14 +1509,14 @@ footer {
 
   <rect x="20" y="30" width="200" height="96" rx="8" class="d-box"/>
   <text x="120" y="58" text-anchor="middle" class="d-t">Legislative</text>
-  <text x="120" y="82" text-anchor="middle" class="d-s">Hard forks, info actions</text>
-  <text x="120" y="100" text-anchor="middle" class="d-s">and treasury votes</text>
+  <text x="120" y="82" text-anchor="middle" class="d-s">A voting class with legitimacy</text>
+  <text x="120" y="100" text-anchor="middle" class="d-s">decides treasury and hard forks</text>
   <text x="120" y="118" text-anchor="middle" class="d-a">live</text>
 
   <rect x="240" y="30" width="200" height="96" rx="8" class="d-box"/>
   <text x="340" y="58" text-anchor="middle" class="d-t">Judicial</text>
   <text x="340" y="82" text-anchor="middle" class="d-s">Constitution sets integrity</text>
-  <text x="340" y="100" text-anchor="middle" class="d-s">DReps carry legitimacy</text>
+  <text x="340" y="100" text-anchor="middle" class="d-s">Proposals are measured against it</text>
   <text x="340" y="118" text-anchor="middle" class="d-a">live</text>
 
   <rect x="460" y="30" width="200" height="96" rx="8" class="d-box-plain"/>
@@ -1456,8 +1529,81 @@ footer {
   <text x="340" y="196" text-anchor="middle" class="d-s">Only with legislative and judicial first does the executive have legitimacy</text>
   <text x="340" y="216" text-anchor="middle" class="d-s">(explained through the Articles of Confederation → Constitution sequence)</text>
 </svg>
-<p class="figcap">“You're not going to get good marketing, good growth and adoption, and you're not going to get a singular voice about a strategy to execute and achieve, unless you have executive function.”</p>
+<p class="figcap">“You're not going to get good marketing, good growth and adoption, and you're not going to get a singular voice about a strategy to execute and achieve, unless you have executive function.” <strong>This diagram draws the analogy as it was told on the show.</strong> It does not map one-to-one onto Cardano's actual governance bodies — see the walkthrough below.</p>
 </div>
+
+<details class="explain">
+<summary>How far does the “three branches” analogy hold? — open for the actual bodies</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written to check the analogy. None of it was said on the show.</p>
+
+<h4>The argument itself is sound</h4>
+<p>Constitution first to set legitimate rules, then a legitimate voting body under it, then an executive that derives its authority from that body — <strong>as an ordering argument that holds up</strong>. Put a strong executive in first and you cannot answer who granted it the power.</p>
+<p>What doesn't hold is reading it as <strong>“the legislative and judicial branches are finished, only the executive is left.”</strong> That makes the current state sound tidier than it is.</p>
+
+<h4>Not a separation of powers — three bodies ratifying the same thing</h4>
+<p>Cardano has three voting bodies, and <strong>they vote on the same single proposal against different criteria</strong>. CIP-1694 itself calls them three distinct governance bodies and requires, depending on the kind of governance action, ratification by at least two of them.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Diagram showing DReps, the Constitutional Committee and SPOs ratifying the same governance action against different criteria, with executive function still missing">
+  <defs>
+    <marker id="e5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="190" y="14" width="300" height="42" rx="8" class="d-box-accent"/>
+  <text x="340" y="40" text-anchor="middle" class="d-t">One governance action</text>
+
+  <path d="M340 58 L340 74 L116 74 L116 86" class="d-line" marker-end="url(#e5)"/>
+  <path d="M340 58 L340 86" class="d-line" marker-end="url(#e5)"/>
+  <path d="M340 58 L340 74 L564 74 L564 86" class="d-line" marker-end="url(#e5)"/>
+
+  <rect x="16" y="90" width="200" height="98" rx="8" class="d-box"/>
+  <text x="116" y="114" text-anchor="middle" class="d-t">DReps</text>
+  <text x="116" y="134" text-anchor="middle" class="d-s">Represent ADA holders</text>
+  <text x="116" y="154" text-anchor="middle" class="d-s">Policy, economics, strategy</text>
+  <text x="116" y="174" text-anchor="middle" class="d-s">Vote on every action type</text>
+
+  <rect x="240" y="90" width="200" height="98" rx="8" class="d-box"/>
+  <text x="340" y="114" text-anchor="middle" class="d-t">CC</text>
+  <text x="340" y="134" text-anchor="middle" class="d-s">Constitutional Committee</text>
+  <text x="340" y="154" text-anchor="middle" class="d-s">Is it constitutional?</text>
+  <text x="340" y="174" text-anchor="middle" class="d-s">Yes/no only — cannot amend</text>
+
+  <rect x="464" y="90" width="200" height="98" rx="8" class="d-box"/>
+  <text x="564" y="114" text-anchor="middle" class="d-t">SPOs</text>
+  <text x="564" y="134" text-anchor="middle" class="d-s">Stake pool operators</text>
+  <text x="564" y="154" text-anchor="middle" class="d-s">Hard forks, CC changes</text>
+  <text x="564" y="174" text-anchor="middle" class="d-s">Network operation</text>
+
+  <text x="340" y="214" text-anchor="middle" class="d-s">Not three branches acting separately — three bodies ratifying one proposal</text>
+  <text x="340" y="234" text-anchor="middle" class="d-s">Which of them must ratify depends on the type of action</text>
+
+  <rect x="190" y="250" width="300" height="42" rx="8" class="d-box-plain"/>
+  <text x="340" y="276" text-anchor="middle" class="d-w">Executive function — no standing body yet</text>
+</svg>
+<p class="figcap">The analogy re-drawn onto the bodies that actually exist. <span class="badge">added</span></p>
+</div>
+
+<h4>Are DReps the legislature?</h4>
+<p>Half right. They vote on treasury withdrawals, constitutional amendments, protocol parameters, hard forks, info actions and CC updates — <strong>every kind of action</strong> — which makes them the closest thing to a parliament as a policy-deciding body.</p>
+<p>But unlike a parliament there is <strong>no mechanism for enacting general law, and no drafting or amending of text</strong>. There is no budget-execution or oversight apparatus, and many actions do not turn on DReps alone. “The principal ratifying body representing the community” is a more accurate description than “the legislature”.</p>
+
+<h4>Is the CC the judiciary?</h4>
+<p>Also half. Interpreting the constitution and ruling on whether a proposal complies does resemble a constitutional court.</p>
+<p>But the CC <strong>does not adjudicate disputes, impose sanctions, review past conduct, or amend a proposal</strong>. It votes yes or no. “A committee that reviews constitutionality in advance” fits better than “the judiciary”.</p>
+
+<h4>Leaving SPOs out distorts the picture</h4>
+<p>The show never mentions them, but SPOs are the third independent body — voting on no-confidence in the CC, CC updates, hard forks and info actions. A <strong>hard fork cannot happen without the operators who actually upgrade the nodes</strong>, which is why they are an explicit approving party. They have no counterpart in the three-branch model at all.</p>
+
+<h4>Why it isn't a separation</h4>
+<p>On a treasury withdrawal or a constitutional amendment, DRep support fails if the CC rules it unconstitutional, and CC approval fails without DRep support. That is not <strong>a legislature passing a law and a court striking it down later in a separate case</strong>. It is closer to <strong>a multi-key approval that only opens when the required keys are present</strong>.</p>
+
+<h4>Stated precisely</h4>
+<p>The constitution, representative voting, constitutionality review and network approval <strong>are live</strong>. A body of law, legislative procedure, general adjudication and executive delivery <strong>are not yet differentiated</strong>. The show's “we need a third branch” is best read as pointing at the delivery part of what remains undifferentiated.</p>
+</div>
+</details>
 
 <p>The analogy is post-revolutionary America. The Articles of Confederation left the executive too weak to do even what everyone agreed on — <strong>they couldn't get shoes to Washington's soldiers</strong> in the middle of the winter. The country didn't collapse; it replaced the Articles with the Constitution. Cardano is put at that same point.</p>
 
