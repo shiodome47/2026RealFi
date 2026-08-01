@@ -166,15 +166,16 @@ Input Output のベンチャー 4 つのうちの 1 つとして、RealFi・Midn
 「Pentad によって LayerZero、Pyth、Circle といった統合の割れ窓を直し始められた」という一文のみで、**何を指す枠組みなのかは説明されずに次の話題へ移っている**。
 
 **番組外で確認できたこと**（まとめページの 2 節に `補足` として記載済み、2026-08-01 時点）:
-- 技術やプロトコルではなく、**Input Output / Cardano Foundation / EMURGO / Midnight Foundation / Intersect MBO の 5 組織による共同の調整・実行体制**
+- 技術やプロトコルではなく、**Cardano の主要組織による共同の調整・実行体制**。発足時は Input Output / Cardano Foundation / EMURGO / Midnight Foundation / Intersect MBO の 5 組織
+- **2026 年 7 月 8 日に EMURGO が離脱を通知**し、**収録日（7 月 26 日）の時点では 4 組織**。理由は自社ウォレット SecondFi の事故対応に専念するため、と説明されている。**番組はこの離脱に触れていない**
 - 個々の DApp では入れられない基盤統合を、契約・予算・技術・ガバナンスの面からまとめて進める枠組み
 - Critical Integrations Budget は **7,000 万 ADA**、管理者は Intersect
 - 進捗 —— Circle の **USDCx** は 2026 年 2 月にメインネット稼働、**Pyth** は 2026 年 6 月時点で稼働済み、**LayerZero** は 2026 年 5 月時点で開発中（Q3 目標）、**Fireblocks** は交渉継続中で当初スコープ内の完成には至っていない
 - 「broken windows」＝ **主要エコシステムなら当然あるべきなのに長年欠けていた基盤統合**
 
-**注意**: 構成組織に **EMURGO が含まれる**一方、同じ番組で EMURGO は「救いようのない失敗」と評されている。**番組内でこの 2 つは結び付けて語られていない。**
+**注意**: 番組で EMURGO は「救いようのない失敗」と評されているが、**離脱そのものには触れていない**。両者を結び付けて語ってもいない。
 
-**まだ未確認**: LayerZero と Fireblocks のその後。
+**まだ未確認**: LayerZero と Fireblocks のその後。EMURGO の離脱が恒久的なものか、復帰の予定があるか。
 
 ---
 
