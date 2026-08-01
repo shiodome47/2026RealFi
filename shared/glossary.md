@@ -55,7 +55,7 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | Alpha Growth | AlphaGrowth |
 | D-rep | DRep |
 | Near | NEAR |
-| **Pogen** | **特定できず。**Input Output のベンチャー 4 つのうちの 1 つとして名前だけ挙がる。聞こえたまま残す |
+| Pogen | **Pogun**（Input Output のベンチャー。Bitcoin DeFi を Cardano に持ち込むプラットフォーム） |
 | **the Pentad** | **特定できず。**相互運用性の統合を進めた枠組みとして 1 回だけ出る。聞こえたまま残す |
 
 ## プロダクト用語
@@ -126,7 +126,7 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | **EVM** | Ethereum Virtual Machine 系のチェーン群 |
 | **AlphaGrowth** | DeFi の成長支援・トークノミクス・事業開発の会社。ポッドキャスト「A Dose of Alpha」を運営し、Cardano の PRIME 提案を出している |
 | **Midnight City** | Midnight 上に戦略のマーケットプレイスと取引エージェントを載せる構想。2026-07-26 の回で初出 |
-| **Pogen** | Input Output のベンチャー 4 つのうちの 1 つとして名前だけ挙がる。内容は説明されていない。綴りも音声認識のまま |
+| **Pogun** | Input Output のベンチャー。**Bitcoin の DeFi を Cardano に持ち込むプラットフォーム**で、BTC を Cardano 上にミラーリングし、自己保管のまま貸し借り・利回りを得られるようにする。予定はノンカストディアルな与信市場（Q2）→ 利回り DApp（Q3）→ BitVM ブリッジ（Q4）。財務庫に 1,230 万 ADA を要求（2026 年 4 月の Input Output の提案群の一部）。助成ではなく部分的な投資で、収益の 20% を返済まで、その後 5% を永続的に財務庫へ戻す。**数値は 2026-08-01 時点。**音声認識では “Pogen” と出る |
 | **Colossal** | 絶滅種の復元を手がける合成生物学の企業。Charles Hoskinson が初期から出資している |
 | **Morpho** | Ethereum 系のレンディングプロトコル。Coinbase / Robinhood の預金商品の裏側で使われている例として挙げられた |
 | **Intersect / PRAGMA** | Cardano のエコシステム組織。Cardano Foundation が担えなかった部分を補ってきたと評価されている |
