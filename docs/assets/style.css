@@ -198,7 +198,10 @@ h1 {
   margin: 0 0 1.5rem;
 }
 
-.meta span + span::before {
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
   content: "·";
   margin: 0 0.5rem;
   opacity: 0.5;

@@ -88,7 +88,7 @@
 </div>
 
 <div class="note">
-<p><strong>この回は他の回と性格が違います。</strong>RealFi Office Hours ではなく、<strong>YouTube で公開されている対談</strong>にもとづく記録です。チャタムハウスルールの対象ではないため、<strong>発言者は実名のまま</strong>扱っています。公式チャンネルの配信かどうかは確認していないため、ここでは番組名と出演者のみを記載しています。</p>
+<p><strong>この回は他の回と性格が違います。</strong>RealFi Office Hours ではなく、<strong><a href="https://www.youtube.com/watch?v=Om7sKYWlmuY">YouTube で公開されている対談</a></strong>にもとづく記録です。チャタムハウスルールの対象ではないため、<strong>発言者は実名のまま</strong>扱っています。公式チャンネルの配信かどうかは確認していないため、ここでは番組名と出演者のみを記載しています。</p>
 </div>
 
 <div class="toc">
@@ -165,9 +165,46 @@
 <ul>
   <li><strong>ノードの多様性</strong> —— Rust ノードと Go ノードがある</li>
   <li><strong>開発体験（DevX）</strong> —— 数年前と比べて劇的に改善。Haskell を書きたくなければ TypeScript でも Rust でもよい</li>
-  <li><strong>相互運用性</strong> —— 「the Pentad」によって LayerZero、Pyth、Circle といった統合の「割れ窓」を直し始めた</li>
+  <li><strong>相互運用性</strong> —— <strong>Pentad</strong> によって LayerZero、Pyth、Circle といった統合の「割れ窓」を直し始めた</li>
   <li><strong>残っている投入物</strong> —— Leios と Peras を出して稼働させる、Hydra を続ける</li>
 </ul>
+
+<div class="term">
+<p class="term-name">Pentad <small>Cardano の主要 5 組織による共同体制</small></p>
+<p><span class="badge">補足</span>番組では名前だけ出て説明されません。<strong>技術やプロトコルの名前ではなく、Input Output・Cardano Foundation・EMURGO・Midnight Foundation・Intersect MBO の 5 組織による、大型統合を調整・実行するための協力体制</strong>です（pentad ＝ 5 者からなる組）。</p>
+</div>
+
+<details class="explain">
+<summary>「割れ窓」とは何のことか — Pentad の中身を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。番組中の発言ではありません。</p>
+
+<h4>なぜ 5 組織で組む必要があったのか</h4>
+<p>Cardano には、<strong>個々の DApp では導入しきれない基盤</strong>が長く欠けていました。大手ステーブルコイン、機関レベルの価格オラクル、クロスチェーン接続、オンチェーン分析、機関投資家向けカストディです。</p>
+<p>これらは技術を実装すれば終わりではなく、提携交渉・契約・法務・予算・開発・継続的な保守・ガバナンス承認を<strong>複数の組織にまたがって進める</strong>必要があります。Pentad は新会社でも単一の開発チームでもなく、その調整をまとめて担う共同ステアリング体制です。</p>
+
+<h4>実際に動いた「Critical Integrations」</h4>
+<p>コミュニティは Critical Integrations Budget として <strong>7,000 万 ADA</strong> を承認し、Intersect が管理者として契約・予算執行・進捗管理を担当しています。対象はおおむね次の 5 分野です。</p>
+<ul>
+  <li><strong>Circle 系ステーブルコイン（USDCx）</strong> —— 最初の大きな成果。2026 年 2 月にメインネットで稼働</li>
+  <li><strong>Pyth</strong> —— 機関レベルの価格データ。スマートコントラクトが BTC・ADA・株式・為替の価格を検証して使える。2026 年 6 月時点で稼働済み</li>
+  <li><strong>Dune Analytics</strong> —— オンチェーンデータを SQL で検索・分析し、ダッシュボード化できるようにする</li>
+  <li><strong>LayerZero</strong> —— 単なるブリッジではなくチェーン間のメッセージ基盤。EUTXO は EVM と構造が違うため単純移植では済まない。2026 年 5 月時点で開発中、Q3 ローンチ目標</li>
+  <li><strong>Fireblocks などの機関向けカストディ</strong> —— 2026 年 5 月時点で交渉は継続中。当初スコープ内での完成には至っていない</li>
+</ul>
+
+<h4>「broken windows」が指しているもの</h4>
+<p>直訳すると「壊れた窓のように放置されていた統合上の欠落」です。ここでは <strong>Cardano が主要エコシステムとして当然備えているべきなのに、長年欠けていた基盤統合</strong>を指しています。個々の DApp がどれだけ優秀でも、ステーブルコインが足りない・信頼される価格データがない・外部チェーンから資金が入らない・機関が保管できない・外から活動を分析できない、という状態では伸びません。</p>
+
+<h4>Pogun との違い</h4>
+<p>この回には Pogun も出てきますが、性質がまったく違います。<strong>Pogun は作る「製品」、Pentad は大型統合を進める「体制」</strong>です。</p>
+
+<h4>番組と突き合わせると</h4>
+<p>Pentad の構成組織には <strong>EMURGO も入っています</strong>。同じ番組の中で EMURGO は「救いようのない失敗」と評されており、<strong>この 2 つは結び付けて語られていません</strong>。</p>
+
+<p>状況は 2026 年 8 月 1 日時点のもので、以降変わり得ます。</p>
+</div>
+</details>
 
 <p><span class="badge">補足</span><strong>Leios と Peras。</strong>いずれも Cardano のコンセンサスまわりの改良で、Leios はスループット、Peras はファイナリティ（取引が確定したとみなせるまでの時間）を対象にしています。番組内では名前と「性能とファイナリティの面で戦線に戻ってきている」という一言のみで、仕様や時期には踏み込んでいません。</p>
 
@@ -186,9 +223,43 @@
   <li><strong>Midnight City</strong> —— 戦略のマーケットプレイスと取引エージェントを載せる場として、後段で再登場します</li>
 </ul>
 
-<p><span class="badge">補足</span><strong>Pogun とは。</strong>番組では説明されないので背景を補います。<strong>Bitcoin の DeFi を Cardano に持ち込むプラットフォーム</strong>で、BTC を Cardano 上にミラーリングし、保有者が<strong>自己保管のまま</strong>貸し借りや利回りを得られるようにするものです。予定されている順番は、ノンカストディアルな与信市場（Q2）→ 利回り DApp（Q3）→ BitVM を使った信頼最小化ブリッジ（Q4）。狙いは約 1.6 兆ドルとされる「動いていない Bitcoin」です。</p>
+<p><span class="badge">補足</span><strong>Pogun とは。</strong>番組では説明されないので補います。<strong>Input Output が進める、Cardano 向けのエンドツーエンド型 Bitcoin DeFi 構想</strong>です。BTC を Cardano へ持ち込むだけでなく、<strong>クレジット市場で運用し、利回りを得られる状態まで一体で作る</strong>ことを目指しています。狙いは約 1.6 兆ドルとされる「動いていない Bitcoin」です。</p>
 
-<p><span class="badge">補足</span><strong>資金の出方が他と違います。</strong>Pogun は Cardano の財務庫に <strong>1,230 万 ADA</strong>（提案時のレートで 300 万ドル強）を求めています。これは Input Output が 2026 年 4 月に出した提案群（総額 4,680 万ドル。前年の 9,750 万ドルの約半分）の一部です。助成ではなく<strong>部分的な投資</strong>の形をとっていて、<strong>収益の 20% を出資額の返済が終わるまで、その後は 5% を永続的に</strong>財務庫へ戻す条件が付いています。<strong>金額と状況は 2026 年 8 月 1 日時点</strong>のもので、以降変わり得ます。</p>
+<details class="explain">
+<summary>Pogun は 3 つの部品でできています — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。番組中の発言ではありません。</p>
+
+<h4>① 非証拠金型クレジット市場</h4>
+<p>一般的な DeFi のレンディングは、価格が少し下がるたびにオラクル価格で自動清算されます。Pogun はそこを変えて、<strong>借り手と貸し手が金利・期間・担保条件・デフォルト条件を直接合意し、スマートコントラクトで執行する</strong>形をとります。日中の強制清算を基本的に使わず、<strong>明確な債務不履行が起きたときにだけ</strong>担保を処理します。現実の信用取引に近い作りです。</p>
+<p>ローンのポジションは<strong>譲渡可能な Bond Token</strong> として発行され、Cardano 上に債券の流通市場を作る構想も含まれます。</p>
+
+<h4>② Yield DApp</h4>
+<p>一般ユーザーが貸し手と個別に交渉しなくても、<strong>期間と利回りを選ぶだけで BTC などを運用できる</strong>フロントエンドです。裏側では、預けた資金がクレジット市場の実際のローン案件へ割り当てられます。</p>
+
+<h4>③ BitVM を使った Bitcoin ブリッジ</h4>
+<p>中央の管理者に BTC を預けるカストディ型ではなく、<strong>BitVM を使ったトラスト最小化ブリッジ</strong>を目指しています。</p>
+
+<h4>順番が肝です</h4>
+<p>普通なら「まずブリッジ」と考えるところを、Pogun は<strong>クレジット市場 → Yield DApp → ブリッジ</strong>の順で作ります。BTC が Cardano に移ってきた<strong>その瞬間から借入・貸付・利回り運用に使える状態</strong>にするためです。ブリッジだけ先に作っても、移動後の BTC に用途がなければ資金は定着しない、という考え方です。</p>
+
+<h4>なぜ Cardano なのか</h4>
+<p>Bitcoin の UTxO モデルと Cardano の EUTXO モデルに構造的な親和性がある、というのが Pogun 側の説明です。決定論的な取引処理、予測可能な手数料、ネイティブアセット、MEV を抑えた設計、非カストディ型の金融ロジックが作りやすい点が挙げられています。</p>
+
+<h4>誰が作っているか</h4>
+<p>リードは <strong>Omer Husain</strong>。チームには、Input Output のオープンソースの Bitcoin ブリッジ仕様である <strong>Cardinal</strong> に関わったメンバーも含まれます。</p>
+
+<h4>公開された予定と資金</h4>
+<ul>
+  <li>2026 年 Q2 —— 非証拠金型クレジット市場</li>
+  <li>2026 年 Q3 —— Yield DApp</li>
+  <li>2026 年 Q4 —— 機関向け機能と BitVM ブリッジ</li>
+  <li>財務庫への要求額 —— <strong>1,229 万 ADA</strong></li>
+</ul>
+<p>資金の出方も他と違います。助成ではなく<strong>部分的な投資</strong>の形で、<strong>収益の 20% を出資額の返済が終わるまで、その後は 5% を永続的に</strong>財務庫へ戻す条件が付いています。</p>
+<p><strong>これは提案上のロードマップです。</strong>実際の提供状況や時期は、資金調達・開発・監査の進み方で変わり得ます。数値と状況は 2026 年 8 月 1 日時点のものです。</p>
+</div>
+</details>
 
 <p>番組内では別の箇所で「Bitcoin DeFi のような自然な成長領域もある」と述べられており、Pogun はまさにその領域にあたります。ただし、<strong>この 2 つが結び付けて語られてはいません</strong>。</p>
 
@@ -520,12 +591,12 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">未掘り下げ</span>Input Output のベンチャー 4 つのうち「Pogun」とは何か。</p>
-<p class="qa-a" data-by="言及のみ">RealFi・Midnight・Midnight City と並べて名前が挙がっただけで、<strong>番組内では何をするプロダクトかが説明されていません</strong>。他の 3 つは後段で再登場しますが、これだけは一度きりです。<span class="badge">補足</span>Bitcoin の DeFi を Cardano に持ち込むプラットフォームで、内容は <a href="#studio">3 節</a>に補足しています。</p>
+<p class="qa-a" data-by="言及のみ">RealFi・Midnight・Midnight City と並べて名前が挙がっただけで、<strong>番組内では何をするプロダクトかが説明されていません</strong>。他の 3 つは後段で再登場しますが、これだけは一度きりです。<span class="badge">補足</span>Input Output が進めるエンドツーエンド型の Bitcoin DeFi 構想で、クレジット市場・Yield DApp・BitVM ブリッジの 3 つでできています。中身は <a href="#studio">3 節</a>に補足しました。</p>
 </div>
 
 <div class="qa pending">
-<p class="qa-q"><span class="qa-who">未掘り下げ</span>相互運用性を進めた「the Pentad」とは何か。</p>
-<p class="qa-a" data-by="言及のみ">「the Pentad によって LayerZero、Pyth、Circle といった統合の割れ窓を直し始められた」という一文のみで、<strong>何を指す枠組みなのかは説明されずに次の話題へ移っています</strong>。</p>
+<p class="qa-q"><span class="qa-who">未掘り下げ</span>相互運用性を進めた「Pentad」とは何か。</p>
+<p class="qa-a" data-by="言及のみ">「Pentad によって LayerZero、Pyth、Circle といった統合の割れ窓を直し始められた」という一文のみで、<strong>何を指す枠組みなのかは説明されずに次の話題へ移っています</strong>。<span class="badge">補足</span>Cardano の主要 5 組織による共同体制です。中身は <a href="#tech">2 節</a>に補足しました。</p>
 </div>
 
 <div class="qa pending">
@@ -535,9 +606,9 @@
 
 
 <div class="note">
-<p><strong>このページについて。</strong>この対談は YouTube で公開されているものにもとづく記録で、<strong>チャタムハウスルールの対象ではありません</strong>。そのため発言者は実名のまま扱っています。公式チャンネルの配信かどうかは確認していないため、番組名と出演者以外の出典情報は記載していません。</p>
+<p><strong>このページについて。</strong>この対談は YouTube で公開されているものにもとづく記録で、<strong>チャタムハウスルールの対象ではありません</strong>。そのため発言者は実名のまま扱っています。もとの録画は <a href="https://www.youtube.com/watch?v=Om7sKYWlmuY">こちら</a>（公式チャンネルの配信かどうかは確認していません）。</p>
 <p>元の文字起こしには話者ラベルもタイムスタンプもないため、話者は文脈から推定しています。<strong>ホスト 2 人（Eric と Brian）の切り分けは推定に留まる箇所があります。</strong>全文ページでは、確度の低い箇所に<em>（推定）</em>を付けています。</p>
-<p><strong>固有名詞の誤変換は修正しています。</strong>“Realfly” → RealFi、“Amergo” → EMURGO、“Metcaf’s law” → Metcalfe の法則、“Morfo” → Morpho、“pith” → Pyth など。特定できなかった “the Pentad” は聞こえたまま残しています。</p>
+<p><strong>固有名詞の誤変換は修正しています。</strong>“Realfly” → RealFi、“Amergo” → EMURGO、“Metcaf’s law” → Metcalfe の法則、“Morfo” → Morpho、“pith” → Pyth、“Pogen” → Pogun など。<strong>固有名詞はすべて確認できたので、推測で置き換えた箇所はありません。</strong>聞き取り自体が崩れている箇所（“is the master” など）は原文のまま残しています。</p>
 <p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、番組中の発言ではありません。</p>
 <p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
 </div>
@@ -562,7 +633,7 @@
 </div>
 
 <div class="note">
-<p><strong>This episode is different from the others here.</strong> It is not a RealFi Office Hours call but a conversation <strong>published on YouTube</strong>. It is not covered by the Chatham House Rule, so <strong>the speakers are named</strong>. Whether the recording came from an official channel has not been verified, so nothing beyond the show name and participants is claimed.</p>
+<p><strong>This episode is different from the others here.</strong> It is not a RealFi Office Hours call but a conversation <strong><a href="https://www.youtube.com/watch?v=Om7sKYWlmuY">published on YouTube</a></strong>. It is not covered by the Chatham House Rule, so <strong>the speakers are named</strong>. Whether the recording came from an official channel has not been verified, so nothing beyond the show name and participants is claimed.</p>
 </div>
 
 <div class="toc">
@@ -643,6 +714,43 @@
   <li><strong>Still to ship</strong> — get Leios and Peras turned on, continue the drum beat of Hydra</li>
 </ul>
 
+<div class="term">
+<p class="term-name">The Pentad <small>five Cardano organisations, acting together</small></p>
+<p><span class="badge">added</span>Named on the show and not explained. It is <strong>not a technology or a protocol — it is a coordination body made up of Input Output, the Cardano Foundation, EMURGO, the Midnight Foundation and Intersect MBO</strong>, set up to steer and execute large integrations (a <em>pentad</em> is a group of five).</p>
+</div>
+
+<details class="explain">
+<summary>What the “broken windows” are — open for what the Pentad actually does</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written to explain the reference. None of it was said on the show.</p>
+
+<h4>Why it takes five organisations</h4>
+<p>Cardano was missing infrastructure <strong>no single DApp can install on its own</strong>: a major stablecoin, institutional-grade price oracles, cross-chain connectivity, on-chain analytics, institutional custody.</p>
+<p>None of these end at the engineering. They need partnership negotiation, contracts, legal, budget, development, ongoing maintenance and governance approval — <strong>across several organisations at once</strong>. The Pentad isn't a new company or a single dev team; it is the joint steering arrangement for exactly that.</p>
+
+<h4>The Critical Integrations it drove</h4>
+<p>The community approved a <strong>70 million ADA</strong> Critical Integrations Budget, with Intersect as administrator for contracts, disbursement and progress. Roughly five areas:</p>
+<ul>
+  <li><strong>A Circle stablecoin (USDCx)</strong> — the first substantial result, live on mainnet in February 2026</li>
+  <li><strong>Pyth</strong> — institutional price data, so contracts can verify BTC, ADA, equity and FX prices. Live on Cardano as of June 2026</li>
+  <li><strong>Dune Analytics</strong> — Cardano's on-chain data queryable in SQL and buildable into dashboards, the way Ethereum and Solana already are</li>
+  <li><strong>LayerZero</strong> — a cross-chain messaging layer rather than a plain bridge. EUTXO differs structurally from EVM, so this is not a port. In development as of May 2026, targeting a Q3 launch</li>
+  <li><strong>Institutional custody such as Fireblocks</strong> — as of May 2026 still in negotiation, not fully funded or completed within the original scope</li>
+</ul>
+
+<h4>What “broken windows” points at</h4>
+<p>The gaps in integration that sat unrepaired — <strong>the baseline infrastructure a major ecosystem is expected to have and Cardano went years without</strong>. However good the individual DApps are, an ecosystem with thin stablecoins, no trusted price data, no inbound capital from other chains, no institutional custody and no external analytics does not grow.</p>
+
+<h4>Not to be confused with Pogun</h4>
+<p>Both come up in this episode and they are different kinds of thing. <strong>Pogun is a product being built; the Pentad is the arrangement for getting large integrations done.</strong></p>
+
+<h4>Read against the episode</h4>
+<p>EMURGO is one of the five. In the same conversation EMURGO is called “an unmitigated disaster and failure” — <strong>the two facts are never put side by side on the show</strong>.</p>
+
+<p>Status is as of 1 August 2026 and can move.</p>
+</div>
+</details>
+
 <p><span class="badge">added</span><strong>Leios and Peras.</strong> Both are consensus-layer improvements — Leios targets throughput, Peras targets finality (how long before a transaction can be treated as settled). The episode names them and says they put Cardano “back in the game in terms of performance and finality”, and goes no further into specifications or timing.</p>
 
 <p>The framing of formal methods is worth pulling out. Writing rigorous specifications <strong>used to be a drag on velocity and is now treated as the advantage</strong> in an AI era: “if you have really good specifications… you can vibe code in 20 days a full node.”</p>
@@ -660,9 +768,43 @@
   <li><strong>Midnight City</strong> — returns later as the place for the strategy marketplace and trading agents</li>
 </ul>
 
-<p><span class="badge">added</span><strong>What Pogun is.</strong> The show never says, so: it is a <strong>platform for bringing Bitcoin DeFi to Cardano</strong>, mirroring BTC onto Cardano so holders can lend, borrow and earn yield <strong>while keeping self-custody</strong>. The stated order is a non-custodial credit market (Q2), a yield DApp (Q3), and a BitVM-based trust-minimised bridge (Q4). The target is the roughly $1.6 trillion in idle Bitcoin.</p>
+<p><span class="badge">added</span><strong>What Pogun is.</strong> The show never says, so: it is <strong>Input Output's end-to-end Bitcoin DeFi effort for Cardano</strong>. Not just bridging BTC across, but <strong>building the credit market and the yield on top of it as one piece</strong>, so the BTC has somewhere to go. The target is the roughly $1.6 trillion in idle Bitcoin.</p>
 
-<p><span class="badge">added</span><strong>It is funded differently from the rest.</strong> Pogun is asking the Cardano treasury for <strong>12.3 million ADA</strong> (a little over $3m at the price assumed in the proposal), part of the set of proposals Input Output put forward in April 2026 totalling $46.8m — about half its $97.5m ask the year before. Rather than a grant it is structured as a partial investment: <strong>20% of earnings go back to the treasury until the disbursement is repaid, then 5% in perpetuity.</strong> <strong>Figures and status are as of 1 August 2026</strong> and can move.</p>
+<details class="explain">
+<summary>Pogun is three parts — open for a plain-language walkthrough</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written to fill in the background. None of it was said on the show.</p>
+
+<h4>① A non-margin credit market</h4>
+<p>Ordinary DeFi lending liquidates you automatically off an oracle price every time the market dips. Pogun instead has <strong>the borrower and lender agree the rate, the term, the collateral and the default conditions directly</strong>, with a smart contract enforcing it. No routine intraday liquidation — collateral is dealt with <strong>on an actual default</strong>. It is closer to how real credit works.</p>
+<p>Loan positions are issued as <strong>transferable Bond Tokens</strong>, with the intent of growing a secondary bond market on Cardano.</p>
+
+<h4>② A yield DApp</h4>
+<p>The front end, so an ordinary user never has to negotiate with a lender: <strong>pick a term and a yield and put BTC to work</strong>. Behind it, the deposit is allocated to real loans in the credit market.</p>
+
+<h4>③ A BitVM-based Bitcoin bridge</h4>
+<p>Not a custodial bridge where someone holds your BTC, but a <strong>trust-minimised bridge built on BitVM</strong>.</p>
+
+<h4>The ordering is the point</h4>
+<p>You would expect the bridge first. Pogun does <strong>credit market → yield DApp → bridge</strong>, so that BTC arriving on Cardano <strong>can be borrowed against, lent and earning from the moment it lands</strong>. Build the bridge alone and the capital has nothing to do when it gets there, so it doesn't stay.</p>
+
+<h4>Why Cardano</h4>
+<p>Pogun's own argument is structural affinity between Bitcoin's UTxO model and Cardano's EUTXO: deterministic transaction processing, predictable fees, native assets, a design that suppresses MEV, and non-custodial financial logic that is straightforward to express.</p>
+
+<h4>Who is building it</h4>
+<p>Led by <strong>Omer Husain</strong>, with team members who worked on <strong>Cardinal</strong>, Input Output's open-source Bitcoin bridge specification.</p>
+
+<h4>The published plan and the money</h4>
+<ul>
+  <li>Q2 2026 — the non-margin credit market</li>
+  <li>Q3 2026 — the yield DApp</li>
+  <li>Q4 2026 — institutional features and the BitVM bridge</li>
+  <li>Treasury request — <strong>12,290,000 ADA</strong></li>
+</ul>
+<p>The funding shape is unusual too: not a grant but a <strong>partial investment</strong>, returning <strong>20% of earnings to the treasury until the disbursement is repaid, then 5% in perpetuity</strong>.</p>
+<p><strong>This is the roadmap as proposed.</strong> What actually ships, and when, depends on funding, development and audits. Figures and status are as of 1 August 2026.</p>
+</div>
+</details>
 
 <p>Elsewhere in the episode there is a line about “natural areas to grow like Bitcoin DeFi”, which is exactly the space Pogun occupies — though <strong>the two are never connected out loud</strong>.</p>
 
@@ -993,12 +1135,12 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">not pursued</span>What is “Pogun”, the fourth of Input Output's ventures?</p>
-<p class="qa-a" data-by="named only">Listed alongside RealFi, Midnight and Midnight City and <strong>never described on the show</strong>. The other three all come back later in the conversation; this one appears exactly once. <span class="badge">added</span>It is a platform for bringing Bitcoin DeFi to Cardano — filled in under <a href="#en-studio">section 3</a>.</p>
+<p class="qa-a" data-by="named only">Listed alongside RealFi, Midnight and Midnight City and <strong>never described on the show</strong>. The other three all come back later in the conversation; this one appears exactly once. <span class="badge">added</span>It is Input Output's end-to-end Bitcoin DeFi effort — a credit market, a yield DApp and a BitVM bridge — filled in under <a href="#en-studio">section 3</a>.</p>
 </div>
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">not pursued</span>What is “the Pentad” that fixed interoperability?</p>
-<p class="qa-a" data-by="named only">One sentence — “with the Pentad, we were able to start fixing the broken windows of integrations like LayerZero, Pyth and Circle” — and then <strong>straight on to the next topic</strong>. What it refers to is never explained.</p>
+<p class="qa-a" data-by="named only">One sentence — “with the Pentad, we were able to start fixing the broken windows of integrations like LayerZero, Pyth and Circle” — and then <strong>straight on to the next topic</strong>. What it refers to is never explained. <span class="badge">added</span>It is a joint body of five Cardano organisations — filled in under <a href="#en-tech">section 2</a>.</p>
 </div>
 
 <div class="qa pending">
@@ -1008,9 +1150,9 @@
 
 
 <div class="note">
-<p><strong>About this page.</strong> This record is based on a conversation published on YouTube, so it <strong>is not covered by the Chatham House Rule</strong> and the speakers are named. Whether the recording came from an official channel has not been verified, so no source information beyond the show name and participants is given.</p>
+<p><strong>About this page.</strong> This record is based on a conversation published on YouTube, so it <strong>is not covered by the Chatham House Rule</strong> and the speakers are named. The recording is <a href="https://www.youtube.com/watch?v=Om7sKYWlmuY">here</a> (whether it comes from an official channel has not been verified).</p>
 <p>The source transcript has no speaker labels and no timestamps, so speakers are inferred from context. <strong>Telling the two hosts apart (Eric and Brian) is uncertain in places</strong>, and those places are marked <em>(inferred)</em> on the full-transcript pages.</p>
-<p><strong>Obvious proper-noun misrecognitions have been corrected</strong> — “Realfly” → RealFi, “Amergo” → EMURGO, “Metcaf's law” → Metcalfe's law, “Morfo” → Morpho, “pith” → Pyth, and so on. “the Pentad” could not be resolved and is left as heard.</p>
+<p><strong>Obvious proper-noun misrecognitions have been corrected</strong> — “Realfly” → RealFi, “Amergo” → EMURGO, “Metcaf's law” → Metcalfe's law, “Morfo” → Morpho, “pith” → Pyth, “Pogen” → Pogun, and so on. <strong>Every proper noun has been checked, so nothing has been replaced by guesswork.</strong> Passages where the transcription itself breaks down (“is the master”, for instance) are left as heard.</p>
 <p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the show</strong>.</p>
 <p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
 </div>

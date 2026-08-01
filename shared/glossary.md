@@ -56,7 +56,7 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | D-rep | DRep |
 | Near | NEAR |
 | Pogen | **Pogun**（Input Output のベンチャー。Bitcoin DeFi を Cardano に持ち込むプラットフォーム） |
-| **the Pentad** | **特定できず。**相互運用性の統合を進めた枠組みとして 1 回だけ出る。聞こえたまま残す |
+| the Pentad | **Pentad**（誤変換ではない。Cardano の主要 5 組織による共同体制） |
 
 ## プロダクト用語
 
@@ -126,7 +126,8 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | **EVM** | Ethereum Virtual Machine 系のチェーン群 |
 | **AlphaGrowth** | DeFi の成長支援・トークノミクス・事業開発の会社。ポッドキャスト「A Dose of Alpha」を運営し、Cardano の PRIME 提案を出している |
 | **Midnight City** | Midnight 上に戦略のマーケットプレイスと取引エージェントを載せる構想。2026-07-26 の回で初出 |
-| **Pogun** | Input Output のベンチャー。**Bitcoin の DeFi を Cardano に持ち込むプラットフォーム**で、BTC を Cardano 上にミラーリングし、自己保管のまま貸し借り・利回りを得られるようにする。予定はノンカストディアルな与信市場（Q2）→ 利回り DApp（Q3）→ BitVM ブリッジ（Q4）。財務庫に 1,230 万 ADA を要求（2026 年 4 月の Input Output の提案群の一部）。助成ではなく部分的な投資で、収益の 20% を返済まで、その後 5% を永続的に財務庫へ戻す。**数値は 2026-08-01 時点。**音声認識では “Pogen” と出る |
+| **Pogun** | Input Output が進める、Cardano 向けの**エンドツーエンド型 Bitcoin DeFi 構想**。BTC を運ぶだけでなく、貸付・担保・利回り運用に使える状態まで一体で作る。①非証拠金型クレジット市場（オラクル価格での日中強制清算を使わず、金利・期間・担保・デフォルト条件を当事者が合意。ローンは譲渡可能な Bond Token）②Yield DApp ③BitVM を使ったトラスト最小化ブリッジ。**この順で作るのは、BTC が来た瞬間に使い道がある状態にするため。**リードは Omer Husain、チームには Input Output の Bitcoin ブリッジ仕様 Cardinal の関係者。財務庫に 1,229 万 ADA を要求し、助成ではなく部分的な投資（収益の 20% を返済まで、その後 5% を永続的に返す）。**提案上のロードマップであり、2026-08-01 時点の情報。**音声認識では “Pogen” と出る |
+| **the Pentad** | Cardano の主要 5 組織（Input Output / Cardano Foundation / EMURGO / Midnight Foundation / Intersect MBO）による**共同の調整・実行体制**。プロダクトでも新会社でもない。個々の DApp では入れられない基盤統合（Circle の USDCx、Pyth、Dune、LayerZero、Fireblocks 等の機関向けカストディ）を、契約・予算・技術・ガバナンスの面からまとめて進める。Critical Integrations Budget は 7,000 万 ADA、管理者は Intersect。**Pogun が「製品」なのに対し、Pentad は「体制」** |
 | **Colossal** | 絶滅種の復元を手がける合成生物学の企業。Charles Hoskinson が初期から出資している |
 | **Morpho** | Ethereum 系のレンディングプロトコル。Coinbase / Robinhood の預金商品の裏側で使われている例として挙げられた |
 | **Intersect / PRAGMA** | Cardano のエコシステム組織。Cardano Foundation が担えなかった部分を補ってきたと評価されている |
