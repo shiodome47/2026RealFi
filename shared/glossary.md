@@ -21,7 +21,42 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | Pagan | 不明。プロジェクト名と思われるが特定できない |
 | beach jump | 不明。「聞き取れなかった」ものとして扱う |
 
-**人名・ハンドル名の誤変換**も毎回発生するが、それらは修正するのではなく**匿名化して置き換える**。同一人物が複数の綴りで出てくることがあるので、まとめて同じラベルに寄せる。手順は `shared/speakers.md` を参照。
+**人名・ハンドル名の誤変換**も毎回発生する。チャタムハウスルールの回では、それらは修正するのではなく**匿名化して置き換える**。同一人物が複数の綴りで出てくることがあるので、まとめて同じラベルに寄せる。手順は `shared/speakers.md` を参照。
+
+**公開録画の回（`chatham_house_rule: false`）では実名を残す。**この場合、人名も含めて**固有名詞の明らかな誤変換は修正する**。
+
+### 2026-07-26 A Dose of Alpha で出た誤変換
+
+| 誤変換 | 正しい表記 |
+| --- | --- |
+| Realfly | RealFi |
+| Amergo | EMURGO |
+| Metcaf's law | Metcalfe's law（メトカーフの法則） |
+| Dan Larmer / Bit shares | Dan Larimer / BitShares |
+| Ben Lam | Ben Lamm（Colossal の創業者） |
+| Ilya | Illia（NEAR 共同創業者） |
+| Leos / Paris・Para | Leios / Peras |
+| pith | Pyth |
+| Ave | Aave |
+| Morfo | Morpho |
+| DSI / DFI / CFI | DeSci / DeFi / CeFi |
+| Mike Sailor | Michael Saylor |
+| Greta Thornberg | Greta Thunberg |
+| in silica | in silico |
+| Dows | DAOs |
+| intense | intents（インテント） |
+| zero cash | Zerocash |
+| MPP | MCP |
+| X402 | x402 |
+| DAPs | DATs（digital asset treasury。文脈は Michael Saylor 型の企業） |
+| shitification | enshittification |
+| mountain line | mountain lion |
+| Robin Hood | Robinhood |
+| Alpha Growth | AlphaGrowth |
+| D-rep | DRep |
+| Near | NEAR |
+| **Pogen** | **特定できず。**Input Output のベンチャー 4 つのうちの 1 つとして名前だけ挙がる。聞こえたまま残す |
+| **the Pentad** | **特定できず。**相互運用性の統合を進めた枠組みとして 1 回だけ出る。聞こえたまま残す |
 
 ## プロダクト用語
 
@@ -63,6 +98,19 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | **Net Change Limit** | 一定期間に Cardano の財務庫から出せる総額の上限 | 訳さない・注釈をつける |
 | **DefiLlama / Dune** | DeFi の統計・分析プラットフォーム。掲載が to-do リストにある | 訳さない |
 | **registry maxing** | 各種の分析プラットフォームに漏れなく掲載されること（進行役の造語的表現） | 訳さない・注釈をつける |
+| **executive function（行政機能）** | Cardano のガバナンスに欠けている「第三の府」。ビジョン・戦略・KPI・マーケティング・成長の責任を負う主体。立法（投票）・司法（憲法）の後にしか作れない、という順序が主張されている | 行政機能・行政府 |
+| **PET** | privacy enhancing technologies。ZK・MPC・TEE を組み合わせた、中身を見せずに検証する技術群 | 訳さない・注釈をつける |
+| **TEE** | trusted execution environment。計算を外から覗けない箱の中で走らせる仕組み | 訳さない |
+| **MCS / intents** | multi-chain signatures。「何をしたいか」だけ指定し、どのチェーンで決済されるかは気にしない仕組み。MCS で書き込み、ZK で読み取る | 訳さない・インテント |
+| **abstraction（アブストラクション）** | どのチェーン・どのインフラを使っているかをユーザーが意識しなくてよくすること | 訳さない |
+| **smart compliance** | 規制対応を、人間の審査ではなく ZK 証明によるイエス・ノーの連続に置き換える発想 | 訳さない・注釈をつける |
+| **OWS / x402** | エージェントがウォレットを持ち、支払いをするための標準 | 訳さない |
+| **DeFi mullet（DeFi マレット）** | 前面は CeFi のアプリ、背面は DeFi が利回りを作る構成。Morpho × Coinbase / Robinhood が例 | DeFi マレット |
+| **RWA 1.0 / 2.0** | 1.0 は既存商品（株など）のトークン化。2.0 は規制対象の資産で、これまで作れなかった商品を作ること。番組ではこの 2 つを明確に分けている | 訳さない |
+| **DAT** | digital asset treasury。暗号資産を保有することを主眼にした上場企業。番組では否定的な文脈で言及 | 訳さない・注釈をつける |
+| **enshittification** | プラットフォームが成長を終えて劣化していく現象を指す造語。ホスト側が使い、Charles Hoskinson が「いい言葉だ」と受けている | 訳さない（カタカナで表記） |
+| **Leios / Peras** | Cardano のコンセンサス改良。Leios はスループット、Peras はファイナリティが対象 | 訳さない |
+| **ghost chain（ゴーストチェーン）** | 活動のないチェーンという批判。Cardano については「委任側は活発、DeFi 側は貧弱」という二面性として半分認められている | ゴーストチェーン |
 
 ## 組織・プロダクト名
 
@@ -76,6 +124,12 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | **Rosen Bridge** | Cardano のクロスチェーンブリッジ。USDR/sUSDR の対応はメインネット後 |
 | **IO / Input Output** | Cardano の中核開発企業 |
 | **EVM** | Ethereum Virtual Machine 系のチェーン群 |
+| **AlphaGrowth** | DeFi の成長支援・トークノミクス・事業開発の会社。ポッドキャスト「A Dose of Alpha」を運営し、Cardano の PRIME 提案を出している |
+| **Midnight City** | Midnight 上に戦略のマーケットプレイスと取引エージェントを載せる構想。2026-07-26 の回で初出 |
+| **Pogen** | Input Output のベンチャー 4 つのうちの 1 つとして名前だけ挙がる。内容は説明されていない。綴りも音声認識のまま |
+| **Colossal** | 絶滅種の復元を手がける合成生物学の企業。Charles Hoskinson が初期から出資している |
+| **Morpho** | Ethereum 系のレンディングプロトコル。Coinbase / Robinhood の預金商品の裏側で使われている例として挙げられた |
+| **Intersect / PRAGMA** | Cardano のエコシステム組織。Cardano Foundation が担えなかった部分を補ってきたと評価されている |
 
 ## 翻訳の方針
 

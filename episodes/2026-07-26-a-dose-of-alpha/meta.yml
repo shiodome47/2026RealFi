@@ -1,0 +1,30 @@
+slug: 2026-07-26-a-dose-of-alpha
+title: A Dose of Alpha — Charles Hoskinson × AlphaGrowth
+title_en: A Dose of Alpha — Charles Hoskinson × AlphaGrowth
+date: 2026-07-26          # 番組内に日付の言及はない。公開時期からの特定
+series: cardano           # RealFi Office Hours ではなく、Cardano まわりの公開収録
+
+# チャタムハウスルールの対象ではない。
+# YouTube で公開されている録画にもとづく記録であり、発言者は実名のまま扱う。
+chatham_house_rule: false
+
+platform: YouTube（ポッドキャスト「A Dose of Alpha」）
+official_channel: unknown   # 公式チャンネルかどうかは確認していない
+
+speakers:
+  - Charles Hoskinson       # Cardano / Input Output 創業者
+  - Eric                    # AlphaGrowth 共同創業者・ホスト
+  - Brian                   # AlphaGrowth 共同創業者・ホスト
+
+# 音声認識の出力に話者ラベル・タイムスタンプがないため、話者は文脈から推定している。
+# Eric と Brian の切り分けは確度が低い箇所がある。詳細は shared/speakers.md を参照。
+speaker_labels: inferred
+timestamps: none
+
+# 公開ページでは固有名詞の明らかな誤変換のみ修正している（RealFi / EMURGO / Metcalfe など）。
+# このファイルの隣にある transcript.txt は修正前の原文。
+proper_nouns_corrected_in_docs: true
+
+source:
+  audio: null
+  video: null              # URL は控えていない

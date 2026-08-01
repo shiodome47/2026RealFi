@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Dose of Alpha — Charles Hoskinson × AlphaGrowth</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">A Dose of Alpha</p>
+<h1><span class="l-ja">Cardano に足りないのは技術ではなく「行政」だ — Charles Hoskinson × AlphaGrowth</span><span class="l-en">What Cardano is missing isn't technology, it's an executive branch — Charles Hoskinson × AlphaGrowth</span></h1>
+<p class="meta">
+  <span>2026-07-26</span>
+  <span>YouTube</span>
+  <span><span class="l-ja">ホスト 2 名＋ゲスト 1 名</span><span class="l-en">2 hosts + 1 guest</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Cardano の課題は技術ではなく実行の統率だ、という主張の回。<br>
+  立法と司法は 2 年で作った。次に要るのは<strong>行政府</strong>と、DeFi 側を担う<strong>外部の実行部隊</strong>だ、と。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>Cardano は二権の政府を卒業する段階にある。</strong>立法・司法にあたる機能は作った。残っているのは<strong>行政府（executive function）</strong>で、ビジョン・KPI・マーケティング・成長の責任を負う主体がいないことが根本の問題だと述べられました。</li>
+  <li><strong>「技術的な問題はない」</strong>という立場が明言されました。ノードの多様性、開発体験、相互運用性はいずれも解決済みとし、残るのは Leios と Peras の投入、Hydra の継続。</li>
+  <li><strong>Input Output はベンチャースタジオになった。</strong>Cardano に隣接する、あるいは直接載る 4 つを挙げています —— RealFi、Pogen、Midnight、Midnight City。</li>
+  <li><strong>第 4 世代に必要なのは 4 つ</strong> —— アブストラクション、スマートコンプライアンス、PET（プライバシー強化技術）、エージェント。「1 つでも欠けたら勝てない」という言い方でした。</li>
+  <li><strong>「ゴーストチェーン」批判は半分正しい、と認めています。</strong>130 万人が委任している側は活発だが DeFi 側は貧弱。その片側を外部に任せたい、というのが AlphaGrowth を呼ぶ理由として語られました。</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>この回は他の回と性格が違います。</strong>RealFi Office Hours ではなく、<strong>YouTube で公開されている対談</strong>にもとづく記録です。チャタムハウスルールの対象ではないため、<strong>発言者は実名のまま</strong>扱っています。公式チャンネルの配信かどうかは確認していないため、ここでは番組名と出演者のみを記載しています。</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#executive"><span class="n">01</span>第三の府 — なぜ行政機能なのか</a></li>
+  <li><a href="#tech"><span class="n">02</span>「技術の問題はない」という現状認識</a></li>
+  <li><a href="#studio"><span class="n">03</span>Input Output はベンチャースタジオへ</a></li>
+  <li><a href="#gen4"><span class="n">04</span>第 4 世代に必要な 4 つの要素</a></li>
+  <li><a href="#truth"><span class="n">05</span>真実の層 — なぜ ZK なのか</a></li>
+  <li><a href="#mullet"><span class="n">06</span>DeFi マレット</a></li>
+  <li><a href="#rwa"><span class="n">07</span>RWA 1.0 と RWA 2.0</a></li>
+  <li><a href="#agentic"><span class="n">08</span>エージェント金融</a></li>
+  <li><a href="#ghost"><span class="n">09</span>ゴーストチェーン論と PRIME 提案</a></li>
+  <li><a href="#whole"><span class="n">10</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">11</span>やり取りから</a></li>
+  <li><a href="#pending"><span class="n">12</span>触れられただけで終わった点</a></li>
+</ol>
+</div>
+
+
+<h2 id="executive">1. 第三の府 — なぜ行政機能なのか</h2>
+<p class="deck">立法と司法は作った。ビジョンと成長の責任を負う主体がいないことが、残っている唯一の穴だという主張。</p>
+
+<p>ホスト側から「合意形成の人数が増えるほど何も決まらなくなる。Cardano のガバナンスでその潮の満ち引きをどう扱うのか」と問われたのに対し、Cardano の現状は<strong>「文字どおり予定どおり」</strong>だという答えでした。</p>
+
+<p>分散型ガバナンスを後から入れることの難しさは、<strong>「走っている車のタイヤを交換するようなもの」</strong>と表現されています。初日から設計できるなら何でも作れるが、既に 100 か国以上・100 万人以上が参加しているところに、投票の仕組みがない状態で同意を取りにいかなければならなかった、と。</p>
+
+<p>そこで採られた順番が、①憲法で「何が正しさか」を定める → ②正統性を認められる投票の層（ガバナンス層）を作る → ③それを束ねて<strong>行政機能</strong>を立ち上げる、というものです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="Cardano のガバナンスを三権に見立てた図。立法と司法は稼働済み、行政府だけが未設置であることを示す">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="200" height="96" rx="8" class="d-box"/>
+  <text x="120" y="58" text-anchor="middle" class="d-t">立法</text>
+  <text x="120" y="82" text-anchor="middle" class="d-s">ハードフォーク・info action</text>
+  <text x="120" y="100" text-anchor="middle" class="d-s">財務庫の引き出しを投票</text>
+  <text x="120" y="118" text-anchor="middle" class="d-a">稼働済み</text>
+
+  <rect x="240" y="30" width="200" height="96" rx="8" class="d-box"/>
+  <text x="340" y="58" text-anchor="middle" class="d-t">司法</text>
+  <text x="340" y="82" text-anchor="middle" class="d-s">憲法が「正しさ」を定める</text>
+  <text x="340" y="100" text-anchor="middle" class="d-s">DRep が正統性を担保</text>
+  <text x="340" y="118" text-anchor="middle" class="d-a">稼働済み</text>
+
+  <rect x="460" y="30" width="200" height="96" rx="8" class="d-box-plain"/>
+  <text x="560" y="58" text-anchor="middle" class="d-t">行政</text>
+  <text x="560" y="82" text-anchor="middle" class="d-s">ビジョン・戦略・KPI</text>
+  <text x="560" y="100" text-anchor="middle" class="d-s">マーケティングと成長</text>
+  <text x="560" y="118" text-anchor="middle" class="d-w">これが未設置</text>
+
+  <path d="M120 140 L120 168 L560 168 L560 134" class="d-line" marker-end="url(#m1)"/>
+  <text x="340" y="196" text-anchor="middle" class="d-s">立法と司法が先にあることで初めて、行政に正統性が生まれる</text>
+  <text x="340" y="216" text-anchor="middle" class="d-s">（アメリカの連合規約 → 憲法という順番のたとえで説明された）</text>
+</svg>
+<p class="figcap">「行政機能がなければ、良いマーケティングも成長も採用も得られないし、実行して達成するための単一の戦略の声も得られない」という説明でした。</p>
+</div>
+
+<p>たとえに使われたのがアメリカ独立後の連合規約です。行政権が弱すぎて、全員が必要だと同意していたことすらできなかった —— <strong>独立戦争の最中に、冬の野外にいる兵に靴を届けられなかった</strong>という例が挙げられました。それでも国は崩壊せず、連合規約を憲法に置き換えた。Cardano も同じ段階にいる、という位置づけです。</p>
+
+<p>ここに<strong>2 年でここまで来たのは並外れて速い</strong>という自己評価が添えられています。「アメリカは固めるのに 10 年かかった。しかも全員がそれを望み、負ければ処刑される文書に署名する覚悟の人たちだった」。</p>
+
+
+<h2 id="tech">2. 「技術の問題はない」という現状認識</h2>
+<p class="deck">ノード、開発体験、相互運用性 —— いずれも解決済みという整理。残るのは投入するだけ。</p>
+
+<p>技術面は<strong>「まったく手つかずのまま無傷」</strong>と表現され、問題として残っているものはないという整理でした。</p>
+
+<ul>
+  <li><strong>ノードの多様性</strong> —— Rust ノードと Go ノードがある</li>
+  <li><strong>開発体験（DevX）</strong> —— 数年前と比べて劇的に改善。Haskell を書きたくなければ TypeScript でも Rust でもよい</li>
+  <li><strong>相互運用性</strong> —— 「the Pentad」によって LayerZero、Pyth、Circle といった統合の「割れ窓」を直し始めた</li>
+  <li><strong>残っている投入物</strong> —— Leios と Peras を出して稼働させる、Hydra を続ける</li>
+</ul>
+
+<p><span class="badge">補足</span><strong>Leios と Peras。</strong>いずれも Cardano のコンセンサスまわりの改良で、Leios はスループット、Peras はファイナリティ（取引が確定したとみなせるまでの時間）を対象にしています。番組内では名前と「性能とファイナリティの面で戦線に戻ってきている」という一言のみで、仕様や時期には踏み込んでいません。</p>
+
+<p>また、形式手法についての言い方が印象的でした。仕様を厳密に書くことは<strong>これまで開発速度の足かせだったが、AI 時代には逆に強みになる</strong>という論です。「本当に良い仕様があれば、フルノードを 20 日でバイブコーディングできる」。</p>
+
+
+<h2 id="studio">3. Input Output はベンチャースタジオへ</h2>
+<p class="deck">4 つのプロダクトを挙げ、いずれも「他チェーンからユーザーを奪わない」ものだと位置づけた。</p>
+
+<p>事業化の側の話として、Input Output が<strong>自らベンチャースタジオになった</strong>という説明がありました。Cardano に隣接する、あるいは直接 Cardano 上に載るものとして挙げられたのが 4 つです。</p>
+
+<ul>
+  <li><strong>RealFi</strong> —— このアーカイブが扱っている Office Hours のプロダクト</li>
+  <li><strong>Pogen</strong> —— 名前が挙がっただけで、内容には触れられていません</li>
+  <li><strong>Midnight</strong> —— プライバシー特化のチェーン</li>
+  <li><strong>Midnight City</strong> —— 戦略のマーケットプレイスと取引エージェントを載せる場として、後段で再登場します</li>
+</ul>
+
+<p>この 4 つに共通する性質として強調されたのが<strong>「本質的に非対立的（non-adversarial）」</strong>という点でした。新しい人か新しいエコシステムを連れてくるので、<strong>Solana や Ethereum、Hyperliquid からユーザーを奪う必要がない</strong>、と。</p>
+
+<p>そのうえで「Aave が来てくれるのを、Uniswap が来てくれるのを待って 1 億ドル払って問題を解いてもらう、という話ではない」と述べられています。<strong>外から大手プロトコルを誘致するのではなく、自前のベンチャーを育てる</strong>という方針の表明です。</p>
+
+
+<h2 id="gen4">4. 第 4 世代に必要な 4 つの要素</h2>
+<p class="deck">アブストラクション、スマートコンプライアンス、PET、エージェント。1 つ欠けたら勝てない、という組み合わせ論。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="アブストラクション、スマートコンプライアンス、PET、エージェントの4要素が組み合わさって第4世代になることを示す図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="150" height="92" rx="8" class="d-box"/>
+  <text x="91" y="56" text-anchor="middle" class="d-t">アブストラクション</text>
+  <text x="91" y="84" text-anchor="middle" class="d-s">どのチェーンかを</text>
+  <text x="91" y="102" text-anchor="middle" class="d-s">気にしなくてよくする</text>
+
+  <rect x="177" y="24" width="150" height="92" rx="8" class="d-box"/>
+  <text x="252" y="46" text-anchor="middle" class="d-t">スマート</text>
+  <text x="252" y="64" text-anchor="middle" class="d-t">コンプライアンス</text>
+  <text x="252" y="86" text-anchor="middle" class="d-s">「はい／いいえ」だけで</text>
+  <text x="252" y="104" text-anchor="middle" class="d-s">規制要件を満たす</text>
+
+  <rect x="338" y="24" width="150" height="92" rx="8" class="d-box"/>
+  <text x="413" y="56" text-anchor="middle" class="d-t">PET</text>
+  <text x="413" y="84" text-anchor="middle" class="d-s">ZK ＋ MPC ＋ TEE</text>
+  <text x="413" y="102" text-anchor="middle" class="d-s">見ずに検証する</text>
+
+  <rect x="499" y="24" width="150" height="92" rx="8" class="d-box"/>
+  <text x="574" y="56" text-anchor="middle" class="d-t">エージェント</text>
+  <text x="574" y="84" text-anchor="middle" class="d-s">「自分がやらかす」</text>
+  <text x="574" y="102" text-anchor="middle" class="d-s">という不安を消す</text>
+
+  <path d="M91 124 L91 148 L340 148 L340 160" class="d-line-accent"/>
+  <path d="M252 124 L252 148" class="d-line-accent"/>
+  <path d="M413 124 L413 148" class="d-line-accent"/>
+  <path d="M574 124 L574 148 L340 148 L340 162" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="180" y="170" width="320" height="52" rx="8" class="d-box-accent"/>
+  <text x="340" y="192" text-anchor="middle" class="d-t">第 4 世代</text>
+  <text x="340" y="212" text-anchor="middle" class="d-s">安全で、簡単で、規制と両立する暗号資産</text>
+</svg>
+<p class="figcap">「この 4 つがなければ勝てない」という言い方でした。プライバシーだけでは足りない理由として、Zcash が投機的な採用にとどまっている例が挙げられています。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。番組中の発言ではありません。</p>
+
+<h4>そもそも「PET」とは</h4>
+<p>Privacy Enhancing Technologies の略で、<strong>中身を見せずに正しさだけを確かめる技術の総称</strong>です。番組では 3 つが挙げられました —— ZK（ゼロ知識証明）、MPC（マルチパーティ計算）、TEE（信頼実行環境）。</p>
+<p>たとえるなら<strong>身分証の年齢確認</strong>です。今は生年月日も住所も全部見せていますが、本当に必要なのは「21 歳以上か」というイエス・ノーだけです。PET は、その 1 ビットだけを渡して残りを隠す道具立てにあたります。</p>
+
+<h4>なぜ PET だけでは足りないのか</h4>
+<p>年齢だけ隠せても、<strong>どのチェーンにお金があるのか</strong>を利用者が意識しなければならない状態が残ると、結局使われません。そこを埋めるのが<strong>アブストラクション</strong>です。番組では「マルチチェーン署名で好きなチェーンに書き込み、ZK で好きなチェーンから読み取る」と説明されました。読みと書きが揃うので、利用者は結果だけを指定すればよくなります。</p>
+
+<h4>「スマートコンプライアンス」の位置づけ</h4>
+<p>規制対応を、人間の審査ではなく<strong>イエス・ノーで答えられる質問の連続</strong>に置き換える発想です。「取引しても安全だと判断するのに、イエスかノーの質問をいくつすればよいか」という言い方がされていました。</p>
+
+<h4>エージェントが解くもの</h4>
+<p>ここだけ性質が違い、解いているのは技術ではなく<strong>心理的な障壁</strong>です。「暗号資産は複雑すぎて、自分が何かしくじって全財産を失う気がする」という声が 15 年変わらない、と。エージェントに権限を委任すれば、送金先のなりすましを警告するなど、<strong>1990 年代のアンチウイルスがパソコンを安全にしたのと同じ役割</strong>を果たす、というたとえでした。</p>
+
+<h4>一言でまとめると</h4>
+<p>4 つはそれぞれ別の障壁を担当していて、<strong>秘密（PET）・手間（アブストラクション）・規制（スマートコンプライアンス）・不安（エージェント）</strong>を 1 つずつ潰す構成になっています。だから 1 つ欠けると全体が通らない、という主張です。</p>
+</div>
+</details>
+
+<div class="term">
+<p class="term-name">PET <small>privacy enhancing technologies</small></p>
+<p>ZK・MPC・TEE を組み合わせた、中身を見せずに検証する技術群。「この 3 つを組み合わせれば何でもできる。データを見ずに分析できるので、準同型暗号と同じことを再現できる」と説明されました。</p>
+</div>
+
+<div class="term">
+<p class="term-name">MCS ／ インテント <small>multi-chain signatures / intents</small></p>
+<p>「何をしたいか」だけを指定し、どのチェーンで決済されるか、どう解かれるかは気にしない仕組み。<strong>MCS で書き込み、ZK で読み取る</strong>ことで、端から端まで通る系になるという説明でした。NEAR が持ち込んだものとして紹介されています。</p>
+</div>
+
+<div class="term">
+<p class="term-name">x402 ／ OWS <small>agent payment / open wallet standard</small></p>
+<p>エージェントが自分でウォレットを持ち、支払いをするための標準。Cardano と Midnight で OWS を統合済み、x402 Foundation にも加わったと述べられました。Midnight Passport は<strong>年末に稼働</strong>予定とのことです。</p>
+</div>
+
+
+<h2 id="truth">5. 真実の層 — なぜ ZK なのか</h2>
+<p class="deck">生成 AI で「証拠が証拠でなくなった」という具体例から、検証可能性の必要性を導く。</p>
+
+<p>この節はプライバシーの話ではなく、<strong>真正性（veracity）</strong>の話として語られました。導入に使われたのが、20 年以上前の一枚の写真の話です。</p>
+
+<p>コロラドの山で、木の上にいたマウンテンライオンの尻尾を掴もうとしている瞬間の写真がある。実際に引っ張って襲われ、脚を折った。<strong>ところが今、その写真を見た人は誰も本物だと信じない</strong> —— 生成 AI があるから、と。</p>
+
+<p>ここから導かれたのが、<strong>コミュニケーションを縮約する層に加えて「真正性の層」が要る</strong>という主張です。「気に入らないものは AI だと言い、気に入るものは本物だと言う」状態を、選択的開示と検証可能性のあるブロックチェーンで押し戻す、という組み立てでした。</p>
+
+<p>その前段には、<strong>メトカーフの法則</strong>の話があります。ノードが増えるとコミュニケーションのオーバーヘッドが 2 乗で増えるため、社会システムは「都合のよいトポロジー」—— Google や Facebook のようなスーパーノードへの集約 —— を作りがちだ、と。</p>
+
+<p><span class="badge">補足</span><strong>メトカーフの法則。</strong>もともとは「ネットワークの価値は接続数の 2 乗に比例する」という経験則です。番組ではこれを<strong>価値ではなくコストの側</strong>から使っていて、参加者が増えるほど調整の手間が 2 乗で膨らむ、という文脈で引かれています。ホスト側が「議会で法案を通そうとすると、議員一人ひとりが一行ずつ足していく」と言ったのを受けた返答でした。</p>
+
+
+<h2 id="mullet">6. DeFi マレット</h2>
+<p class="deck">前面は CeFi、背面は DeFi。すでに起きている収斂のパターンとして紹介された。</p>
+
+<p>ホスト側から持ち込まれた概念です。<strong>髪型のマレット（前は短く整え、後ろは伸ばす）になぞらえて、前面は使い慣れた CeFi のアプリ、裏側の運用は DeFi</strong>という構成を指します。</p>
+
+<p>例として挙げられたのが Morpho です。Coinbase の預金・アーン口座に入れたドルの利回りは<strong>裏側の Morpho から来ている</strong>こと、Robinhood についても同じ構造で、統合に数億ドルが払われたことが述べられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="CeFi と DeFi が分離している状態から、DeFi マレットを経て、ただの金融に収斂していく3段階を示す図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="40" width="180" height="90" rx="8" class="d-box"/>
+  <text x="106" y="66" text-anchor="middle" class="d-t">これまで</text>
+  <text x="106" y="92" text-anchor="middle" class="d-s">CeFi と DeFi が</text>
+  <text x="106" y="110" text-anchor="middle" class="d-s">別々の入り口を持つ</text>
+
+  <rect x="250" y="40" width="180" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="66" text-anchor="middle" class="d-t">DeFi マレット</text>
+  <text x="340" y="92" text-anchor="middle" class="d-s">前面：CeFi のアプリ</text>
+  <text x="340" y="110" text-anchor="middle" class="d-s">背面：DeFi が利回りを作る</text>
+
+  <rect x="484" y="40" width="180" height="90" rx="8" class="d-box"/>
+  <text x="574" y="66" text-anchor="middle" class="d-t">その先</text>
+  <text x="574" y="92" text-anchor="middle" class="d-s">区別が消えて</text>
+  <text x="574" y="110" text-anchor="middle" class="d-s">ただの「金融」になる</text>
+
+  <line x1="200" y1="85" x2="244" y2="85" class="d-line" marker-end="url(#m3)"/>
+  <line x1="434" y1="85" x2="478" y2="85" class="d-line" marker-end="url(#m3)"/>
+
+  <text x="340" y="170" text-anchor="middle" class="d-s">Morpho × Coinbase / Morpho × Robinhood が、すでにこの形で動いている例として挙げられた</text>
+  <text x="340" y="192" text-anchor="middle" class="d-s">「スマホでログインして顔認証、でも裏側は世界中のグローバルな金融システム」</text>
+</svg>
+<p class="figcap">この整理は後段で、「マレットはエージェント金融に取り込まれていく」という形で回収されます。</p>
+</div>
+
+<p><span class="badge">補足</span><strong>Morpho。</strong>Ethereum 系のレンディングプロトコルで、Coinbase や Robinhood のような規制対象の事業者が、自社の預金商品の裏側で運用先として使っている例が知られています。番組で挙げられた金額（統合に数億ドル）は発言のとおりに記載しており、こちらでは裏取りしていません。</p>
+
+
+<h2 id="rwa">7. RWA 1.0 と RWA 2.0</h2>
+<p class="deck">「株のトークン化」には強気になれない。規制対象の資産で、新しいものを作る場合だけ意味がある。</p>
+
+<p>ホスト側の「一時の流行はどれか、長く残るのはどれか」というゲーム形式の質問に対する回答です。RWA については<strong>定義によって答えが正反対</strong>だとして、2 つに割って答えました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="既存商品を包み直すだけの RWA 1.0 と、規制対象の資産で新しい商品を作る RWA 2.0 を対比した図">
+  <rect x="20" y="26" width="300" height="180" rx="8" class="d-box"/>
+  <text x="170" y="54" text-anchor="middle" class="d-t">RWA 1.0</text>
+  <text x="170" y="82" text-anchor="middle" class="d-s">Microsoft 株をトークン化して</text>
+  <text x="170" y="100" text-anchor="middle" class="d-s">ブロックチェーンに載せる</text>
+  <text x="170" y="132" text-anchor="middle" class="d-s">既存商品を包み直すだけ</text>
+  <text x="170" y="156" text-anchor="middle" class="d-s">結局は同じブローカー・ディーラーの</text>
+  <text x="170" y="174" text-anchor="middle" class="d-s">規制構造に落ちる</text>
+  <text x="170" y="196" text-anchor="middle" class="d-w">強気になれない</text>
+
+  <rect x="360" y="26" width="300" height="180" rx="8" class="d-box-accent"/>
+  <text x="510" y="54" text-anchor="middle" class="d-t">RWA 2.0</text>
+  <text x="510" y="82" text-anchor="middle" class="d-s">規制対象の資産を、グローバルで</text>
+  <text x="510" y="100" text-anchor="middle" class="d-s">新しい形にする</text>
+  <text x="510" y="132" text-anchor="middle" class="d-s">例：ウォレット／ブリッジの保険</text>
+  <text x="510" y="156" text-anchor="middle" class="d-s">担保プールが保険料を受け取り</text>
+  <text x="510" y="174" text-anchor="middle" class="d-s">事故時に支払う</text>
+  <text x="510" y="196" text-anchor="middle" class="d-a">暗号資産が存在する理由そのもの</text>
+
+  <text x="340" y="234" text-anchor="middle" class="d-s">分かれ目は「既存のものを包んだか」「これまで作れなかったものを作ったか」</text>
+</svg>
+<p class="figcap">「金融の幹細胞（financial stem cell）」という言い方が出てきて、ホスト側が締めでもう一度取り上げていました。</p>
+</div>
+
+<p>RWA 2.0 の具体例として挙げられたのが<strong>ウォレット・ブリッジの保険</strong>です。ウォレット作成時に否認できない情報を埋め込んでおけば、加入していることも本人が誰かも伏せたまま、事故が起きたときにだけ「それが自分の資金だった」と証明できる。反対側は担保プールで、保険料を受け取り続ける構造です。</p>
+
+<p>ここで副次的な効果として挙げられたのが、<strong>保険をかけられるようにするために、ウォレットとブリッジの品質が上がる</strong>という点でした。適合性の基準を満たす必要が生じるためです。</p>
+
+<p>同じ論法がステーブルコインにも適用されています。資産担保型は<strong>「結局どこかの中央集権的な企業を信頼している」</strong>ため、アルゴリズム型のほうが好きだ、と。</p>
+
+<p><span class="badge">補足</span><strong>この評価は RealFi の設計とは向きが違います。</strong>RealFi の USDR は準備資産を裏付けにしたステーブルコインで、透明性ポータルで運用先を開示する設計です。番組でのアルゴリズム型への選好は Cardano エコシステム全体の話として述べられたもので、<strong>USDR について何かを述べたものではありません</strong>。</p>
+
+
+<h2 id="agentic">8. エージェント金融</h2>
+<p class="deck">エージェントが解くのは「速さ」ではなく、パニックと知識と時間の非対称性。</p>
+
+<p>3 つのお題のうち、もっとも強気だったのがここです。ただし条件が付いています —— <strong>エージェントを走らせる TEE があり、それを規制する ZK とインテントがあるなら</strong>、という言い方でした。</p>
+
+<p>挙げられた効用は 4 つです。</p>
+
+<ul>
+  <li><strong>複雑な戦略を小さな個人が実行できる。</strong>「私は電話一本で Goldman Sachs や Morgan Stanley のプライベートウェルスに繋がるが、普通のリテールにはアクセスも知識もない」</li>
+  <li><strong>戦略を「共有せずに共有」できる。</strong>ライセンスを受けた側はエージェントが実行している中身を見られない。「元手を持たずに資本収益を得られる」ヘッジファンド向けの形として説明されました</li>
+  <li><strong>眠らない。</strong>就寝中に暴落してもサーキットブレーカーをかけられる</li>
+  <li><strong>パニック売りをしない。</strong>「市場は行き過ぎて調整し、プロはそれを知って底を待っている。24 時間で 30〜50% を拾う」</li>
+</ul>
+
+<details class="explain">
+<summary>ここも用語が密です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。番組中の発言ではありません。</p>
+
+<h4>「ノンカストディアルなエージェント」とは</h4>
+<p>資産の保管はあくまで本人のウォレットのまま、<strong>操作の権限だけをエージェントに預ける</strong>形です。番組では自動運転車にたとえられていました —— 運転しているのは車だが、責任は依然として運転者にある。KYC の主体も本人のままなので、自分の Binance / Coinbase の口座の下でエージェントが動く、という説明です。</p>
+
+<h4>なぜ TEE と ZK が「条件」なのか</h4>
+<p>エージェント取引の懸念は 2 つあると整理されています。<strong>暴走</strong>（幻覚を起こしてとんでもない取引をする）と<strong>漏洩</strong>（戦略や建玉が第三者に見える）です。TEE は計算そのものを外から覗けない箱の中で走らせる仕組み、ZK は中身を見せずに正しさだけを証明する仕組みなので、それぞれが片方の懸念に対応します。</p>
+
+<h4>「戦略を共有せずに共有する」の意味</h4>
+<p>レシピを渡さずに料理だけ売る、という状態に近いものです。ライセンスを受けた側はエージェントに資金を預けて成果を得ますが、<strong>どの銘柄をどの条件で売買しているかは見えません</strong>。番組では「これはヘッジファンドにとって最高だ」という反応が返っていました。</p>
+
+<h4>この節で語られていないこと</h4>
+<p>誰が戦略の成績を保証するのか、暴走したときの損失を誰が負うのかは<strong>触れられていません</strong>。「責任は本人にある」という自動運転のたとえが出るだけで、そこから先には進んでいません。</p>
+</div>
+</details>
+
+<p>この延長で、ホスト側から<strong>コピートレード</strong>の話が持ち込まれました。フィンテック企業 Autopilot が著名投資家の取引を追跡・複製する商品を出していること、Hyperliquid の大口トレーダーが<strong>建玉とヘッジをコピーされないよう</strong>プライベートな TEE を求めていることが挙げられています。</p>
+
+
+<h2 id="ghost">9. ゴーストチェーン論と PRIME 提案</h2>
+<p class="deck">批判は半分正しい、と認めたうえで、片側を外部に任せたいという話。</p>
+
+<p>「AlphaGrowth との関わりで何をもって成功とするか」という問いに対する回答が、この回でいちばん直接的な部分です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="Cardano の委任・ステーキング側が活発である一方、DeFi 側が貧弱であるという二面性を示す図">
+  <rect x="20" y="30" width="300" height="120" rx="8" class="d-box-accent"/>
+  <text x="170" y="58" text-anchor="middle" class="d-t">委任・ステーキングの側</text>
+  <text x="170" y="86" text-anchor="middle" class="d-s">130 万人が委任・ステーキング</text>
+  <text x="170" y="106" text-anchor="middle" class="d-s">SPO が多数、ガバナンス参加もある</text>
+  <text x="170" y="132" text-anchor="middle" class="d-a">活気にあふれている</text>
+
+  <rect x="360" y="30" width="300" height="120" rx="8" class="d-box-warn"/>
+  <text x="510" y="58" text-anchor="middle" class="d-t">DeFi の側</text>
+  <text x="510" y="86" text-anchor="middle" class="d-s">流動性と TVL が薄い</text>
+  <text x="510" y="106" text-anchor="middle" class="d-s">外から見ると「何も起きていない」</text>
+  <text x="510" y="132" text-anchor="middle" class="d-w">ゴーストチェーン</text>
+
+  <text x="340" y="182" text-anchor="middle" class="d-s">「だからみんな正しい」——同じチェーンの中で両方が同時に成り立っている</text>
+  <text x="340" y="204" text-anchor="middle" class="d-s">外部の担い手に任せたいのは、右側</text>
+</svg>
+<p class="figcap">「130 万人」は番組内で述べられた数字です。委任しているアドレスの数か人数かは区別されていません。</p>
+</div>
+
+<p>ゴーストチェーンという批判に対して、<strong>否定ではなく「半分正しい」</strong>という返し方をしています。委任とステーキングの側は活発だが DeFi は貧弱で、両方が同時に成り立っている、と。そのうえで「あなた方のような人に入ってきてもらって、もう一方の側で働いてもらう必要がある」。</p>
+
+<p>期待する役割は 3 つに整理されました。</p>
+
+<ul>
+  <li><strong>外の視点を持ち込む</strong> —— 「Cardano には非常に内向きなマインドセットがある」。他のエコシステムのやり方を教えてもらい、指図としてではなく<strong>混ぜるための材料</strong>として使う</li>
+  <li><strong>戦略を実行し、流動性と TVL を持ち込む</strong></li>
+  <li><strong>アプリごとに助言する</strong> —— 「Cardano には情熱的な人も賢い人も不足していない。ただ、目配りは必要」</li>
+</ul>
+
+<p><span class="badge">補足</span><strong>PRIME 提案の背景。</strong>番組で「オンチェーンに出ている」と言われている提案です。AlphaGrowth が Cardano の財務庫から<strong>1 億 2,000 万 ADA</strong>（提案時の想定単価で約 1,920 万ドル）を 12 か月で引き出し、監査・流動性インセンティブ・市場拡大を通じて DeFi の TVL を増やすという内容です。財務庫からの引き出しは<strong>DRep の 3 分の 2（67%）の賛成</strong>が必要で、<strong>2026 年 8 月 1 日時点では投票が進行中で、可決・否決は確認できていません</strong>。数字と可決状況は時点によって変わるため、この日付を添えています。</p>
+
+<p>番組の終盤で、Charles Hoskinson 側から<strong>「IO の側でも、提案が通るようにできることをやる」</strong>という発言がありました。同時に、<strong>「システムの創業者がスイッチ一つで『はい、あなたは仲間だ』と言えないこと自体が、いかに分散しているかの証拠だ」</strong>とも述べています。支持の表明と、支持だけでは通らないという断りが同時に置かれた形です。</p>
+
+<p>また、「勝ったエコシステムなどない、自分の順番に勝っただけだ」という一節も、この文脈に置かれています。BlackBerry、Internet Explorer、AOL、MySpace、Yahoo が並べられ、<strong>「うちのエコシステムは勝った」と言う人は塩漬けの保有者だ</strong>と。Cardano についても例外にしていません。</p>
+
+
+<h2 id="whole">10. 全体像</h2>
+<p class="deck">この回で語られたものが、どう一つの筋になるか。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="技術は完成、ガバナンスは行政機能が不足、DeFi は外部の実行部隊が必要、という3つが揃って成長に向かうという全体像の図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="50" text-anchor="middle" class="d-t">技術</text>
+  <text x="116" y="74" text-anchor="middle" class="d-s">ノード・DevX・相互運用性</text>
+  <text x="116" y="96" text-anchor="middle" class="d-a">問題なしという評価</text>
+
+  <rect x="240" y="24" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="50" text-anchor="middle" class="d-t">ガバナンス</text>
+  <text x="340" y="74" text-anchor="middle" class="d-s">立法・司法はできた</text>
+  <text x="340" y="96" text-anchor="middle" class="d-w">行政機能が未設置</text>
+
+  <rect x="464" y="24" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="50" text-anchor="middle" class="d-t">DeFi</text>
+  <text x="564" y="74" text-anchor="middle" class="d-s">流動性と TVL が薄い</text>
+  <text x="564" y="96" text-anchor="middle" class="d-w">外部の実行部隊が必要</text>
+
+  <path d="M116 118 L116 146 L340 146 L340 166" class="d-line-accent"/>
+  <path d="M340 118 L340 146" class="d-line-accent"/>
+  <path d="M564 118 L564 146 L340 146 L340 168" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="90" y="176" width="500" height="56" rx="8" class="d-box-accent"/>
+  <text x="340" y="198" text-anchor="middle" class="d-t">行政機能 ＋ 自前のベンチャー ＋ 外部の流動性</text>
+  <text x="340" y="220" text-anchor="middle" class="d-s">Input Output はベンチャースタジオ、DeFi は外部の担い手へ</text>
+
+  <text x="340" y="262" text-anchor="middle" class="d-s">「今後 3〜5 年で、Cardano の歴史上最大の成長が見られると思う」</text>
+  <text x="340" y="282" text-anchor="middle" class="d-s">ただし、順番は入れ替えられない —— 正統性のある投票が先、行政機能はその後</text>
+</svg>
+<p class="figcap">技術・ガバナンス・DeFi の 3 つのうち、技術だけが「済んでいる」という整理になっています。</p>
+</div>
+
+<p>この回の主張を一本にすると、<strong>「作るものは揃った。足りないのは、それを束ねて外に出す機能だ」</strong>という形になります。行政機能はその内側の答えで、AlphaGrowth のような外部の担い手はその外側の答えとして置かれています。</p>
+
+
+<h2 id="qa">11. やり取りから</h2>
+<p class="deck">ホスト側の問いと、それに対する答えを 3 つ。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Brian</span>合意や集団を作るたびにコミュニケーションが膨張して何も決まらなくなる。Cardano のガバナンスで、成長と停滞の潮の満ち引きをどう扱うのか。</p>
+<p class="qa-a" data-by="回答">メトカーフの法則の話として受け、<strong>行政機能（第三の府）が答えだ</strong>と回答。立法・司法を先に作り、そこでしか解けない問題が自然に出てくるのを待ってから行政を立てる、という順番が示されました。アメリカの連合規約 → 憲法がたとえに使われています。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Brian</span>RWA、エージェント金融、DeFi マレット —— どれが一時の流行で、どれが長く残るか。</p>
+<p class="qa-a" data-by="回答"><strong>RWA は定義によって正反対</strong>だとして 2 つに割り、既存商品の包み直し（1.0）は否定、規制対象の資産で新しいものを作る側（2.0）は「暗号資産が存在する理由そのもの」と回答。<strong>エージェント金融には条件付きで強い賛成</strong>（TEE と ZK とインテントが揃うなら）。DeFi マレットについては、ホスト側が「エージェント金融に取り込まれていく」とまとめています。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric</span>AlphaGrowth との関わりにおいて、何をもって成功と見なすか。</p>
+<p class="qa-a" data-by="回答">ゴーストチェーン批判は<strong>半分正しい</strong>と認めたうえで、外の視点・実行・アプリ単位の助言という 3 つの役割を挙げました。「最初の 10 億ドルの TVL を得る。そこから指数的に伸ばせる」という段階の置き方をしています。</p>
+</div>
+
+
+<h2 id="pending">12. 触れられただけで終わった点</h2>
+<p class="deck">名前だけ挙がって、そこから先に進まなかったもの。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未掘り下げ</span>Input Output のベンチャー 4 つのうち「Pogen」とは何か。</p>
+<p class="qa-a" data-by="言及のみ">RealFi・Midnight・Midnight City と並べて名前が挙がっただけで、<strong>何をするプロダクトかは説明されていません</strong>。他の 3 つは後段で再登場しますが、これだけは一度きりです。音声認識の綴りをそのまま残しています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未掘り下げ</span>相互運用性を進めた「the Pentad」とは何か。</p>
+<p class="qa-a" data-by="言及のみ">「the Pentad によって LayerZero、Pyth、Circle といった統合の割れ窓を直し始められた」という一文のみで、<strong>何を指す枠組みなのかは説明されずに次の話題へ移っています</strong>。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未掘り下げ</span>行政機能は具体的にどう作られ、誰が担うのか。</p>
+<p class="qa-a" data-by="方向のみ">必要性と順番（憲法 → 投票の層 → 行政）は詳しく語られましたが、<strong>組織の形、選び方、権限の範囲、時期には触れられていません</strong>。この回で最も比重の大きい主張でありながら、実装の話には入っていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>この対談は YouTube で公開されているものにもとづく記録で、<strong>チャタムハウスルールの対象ではありません</strong>。そのため発言者は実名のまま扱っています。公式チャンネルの配信かどうかは確認していないため、番組名と出演者以外の出典情報は記載していません。</p>
+<p>元の文字起こしには話者ラベルもタイムスタンプもないため、話者は文脈から推定しています。<strong>ホスト 2 人（Eric と Brian）の切り分けは推定に留まる箇所があります。</strong>全文ページでは、確度の低い箇所に<em>（推定）</em>を付けています。</p>
+<p><strong>固有名詞の誤変換は修正しています。</strong>“Realfly” → RealFi、“Amergo” → EMURGO、“Metcaf’s law” → Metcalfe の法則、“Morfo” → Morpho、“pith” → Pyth など。特定できなかった “Pogen” と “the Pentad” は聞こえたまま残しています。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、番組中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">IN ONE LINE</span>
+  <p>The argument of this episode: Cardano's problem isn't technology, it's execution.<br>
+  The legislative and judicial branches took two years. What's missing is an <strong>executive branch</strong> — and outside operators to work the DeFi side.</p>
+</div>
+
+<div class="tldr">
+<h2>The short version</h2>
+<ul>
+  <li><strong>Cardano has outgrown a two-branch government.</strong> The legislative and judicial functions exist. What's left is the <strong>executive function</strong> — and the root problem is that nobody owns vision, KPIs, marketing and growth.</li>
+  <li><strong>“We don't really have a technology problem.”</strong> Node diversity, developer experience and interoperability are all treated as solved. What remains is shipping Leios and Peras and keeping the drum beat on Hydra.</li>
+  <li><strong>Input Output has become a venture studio.</strong> Four things are named as Cardano-adjacent or directly on Cardano — RealFi, Pogen, Midnight, Midnight City.</li>
+  <li><strong>The fourth generation needs four components</strong> — abstraction, smart compliance, PET (privacy enhancing technologies) and agents. “If you don't have these four things, you can't win.”</li>
+  <li><strong>The ghost-chain criticism is conceded as half right.</strong> The 1.3 million delegating and staking are the lively side; DeFi is the anemic one. Handing that side to outsiders is the stated reason for bringing in AlphaGrowth.</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>This episode is different from the others here.</strong> It is not a RealFi Office Hours call but a conversation <strong>published on YouTube</strong>. It is not covered by the Chatham House Rule, so <strong>the speakers are named</strong>. Whether the recording came from an official channel has not been verified, so nothing beyond the show name and participants is claimed.</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">What's in this episode</p>
+<ol>
+  <li><a href="#en-executive"><span class="n">01</span>The third branch — why executive function</a></li>
+  <li><a href="#en-tech"><span class="n">02</span>“We don't have a technology problem”</a></li>
+  <li><a href="#en-studio"><span class="n">03</span>Input Output as a venture studio</a></li>
+  <li><a href="#en-gen4"><span class="n">04</span>Four components of the fourth generation</a></li>
+  <li><a href="#en-truth"><span class="n">05</span>A veracity layer — why ZK</a></li>
+  <li><a href="#en-mullet"><span class="n">06</span>The DeFi mullet</a></li>
+  <li><a href="#en-rwa"><span class="n">07</span>RWA 1.0 and RWA 2.0</a></li>
+  <li><a href="#en-agentic"><span class="n">08</span>Agentic finance</a></li>
+  <li><a href="#en-ghost"><span class="n">09</span>The ghost chain and the PRIME proposal</a></li>
+  <li><a href="#en-whole"><span class="n">10</span>How it fits together</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>From the exchange</a></li>
+  <li><a href="#en-pending"><span class="n">12</span>Named but not pursued</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-executive">1. The third branch — why executive function</h2>
+<p class="deck">Legislative and judicial are built. Nobody owning vision and growth is the one hole left.</p>
+
+<p>Asked how Cardano's governance handles the ebb and flow between growth and stagnation — the problem being that the more people you need consent from, the less gets decided — the answer was that Cardano is <strong>“literally on schedule”</strong>.</p>
+
+<p>Retrofitting decentralised governance is described as <strong>having “to change the tires on the car while it was driving.”</strong> Start on day one and you can build anything; change it without a voting or consensus system already in place and you have to “figure out how do you get consent of people you don't know. In more than 100 countries and there's more than a million of them.”</p>
+
+<p>The sequence taken: a constitution that sets what integrity is → a voting class the ecosystem believes is legitimate → unify them to build the <strong>executive function</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="Diagram of Cardano governance as three branches, with legislative and judicial live and only the executive branch missing">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="200" height="96" rx="8" class="d-box"/>
+  <text x="120" y="58" text-anchor="middle" class="d-t">Legislative</text>
+  <text x="120" y="82" text-anchor="middle" class="d-s">Hard forks, info actions</text>
+  <text x="120" y="100" text-anchor="middle" class="d-s">and treasury votes</text>
+  <text x="120" y="118" text-anchor="middle" class="d-a">live</text>
+
+  <rect x="240" y="30" width="200" height="96" rx="8" class="d-box"/>
+  <text x="340" y="58" text-anchor="middle" class="d-t">Judicial</text>
+  <text x="340" y="82" text-anchor="middle" class="d-s">Constitution sets integrity</text>
+  <text x="340" y="100" text-anchor="middle" class="d-s">DReps carry legitimacy</text>
+  <text x="340" y="118" text-anchor="middle" class="d-a">live</text>
+
+  <rect x="460" y="30" width="200" height="96" rx="8" class="d-box-plain"/>
+  <text x="560" y="58" text-anchor="middle" class="d-t">Executive</text>
+  <text x="560" y="82" text-anchor="middle" class="d-s">Vision, strategy, KPIs</text>
+  <text x="560" y="100" text-anchor="middle" class="d-s">Marketing and growth</text>
+  <text x="560" y="118" text-anchor="middle" class="d-w">not built yet</text>
+
+  <path d="M120 140 L120 168 L560 168 L560 134" class="d-line" marker-end="url(#e1)"/>
+  <text x="340" y="196" text-anchor="middle" class="d-s">Only with legislative and judicial first does the executive have legitimacy</text>
+  <text x="340" y="216" text-anchor="middle" class="d-s">(explained through the Articles of Confederation → Constitution sequence)</text>
+</svg>
+<p class="figcap">“You're not going to get good marketing, good growth and adoption, and you're not going to get a singular voice about a strategy to execute and achieve, unless you have executive function.”</p>
+</div>
+
+<p>The analogy is post-revolutionary America. The Articles of Confederation left the executive too weak to do even what everyone agreed on — <strong>they couldn't get shoes to Washington's soldiers</strong> in the middle of the winter. The country didn't collapse; it replaced the Articles with the Constitution. Cardano is put at that same point.</p>
+
+<p>Attached to this is a claim about pace: <strong>doing it in two years is “an extraordinary pace.”</strong> “It took the United States like a decade… and these were people that were literally willing to die for it.”</p>
+
+
+<h2 id="en-tech">2. “We don't have a technology problem”</h2>
+<p class="deck">Nodes, developer experience, interoperability — all filed as solved. What's left is shipping.</p>
+
+<p>The technology is described as having <strong>“not been molested at all”</strong>, with nothing listed as an open problem.</p>
+
+<ul>
+  <li><strong>Node diversity</strong> — the Rust node and the Go node exist</li>
+  <li><strong>Developer experience</strong> — “massively improved… from where it was just a few years ago”. Don't want Haskell? Write TypeScript or Rust</li>
+  <li><strong>Interoperability</strong> — “with the Pentad, we were able to start fixing the broken windows” of integrations like LayerZero, Pyth and Circle</li>
+  <li><strong>Still to ship</strong> — get Leios and Peras turned on, continue the drum beat of Hydra</li>
+</ul>
+
+<p><span class="badge">added</span><strong>Leios and Peras.</strong> Both are consensus-layer improvements — Leios targets throughput, Peras targets finality (how long before a transaction can be treated as settled). The episode names them and says they put Cardano “back in the game in terms of performance and finality”, and goes no further into specifications or timing.</p>
+
+<p>The framing of formal methods is worth pulling out. Writing rigorous specifications <strong>used to be a drag on velocity and is now treated as the advantage</strong> in an AI era: “if you have really good specifications… you can vibe code in 20 days a full node.”</p>
+
+
+<h2 id="en-studio">3. Input Output as a venture studio</h2>
+<p class="deck">Four products, all framed as bringing people in rather than taking them from anyone.</p>
+
+<p>On the commercialisation side, Input Output has <strong>become a venture studio</strong>. Four things are named as Cardano-adjacent or directly on Cardano.</p>
+
+<ul>
+  <li><strong>RealFi</strong> — the product covered by the Office Hours sessions in this archive</li>
+  <li><strong>Pogen</strong> — named once and never described</li>
+  <li><strong>Midnight</strong> — the privacy-focused chain</li>
+  <li><strong>Midnight City</strong> — returns later as the place for the strategy marketplace and trading agents</li>
+</ul>
+
+<p>What they share is being <strong>“intrinsically non-adversarial”</strong>: they bring in new people or new ecosystems, so <strong>“we don't have to go and steal users from Solana or Ethereum or Hyperliquid.”</strong></p>
+
+<p>Hence: “It's not like we're waiting for an Aave to come or a Uniswap to come and we have to pay $100 million and hopefully they'll solve our problem, it's more of can we get these ventures where they need to be?” — <strong>grow your own rather than court the incumbents.</strong></p>
+
+
+<h2 id="en-gen4">4. Four components of the fourth generation</h2>
+<p class="deck">Abstraction, smart compliance, PET, agents. Miss one and the whole thing fails.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram showing abstraction, smart compliance, PET and agents combining into the fourth generation">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="150" height="80" rx="8" class="d-box"/>
+  <text x="91" y="50" text-anchor="middle" class="d-t">Abstraction</text>
+  <text x="91" y="72" text-anchor="middle" class="d-s">Stop caring which</text>
+  <text x="91" y="90" text-anchor="middle" class="d-s">chain it settles on</text>
+
+  <rect x="177" y="24" width="150" height="80" rx="8" class="d-box"/>
+  <text x="252" y="50" text-anchor="middle" class="d-t">Smart compliance</text>
+  <text x="252" y="72" text-anchor="middle" class="d-s">Meet the rules with</text>
+  <text x="252" y="90" text-anchor="middle" class="d-s">yes/no questions only</text>
+
+  <rect x="338" y="24" width="150" height="80" rx="8" class="d-box"/>
+  <text x="413" y="50" text-anchor="middle" class="d-t">PET</text>
+  <text x="413" y="72" text-anchor="middle" class="d-s">ZK + MPC + TEE</text>
+  <text x="413" y="90" text-anchor="middle" class="d-s">verify without seeing</text>
+
+  <rect x="499" y="24" width="150" height="80" rx="8" class="d-box"/>
+  <text x="574" y="50" text-anchor="middle" class="d-t">Agents</text>
+  <text x="574" y="72" text-anchor="middle" class="d-s">Remove the fear of</text>
+  <text x="574" y="90" text-anchor="middle" class="d-s">losing it all by mistake</text>
+
+  <path d="M91 112 L91 140 L340 140 L340 160" class="d-line-accent"/>
+  <path d="M252 112 L252 140" class="d-line-accent"/>
+  <path d="M413 112 L413 140" class="d-line-accent"/>
+  <path d="M574 112 L574 140 L340 140 L340 162" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="180" y="170" width="320" height="52" rx="8" class="d-box-accent"/>
+  <text x="340" y="192" text-anchor="middle" class="d-t">The fourth generation</text>
+  <text x="340" y="212" text-anchor="middle" class="d-s">Safe, easy, and compatible with regulation</text>
+</svg>
+<p class="figcap">Privacy alone isn't enough — Zcash is cited as the case where the technology exists but adoption stayed speculative.</p>
+</div>
+
+<details class="explain">
+<summary>Jargon-heavy section — open for a plain-language walkthrough</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written to explain the section. None of it was said on the show.</p>
+
+<h4>What “PET” is</h4>
+<p>Privacy Enhancing Technologies — the umbrella term for <strong>confirming something is true without revealing what it is</strong>. Three are named: ZK (zero-knowledge proofs), MPC (multi-party computation) and TEEs (trusted execution environments).</p>
+<p>The everyday analogue is <strong>an ID check at a bar</strong>. Today you hand over your date of birth and your address; the only thing actually needed is a yes/no on “over 21”. PET is the machinery for handing over that one bit and nothing else.</p>
+
+<h4>Why PET alone isn't enough</h4>
+<p>Hide your age and you still leave the user tracking <strong>which chain their money is on</strong> — and they won't bother. That is what <strong>abstraction</strong> covers: “MCS gives you the ability to write to any chain you want. With ZK, you can read from any chain you want.” Read plus write means the user only has to state the outcome they want.</p>
+
+<h4>Where smart compliance sits</h4>
+<p>It replaces human review with <strong>a sequence of yes/no questions</strong>: “How many questions do I need to ask that are yes or no before it's safe to do business with you?”</p>
+
+<h4>What agents actually solve</h4>
+<p>This one isn't technical — it's <strong>the psychological barrier</strong>. The consumer answer hasn't changed in fifteen years: it's too complex, and I'm going to lose everything through my own mistake. Delegating authority to an agent that warns you before you send to a spoofed address plays <strong>the role antivirus played in making 1990s computing safe</strong>.</p>
+
+<h4>In one line</h4>
+<p>Each of the four takes a different obstacle — <strong>secrecy (PET), friction (abstraction), regulation (smart compliance), fear (agents)</strong>. Drop one and the path is blocked.</p>
+</div>
+</details>
+
+<div class="term">
+<p class="term-name">PET <small>privacy enhancing technologies</small></p>
+<p>ZK, MPC and TEEs combined to verify without seeing. “You put those three primitives together, you can do anything… you can analyze data without ever seeing it, so you can replicate homomorphic encryption.”</p>
+</div>
+
+<div class="term">
+<p class="term-name">MCS / intents <small>multi-chain signatures</small></p>
+<p>State what you want; don't care where it settles or how it's solved. <strong>Write with MCS, read with ZK</strong> and you get an end-to-end system. Credited to what NEAR brought to the table.</p>
+</div>
+
+<div class="term">
+<p class="term-name">x402 / OWS <small>agent payment / open wallet standard</small></p>
+<p>Standards for an agent to hold a wallet and pay. OWS is integrated on Cardano and Midnight, and they have joined the x402 Foundation. Midnight Passport is <strong>“coming live at the end of the year”</strong>.</p>
+</div>
+
+
+<h2 id="en-truth">5. A veracity layer — why ZK</h2>
+<p class="deck">A photograph that no longer proves anything, and what follows from that.</p>
+
+<p>This section is about <strong>veracity</strong>, not privacy. It opens with a photograph from more than twenty years ago.</p>
+
+<p>Two brothers hiking in the Colorado mountains find a mountain lion up a tree. One of them climbs up to pull its tail — there is a picture of his hand about to close on it. He did pull it, got mauled, broke his leg. <strong>And now nobody will believe the picture is real,</strong> because generative AI exists.</p>
+
+<p>From which: you need <strong>a veracity layer in addition to a communication reduction layer.</strong> “You can just decide arbitrarily what pictures and videos and text is real… anything that you don't like, you say it's AI, anything you do like, you say it's real.” Blockchains plus ZK are put forward as the only way to get truth anchors back.</p>
+
+<p>The setup for this is <strong>Metcalfe's law</strong>: communication overhead grows quadratically with the number of nodes, so social systems drift toward “topologies of convenience” — aggregating onto super nodes like Google and Facebook, which collapses the graph.</p>
+
+<p><span class="badge">added</span><strong>On Metcalfe's law.</strong> The original rule of thumb is that a network's <em>value</em> scales with the square of its connections. Here it is used on <strong>the cost side</strong> instead: the more participants, the more coordination overhead, quadratically. It comes as a reply to the host's observation that getting a bill through Congress means every legislator adding one more line.</p>
+
+
+<h2 id="en-mullet">6. The DeFi mullet</h2>
+<p class="deck">CeFi in the front, DeFi in the back — a convergence that is already happening.</p>
+
+<p>Brought in by the hosts. Named for the haircut — business in the front, party in the back — it means <strong>a familiar CeFi front end with DeFi doing the work behind it</strong>.</p>
+
+<p>The example is Morpho. Dollars put into a Coinbase savings or earn account get their yield <strong>from Morpho on the back end</strong>; the Robinhood deal has the same shape, and the integration is said to have cost hundreds of millions of dollars.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="Diagram of three stages: CeFi and DeFi separate, then the DeFi mullet, then convergence into plain finance">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="40" width="180" height="90" rx="8" class="d-box"/>
+  <text x="106" y="66" text-anchor="middle" class="d-t">Until now</text>
+  <text x="106" y="92" text-anchor="middle" class="d-s">CeFi and DeFi each</text>
+  <text x="106" y="110" text-anchor="middle" class="d-s">have their own front door</text>
+
+  <rect x="250" y="40" width="180" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="66" text-anchor="middle" class="d-t">The DeFi mullet</text>
+  <text x="340" y="92" text-anchor="middle" class="d-s">Front: the CeFi app</text>
+  <text x="340" y="110" text-anchor="middle" class="d-s">Back: DeFi makes the yield</text>
+
+  <rect x="484" y="40" width="180" height="90" rx="8" class="d-box"/>
+  <text x="574" y="66" text-anchor="middle" class="d-t">After that</text>
+  <text x="574" y="92" text-anchor="middle" class="d-s">The distinction goes away</text>
+  <text x="574" y="110" text-anchor="middle" class="d-s">and it's just finance</text>
+
+  <line x1="200" y1="85" x2="244" y2="85" class="d-line" marker-end="url(#e3)"/>
+  <line x1="434" y1="85" x2="478" y2="85" class="d-line" marker-end="url(#e3)"/>
+
+  <text x="340" y="170" text-anchor="middle" class="d-s">Morpho × Coinbase and Morpho × Robinhood are given as live examples of the shape</text>
+  <text x="340" y="192" text-anchor="middle" class="d-s">“You can log in with your phone, you can do your face ID… global financial systems in the back”</text>
+</svg>
+<p class="figcap">The idea is picked up again later: “the DeFi mullet kind of gets embedded into agentic finance.”</p>
+</div>
+
+<p><span class="badge">added</span><strong>On Morpho.</strong> An Ethereum-side lending protocol used by regulated firms such as Coinbase and Robinhood as the venue behind their own savings products. The figure quoted on the show (hundreds of millions for the integration) is reproduced as said and has not been independently checked here.</p>
+
+
+<h2 id="en-rwa">7. RWA 1.0 and RWA 2.0</h2>
+<p class="deck">Tokenised equities: not interesting. Regulated assets made into something new: the whole point.</p>
+
+<p>Answering the hosts' “flash in the pan or here to stay” game. On RWAs the answer <strong>flips entirely depending on the definition</strong>, so it is split in two.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram contrasting RWA 1.0 as re-wrapping existing products with RWA 2.0 as building new products from regulated assets">
+  <rect x="20" y="26" width="300" height="180" rx="8" class="d-box"/>
+  <text x="170" y="54" text-anchor="middle" class="d-t">RWA 1.0</text>
+  <text x="170" y="82" text-anchor="middle" class="d-s">Take Microsoft stock, tokenize it,</text>
+  <text x="170" y="100" text-anchor="middle" class="d-s">put it on a blockchain</text>
+  <text x="170" y="132" text-anchor="middle" class="d-s">Re-wrapping what exists</text>
+  <text x="170" y="156" text-anchor="middle" class="d-s">Falls back to the same</text>
+  <text x="170" y="174" text-anchor="middle" class="d-s">broker-dealer structure</text>
+  <text x="170" y="196" text-anchor="middle" class="d-w">not bullish</text>
+
+  <rect x="360" y="26" width="300" height="180" rx="8" class="d-box-accent"/>
+  <text x="510" y="54" text-anchor="middle" class="d-t">RWA 2.0</text>
+  <text x="510" y="82" text-anchor="middle" class="d-s">Take a regulated asset, make it</text>
+  <text x="510" y="100" text-anchor="middle" class="d-s">global, novel and different</text>
+  <text x="510" y="132" text-anchor="middle" class="d-s">e.g. wallet and bridge insurance</text>
+  <text x="510" y="156" text-anchor="middle" class="d-s">A collateral pool earns premiums</text>
+  <text x="510" y="174" text-anchor="middle" class="d-s">and pays out when things break</text>
+  <text x="510" y="196" text-anchor="middle" class="d-a">“the entire reason cryptocurrency exists”</text>
+
+  <text x="340" y="234" text-anchor="middle" class="d-s">The dividing line: did you wrap something old, or build something that couldn't exist before?</text>
+</svg>
+<p class="figcap">The phrase “financial stem cell” comes from here, and the hosts return to it in the closing.</p>
+</div>
+
+<p>The worked example is <strong>insurance for wallets and bridges</strong>. Embed something non-repudiable at wallet creation and you can hold a policy without anyone knowing you hold it or who you are — then prove the funds were yours when something goes wrong. The other side is a collateral pool collecting premiums until a payout is due.</p>
+
+<p>The second-order effect matters as much: <strong>to become insurable, wallets and bridges have to get better</strong>, because a policy has to meet suitability guidelines. “Consumer protection goes to the moon.”</p>
+
+<p>The same logic runs on stablecoins. Asset-backed ones still bottom out in <strong>“some centralized company somewhere… and we hope to God that they're not cooking the books”</strong>, which is why algorithmic ones are preferred.</p>
+
+<p><span class="badge">added</span><strong>This cuts against RealFi's own design.</strong> RealFi's USDR is a reserve-backed stablecoin with a transparency portal disclosing where the money sits. The preference stated here is a general position on the ecosystem and <strong>is not a comment on USDR</strong>, which is not mentioned in this exchange.</p>
+
+
+<h2 id="en-agentic">8. Agentic finance</h2>
+<p class="deck">What agents fix isn't speed — it's the asymmetry in access, knowledge and sleep.</p>
+
+<p>Of the three topics, this is the one with the strongest yes — but a conditional one: <strong>“if it has trusted execution to run the agents and if it has ZK and intents to regulate that.”</strong></p>
+
+<p>Four benefits are named.</p>
+
+<ul>
+  <li><strong>Complex strategies become available to small participants.</strong> “I just pick up the phone, call [Goldman Sachs or Morgan Stanley]… But if you're a regular retail person, you can't. You don't have the market access, you don't have the knowledge”</li>
+  <li><strong>You can share a strategy without sharing it.</strong> The licensee can't see what the agent is executing — “that's awesome for a hedge fund… I get to get a return on capital without having the underlying capital”</li>
+  <li><strong>They never sleep.</strong> A crash at 3am gets a circuit breaker instead of nothing</li>
+  <li><strong>They don't panic sell.</strong> “The market over corrects and professional traders know that and they're just waiting for the floor… an easy 30 to 50% ROI in 24 hours”</li>
+</ul>
+
+<details class="explain">
+<summary>Also jargon-heavy — open for a plain-language walkthrough</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written to explain the section. None of it was said on the show.</p>
+
+<h4>What “non-custodial agent” means</h4>
+<p>The assets stay in your own wallet; <strong>only the authority to act is delegated</strong>. The analogy used is a self-driving car — the car is driving, but “the liability still falls to you.” You remain the KYC subject, so the agent operates under your own Binance or Coinbase account.</p>
+
+<h4>Why TEE and ZK are the condition</h4>
+<p>Two failure modes are named: <strong>going rogue</strong> (the agent hallucinates and does “a lot of crazy shit”) and <strong>leaking</strong> (your positions and method become visible to an untrusted third party). A TEE runs the computation inside a box nobody can look into; ZK proves correctness without revealing inputs. One each.</p>
+
+<h4>“Share the strategy without sharing it”</h4>
+<p>Closer to selling the dish than the recipe. The licensee puts capital behind the agent and takes the return, but <strong>never sees which instruments are traded on what conditions</strong>.</p>
+
+<h4>What this section doesn't cover</h4>
+<p>Who guarantees a strategy's performance, and who absorbs the loss when an agent misbehaves, are <strong>not addressed</strong>. The self-driving analogy places liability on the owner and the conversation moves on.</p>
+</div>
+</details>
+
+<p>The hosts extend this into <strong>copy trading</strong>: a fintech called Autopilot licensing traders so retail can mirror them, and one of the largest Hyperliquid traders wanting a private TEE <strong>specifically so their positions and hedges can't be copied</strong> — “that is their alpha, right?”</p>
+
+
+<h2 id="en-ghost">9. The ghost chain and the PRIME proposal</h2>
+<p class="deck">The criticism is conceded as half right — and that half is the part being handed outside.</p>
+
+<p>“What would be viewed as a success by you from an engagement with AlphaGrowth?” gets the most direct answer of the episode.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="Diagram of Cardano's two sides: an active delegation and staking side, and an anemic DeFi side">
+  <rect x="20" y="30" width="300" height="120" rx="8" class="d-box-accent"/>
+  <text x="170" y="58" text-anchor="middle" class="d-t">The delegation and staking side</text>
+  <text x="170" y="86" text-anchor="middle" class="d-s">1.3 million delegating and staking</text>
+  <text x="170" y="106" text-anchor="middle" class="d-s">Many SPOs, governance participation</text>
+  <text x="170" y="132" text-anchor="middle" class="d-a">vibrant, lively</text>
+
+  <rect x="360" y="30" width="300" height="120" rx="8" class="d-box-warn"/>
+  <text x="510" y="58" text-anchor="middle" class="d-t">The DeFi side</text>
+  <text x="510" y="86" text-anchor="middle" class="d-s">Thin liquidity and TVL</text>
+  <text x="510" y="106" text-anchor="middle" class="d-s">From outside: “nothing going on”</text>
+  <text x="510" y="132" text-anchor="middle" class="d-w">the ghost chain</text>
+
+  <text x="340" y="182" text-anchor="middle" class="d-s">“So everybody's right.” — both are true of the same chain at the same time</text>
+  <text x="340" y="204" text-anchor="middle" class="d-s">The side being handed to outsiders is the right-hand one</text>
+</svg>
+<p class="figcap">The 1.3 million figure is as stated on the show. It is not distinguished between addresses and people.</p>
+</div>
+
+<p>The ghost-chain line is <strong>not denied — it is halved</strong>. The delegation side is lively, DeFi is anemic, and both hold at once. Hence: “You need people like yourselves to come in and work that other side, the ghost chain side.”</p>
+
+<p>Three roles are asked for.</p>
+
+<ul>
+  <li><strong>Bring the outside view.</strong> “Cardano has a very insular mindset.” Not to be told how others do it, but to get the information and <strong>blend the best of both worlds</strong></li>
+  <li><strong>Execute the strategy and bring in liquidity and TVL</strong></li>
+  <li><strong>Advise app by app.</strong> “Cardano doesn't have a shortage of passionate people or smart people, but they do need some oversight”</li>
+</ul>
+
+<p><span class="badge">added</span><strong>Background on PRIME.</strong> This is the proposal described as being on chain. AlphaGrowth is asking the Cardano treasury for <strong>120 million ADA</strong> (about $19.2m at the price assumed in the proposal) over 12 months, spending it on protocol audits, liquidity incentives and market expansion to grow DeFi TVL. Treasury withdrawals need <strong>two-thirds (67%) of DReps</strong> in favour. <strong>As of 1 August 2026 the vote is under way and no result is confirmed.</strong> The figures and status are dated here because both move.</p>
+
+<p>Near the end, Charles Hoskinson says <strong>“we'll do what we can on the IO side to help your proposal get through”</strong> — and immediately adds that <strong>“it shows you how decentralized it is that the founder of the system can't just flip a switch and say, okay, you're in the club, you have to earn it.”</strong> Endorsement and the limit of that endorsement land in the same breath.</p>
+
+<p>The “no ecosystem has won” passage belongs here too. BlackBerry, Internet Explorer, AOL, MySpace and Yahoo are lined up, and <strong>anyone claiming their ecosystem has won “is a bag holder and they're trying to dump their tokens on you.”</strong> Cardano is not exempted from this.</p>
+
+
+<h2 id="en-whole">10. How it fits together</h2>
+<p class="deck">The single thread running through the episode.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Overview diagram: technology done, governance missing an executive function, DeFi needing outside operators, combining into growth">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="50" text-anchor="middle" class="d-t">Technology</text>
+  <text x="116" y="74" text-anchor="middle" class="d-s">Nodes, DevX, interop</text>
+  <text x="116" y="96" text-anchor="middle" class="d-a">filed as solved</text>
+
+  <rect x="240" y="24" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="50" text-anchor="middle" class="d-t">Governance</text>
+  <text x="340" y="74" text-anchor="middle" class="d-s">Legislative and judicial built</text>
+  <text x="340" y="96" text-anchor="middle" class="d-w">executive missing</text>
+
+  <rect x="464" y="24" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="50" text-anchor="middle" class="d-t">DeFi</text>
+  <text x="564" y="74" text-anchor="middle" class="d-s">Thin liquidity and TVL</text>
+  <text x="564" y="96" text-anchor="middle" class="d-w">needs outsiders</text>
+
+  <path d="M116 118 L116 146 L340 146 L340 166" class="d-line-accent"/>
+  <path d="M340 118 L340 146" class="d-line-accent"/>
+  <path d="M564 118 L564 146 L340 146 L340 168" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="90" y="176" width="500" height="56" rx="8" class="d-box-accent"/>
+  <text x="340" y="198" text-anchor="middle" class="d-t">Executive function + own ventures + outside liquidity</text>
+  <text x="340" y="220" text-anchor="middle" class="d-s">Input Output as a venture studio; the DeFi side to outsiders</text>
+
+  <text x="340" y="262" text-anchor="middle" class="d-s">“Over the next three to five years, I think we'll see the greatest growth Cardano has ever experienced”</text>
+  <text x="340" y="282" text-anchor="middle" class="d-s">But the order can't be swapped — legitimate voting first, executive function after</text>
+</svg>
+<p class="figcap">Of the three, only technology is filed as finished.</p>
+</div>
+
+<p>Compressed to one line: <strong>the things to build exist; what's missing is the function that pulls them together and takes them outside.</strong> Executive function is the answer facing inward; firms like AlphaGrowth are the answer facing outward.</p>
+
+
+<h2 id="en-qa">11. From the exchange</h2>
+<p class="deck">Three questions from the hosts and what came back.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Brian</span>Every time you assemble a consensus or a group, communication bloat sets in and nothing gets decided. How does Cardano's governance handle the ebb and flow between growth and going stale?</p>
+<p class="qa-a" data-by="answered">Taken as a Metcalfe's law question and answered with <strong>executive function — the third branch</strong>. Build legislative and judicial first, let the problems that only an executive can solve emerge naturally, then build it. The Articles of Confederation → Constitution sequence is the worked example.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Brian</span>RWAs, agentic finance, the DeFi mullet — which is a flash in the pan and which is here for the long stay?</p>
+<p class="qa-a" data-by="answered"><strong>RWAs split in two:</strong> re-wrapping existing products is killed, building novel products from regulated assets is “the entire reason cryptocurrency exists.” <strong>Agentic finance gets a strong yes with conditions</strong> (TEE, ZK and intents). On the mullet, the hosts themselves conclude it “gets embedded into agentic finance.”</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric</span>What would be viewed as a success by you from an engagement with AlphaGrowth?</p>
+<p class="qa-a" data-by="answered">The ghost-chain criticism is conceded as <strong>half right</strong>, then three roles are named: outside view, execution, app-by-app advice. The staging is “you get your first billion in TVL. And then you can grow exponentially from there.”</p>
+</div>
+
+
+<h2 id="en-pending">12. Named but not pursued</h2>
+<p class="deck">Things that came up once and went nowhere.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">not pursued</span>What is “Pogen”, the fourth of Input Output's ventures?</p>
+<p class="qa-a" data-by="named only">Listed alongside RealFi, Midnight and Midnight City and <strong>never described</strong>. The other three all come back later in the conversation; this one appears exactly once. The transcription is left as heard.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">not pursued</span>What is “the Pentad” that fixed interoperability?</p>
+<p class="qa-a" data-by="named only">One sentence — “with the Pentad, we were able to start fixing the broken windows of integrations like LayerZero, Pyth and Circle” — and then <strong>straight on to the next topic</strong>. What it refers to is never explained.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">not pursued</span>How does the executive function actually get built, and who staffs it?</p>
+<p class="qa-a" data-by="direction only">The need and the ordering (constitution → voting class → executive) are covered at length, but <strong>the shape of the body, how it is selected, the scope of its powers and the timing are not</strong>. The largest claim in the episode stops short of implementation.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> This record is based on a conversation published on YouTube, so it <strong>is not covered by the Chatham House Rule</strong> and the speakers are named. Whether the recording came from an official channel has not been verified, so no source information beyond the show name and participants is given.</p>
+<p>The source transcript has no speaker labels and no timestamps, so speakers are inferred from context. <strong>Telling the two hosts apart (Eric and Brian) is uncertain in places</strong>, and those places are marked <em>(inferred)</em> on the full-transcript pages.</p>
+<p><strong>Obvious proper-noun misrecognitions have been corrected</strong> — “Realfly” → RealFi, “Amergo” → EMURGO, “Metcaf's law” → Metcalfe's law, “Morfo” → Morpho, “pith” → Pyth, and so on. “Pogen” and “the Pentad” could not be resolved and are left as heard.</p>
+<p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the show</strong>.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All sessions</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano セッションのアーカイブ</span><span class="l-en">Cardano session archive</span></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1331 @@
+then what you need to do is you need to pull out your BlackBerry, because obviously you have one, right?
+
+Cardano has a very insular mindset.
+
+And we need to have now an industry-wide global mindset.
+
+They said, all right, I'm going to go up and climb that tree and pull the tail that mountain line.
+
+the stupidest thing you can do in your life.
+
+Well, now in generative AI, anybody sees that picture, they say that's not a real picture.
+
+So we have a truth issue.
+
+one side of Cardano that's a ghost chain and there's one side of Cardano that's vibrant, lively.
+
+You need people like yourselves to come in and work that other side, the ghost chain side.
+
+Welcome in to a dose of Alpha.
+
+Today we've got a special guest, Charles Hoskinson, to give us some alpha about the Cardano ecosystem.
+
+Charles, welcome to the show.
+
+It's great to be on, Eric and Brian, good to see you guys again.
+
+Why don't you mind giving a little bit of an intro, obviously they know you, but uh to what you're interested in, what you've been doing lately?
+
+Well, I've been in the industry for 15 years, which makes me either the the the Nestor or, you know, the uh uh the oldest guy around, I I I don't think there's a lot of people that have been working in blockchain longer than me at this point.
+
+So I I should have retired a long time ago.
+
+But I started in Bitcoin and I started the Bitcoin Education project and um I brought in about 70,000 people through that and I had um a lot of great students and some of them uh uh ended up becoming big entrepreneurs in the space.
+
+Uh and I created the first algorithmic stable coin and Dex with Dan Larmer, that was Bit shares, uh then later on created Ethereum with Vitalik Buterin and people seem to like that one.
+
+Uh but what I'm most known for these days is obviously Cardano and uh Midnight, I've been working on Cardano for about 11 years now, so it's the vast majority of my time in cryptocurrency space.
+
+And recently got involved in uh the privacy space and, you know, we're working with Midnight, we're doing smart compliance, abstraction, privacy and agents, so it's a wonderful blending of four different areas that uh seem like they're different, but actually they're all deeply interconnected and it's uh probably the most fun I've had there.
+
+Outside of the cryptocurrency space, I also do work in synthetic biology and uh I'm a bison rancher, do a lot of healthcare work with my dad and brother, so uh I keep busy these days, it's been a lot of fun the last decade and a half.
+
+That is, yeah, that is awesome.
+
+I just as a fan following the the thing with the direwolf and yeah, you do cool stuff.
+
+It's awesome.
+
+Love.
+
+Yeah, and we got.
+
+interesting things happen.
+
+We got more coming by the way, uh for those animals, I can't say anything about it, but the direwolf was just a tip of the iceberg.
+
+That's great.
+
+Yeah, Brian and I are independently super interested in healthcare Medtech, uh and and have really viewed crypto more of the how cool business can take place rather than the why is like not viewing it as a good in and of itself, but rather a tech that can enable cool business to happen faster in more places at once.
+
+Can I can I step back into direwolf, like why the direwolf, how you got involved with that for a second, like it's just so fascinating to me.
+
+Well, I'd always been interested in synthetic biology, so I had a kind of a long serpentine path in academia, I graduated from high school when I was 15 because I was homeschooled and so then I went to a community college and I graduated there at 18 and originally I wanted to be a doctor, so I transferred to Metro State and I was doing the whole biology thing and all the doctor stuff.
+
+Uh and I had a lot of fun, but I said, yeah, I don't really want to do medicine and so then I transferred to CU Boulder and I was a combined program where I was taking graduate classes and undergraduate classes and that's how I got into mathematics, but when I was studying biology and chemistry and these other things, uh right at that point, we were starting to discover how to do proper genetic engineering.
+
+CRISPR hadn't quite been invented yet, but we had a lot of proto stuff for things like that, uh and one of my friends did a lot of work in bioluminescent plants.
+
+Um and they were interested in for cross-linking genes, so they said, well, if the plant glows, it has the gene, if it doesn't glow, it doesn't have the gene, so it's a fast visual way of knowing if your engineering was successful without having to sequence the genome.
+
+But I'd read a lot of work from George Church and George was like the super prominent biologist in Harvard.
+
+And he talked about basically using these technologies to resurrect dead animals.
+
+Uh you know, basically restore them.
+
+Jurassic Park.
+
+So uh uh so when Ben Lam uh started his company Colossal in the very early days, I contacted him, I said, I'm super interested in this project, I've been following what Peter Thiel did with uh funding some of the early mammoth stuff, uh I'm really curious where where you want to go and what you want to do.
+
+So Ben and I became very good friends and I invested in Colossal very early, now it's doing quite well, I think it's over a $10 billion valuation, so I guess there's a market for resurrecting dead things.
+
+Uh and Ben and I actually started a company from uh from that and we'll be announcing some things at the end of the year about it.
+
+Uh but uh but anyways, it's just been a passion of mine since I was 19.
+
+Um and I've been very interested in these capabilities and technologies and we've had like two independent revolutions that have happened since my early college days.
+
+You know, we had this huge revolution in CRISPR Cas9 and bioinformatics and other things and then the AI revolution, which helps being the interpretive and analytical layer of understanding what all this stuff means and because of those two things, you can now very precisely change stuff and in silica, you can predict what your changes are going to be before you even do them.
+
+Now, why the direwolf, um you have these special genetic protection components in your genome, humans have about two of them, uh and uh whales have 300, elephants have about 60 and what they do is they protect the genome from changes, so it's an anti-cancer mechanism.
+
+Dogs don't have any, so that's why you have so much variability in dogs, uh so you have tiny dogs and big dogs and it's very easy to change your genes and manipulate them.
+
+So the direwolf was a really nice proof of concept of a whole tech stack and the genome doesn't get in your way and like prevent you from manipulating it or changing it, um you can silence those genes that protect things, but then those are the same genes that prevent you from getting cancer.
+
+Uh so, so you know, you don't want a mammoth with like massive tumors and you know, like the the cancer fin.
+
+So there's a lot of work that has to be done.
+
+And Colossal probably has at this point, I'd say the largest brain trust in the world of synthetic biologists, uh and they're from incredibly universities and uh incredible places and it's uh it really is like the Bell Labs of the places, they're inventing as they go.
+
+And I think they've pushed the state of the art by at least a decade or two.
+
+Um with all of these techniques and there's a wonderful leadership there, um from the technical leadership to the operational leadership to the CEO, uh and it's just a joy every time I go down to Dallas uh to kind of see what they're doing, what they're working on and how much progress uh that they've made, it's one of the hardest problems in all of biology.
+
+Um but it's super useful to solve this problem.
+
+You know, every day species go extinct and there's a fatalism uh that's in uh ecology, you have all these uh the Greta Thornberg people are like, how dare you taking my future?
+
+I don't even have kids because like global warming and the whole world's coming to an end, what companies like Colossal do is fundamentally they restore your agency, they say that instead of just accepting that this existential problem's here and basically it's just going to get worse every year and there's nothing you can do about it and the fatalism of that mindset.
+
+It says you actually can be an active participant and you can bioengineer and and you can bring species that are extinct back and you can change the environment to make it healthier again.
+
+Uh and the fact that we're able to bring back an animal that hasn't walked the earth in tens of thousands of years is uh really good case study in that path and very quickly, it'll go from just a simple thing to much more complex things.
+
+And then inevitably you can start having a real adult conversation about what type of environment do we want to live in.
+
+Yeah.
+
+And how do we fix that environment?
+
+Yeah, heritage seeds and and terraforming.
+
+Like different environments.
+
+Yeah, and by the way, it's not just an earth question, it's also like Mars.
+
+If Elon Musk is serious about having a million people live on Mars, you have to terraform that planet.
+
+So all of this technology is directly applicable in that direction as well and you can start thinking in terms of centuries and planet scale terraforming, but it's the next logical step of where this technology is going.
+
+Yeah, we got we got involved with uh this project that was kind of like in a similar space, they were doing uh biopharmaceutical IP.
+
+And it was like this crossover with DSI and the the campaign or project we were working on was trying to figure out how we could get IP, uh intellectual property of particular molecules onto the blockchain for individuals to basically speculate on its conversion to a viable um medicine and and cancer drug or or whatnot.
+
+So we've we've played a little bit in the DSI space.
+
+Our our piece in that is like back in how do we get the DFI, how do we launch the token, how do we leverage that, how do we create structured products around that and um things along the line.
+
+Well, bringing that back to the DFI for a second, uh Eric, go ahead.
+
+Yeah, I was going to say a lot of the, you know, the funding of R&D from a capitalistic perspective, uh DSI enabling, you know, the the advancement of molecules, the advancement of these technologies.
+
+But it has to, you know, usually come from either public goods funding or some kind of capitalistic incentive.
+
+So getting behind using DFI to enable the advancement of science is something that we've been passionate about and a lot of what we do in our business is like how do we get enough of the the streamline, the funding, the flow, the tech behind it so that we can enable uh new things to be possible.
+
+I usually call them tools of freedom to be built so that the philosophy questions of like, should you be doing this?
+
+Um can actually apply because it only matters if you could be doing this, so I love what you're doing with creating more of what can be done so that we can bring about those conversations that only matter if the tools exist.
+
+Yeah, and it's a lot of fun to work on and uh you can do magical things.
+
+Uh but I just everything about my career has a common theme of restoring human agency, whether it be economic identity or banking the unbanked or, you know, self-custody or self-sovereign identity.
+
+Really, it's about pushing power to the edges and uh whenever I see an ecosystem where there's a fatalism in it, where they say you can't fix it, you can't cure it, it's going to get worse over time.
+
+Uh you know, that that is uh something I don't accept.
+
+I say there's got to be a way to.
+
+That's the alpha.
+
+By technology to reverse the trend.
+
+It's why that Warhammer 40K universe is so grim dark, it's it's because there's no innovation or advancement and everything is just a copy of a copy and technology continues to decay and they can't repair the machines they have because society got to a point where it got stale.
+
+It's also why Bitcoin is quite stale because, you know, there's just not a lot of innovation that uh goes on there.
+
+You know, so everything I do in my career is always connected to, let's let's figure out a path to have recursive self-improvement and and grow it.
+
+What you look for is widening the aperture.
+
+So you don't look for like what's today or what's week, you say is the process such that over time, it gets more decentralized, more resilient and it has recursive self-improvement, so it evolves and even if it's slow, it's exponential growth and compounding interest.
+
+And so you come back in 20 or 30 years and you just have this incredible thing that's basically indestructible.
+
+You know, you if you fire the core entities, you kill the founder, no matter what you do, you can't stop it because it's sufficiently decentralized at that point that it self-heals and grows on.
+
+Uh so everything we do, we try to imagine like how do we build something that grows in that particular direction.
+
+So very anti-fragile systems that you're putting into play.
+
+Yeah.
+
+I've been struggling with this idea recently, uh on working uh with Dows and and governance in DFI, I know this is like might be like a little bit of a tangent, but it feels to me that every single time when you get a a consensus or a group of people together, there seems to be some sort of uh communication bloat.
+
+Like I'll give you an example, like if you want to get a bill passed in Congress, you go to each senator, you go to each congressman, they add a little another line, another line, another line and this idea I've been thinking about, I was writing about it yesterday is literally how each step and each additional opinion adds to the complexity of a situation.
+
+And the real elegance in a situation is how can you reduce and like distill the the solution.
+
+Yeah, that's Metcaf's law, you know, when any social network, you have uh the communication overhead typically is quadratic to the amount of nodes in the system.
+
+Uh so uh that that is true in any social system and any huge advancement is where you you have a sub quadratic representation of communication.
+
+Uh so uh really, you know, if you look at the growth of the internet, one of the reasons why it has the topology it has is because of that communication complexity.
+
+Instead of having everybody run their own server and everybody doing their own thing, we tend to aggregate it on these super nodes like Google and Facebook and others and they regulate all the communication and commerce and other things and so that simplifies the graph tremendously.
+
+So, uh when you think in terms of systems and especially complex systems that are self-evolving, they tend to form topologies of convenience.
+
+They're not necessarily uh the most effective, efficient or uh or best structure for our societal goals, but of convenience typically to maximize something like communication or information dispersal.
+
+And uh and so what ends up happening is they go too far typically in one direction and then we say, oh gosh, we need to dial this back, there's too much misinformation spreading or, you know, there's this issue here over there and, you know, what do we do about it?
+
+Uh blockchain's great because it's a native citizen in this this structure and it's a regulation mechanism.
+
+It's a place uh where you can store true things, um objective reality and they're immutable time stamped and irreversible and and so they create a a mechanism where you can prune out bad things.
+
+And when you add ZK to it, then you you have selective disclosure and verifiability to that, you know, and so so you get, yeah, you're going to get privacy too, but also just verifiability.
+
+All the time people are saying, well, I did this, well, how do you know that's really true?
+
+Especially in an age of AI and generative AI.
+
+I'll give you a story.
+
+So I have a family friend and he's he's kind of like one of these hillbilly mountain dudes and his brother was a special forces guy and he and his brother were when they were younger, hiking in the mountains of Colorado.
+
+And they saw a mountain line in one of the trees.
+
+And so, you know.
+
+It's hillbillies in the mountains, they just do stupid things.
+
+So he said, all right, I'm going to go up and climb that tree and pull the tail.
+
+that mountain line.
+
+the stupidest thing you can do in your life.
+
+So he goes up the tree and there's this beautiful picture of him like his hand is just about to grab the tail of the mountain line and tug it.
+
+And he did, he tugged the tail of the mountain line and the mountain line freaked the fuck out, woke up and just went and attacked him and he was just falling down the tree, being attacked by a mountain line.
+
+Um here's the problem, uh you know, that was like over 20 years ago.
+
+And so when I saw the picture, I said, that's the coolest fucking thing, man, you're brave but stupid.
+
+Well, now in generative AI, anybody sees that picture, they say that's not a real picture.
+
+So he broke his leg, he got mauled by a mountain line, you know, he did all this stuff and no one will ever believe that that picture is true.
+
+So we have a truth issue.
+
+So it's not just communication overhead, but it's also veracity issue where now it's choose your own adventure.
+
+You can just decide arbitrarily what pictures and videos and text is real and what aren't and anything that you don't like, you say it's AI, anything you do like, you say it's real.
+
+Uh so you need a veracity layer in addition to a communication reduction layer.
+
+And I'd argue that blockchains and ZK are the only way to get that back into society and if you live in a society without trust anchors or truth anchors, uh it it devolves very quickly.
+
+Everybody gets incredibly paranoid.
+
+Yeah, you see that a lot a lot all over the world with like high trust societies versus low trust societies and how different they operate.
+
+Right, yeah, agency without truth isn't agency.
+
+Uh totally aligned with the ZK stuff.
+
+Um you touched on the complexity uh and conversation and the number of people involved not being, you know, efficient, but being designed that way for a reason.
+
+Uh I'll say like in businesses, there are two phases, there's like endless growth, we're going to keep growing forever, operate at a loss, it's going to be the biggest thing in the world, then you tap out at what seems to be the TAM and then it's, you know, SOPs, it's like decline as efficiently as possible, cut back, pay less, get more optimization.
+
+Um but but the growth is gone.
+
+I think the curve for that is now in shitification.
+
+Shitification, beautiful.
+
+Yeah, uh and in governance, like when people are desperate enough, um then they'll turn to a despot, they'll turn to a king.
+
+They'll have a wartime king to get that growth, when you have then conquered and you have resources to protect, then you'll design a more complicated, convoluted Metcaf's law type governance where nothing gets done to stop or to protect from the degradation.
+
+How do we in crypto, as we build our own decentralized nation states, how do we in like Cardano, where the governance system is like really cool, um get back and have this um uh ebb and flow between growth and and uh being stale.
+
+You know, it's funny because everybody shits all over Cardano, oh, everything's gone to hell and the whole system's falling apart and it's a failed experiment and all this other stuff.
+
+And we're literally on schedule.
+
+Um.
+
+It's you just accept it as it is.
+
+So when we built the decentralized governance system, the problem is that we had to change the tires on the car while it was driving.
+
+So if you start from day one, you could build anything you want.
+
+And nobody can challenge your question because they're adopting into a pre-existing philosophy.
+
+But when you're changing it without a voting or consensus system, you literally have to figure out how do you get consent of people you don't know.
+
+In more than 100 countries and there's more than a million of them.
+
+And and when does legitimacy come?
+
+So it's a game of iterations.
+
+And so you do it by building your legislative and judicial function first.
+
+And allow the masses to come together and vote on things like hard forks and info actions and the treasury.
+
+And then you allow very naturally and organically um problems to occur.
+
+And those problems are typically problems that can only be resolved by executive function.
+
+Um so this is actually what happened in the United States of America.
+
+So we we had a revolution, we kicked the British out.
+
+And our initial government was the articles of Confederation and very quickly people started realizing that that governance structure was too weak on the executive authority side, so you couldn't unify and do things well.
+
+Even things everybody agreed we ought to do well, for example, during the of the Revolutionary War, they couldn't get shoes to Washington's uh soldiers.
+
+So they're fighting the revolution and they're out in the winter and they can't get shoes.
+
+You know, it's just because it's a governance failure.
+
+So did America fail in, you know, the entire country collapse and the experiment was over?
+
+No, they wrote the Constitution to replace the articles of Confederation.
+
+And it became uh a very robust structure that was able to survive a civil war, win two World Wars and become the dominant superpower.
+
+So when you look at Cardano, we're now at a point where we've outgrown a two-branch government.
+
+We need a third branch now.
+
+An executive branch and in doing that, it solves a lot of the foundational problems about vision, direction, KPIs, marketing, growth and adoption.
+
+You know, so we made a lot of great bets in terms of technology, extended UTXOs, not and liquid non-custodial staking algorithm with Leos and Paris were back in the game in terms of performance and finality.
+
+Um in partner chains and Hydra, we can have a non-parasitic L2 ecosystem and we have natural areas to grow like Bitcoin DFI.
+
+Uh so there's plenty of good stuff to do, but you're not going to get good marketing, good growth and adoption and you're not going to get a singular voice about a strategy to execute and achieve unless you have executive function.
+
+So you can't get executive function though until you have a voting system of legitimacy.
+
+So step one is get a constitution to set what integrity is, step two is get a voting class, a governance class of people that are legitimate and people in the ecosystem believe them and step three is unify them to build the executive function, then get the executive function turned on, then you can do the KPIs, the vision, the strategy, the governance structures and then finally you have a fully working system.
+
+To do this in just two years is an extraordinary pace.
+
+It took the United States like a decade to get that solidified and going and everybody wanted it and these were people that were literally willing to die for it, they fought the Revolutionary War and put their names on a, you know, a document that if they lost, they'd get executed.
+
+Um so, uh you know, we're moving at a very fast pace.
+
+In terms of the rest of the technology, that hasn't been molested at all, um, you know, I'm very happy with Mithril and very happy with Plutus and very happy with um the amount of innovation that we have.
+
+We don't really have a technology problem.
+
+We don't have a node diversity problem, we have the Rust node, go node.
+
+We don't have a development problem, the DevX is massively improved in Cardano from where it was just a few years ago.
+
+Uh we have, you know, you don't want to write Haskell code, that's fine, write in TypeScript, write in Rust, you have plenty of options to do that.
+
+And we don't have an interoperability problem and with the Pentad, we were able to start fixing the broken windows of of of integrations like layer zero, pith and circle and other very needed things.
+
+So with all those things in play, now the time has come to kind of do two things at the same time.
+
+Get the executive function and number two, start commercialization.
+
+And on the commercialization side, what we're doing at input output is we've become a venture studio.
+
+four things that we're building that are Cardano adjacent or directly on Cardano, Realfly, Pogen, Midnight, Midnight City.
+
+And all of these that we think are going to bring millions of users in and billions of dollars of TVL into the ecosystem.
+
+And they're they're intrinsically non-adversarial, meaning they bring new people in or they bring new ecosystems in.
+
+We don't have to go and steal users from Solana or Ethereum or Hyperliquid or other places.
+
+And what this allows us to do is also work with pre-existing people like yourselves and others to have an adult conversation about how to get that TVL in, what the cost of it's going to be and how to make it sticky and sustainable and beneficial for all the parties involved.
+
+So from that lens, I I feel very optimistic and uh, you know, we're masters of our own domain.
+
+It's not like we're waiting for an Ave to come or a Uniswap to come and we have to pay $100 million and hopefully they'll solve our problem, it's more of can we get these ventures where they need to be?
+
+And others have shown up like Draper and they've set up the Orion Fund and so we're really excited about what they can do for the ecosystem.
+
+And there's still a lot of passion and excitement, we just have to get over these last hurdles, get Leo shipped and turned on, get Para shipped and turned on, continue the drum beat of Hydra and get executive function in play.
+
+And launch these ventures and over the next three to five years, I think we'll see the greatest growth Cardano has ever experienced in its history and it creates a lot of confidence in people because we did it in a completely decentralized way.
+
+You know, it wasn't because one leader showed up and, you know, as long as that leader is around, everything's going to be great, it was done in a bottom-up way and no one party was essential for it, everybody worked together.
+
+Yeah, the the art of the pragmatism behind the vision, uh, you mentioned IOG, uh, kind of transitioning being more of a venture studio at this point, um, well, kind of Brian and my ethos in investing is we try to picture what the future is going to be in five plus years.
+
+What we think is inevitable and then invest in what are going to be the steps to build towards that inevitability.
+
+Uh, and the community has come out with kind of like this 2030 plan of where Cardano is going to be, uh, understand like and we agree with your ethos around, um, you know, trust verification requiring crypto.
+
+We believe DeFi is the instrument for agents to be able to conduct commerce and so if we believe these ethos to be the case, our goal is to then invest in and go in and build the infrastructure that leads to that inevitability because it takes steps to get there.
+
+And that's kind of what we're trying to do with this prime proposal, um, what steps do you think, um, are required, what are you looking to see out of, you know, Alpha Growth's involvement, more groups like us and, uh, more of the things you're investing in?
+
+Well, there's three dimensions you can look at, one is Cardano has a very insular mindset and we need to have now an industry-wide global mindset.
+
+Uh, so you need people from outside of the ecosystem who have experience in many different ecosystems to come in and say, well, this is the way they're doing it, not to tell us we should do it that way, but rather to give us the information so we can figure a hybrid approach where we blend the best of both worlds.
+
+Number two, um, once we have a strategy and approach, you need some people to help facilitate and execute that, uh, strategy and approach and bring in the very necessary life bloods of liquidity and TVL and these other things.
+
+And number three, you need somebody to be there on the app by app basis, uh, to advise them, hey, this is what you guys need to do to get to the next level.
+
+Um, Cardano doesn't have a shortage of passionate people or smart people, but they do need some oversight.
+
+We had three core entities and only one of the three mine, uh, was able to actually fully execute.
+
+Uh, the foundation has improved in its execution capability, Amergo was an unmitigated disaster and failure.
+
+Just be straight up with it, um, and they were supposed to be the consensus of the ecosystem, so this was their primary domain, they never built that infrastructure, so we have like 10-year hole and we keep coming back to it and there's this learned helplessness and cynicism in the ecosystem.
+
+We need to shut that chapter, we need to reconstruct that capability and simply move on as an ecosystem and say, okay, it didn't work, it's okay, FTX collapsed and Solana looked like it was dead, they rebuilt themselves and now they're a strong ecosystem.
+
+We can get to the next level even if mistakes were made in the past.
+
+And when you look at intersect and Pragma, they've mostly compensated for where the foundation has been negligent, so self-healing and recursive self-improvement are much more important than perfect founding entities.
+
+Because you're always going to make mistakes, you're going to have issues, you're going to have founder conflicts, there's divorces, there's bad stuff.
+
+Shit comes up, you know, people leave, uh, Elon Musk went through a brutal divorce right in the middle of all the Tesla crisis and all these other things, somehow he's a trillionaire, right?
+
+It's you can survive these types of things, but you'll only survive them if the systems and structures are in the right place.
+
+So that's where we're at and that's why executive function is so powerful for an ecosystem because it can give you the right to let the past go and to set a new road map, set a new vision and push forward.
+
+And then 100%. Yeah, and you integrate that. Go ahead. I want to tap double tap on this.
+
+I we've seen in a lot of ecosystems, a lot of brands, a lot of protocols, a lot of chains, what gets them like zero to one, it gets a set of belief, a set of ideals and culture that kind of stays static.
+
+And it's really hard to get the individuals that are at a successful protocol, at a successful chain to say, wait a second, what we did to get us from zero to one or get us for the first two to three years isn't necessarily the same set of actions that we need to get from year three to year 10 or go from one to 100.
+
+And so this is this is a common problem in in large organizations, you know, Cardano's had a bunch of success, but, you know, maybe what got from, you know, zero to Cardano today isn't what it needs to take in 2026.
+
+And so there is a little bit of narrative, there's a a bit of culture, education, like as you said, executive function does say, look, we change a little five degrees here, 10 degrees there, it's a restart, rebrand and re relaunch of of a bunch of different narratives.
+
+Yeah, and you have to stay current.
+
+You know, there's winners and losers all the time, Apple was a loser in the 90s and then they became a hyper dominant winner in the 2000s and 2010s because the iPhone and other things.
+
+Then they're a loser in the AI revolution, Google was the company that was going to completely dominate and win the entire AI revolution, they even invented the fucking transformer and now they're the the the furthest behind of all the frontier AI labs and they can't keep their staff.
+
+Uh, you know, Open AI was supposed to win, then Anthropic is now on top, now we're talking China with all the open source models.
+
+Uh, so things change very quickly in business and if people don't believe me, then what you need to do is you need to pull out your BlackBerry.
+
+Because obviously you have one, right? And then you need to open up Internet Explorer on your your BlackBerry to go search for your AOL account to reset the password on your MySpace page.
+
+So you can go and like uh complain about it and you might have to use Yahoo to search for that, um, you know, all these things had over 100 million customers at one point and had dominant market positions and they were damn near untouchable and now they're just has been.
+
+Technology, the one constant is change, um, and so anybody tells you, uh, that their ecosystem has won, they're a bag holder and they're trying to dump their tokens on you.
+
+Uh, no ecosystem has won, you you you've won your turn.
+
+Uh, and then the the music changes and then there's a new game.
+
+Um, 10 years ago, uh, it was like, how do you, how do you like build something that isn't Bitcoin?
+
+That was the Ethereum story.
+
+You know, everything was a copy of Bitcoin and we brought the smart contract revolution in.
+
+And then the third generation came and it was like, how do you kill Ethereum?
+
+And uh, and now it's Web 2.5 is the narrative.
+
+Web 2.5, you have a regulated entity like uh, like a Ripple or a Tether or a Circle and then you have a blockchain product and these things emerge together.
+
+That's where almost all the growth has happened when you look at Binance or any of these guys in uh, in the last two years.
+
+And that's going to bring $10 trillion and two billion customers in the cryptocurrency space.
+
+So the narrative changes, the technology changes, the game changes, the people who keep what they have and are able to adapt and and be able to be strong where they go.
+
+You know, just just another example real quickly, we have these AI cyber security things and they're just beating the hell out of everybody.
+
+The only people that are going to survive this this Armageddon of Infosec nightmare from AI, people that used formal methods to write all their code.
+
+So the thing that was a huge weakness for our velocity has become now one of our greatest strengths in the Cardano ecosystem.
+
+And by the way, if you want to build software quickly, if you have formal specifications, uh, you can vibe code in 20 days a full node.
+
+If you have really good specifications, that's the what what Bun taught everybody with the Anthropic rewrite of Bun from Zig to Rust.
+
+They wrote a million lines of code in 11 days with a single guy.
+
+So it's not about the language anymore, it's about the specifications and we spent 10 years getting good at writing specifications.
+
+And everybody else is massively behind us, so the games change all the time, so never believe network effect is a thing, it's uh, it's not.
+
+Yeah, I think there are lots of really good points, one I want to double click on, um, when we were running uh, compound and we were driving in, we went to the bond market, we went to a lot of like institutions.
+
+And three things kind of came kept coming up, one was fixed rates, another one was regulatory clarity and the third one was security.
+
+It's like, how can I trust DeFi? And I think one of the main things where in our analysis of Cardano and UTXO and what you guys have is a very, very secure, uh, base to to have a new rail of DeFi.
+
+The second other thing I want to jump in on is as like every single institution in financial institution in the world is trying to figure out how do I play in the blockchain space, regulatorily and securely.
+
+And some of these these coding standards that you have coming up with these RWA coding standard, it's going to make a huge unlock, so like every single asset that you can think of, every security can start to play on chain.
+
+Like it's it's really amazing and that wave being able to, you know, Sherpa the traditional finance on chain, get global exposure, find new ways of thinking, the most interesting thing about that that we saw was uh, was this pattern we call the DeFi mullet.
+
+Have you heard of this?
+
+No, I haven't.
+
+Okay, so the DeFi mullet is this, right?
+
+Um, one of the business in the back.
+
+Exactly, exactly.
+
+CFI in the front, DeFi in the back.
+
+So, uh, Morfo and Coinbase are in that strategic partnership has brought in the majority of the TVL, a lot of people don't know if you go into Coinbase and you put dollars into their savings account or their earn account, that's getting the rates and the yield is coming from Morfo on the back end and the same thing that's going on with the Robin Hood deal right now as well.
+
+The Robin Hood deal and the Morfo ended up paying for that integration, you know, hundreds of millions of dollars, the savings account on Robin Hood is now going into Morfo on the on the Robin Hood chain.
+
+So we we're starting to see the convergence, the the people are getting comfortable, the chains are ready.
+
+This it's going to not be CFI and DeFi, well, first we'll do the DeFi mullet, but eventually it's just going to be finance where it's just a nice clean transition, you can log in with your phone, you can do your face ID and then but really it's it's global financial systems in the back all over the world.
+
+Yeah, and so when you take a step back and you look at these things, um, you need four components to win.
+
+In the unification of Web 2 and Web 3 and this is the entire reason that Midnight.
+
+If you don't have these four things, you can't win and and so our bet for the fourth generation and we're leaning into it as hard as we can.
+
+I'm literally writing code every day for it.
+
+I think I have like 4,000 commits.
+
+I mean, it's all hands on deck, we're so passionate about it, we're moving faster than we've ever moved before.
+
+You have abstraction, smart compliance, pet and agents.
+
+So everybody knows Midnight is privacy systems.
+
+That's pet privacy enhancing technologies.
+
+Usually when you think privacy, you think ZK.
+
+But that's only one of many different things.
+
+You want to pair ZK with multi-party computation and trusted execution environments.
+
+And you put those three primitives together, you can do anything.
+
+Outsourceable computation, you can keep tons of great secrets.
+
+And you can analyze data without ever seeing it, so you can replicate homomorphic encryption.
+
+And you can prove everything is correct by construction and you don't have to trust anybody.
+
+Um, but that's alone is not sufficient.
+
+Which is why you don't see massive commercial adoption of zero cash or Zcash.
+
+Or any of these other projects, you see speculative adoption, but nobody's really doing anything with them.
+
+Okay, abstraction is what Near really brought to the table.
+
+And they've leaned so heavily into that.
+
+And wonderful work, Ilya is a brilliant guy.
+
+Um, multi-chain signatures and intense.
+
+You tell me what you want and you don't care about where it settles.
+
+Or how that works, you don't care about how it's going to get solved.
+
+You just tell me what you want to do.
+
+And then somehow it's going to get figured out.
+
+And MCS gives you the ability to write to any chain you want.
+
+With ZK, you can read from any chain you want.
+
+So you have read and write, so you have a universal end-to-end system.
+
+Where you can interact with everything in the cryptocurrency space and with intense accept payment in any cryptocurrency.
+
+Okay, so you meet the users where they're at, not where you want them to be.
+
+And it's the orchestration logic that's really meaningful.
+
+Um, smart compliance.
+
+What that's about is extending what Satoshi had with self-custody.
+
+To self-sovereign identity and self-disclosure.
+
+So you basically can bring your personal life, your private life into the cryptocurrency space and then you can verify statements you make.
+
+When you need them, how you need them, but in a way where you have minimum viable disclosure.
+
+You can prove you're a US citizen.
+
+You can prove you're over 21.
+
+You can prove you're a resident of New York.
+
+You can prove you're not a politically exposed person, you can prove you're not in a jurisdiction.
+
+Whatever, ZK proof, I don't know who you are.
+
+And that's compliance becomes game of 21 questions.
+
+How many questions do I need to ask that are yes or no before it's safe to do business with you?
+
+And then you move to algorithmic regulation settlement as compliance.
+
+So you create a sovereign subnet within your system that allows regulated business to live.
+
+In a decentralized system and you can bring all of these regulated things from centralized, federated.
+
+Off-chain servers into the blockchain space and they can have ubiquitous liquidity and there's no compliance issues for doing that on a global basis.
+
+By the way, there's a little side corollary, the LCP protocol from the American Arbitration Association.
+
+The legal context protocol that for the first time ever you can start embedding legal understanding into these things.
+
+So the contracts into these transactions instead of having them live separately.
+
+You add selective disclosure, you can prove properties of the contracts to each other without ever revealing the underlying contractual.
+
+Uh, so so that's really powerful.
+
+But the final thing is agents and I I think people don't really understand.
+
+The value that they bring, agents solve the single biggest issue that we have in cryptocurrency.
+
+Which is I'm going to fuck it up.
+
+I've been in the industry for 15 years.
+
+And every year, if you pull consumers and you ask them a question about cryptocurrencies, they say the exact same thing.
+
+It's too complex, it's too hard and I know I'm going to screw something up.
+
+I'm going to lose all my money.
+
+I don't know where I'm going to do it.
+
+Maybe I'll not back up my wallet or I'll click the wrong link.
+
+And somebody will drain my wallet or my computer will crash.
+
+Something's going to happen somewhere and I lose all my money.
+
+Nobody wants a financial system that if you make a mistake, you lose everything forever.
+
+And there's no back seats.
+
+So when you bring in agents, they massively simplify the equation because you can delegate authority through standards like OWS to the agent.
+
+And then the agent can do a lot of the really complex, hard, you know, gigabrain stuff on your behalf.
+
+And then when you add in like trusted execution environments, you add in ZK and intense, you can create a regulation layer where the agent behaves deterministically.
+
+Meaning it never does anything you don't tell it to do.
+
+And then you can start building ecosystems of best practices and standards.
+
+And the agents can be there and watch like when you're just about to send money to an unknown address.
+
+It says, hey, hang on a second, here this address is an impersonation.
+
+Are you sure you want to do that?
+
+Oh, yeah.
+
+So it almost comes like the antivirus that made computing safe.
+
+You know, we had like Norton and McAfee and you install it in the 90s and 2000s.
+
+Agents do that.
+
+So when you combine all four of these things together, that is what brings cryptocurrencies into the world.
+
+We have great products like Midnight Passport and uh, all kinds of things that are trying to make it super simple.
+
+And just make it work on a phone and make people not really care what cryptocurrency they're using.
+
+What infrastructure they're using and so forth and then you can find tons of market opportunities that are embedded within this unification.
+
+That's awesome.
+
+I I'm going to go on there's so much in there.
+
+Uh, a couple of things that you touched on.
+
+Uh, we're going to play a little game now, all right?
+
+Do you know the F Mary Kill kind of thing?
+
+Sure.
+
+Okay, so we're going to we're going to do this with crypto narratives.
+
+We've been doing on on each one of these podcasts.
+
+So flash in the pan, what's a fad, uh, what's here for the long stay and and what is probably not, um, going to last very long.
+
+Okay, so I got three topics, RWAs, agentic finance and DeFi mullet.
+
+So CFI in the front, DeFi in the back.
+
+What do you think is a flash in the pan, what do you think is here for a very long time and what are you least bullish on?
+
+Well, if RWA means I'm going to take Microsoft stock, tokenize it, put it on a blockchain.
+
+I'm not super bullish for these types of things.
+
+Uh, you know, I think that narrative is is not meaningful.
+
+If RWA means I'm going to take an asset that's intrinsically regulated, make it global and it's novel, new and interesting and different.
+
+So basically like structured finance, synthetic finance, do something different.
+
+Then that is that's actually not only a bullish thing for me, I think it's the entire reason cryptocurrency exists.
+
+So I'll give you a great example that nobody's talking about, but it's like self-evident that we need it.
+
+So every day there's a bridge hack, a wallet hack.
+
+Every day, it's like somebody's losing money, right?
+
+If you're a non-custodial wallet, it's, you know, it is what it is.
+
+Well, why can't I buy an insurance product that when bad things happen, my wallet's insured and I get it?
+
+Well, that's an RWA.
+
+At the end of the day, and if you have selective disclosure and ZK and all these other things, it's time to creation of wallet.
+
+You can embed something into it that uh is non-reputable.
+
+So when you need to prove something, you can.
+
+And sign up for a policy.
+
+Nobody knows you have it.
+
+Nobody knows who you are.
+
+But when bad things happen, you can prove that that was your money.
+
+And get uh the policy and you just automatically pay a premium.
+
+Uh, and then the the other side of it is just a collateral pool and a bunch of people dump Bitcoin or whatever into it.
+
+And they get the premium until uh it has to be paid out if some bad thing happens.
+
+Uh, so that would solve massive problems in the bridge and wallet space.
+
+Because how do you get an insurance policy?
+
+It has to meet certain suitability guidelines.
+
+So the quality of wallets and bridges exponentially increases to be able to be insurable.
+
+And then consumer protection goes to the moon.
+
+And now you have an RWA that's on chain that pays like a 10, 20, 30% yield per year.
+
+Being on the risk tranches and categories.
+
+Yeah, we helped out uh, re.xyz earlier.
+
+Um, for that and that's an incredible product.
+
+All right, so we're going to kill RWAs 1.0.
+
+But very bullish on RWAs 2.0.
+
+Yeah, Web 3 native RWAs where you take the best of Web 3 and you solve real problems with them.
+
+And you're asking, do we have a liquidity issue?
+
+Do we have a market access issue?
+
+Do we have a a a composition issue where we're just not able to put multiple products together?
+
+We have the financial stem cell with tokenization and smart contracts.
+
+So we have unlimited dimensions of freedom to build things you could never build in regular Web 2 rails.
+
+And if those are the things you're building, I'm very bullish on that.
+
+If you're just taking a pre-existing product, wrapping it and then serving it like a Bitcoin ETF or something like that, I just don't get excited about these types of things.
+
+Because at the end of the day, it'll fall back to the same broker dealer regulated structure that we have before.
+
+And all you're really doing is just pretending like it's something new and different.
+
+You have to do something legitimately different.
+
+That's why I like algorithmic stable coins far more than I like asset back stable coins.
+
+Because at the end of the day, it's trust model is still some centralized company somewhere.
+
+That's regulated, not audited and we hope to God that they're not cooking the books.
+
+Whereas an algorithmic stable coin does the same thing if it's designed correctly.
+
+But there's no trust involved in that product.
+
+You see, that's the real promise of RWAs and Web 3.
+
+Why are they RWAs? Because they probably connect to some real world concern.
+
+And they probably have a regulated, uh, you know, component to it, there's suitability guidelines.
+
+Like United States people can't participate or other people can't or China can't participate.
+
+And if you have algorithmic regulation, you can do that in a completely automated way.
+
+You don't have to have a compliance officer or a trusted third party involved in the pipeline.
+
+is the master.
+
+Uh and so if you're going to trade at retail, this is the only way that you can get uh some alpha over regular retail regular investors and institutional investors.
+
+The other thing too is it allows you to execute very complex strategies as a small person.
+
+See, whenever I want to execute a strategy, I I have relationships at Goldman Sachs and Morgan Stanley and all these other places.
+
+I just pick up the phone, call them, and they have like these incredible private wealth people that have been doing this for a long time, they have a lot of capabilities and and because I have access, I can do really complicated things.
+
+But if you're a regular retail person, you can't.
+
+Uh you don't have the market access, you don't have the knowledge.
+
+When you're an agent, you can, and they're becoming super intelligent, and what they can do is is protect you on a thesis.
+
+So if you think the market's going to trade sideways for the next six months to 12 months, they can have a strategy that's there.
+
+You could create marketplaces for strategies and actually one thing that makes midnight unique is you can share the strategy without sharing it.
+
+What I mean by that is is that you guys could come up with something, license it to somebody, get 5, 10% of whatever they do with it, uh but then that person who has it can't see the strategy that the agent is executing.
+
+So that that that's awesome for a hedge fund, they're like, wait a minute, I I get to get a return on capital without having the underlying capital.
+
+That's like naked trading.
+
+That's so good.
+
+Um and you create a marketplace for strategies and then there's a wisdom of the crowds thing and then you end up getting a a very efficient marketplace out of that.
+
+You don't have these anomalies.
+
+Um the other thing about agentic trading that's awesome is they never sleep, they're around 24 hours a day, seven days a week, they're able to monitor things while you're sleeping if the market's collapsed, they can introduce some sort of protection mechanism and put a circuit breaker in and stop you from losing all your money.
+
+You know, so that's just so much better than having a broker and so much better than having a private wealth manager, these other things.
+
+And I just uh I think it's a better world to live in.
+
+Um so we're going to experiment with it with Midnight City and build that marketplace out and lean into all the capabilities of uh Midnight.
+
+And we're really hopeful that that's going to be fun, plus it'll be ubiquitous liquidity through MCS and intense, it can trade on the big six, trade on XRP and Bitcoin and Ethereum and Binance and Hyperliquid and uh Solana and uh then you also have APIs for agentic trading with all the major places like Coinbase and Robin Hood and Binance.
+
+So you can kind of merge the off-chain and on-chain books and have one God's eye view of all the liquidity in one place.
+
+Yeah, I think the DeFi mullet kind of gets embedded into agentic finance because the purpose of the mullet is to make it easy to access, easy to understand for the user and the agents are just going to operate in DeFi directly and they just present it to, you know, their owner in that way shape or form.
+
+Additionally, Brian and I and Alpha Growth have done, I believe as far as we know, the first affiliate-based skills.
+
+And have been uh really, really working on turning the strategies that we create that we, you know, put in front of liquid funds and family offices uh to get deployment um into agentic skills so that we can market to the agents directly to deploy our strategies.
+
+On Cardano as well as researching, you know, obviously X402 MPP popular right now.
+
+It's like your agent can go to a mall, but really looking into how agents can interact with their own version of P2P cash, um kind of like creating Bitcoin for agents uh to be their own businesses rather than to go to storefronts.
+
+Yeah, and the thing about what we've done with Midnight, because when you look at those four things that come together, all four are required for agents to really reach their their final form.
+
+You need you need a deterministic control layer because the biggest concern with agentic trading is the agent hallucinates, goes crazy and does a lot of crazy shit.
+
+Um the other concern is that proprietary and private information about how you're doing things leak to an untrusted third party.
+
+So by having ZK and TEE that resolves all of that, and then having the right language in the case of intense, uh and having a proper language for trading strategies, if you combine those things together, they work really well.
+
+And then having smart compliance means that the agent, like an X402, they have a native protocol for understanding where they're allowed to trade and where they're not allowed to trade.
+
+And it opens up a non-custodial representative, so it's very much like self-driving cars.
+
+The liability still falls to you, but the car is driving and it massively improves your quality of driving experience where where and when it works.
+
+So similar when you have agentic trading, what I want is a non-custodial agent, so it's your agent, you own it, you control it.
+
+You load it up with a bunch of stuff and it does a lot of things on your behalf, but ultimately you are the KYC agent.
+
+So you can go under your Binance KYC and your your Coinbase KYC.
+
+I think that's just a much better world and uh it it gives uh a it removes an asymmetry.
+
+You know, I'm always looking out for the little guy and I think, okay, well, there's this huge asymmetry between the big guys like the Steve Cohens and the little guys inside the market.
+
+So how the heck do we rebalance the scales?
+
+We'll give superhuman intelligence and capabilities to the little guy and now they can be an effective market participant.
+
+If anything, just understand how to navigate a market.
+
+What this does is it also prevents panic selling.
+
+Whenever anything happens, people sell, there was a bridge hack, uh it was um one chain on uh Cardano and uh Binance smart chain.
+
+And like 500 million uh night was stolen.
+
+So everybody's panic, oh my night, oh my God.
+
+Now he's going to zero, all this shit.
+
+You're stupid.
+
+You're stupid.
+
+Okay, the market's going to rebound in 48, 72 hours.
+
+Why the fuck are you dumping?
+
+Because you're panicking.
+
+And this is what people do, the market over corrects and professional traders know that and they're just waiting for the floor because they're going to mop up and get an easy 30 to 50% ROI in 24 hours whenever these events happen.
+
+When you have agents, they don't panic, they say, okay, here are the structured products we're going to buy and these things we're going to do and everything we're hedge, we're ready to go and don't worry, we got you covered, you're okay and we'll know what to do.
+
+So you come back 24 hours, the market rebounds, you don't lose any money.
+
+You know, or you minimize your losses, that is where I want to go with all of this and you have a significantly more sophisticated and significantly less Wall Street gambling casino style market and a more of a value Benjamin Graham style thing where people are behaving reasonably.
+
+The other thing about agents is they can understand everything, you know, one of my friends um he built this beautiful agentic harness.
+
+And every time a because he trades the S&P 500, every company in there reads the 10Ks and it perfectly parses all the disclosures and statements and uh the shareholder meetings and these types of things.
+
+And has a huge analysis engine and he does the work of what a Morgan Stanley uh, you know, analyst would do and instead of having like 50 analysts go and study the entire S&P.
+
+The agents can do all of that and make bets on uh the valuation of the portfolio if it's undervalued or overvalued.
+
+So he can trade the S&P and he trades E-mini S&P 500, uh, you know, on the CME, makes a lot of money.
+
+And the agent does all that work, it's doing probably the work of 50 people.
+
+Uh and so and and that's just the raw capability that we all have and can share with each other.
+
+So, uh hugely bullish on agentic finance if it has trusted execution to run the agents and if it has ZK and intense to regulate that.
+
+And if there are proper interfaces, so on Cardano Midnight, we integrated OWS, the open wallet standard for agents to have a wallet, we have Midnight passport uh so agents can have their own identity and disclosure system.
+
+Uh that's coming live at the end of the year for that.
+
+And then uh we have X402 integration, we just joined the X402 Foundation.
+
+So we're at the stage where we're getting all the foundational integrations in and now we're adding the ZK and legal layers into it.
+
+And then you can have these non-custodial trading agents we deploy with Midnight City and then eventually franchise out to every wallet as an extension of the wallet.
+
+Yeah, privacy is super important.
+
+Um two two quick things, especially on the copy trading front, uh there's a firm, I just was listening to a podcast about this Fintech firm called Autopilot.
+
+So they they launched the Nancy Pelosi fund and and tracker of like what she invests in and they have a license agreement now with these traders where you can copy trade what they do.
+
+Uh but they earn a I think like it it ranges, but it's like up to like a 10% of of carry on the trades.
+
+So you can literally like trade it from your Robin Hood app in in a private manner and then copy trade uh one of these other like investors.
+
+You can't do that on the blockchain today without having some form of privacy.
+
+And the other thing is, uh I was talking to one of the largest Hyperliquid uh uh traders and they're they're baking for some sort of private trusted execution environment so that their positions and their hedging can't be copy traded.
+
+Because that that is their alpha, right?
+
+So if they can hide their alpha in that um and privatize that or even make it in some sort of copy trading autopilot format.
+
+It's like, cool, you want to trade along with me?
+
+Great, here put put put this in this token, tokenize it and then have that particular copy trade where they can earn some carry.
+
+Uh along the way.
+
+I think that's like some of the future DeFi things that we're going to take a look at.
+
+Yeah, and the point is the it's an endless river and you you want to do what make crypto great into what makes trading great.
+
+You want it to be a bottom up, decentralized marketplace and hundreds of firms, eventually thousands of firms can come in and build products and anytime they deploy it, they can make a profit from it.
+
+Um and when you do that, then uh they become cheaper and more ubiquitous and then consumers get access to it.
+
+And then you have the safety layer back into crypto.
+
+Once you have the safety layer back into crypto, then mainstream consumers will get excited about using crypto because they say, okay, this is the only way I can safely use this and uh and then you get two billion people come in.
+
+And as long as they have the principles that Satoshi started with, that's a good thing, you know, I really hate these indexes and and these ETFs and these other things because it's it's, oh, I'm invested in crypto.
+
+You're not, you are a KYC'd customer of a centralized financial institution buying a security, okay?
+
+And at any given moment, all the problems of securities are your problems, it is not Bitcoin, it is not an index, uh it it's it's something else.
+
+And that's fine, you can participate in the value appreciation of these things.
+
+But you're missing what makes the system special, so my whole career of the last 15 years has been basically, how do I build the tools of freedom?
+
+I want to push far to the edges, I want everybody to be non-custodial, self-sovereign, um but I have to acknowledge that until we solve the safety problem, we will never get adoption.
+
+No one can live in a financial system where if you make a mistake, you lose everything forever.
+
+You know, the story I like to tell is, you know, my grandfather was a surgeon, he was an OBGYN and delivered thousands of kids and he was a brilliant man.
+
+But he died of Alzheimer's, so for a large chunk of his life, he was master of his own domain, he raised five kids, uh, you know, he's just he was a baller.
+
+But then as he gets Alzheimer's, eventually forgot his own name.
+
+So you can't have a system that relies on you being perfect and infallible and never making a mistake.
+
+It just doesn't work.
+
+The whole point of the legacy financial system is regulation and checks and balances and audit and oversight and balances of power.
+
+And you have to look at the best parts of that system and you have to figure out how to make those parts compatible with the Web3 space.
+
+And if you do that, you get all the good side, but then you throw away the bad side, too big to fail and regulatory capture and, you know, exclusive markets.
+
+And unbanked people and money laundering and all these horrible things that exist that the legacy system is completely tolerant of.
+
+Once you've achieved that, you've done something revolutionary and new.
+
+Um and there's gates that you go through and each one of them proves some property out.
+
+So the first generation was what?
+
+It was the proof that you can actually have decentralized value transfer.
+
+No one thought it was possible till Bitcoin came out.
+
+Then Bitcoin became digital gold, so you can actually have a digital commodity.
+
+It proved that out.
+
+Then Ethereum said, you can make things programmable, it's like when JavaScript came to the web browser.
+
+Suddenly it went from static pages to like the web revolution.
+
+You could do all these interesting things.
+
+Then we had to figure out how to make it scalable and we had to add governance to it.
+
+So this becomes self-evolving.
+
+And the final form is about making it safe and easy, uh and so you have to add privacy and you have to add compliance.
+
+And you have to add agents and you have to add uh abstraction to the system.
+
+And once you have those components in, then you have everything you need.
+
+Because these are compositional.
+
+You don't give up the decentralized money.
+
+You don't give up the decentralized payment system.
+
+You don't give up the smart contracts or the scalability or all these things.
+
+You inherit them, just like you inherit all the prior protocols of the internet.
+
+And then you're able to build your Google and your Amazon and your Facebook.
+
+So that's where I focus.
+
+And everybody uh who takes the easy route out, they make some money for a time.
+
+But tell me how many of these DAPs are doing quite well.
+
+And you know, is Mike Sailor like the happiest guy in the world right now?
+
+You know, they for a moment seem like they were geniuses and they were going to make all this money.
+
+But at the end of the day, they were just packaging an old thing into a slightly new thing.
+
+And they said, oh, we're going to be these revolutionary guys, they're not solving any problem, they're not adding any new capability and they're not adding any new liquidity into crypto itself.
+
+They're centralizing crypto and capturing crypto into the old system.
+
+And these are incompatible concepts.
+
+They don't work together.
+
+Yeah, aligns.
+
+Um, agree with the vision.
+
+Agree that it's inevitable.
+
+But there are steps to take towards that.
+
+We have our proposal on chain right now, the Alpha Growth Prime proposal, um trying to come in and take at least a couple, at least the first couple massive steps towards growing DeFi, growing the addressable market of users of TVL to be accessible by these killer apps, by these agentic infrastructure networks.
+
+Um that we all build out to um do business and have it live on the Cardano chain.
+
+Um what what would you like to see?
+
+What would be viewed as a success by you from an engagement with Alpha Growth?
+
+Well, I mean, everybody's saying the same thing.
+
+Cardano is a ghost chain.
+
+There's no activity on Cardano.
+
+There's nothing going on and it's so weird because we have like 1.3 million people delegating and staking and tons of stake pool operators and all these governance participation.
+
+But then we have an anemic DeFi.
+
+So everybody's right.
+
+There's one side of Cardano that's a ghost chain and there's one side of Cardano that's vibrant and lively.
+
+And I'm getting so tired of hearing the same tired narrative again and again.
+
+You need people like yourselves to come in and work that other side, the ghost chain side.
+
+And we have to say, okay, we need good foundational entities and we have a lot of good meat and potatoes and paired with this external knowledge, um we can come up with a systematic plan to grow that.
+
+Uh and we can grow it in directions and ways that are complementary to what Solana's done and Ethereum's done and others have done.
+
+So you're not in this adversarial sum zero for one to win, another has to lose.
+
+You can grow together.
+
+Yeah, once we get a few billion in TVL, then I think the narrative changes.
+
+And then people start looking at Cardano on its own merits.
+
+And saying, well, do you want a system that either can never evolve and it's completely anarchy, that's kind of the Bitcoin side and they can't even figure out what to do with Satoshi's coins when a quantum computer comes.
+
+Do we steal them, freeze them or just accept that they're going to get stolen?
+
+You know, it's like good luck figuring that one out.
+
+Yeah, any day now.
+
+Any day now, right?
+
+Um and uh when the Ethereum side, it's like, well, we need this dictator to lead us, but we don't want to pay him.
+
+So he's going to go bankrupt.
+
+Um it just it's not tractable.
+
+So you need something different and having recursive self-improving decentralized governance is the only way to go.
+
+So as we get executive function, we can get much more precise and concise about philosophy, vision and direction.
+
+And then having these types of engagements, they help us amplify.
+
+So they're long-term relationships.
+
+You start on simple things, uh you solve those things.
+
+You get your first billion in TVL.
+
+Uh and then you can grow exponentially from there.
+
+Um and you can wake up and eventually my hope is we have one of the largest and most sustainable and novel DeFi ecosystems.
+
+Not a copy of a copy, stealing liquidity and things moving around.
+
+But novel, meaning that there's real interesting products that don't exist in other places in the Cardano ecosystem.
+
+And there's capabilities in the Cardano ecosystem that don't exist in other places.
+
+And the traders know that by design the system is far more stable.
+
+We have eight years of 24/7 uptime with Cardano.
+
+And uh we have a self-healing protocol, so even when a soft fork happens, the protocol puts itself back together uh without human feedback.
+
+It's uh it's it's just a tank.
+
+And that's the kind of thing you need if you're going to have trillions of dollars on it, you need stability and resilience and self-healing, uh and also you need to know that if you disappear for five years, you come back, the system's exponentially better by its own design.
+
+Uh and uh thousands of people have never met each other are going to work together to achieve that.
+
+So that's my hope for the relationship is to figure out a path to make that happen.
+
+And, you know, these things are typically slow to start and they require a little bit of trust in the beginning.
+
+Uh but once they're integrated, people get addicted to it because they realize there's really no other place that has a similar philosophy.
+
+All these other people are like, how do we move quickly?
+
+Because we want the token price to go up.
+
+So that we can make a lot of money on the token.
+
+And and you're like, okay.
+
+Uh oh.
+
+All right.
+
+Well, Charles, uh hopefully you see this, this was an honor to have you on today.
+
+And uh Eric.
+
+It was a pleasure.
+
+That was really cool, man.
+
+And just just hearing it from him directly is is like an honor to to take this like opportunity on and be a part of this story and part of this journey.
+
+A lot of the the primitives that we'll be working on or like bring into the table is is exactly what's going on with like the 2030 plan and and some of the other stuff that Charles talked about.
+
+I think we're I think we're definitely aligned in that.
+
+Charles, thank you.
+
+Yeah, yeah.
+
+I'm sorry about dropping off, I just finishing the thought real quickly and then I got to get going like you guys do.
+
+My my point is like the worst thing you can do is chase a token price.
+
+You got to chase the foundational first principles of it because everything else comes later.
+
+You know, uh you can never win the game of of uh of popularity there.
+
+You know, and because no matter what price point you get to, uh you know, it's not good enough.
+
+Look at Vitalik.
+
+He got Ethereum to like a quarter of a trillion dollars.
+
+That is so much money.
+
+That is more than the GDP of most African nations combined.
+
+I mean, this is like so big when you talk about that.
+
+And they're like, well, the token price is not going up.
+
+Vitalik is a failure.
+
+Because somebody enters in at that quarter of a trillion dollar thing and they have an expectation of half a trillion and then a trillion.
+
+And so no matter what you do, you can't win, it's a treadmill.
+
+So you got to focus on first principles instead.
+
+And you said, okay, is it increasing in decentralization, is it increasing in freedom, does it preserve the integrity of its founding intent and can you do innovative new things that have never been done before and can you do them for more people, not just a few people in America and Europe, but for everybody in the world.
+
+Uh all eight billion people.
+
+And that's the mission of Cardano.
+
+So we're really excited and I love working with you guys.
+
+And we'll do what we can on the IO side to help your proposal get through.
+
+It shows you how decentralized it is that the founder of the system can't just flip a switch and say, okay, you're in the club, you have to earn it.
+
+Uh but I'm glad you guys are doing the hard work and rowing the boat.
+
+And uh love to see you be part of the ecosystem.
+
+Thank you so much.
+
+Uh dude, thank you for coming and talking to us.
+
+Um frankly.
+
+Uh thank you for backing us and wanting us to come in and handle the liquidity layer and help grow the ecosystem so that all the cool USB things, all the cool financial primitives have something to build on top of.
+
+We've got the the giants with shoulders for new things to come up and and step up.
+
+And uh if we get this opportunity, it's uh yeah, we'll we'll do right by you guys and we're going to look forward to building some really, really cool stuff together.
+
+Thanks Eric.
+
+Thanks Brian.
+
+Cheers.
+
+Charles, thanks for your time.
+
+All right, Eric.
+
+This was rad.
+
+Um, got a lot of work to do.
+
+There's a lot of things to play.
+
+We will crank on it, we will drive it, we will drive the adoption, we'll drive the liquidity layer.
+
+And the vote's on chain now.
+
+So if you are a Cardano D-rep, it's my only shill of the whole entire thing.
+
+Uh take a look at our proposal, we're open to feedback.
+
+Let's let's chat.
+
+We're available, hit us up on on Twitter and and if you're, you know, delegate, there's there's ways to get to us to to have a conversation.
+
+Thanks for everybody for joining.
+
+This has been a dose of Alpha.
+
+A lot of cool Alpha today, I I got to go back and watch it to like get all the information to like, because there's a ton, ton of stuff.
+
+Financial stem cells for the the raw tokenization.
+
+We could build that.
+
+I love that.
+
+That was amazing. I like I'm going to steal that, like crypto or financial stem cells, we can build it into anything that we want.
+
+That's an amazing juxtaposition.
+
+That's why we're here.
+
+Dose of Alpha.
+
+Take care.

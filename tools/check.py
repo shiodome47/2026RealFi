@@ -14,17 +14,36 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 
-# 匿名化の漏れ検出。新しい回で新しい名前が出たらここに足す。
-NAMES = [
-    # 2026-07-24 エンジニアリング回
-    "Nathan", "Jan", "Peter", "Ben", "Clay", "Lewis", "Damien", "Scoot",
-    "Chris", "Frog", "Fogg", "Sean", "Tom", "NEMO", "OYSTR", "TDSP",
-    "NVStake", "Strait", "Straight", "K-Man", "Dotare", "Chick",
-    # 2026-07-31 データ回
-    "Liam", "Vlad", "Olivier", "Oliver", "Olivia", "Shiadome", "Shiodome",
-    "Yoda", "Panda", "Msku", "Junaid", "Sonny", "Larry", "John",
-    "OConnor", "Connor", "Oyster", "Fluid", "KTOP", "Namu", "Strap",
-    "Hedge", "Meta",
+# 匿名化の漏れ検出。**回ごとに持つ。**
+#
+# チャタムハウスルールの回だけが対象。meta.yml の chatham_house_rule を見て
+# 判定するので、公開録画の回（実名を残す回）はここに書かない。
+# 名前は回をまたいで衝突する（別の回では普通の単語や別人の名前として出る）ため、
+# 全体を一括で検索してはいけない。新しい回で新しい名前が出たらここに足す。
+NAMES = {
+    "2026-07-24-office-hours-engineering": [
+        "Nathan", "Jan", "Peter", "Ben", "Clay", "Lewis", "Damien", "Scoot",
+        "Chris", "Frog", "Fogg", "Sean", "Tom", "NEMO", "OYSTR", "TDSP",
+        "NVStake", "Strait", "Straight", "K-Man", "Dotare", "Chick",
+    ],
+    "2026-07-31-data-and-insights": [
+        "Liam", "Vlad", "Olivier", "Oliver", "Olivia", "Shiadome", "Shiodome",
+        "Yoda", "Panda", "Msku", "Junaid", "Sonny", "Larry", "John",
+        "OConnor", "Connor", "Oyster", "Fluid", "KTOP", "Namu", "Strap",
+        "Hedge", "Meta",
+    ],
+}
+
+# 回をまたぐファイル（shared/ や README）はどの回の名前も残っていてはいけない。
+SHARED_NAMES = sorted({n for names in NAMES.values() for n in names})
+
+# ただし、公開録画の回で名前が出ている第三者は、回をまたぐファイルにも書いてよい。
+# 匿名化したファーストネームと綴りがぶつかるだけで、別人。
+# 「この文字列そのもの」を除いてから検索する。フルネームだけを許可すること。
+SHARED_ALLOW = [
+    "Ben Lam",      # Ben Lamm（Colossal 創業者）— 誤変換表に載せている
+    "Ben Lamm",
+    "Peter Thiel",
 ]
 
 VOID = {"meta", "link", "br", "hr", "img", "input", "source"}
@@ -171,14 +190,38 @@ def main():
                 fail(en.parent.relative_to(ROOT),
                      ".%s の数が英日で違う（en=%d / ja=%d）" % (cls, n_en, n_ja))
 
-    # 実名の残存
+    # 実名の残存。回ごとに切り替える
+    chatham = {}
+    for meta in sorted(ROOT.glob("episodes/*/meta.yml")):
+        slug = meta.parent.name
+        chatham[slug] = "chatham_house_rule: true" in meta.read_text()
+        if chatham[slug] and slug not in NAMES:
+            fail(meta.relative_to(ROOT),
+                 "チャタムハウスルールの回だが tools/check.py の NAMES にない")
+
+    def names_for(path):
+        """このファイルに対して検索すべき名前のリスト。None なら対象外。"""
+        parts = path.relative_to(ROOT).parts
+        if parts[0] in ("episodes", "docs") and len(parts) > 2:
+            slug = parts[1]
+            if not chatham.get(slug, False):
+                return None            # 公開録画の回。実名を残してよい
+            return NAMES.get(slug, [])
+        return SHARED_NAMES            # shared/・README・一覧ページなど
+
     for path in sorted(ROOT.rglob("*")):
         if not path.is_file() or ".git/" in str(path) or "tools/" in str(path):
             continue
         if path.suffix not in (".html", ".md", ".txt", ".yml"):
             continue
+        targets = names_for(path)
+        if targets is None:
+            continue
         text = path.read_text()
-        for name in NAMES:
+        if targets is SHARED_NAMES:
+            for allowed in SHARED_ALLOW:
+                text = text.replace(allowed, "")
+        for name in targets:
             if re.search(r"(?<![A-Za-z])" + re.escape(name) + r"(?![A-Za-z])", text):
                 fail(path.relative_to(ROOT), "実名が残っている: %s" % name)
 

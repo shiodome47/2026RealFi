@@ -1,6 +1,6 @@
 <title>RealFi Office Hours — Engineering session / エンジニアリング回</title>
 <style>
-/* RealFi Office Hours — 共通スタイル */
+/* Cardano セッションのアーカイブ — 共通スタイル */
 
 :root {
   --bg: #fbfaf8;
@@ -488,6 +488,67 @@ code {
 
 .tldr ul { margin-bottom: 1rem; }
 
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
 /* ---- 用語カード ---- */
 
 .term {
@@ -674,7 +735,6 @@ footer {
   .docnav { display: none; }
 }
 
-
 /* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
 .part { scroll-margin-top: 1.5rem; }
 .part + .part { margin-top: 5rem; }
@@ -697,7 +757,6 @@ footer {
 .jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
 .jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-
 </style>
 
 <div class="wrap" id="top">
@@ -754,8 +813,7 @@ footer {
 
 <p class="eyebrow">RealFi Office Hours</p>
 <h1><span class="l-ja">エンジニアリング回 — ブリッジ、ワンクリックフロー、そしてプラットフォーム構想</span><span class="l-en">Engineering session — the bridge, one-click flows, and the platform ambition</span></h1>
-<p class="meta">
-  <span>2026-07-24</span><span>Discord</span><span><span class="l-ja">参加者 30〜35名</span><span class="l-en">30–35 attendees</span></span>
+<p class="meta"><span>2026-07-24</span><span>Discord</span><span><span class="l-ja">参加者 30〜35名</span><span class="l-en">30–35 attendees</span></span><span><span class="l-ja">進行役 1 名＋開発チーム 3 名</span><span class="l-en">1 host + 3 engineers</span></span>
 </p>
 
 <section class="part" id="summary">
@@ -3064,7 +3122,7 @@ footer {
 </nav>
 
 <footer>
-  <p><span class="l-ja">RealFi Office Hours アーカイブ<br>このコールはチャタムハウスルールで運用されています。発言者の氏名は記載していません。</span><span class="l-en">RealFi Office Hours archive<br>These calls run under the Chatham House Rule, so no speaker is named.</span></p>
+<p><span class="l-ja">RealFi Office Hours アーカイブ<br>このコールはチャタムハウスルールで運用されています。発言者の氏名は記載していません。</span><span class="l-en">RealFi Office Hours archive<br>These calls run under the Chatham House Rule, so no speaker is named.</span></p>
 </footer>
 
 </div>
