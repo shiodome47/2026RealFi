@@ -220,8 +220,47 @@
 <h4>なぜ「分立」ではないのか</h4>
 <p>財務庫の引き出しや憲法改正では、DReps が支持しても CC が違憲と判断すれば成立せず、逆に CC が合憲としても DReps の支持がなければ成立しません。<strong>議会が法律を作った後で、裁判所が別の事件として違憲審査する</strong>という国家の仕組みとは順序が違います。三権分立というより、<strong>複数の鍵をそろえて初めて開く共同承認</strong>に近い構造です。</p>
 
+<h4>ただし「鍵がそろわないと何も起きない」わけでもありません</h4>
+<p>ここが実務でいちばん混乱するところです。<strong>共同承認のたとえが当てはまるのは、オンチェーンで実行効果を持つアクションだけ</strong>です。財務庫の引き出しや憲法改正は、必要な賛成がそろわなければ実行されません。</p>
+<p>一方で <strong>Info Action</strong> は、資金も動かさず、パラメータも変えず、ハードフォークも起動せず、憲法も書き換えません。<strong>投票結果をチェーンに記録するだけ</strong>です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="実行効果のあるアクションと Info Action の違いを対比した図。前者は賛成がそろわなければ実行されないが、後者は批准に届かなくても支持のシグナルとして使われうる">
+  <rect x="20" y="24" width="300" height="150" rx="8" class="d-box-accent"/>
+  <text x="170" y="54" text-anchor="middle" class="d-t">実行効果のあるアクション</text>
+  <text x="170" y="82" text-anchor="middle" class="d-s">財務庫の引き出し・憲法改正</text>
+  <text x="170" y="102" text-anchor="middle" class="d-s">ハードフォーク など</text>
+  <text x="170" y="130" text-anchor="middle" class="d-a">必要な賛成がそろわなければ</text>
+  <text x="170" y="150" text-anchor="middle" class="d-a">オンチェーンで実行されない</text>
+
+  <rect x="360" y="24" width="300" height="150" rx="8" class="d-box"/>
+  <text x="510" y="54" text-anchor="middle" class="d-t">Info Action</text>
+  <text x="510" y="82" text-anchor="middle" class="d-s">資金も設定も動かさない</text>
+  <text x="510" y="102" text-anchor="middle" class="d-s">投票結果が記録されるだけ</text>
+  <text x="510" y="130" text-anchor="middle" class="d-w">批准に届かなくても</text>
+  <text x="510" y="150" text-anchor="middle" class="d-w">支持のシグナルとして使われうる</text>
+
+  <rect x="140" y="194" width="400" height="42" rx="8" class="d-box-plain"/>
+  <text x="340" y="220" text-anchor="middle" class="d-w">どの程度の支持なら採用してよいか —— 制度としては未整備</text>
+</svg>
+<p class="figcap">同じ「ガバナンスアクション」でも、扉を開ける鍵なのか、意向を記録した札なのかで性格が違います。<span class="badge">補足</span></p>
+</div>
+
+<p>実例が <strong>Cardano 2030</strong> の Info Action です。2025 年 12 月に提出され、2026 年 1 月 19 日に締め切られましたが、<strong>CC の賛成は 7 人中 2 人で必要値 66.67% に届かず、オンチェーンでは批准されないまま期限切れ</strong>になりました。DRep の賛成は 66〜68%（集計の取り方によって公表値が異なります）。</p>
+<p>それでも Intersect は、その後の更新でこれを <strong>“DReps signalled support”（DRep が支持を表明した）</strong>と表現しています。<strong>“ratified”（批准された）とは書いていません。</strong>同時に「Info Action は signaling であって正式な批准を要しない」とも説明しており、<strong>言葉は慎重に使い分けられています</strong>。</p>
+
+<h4>CC が Info Action を審査すべきかも、まだ揺れています</h4>
+<p>憲法は、<strong>Info Action を含むガバナンスアクションの合憲性を CC が審査する</strong>と定めています。一方、プロトコル側の整理では <strong>Info Action は CC の投票対象外</strong>としている資料もあり、両者がきれいに一致していません。</p>
+<p>実際、Eastern Cardano Council は最初の Cardano 2030 提案について「予算案でも、後続の実行可能なアクションへの意向調査でもないため、CC が合憲性を判断する対象ではない」として棄権しました。ところが同じ評議会が、<strong>Net Change Limit</strong> の Info Action については「憲法上の財務ルールを実際に支えるものなので CC の審査が必要で、閾値に届かなければ有効な NCL とは言えない」と主張しています。<strong>同じ Info Action という器でも、扱いを分けようとしている</strong>わけです。</p>
+
+<h4>ここが、行政機能の話に戻ってきます</h4>
+<p>今の運用では、次のことが起こり得ます —— ①Info Action で方向性を問う → ②正式な批准には届かない → ③関係組織が「十分な支持シグナルがあった」と解釈する → ④その組織が実務を続ける。</p>
+<p>そして、<strong>誰が票を解釈するのか、どの程度の支持があれば戦略として採用してよいのか、未批准の Info Action にどこまで正統性を認めるのか</strong>は、制度として決まっていません。</p>
+<p>この意味で「行政機能が足りない」という番組の指摘は当たっています。ただし裏返すと、<strong>行政機能を作る前に Info Action の位置づけを整理しないと、行政の側が投票結果を都合よく解釈できてしまう</strong>という問題が残ります。<span class="badge">補足</span>これは番組では触れられていない論点です。</p>
+
 <h4>正確に言い直すと</h4>
 <p>憲法・代表投票・合憲性審査・ネットワーク承認の仕組みは<strong>稼働しました</strong>。一方で、法律体系、立法手続き、一般的な司法、行政の執行は<strong>まだ十分に分化していません</strong>。番組の「第三の府が要る」という主張は、その未分化な部分のうち<strong>執行を担う主体</strong>に焦点を当てたもの、と読むのが正確です。</p>
+<p>状況と数値は 2026 年 8 月 1 日時点のものです。</p>
 </div>
 </details>
 
@@ -838,8 +877,47 @@
 <h4>Why it isn't a separation</h4>
 <p>On a treasury withdrawal or a constitutional amendment, DRep support fails if the CC rules it unconstitutional, and CC approval fails without DRep support. That is not <strong>a legislature passing a law and a court striking it down later in a separate case</strong>. It is closer to <strong>a multi-key approval that only opens when the required keys are present</strong>.</p>
 
+<h4>But “no keys, nothing happens” isn't the whole story either</h4>
+<p>This is where it gets confusing in practice. <strong>The multi-key picture only holds for actions with on-chain effect.</strong> A treasury withdrawal or a constitutional amendment simply does not execute without the required approvals.</p>
+<p>An <strong>info action</strong> is different. It moves no funds, changes no parameters, triggers no hard fork and rewrites no constitution. <strong>It records a vote on chain and that is all.</strong></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram contrasting actions with on-chain effect, which do not execute without approvals, against info actions, which can be read as a signal of support even when never ratified">
+  <rect x="20" y="24" width="300" height="150" rx="8" class="d-box-accent"/>
+  <text x="170" y="54" text-anchor="middle" class="d-t">Actions with on-chain effect</text>
+  <text x="170" y="82" text-anchor="middle" class="d-s">Treasury withdrawals, constitutional</text>
+  <text x="170" y="102" text-anchor="middle" class="d-s">amendments, hard forks</text>
+  <text x="170" y="130" text-anchor="middle" class="d-a">Without the required approvals</text>
+  <text x="170" y="150" text-anchor="middle" class="d-a">nothing executes on chain</text>
+
+  <rect x="360" y="24" width="300" height="150" rx="8" class="d-box"/>
+  <text x="510" y="54" text-anchor="middle" class="d-t">Info actions</text>
+  <text x="510" y="82" text-anchor="middle" class="d-s">Move no funds, change no settings</text>
+  <text x="510" y="102" text-anchor="middle" class="d-s">The vote is simply recorded</text>
+  <text x="510" y="130" text-anchor="middle" class="d-w">Can be read as support</text>
+  <text x="510" y="150" text-anchor="middle" class="d-w">even when never ratified</text>
+
+  <rect x="140" y="194" width="400" height="42" rx="8" class="d-box-plain"/>
+  <text x="340" y="220" text-anchor="middle" class="d-w">How much support is enough to act on? — not settled</text>
+</svg>
+<p class="figcap">Both are “governance actions”, but one is a key that opens a door and the other is a note recording which way people leaned. <span class="badge">added</span></p>
+</div>
+
+<p>The worked example is the <strong>Cardano 2030</strong> info action. Submitted in December 2025, closing 19 January 2026, it <strong>expired without on-chain ratification — CC support was 2 of 7, short of the 66.67% required</strong>. DRep support came in at 66–68% depending on which published tally you read.</p>
+<p>Intersect nonetheless described the outcome as <strong>“DReps signalled support”</strong> — <strong>not “ratified”</strong> — while also stating that an info action is a signalling exercise that does not require formal ratification. <strong>The wording is chosen carefully.</strong></p>
+
+<h4>Whether the CC should even review info actions is unsettled</h4>
+<p>The constitution has the CC reviewing the constitutionality of governance actions <strong>including info actions</strong>. Protocol-side documentation, meanwhile, lists info actions as <strong>not subject to a CC vote</strong>. The two do not line up.</p>
+<p>The Eastern Cardano Council abstained on the first Cardano 2030 action on the grounds that it was neither a budget nor a poll on a subsequent executable action, and therefore outside what the CC rules on. The same council argued the opposite about the <strong>Net Change Limit</strong> info action — that it underpins a constitutional treasury rule, so CC review is required and without the threshold there is no valid NCL. <strong>Even the CC is trying to sort one kind of info action from another.</strong></p>
+
+<h4>Which loops back to executive function</h4>
+<p>What can happen today: an info action asks the question → formal ratification is not reached → an organisation reads it as “sufficient support” → that organisation carries on with the work.</p>
+<p>And <strong>who interprets the vote, how much support is enough to adopt something as strategy, and how much legitimacy an unratified info action carries</strong> are not settled as rules.</p>
+<p>So “we lack executive function” lands. But the inverse is also true: <strong>without settling what an info action means first, an executive would be free to read the votes whichever way suits it.</strong> <span class="badge">added</span>This point is not raised on the show.</p>
+
 <h4>Stated precisely</h4>
 <p>The constitution, representative voting, constitutionality review and network approval <strong>are live</strong>. A body of law, legislative procedure, general adjudication and executive delivery <strong>are not yet differentiated</strong>. The show's “we need a third branch” is best read as pointing at the delivery part of what remains undifferentiated.</p>
+<p>Figures and status are as of 1 August 2026.</p>
 </div>
 </details>
 
