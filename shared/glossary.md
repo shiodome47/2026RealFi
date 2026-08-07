@@ -171,9 +171,9 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | 名前 | 説明 |
 | --- | --- |
 | **Cardano** | RealFi のベースとなるブロックチェーン |
-| **Sundae / SundaeSwap** | Cardano の DEX。2025年8月から Web3 ワークストリームのパートナー |
+| **Sundae / SundaeSwap** | Cardano の DEX。2025年8月から Web3 ワークストリームのパートナー。<https://sundae.fi> |
 | **TxPipe** | Cardano の開発企業。監査で協力 |
-| **Liqwid** | Cardano のレンディングプロトコル。ワンクリックフローの連携先として言及 |
+| **Liqwid** | Cardano のレンディングプロトコル。ワンクリックフローの連携先として言及。<https://liqwid.finance> |
 | **Midnight** | Cardano 系のプライバシー特化チェーン。**未着手だが今後やりたい領域**。コミュニティに知見を求めている |
 | **Rosen Bridge** | Cardano のクロスチェーンブリッジ。USDR/sUSDR の対応はメインネット後 |
 | **IO / Input Output** | Cardano の中核開発企業 |
@@ -192,6 +192,7 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 ## 翻訳の方針
 
 - **プロダクト用語・チェーン名・組織名は訳さない**（USDR, sUSDR, Cardano, EVM, DEX, SDK, testnet, mainnet など）
+- **外部プロトコルに URL を張るときは公式ドメインを毎回確認する。**DeFi のプロトコルは偽サイトが多く、ドメインを 1 文字間違えるだけで読者を危険な場所に送ることになる。**うろ覚えで張らない。**このリポジトリで使っている先はこの表に載せてあるので、追加するときもここに記録する
 - **testnet / mainnet** はそのまま。「テストネット」「メインネット」でもよいが1本の中では統一する
 - 話者の発言は「ですます調」で訳す。口語のフィラー（you know, I mean, like）は落とす
 - 断定していない発言（"I think", "probably", "we haven't landed on"）は**日本語でも断定しない**。ロードマップや時期の話で特に重要
