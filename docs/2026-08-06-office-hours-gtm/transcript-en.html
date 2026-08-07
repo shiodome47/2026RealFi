@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours — Full transcript (English original)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語全文を読む" title="日本語全文を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours</p>
+<h1>Full transcript — English (original)</h1>
+<p class="meta">
+  <span>2026-08-06</span>
+  <span>Discord</span>
+  <span>Go To Market</span>
+  <span>1:01:12</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> This is the official recording of the call, so the speaker labels and timestamps below come from the source — they are not inferred, and nothing here is marked <em>(inferred)</em>. Names have been replaced with role labels under the Chatham House Rule, and obvious mis-transcriptions of product names have been corrected (for example “Liquid” to Liqwid, “Sunday Swap” to SundaeSwap). Everything else is left as transcribed, including errors such as “USCR” and “USD R” for USDR, “these farms” for these firms, and “sacristant” for sacrilegious.</p>
+<p>Images were posted in the chat during the call — the host's dark-forest slides. They are not reproduced here; only what was read aloud is recorded.</p>
+</div>
+
+<!--content-->
+
+<div class="sec">Before the stage</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>Is my it say something.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:00:03</span></div>
+  <div class="turn-body"><p>Hello, can you hear me?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:04</span></div>
+  <div class="turn-body"><p>Great, perfect, it&#x27;s working. Sometimes it was bugging out earlier but it&#x27;s working now. Going live now and let me just tweet it out as well. We need to get you some more followers.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:00:19</span></div>
+  <div class="turn-body"><p>Then do I just we&#x27;re still in the green room?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:24</span></div>
+  <div class="turn-body"><p>We&#x27;re going to move into the main stage. I&#x27;m going to start it. Then you&#x27;ll find the functionality that allows you to request to speak, and then I&#x27;ll bring you up to stage. Are you ready to start?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:00:38</span></div>
+  <div class="turn-body"><p>You might need to help me on the functionality bit.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:41</span></div>
+  <div class="turn-body"><p>I&#x27;m going to start the stage which is the room above us. You&#x27;re going to join that room. Then you&#x27;re going to look down in your control to make sure that you can either accept my invitation to speak, or you&#x27;ll be able to request it one of those two things. That&#x27;s how we get up on the stage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:01:12</span></div>
+  <div class="turn-body"><p>Testing. Hello. [参加者の呼びかけ。ハンドル名は記載しない] Invite to speak, 登壇者A. Let&#x27;s get you up here.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:01:32</span></div>
+  <div class="turn-body"><p>Can you hear me?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:01:34</span></div>
+  <div class="turn-body"><p>Great. Thanks so much for coming. This is going to be a really good one because there&#x27;s loads of stuff I want to learn from you. It&#x27;s totally selfish, but I&#x27;ve shared some of the questions we prepped. We&#x27;ll be able to run through those. Just give it a minute or two until everybody comes in. I&#x27;m going to tweet out as well.</p></div>
+</div>
+
+<div class="sec">Origin story — from capital markets to crypto</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:02:19</span></div>
+  <div class="turn-body"><p>So RealFi office hours number five. We saved the best not till last, but until now. So certainly just to warm up the room, do you want to give us a tell us how you got involved in RealFi and tell us what you do and your kind of origin story? So we get to know you a little bit. Could we kick it off like that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:02:43</span></div>
+  <div class="turn-body"><p>for sure. You can hear me right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:02:45</span></div>
+  <div class="turn-body"><p>Yes sir I can hear.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:02:48</span></div>
+  <div class="turn-body"><p>Perfect. Cool. Nice to be here. Thanks for having me. Excited to do this. I am 登壇者A. I run go to market at RealFi. Before crypto, I started my career in traditional finance. So I spent probably the first half of my career, too many years, in large investment banks working in traditional equity capital markets. Working on sort of.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:03:23</span></div>
+  <div class="turn-body"><p>Big billion dollar transactions for companies doing IPOs, um equity issuances, things like that. Um and yeah, I also had a secondment to a policy-side institution, where I ended up working on some of the mess that we managed to get ourselves in on the regulatory front. Uh but whilst I was there, I got to do some research on the future of capital markets and sort of. What the opportunities might be, and unlike anyone else probably in crypto, that&#x27;s actually where I kind of came across crypto property and properly got interested. Right, It&#x27;s like the first time I properly ran into smart contracts platforms and tokenization and things like that. Right, This was like twenty eighteen nineteen when these sorts of things were making a lot of noise.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:04:22</span></div>
+  <div class="turn-body"><p>And the idea really stuck with me, capital markets that anyone can reach, settle instantly, rebuild our software essentially is something that really fascinated me. I ended up going back to school to do an MBA at a business school. This was over COVID and a lot of us were stuck at home, playing around with or trading crypto. I ended up doing that during DeFi summer. I saw all of these things happening around DeFi and NFTs, watching this parallel financial system assemble itself in a few months. I decided I want to work in crypto full time. This is such an innovative space. So interesting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:05:17</span></div>
+  <div class="turn-body"><p>And basically ended up going into crypto after finishing my MBA. Pretty much joining right at the top of the market, and it&#x27;s probably been a bit of a choppier ride since then. I&#x27;ve worked across a few different places. So a permissioned blockchain attempt, which was quite a good way to plug into how institutions adopt this technology. I then spent some time at a crypto market maker and liquidity provider. And then most recently, worked at a few layer two ecosystems as well. So one focused on emerging markets. And that was quite cool to work with them and see where stablecoin dollar demand really lives. Which to me is in a lot of emerging markets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:06:15</span></div>
+  <div class="turn-body"><p>And also spent some time at a layer two trying to bridge native Bitcoin into Ethereum style DeFi and saw what it takes to bootstrap a DeFi economy with a chain with a big community, but no DeFi habit in Bitcoin. Which I guess there is like some parallel lessons to now working in the Cardano ecosystem. But to say it plainly, I&#x27;m not a Cardano native. I came up more on the Ethereum side. So apologies if I say anything that&#x27;s sacristant to the community. I&#x27;m pretty new here. But excited to build here. And excited to kickstart something really interesting in DeFi on Cardano.</p></div>
+</div>
+
+<div class="sec">What go-to-market actually does</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:07:08</span></div>
+  <div class="turn-body"><p>That was a great introduction, 登壇者A. Thank you. Walk me through the timeline briefly. How long have you been in RealFi? What does that timeline look like? Can you describe what GTM is? Educate me on the role and the function.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:07:26</span></div>
+  <div class="turn-body"><p>For sure. So I actually joined RealFi fairly recently in March. I was really attracted to the fact that it was a protocol trying to bring real world assets into DeFi through a stablecoin. All of these things really resonated with me and my background. I also like the emerging market angle that the team has. So really nice sort of meeting melting pot for me in terms of my backgrounds and what I&#x27;ve worked on before.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:08:06</span></div>
+  <div class="turn-body"><p>Go to market actually means that a stablecoin protocol like RealFi for me, it&#x27;s really like three things, right? Number one is to make sure that our tokens, our stablecoin has deep liquid and healthy markets wherever it trades. That&#x27;s the incentive designs and the liquidity is there and stays there once incentives taper, right? Which is a lot of work that we do together with the product team. But it&#x27;s also working with market makers and trading shops, who are the professionals who provide liquidity on venues. Then secondly is connecting the protocol to anything that gives it utility, so that may be decentralized exchanges, lending markets, wallets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:09:05</span></div>
+  <div class="turn-body"><p>Custodians, centralized exchanges, et cetera. And then finally also bringing in capital that stays. I spend a lot of time getting institutional allocators to come in, speak to crypto native funds, treasuries, family offices and really anyone who can also introduce me to these kind of folks. A normal week is having conversations with allocators, with people who open their stores, with trading firms and venues and potential partners who can distribute this to real users. And also obviously a lot of work working internally with our product and data and engineering teams as well.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:09:55</span></div>
+  <div class="turn-body"><p>That&#x27;s really interesting. If we were talking about Cardano, you were saying you&#x27;re still finding your way around. And we talked about roles. What are the key roles that you mentioned there that are relevant to your function? You said allocators. Are there a set of roles that you tend to focus on?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:10:22</span></div>
+  <div class="turn-body"><p>I&#x27;ve got aum You mean likeum Potential partners and that kind of stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:10:29</span></div>
+  <div class="turn-body"><p>Thinking about how you could give anyone listening an aerial map of what parts of say the industry you&#x27;re really engaging with the most.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:10:41</span></div>
+  <div class="turn-body"><p>On the liquidity side, market makers and liquidity providers. Then connecting with partner protocols, it&#x27;s again lending markets and decentralized exchanges. There&#x27;s also infrastructure partners that make the protocol work, like wallets, custodians, for example. And then, as I mentioned before, the other part of the job, once you set up the liquidity and set up the infrastructure to make things operate smoothly, is getting people to put money into our protocol so that we can then.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:11:21</span></div>
+  <div class="turn-body"><p>Go and invest that money on the back end into our strategies and deliver the yield for the token.</p></div>
+</div>
+
+<div class="sec">Explaining RealFi in one minute</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:11:28</span></div>
+  <div class="turn-body"><p>Yes, that&#x27;s great. Let me just do a bit of housekeeping. Um, as a few more people have joined, um if you&#x27;ve got the Discord stage open, there&#x27;s a chat bubble in the top right. You can open chat and ask 登壇者A questions as we&#x27;re going along, and me and 登壇者A will both be reading that chat. Um secondly if you can retweet or invite more people into the Discord, that would be great too or let&#x27;s see the numbers get up, Um, and also, 登壇者A, You know, we mocked up some questions earlier and um got some voting going on with the SPOs. So I was gonna sort of hit those questions up first. Um, sound good to you if I do them in sort of order of votes? Yeah. Okay, great. Yeah, sounds good. Um so first one is uh a delegator asks their SPO what RealFi is. Um what&#x27;s the one minute answer you&#x27;d want them to give? How would you want someone to explain RealFi?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:12:20</span></div>
+  <div class="turn-body"><p>To someone in the movie wasn&#x27;t technical or familiar with it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:12:28</span></div>
+  <div class="turn-body"><p>Sure. RealFi is a yield-bearing stablecoin protocol. I think it&#x27;s probably fair to say the first yield-bearing instrument of note on Cardano. In terms of the design, there are two tokens. There&#x27;s USD R, which is our one to one US dollar pegged liquid stablecoin, and you stake that in order to get access to the yield bearing portfolio. The yield for us comes from real world assets. I think that&#x27;s one of the sort of differentiators versus other similar products out there in the market.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:13:16</span></div>
+  <div class="turn-body"><p>Cardano, or Ethereum, or Solana, whatever it may be. Our portfolio is comprised entirely of real world assets. What that means in practice is money market funds, T bills, things like collateralized loan obligation ETFs, which are all fairly liquid yielding instruments. Then there is also the direct fintech lending and private credit element. Which is something that the team has been doing for the last four or so years, and that&#x27;s a strategy that they&#x27;ve been running for a long time and have built up a track record in that. And that&#x27;s what kind of delivers a little bit more of that juice in the APYs that we&#x27;re targeting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:14:06</span></div>
+  <div class="turn-body"><p>And is there a difference in the portfolio of U.S., D.R. and then S.U.S.D.R.? Just clarity. Do we have any? What&#x27;s the difference between those two things?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:14:18</span></div>
+  <div class="turn-body"><p>Hundred percent. So the USCR is backed by a much more liquid instruments, right? Given that private credit and direct fintech lending is a lot more illiquid. Typically the duration of the investments that we make is more like six to twelve months, and given that we have to meet the redemptions and make sure that it&#x27;s fully liquid. The backing of that is a lot more liquid instruments. That&#x27;s your sort of money market funds, T bills, Clo ETFs, all which are instruments that can be essentially sold very quickly to meet any of the redemptions.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:15:11</span></div>
+  <div class="turn-body"><p>And in terms of the design and the protocol, I think someone from our data team was on last week, and he talked a lot about the stress testing and the modeling that the team has done around ensuring the design of the protocol and ensuring that we can always meet the worst case redemption queues and scenarios that we&#x27;ve seen in the market. We&#x27;ve really spent a lot of time battle testing the protocol.</p></div>
+</div>
+
+<div class="sec">What holds the peg, and what a bad day looks like</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:15:41</span></div>
+  <div class="turn-body"><p>And that pairs well into question five. I am just going by the numbers in the chat. But what keeps USD at one dollar and what happens on a genuinely bad day?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:15:57</span></div>
+  <div class="turn-body"><p>What keeps the way you know there is an institutional mandate right forum.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:16:09</span></div>
+  <div class="turn-body"><p>Arbitrage. So we work with institutional market makers, as I mentioned before. They help arbitrage and keep the peg at one dollar. Only institutions can mint and redeem. Institutions have whitelisted addresses that we allow to arbitrage. If the price deviates from one dollar, they can buy elsewhere and arbitrage that trade, bringing the peg back to one. That&#x27;s one of the mechanisms we enable. In terms of bad, what did you say? What was a bad kind of day scenario?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:16:51</span></div>
+  <div class="turn-body"><p>I am thinking of one of those films. I can&#x27;t remember what it was called. What happens on a really bad day?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:17:04</span></div>
+  <div class="turn-body"><p>So this is something that I was alluding to. We&#x27;ve done a lot of modeling to ensure that, if a lot of the book wants out at the same time, we have the right sort of portfolio of instruments that is able to meet redemptions very quickly, especially if there are stresses in the market. It&#x27;s really about doing that modeling and back testing around the portfolio composition.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:17:38</span></div>
+  <div class="turn-body"><p>To ensure that we&#x27;ve covered all of the worst case scenarios we&#x27;ve seen in the past. And a lot of back testing and data work has gone into ensuring that we are able to cope with those scenarios.</p></div>
+</div>
+
+<div class="sec">From the chat — the Clarity Act, and the biggest milestone</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:17:55</span></div>
+  <div class="turn-body"><p>I&#x27;m just posting my rough bank of questions into the chat, so people can see them and let us know which they want us to ask, or if there&#x27;s any that we haven&#x27;t thought of. But let me just pick up a couple of questions that came in while we were talking. 参加者A wants to know, and you may not have an opinion on this, so don&#x27;t let me put you on the spot. Do you have an opinion on the potential effects based on what may or may not have happened with the Clarity Act over the next few days, weeks or months? Is that something you would talk about, or should we leave it for another office hours?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:18:36</span></div>
+  <div class="turn-body"><p>Well, I mean, I would just say, you know. You know my understanding is a lot of this stuff is still very much in flux. Um, you know the Clarity Act is. I&#x27;m not based in the US. I&#x27;m not super close to it, but uh you know there&#x27;s a lot of um you know. A lot of debate still happening I think uh around it and exactly what it would look like. Uh and so you know once. No pun intended. Once, we do actually have more clarity on exactly how it&#x27;s constituted and exactly what it says, I think you know, Obviously, that would be helpful for the market. And you know, protocols like ours will be able to plan according to today&#x27;s rules once they&#x27;re set in stone.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:19:22</span></div>
+  <div class="turn-body"><p>Thank you. 参加者B wants to know what&#x27;s the biggest milestone? I guess either 登壇者A that you&#x27;ve achieved so far or that you&#x27;re working on looking ahead.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:19:37</span></div>
+  <div class="turn-body"><p>The biggest milestone, it&#x27;s a good question. Obviously, delivering the test net for this protocol was a big initial milestone that we&#x27;re very proud of. I mean the road is long from here. It&#x27;s great that testnet is live. And thank you to everyone here who is breaking it in and helping us find the bugs or whatever it may be. The next milestone from here is obviously mainnet landing. Hopefully next month and expanding to Ethereum thereafter.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:20:34</span></div>
+  <div class="turn-body"><p>This community is very helpful and testing things and telling us what works and what doesn&#x27;t work. If there&#x27;s any frictions, we obviously want to make the product as good as it can possibly be. That&#x27;s my kind of ask for people here: help us test the product and test its functionality.</p></div>
+</div>
+
+<div class="sec">Why liquidity is existential, and what a loop is</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:21:04</span></div>
+  <div class="turn-body"><p>My recollection was that RealFi is a product that works better with economies of scale. And one of the questions I&#x27;ve got here is about liquidity and it being make or break for a stablecoin. So for those of us who aren&#x27;t DeFi natives, can you walk us through how RealFi benefits from economies of scale and why liquidity is so important?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:21:31</span></div>
+  <div class="turn-body"><p>I spent a lot of time thinking about liquidity and designing for liquidity. Obviously, liquidity is the difference between the price you see on a screen and the price you actually get. The depth of liquidity is how much you can buy or sell before you move that price. Most tokens have thin liquidity.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:22:01</span></div>
+  <div class="turn-body"><p>It&#x27;s annoying, but for a stablecoin, it&#x27;s pretty existential. You know, Like a dollar, a dollar, you could only sell at ninety eight cents. Isn&#x27;t isn&#x27;t really a dollar or a stablecoin at that point, right? So yeah. Having having the liquidity and designing liquidity around the peg is super important, right? And also liquidity. You know, Beyond giving tight prices is is what gives what gives the market confidence and then brings in other holders, which deepens more like deepens liquidity and pools and creates a flywheel. Um, And it&#x27;s also like super important for everything that we want to build on top uh in DeFi, right? So for example, like a concrete example of that is you know.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:22:57</span></div>
+  <div class="turn-body"><p>Lending markets, which are super important in DeFi. We work with Liqwid quite a lot on the lending market side, where a lending market will only accept a token as collateral if it can sell that token quickly at a fair price if a loan goes bad. If there is no depth or liquidity to do that, then there is no lending market, which means there is no borrowing, which means there is no real DeFi economy and no ability to grow through leverage looping strategies, for example, which is a popular sort of DeFi strategy for yield bearing assets like collars.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:23:39</span></div>
+  <div class="turn-body"><p>That&#x27;s kind of the area. I was being a little bit slow. Walk me through what a looping strategy is and how it might look.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:23:51</span></div>
+  <div class="turn-body"><p>This is a little bit nerdy, I guess DeFi nerdy, but something that I enjoy and spend a lot of time doing myself. Leverage loops are probably the most important growth mechanic in yield bearing stablecoins and is something that&#x27;s helped protocols like Ethena grow to fifteen billion dollars at their peak. To explain what it is, if you post a yield bearing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:24:25</span></div>
+  <div class="turn-body"><p>Token as collateral, so sUSD R in our case in a lending market. You can then borrow ordinary stable coins against it, then buy more of the yield bearing token, post that to repeat. And so each loop you add exposure on the same starting capital rate. Say if you start with ten million dollars of a yielding instrument at nine percent. At an eighty percent loan to value, you can lever that up to fifty million dollars of exposure, with forty million of that being borrowed. And then your nine percent yield on that fifty million, and say you are paying like a five percent to borrow on the forty million dollar nets. That yield basically leverages up to like twenty five percent APR on your starting ten million dollar position.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:25:22</span></div>
+  <div class="turn-body"><p>That&#x27;s obviously good for us as a protocol, because 10 million of deposits became 50 million dollars of supply. So it&#x27;s definitely a big kind of growth mechanism. I guess what I would be clear on is that looping amplifies losses as well as gains. So I&#x27;m not suggesting anyone runs five times leverage strategies on their phone, but it&#x27;s definitely a mechanic that does work well in growing DeFi and your various stables.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:26:01</span></div>
+  <div class="turn-body"><p>Do, you know, um if the audience doesn&#x27;t, it will indulge me if you don&#x27;t mindum and tell me whether this is different, right? Because like I don&#x27;t mind admitting I am an idiot. People have known me long enough, butum I was messing around on Kraken, and they had this thing calledum. Funds or challenges is really fascinating. Where like you go and buy twenty dollars, fifty dollars, ninety dollars, And uh, if you spend ninety dollars, they give you a hundred. Uh let&#x27;s say, ten k in funds to then go and trade with. But, you have to pass a challenge first. So you&#x27;ve got to get like twelve percent profit and you don&#x27;t get anything. You only get entry into spending that ten k. So the twelve percent you&#x27;ve just won in theory, we don&#x27;t get anything from it. But then, You do get uh.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:26:48</span></div>
+  <div class="turn-body"><p>Whatever it is, ten k to play with, and you can start trading and you get to keep any profit. But if it drops below a certain amount then you&#x27;re liquidated and it&#x27;s gone. And I thought that was really interesting and fascinating. Is that totally unrelated or do there is a parallel there? Do you know what I&#x27;m talking about?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:27:14</span></div>
+  <div class="turn-body"><p>In terms of this, I guess DeFi is looking to connect with a little bit more. Going into the weeds of DeFi, right? It&#x27;s definitely amplifying risk. You are taking on more risk if you are doing it. It&#x27;s definitely something if you kind of want to read up on.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:27:35</span></div>
+  <div class="turn-body"><p>Entry to that challenge. So from like a mathematical point of view, or however, you want to a risk management point of view, they&#x27;re gaining most of those entry fees aren&#x27;t they and then, Of the ones that make it, they then have to have a performance metric, otherwise they get liquidated. So I thought that was just fascinating in terms of how they make it profitable. Um, but perhaps I&#x27;ve I&#x27;ve taken us off on a detour. Sorry. And I am not making i am not recommending Kraken. This is not financial advice either just just for the record, you know? Um 参加者C sorry, 参加者C&#x27;s asked a question and anyone listening, please if you got questions, put them in chat 登壇者A&#x27;s here.</p></div>
+</div>
+
+<div class="sec">Private credit — staying liquid, and pricing what has no price</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:28:16</span></div>
+  <div class="turn-body"><p>Really, more for you than he is for me. 参加者C asks, &#x27;How do you keep USD risk liquid and safe when part of the reserves are in private credit and direct lending?&#x27;</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:28:33</span></div>
+  <div class="turn-body"><p>That kind of goes back to what we were discussing a little bit earlier. On the composition of the portfolio, the stress testing that we&#x27;ve done, looking at scenarios like what a bad day in the market looks like and planning around all of these things. And making sure that our portfolio comprises the right portion of liquid instruments in its makeup. And yes, whilst some of that sort of</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:29:06</span></div>
+  <div class="turn-body"><p>Higher yielding stuff is coming from more illiquid instruments like private credit and direct lending. The vast majority of the assets in the portfolio are highly liquid instruments like money, market funds and T - bills, Which can be liquidated on a sort of either instantaneous or worst case on a sort of T plus one basis, and CLO ETFs, which again are sort of T plus two to T plus five. And deliver like a higher yield, right? So, yeah, Like the vast majority of the bucket is highly liquid instruments that are designed to to meet any bad scenario.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:29:48</span></div>
+  <div class="turn-body"><p>That we&#x27;ve seen before. I&#x27;ll put you on the spot here. But, how do you price an asset in private credit where it doesn&#x27;t have a price? I think if I recollect the question.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:30:02</span></div>
+  <div class="turn-body"><p>There were some assets on there where they may not have met the market. They may not have a price, but you have to manage the risk. Is that right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:30:21</span></div>
+  <div class="turn-body"><p>So I am not a private credit kind of professional. These are basically real world deals where we lend capital to real borrowers. Some of the things that we may look to lend to are fintechs that are investing in opportunities and capital constrained markets, where the yield may be high, places in emerging markets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:30:57</span></div>
+  <div class="turn-body"><p>Typically, more capital constrained than they are in Western Europe and the US. But they&#x27;re all asset backed opportunities with credit enhancements. All pretty non risky stuff, but with nice yields because of that capital constraint in those markets. At the end of the day, the folks that are receiving the capital, like the things that we invest through these fintechs in the end are real borrowers with contractual interest payments. There&#x27;ll be full reserves on with, folks will be able to check what we&#x27;re allocating the capital to. These opportunities are valued by independent parties as well. There is a sort of a fund administrator that we report to. Who won&#x27;t publish any figures that they disagree with.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:31:55</span></div>
+  <div class="turn-body"><p>And say there are specialist firms that actually value the book and what the lending positions that we lend to actually look like. And what flows into the value of stake USD R and independent specialist underwriters who work with auditors, like proof of reserve auditors and the likes. There is again, I&#x27;m not a private credit expert, but there&#x27;s a lot of folks that we work with that are. Obviously, two people from our investment team, I think will be coming up in a few weeks. Definitely brought them on this.</p></div>
+</div>
+
+<div class="sec">What a market maker is</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:32:36</span></div>
+  <div class="turn-body"><p>Let&#x27;s go back to basics. I&#x27;m working through the questions in chat. What is a market maker? Give me the TL;DR. What is a protocol like RealFi, and why do they work with market makers?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:32:53</span></div>
+  <div class="turn-body"><p>I guess I mentioned that before in terms of the liquidity and the importance of liquidity. And I spent a little bit of time working at a market maker myself. It&#x27;s basically a professional firm that stands there and quotes prices ready to buy and sell. They provide the depth and the peg defense. When a market is genuinely stressed, they stand there across the venues they operate and provide liquidity for everyone and provide the depth to maintain the peg.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:33:44</span></div>
+  <div class="turn-body"><p>It&#x27;s hard to make DeFi happen without professional firms with balance sheets behind them that stand ready to provide liquidity in all market scenarios. And I guess going back to that point, we spoke about earlier on keeping the peg and the machinery behind it, we need an institution that can always mint and redeem U S C R at exactly one dollar. So that if the price moves down to.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:34:15</span></div>
+  <div class="turn-body"><p>Say ninety nine cents somewhere else, they can buy it there, redeem at a dollar and push the price back. So these farms help us keep the peg, do the arbitrage trade that makes it constant. Also provide depth and liquidity on partner venues whether that&#x27;s in decentralized exchanges etc.</p></div>
+</div>
+
+<div class="sec">Growth, and who is actually paying the yield</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:34:41</span></div>
+  <div class="turn-body"><p>A lot of times in there, There are real reasons why people want to see an open financial operating system, and they want to see these tools democratized. And those are important. So I&#x27;m not dismissing this at all. It&#x27;s a large reason why we&#x27;re here. But as I&#x27;ve worked with the teams and professionals like you, 登壇者A, I developed this thesis or I learned that really it&#x27;s also about like growth, Like naming the game, which is growth in Web 3, and growth is defined by some as capital productivity, right? And I&#x27;m remembering this quote from someone. He said like, where there&#x27;s a yield, there&#x27;s a way. So I&#x27;m kind of hearing that in, I&#x27;m trying to zoom out a little bit for the less technical. Although actually probably here everybody is way more technical than me. But is that the case? It is about a yield? That is ultimately what&#x27;s going to drive activity on RealFi and Cardano and attract people? What are your thoughts?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:35:42</span></div>
+  <div class="turn-body"><p>Whether it&#x27;s only about yield, and this is I&#x27;m kind of going off kilter here, but like you know, and how ecosystems really are going to get growth. So we&#x27;ll find maybe a lighthouse win for Cardano. That&#x27;s what I&#x27;m hoping. And that TVL can be brought to Cardano. But what are your thoughts on growth and what growth means and really how growth is driven in these Web three ecosystems, independent of Cardano, reference Ethereum or Solana or any other ecosystem? What are your thoughts?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:36:24</span></div>
+  <div class="turn-body"><p>I mean there are many ways to answer this. I guess to go back to the yield. You know there are farms out there that provide triple digit APYs and if we&#x27;re talking about sort of eight to ten percent, like why should anyone care? How is this an opportunity that anyone should care about? And how does it deliver growth? From my perspective, I think the financial world now is becoming like the blockchain space, is becoming a lot more institutional.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:37:05</span></div>
+  <div class="turn-body"><p>At least in my opinion, I think there are three things making a lot of waves in the market. There is stablecoins. There is already three hundred billion dollars worth of stablecoins today. Big banks project that to be more than ten times in the next five years. And then there is tokenization of real world assets. And a lot of financial instruments like funds, credit funds, and equities coming on chain and people being able to use them in vaults and on chain packaging layers that make those assets more productive. I guess going back to yield. Yield is someone.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:38:03</span></div>
+  <div class="turn-body"><p>Someone is paying someone else for something, right? So like I guess the first question is, You know not how big is the number, but who is who&#x27;s paying it? And why. And like in our case, right again it&#x27;s like it&#x27;s real borrowers paying contractual durable interest. Um and yeah, there&#x27;s like other, you know protocols out there, you know it may be. Paying funding rates, like with a project like Ethena, and yeah, that&#x27;s real, but it&#x27;s pretty cyclical. Or, it might be a token treasury printing emissions on its own token to pay you right, which which is yield, but it&#x27;s it&#x27;s more yeah It&#x27;s not really real. It&#x27;s like dilution with a countdown. So I think for me, It&#x27;s like always important to kind of ask who who&#x27;s paying the yield and why? And if you can&#x27;t answer that I guess you are the yield. Um.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:39:01</span></div>
+  <div class="turn-body"><p>But I think you know. Also, if you see massive triple digit APYs, typically that&#x27;s the market&#x27;s telling you there is a risk of losing everything usually. So that&#x27;s typically a bit of a warning label as well. But I think this is what attracted me to join this project. And I think users should judge collateral like a lender would and ask questions around what backs it. Can you verify it? How deep is the liquidity if you want to get out of that instrument? We discussed already what happens on a bad day or with stressed markets and volatility. And I think people need to judge different assets on what backs them.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:39:53</span></div>
+  <div class="turn-body"><p>The liquidity around them, and I think that&#x27;s why what we&#x27;re working on and what we&#x27;re building is designed to stand up to today&#x27;s tests and deliver something real and deliver something that&#x27;s fair. Deliver something that should hopefully be attractive to the market. There is also something that interests institutions and increasingly funds and capital allocators and institutions that are coming on chain and want to allocate into these instruments. They&#x27;re all kind of dipping their toes and they&#x27;re interested in these kinds of things.</p></div>
+</div>
+
+<div class="sec">The clearest product-market fit so far</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:40:28</span></div>
+  <div class="turn-body"><p>It&#x27;s interesting. So kind of circling around two things here. So I&#x27;m going to kind of ask you directly, like not just RealFi, But what do you think are the most interesting product market fits that you&#x27;ve seen in web three? Because we&#x27;ve talked or gone around a few different examples like financial instruments, but where do you think the best product market fit is so far? Stablecoins is one.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:40:56</span></div>
+  <div class="turn-body"><p>I mean, there&#x27;s definitely stablecoins for me. Given if you look at crypto market cap or well in general, obviously, that number has probably fallen quite a lot over the last year or twelve months or whatever it is, but stablecoins continue to grow. You look at stablecoins market cap. It continues to grow, pretty smoothly. There&#x27;s no drawdowns that obviously tells you that people increasingly want to use stablecoins. And again, from my previous experiences at working at places focused on emerging markets. You look at places like Nigeria, Argentina, like those types of places people do their day-to-day work.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:41:48</span></div>
+  <div class="turn-body"><p>Business and run their lives on stablecoins because those markets aren&#x27;t as easy to get US dollar fiat access with, and their local currencies are highly inflating. Stablecoins there are just like a massive product market fit. And then I don&#x27;t know, at least in my opinion, you add a US dollar denominated yield into the mix like ours. Again, I think that&#x27;s a no brainer for a lot of people in those markets. To be able to save in US dollars and get an attractive yield, in a market where the local currencies have such high inflation, is very attractive. And then I think increasingly as I kind of was leading to like the tokenization of real world assets and putting them on chain and making them more composable. For example, I don&#x27;t know if you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:42:45</span></div>
+  <div class="turn-body"><p>Hold like a tokenized stock, being able to go on an on-chain lending market and borrow stablecoins against that, whilst still holding the position is something that you can&#x27;t do unless you are like a high net worth individual in traditional financial markets. Typically, that&#x27;s basically like getting a margin loan, which is usually reserved for like higher net worth people via brokers or who have access to brokers. So I think we&#x27;re going to see more and more growth of these real world financial instruments coming on chain, and people becoming more and more financially interested and literate, and doing more cool and interesting things with those assets that are coming on chain. So I&#x27;m pretty excited about these trends in particular.</p></div>
+</div>
+
+<div class="sec">Tools for judging collateral, and transparency</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:43:35</span></div>
+  <div class="turn-body"><p>Inspect books or evaluate types of credit. Are there any specific tools that you use regularly or educational resources you direct people to regularly, like your top two or three that come to mind.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:44:01</span></div>
+  <div class="turn-body"><p>There&#x27;s a bunch of crypto tools out there. I&#x27;ve spent the last four or five years playing around with crypto quite a bit. There are a bunch of data sources out there like DefiLlama, which is pretty good at telling you about different yields and what might be backing them. There are more and more institutional providers that teach you about vaults and what looks like a good vault or not. I was looking at a platform called Cerberus.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:44:37</span></div>
+  <div class="turn-body"><p>The other day, which gives risk ratings to vaults. The sort of backing for a bunch of different protocols and their sort of op risk setups and all that kind of stuff. But I guess that&#x27;s something that we&#x27;re trying to do is introduce as much transparency as possible. And what we&#x27;re doing is providing as much transparency into live data views of what&#x27;s backing the tokens and doing these weekly attestations on the private credit book. Really introducing as much transparency possibly can into people having a live view of what backs the asset on chain. Which not everyone does. There&#x27;s definitely been some other blow ups.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:45:33</span></div>
+  <div class="turn-body"><p>In the last six months or so, people have not been doing this properly or sort of marking their own homework, rather than using independent verifiers on the backing of different assets. It&#x27;s definitely something that we take very seriously. And I think also generally the DeFi market is forcing people to take this more seriously as well. Again, there have been so many blow ups that I think unfortunately a lot of institutions are being burnt or are wary of getting burnt.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:46:03</span></div>
+  <div class="turn-body"><p>And they&#x27;re kind of forcing the market to do this anyway. I do think I am hoping that the space matures with us and does a lot of this stuff. So moving.</p></div>
+</div>
+
+<div class="sec">What success looks like in twelve to eighteen months</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:46:19</span></div>
+  <div class="turn-body"><p>From where we are today and looking ahead, say twelve months from now, eighteen months from now, what does success look like for you and for GTM? And what can the community do to help if anything?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:46:40</span></div>
+  <div class="turn-body"><p>Hundred percent. TVL matters and my role is kind of measured solely on that metric. I would say, obviously, TVL isn&#x27;t Cardano&#x27;s strength point right now. There&#x27;s obviously an amazing crypto community or an amazing community behind Cardano, and there&#x27;s obviously so much in stake data out there. I guess hoping that some of that moves into protocols like us, which are delivering an institutional grade sort of yield protocol for the first time on Cardano. I hope some of that capital translates into TVL into our protocol. But beyond sort of just TVL, like you know it&#x27;s not the only number that matters.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:47:38</span></div>
+  <div class="turn-body"><p>It&#x27;s also easy to fabricate, and you can buy it with rent liquidity. So for me personally, what does success look like? It&#x27;s having a stablecoin that has a tight peg that trades well. It has large pools in order to be able to swap and absorb swaps before the price moves. It&#x27;s working with our DeFi partners on getting utilization up and the lending market side of things. It&#x27;s now having integrations that get used rather than just announced. And generally working with distribution partners. I am excited about the future of partnering with fintechs in emerging markets, for example, where I think there is a lot of use case and need for our product.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:48:36</span></div>
+  <div class="turn-body"><p>And getting institutional allocators to come in, deposit money with us and build trust and build that capital base of institutional holders that stick around. If they stick around, we can obviously typically tie up our money for a longer time and deliver a better yield for everyone else as well.</p></div>
+</div>
+
+<div class="sec">What SPOs can do — the dark forest</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:48:58</span></div>
+  <div class="turn-body"><p>So yeah, that&#x27;s kind of the things that I am focused on growing. That was a nice segue. One of the, Questions I was looking at, it&#x27;s in the chat by the way. I&#x27;ve been marking off what we&#x27;ve been going through. Was about what verified SPOs fit into in terms of you know GTM and what the operator community can do for growth that marketing spend can&#x27;t. And just setting us up here, I actually linked a couple of images, I put them in the chat because I was on a call earlier. Yeah yeah well, I&#x27;m gonna answer it yeah, I&#x27;m gonna put the question to myself but This one&#x27;s for you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:49:32</span></div>
+  <div class="turn-body"><p>This one&#x27;s for you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:49:34</span></div>
+  <div class="turn-body"><p>I like this idea called dark forest theory. It&#x27;s that as AI comes along, people are going to retreat, and everything&#x27;s astroturfed and everything becomes bot activity. People are going to retreat into the cozy web, into private telegrams, discords, in person meetups, this kind of stuff. To illustrate the point, I&#x27;ve put it in chat for anyone here. Fifty percent fifty to eighty percent of internet activity is bots according to Cloudflare. Cloudflare even. And on chain activity at least Solana, I think it was is like ninety percent is bots. And I think one of the things that&#x27;s really special about SPOs is that they are trusted infrastructure, and they have relational capital with their delegators. And so I think one thing that an accelerator program does a couple of things actually is.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:50:29</span></div>
+  <div class="turn-body"><p>You&#x27;ll be able to take on chain activity and just to be clear, I&#x27;m not saying KYC AML or anyone gets doxxed, But I&#x27;m saying you can look at the online activity and the on chain activity. And if people are claiming points uh to verify to claim the points, you&#x27;ll be able to have a much higher degree certainty that they&#x27;re real humans. And I think that the accelerator program, the SPOs are building out here is novel in that respect. I&#x27;m not aware of um Anything similar and I I didn&#x27;t plan I&#x27;ll be honest, something I didn&#x27;t plan it when this kind of emerged from talking to SPOs. So it&#x27;s um but I think it&#x27;s novel, it&#x27;s really interesting. And, then the second thing is um I see some of the Japanese SPOs here, But also thinking about kind of a uh train the trainer or an educate the educator model where presentation materials or topics that might be important to an SPO.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:51:25</span></div>
+  <div class="turn-body"><p>Can be taken to their delegators, so you&#x27;ll be able to get out of traditional marketing distribution channels. And you&#x27;ve got people that are able to advocate. Some of those things they might advocate for is, obviously, let&#x27;s try and increase the decentralization of Cardano&#x27;s network because we want to see single pool operators attract that delegation. I know someone from a community organisation is going to slap my wrist because there may be one or two SPOs that aren&#x27;t strictly single pools, but broadly it&#x27;s like ninety five percent, ninety seven percent. The point about that is there were multiple MPOs, multiple pool operators that have a lot of stake, and we&#x27;d like to see that go to more stake pool operators so that they&#x27;re more viable. There is a sweet spot somewhere between one million twelve million. Somebody will better tell me in chat.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:52:18</span></div>
+  <div class="turn-body"><p>That makes the rewards more predictable and therefore, the business or the stake pool more viable. Other examples that I think are important is, you know, Cardano&#x27;s network activity too. We&#x27;ve talked about ecosystem growth and you know, essentially it&#x27;s about attracting capital and making capital productive. One of the things I&#x27;m talking about with Japanese SPOs is there&#x27;s a lot of ADA in Japan. That&#x27;s relatively idle, and I think that there is an argument to be made that yeah, You know, maybe in the past, it was thought of as staking was your duty. You know if you were an ADA holder, if you staked, you were fulfilling your end of the network. You know, but I think that now maybe economic activity is something that you know an argument could be made for that. That if you&#x27;ve got capital what could you be doing with it? You know to drive activity on Cardano and actually just by.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:53:17</span></div>
+  <div class="turn-body"><p>Two thoughts came into my head as we were talking. I saw something on X about a lot of LATAM is getting into Cardano, I think also. And then I saw Cardano&#x27;s founder talking about Cardano needing a new narrative as well. And I think that these are critical parts to that. So if you have to hold me accountable, 登壇者A, but my answer to you know what do SPOs do? And and why are they so important? And it&#x27;s nascent, by the way. This is a program we&#x27;re building out here, right in flight. But those are some of the reasons that I think the SPOs are valuable. And there&#x27;s some real gives and gets in terms of SPOs getting awarded, delegators being awarded, and RealFi having a strong incentive to work with SPOs and delegators. Um, but sorry 登壇者A, I&#x27;ve probably took the mic there for too long. But.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:54:19</span></div>
+  <div class="turn-body"><p>Hundred percent. As I said, I am really new to the Cardano ecosystem. The work you&#x27;ve been doing on that front is super interesting for me, and I am getting up to speed myself. If there is any way any of what I previously said resonated with you, and you need any help in connecting with myself or any of the work that I am doing on the growth and partnership side as it is relevant for SPOs, then let me know.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:54:51</span></div>
+  <div class="turn-body"><p>DMs are open.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:54:52</span></div>
+  <div class="turn-body"><p>And happy to help.</p></div>
+</div>
+
+<div class="sec">Mainnet and what comes after</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:54:53</span></div>
+  <div class="turn-body"><p>And obviously, if you listen to the questions in chat, butum Cardano is our home turf; it&#x27;s where RealFi is being launched. But once the bulk of your work&#x27;s done during testnet, 登壇者A, how are we thinking about mainnet? Where are we going? What have the community got to look forward to?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:55:23</span></div>
+  <div class="turn-body"><p>Again, a lot of this is that there&#x27;s going to be several phases. And again, it&#x27;s as I kind of alluded to before. It&#x27;s not just Cardano, but also expanding to Ethereum as well down the line, which is where the deep stablecoin liquidity already lives, where a lot of the professional loopers already live. In terms of that looping strategy that I was speaking to before about and a lot of the institutional capital lives. But coming back to it, the idea is that the TVL accrues back to Cardano. The assets sit on Cardano. So even when the activity happens on Ethereum, it comes back to Cardano. There&#x27;s a lot of interesting things where.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:56:13</span></div>
+  <div class="turn-body"><p>It was part of design for that, And um you know, designing for a dollar being minted on Ethereum still counting for Cardano. TVL is is exciting. Um, but yeah I think to bring it back to Cardano mainnet. The interesting things will be, you know, some of the stuff I talked about earlier, right? Like standing up, proper liquidity. And you know all the work we&#x27;re doing on making sure that we have the right liquidity pools on. You know, SundaeSwap, which is our main sort of DEX partner. Enabling that. We&#x27;re doing some interesting things on the lending market side as well with Liqwid, right? Where folks will be able to For example, You know, there&#x27;ll be an isolated market where folks will be able to borrow USDC against their ADA collateral. And deploy it back into into our yield bearing instrument, right, which enables you to.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:57:11</span></div>
+  <div class="turn-body"><p>Keep hold of your ADA stake and the staking yield on it. You are not selling it; you are not letting go of that. You are borrowing against it, and then you are able to also deploy those borrowed funds into a yield product that has our target to deliver a much higher yield than the cost to borrow. It&#x27;s a positive carry trade rate. It&#x27;s an interesting opportunity. Designing those strategies and working with the protocols in the Cardano ecosystem to bring as much utility to the first sort of yield bearing instrument on Cardano, I think it&#x27;s going to be really exciting. I am looking forward to launching those things when Cardano mainnet launches.</p></div>
+</div>
+
+<div class="sec">Which introductions help, and closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:57:58</span></div>
+  <div class="turn-body"><p>It&#x27;s going to be pretty cool. I already know from blowing through DMs that not every DM or opportunity is necessarily a qualified one. Are there any qualified introductions or connections that you would want to hear from or about, or for people to make to you?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:58:24</span></div>
+  <div class="turn-body"><p>No. I mean like any partner that brings utility or helps us expand distribution or brings us a trust angle. Whether it&#x27;s in the Cardano ecosystem or elsewhere, we appreciate any leads. We&#x27;re all working in this community together. On the off chance you happen to run a fund or a treasury or a family office, or know some folks doing those things, then please feel free to make any intros. I&#x27;ll always say that I definitely don&#x27;t do this Discord thing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:59:02</span></div>
+  <div class="turn-body"><p>If you DM me on Discord, it&#x27;s not going to reach me. Feel free to DM me on X or Twitter. Are we setting up?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:59:10</span></div>
+  <div class="turn-body"><p>Are we setting up? So give 登壇者A a follow on X where I want to break. One K. He&#x27;s currently on one hundred, so that&#x27;s a stretch target.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:59:28</span></div>
+  <div class="turn-body"><p>I am putting you for the whole tweeting thing. I&#x27;m a bit old school.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:59:33</span></div>
+  <div class="turn-body"><p>But</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:59:35</span></div>
+  <div class="turn-body"><p>Just the flag. If you do DM me on Discord, I will not read it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:59:39</span></div>
+  <div class="turn-body"><p>And thank you everybody for that, that&#x27;s joinedum and joined in. I am doing a bit of housekeeping. I am going to get better at doing summaries. I am talking to the marketing team about how we could use some of this content so it&#x27;s easier to access asynchronously. I&#x27;ll follow up with the summary. Hopefully, we&#x27;ll be able to do more with the RealFi content and get it out in more places. Thank you again, 登壇者A. I&#x27;ll give you the final word. Any last thoughts?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">01:00:20</span></div>
+  <div class="turn-body"><p>Honestly, keep testing the protocol and playing around with it. Let us know what you like and what you don&#x27;t like. Any intros or things that may be valuable, you think may be valuable to us? Please let me know via DM. And otherwise, there&#x27;s some really cool stuff coming in the coming weeks and months. I&#x27;m really excited about launching mainnet and unlocking some DeFi opportunities in the Cardano community.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">01:00:55</span></div>
+  <div class="turn-body"><p>For the first time with a proper sort of pre or last step back your protocol. Hopefully you&#x27;re all excited too.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">01:01:08</span></div>
+  <div class="turn-body"><p>Thanks for having me.</p></div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original, unedited apart from anonymisation and product-name corrections.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All sessions</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>

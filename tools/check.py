@@ -34,8 +34,12 @@ NAMES = {
     ],
     "2026-08-06-office-hours-gtm": [
         # 話者・言及された同僚・質問者
-        "Sonny", "Sunny", "Sandy", "Vlad", "John", "David", "Harry",
+        "Sonny", "Sunny", "Sandy", "Senny", "Vlad", "John", "David", "Harry",
         "Bashir", "Mauricio", "Rich", "ECP",
+        # 公式録音の話者ラベル・呼びかけられたハンドル名
+        "Ben", "Doc", "Manesh", "NB", "Paul", "Scoot", "Stakepool",
+        # 第三者の実名。この回は匿名化の対象なので、公開回の人物でも役割で書く
+        "Charles", "Hoskinson",
         # 経歴から個人が特定できるため業種の記述に置き換えたもの
         "UBS", "Keyrock", "Lisk", "R3", "Brexit",
     ],
@@ -48,9 +52,10 @@ SHARED_NAMES = sorted({n for names in NAMES.values() for n in names})
 # 匿名化したファーストネームと綴りがぶつかるだけで、別人。
 # 「この文字列そのもの」を除いてから検索する。フルネームだけを許可すること。
 SHARED_ALLOW = [
-    "Ben Lam",      # Ben Lamm（Colossal 創業者）— 誤変換表に載せている
+    "Ben Lam",           # Ben Lamm（Colossal 創業者）— 誤変換表に載せている
     "Ben Lamm",
     "Peter Thiel",
+    "Charles Hoskinson", # 2026-07-26 の回のゲスト。フルネームでのみ許可する
 ]
 
 VOID = {"meta", "link", "br", "hr", "img", "input", "source"}

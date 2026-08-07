@@ -75,7 +75,11 @@ def build(d):
     if m:
         source_link = ('\n  <a href="%s"><span class="l-ja">元の録画</span>'
                        '<span class="l-en">Original recording</span></a>' % m.group(1))
-    if chatham:
+    if chatham and "product_names_corrected: true" in meta_text:
+        # 匿名化に加えてプロダクト名の誤変換を直している回
+        en_label = "匿名化とプロダクト名の修正以外は未編集"
+        en_label_en = "Unedited apart from anonymisation and product-name fixes"
+    elif chatham:
         en_label, en_label_en = "匿名化以外は未編集", "Unedited apart from anonymisation"
     else:
         en_label = "固有名詞の誤変換を修正済み"

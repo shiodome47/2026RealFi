@@ -665,6 +665,17 @@ code {
   opacity: 0.8;
 }
 
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
 .turn-body > p:last-child { margin-bottom: 0; }
 
 .turn-body { min-width: 0; }
@@ -730,7 +741,8 @@ footer {
   h2 { font-size: 1.125rem; }
   .turn { grid-template-columns: 1fr; gap: 0.2rem; }
   .turn-who { padding-top: 0; }
-  .turn-who em { display: inline; margin-left: 0.4rem; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
 }
 
 @media print {

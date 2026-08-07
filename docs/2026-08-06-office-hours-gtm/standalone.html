@@ -1,0 +1,3295 @@
+<title>RealFi Office Hours — Go To Market / GTM 回</title>
+<style>
+/* Cardano セッションのアーカイブ — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.1rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.5rem; }
+
+strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+.jump-top {
+  margin: 2.2rem 0 0; padding: 0 0 1.4rem;
+  border-top: none; border-bottom: 1px solid var(--border);
+}
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours</p>
+<h1><span class="l-ja">GTM 回 — 利回りは、誰が払っているのか</span><span class="l-en">Go To Market — who is actually paying the yield?</span></h1>
+<p class="meta"><span>2026-08-06</span><span>Discord</span><span><span class="l-ja">進行役 1 名＋登壇者 1 名</span><span class="l-en">1 host + 1 guest</span></span><span>1:01:12</span>
+</p>
+
+<nav class="jump jump-top" aria-label="このページの構成 / Page contents">
+  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+</nav>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>go-to-market とは、ステーブルコインに<strong>深い流動性</strong>・<strong>使い道</strong>・<strong>居つく資本</strong>の 3 つを作る仕事だと説明された回。<br>
+  そしてその 3 つすべてが、「その利回りは誰が払っているのか」という 1 つの問いに支えられている。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>GTM の中身は 3 つ</strong> — ①どこで取引されても深く健全な市場を保つ ②DEX・レンディング市場・ウォレット・カストディアンなど<strong>使い道</strong>につなぐ ③<strong>居ついてくれる資本</strong>を連れてくる。</li>
+  <li><strong>mainnet は「うまくいけば来月」。</strong>そのあと Ethereum に展開するが、<strong>資産は Cardano にあり、Ethereum で mint された分も Cardano の TVL として数えられるよう設計した</strong>と説明された。</li>
+  <li><strong>利回りの見分け方は「誰が払っているか」。</strong>実在の借り手の契約利息か、ファンディングレート（本物だが循環的）か、自分のトークンの発行（＝「カウントダウン付きの希薄化」）か。<strong>答えられないなら、自分が利回りの出所</strong>。</li>
+  <li><strong>成長の主機構はレバレッジループ。</strong>元手 1,000 万ドルが 5,000 万ドルのエクスポージャーになり、実効 25% APR になる数値例が示された。<strong>同じ倍率で損失も増幅する</strong>と明示的に注意された。</li>
+  <li><strong>USDR の裏付けは流動性の高いものに寄せてある</strong> — マネー・マーケット・ファンド、T-Bill、CLO の ETF。プライベートクレジットと直接融資は「上乗せ」の側で、期間は 6〜12 か月。ペッグは<strong>ホワイトリストされた機関だけ</strong>が mint・redeem できるアービトラージで保つ。</li>
+  <li><strong>進行役から「暗い森」理論。</strong>bot が増えるほど、<strong>デリゲーターとの関係資本を持つ SPO の価値が上がる</strong>という筋立てで、SPO アクセラレータープログラムの狙いが説明された。</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>この回はチャタムハウスルールの対象です。</strong>内容は共有できますが、<strong>誰が発言したかは書きません</strong>。以下では発言者を「進行役」「登壇者A」といったラベルでのみ扱い、経歴のうち勤務先・学校名・出向先は業種の記述に置き換えています。</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#gtm"><span class="n">01</span>go-to-market は何をする仕事か</a></li>
+  <li><a href="#tokens"><span class="n">02</span>USDR と sUSDR — 何が裏付けているか</a></li>
+  <li><a href="#peg"><span class="n">03</span>1 ドルを保つ仕組み</a></li>
+  <li><a href="#liquidity"><span class="n">04</span>流動性はなぜ死活問題か</a></li>
+  <li><a href="#loop"><span class="n">05</span>レバレッジループ</a></li>
+  <li><a href="#credit"><span class="n">06</span>値のつかないものを、どう値付けするか</a></li>
+  <li><a href="#yield"><span class="n">07</span>利回りは誰が払っているのか</a></li>
+  <li><a href="#pmf"><span class="n">08</span>効いているプロダクトマーケットフィット</a></li>
+  <li><a href="#success"><span class="n">09</span>12〜18 か月後の成功の姿</a></li>
+  <li><a href="#spo"><span class="n">10</span>SPO に何ができるか — 暗い森</a></li>
+  <li><a href="#mainnet"><span class="n">11</span>mainnet とその先</a></li>
+  <li><a href="#overall"><span class="n">12</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">13</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">14</span>持ち帰りになった質問</a></li>
+</ol>
+</div>
+
+
+<h2 id="gtm">1. go-to-market は何をする仕事か</h2>
+<p class="deck">「マーケティング」ではない。流動性・使い道・資本という 3 つの配管を通す仕事だと説明された。</p>
+
+<p>ステーブルコインのプロトコルにおける go-to-market は、次の 3 つだと整理されました。</p>
+
+<ul>
+  <li><strong>流動性をつくり、残す。</strong>トークンが取引されるあらゆる場所で、深く健全な市場を持つこと。インセンティブを設計し、<strong>インセンティブが細ったあとも流動性がそこに残るようにする</strong>。マーケットメイカーやトレーディング会社と組む仕事でもある</li>
+  <li><strong>使い道につなぐ。</strong>DEX、レンディング市場、ウォレット、カストディアン、中央集権取引所など、トークンに実用性を与えるもの</li>
+  <li><strong>居つく資本を連れてくる。</strong>機関投資家のアロケーター、crypto ネイティブのファンド、トレジャリー、ファミリーオフィス</li>
+</ul>
+
+<p>「普通の一週間」の中身として挙げられたのは、アロケーター・トレーディング会社・取引の場・流通のパートナーとの対話と、社内のプロダクト／データ／エンジニアリングとの調整でした。</p>
+
+<p>RealFi への参加は <strong>2026 年 3 月</strong>と述べられています。<strong>Cardano ネイティブではなく Ethereum 側の出身であること</strong>は本人から明言され、コール中で 2 度繰り返されました。</p>
+
+
+<h2 id="tokens">2. USDR と sUSDR — 何が裏付けているか</h2>
+<p class="deck">2 つのトークンは、利回りの高さではなく「どれだけ速く現金にできるか」で分かれている。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="USDR は流動性の高い資産で裏付けられ、ステークして得る sUSDR にはプライベートクレジットの上乗せが乗るという二層構造の図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="280" height="180" rx="8" class="d-box"/>
+  <text x="40" y="58" class="d-t">USDR</text>
+  <text x="40" y="80" class="d-s">1 対 1 で米ドルにペッグ。いつでも動かせる</text>
+  <line x1="40" y1="94" x2="280" y2="94" class="d-line"/>
+  <text x="40" y="118" class="d-s">マネー・マーケット・ファンド</text>
+  <text x="40" y="140" class="d-s">T-Bill</text>
+  <text x="40" y="162" class="d-s">CLO の ETF</text>
+  <text x="40" y="192" class="d-s d-a">即時〜T+1、CLO ETF は T+2〜T+5 で現金化</text>
+
+  <line x1="308" y1="120" x2="368" y2="120" class="d-line-accent" marker-end="url(#m1)"/>
+  <text x="338" y="110" class="d-s d-a" text-anchor="middle">stake</text>
+
+  <rect x="380" y="30" width="280" height="180" rx="8" class="d-box-accent"/>
+  <text x="400" y="58" class="d-t">sUSDR</text>
+  <text x="400" y="80" class="d-s">USDR をステークして得る。利回りを受け取る側</text>
+  <line x1="400" y1="94" x2="640" y2="94" class="d-line"/>
+  <text x="400" y="118" class="d-s">上の流動資産に加えて</text>
+  <text x="400" y="140" class="d-s">フィンテックへの直接融資</text>
+  <text x="400" y="162" class="d-s">プライベートクレジット</text>
+  <text x="400" y="192" class="d-s d-a">投資期間は通常 6〜12 か月。APY の上乗せ分</text>
+
+  <text x="340" y="240" class="d-s" text-anchor="middle">ポートフォリオは全額が実世界の資産。crypto ネイティブな運用に依存しない</text>
+</svg>
+<p class="figcap">USDR 側は「償還に応えられること」を優先し、利回りを厚くする部分は sUSDR 側に置く、という分け方です。</p>
+</div>
+
+<p>プライベートクレジットと直接融資の戦略は<strong>チームが 4 年ほど運用してきたもの</strong>で、そのトラックレコードが APY の上乗せ部分を生んでいる、と説明されました。</p>
+
+<div class="term">
+<p class="term-name">CLO の ETF <small>collateralized loan obligation ETF</small></p>
+<p><span class="badge">補足</span>企業向けローンを大量に束ねて証券化したものが CLO で、その持ち分を上場投資信託の形にしたのが CLO ETF です。個別のローンと違い<strong>取引所で売れる</strong>ため、T-Bill ほど即座ではないものの数日で現金化できます。コール中では T+2〜T+5 と述べられました。</p>
+</div>
+
+
+<h2 id="peg">3. 1 ドルを保つ仕組み</h2>
+<p class="deck">保っているのはアルゴリズムではなく、ホワイトリストされた機関のアービトラージ。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="市場価格が99セントに下がったとき、ホワイトリストされた機関が市場で買い1ドルで償還することでペッグが戻る流れの図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="52" width="150" height="76" rx="7" class="d-box-warn"/>
+  <text x="91" y="82" class="d-t" text-anchor="middle">市場価格が</text>
+  <text x="91" y="104" class="d-t d-w" text-anchor="middle">0.99 ドル</text>
+
+  <line x1="172" y1="90" x2="222" y2="90" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="228" y="52" width="150" height="76" rx="7" class="d-box-accent"/>
+  <text x="303" y="80" class="d-t" text-anchor="middle">機関が市場で</text>
+  <text x="303" y="102" class="d-t" text-anchor="middle">安く買う</text>
+
+  <line x1="384" y1="90" x2="434" y2="90" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="440" y="52" width="150" height="76" rx="7" class="d-box-accent"/>
+  <text x="515" y="80" class="d-t" text-anchor="middle">1.00 ドルで</text>
+  <text x="515" y="102" class="d-t" text-anchor="middle">redeem</text>
+
+  <path d="M590 90 L634 90 L634 168 L91 168 L91 134" class="d-line-accent" marker-end="url(#m2)"/>
+  <text x="360" y="188" class="d-s d-a" text-anchor="middle">買いが入るので価格が 1 ドルに押し戻される</text>
+
+  <rect x="16" y="200" width="648" height="26" rx="6" class="d-box-plain"/>
+  <text x="340" y="218" class="d-s" text-anchor="middle">mint と redeem ができるのはホワイトリストに載った機関だけ。一般の保有者は市場で売買する</text>
+</svg>
+<p class="figcap">ペッグを戻すのは「裁定の利益が出るから、機関が勝手にやってくれる」という設計です。誰でも償還できるわけではありません。</p>
+</div>
+
+<p>「本当にひどい日には何が起きるか」という問いへの答えは、仕組みの説明ではなく<strong>事前のモデリングとバックテスト</strong>でした。帳簿の多くが同時に出ていこうとする場合に備えて、<strong>過去に市場で実際に起きた最悪の償還シナリオ</strong>を並べ、それに応えられる構成になっているかを検証してきた、と述べられています。前週のデータ回で語られたストレステストと同じものが参照されました。</p>
+
+<p><span class="badge">補足</span>この節で語られたのは<strong>裏付け資産をどう用意したか</strong>までです。ペッグが崩れかけたときに<strong>誰がどの原資で介入するのか</strong>（前回の回で名前だけ出た peg stability module の中身）は、今回も説明されていません。</p>
+
+
+<h2 id="liquidity">4. 流動性はなぜ死活問題か</h2>
+<p class="deck">ほとんどのトークンでは「不便」で済む。ステーブルコインでは存亡に関わる。</p>
+
+<p>流動性の定義として述べられたのは、<strong>「画面に見えている価格と、実際に約定する価格の差」</strong>でした。そのうえで、ステーブルコインだけは事情が違う、という筋立てです。</p>
+
+<blockquote>
+<p>1 ドルのはずのものが 98 セントでしか売れないなら、それはもう 1 ドルでもステーブルコインでもない。</p>
+</blockquote>
+
+<div class="term">
+<p class="term-name">流動性の厚み <small>depth</small></p>
+<p>価格を動かさずにどれだけ買えるか・売れるか。<span class="badge">補足</span>「取引量が多い」こととは別です。1 日の出来高が大きくても、注文板が薄ければ<strong>一度に大きく売った瞬間に価格が飛びます</strong>。厚みは「そのとき目の前にいくら並んでいるか」を指します。</p>
+</div>
+
+<div class="term">
+<p class="term-name">マーケットメイカー <small>market maker</small></p>
+<p>常に買値と売値を出し続けるプロの会社。厚みとペッグの防衛を提供し、市場がストレス下にあるときも自分が出ている取引の場で立ち続ける、と説明されました。<span class="badge">補足</span>ボランティアではなく、スプレッドと、プロトコル側から支払われる条件で動きます。<strong>バランスシートを持つ会社なしに DeFi を成立させるのは難しい</strong>、というのがこの回での位置づけです。</p>
+</div>
+
+<p>流動性が薄いと何が起きないのか、という連鎖も示されました。<strong>レンディング市場がトークンを担保として受け入れるのは、ローンが焦げついたときに妥当な価格で素早く売れる場合だけ</strong>です。売れないなら担保にできず、担保にできないなら借入がなく、借入がないなら DeFi 経済も、次の節のループも成り立ちません。</p>
+
+<p>逆向きの循環も語られました。流動性が厚いと価格が安心して見られ、他の保有者が入り、プールがさらに深くなる — <strong>フライホイール</strong>です。<span class="badge">補足</span>フライホイールは弾み車のことで、各ステップが次を強くし、一周ごとに勢いが増す循環を指します。</p>
+
+
+<h2 id="loop">5. レバレッジループ</h2>
+<p class="deck">利回り付きステーブルコインの成長を作っている機構。数値例つきで説明され、危険性も同時に述べられた。</p>
+
+<p>レバレッジループは<strong>「利回りを持つステーブルコインにとっておそらく最も重要な成長のメカニズム」</strong>と位置づけられ、Ethena がピーク時に 150 億ドルまで伸びたのを支えたものとして挙げられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="元手1000万ドルを担保に借入を重ねて5000万ドルのエクスポージャーを作り、実効25パーセントのAPRになる数値例の図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="28" class="d-s">コール中で示された数値例（LTV 80%、利回り 9%、借入コスト 5%）</text>
+
+  <rect x="20" y="44" width="128" height="46" rx="6" class="d-box-accent"/>
+  <text x="84" y="66" class="d-t" text-anchor="middle">元手</text>
+  <text x="84" y="84" class="d-t d-a" text-anchor="middle">1,000 万ドル</text>
+
+  <line x1="154" y1="67" x2="196" y2="67" class="d-line-accent" marker-end="url(#m3)"/>
+  <text x="175" y="57" class="d-s" text-anchor="middle">ループ</text>
+
+  <rect x="202" y="44" width="458" height="46" rx="6" class="d-box"/>
+  <rect x="202" y="44" width="92" height="46" rx="6" class="d-box-accent"/>
+  <text x="248" y="72" class="d-s d-a" text-anchor="middle">元手 1,000 万</text>
+  <text x="477" y="72" class="d-s" text-anchor="middle">借入 4,000 万</text>
+  <text x="600" y="112" class="d-t" text-anchor="end">エクスポージャー 5,000 万ドル</text>
+
+  <line x1="20" y1="140" x2="660" y2="140" class="d-line"/>
+
+  <text x="20" y="168" class="d-s">5,000 万 × 9%</text>
+  <text x="230" y="168" class="d-t d-a" text-anchor="end">＋450 万</text>
+  <text x="20" y="194" class="d-s">4,000 万 × 5%（借入コスト）</text>
+  <text x="230" y="194" class="d-t d-w" text-anchor="end">−200 万</text>
+  <line x1="20" y1="206" x2="230" y2="206" class="d-line"/>
+  <text x="20" y="228" class="d-s">元手 1,000 万に対して</text>
+  <text x="230" y="228" class="d-t d-a" text-anchor="end">＝ 実効 25% APR</text>
+
+  <rect x="270" y="152" width="390" height="82" rx="7" class="d-box-warn"/>
+  <text x="290" y="178" class="d-t">同じ倍率で、損失も増幅する</text>
+  <text x="290" y="200" class="d-s">「5 倍のレバレッジ戦略をスマホで回せと勧めている</text>
+  <text x="290" y="220" class="d-s">わけではない」とコール中で明示されている</text>
+
+  <rect x="20" y="252" width="640" height="34" rx="6" class="d-box-plain"/>
+  <text x="340" y="274" class="d-s" text-anchor="middle">プロトコルから見ると、1,000 万ドルの預り金が 5,000 万ドルの供給になる — だから成長の機構になる</text>
+</svg>
+<p class="figcap">数値はコール中で述べられたとおりのものです。<span class="badge">補足</span>この計算は借入コストが 5% のまま、担保価値が下がらない前提での試算です。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+
+<h4>そもそも「ループ」とは何をしているのか</h4>
+<p>やっていることは 1 つの動作の繰り返しです。<strong>①利回りの出る資産を担保に置く → ②それを担保にステーブルコインを借りる → ③借りたお金でまた同じ資産を買う → ①に戻る</strong>。回すたびに、自分の持ち出しは増えないのに、利回りを受け取る資産の量だけが増えていきます。</p>
+
+<h4>なぜ無限に増えないのか</h4>
+<p><strong>LTV（loan to value、担保掛け目）</strong>に上限があるからです。LTV 80% なら、100 万円分の担保に対して借りられるのは 80 万円まで。その 80 万円で買った資産を担保に入れると次は 64 万円、その次は 51.2 万円……と減っていき、合計は元手の 5 倍あたりで頭打ちになります。コール中の「1,000 万 → 5,000 万」はこの上限に張り付いた場合の数字です。</p>
+
+<h4>身近なものへのたとえ</h4>
+<p>家を担保にお金を借り、そのお金でもう一軒買い、それも担保に入れてまた借りる、という動きに近いものです。家賃収入（＝利回り）はどんどん増えますが、<strong>借金も同じだけ増えていて、地価が少し下がるだけで全部の担保が同時に足りなくなります</strong>。ループの危険はここにあります。</p>
+
+<h4>一言でいうと</h4>
+<p><strong>同じ元手で受け取る利回りを何倍にもする代わりに、価格が逆に動いたときの痛みも何倍にもする仕掛け</strong>です。コール中でも、利益と損失の両方が増幅されると明示されています。</p>
+
+<h4>このコールでは語られていないこと</h4>
+<p>ループが<strong>どの水準の担保割れで清算されるのか</strong>、そして清算が連鎖したときに sUSDR の価格やペッグに何が起きるのかは、話題に上っていません。ループを「成長の機構」として使う以上、ここは表裏の関係にあります。</p>
+</div>
+</details>
+
+
+<h2 id="credit">6. 値のつかないものを、どう値付けするか</h2>
+<p class="deck">市場価格のない貸付を、どう評価して sUSDR の価値に反映するか。四者が関わると説明された。</p>
+
+<p>プライベートクレジットの中身として述べられたのは、<strong>資本の制約が強い市場でフィンテックに貸し、そのフィンテックが実在の借り手に貸す</strong>という構造です。利回りが高いのはリスクが高いからではなく<strong>その市場で資本が不足しているから</strong>で、案件はいずれも資産の裏付けと信用補完が付いている、と説明されました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="貸付先の評価に、ファンド・アドミニストレーター、専門の評価会社、独立アンダーライター、プルーフ・オブ・リザーブ監査人の四者が関わる構成の図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="180" height="62" rx="7" class="d-box-accent"/>
+  <text x="110" y="56" class="d-t" text-anchor="middle">貸付ポジション</text>
+  <text x="110" y="78" class="d-s" text-anchor="middle">市場価格が付いていない</text>
+
+  <line x1="206" y1="61" x2="252" y2="61" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="258" y="14" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="40" class="d-s" text-anchor="middle">専門の評価会社が帳簿を評価</text>
+
+  <rect x="258" y="66" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="92" class="d-s" text-anchor="middle">独立した専門アンダーライター</text>
+
+  <rect x="258" y="118" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="144" class="d-s" text-anchor="middle">プルーフ・オブ・リザーブ監査</text>
+
+  <rect x="258" y="170" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="196" class="d-s" text-anchor="middle">ファンド・アドミニストレーター</text>
+
+  <line x1="454" y1="112" x2="500" y2="112" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="506" y="80" width="154" height="62" rx="7" class="d-box-accent"/>
+  <text x="583" y="106" class="d-t" text-anchor="middle">sUSDR の価値</text>
+  <text x="583" y="128" class="d-s" text-anchor="middle">に流れ込む</text>
+
+  <rect x="20" y="180" width="220" height="52" rx="6" class="d-box-plain"/>
+  <text x="130" y="204" class="d-s" text-anchor="middle">プライベートクレジットの帳簿は</text>
+  <text x="130" y="222" class="d-s" text-anchor="middle">毎週アテステーションを出す</text>
+
+  <text x="583" y="176" class="d-s" text-anchor="middle">「同意しない数字は</text>
+  <text x="583" y="194" class="d-s" text-anchor="middle">公表しない」</text>
+</svg>
+<p class="figcap">値付けを自分でやらない、というのがこの説明の骨子です。<span class="badge">補足</span>各社の名前はコール中で挙げられていません。</p>
+</div>
+
+<p>「自分で自分の答え合わせをする（marking their own homework）」ことへの警戒が、この回では繰り返し出てきました。<strong>この半年ほどで、独立した検証者を使っていなかった例の破綻が続いた</strong>ため、機関側がやけどを警戒し、市場全体がこれを真剣に扱わざるを得なくなっている、という整理です。</p>
+
+<p>透明性の取り組みとして挙げられたのは、<strong>トークンを何が裏付けているかのライブなデータ表示</strong>と、<strong>プライベートクレジットの帳簿についての毎週のアテステーション</strong>でした。</p>
+
+
+<h2 id="yield">7. 利回りは誰が払っているのか</h2>
+<p class="deck">この回で最も明確な主張。数字の大きさではなく、支払いの出所を見ろという話。</p>
+
+<p>「三桁の APY があるなかで、8〜10% になぜ関心を持つべきなのか」という自問から始まり、<strong>問うべきは大きさではなく出所だ</strong>という筋に進みます。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="利回りの出所を、実在の借り手の契約利息、ファンディングレート、自分のトークンの発行の三つに分けて対比した図">
+  <rect x="16" y="34" width="204" height="130" rx="8" class="d-box-accent"/>
+  <text x="118" y="62" class="d-t" text-anchor="middle">実在の借り手</text>
+  <text x="118" y="88" class="d-s" text-anchor="middle">契約に基づく利息</text>
+  <text x="118" y="112" class="d-s" text-anchor="middle">払う人がいて、</text>
+  <text x="118" y="132" class="d-s" text-anchor="middle">払う理由がある</text>
+  <text x="118" y="154" class="d-s d-a" text-anchor="middle">持続的</text>
+
+  <rect x="238" y="34" width="204" height="130" rx="8" class="d-box"/>
+  <text x="340" y="62" class="d-t" text-anchor="middle">ファンディングレート</text>
+  <text x="340" y="88" class="d-s" text-anchor="middle">Ethena のような設計</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">「それも本物だが、</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">かなり循環的」</text>
+  <text x="340" y="154" class="d-s" text-anchor="middle">相場次第</text>
+
+  <rect x="460" y="34" width="204" height="130" rx="8" class="d-box-warn"/>
+  <text x="562" y="62" class="d-t" text-anchor="middle">自分のトークンの発行</text>
+  <text x="562" y="88" class="d-s" text-anchor="middle">トレジャリーが刷って払う</text>
+  <text x="562" y="112" class="d-s" text-anchor="middle">「利回りではあるが、</text>
+  <text x="562" y="132" class="d-s" text-anchor="middle">実態は希薄化」</text>
+  <text x="562" y="154" class="d-s d-w" text-anchor="middle">カウントダウン付き</text>
+
+  <rect x="16" y="184" width="648" height="50" rx="7" class="d-box-plain"/>
+  <text x="340" y="206" class="d-t" text-anchor="middle">「誰が払っているのか」に答えられないなら</text>
+  <text x="340" y="226" class="d-t d-w" text-anchor="middle">自分が利回りの出所になっている</text>
+</svg>
+<p class="figcap">三桁の APY については「たいていは、全部失うリスクがあると市場が教えてくれている」「警告ラベルのようなもの」と述べられました。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+
+<h4>ファンディングレートとは</h4>
+<p>永久先物（期限のない先物）で、買い方と売り方のどちらが多いかによって、<strong>多い側から少ない側へ定期的に支払われる手数料</strong>です。相場が強気で買いが偏っているときは買い方が払うので、そこに逆側で構えていると収入になります。Ethena のような設計はこの受け取りを利回りの原資にしています。</p>
+<p>「本物だが循環的」と言われるのはこのためです。<strong>払う相手は借り手ではなく、同じ市場の反対側にいる投機家</strong>なので、相場が弱気に転じて偏りが消えれば、収入も一緒に消えます。</p>
+
+<h4>「カウントダウン付きの希薄化」とは</h4>
+<p>プロトコルが自分のトークンを新たに発行して配ると、受け取った人の手元では数量が増えます。しかし<strong>トークンの総量も同時に増えている</strong>ので、全体で見れば価値が薄まっただけです。配れる在庫が尽きるまでの残り時間が決まっている、という意味で「カウントダウン付き」と表現されています。</p>
+
+<h4>身近なものへのたとえ</h4>
+<p>会社が配当を出すとき、①事業で稼いだ利益から払う、②他社との取引の差益から払う、③新株を刷って株主に配る、の 3 通りがあるとします。③は<strong>手元の株数は増えても、1 株あたりの価値はその分下がっています</strong>。図の右端はこれにあたります。</p>
+
+<h4>一言でいうと</h4>
+<p>利回りの数字を見る前に、<strong>その支払いが外から来ているのか、参加者どうしで回しているだけなのか</strong>を確かめろ、という話です。</p>
+</div>
+</details>
+
+<p>ユーザー側の判断基準としては、<strong>「貸し手のように担保を評価しろ」</strong>という言い方がされました。何が裏付けているのか、それを検証できるのか、抜けたいときに流動性はどれだけ深いのか、の 3 つです。</p>
+
+
+<h2 id="pmf">8. 効いているプロダクトマーケットフィット</h2>
+<p class="deck">ステーブルコインと、実世界資産のトークン化。どちらも「使う理由」が crypto の外にある。</p>
+
+<p>Web3 で最も明確なプロダクトマーケットフィットとして挙げられたのは<strong>ステーブルコイン</strong>でした。根拠として述べられたのは、crypto 全体の時価総額がこの 1 年ほどで大きく落ちる一方、<strong>ステーブルコインの時価総額は目立った下落なしに伸び続けている</strong>ことです。</p>
+
+<p>用途の実例として、ナイジェリアやアルゼンチンのような市場が挙げられました。<strong>米ドルの現金にアクセスしにくく、自国通貨のインフレが激しい</strong>ため、日々の仕事と生活がステーブルコインの上で回っている、という説明です。そこに米ドル建ての利回りが乗ると<strong>「考えるまでもない選択」</strong>になる、と続きました。</p>
+
+<p>もう 1 つはトークン化です。示された例は、<strong>トークン化された株式を保有したまま、オンチェーンのレンディング市場でステーブルコインを借りる</strong>というものでした。伝統的な金融でこれにあたるのはマージンローンで、<strong>ブローカーにアクセスできる富裕層に事実上限られている</strong>、という対比です。</p>
+
+<p>市場規模については、<strong>ステーブルコインは今日すでに 3,000 億ドル</strong>、大手銀行は<strong>今後 5 年で 10 倍以上</strong>を予想している、と述べられました。<span class="badge">補足</span>どの銀行のどのレポートかは、コール中では挙げられていません。</p>
+
+
+<h2 id="success">9. 12〜18 か月後の成功の姿</h2>
+<p class="deck">評価指標は TVL ひとつ。ただし「TVL は作れてしまう」と自分から留保が付いた。</p>
+
+<p>GTM の役割は<strong>ほぼ TVL という指標だけで測られる</strong>と明言されました。そのうえで、TVL が今の Cardano の強みではないことも率直に述べられ、<strong>ステークされている ADA の一部が動いてくれること</strong>への期待が語られています。</p>
+
+<div class="term">
+<p class="term-name">TVL <small>total value locked</small></p>
+<p>プロトコルに預け入れられている資産の総額。<span class="badge">補足</span>この回で重要なのは、<strong>TVL は「作ろうと思えば作れてしまう」と登壇者本人が留保をつけている</strong>点です。借りてきた流動性で一時的に積み上げることができるため、<strong>金額そのものは定着を意味しません</strong>。</p>
+</div>
+
+<p>そこで、金額以外に挙げられた成功の条件は次のとおりです。</p>
+
+<ul>
+  <li><strong>ペッグが狭く、うまく取引されていること</strong></li>
+  <li><strong>価格が動く前にスワップを吸収できるだけの大きなプール</strong>があること</li>
+  <li>レンディング市場側の<strong>利用率</strong>が上がっていること</li>
+  <li><strong>発表されるだけでなく、実際に使われる統合</strong>を持っていること</li>
+  <li><strong>居ついてくれる機関の保有者</strong>という資本のベースがあること。資金を長く預かれれば、その分だけ他の保有者にもよい利回りを返せる</li>
+</ul>
+
+<p>流通の面では、<strong>新興国市場のフィンテックとの提携</strong>が今後の期待として挙げられました。</p>
+
+
+<h2 id="spo">10. SPO に何ができるか — 暗い森</h2>
+<p class="deck">この節だけは進行役が答えている。bot が増えるほど、人であることを担保できる立場の価値が上がるという筋立て。</p>
+
+<p>「verified SPO は GTM のどこに位置づくのか」という質問に対して、<strong>進行役が自分で答える</strong>形になった節です。出発点は「暗い森」理論でした。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="オープンなウェブが bot で埋まるほど、人々は閉じた場に退き、デリゲーターとの関係を持つ SPO の価値が上がるという構図の図">
+  <defs>
+    <marker id="m5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="30" width="270" height="104" rx="8" class="d-box-warn"/>
+  <text x="151" y="58" class="d-t" text-anchor="middle">開かれたウェブ</text>
+  <text x="151" y="84" class="d-s" text-anchor="middle">インターネットの活動の 50〜80% が bot</text>
+  <text x="151" y="106" class="d-s" text-anchor="middle">（Cloudflare の数字として言及）</text>
+  <text x="151" y="126" class="d-s d-w" text-anchor="middle">Solana のオンチェーン活動は 90% が bot</text>
+
+  <line x1="292" y1="82" x2="342" y2="82" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="348" y="30" width="316" height="104" rx="8" class="d-box"/>
+  <text x="506" y="58" class="d-t" text-anchor="middle">居心地のよいウェブ（cozy web）</text>
+  <text x="506" y="84" class="d-s" text-anchor="middle">非公開の Telegram、Discord、対面の集まり</text>
+  <text x="506" y="110" class="d-s" text-anchor="middle">人は見える場所から退いていく</text>
+
+  <line x1="340" y1="140" x2="340" y2="168" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="16" y="176" width="648" height="80" rx="8" class="d-box-accent"/>
+  <text x="340" y="204" class="d-t" text-anchor="middle">SPO ＝ 信頼されたインフラ ＋ デリゲーターとの関係資本</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">オンラインとオンチェーンの活動を見れば、ポイントを請求しているのが</text>
+  <text x="340" y="248" class="d-s" text-anchor="middle">本物の人間である確度を上げられる ── KYC・AML の話ではない、と明言された</text>
+</svg>
+<p class="figcap">bot が増えるほど「人であること」が希少になり、その担保を持つ立場が価値を持つ、という筋立てです。<span class="badge">補足</span>判定を実際にどう実装するかは、この回では語られていません。</p>
+</div>
+
+<p>アクセラレータープログラムのもう 1 つの柱として挙げられたのが、<strong>「教育者を教育する」モデル</strong>です。SPO にとって重要な資料やテーマを SPO がデリゲーターに持っていける形にすることで、<strong>従来のマーケティングの流通チャネルの外に出られる</strong>、という説明でした。<strong>日本の SPO がコール中にいることに触れたうえで</strong>語られています。</p>
+
+<p>その延長で、日本のコミュニティに直接関わる話も出ました。<strong>日本には比較的動いていない ADA が多くある</strong>という認識のもと、「ステーキングは ADA 保有者の義務」という従来の見方に対して、<strong>経済活動という考え方もあり得るのではないか</strong>という問いかけがされています。</p>
+
+<p>分散化についても、<strong>大量のステークを持つ MPO（複数プールのオペレーター）から、より多くのシングルプールへ委任が移ってほしい</strong>という希望が述べられました。プールが成り立つスイートスポットとして<strong>100 万〜1,200 万</strong>という幅が挙げられましたが、これは<strong>「誰かがチャットでもっと正確に教えてくれるだろう」と添えられた概算</strong>で、確定した数字としては語られていません。</p>
+
+<details class="explain">
+<summary>「暗い森」という言い方が指しているもの — 開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した背景です。コール中では理論の名前と要点だけが述べられました。</p>
+
+<h4>もとは何の話か</h4>
+<p>SF 由来の比喩で、<strong>広い場所で声を上げると捕食者に見つかるので、みな黙って隠れる</strong>という状況を指します。インターネットに当てはめた議論は 2019 年以降のもので、オープンな SNS が広告・スパム・自動化されたアカウントで埋まるほど、<strong>本当の会話は招待制のチャットやニュースレターや対面に移っていく</strong>、という観察です。</p>
+
+<h4>なぜ SPO の話につながるのか</h4>
+<p>公開の場での指標（フォロワー数、インプレッション、オンチェーンの取引件数）が bot で水増しできるようになると、<strong>「その向こうに人がいる」ことを保証できる立場</strong>が相対的に強くなります。SPO は委任してくれている相手と継続的な関係があり、しかもその関係がオンチェーンに残っています。ここが「関係資本」と呼ばれた部分です。</p>
+
+<h4>身近なものへのたとえ</h4>
+<p>チラシを 10 万枚まくよりも、常連客のいる商店の店主が 100 人に声をかけるほうが届く、という状況に近いものです。届く量ではなく<strong>届いた先が本物かどうか</strong>で価値が決まるようになった、という前提が置かれています。</p>
+
+<h4>このコールで分からないこと</h4>
+<p>「本物の人間である確度を上げられる」という説明はありましたが、<strong>何をもって判定するのか、誤判定をどう扱うのか</strong>には触れていません。プログラム自体が「今まさに作っている最中」で「まだ始まったばかり」と述べられている段階です。</p>
+</div>
+</details>
+
+
+<h2 id="mainnet">11. mainnet とその先</h2>
+<p class="deck">Cardano の mainnet が「うまくいけば来月」。そのあと Ethereum に出るが、資産は Cardano に残す設計。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="testnet から Cardano mainnet、そして Ethereum 展開へ進む三段階と、TVL が Cardano に戻る設計を示した図">
+  <defs>
+    <marker id="m6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="34" width="188" height="76" rx="8" class="d-box"/>
+  <text x="110" y="62" class="d-t" text-anchor="middle">testnet</text>
+  <text x="110" y="86" class="d-s" text-anchor="middle">稼働中。バグ報告を募集</text>
+
+  <line x1="210" y1="72" x2="240" y2="72" class="d-line-accent" marker-end="url(#m6)"/>
+
+  <rect x="246" y="34" width="188" height="76" rx="8" class="d-box-accent"/>
+  <text x="340" y="62" class="d-t" text-anchor="middle">Cardano mainnet</text>
+  <text x="340" y="86" class="d-s d-a" text-anchor="middle">「うまくいけば来月」</text>
+
+  <line x1="440" y1="72" x2="470" y2="72" class="d-line-accent" marker-end="url(#m6)"/>
+
+  <rect x="476" y="34" width="188" height="76" rx="8" class="d-box"/>
+  <text x="570" y="62" class="d-t" text-anchor="middle">Ethereum 展開</text>
+  <text x="570" y="86" class="d-s" text-anchor="middle">深い流動性がある場所</text>
+
+  <path d="M570 116 L570 152 L340 152 L340 118" class="d-line-accent" marker-end="url(#m6)"/>
+  <text x="455" y="146" class="d-s d-a" text-anchor="middle">TVL は Cardano に戻る</text>
+
+  <rect x="16" y="168" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="192" class="d-t" text-anchor="middle">「Ethereum で mint された 1 ドルも Cardano の TVL に数えられる」</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">そう設計した、と説明された。活動が Ethereum で起きても資産は Cardano にある</text>
+</svg>
+<p class="figcap">mainnet の時期は「hopefully next month」という言い方で、確定した日付としては述べられていません。<span class="badge">補足</span>TVL が Cardano 側に計上される<strong>具体的な仕組み</strong>は、この一文以上には説明されていません。</p>
+</div>
+
+<p>mainnet 時点で用意されるものとして名前が挙がったのは 2 つです。</p>
+
+<ul>
+  <li><strong>SundaeSwap</strong> — 主要な DEX パートナーとして、適切な流動性プールを立ち上げる</li>
+  <li><strong>Liqwid</strong> — 隔離された市場を用意し、<strong>ADA を担保に USDC を借りて、それを利回り付き商品に投じられる</strong>ようにする</li>
+</ul>
+
+<div class="term">
+<p class="term-name">ポジティブ・キャリー <small>positive carry</small></p>
+<p>借入コストより高い利回りを得て、その差額を取る取引。<span class="badge">補足</span>この構成の要点は<strong>ADA を売らずに済む</strong>ことです。ADA のステークとステーキング利回りは保ったまま、それを担保に借りた資金だけを運用に回します。<strong>ただし成立するのは「借入コスト &lt; 利回り」が続く間だけ</strong>で、コール中でも利回りは目標値として語られています。</p>
+</div>
+
+
+<h2 id="overall">12. 全体像</h2>
+<p class="deck">この回で語られたことが、どうつながっているか。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="実世界の資産が利回りを生み、それが流動性・使い道・資本の三つを通って循環し、TVL に戻る全体像の図">
+  <defs>
+    <marker id="m7" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="240" y="128" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">USDR / sUSDR</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">実世界の資産が裏付ける</text>
+
+  <rect x="20" y="26" width="196" height="72" rx="8" class="d-box"/>
+  <text x="118" y="52" class="d-t" text-anchor="middle">① 流動性</text>
+  <text x="118" y="74" class="d-s" text-anchor="middle">マーケットメイカー</text>
+  <text x="118" y="92" class="d-s" text-anchor="middle">DEX のプール・ペッグ防衛</text>
+
+  <rect x="464" y="26" width="196" height="72" rx="8" class="d-box"/>
+  <text x="562" y="52" class="d-t" text-anchor="middle">② 使い道</text>
+  <text x="562" y="74" class="d-s" text-anchor="middle">レンディング市場・ループ</text>
+  <text x="562" y="92" class="d-s" text-anchor="middle">ウォレット・カストディアン</text>
+
+  <rect x="242" y="238" width="196" height="72" rx="8" class="d-box"/>
+  <text x="340" y="264" class="d-t" text-anchor="middle">③ 居つく資本</text>
+  <text x="340" y="286" class="d-s" text-anchor="middle">機関アロケーター</text>
+  <text x="340" y="304" class="d-s" text-anchor="middle">SPO とデリゲーター</text>
+
+  <path d="M216 74 L246 74 L246 124" class="d-line-accent" marker-end="url(#m7)"/>
+  <path d="M434 124 L434 74 L464 74" class="d-line-accent" marker-end="url(#m7)"/>
+  <path d="M340 198 L340 234" class="d-line-accent" marker-end="url(#m7)"/>
+
+  <text x="150" y="120" class="d-s d-a">厚みを作る</text>
+  <text x="450" y="120" class="d-s d-a">使い道を作る</text>
+  <text x="352" y="222" class="d-s d-a">TVL になる</text>
+
+  <rect x="20" y="128" width="196" height="66" rx="7" class="d-box-plain"/>
+  <text x="118" y="152" class="d-s" text-anchor="middle">実在の借り手が払う</text>
+  <text x="118" y="172" class="d-s" text-anchor="middle">契約に基づく利息</text>
+  <text x="118" y="190" class="d-s d-a" text-anchor="middle">＝ 利回りの出所</text>
+
+  <rect x="464" y="128" width="196" height="66" rx="7" class="d-box-plain"/>
+  <text x="562" y="152" class="d-s" text-anchor="middle">mainnet はうまくいけば来月</text>
+  <text x="562" y="172" class="d-s" text-anchor="middle">その後 Ethereum へ</text>
+  <text x="562" y="190" class="d-s d-a" text-anchor="middle">資産は Cardano に残す</text>
+</svg>
+<p class="figcap">中央のトークンを、3 つの仕事が外側から支える構図です。GTM の役割は、この 3 つを同時に動かし続けることだと説明されました。</p>
+</div>
+
+
+<h2 id="qa">13. Q&amp;A</h2>
+<p class="deck">チャットから拾われた質問と、その場で返された答え。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者A</span>Clarity Act について、この数日・数週間・数か月で起きるかもしれないことの影響をどう見ているか。</p>
+<p class="qa-a" data-by="回答">「まだかなり流動的だという理解」。米国在住ではなく近くで追ってもいない、と前置きしたうえで、<strong>議論が続いており、具体的な形も定まっていない</strong>という認識が示されました。<strong>ルールが固まれば、そのルールに沿って計画を立てられるようになるので市場にとって助けになる</strong>、という一般論までで、影響の中身には踏み込んでいません。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者B</span>これまでで、あるいはこれから取り組むもので、いちばん大きなマイルストーンは何か。</p>
+<p class="qa-a" data-by="回答">これまででは <strong>testnet を出せたこと</strong>。次は <strong>mainnet で、「うまくいけば来月」</strong>、そのあと Ethereum への展開。<strong>「ここから先の道のりは長い」</strong>とも述べられました。コミュニティへの依頼は、テストを続けて摩擦を報告してほしいということです。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者C</span>準備資産の一部がプライベートクレジットや直接融資に入っているときに、USDR の流動性と安全性をどう保つのか。</p>
+<p class="qa-a" data-by="回答"><strong>資産の大部分をマネー・マーケット・ファンドと T-Bill に置く</strong>という構成で答えています。これらは即時、最悪でも T+1 で現金化でき、CLO の ETF が T+2〜T+5。<strong>利回りの高い部分だけが流動性の低い資産</strong>という配分です。加えて、悪い日のシナリオを並べたストレステストが挙げられました。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">チャットから</span>プライベートクレジットで、市場価格のない資産をどう値付けするのか。</p>
+<p class="qa-a" data-by="回答"><strong>「私はプライベートクレジットの専門家ではない」</strong>と断ったうえで、値付けを自分でやらない構成が説明されました（第 6 節の図）。<strong>投資チームの 2 人が数週間後の回に登場する予定</strong>で、この件はそこで扱えるはず、と案内されています。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">チャットから</span>マーケットメイカーとは何か。なぜプロトコルは彼らと組むのか。</p>
+<p class="qa-a" data-by="回答">常に買値と売値を出し続けるプロの会社で、<strong>厚みとペッグの防衛</strong>を提供する存在。ペッグの機構としては、<strong>常に 1 ドルちょうどで mint・redeem できる機関がいること</strong>が必要で、価格がずれたときに裁定して戻す役割を担う、と説明されました。</p>
+</div>
+
+
+<h2 id="pending">14. 持ち帰りになった質問</h2>
+<p class="deck">この回で答えが出なかったもの、次の回に回されたもの。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者A</span>Clarity Act が固まったあとの具体的な影響は。</p>
+<p class="qa-a" data-by="保留">「もっと clarity が得られたら」という条件付きの一般論までで、<strong>プロトコルの設計や提供地域に何が起きるのかは語られていません</strong>。法規制の話は 7 月 24 日の回でも法務案件として保留されており、まだ回収されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">進行役</span>取引所のファンデッド・チャレンジ（参加費を払って資金枠を得る仕組み）と、DeFi のループには共通点があるか。</p>
+<p class="qa-a" data-by="実質未回答">「リスクを増幅している点は確かに共通する」「調べてみる価値はある」という応答にとどまり、<strong>比較としては噛み合わないまま次の質問に移っています</strong>。進行役自身も「脇道に逸らしたかもしれない」と述べています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">進行役</span>ステークプールが成り立つ委任額のスイートスポットはどこか。</p>
+<p class="qa-a" data-by="概算のみ">「100 万から 1,200 万の間のどこか」と述べたうえで、<strong>「誰かがチャットでもっと正確に教えてくれるだろう」</strong>と添えられています。確定した数字としては語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記録として</span>Ethereum 側の活動が Cardano の TVL に計上される仕組み。</p>
+<p class="qa-a" data-by="言及のみ">「Ethereum で mint された 1 ドルも Cardano の TVL として数えられるよう設計した」という一文があり、<strong>そのあと mainnet の話題に移っています</strong>。どの会計単位で、誰が数えるのかは扱われていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>このコールは<strong>チャタムハウスルール</strong>で運用されています。内容は共有できますが、<strong>氏名・ハンドル名・ステークプール名・所属は記載していません</strong>。全文ページで使っている <code>進行役</code> <code>登壇者A</code> <code>参加者A〜C</code> は、会話の流れを追うための仮のラベルです。</p>
+<p><strong>経歴について。</strong>この回は登壇者の経歴が詳しく語られていますが、<strong>勤務先・学校名・出向先を並べると個人が特定できる</strong>ため、すべて業種の記述に置き換えています（例：具体的な銀行名 →「大手の投資銀行」）。年次と職務内容はそのままです。</p>
+<p><strong>音源について。</strong>このページは公式の録音から起こした文字起こしをもとにしています。話者ラベルとタイムスタンプは原本に付いていたもので、こちらで推定したものではありません。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">IN ONE LINE</span>
+  <p>Go-to-market for a stablecoin was described as three jobs — <strong>deep liquidity</strong>, <strong>somewhere to use it</strong>, and <strong>capital that stays</strong>.<br>
+  All three rest on one question: who is actually paying the yield?</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>GTM is three things</strong> — keep deep, healthy markets wherever the token trades; connect it to anything that gives it <strong>utility</strong> (DEXs, lending markets, wallets, custodians); and bring in <strong>capital that stays</strong>.</li>
+  <li><strong>Mainnet is “hopefully next month.”</strong> Ethereum comes after that, but <strong>the assets sit on Cardano</strong> — a dollar minted on Ethereum was described as still counting toward Cardano's TVL by design.</li>
+  <li><strong>Judge a yield by who pays it.</strong> Contractual interest from real borrowers, funding rates (real, but cyclical), or a treasury printing its own token — <strong>“dilution with a countdown.”</strong> If you can't answer who pays, <strong>you are the yield</strong>.</li>
+  <li><strong>Leverage loops are the growth mechanic.</strong> A worked example: $10m becomes $50m of exposure and roughly 25% effective APR. It was stated explicitly that <strong>loops amplify losses as well as gains</strong>.</li>
+  <li><strong>USDR's backing is deliberately the liquid side</strong> — money market funds, T-bills, CLO ETFs. Private credit and direct lending sit on the sUSDR side, typically 6–12 month duration. The peg is held by arbitrage from <strong>whitelisted institutions only</strong>, who alone can mint and redeem.</li>
+  <li><strong>The host's dark forest argument.</strong> The more bots there are, the more valuable <strong>SPOs become as parties with real relational capital</strong> with their delegators — that was the framing for the accelerator programme.</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>This session runs under the Chatham House Rule.</strong> The content can be shared, but <strong>who said what is not recorded</strong>. Below, speakers appear only as “the host,” “Speaker A” and so on, and employers, schools and secondments in the career history have been replaced with sector descriptions.</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">What this session covered</p>
+<ol>
+  <li><a href="#en-gtm"><span class="n">01</span>What go-to-market actually does</a></li>
+  <li><a href="#en-tokens"><span class="n">02</span>USDR and sUSDR — what backs them</a></li>
+  <li><a href="#en-peg"><span class="n">03</span>What holds the dollar</a></li>
+  <li><a href="#en-liquidity"><span class="n">04</span>Why liquidity is existential</a></li>
+  <li><a href="#en-loop"><span class="n">05</span>Leverage loops</a></li>
+  <li><a href="#en-credit"><span class="n">06</span>Pricing what has no price</a></li>
+  <li><a href="#en-yield"><span class="n">07</span>Who is paying the yield</a></li>
+  <li><a href="#en-pmf"><span class="n">08</span>The clearest product-market fit</a></li>
+  <li><a href="#en-success"><span class="n">09</span>Success in twelve to eighteen months</a></li>
+  <li><a href="#en-spo"><span class="n">10</span>What SPOs can do — the dark forest</a></li>
+  <li><a href="#en-mainnet"><span class="n">11</span>Mainnet and after</a></li>
+  <li><a href="#en-overall"><span class="n">12</span>How it fits together</a></li>
+  <li><a href="#en-qa"><span class="n">13</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">14</span>Left open</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-gtm">1. What go-to-market actually does</h2>
+<p class="deck">Not marketing. Three sets of plumbing: liquidity, utility, and capital.</p>
+
+<p>For a stablecoin protocol, go-to-market was broken into three jobs.</p>
+
+<ul>
+  <li><strong>Build liquidity, and keep it.</strong> Deep, healthy markets wherever the token trades — designing the incentives, and making sure <strong>the liquidity stays once incentives taper</strong>. That means working with market makers and trading firms.</li>
+  <li><strong>Connect it to utility.</strong> Decentralised exchanges, lending markets, wallets, custodians, centralised exchanges.</li>
+  <li><strong>Bring in capital that stays.</strong> Institutional allocators, crypto-native funds, treasuries, family offices.</li>
+</ul>
+
+<p>A normal week was described as conversations with allocators, trading firms, venues and distribution partners, plus internal work with product, data and engineering.</p>
+
+<p>The start date given was <strong>March 2026</strong>. The point that this is <strong>not a Cardano native but someone who came up on the Ethereum side</strong> was made unprompted, and repeated later in the call.</p>
+
+
+<h2 id="en-tokens">2. USDR and sUSDR — what backs them</h2>
+<p class="deck">The split between the two tokens isn't about yield. It's about how fast something can be turned into cash.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="Diagram showing USDR backed by liquid instruments and sUSDR, obtained by staking, carrying the private credit overlay">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="280" height="180" rx="8" class="d-box"/>
+  <text x="40" y="58" class="d-t">USDR</text>
+  <text x="40" y="80" class="d-s">1:1 dollar peg. Liquid, always movable</text>
+  <line x1="40" y1="94" x2="280" y2="94" class="d-line"/>
+  <text x="40" y="118" class="d-s">Money market funds</text>
+  <text x="40" y="140" class="d-s">T-bills</text>
+  <text x="40" y="162" class="d-s">CLO ETFs</text>
+  <text x="40" y="192" class="d-s d-a">Instant to T+1; CLO ETFs T+2 to T+5</text>
+
+  <line x1="308" y1="120" x2="368" y2="120" class="d-line-accent" marker-end="url(#e1)"/>
+  <text x="338" y="110" class="d-s d-a" text-anchor="middle">stake</text>
+
+  <rect x="380" y="30" width="280" height="180" rx="8" class="d-box-accent"/>
+  <text x="400" y="58" class="d-t">sUSDR</text>
+  <text x="400" y="80" class="d-s">What staking gets you. Receives the yield</text>
+  <line x1="400" y1="94" x2="640" y2="94" class="d-line"/>
+  <text x="400" y="118" class="d-s">Everything on the left, plus</text>
+  <text x="400" y="140" class="d-s">direct fintech lending</text>
+  <text x="400" y="162" class="d-s">private credit</text>
+  <text x="400" y="192" class="d-s d-a">Typically 6–12 months — the extra APY juice</text>
+
+  <text x="340" y="240" class="d-s" text-anchor="middle">The portfolio is entirely real-world assets — no reliance on crypto-native allocation</text>
+</svg>
+<p class="figcap">The USDR side is built to meet redemptions; the yield-thickening instruments live on the sUSDR side.</p>
+</div>
+
+<p>The private credit and direct lending strategy was described as something <strong>the team has been running for the last four or so years</strong>, with a track record behind it — that's what delivers “a little bit more of that juice in the APYs.”</p>
+
+<div class="term">
+<p class="term-name">CLO ETF <small>collateralized loan obligation ETF</small></p>
+<p><span class="badge">added</span>A CLO bundles a large pool of corporate loans into a security; the ETF wraps a share of that into something that <strong>trades on an exchange</strong>. Not as instant as a T-bill, but sellable within days — T+2 to T+5, as stated on the call.</p>
+</div>
+
+
+<h2 id="en-peg">3. What holds the dollar</h2>
+<p class="deck">Not an algorithm — arbitrage by a whitelisted set of institutions.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="Diagram of the arbitrage that restores the peg when the market price falls to 99 cents">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="52" width="150" height="76" rx="7" class="d-box-warn"/>
+  <text x="91" y="82" class="d-t" text-anchor="middle">Price slips to</text>
+  <text x="91" y="104" class="d-t d-w" text-anchor="middle">$0.99</text>
+
+  <line x1="172" y1="90" x2="222" y2="90" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="228" y="52" width="150" height="76" rx="7" class="d-box-accent"/>
+  <text x="303" y="80" class="d-t" text-anchor="middle">Institution buys</text>
+  <text x="303" y="102" class="d-t" text-anchor="middle">it there</text>
+
+  <line x1="384" y1="90" x2="434" y2="90" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="440" y="52" width="150" height="76" rx="7" class="d-box-accent"/>
+  <text x="515" y="80" class="d-t" text-anchor="middle">Redeems at</text>
+  <text x="515" y="102" class="d-t" text-anchor="middle">$1.00</text>
+
+  <path d="M590 90 L634 90 L634 168 L91 168 L91 134" class="d-line-accent" marker-end="url(#e2)"/>
+  <text x="360" y="188" class="d-s d-a" text-anchor="middle">The buying pushes the price back to a dollar</text>
+
+  <rect x="16" y="200" width="648" height="26" rx="6" class="d-box-plain"/>
+  <text x="340" y="218" class="d-s" text-anchor="middle">Only whitelisted institutions can mint and redeem. Everyone else trades on the open market</text>
+</svg>
+<p class="figcap">The peg is restored because the arbitrage is profitable, not because anyone is obliged to do it. Redemption is not open to all holders.</p>
+</div>
+
+<p>Asked what happens “on a genuinely bad day,” the answer was not a mechanism but <strong>modelling and back-testing done in advance</strong>: taking <strong>the worst redemption queues the market has actually produced</strong> and checking the portfolio composition against them. The same stress testing discussed on the previous week's data call was referenced.</p>
+
+<p><span class="badge">added</span>What this section covers is <strong>how the backing was assembled</strong>. Who would step in with what capital if the peg started to slip — the contents of the peg stability module named on the earlier call — is again not described.</p>
+
+
+<h2 id="en-liquidity">4. Why liquidity is existential</h2>
+<p class="deck">For most tokens thin liquidity is an annoyance. For a stablecoin it's the whole thing.</p>
+
+<p>Liquidity was defined as <strong>“the difference between the price you see on a screen and the price you actually get.”</strong> Then the argument narrows to why stablecoins are the exception.</p>
+
+<blockquote>
+<p>Like a dollar, a dollar you could only sell at ninety-eight cents isn't really a dollar or a stablecoin at that point.</p>
+</blockquote>
+
+<div class="term">
+<p class="term-name">Depth <small>of liquidity</small></p>
+<p>How much you can buy or sell before you move the price. <span class="badge">added</span>Not the same as volume. A market can turn over heavily all day and still have a thin book, so that <strong>one large order moves the price immediately</strong>. Depth is about what is standing in front of you right now.</p>
+</div>
+
+<div class="term">
+<p class="term-name">Market maker</p>
+<p>A professional firm that stands there quoting both sides, providing depth and peg defence, and staying at its venues when the market is genuinely stressed. <span class="badge">added</span>They are not volunteers — they work on spread and on terms agreed with the protocol. The framing here was that <strong>it's hard to make DeFi happen without firms with balance sheets behind them</strong>.</p>
+</div>
+
+<p>The chain of consequences was spelled out. <strong>A lending market will accept a token as collateral only if it can sell that token quickly at a fair price when a loan goes bad.</strong> No depth, no collateral; no collateral, no borrowing; no borrowing, no real DeFi economy — and none of the loops in the next section.</p>
+
+<p>The loop runs the other way too: depth gives the market confidence, which brings other holders, which deepens the pools further — a <strong>flywheel</strong>. <span class="badge">added</span>A flywheel is a cycle where each step strengthens the next, so momentum builds with every turn.</p>
+
+
+<h2 id="en-loop">5. Leverage loops</h2>
+<p class="deck">The growth mechanic behind yield-bearing stablecoins — explained with numbers, and with the risk stated in the same breath.</p>
+
+<p>Leverage loops were called <strong>“probably the most important growth mechanic in yield-bearing stablecoins,”</strong> and credited with helping Ethena reach fifteen billion dollars at its peak.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Worked example showing ten million dollars levered into fifty million of exposure and an effective twenty-five percent APR">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="28" class="d-s">The worked example given on the call (80% LTV, 9% yield, 5% borrow cost)</text>
+
+  <rect x="20" y="44" width="128" height="46" rx="6" class="d-box-accent"/>
+  <text x="84" y="66" class="d-t" text-anchor="middle">Start with</text>
+  <text x="84" y="84" class="d-t d-a" text-anchor="middle">$10m</text>
+
+  <line x1="154" y1="67" x2="196" y2="67" class="d-line-accent" marker-end="url(#e3)"/>
+  <text x="175" y="57" class="d-s" text-anchor="middle">loop</text>
+
+  <rect x="202" y="44" width="458" height="46" rx="6" class="d-box"/>
+  <rect x="202" y="44" width="92" height="46" rx="6" class="d-box-accent"/>
+  <text x="248" y="72" class="d-s d-a" text-anchor="middle">own $10m</text>
+  <text x="477" y="72" class="d-s" text-anchor="middle">borrowed $40m</text>
+  <text x="600" y="112" class="d-t" text-anchor="end">$50m of exposure</text>
+
+  <line x1="20" y1="140" x2="660" y2="140" class="d-line"/>
+
+  <text x="20" y="168" class="d-s">$50m at 9%</text>
+  <text x="230" y="168" class="d-t d-a" text-anchor="end">+$4.5m</text>
+  <text x="20" y="194" class="d-s">$40m at 5% to borrow</text>
+  <text x="230" y="194" class="d-t d-w" text-anchor="end">−$2.0m</text>
+  <line x1="20" y1="206" x2="230" y2="206" class="d-line"/>
+  <text x="20" y="228" class="d-s">on the original $10m</text>
+  <text x="230" y="228" class="d-t d-a" text-anchor="end">= ~25% APR</text>
+
+  <rect x="270" y="152" width="390" height="82" rx="7" class="d-box-warn"/>
+  <text x="290" y="178" class="d-t">Losses amplify by the same factor</text>
+  <text x="290" y="200" class="d-s">“I'm not suggesting anyone runs five times leverage</text>
+  <text x="290" y="220" class="d-s">strategies on their phone” — said on the call</text>
+
+  <rect x="20" y="252" width="640" height="34" rx="6" class="d-box-plain"/>
+  <text x="340" y="274" class="d-s" text-anchor="middle">From the protocol's side: $10m of deposits became $50m of supply — which is why it is a growth mechanic</text>
+</svg>
+<p class="figcap">The figures are as stated on the call. <span class="badge">added</span>The arithmetic assumes the borrow cost stays at 5% and the collateral does not fall in value.</p>
+</div>
+
+<details class="explain">
+<summary>A term-heavy section — open for a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written here to explain the section. None of it was said on the call.</p>
+
+<h4>What a loop is actually doing</h4>
+<p>One move, repeated. <strong>① Post a yield-bearing asset as collateral → ② borrow ordinary stablecoins against it → ③ buy more of the same asset → back to ①.</strong> Each turn, your own money out of pocket stays the same while the amount of yield-earning asset you hold goes up.</p>
+
+<h4>Why it doesn't go on forever</h4>
+<p>Because <strong>LTV (loan to value)</strong> is capped. At 80% LTV, $100 of collateral lets you borrow $80. Post what you buy with that, and the next round is $64, then $51.20, and so on. The total converges at roughly five times the starting capital — which is exactly where the call's “$10m becomes $50m” comes from.</p>
+
+<h4>An everyday analogy</h4>
+<p>Mortgage a house, use the loan to buy a second, mortgage that, and repeat. The rent (the yield) keeps climbing — but <strong>so does the debt, and a small fall in property prices leaves every one of those mortgages short at the same moment</strong>. That's where the danger in a loop lives.</p>
+
+<h4>In one line</h4>
+<p><strong>It multiplies the yield on the same starting capital, and multiplies the pain when the price moves the other way.</strong> The call says as much: loops amplify losses as well as gains.</p>
+
+<h4>What this call doesn't cover</h4>
+<p>At what level of collateral shortfall a loop gets liquidated, and what a cascade of liquidations would do to the sUSDR price or the peg, never comes up. If loops are the growth mechanic, this is the other side of the same coin.</p>
+</div>
+</details>
+
+
+<h2 id="en-credit">6. Pricing what has no price</h2>
+<p class="deck">How a loan with no market price gets valued and fed into sUSDR. Four parties were named — by role.</p>
+
+<p>The private credit book was described as <strong>lending to fintechs in capital-constrained markets, who then lend to real borrowers</strong>. The yield is high not because the risk is high but because <strong>capital is scarce in those markets</strong>, and the opportunities are asset-backed with credit enhancements.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram of the four independent parties that value the lending book before it feeds into the sUSDR price">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="30" width="180" height="62" rx="7" class="d-box-accent"/>
+  <text x="110" y="56" class="d-t" text-anchor="middle">Lending positions</text>
+  <text x="110" y="78" class="d-s" text-anchor="middle">no market price</text>
+
+  <line x1="206" y1="61" x2="252" y2="61" class="d-line" marker-end="url(#e4)"/>
+
+  <rect x="258" y="14" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="40" class="d-s" text-anchor="middle">Specialist firms value the book</text>
+
+  <rect x="258" y="66" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="92" class="d-s" text-anchor="middle">Independent underwriters</text>
+
+  <rect x="258" y="118" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="144" class="d-s" text-anchor="middle">Proof-of-reserve auditors</text>
+
+  <rect x="258" y="170" width="190" height="42" rx="6" class="d-box"/>
+  <text x="353" y="196" class="d-s" text-anchor="middle">Fund administrator</text>
+
+  <line x1="454" y1="112" x2="500" y2="112" class="d-line" marker-end="url(#e4)"/>
+
+  <rect x="506" y="80" width="154" height="62" rx="7" class="d-box-accent"/>
+  <text x="583" y="106" class="d-t" text-anchor="middle">flows into the</text>
+  <text x="583" y="128" class="d-s" text-anchor="middle">value of sUSDR</text>
+
+  <rect x="20" y="180" width="220" height="52" rx="6" class="d-box-plain"/>
+  <text x="130" y="204" class="d-s" text-anchor="middle">Weekly attestations on the</text>
+  <text x="130" y="222" class="d-s" text-anchor="middle">private credit book</text>
+
+  <text x="583" y="176" class="d-s" text-anchor="middle">“won't publish any figures</text>
+  <text x="583" y="194" class="d-s" text-anchor="middle">that they disagree with”</text>
+</svg>
+<p class="figcap">The point of the answer is that the valuation is not done in-house. <span class="badge">added</span>No firm names were given on the call.</p>
+</div>
+
+<p>Wariness about <strong>“marking their own homework”</strong> came up repeatedly. <strong>Blow-ups over the last six months</strong> involving protocols that skipped independent verification were cited as the reason institutions have been burnt or are wary of it — and as the reason the market is being forced to take this seriously.</p>
+
+<p>On RealFi's side, two things were named: <strong>a live data view of what backs the tokens</strong>, and <strong>weekly attestations on the private credit book</strong>.</p>
+
+
+<h2 id="en-yield">7. Who is paying the yield</h2>
+<p class="deck">The sharpest argument in the call. Not how big the number is — where the payment comes from.</p>
+
+<p>It starts as a challenge to the protocol itself: with triple-digit APYs out there, why should anyone care about eight to ten percent? The answer moves the question from <strong>size to source</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Three sources of yield compared: contractual interest from real borrowers, funding rates, and a treasury printing its own token">
+  <rect x="16" y="34" width="204" height="130" rx="8" class="d-box-accent"/>
+  <text x="118" y="62" class="d-t" text-anchor="middle">Real borrowers</text>
+  <text x="118" y="88" class="d-s" text-anchor="middle">Contractual interest</text>
+  <text x="118" y="112" class="d-s" text-anchor="middle">Someone pays it,</text>
+  <text x="118" y="132" class="d-s" text-anchor="middle">and there's a reason why</text>
+  <text x="118" y="154" class="d-s d-a" text-anchor="middle">Durable</text>
+
+  <rect x="238" y="34" width="204" height="130" rx="8" class="d-box"/>
+  <text x="340" y="62" class="d-t" text-anchor="middle">Funding rates</text>
+  <text x="340" y="88" class="d-s" text-anchor="middle">A design like Ethena's</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">“That's real, but</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">it's pretty cyclical”</text>
+  <text x="340" y="154" class="d-s" text-anchor="middle">Depends on the market</text>
+
+  <rect x="460" y="34" width="204" height="130" rx="8" class="d-box-warn"/>
+  <text x="562" y="62" class="d-t" text-anchor="middle">Printing its own token</text>
+  <text x="562" y="88" class="d-s" text-anchor="middle">A treasury paying in emissions</text>
+  <text x="562" y="112" class="d-s" text-anchor="middle">“Which is yield, but</text>
+  <text x="562" y="132" class="d-s" text-anchor="middle">it's not really real”</text>
+  <text x="562" y="154" class="d-s d-w" text-anchor="middle">Dilution with a countdown</text>
+
+  <rect x="16" y="184" width="648" height="50" rx="7" class="d-box-plain"/>
+  <text x="340" y="206" class="d-t" text-anchor="middle">If you can't answer who's paying it and why</text>
+  <text x="340" y="226" class="d-t d-w" text-anchor="middle">then you are the yield</text>
+</svg>
+<p class="figcap">On triple-digit APYs: “typically that's the market telling you there is a risk of losing everything” — “a bit of a warning label.”</p>
+</div>
+
+<details class="explain">
+<summary>A term-heavy section — open for a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written here to explain the section. None of it was said on the call.</p>
+
+<h4>What a funding rate is</h4>
+<p>On perpetual futures — futures with no expiry — whichever side of the market is more crowded pays a periodic fee to the other side. In a bullish market the longs pay, so standing on the other side earns income. Designs like Ethena's use that stream as the source of their yield.</p>
+<p>That's why it's “real, but pretty cyclical.” <strong>The payer is not a borrower; it's a speculator on the other side of the same market.</strong> When the market turns and the imbalance disappears, so does the income.</p>
+
+<h4>What “dilution with a countdown” means</h4>
+<p>When a protocol mints new tokens and hands them out, your balance goes up — but so does the total supply, so in aggregate nothing was created. It's a countdown because the stock available to hand out runs down.</p>
+
+<h4>An everyday analogy</h4>
+<p>Three ways a company can pay a dividend: out of trading profit, out of a spread it earns against someone else, or by issuing new shares to existing shareholders. The third leaves you holding more shares that are each worth proportionally less. That's the right-hand box.</p>
+
+<h4>In one line</h4>
+<p>Before looking at the number, check whether the money is <strong>coming in from outside, or just being circulated between participants</strong>.</p>
+</div>
+</details>
+
+<p>The test offered to holders was to <strong>“judge collateral like a lender would”</strong>: what backs it, can you verify it, and how deep is the liquidity if you want out.</p>
+
+
+<h2 id="en-pmf">8. The clearest product-market fit</h2>
+<p class="deck">Stablecoins, and tokenised real-world assets. In both cases the reason to use them sits outside crypto.</p>
+
+<p>The clearest product-market fit in Web3 was <strong>stablecoins</strong>. The evidence given: total crypto market cap has fallen substantially over the last twelve months, while <strong>stablecoin market cap has kept growing smoothly, without drawdowns</strong>.</p>
+
+<p>The use case named was markets like Nigeria and Argentina, where <strong>dollar fiat is hard to access and the local currency inflates hard</strong>, so day-to-day business and life run on stablecoins. Add a dollar-denominated yield on top and it becomes <strong>“a no-brainer for a lot of people in those markets.”</strong></p>
+
+<p>The second was tokenisation, with a concrete example: <strong>holding a tokenised stock and borrowing stablecoins against it on-chain while keeping the position</strong>. The traditional equivalent is a margin loan, which is <strong>effectively reserved for higher-net-worth people with broker access</strong>.</p>
+
+<p>On size: <strong>three hundred billion dollars of stablecoins today</strong>, with big banks projecting <strong>more than ten times that in five years</strong>. <span class="badge">added</span>No bank or report was named on the call.</p>
+
+
+<h2 id="en-success">9. Success in twelve to eighteen months</h2>
+<p class="deck">The role is measured on TVL alone — with an immediate caveat that TVL can be manufactured.</p>
+
+<p>The GTM role was described as <strong>measured solely on TVL</strong>. That came with a straightforward admission that TVL is not Cardano's strength right now, and a hope that <strong>some of the ADA sitting in stake moves</strong> into protocols like this one.</p>
+
+<div class="term">
+<p class="term-name">TVL <small>total value locked</small></p>
+<p>The total value deposited in a protocol. <span class="badge">added</span>What matters here is that <strong>the caveat came from the speaker</strong>: TVL “is also easy to fabricate, and you can buy it with rent[ed] liquidity.” <strong>The number alone says nothing about whether the capital stays.</strong></p>
+</div>
+
+<p>So the non-TVL definition of success given was:</p>
+
+<ul>
+  <li>a stablecoin with <strong>a tight peg that trades well</strong></li>
+  <li><strong>pools large enough to absorb swaps</strong> before the price moves</li>
+  <li>rising <strong>utilisation</strong> on the lending market side</li>
+  <li><strong>integrations that get used rather than just announced</strong></li>
+  <li>a base of <strong>institutional holders that stick around</strong> — capital that stays can be tied up longer, which delivers a better yield for everyone else</li>
+</ul>
+
+<p>On distribution, <strong>partnering with fintechs in emerging markets</strong> was named as what's ahead.</p>
+
+
+<h2 id="en-spo">10. What SPOs can do — the dark forest</h2>
+<p class="deck">The one section the host answers himself. The more bots there are, the more valuable it is to be able to vouch for a human.</p>
+
+<p>Asked where verified SPOs fit into GTM, <strong>the host took the question himself</strong>. He starts from dark forest theory.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="Diagram showing the open web filling with bots, people retreating to private spaces, and SPOs holding relational capital with delegators">
+  <defs>
+    <marker id="e5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="30" width="270" height="104" rx="8" class="d-box-warn"/>
+  <text x="151" y="58" class="d-t" text-anchor="middle">The open web</text>
+  <text x="151" y="84" class="d-s" text-anchor="middle">50–80% of internet activity is bots</text>
+  <text x="151" y="106" class="d-s" text-anchor="middle">(cited to Cloudflare)</text>
+  <text x="151" y="126" class="d-s d-w" text-anchor="middle">On Solana, ~90% of on-chain activity</text>
+
+  <line x1="292" y1="82" x2="342" y2="82" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="348" y="30" width="316" height="104" rx="8" class="d-box"/>
+  <text x="506" y="58" class="d-t" text-anchor="middle">The cozy web</text>
+  <text x="506" y="84" class="d-s" text-anchor="middle">Private Telegrams, Discords, in-person meetups</text>
+  <text x="506" y="110" class="d-s" text-anchor="middle">People retreat out of view</text>
+
+  <line x1="340" y1="140" x2="340" y2="168" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="16" y="176" width="648" height="80" rx="8" class="d-box-accent"/>
+  <text x="340" y="204" class="d-t" text-anchor="middle">SPOs = trusted infrastructure + relational capital with delegators</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">Looking at online and on-chain activity raises confidence that whoever is</text>
+  <text x="340" y="248" class="d-s" text-anchor="middle">claiming points is a real human — explicitly not KYC, AML, or doxxing</text>
+</svg>
+<p class="figcap">The more bots there are, the scarcer “being human” becomes — and the more valuable it is to be able to vouch for it. <span class="badge">added</span>How the check would actually be implemented is not described on the call.</p>
+</div>
+
+<p>The second pillar of the accelerator programme was a <strong>“train the trainer” or “educate the educator” model</strong>: putting presentation materials and topics into a form SPOs can take to their delegators, which <strong>gets the message out of traditional marketing distribution channels</strong>. It was said while noting that <strong>Japanese SPOs were in the room</strong>.</p>
+
+<p>That led directly into a point about the Japanese community: <strong>there is a lot of relatively idle ADA in Japan</strong>, and against the older framing that staking is a holder's duty to the network, the suggestion was that <strong>economic activity might now be the argument</strong>.</p>
+
+<p>On decentralisation, the hope stated was that stake would move <strong>from MPOs — multiple pool operators holding a lot of stake — toward more single pool operators</strong>, so that more of them are viable. A sweet spot of <strong>somewhere between one million and twelve million</strong> was offered, but with <strong>“somebody will better tell me in chat”</strong> attached — it was an estimate, not a settled figure.</p>
+
+<details class="explain">
+<summary>What “dark forest” is pointing at — open</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Background written here. Only the name of the theory and its headline were given on the call.</p>
+
+<h4>Where it comes from</h4>
+<p>A science-fiction metaphor: <strong>calling out in the open gets you found by predators, so everyone goes quiet</strong>. Applied to the internet from 2019 onward, the observation is that as open platforms fill with ads, spam and automated accounts, <strong>the real conversation moves to invite-only chats, newsletters and in-person rooms</strong>.</p>
+
+<h4>Why that leads to SPOs</h4>
+<p>Once public metrics — followers, impressions, transaction counts — can be inflated by bots, <strong>whoever can vouch that there is a person on the other end</strong> becomes relatively more valuable. SPOs have an ongoing relationship with the people delegating to them, and that relationship is recorded on-chain. That's the “relational capital” being referred to.</p>
+
+<h4>An everyday analogy</h4>
+<p>A shopkeeper speaking to a hundred regulars beats a hundred thousand leaflets. Value stops being about reach and starts being about <strong>whether what you reached was real</strong>.</p>
+
+<h4>What this call doesn't cover</h4>
+<p>The claim is that confidence in “a real human” can be raised — but <strong>what the check would look at, and what happens when it is wrong</strong>, is not addressed. The programme is described as being built right now, and “nascent.”</p>
+</div>
+</details>
+
+
+<h2 id="en-mainnet">11. Mainnet and after</h2>
+<p class="deck">Cardano mainnet “hopefully next month.” Ethereum comes after — but the assets stay on Cardano.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="Three-stage diagram from testnet to Cardano mainnet to Ethereum expansion, with TVL accruing back to Cardano">
+  <defs>
+    <marker id="e6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="34" width="188" height="76" rx="8" class="d-box"/>
+  <text x="110" y="62" class="d-t" text-anchor="middle">testnet</text>
+  <text x="110" y="86" class="d-s" text-anchor="middle">Live. Bug reports wanted</text>
+
+  <line x1="210" y1="72" x2="240" y2="72" class="d-line-accent" marker-end="url(#e6)"/>
+
+  <rect x="246" y="34" width="188" height="76" rx="8" class="d-box-accent"/>
+  <text x="340" y="62" class="d-t" text-anchor="middle">Cardano mainnet</text>
+  <text x="340" y="86" class="d-s d-a" text-anchor="middle">“hopefully next month”</text>
+
+  <line x1="440" y1="72" x2="470" y2="72" class="d-line-accent" marker-end="url(#e6)"/>
+
+  <rect x="476" y="34" width="188" height="76" rx="8" class="d-box"/>
+  <text x="570" y="62" class="d-t" text-anchor="middle">Ethereum</text>
+  <text x="570" y="86" class="d-s" text-anchor="middle">Where the depth already is</text>
+
+  <path d="M570 116 L570 152 L340 152 L340 118" class="d-line-accent" marker-end="url(#e6)"/>
+  <text x="455" y="146" class="d-s d-a" text-anchor="middle">TVL accrues back to Cardano</text>
+
+  <rect x="16" y="168" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="192" class="d-t" text-anchor="middle">“A dollar being minted on Ethereum still counting for Cardano TVL”</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">Even when the activity happens on Ethereum, the assets sit on Cardano — as described</text>
+</svg>
+<p class="figcap">“Hopefully next month” is how the timing was put — not as a fixed date. <span class="badge">added</span>The <strong>mechanism</strong> by which that TVL is counted on the Cardano side is not explained beyond this one line.</p>
+</div>
+
+<p>Two things were named for mainnet.</p>
+
+<ul>
+  <li><strong>SundaeSwap</strong> — the main DEX partner, with the right liquidity pools standing up</li>
+  <li><strong>Liqwid</strong> — an isolated market where you can <strong>borrow USDC against ADA collateral and deploy it into the yield-bearing instrument</strong></li>
+</ul>
+
+<div class="term">
+<p class="term-name">Positive carry</p>
+<p>Earning more in yield than you pay to borrow, and keeping the difference. <span class="badge">added</span>The point of the structure is that <strong>you never sell your ADA</strong> — the stake and its staking yield stay where they are, and only the borrowed funds go to work. <strong>It only holds while borrow cost stays below the yield</strong>, and the yield here was described as a target.</p>
+</div>
+
+
+<h2 id="en-overall">12. How it fits together</h2>
+<p class="deck">How the pieces of this call connect.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="Overview diagram: real-world assets generate yield which circulates through liquidity, utility and sticky capital, returning as TVL">
+  <defs>
+    <marker id="e7" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="240" y="128" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">USDR / sUSDR</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">backed by real-world assets</text>
+
+  <rect x="20" y="26" width="196" height="72" rx="8" class="d-box"/>
+  <text x="118" y="52" class="d-t" text-anchor="middle">① Liquidity</text>
+  <text x="118" y="74" class="d-s" text-anchor="middle">Market makers</text>
+  <text x="118" y="92" class="d-s" text-anchor="middle">DEX pools, peg defence</text>
+
+  <rect x="464" y="26" width="196" height="72" rx="8" class="d-box"/>
+  <text x="562" y="52" class="d-t" text-anchor="middle">② Utility</text>
+  <text x="562" y="74" class="d-s" text-anchor="middle">Lending markets, loops</text>
+  <text x="562" y="92" class="d-s" text-anchor="middle">Wallets, custodians</text>
+
+  <rect x="242" y="238" width="196" height="72" rx="8" class="d-box"/>
+  <text x="340" y="264" class="d-t" text-anchor="middle">③ Capital that stays</text>
+  <text x="340" y="286" class="d-s" text-anchor="middle">Institutional allocators</text>
+  <text x="340" y="304" class="d-s" text-anchor="middle">SPOs and delegators</text>
+
+  <path d="M216 74 L246 74 L246 124" class="d-line-accent" marker-end="url(#e7)"/>
+  <path d="M434 124 L434 74 L464 74" class="d-line-accent" marker-end="url(#e7)"/>
+  <path d="M340 198 L340 234" class="d-line-accent" marker-end="url(#e7)"/>
+
+  <text x="150" y="120" class="d-s d-a">builds depth</text>
+  <text x="450" y="120" class="d-s d-a">builds utility</text>
+  <text x="352" y="222" class="d-s d-a">becomes TVL</text>
+
+  <rect x="20" y="128" width="196" height="66" rx="7" class="d-box-plain"/>
+  <text x="118" y="152" class="d-s" text-anchor="middle">Contractual interest paid</text>
+  <text x="118" y="172" class="d-s" text-anchor="middle">by real borrowers</text>
+  <text x="118" y="190" class="d-s d-a" text-anchor="middle">= where the yield comes from</text>
+
+  <rect x="464" y="128" width="196" height="66" rx="7" class="d-box-plain"/>
+  <text x="562" y="152" class="d-s" text-anchor="middle">Mainnet “hopefully next month”</text>
+  <text x="562" y="172" class="d-s" text-anchor="middle">Ethereum after that</text>
+  <text x="562" y="190" class="d-s d-a" text-anchor="middle">assets stay on Cardano</text>
+</svg>
+<p class="figcap">Three jobs holding up the token in the middle. GTM was described as keeping all three moving at once.</p>
+</div>
+
+
+<h2 id="en-qa">13. Q&amp;A</h2>
+<p class="deck">Questions taken from the chat, and what came back in the room.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant A</span>Any view on the effects of what may or may not happen with the Clarity Act over the coming days, weeks or months?</p>
+<p class="qa-a" data-by="Answer">“A lot of this stuff is still very much in flux.” Prefaced with not being based in the US and not being close to it, the answer was that <strong>debate is still happening and the shape isn't settled</strong>. Beyond the general point that <strong>protocols can plan once the rules are set in stone</strong>, the substance of the impact was not addressed.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant B</span>What's the biggest milestone — achieved so far, or ahead?</p>
+<p class="qa-a" data-by="Answer">So far, <strong>delivering the testnet</strong>. Next, <strong>mainnet, “hopefully next month,”</strong> then expanding to Ethereum. <strong>“The road is long from here.”</strong> The ask of the community was to keep testing and report friction.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant C</span>How do you keep USDR liquid and safe when part of the reserves are in private credit and direct lending?</p>
+<p class="qa-a" data-by="Answer">By composition: <strong>the vast majority in money market funds and T-bills</strong>, liquidatable instantly or worst case T+1, with CLO ETFs at T+2 to T+5. <strong>Only the higher-yielding slice is illiquid.</strong> The stress testing against bad-day scenarios was cited alongside it.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">From the chat</span>How do you price a private credit asset that has no price?</p>
+<p class="qa-a" data-by="Answer">Prefaced with <strong>“I am not a private credit professional,”</strong> the answer described a structure where the valuation is not done in-house (see section 6). <strong>Two people from the investment team are due on a call in a few weeks</strong>, and the question was pointed there.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">From the chat</span>What is a market maker, and why does a protocol work with them?</p>
+<p class="qa-a" data-by="Answer">A professional firm quoting both sides continuously, providing <strong>depth and peg defence</strong>. For the peg specifically, <strong>you need an institution that can always mint and redeem at exactly a dollar</strong>, so a deviation can be arbitraged back.</p>
+</div>
+
+
+<h2 id="en-pending">14. Left open</h2>
+<p class="deck">What didn't get an answer here, and what was pushed to a later session.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Participant A</span>What concretely changes once the Clarity Act is settled?</p>
+<p class="qa-a" data-by="Held">The answer stops at a conditional generality — “once we do actually have more clarity.” <strong>What it would mean for the protocol's design or the markets it can serve was not discussed.</strong> Regulatory questions were also parked as a legal matter on the 24 July call and remain unclaimed.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Host</span>Is an exchange's funded challenge — pay an entry fee, get a trading allowance — related to a DeFi loop?</p>
+<p class="qa-a" data-by="Effectively unanswered">The reply went as far as “it's definitely amplifying risk” and “something to read up on.” <strong>The comparison never lands, and the call moves to the next question.</strong> The host himself says he may have taken the conversation on a detour.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Host</span>Where is the sweet spot of delegation for a viable stake pool?</p>
+<p class="qa-a" data-by="Estimate only">“Somewhere between one million [and] twelve million,” immediately followed by <strong>“somebody will better tell me in chat.”</strong> It was not given as a settled number.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Noted here</span>How activity on Ethereum is counted into Cardano's TVL.</p>
+<p class="qa-a" data-by="Mentioned only">There is a single line — “a dollar being minted on Ethereum still counting for Cardano TVL” — and then <strong>the call moves on to mainnet</strong>. The accounting unit and who does the counting are not covered.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> This call runs under the <strong>Chatham House Rule</strong>. The content can be shared, but <strong>no names, handles, stake pool names or affiliations appear anywhere</strong>. The labels used on the transcript pages — <code>Host</code>, <code>Speaker A</code>, <code>Participant A–C</code> — are placeholders for following the conversation.</p>
+<p><strong>On the career history.</strong> The guest's background is discussed in some detail, but <strong>listing the employers would identify the individual</strong>, so firms, school and secondment have all been replaced with sector descriptions (for example, a named bank becomes “a large investment bank”). The timeline and the substance of the roles are unchanged.</p>
+<p><strong>On the source.</strong> This page is built from the official recording of the call. The speaker labels and timestamps come from the source — they were not inferred here.</p>
+<p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the call</strong>.</p>
+<p>For the exact wording see the <a href="#en">English transcript</a>.</p>
+</div>
+</div>
+</section>
+
+<section class="part" id="ja">
+<div class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></div>
+<div class="sec">ステージに上がるまで</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>マイク、何か言ってもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:00:03</span></div>
+  <div class="turn-body"><p>もしもし、聞こえますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:00:04</span></div>
+  <div class="turn-body"><p>はい、ばっちりです。ちゃんと動いていますね。さっきまで調子が悪かったのですが、今は大丈夫です。これから配信を始めます。ついでにツイートもしておきますね。フォロワーをもっと増やさないと。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:00:19</span></div>
+  <div class="turn-body"><p>ええと、まだグリーンルームにいるんですよね？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:00:24</span></div>
+  <div class="turn-body"><p>これからメインステージに移ります。私が開始しますので、発言をリクエストする機能が出てくるはずです。そうしたらステージに上げます。始める準備はいいですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:00:38</span></div>
+  <div class="turn-body"><p>その操作のところ、手伝ってもらう必要があるかもしれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:00:41</span></div>
+  <div class="turn-body"><p>私がステージ、この上の部屋を開始します。あなたはその部屋に入ってきてください。そのあと自分の操作画面を見て、私からの発言の招待を受けるか、自分でリクエストするか、どちらかをしてください。そうすればステージに上がれます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:01:12</span></div>
+  <div class="turn-body"><p>テスト中。こんにちは。[参加者への呼びかけ。ハンドル名は記載しない] 登壇者A、発言に招待します。上がってきてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:01:32</span></div>
+  <div class="turn-body"><p>聞こえますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:01:34</span></div>
+  <div class="turn-body"><p>ばっちりです。来ていただきありがとうございます。今日は私自身が聞きたいことが山ほどあるので、いい回になりそうです。完全に私利私欲ですが、事前に用意した質問は共有してあります。それを順に見ていきましょう。みんなが入ってくるまで 1〜2 分待ちます。私はツイートもしておきます。</p></div>
+</div>
+
+<div class="sec">生い立ち — キャピタル・マーケッツから crypto へ</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:02:19</span></div>
+  <div class="turn-body"><p>さて、RealFi Office Hours の 5 回目です。最後にとっておいたわけではありませんが、いよいよという回です。まずは場を温める意味で、RealFi にどう関わることになったのか、何をしている人なのか、いわば生い立ちを聞かせてもらえますか。あなたのことを少し知りたいので。そんな感じで始めていいですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:02:43</span></div>
+  <div class="turn-body"><p>もちろんです。聞こえていますよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:02:45</span></div>
+  <div class="turn-body"><p>はい、聞こえています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:02:48</span></div>
+  <div class="turn-body"><p>よかった。ここに来られてうれしいです。呼んでいただきありがとうございます。楽しみにしていました。私は 登壇者A、RealFi で go-to-market を担当しています。crypto に入る前は、伝統的な金融でキャリアを始めました。キャリアの前半、かなりの年数を大手の投資銀行で、伝統的なエクイティ・キャピタル・マーケッツの仕事に費やしました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:03:23</span></div>
+  <div class="turn-body"><p>企業の IPO や新株発行といった、数十億ドル規模の案件です。それから、政策側の機関に出向したこともあります。そこでは、規制の面で我々が自分たちで作ってしまった混乱の後始末をしていました。ただ、そこにいる間に、キャピタル・マーケッツの将来について調べる機会があり、どんな可能性があるのかを考えました。crypto の世界ではおそらく珍しいと思いますが、私が crypto にちゃんと出会って本気で興味を持ったのは、実はそこでした。スマートコントラクトのプラットフォームやトークン化といったものに、初めてきちんと触れたんです。2018 年から 2019 年ごろ、その辺りが騒がれていた時期です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:04:22</span></div>
+  <div class="turn-body"><p>その発想が強く印象に残りました。誰でも参加できるキャピタル・マーケット、即時に決済されること、ソフトウェアを一から作り直すこと。こうしたことに本当に引き込まれました。その後、ビジネススクールに戻って MBA を取りました。ちょうど COVID の時期で、多くの人が家にこもって crypto をいじったり取引したりしていました。私もそれをやっていて、それが DeFi サマーと重なりました。DeFi や NFT の周りで起きていること、並行する金融システムが数か月で組み上がっていく様子を見ていました。それで、フルタイムで crypto の仕事をしようと決めました。これほど革新的で面白い領域はない、と。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:05:17</span></div>
+  <div class="turn-body"><p>そういうわけで、MBA を終えたあと crypto の業界に入りました。ちょうど相場の天井で入ったので、それ以降はかなり荒い道のりでした。いくつかの場所で働いています。まずパーミッションド・ブロックチェーンの試みで、機関がこの技術をどう採用するのかを知るにはとてもよい入口でした。その後、crypto のマーケットメイカー兼リクイディティ・プロバイダーで時間を過ごしました。直近では、レイヤー 2 のエコシステムをいくつか経験しています。ひとつは新興国市場に注力していて、ステーブルコインのドル需要が実際にどこにあるのかを見られたのはよかったです。私の見立てでは、それは多くの新興国市場にあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:06:15</span></div>
+  <div class="turn-body"><p>もうひとつは、ネイティブの Bitcoin を Ethereum 型の DeFi につなごうとしているレイヤー 2 で、大きなコミュニティはあるが Bitcoin には DeFi の習慣がない、というチェーンで DeFi 経済を立ち上げるのに何が要るかを見てきました。今 Cardano のエコシステムで働いているのと、いくらか重なる教訓があると思います。ただ率直に言って、私は Cardano ネイティブではありません。どちらかというと Ethereum 側で育ちました。なので、コミュニティにとって不敬なことを言ってしまったらすみません。ここではまだ新参者です。でもここで作ることに、Cardano の DeFi で何か面白いことを始めることに、わくわくしています。</p></div>
+</div>
+
+<div class="sec">go-to-market は実際に何をする仕事か</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:07:08</span></div>
+  <div class="turn-body"><p>素晴らしい自己紹介でした、ありがとうございます。時系列を簡単に教えてください。RealFi にはどれくらいいるのですか。それと、GTM とは何かを説明してもらえますか。この役割と機能について教えてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:07:26</span></div>
+  <div class="turn-body"><p>もちろんです。私が RealFi に入ったのは実はかなり最近で、3 月です。ステーブルコインを通じて実世界の資産を DeFi に持ち込もうとしているプロトコルだ、というところに強く惹かれました。こうした点が自分の経歴と響き合いました。チームが持っている新興国市場の切り口も気に入りました。自分のバックグラウンドやこれまでやってきたことが、うまく溶け合う場所だと感じました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:08:06</span></div>
+  <div class="turn-body"><p>go-to-market が実際に何を意味するか。RealFi のようなステーブルコイン・プロトコルにとって、私にとっては 3 つです。1 つ目は、我々のトークン、我々のステーブルコインが、取引されるあらゆる場所で深く流動的で健全な市場を持つようにすること。インセンティブの設計がそこにあり、インセンティブが細っても流動性がそこに残るようにすることです。これはプロダクトチームと一緒に進める仕事が多い部分です。同時に、マーケットメイカーやトレーディング会社、つまり取引の場で流動性を提供するプロの人たちと組む仕事でもあります。2 つ目は、プロトコルを、それに実用性を与えるあらゆるものにつなぐこと。DEX、レンディング市場、ウォレットなどです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:09:05</span></div>
+  <div class="turn-body"><p>カストディアン、中央集権取引所などもです。そして最後に、居ついてくれる資金を連れてくること。機関投資家のアロケーターに入ってもらうこと、crypto ネイティブのファンド、トレジャリー、ファミリーオフィス、そしてそういう人たちを紹介してくれる人と話すことに、多くの時間を使っています。普通の一週間は、アロケーター、取引の窓口を開いてくれる人、トレーディング会社や取引の場、そして実際のユーザーに届けてくれる潜在的なパートナーと話すことに費やされます。もちろん社内でも、プロダクト・データ・エンジニアリングのチームと動く仕事がたくさんあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:09:55</span></div>
+  <div class="turn-body"><p>とても興味深いです。Cardano についてはまだ勝手がつかめていない、とおっしゃっていました。役割の話もありましたが、あなたの職務に関係する重要な役割は何ですか。アロケーターと言っていましたね。特に相手にすることの多い役割はありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:10:22</span></div>
+  <div class="turn-body"><p>ええと……パートナー候補とか、そういうことですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:10:29</span></div>
+  <div class="turn-body"><p>聞いている人に、業界のどの部分と最もよく関わっているのか、俯瞰の地図を見せるとしたら、という感じで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:10:41</span></div>
+  <div class="turn-body"><p>流動性の側では、マーケットメイカーとリクイディティ・プロバイダーです。次にパートナーとなるプロトコル、これもやはりレンディング市場と DEX です。それからプロトコルを動かすインフラのパートナー、たとえばウォレットやカストディアン。そして先ほど言ったように、流動性を整え、物事が滑らかに回るようにインフラを整えたあとのもう一方の仕事は、我々のプロトコルにお金を入れてもらうことです。そうすれば</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:11:21</span></div>
+  <div class="turn-body"><p>そのお金を裏側で我々の戦略に投じて、トークンのための利回りを届けられます。</p></div>
+</div>
+
+<div class="sec">RealFi を一分で説明する</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:11:28</span></div>
+  <div class="turn-body"><p>はい、いいですね。少し事務連絡をさせてください。何人か追加で入ってきたので。Discord のステージを開いていれば、右上にチャットの吹き出しがあります。チャットを開いて、進行中に 登壇者A へ質問を投げられます。私と 登壇者A の両方でチャットを見ています。それから、リツイートしたり Discord に人を誘ったりしてもらえると助かります。人数が増えるところを見たいので。あと 登壇者A、事前に質問をいくつか用意して、SPO のみなさんに投票してもらいました。まずはその質問から当てていこうと思います。票の多い順で進めていいですか。 — はい、いいですね。 — では 1 つ目。デリゲーターが自分の SPO に「RealFi とは何か」と聞いたとき、その SPO に言ってほしい 1 分間の答えは何ですか。RealFi をどう説明してほしいですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:12:20</span></div>
+  <div class="turn-body"><p>技術に明るくない、なじみのない人に対して、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:12:28</span></div>
+  <div class="turn-body"><p>はい。RealFi は利回りを持つステーブルコインのプロトコルです。Cardano において注目に値する最初の利回り付き商品だ、と言ってよいと思います。設計としてはトークンが 2 つあります。USDR は 1 対 1 で米ドルにペッグされた流動性のあるステーブルコインで、これをステークすると利回りを持つポートフォリオにアクセスできます。我々の利回りは実世界の資産から来ます。ここが市場にある他の似た商品との差別化のひとつだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:13:16</span></div>
+  <div class="turn-body"><p>Cardano であれ Ethereum であれ Solana であれ。我々のポートフォリオはすべて実世界の資産で構成されています。実際には、マネー・マーケット・ファンド、T-Bill、CLO の ETF といった、いずれもそれなりに流動性のある利回り商品です。それに加えて、フィンテックへの直接融資とプライベートクレジットの部分があります。これはチームがこの 4 年ほどやってきたことで、長く運用してきてトラックレコードを積み上げてきた戦略です。目標にしている APY の、もう少し上乗せの部分を生むのがここです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:14:06</span></div>
+  <div class="turn-body"><p>USDR と sUSDR とで、ポートフォリオに違いはありますか。確認のためですが、この 2 つの違いは何でしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:14:18</span></div>
+  <div class="turn-body"><p>まったくそのとおりです。USDR の裏付けは、ずっと流動性の高い商品です。プライベートクレジットやフィンテックへの直接融資は流動性がかなり低いので。投資の期間は通常 6〜12 か月ほどで、一方で償還に応じられるよう完全に流動的である必要があります。なので USDR の裏付けはずっと流動性の高い商品になります。マネー・マーケット・ファンド、T-Bill、CLO の ETF といった、償還に応えるために非常に速く売れる商品です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:15:11</span></div>
+  <div class="turn-body"><p>設計とプロトコルの話でいうと、先週はデータチームの人が出ていたと思いますが、プロトコルの設計を担保するためのストレステストとモデリングについて詳しく話していました。市場で実際に見てきた最悪の償還の行列やシナリオに、常に応えられるようにするためのものです。プロトコルを実戦に耐えるものにするために、かなりの時間をかけています。</p></div>
+</div>
+
+<div class="sec">ペッグを保つもの、そして悪い日に起きること</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:15:41</span></div>
+  <div class="turn-body"><p>それは 5 番目の質問にうまくつながります。チャットの番号のとおりに進めているだけですが。USDR を 1 ドルに保っているものは何ですか。そして本当にひどい日には何が起きますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:15:57</span></div>
+  <div class="turn-body"><p>保っているのは……機関投資家向けの取り決めがあって</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:16:09</span></div>
+  <div class="turn-body"><p>アービトラージです。先ほど言ったように、我々は機関投資家のマーケットメイカーと組んでいます。彼らがアービトラージをして、ペッグを 1 ドルに保ちます。mint と redeem ができるのは機関だけです。機関はホワイトリストに載ったアドレスを持っていて、そこにアービトラージを許しています。価格が 1 ドルからずれれば、他所で買ってその取引を裁定し、ペッグを 1 に戻せます。これが我々が用意している仕組みのひとつです。悪い日、というのは……何と言いましたっけ。悪い日のシナリオ、でしたか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:16:51</span></div>
+  <div class="turn-body"><p>昔の映画のひとつを思い浮かべていて、題名が出てこないのですが。本当にひどい日には何が起きますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:17:04</span></div>
+  <div class="turn-body"><p>これは先ほどほのめかしていたことです。帳簿の多くが同時に出ていきたがったときに、償還にすぐ応えられる商品の構成になっているように、かなりのモデリングをしてきました。とくに市場にストレスがかかっている場合です。ポートフォリオの構成についてモデリングとバックテストをする、という話に尽きます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:17:38</span></div>
+  <div class="turn-body"><p>過去に見てきた最悪のシナリオをすべてカバーできているようにするためです。そうしたシナリオに耐えられることを確かめるために、多くのバックテストとデータの作業が入っています。</p></div>
+</div>
+
+<div class="sec">チャットから — Clarity Act と最大のマイルストーン</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:17:55</span></div>
+  <div class="turn-body"><p>私の質問の一覧をチャットに貼っておきます。みなさんが見られるように、そしてどれを聞いてほしいか、あるいは我々が思いつかなかったものがあれば教えてもらえるように。ただ、話している間に入ってきた質問をいくつか拾わせてください。参加者A が知りたがっています。意見がないかもしれないので、無理に答えなくて大丈夫ですが。Clarity Act について、この数日・数週間・数か月で起きるかもしれないこと、起きなかったことの影響について、意見はありますか。話せる話題ですか、それとも別の回に回しますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:18:36</span></div>
+  <div class="turn-body"><p>そうですね、私が言えるのは、この件はまだかなり流動的だという理解だ、ということくらいです。Clarity Act については、私は米国にいませんし、そこまで近くで追ってもいません。ただ、まだ多くの議論が続いていると思いますし、それが具体的にどういう形になるのかも含めてです。なので、しゃれのつもりではありませんが、それがどう構成され何を言っているのかについて実際にもっと clarity が得られたら、それは市場にとって明らかに助けになると思います。そして我々のようなプロトコルは、ルールが固まった時点で、そのルールに沿って計画を立てられるようになります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:19:22</span></div>
+  <div class="turn-body"><p>ありがとうございます。参加者B が知りたがっています。これまでに達成した中で、あるいはこれから取り組むものの中で、いちばん大きなマイルストーンは何ですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:19:37</span></div>
+  <div class="turn-body"><p>いちばん大きなマイルストーン、いい質問ですね。まず、このプロトコルの testnet を出せたことは、最初の大きなマイルストーンで、誇りに思っています。ここから先の道のりは長いですが。testnet が動いているのは素晴らしいことです。壊しにきてくれて、バグなどを見つけるのを手伝ってくれているみなさん、ありがとうございます。ここから次のマイルストーンは、もちろん mainnet です。うまくいけば来月、そのあと Ethereum への展開です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:20:34</span></div>
+  <div class="turn-body"><p>このコミュニティは、テストしてくれて、何が動いて何が動かないかを教えてくれる点でとても助かっています。摩擦があれば、当然プロダクトをできるだけ良くしたいので。ここにいるみなさんへのお願いはそれです。プロダクトをテストして、機能を試してみてください。</p></div>
+</div>
+
+<div class="sec">流動性はなぜ死活問題か、ループとは何か</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:21:04</span></div>
+  <div class="turn-body"><p>私の記憶では、RealFi は規模の経済がある方がうまく機能するプロダクトです。手元の質問のひとつは流動性についてで、ステーブルコインにとってそれが死活問題だ、というものです。DeFi ネイティブでない我々のために、RealFi が規模の経済からどう利益を得るのか、そしてなぜ流動性がそれほど重要なのかを説明してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:21:31</span></div>
+  <div class="turn-body"><p>流動性について考えること、流動性を設計することには多くの時間を使っています。流動性とは、画面に見えている価格と、実際に約定する価格との差です。流動性の厚みとは、価格を動かさずにどれだけ買えるか売れるか、です。ほとんどのトークンは流動性が薄いです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:22:01</span></div>
+  <div class="turn-body"><p>それは煩わしいことですが、ステーブルコインにとってはかなり存亡に関わる話です。1 ドルのはずのものが 98 セントでしか売れないなら、それはもう 1 ドルでもステーブルコインでもありません。なので、流動性を持つこと、ペッグの周りに流動性を設計することが非常に重要です。それに流動性は、価格を狭く出せること以外にも、市場に安心を与え、他の保有者を呼び込み、プールの流動性をさらに深くしてフライホイールを作ります。そして、DeFi でこの上に作りたいものすべてにとっても、きわめて重要です。具体的な例で言うと</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:22:57</span></div>
+  <div class="turn-body"><p>レンディング市場です。DeFi では非常に重要なものです。レンディング市場の側では Liqwid とよく一緒に動いています。レンディング市場がトークンを担保として受け入れるのは、ローンが焦げついたときにそのトークンを妥当な価格で素早く売れる場合だけです。それだけの厚みや流動性がなければレンディング市場は成立せず、借入も成立せず、本当の DeFi 経済も、レバレッジのループ戦略のような形で伸びる余地も生まれません。ループ戦略は、利回りを持つ資産でよく使われる DeFi の戦略です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:23:39</span></div>
+  <div class="turn-body"><p>そこがまさに聞きたかったところです。少し理解が追いついていないのですが、ループ戦略とは何で、どんなふうに見えるのかを説明してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:23:51</span></div>
+  <div class="turn-body"><p>これは少しマニアックというか、DeFi マニアの話になりますが、私自身が好きで時間を使っていることでもあります。レバレッジのループは、利回りを持つステーブルコインにとっておそらく最も重要な成長のメカニズムで、Ethena のようなプロトコルがピーク時に 150 億ドルまで伸びたのを支えたものでもあります。何をするものかを説明すると、利回りを持つ</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:24:25</span></div>
+  <div class="turn-body"><p>トークン、我々の場合は sUSDR をレンディング市場に担保として差し入れます。それを担保に普通のステーブルコインを借り、そのお金でさらに利回り付きトークンを買って、また差し入れて繰り返します。ループを重ねるごとに、同じ元手に対するエクスポージャーが増えていきます。たとえば利回り 9% の商品を 1,000 万ドル分から始めるとします。LTV 80% なら、5,000 万ドルのエクスポージャーまでレバレッジをかけられて、そのうち 4,000 万ドルが借入です。5,000 万ドルに対する 9% の利回りがあり、4,000 万ドルの借入に対して 5% の調達コストを払うとすると、元手 1,000 万ドルのポジションに対しては実質 25% ほどの APR にレバレッジがかかることになります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:25:22</span></div>
+  <div class="turn-body"><p>これは我々プロトコルにとっても当然よいことです。1,000 万ドルの預り金が 5,000 万ドルの供給になるわけですから。大きな成長メカニズムであるのは間違いありません。ただはっきりさせておきたいのは、ループは利益と同じだけ損失も増幅する、ということです。なので誰かに 5 倍のレバレッジ戦略をスマホで回せと勧めているわけではありません。とはいえ、DeFi と各種ステーブルを伸ばすうえで、確かによく効くメカニズムではあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:26:01</span></div>
+  <div class="turn-body"><p>みなさんが許してくれるなら聞きたいのですが、これは別物なのかどうか教えてください。自分がばかだと認めるのは構わないので。Kraken でいじっていたら、ファンデッド・チャレンジというものがありました。とても面白くて、20 ドル、50 ドル、90 ドルと払う。たとえば 90 ドル払うと、たとえば 1 万ドル分の資金を渡されて取引できる。ただし先にチャレンジを通らないといけない。12% の利益を出さないといけなくて、その 12% 自体は自分のものにはならない。1 万ドルを使う権利が得られるだけです。理屈のうえでは勝った 12% から我々は何も得ない。でもそのあと</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:26:48</span></div>
+  <div class="turn-body"><p>1 万ドルなりを動かせるようになって、取引を始められて、そこで出た利益は自分のものになる。ただ一定額を下回ると清算されて終わりです。これは面白いと思いました。まったく無関係な話でしょうか、それとも何か共通点がありますか。何の話か分かりますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:27:14</span></div>
+  <div class="turn-body"><p>その点でいうと、DeFi がもう少し接続しようとしているところではあります。DeFi の細部に入っていく話ですが、リスクを増幅しているのは確かです。それをやるならより多くのリスクを取ることになります。調べてみる価値はあると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:27:35</span></div>
+  <div class="turn-body"><p>そのチャレンジへの参加費ですね。数学的にというか、リスク管理の観点からというか、参加費の大半は取り込めるわけですよね。そして通過した人も、成績の基準を満たさないと清算される。どうやって収益にしているのかという点が面白いと思いました。すみません、話を脇道に逸らしたかもしれません。それと、Kraken を勧めているわけではありませんし、これは投資助言でもありません、念のため。参加者C、すみません、参加者C から質問が来ています。聞いているみなさんも、質問があればチャットに書いてください。登壇者A がいますので。</p></div>
+</div>
+
+<div class="sec">プライベートクレジット — 流動性と、値のつかないものの値付け</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:28:16</span></div>
+  <div class="turn-body"><p>本当に、私よりみなさんのための時間です。参加者C の質問です。「準備資産の一部がプライベートクレジットや直接融資に入っているときに、USDR の流動性と安全性をどう保つのですか」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:28:33</span></div>
+  <div class="turn-body"><p>それは少し前に話していたことに戻ります。ポートフォリオの構成、我々がやってきたストレステスト、市場の悪い日がどういうものかというシナリオを見て、そういったことに備えて計画する、という話です。そして、ポートフォリオの構成の中で流動性の高い商品が正しい割合を占めるようにすること。確かに、より利回りの高い部分は</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:29:06</span></div>
+  <div class="turn-body"><p>プライベートクレジットや直接融資といった流動性の低い商品から来ています。しかしポートフォリオの資産の大部分は、マネー・マーケット・ファンドや T-Bill のような流動性の非常に高い商品です。これらは即時、最悪でも T+1 で現金化できます。それに CLO の ETF があり、こちらは T+2 から T+5 ほどで、より高い利回りを出します。つまり、バケツの大部分は、どんな悪いシナリオにも応えられるよう設計された流動性の高い商品だ、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:29:48</span></div>
+  <div class="turn-body"><p>これまで見てきたシナリオに、ですね。意地悪な質問をしますが、プライベートクレジットで、値段がついていない資産をどう値付けするのですか。質問は私の記憶で言い直していますが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:30:02</span></div>
+  <div class="turn-body"><p>そこには、市場で値がついていないかもしれない資産、価格がないかもしれない資産があって、それでもリスクは管理しないといけない。そういうことですよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:30:21</span></div>
+  <div class="turn-body"><p>私はプライベートクレジットの専門家ではありませんが、これらは基本的に実世界の取引で、実在の借り手に資本を貸しています。貸し出す先の候補には、たとえば資本が制約された市場で機会に投資しているフィンテックがあり、そこでは利回りが高くなり得ます。新興国市場です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:30:57</span></div>
+  <div class="turn-body"><p>そうした市場は、西欧や米国よりも資本の制約が強いのが普通です。ただ、いずれも資産の裏付けがあり、信用補完も付いています。リスクの高いものではまったくありませんが、その資本の制約のおかげで利回りは良い。結局のところ、資本を受け取る人たち、つまりこうしたフィンテックを通じて我々が投資している先は、契約で利払いの義務を負う実在の借り手です。準備の内訳は公開され、我々が資本を何に配分しているかを確認できるようになります。こうした案件は独立した第三者によっても評価されます。我々が報告するファンド・アドミニストレーターがいて、彼らは自分たちが同意しない数字は公表しません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:31:55</span></div>
+  <div class="turn-body"><p>それに、実際に帳簿を評価し、我々が貸している貸付ポジションが実際にどうなっているのかを見る専門の会社があります。それが sUSDR の価値に流れ込みます。さらに、プルーフ・オブ・リザーブの監査人などの監査法人と組む独立した専門のアンダーライターもいます。繰り返しになりますが、私はプライベートクレジットの専門家ではありませんが、その専門家である人たちと多く仕事をしています。投資チームの 2 人が、数週間後に登場すると思います。ぜひこの件で呼んでください。</p></div>
+</div>
+
+<div class="sec">マーケットメイカーとは何か</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:32:36</span></div>
+  <div class="turn-body"><p>基本に戻りましょう。チャットの質問を順に見ています。マーケットメイカーとは何ですか。TL;DR でお願いします。RealFi のようなプロトコルは何であり、なぜマーケットメイカーと組むのですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:32:53</span></div>
+  <div class="turn-body"><p>流動性の重要性という文脈で先ほど触れたと思います。私自身、マーケットメイカーで少し働いていたこともあります。要するに、そこに立って買値と売値を提示し、いつでも売買する用意があるプロの会社です。彼らが厚みとペッグの防衛を提供します。市場が本当にストレス下にあるとき、彼らは自分たちが出ている取引の場で立ち続け、みんなに流動性を提供し、ペッグを保つための厚みを供給します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:33:44</span></div>
+  <div class="turn-body"><p>バランスシートを持ち、どんな相場でも流動性を提供する用意があるプロの会社なしに、DeFi を成立させるのは難しいです。先ほどのペッグとその裏側の機構の話に戻ると、常に USDR をちょうど 1 ドルで mint・redeem できる機関が必要です。そうすれば、価格がどこかで</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:34:15</span></div>
+  <div class="turn-body"><p>たとえば 99 セントまで下がったとき、そこで買って 1 ドルで redeem し、価格を押し戻せます。こうした会社がペッグを保つのを助け、それを一定に保つ裁定取引をしてくれます。加えて、DEX などパートナーの取引の場で厚みと流動性も提供します。</p></div>
+</div>
+
+<div class="sec">成長と、その利回りを誰が払っているのか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:34:41</span></div>
+  <div class="turn-body"><p>そこには色々な要素があります。開かれた金融のオペレーティングシステムを見たい、こうした道具が民主化されるのを見たい、という本当の理由が人々にはあります。それは重要なことです。だから否定するつもりはまったくありませんし、我々がここにいる大きな理由でもあります。ただ、チームやあなたのようなプロと仕事をするうちに、私はこういう考えを持つようになりました。結局は成長の話でもある、と。Web3 での勝負の名前は成長であり、成長とは資本の生産性だと言う人もいます。誰かが言っていた言葉を思い出しています。「利回りのあるところに道はある」。それが今の話にも聞こえていて、技術に明るくない人のために少し引いて見ようとしています。もっとも、ここにいるみなさんは私よりずっと技術に詳しいでしょうが。実際そうなのでしょうか。結局は利回りなのでしょうか。それが最終的に RealFi や Cardano での活動を動かし、人を惹きつけるのでしょうか。どう思いますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:35:42</span></div>
+  <div class="turn-body"><p>利回りだけの話なのかどうか。少し脱線しているかもしれませんが、エコシステムが本当に成長するにはどうなるのか、ということです。Cardano にとっての灯台になるような勝ちが見つかるといいと思っています。そして TVL が Cardano に来ることを願っています。成長について、成長とは何を意味するのか、そして Web3 のエコシステムで成長が実際にどう駆動されるのかについて、Cardano に限らず、Ethereum でも Solana でも他のどのエコシステムでもいいので、どう考えていますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:36:24</span></div>
+  <div class="turn-body"><p>答え方はいくつもあります。利回りの話に戻ると、三桁の APY を出しているファームもある中で、8〜10% の話をしているなら、なぜ誰かが気にする必要があるのか。これはなぜ気にするに値する機会なのか。そしてそれがどう成長をもたらすのか。私の見方では、今の金融の世界、ブロックチェーンの領域は、ずっと機関的になってきています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:37:05</span></div>
+  <div class="turn-body"><p>少なくとも私の意見では、市場で大きな波を起こしているものが 3 つあります。ひとつはステーブルコインです。今日すでに 3,000 億ドル分のステーブルコインがあります。大手銀行は、今後 5 年でそれが 10 倍以上になると予想しています。もうひとつは実世界資産のトークン化です。ファンド、クレジットファンド、株式といった金融商品が多くオンチェーンに来て、ボールトやオンチェーンのパッケージング層でそれらをより生産的に使えるようになる。利回りの話に戻ると、利回りとは誰かが</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:38:03</span></div>
+  <div class="turn-body"><p>誰かが誰かに何かの対価を払っている、ということです。なので最初の問いは、数字がどれだけ大きいかではなく、誰が払っているのか、そしてなぜか、です。我々の場合は、実在の借り手が契約に基づく持続的な利息を払っています。他のプロトコルでは、たとえば Ethena のようにファンディングレートを払っている場合もある。それも本物ですが、かなり循環的です。あるいは、トークンのトレジャリーが自分のトークンを発行して払っている場合もある。それも利回りではありますが、実態としては、カウントダウン付きの希薄化です。なので私にとっては、誰が利回りを払っていて、なぜなのかを問うことが常に重要です。それに答えられないなら、自分が利回りの出所だということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:39:01</span></div>
+  <div class="turn-body"><p>それと、三桁の APY を見かけたら、たいていそれは、全部失うリスクがあると市場が教えてくれているということです。だいたいにおいて警告ラベルのようなものです。ただ、これがこのプロジェクトに参加する気になった理由でもあります。ユーザーは担保を貸し手のように評価すべきだと思います。何が裏付けているのか。それを検証できるのか。その商品から抜けたいときに流動性はどれくらい深いのか。悪い日やストレス下の市場、ボラティリティのときに何が起きるかはすでに話しました。人は、それぞれの資産を、何が裏付けているかで判断する必要があると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:39:53</span></div>
+  <div class="turn-body"><p>そしてその周りの流動性で、です。だからこそ、我々が取り組んでいるもの、作っているものは、今日の試練に耐えられるように、そして本物を届けられるように、公正なものを届けられるように設計されています。市場にとって魅力的であってほしいものです。そして機関にとっても興味を引くものであり、オンチェーンに来てこうした商品に配分したいと考えるファンドや資本のアロケーター、機関が増えています。みな足先を浸しつつあり、こういうものに関心を持っています。</p></div>
+</div>
+
+<div class="sec">これまでで最もはっきりしたプロダクトマーケットフィット</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:40:28</span></div>
+  <div class="turn-body"><p>興味深いですね。2 つのことの周りを回っている感じなので、直接聞きます。RealFi に限らず、Web3 でこれまでに見た中で、最も面白いプロダクトマーケットフィットは何だと思いますか。金融商品などいくつかの例を挙げてきましたが、これまでで最良のプロダクトマーケットフィットはどこにあると思いますか。ステーブルコインはそのひとつですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:40:56</span></div>
+  <div class="turn-body"><p>私にとっては間違いなくステーブルコインです。crypto の時価総額全体を見ると、この 1 年ほどでかなり落ちているでしょうが、ステーブルコインは伸び続けています。ステーブルコインの時価総額を見ると、かなり滑らかに伸び続けている。目立つ下落がない。これは、人々がますますステーブルコインを使いたがっているということです。それに、新興国市場に注力する場所で働いていた経験から言うと、ナイジェリアやアルゼンチンのような場所では、人々は日々の</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:41:48</span></div>
+  <div class="turn-body"><p>仕事や生活をステーブルコインの上で回しています。そうした市場では米ドルの現金にアクセスするのが簡単ではなく、自国通貨のインフレが激しいからです。あの地域ではステーブルコインは圧倒的なプロダクトマーケットフィットです。そして、少なくとも私の意見では、そこに我々のような米ドル建ての利回りを足すなら、そうした市場の多くの人にとっては考えるまでもない選択でしょう。自国通貨のインフレがそれほど高い市場で、米ドルで貯めて魅力的な利回りを得られるのは、非常に魅力的です。それから、先ほど向かっていた話ですが、実世界資産のトークン化が進み、それらをオンチェーンに載せてコンポーザブルにしていくこと。たとえば</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:42:45</span></div>
+  <div class="turn-body"><p>トークン化された株式を持っているとして、そのポジションを保ったまま、オンチェーンのレンディング市場でステーブルコインを借りられる。これは伝統的な金融市場では、富裕層でもなければできないことです。実質的にはマージンローンで、通常はブローカーを通じて、より資産のある人か、ブローカーにアクセスできる人に限られています。なので、こうした実世界の金融商品がオンチェーンに来る流れはますます広がり、人々はますます金融に関心を持ち、リテラシーを高め、オンチェーンに来た資産でより面白いことをするようになると思います。この流れにはかなりわくわくしています。</p></div>
+</div>
+
+<div class="sec">担保を見極める道具と、透明性</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:43:35</span></div>
+  <div class="turn-body"><p>帳簿を精査したり、クレジットの種類を評価したりする話ですが、日常的に使っている具体的なツールや、人によく勧める教育リソースはありますか。思い浮かぶ上位 2〜3 つで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:44:01</span></div>
+  <div class="turn-body"><p>crypto のツールはたくさんあります。この 4〜5 年、crypto をかなりいじってきました。DefiLlama のようなデータソースがあり、さまざまな利回りと、その裏付けが何かを知るのにかなり役立ちます。ボールトについて、どれが良いボールトでどれがそうでないかを教えてくれる機関向けのプロバイダーも増えています。最近は Cerberus というプラットフォームを見ていました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:44:37</span></div>
+  <div class="turn-body"><p>ボールトにリスク評価を付けるものです。さまざまなプロトコルの裏付けや、オペレーショナルリスクの体制などを見ています。ただ、我々がやろうとしているのは、可能な限り透明性を高めることです。トークンを何が裏付けているかをライブのデータで見られるようにし、プライベートクレジットの帳簿については毎週のアテステーションを出しています。オンチェーンで、資産を何が裏付けているかを人がライブで見られる状態を、できるだけ作ろうとしています。これは誰もがやっていることではありません。実際にいくつか破綻もありました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:45:33</span></div>
+  <div class="turn-body"><p>この半年ほどで、これをきちんとやっていなかった、あるいは独立した検証者を使わずに自分で自分の答え合わせをしていた例がありました。我々はこれを非常に重く受け止めています。それに、DeFi 市場全体としても、これを真剣に受け止めざるを得なくなってきていると思います。破綻があまりに多かったので、残念ながら多くの機関がやけどを負ったか、やけどを警戒しています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:46:03</span></div>
+  <div class="turn-body"><p>その結果、市場にこれをやらせる圧力がかかっています。この領域が我々とともに成熟して、こうしたことをやるようになることを願っています。</p></div>
+</div>
+
+<div class="sec">12〜18 か月後の成功の姿</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:46:19</span></div>
+  <div class="turn-body"><p>今日から先を見て、12 か月後、18 か月後を考えたとき、あなたにとって、そして GTM にとって成功とはどういう姿ですか。そしてコミュニティに何かできることはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:46:40</span></div>
+  <div class="turn-body"><p>まさに。TVL は重要で、私の役割はほぼその指標だけで測られます。ただ、TVL が今の Cardano の強みでないのは確かです。Cardano の背後には素晴らしいコミュニティがあり、ステークされている ADA も非常に多い。その一部が、我々のような、Cardano で初めて機関投資家水準の利回りプロトコルを届けようとしているところに動いてくれることを願っています。その資本の一部が我々のプロトコルの TVL になってほしいです。ただ TVL だけがすべてではありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:47:38</span></div>
+  <div class="turn-body"><p>TVL は作ろうと思えば作れてしまうし、借りてきた流動性で買うこともできます。なので私個人にとって成功とは何か。ペッグが狭く、うまく取引されるステーブルコインであること。価格が動く前にスワップを吸収できるだけの大きなプールがあること。DeFi のパートナーと組んで、レンディング市場側の利用率を上げていくこと。発表されるだけでなく実際に使われる統合を持つこと。そして流通のパートナーと組んでいくこと。新興国市場のフィンテックと組む将来には期待しています。そこには我々のプロダクトのユースケースとニーズが多くあると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:48:36</span></div>
+  <div class="turn-body"><p>そして機関のアロケーターに入ってもらい、我々に資金を預けてもらい、信頼を築き、居ついてくれる機関の保有者という資本のベースを作ること。居ついてくれるなら、我々としても資金をより長く運用でき、他のみなさんにもより良い利回りを届けられます。</p></div>
+</div>
+
+<div class="sec">SPO に何ができるか — 暗い森</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:48:58</span></div>
+  <div class="turn-body"><p>そうですね、私が伸ばそうとしているのはそういうところです。 — いい流れになりました。見ていた質問のひとつ、これもチャットにありますが、GTM の観点で verified SPO がどこに位置づけられるのか、そしてマーケティング費用ではできないことをオペレーターのコミュニティは成長のために何ができるのか、というものです。前置きとして、画像をいくつかチャットに貼りました。さっき別の通話に出ていたので。 — ええ、これは私が答えます。自分に質問を投げる形になりますが。 — いえ、これはあなたの話です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:49:32</span></div>
+  <div class="turn-body"><p>これはあなたの話です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:49:34</span></div>
+  <div class="turn-body"><p>「暗い森」理論という考え方が好きです。AI が来ることで人々は退却し、すべてがやらせになり、すべてが bot の活動になっていく。だから人々は「居心地のよいウェブ」に、非公開の Telegram や Discord、対面の集まりに退却していく、というものです。要点を示すために、ここにいる人のためにチャットに貼りました。Cloudflare によれば、インターネットの活動の 50%、50〜80% は bot です。あの Cloudflare がそう言っている。そしてオンチェーンの活動も、少なくとも Solana では 90% が bot だったと思います。そして SPO について本当に特別だと思うことのひとつは、彼らが信頼されたインフラであり、デリゲーターとの関係資本を持っていることです。なので、アクセラレータープログラムがやることはいくつかありますが、ひとつは</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:50:29</span></div>
+  <div class="turn-body"><p>オンチェーンの活動を見られるようになることです。念のためはっきりさせておくと、KYC・AML の話でも、誰かの身元が晒される話でもありません。オンラインの活動とオンチェーンの活動を見られる、という意味です。ポイントを請求する人がいるとき、そのポイントを請求するのに、彼らが本物の人間であるとかなり高い確度で言えるようになります。SPO がここで作っているアクセラレータープログラムは、その点で新しいと思います。似たものは知りません。正直に言うと、これは計画していたことではなく、SPO と話す中から出てきたものです。でも新しいし、とても面白いと思います。そして 2 つ目は</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:51:25</span></div>
+  <div class="turn-body"><p>日本の SPO の方々もここにいますが、「トレーナーを育てる」あるいは「教育者を教育する」モデルも考えています。SPO にとって重要な資料やテーマを、SPO がデリゲーターに持っていける形にする。そうすれば、従来のマーケティングの流通チャネルの外に出られて、代弁してくれる人たちが生まれます。そこで代弁してもらいたいことのひとつは、当然ながら Cardano のネットワークの分散を進めようということです。シングルプールのオペレーターにデリゲーションが集まってほしいので。コミュニティ団体の方に叱られるかもしれません。厳密にはシングルプールでない SPO も 1、2 あるかもしれないので。ただ大まかには 95%、97% です。要点は、大量のステークを持つ MPO、つまり複数プールのオペレーターがいくつもあり、それがもっと多くのステークプールオペレーターに移ってほしい、彼らがより成り立つように、ということです。100 万から 1,200 万の間のどこかにスイートスポットがあります。誰かがチャットでもっと正確に教えてくれるでしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:52:18</span></div>
+  <div class="turn-body"><p>そこが報酬をより予測しやすくし、結果としてビジネスとして、ステークプールとして成り立ちやすくなる水準です。他に重要だと思う例は、Cardano のネットワークの活動そのものです。エコシステムの成長の話をしてきましたが、結局は資本を集めて、その資本を生産的にすることです。日本の SPO の方々と話していることのひとつは、日本には比較的動いていない ADA が多くある、ということです。かつては、ステーキングは義務のようなものだと考えられていたかもしれません。ADA 保有者としてステークすれば、ネットワークに対する自分の役割を果たしている、と。ただ今は、経済活動という考え方もあり得るのではないかと思います。資本があるなら、それで何ができるのか。Cardano での活動を生むために。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:53:17</span></div>
+  <div class="turn-body"><p>話しながら 2 つのことが頭に浮かびました。X で、LATAM の多くが Cardano に入ってきているという話を見ました。それと、Cardano の創業者が、Cardano には新しいナラティブが必要だと話しているのを見ました。これらはそこにとって重要な部分だと思います。なので、あとで責任を問われるかもしれませんが、SPO は何をするのか、なぜそれほど重要なのか、という問いへの私の答えはこうです。しかもこれはまだ始まったばかりで、今まさに作っているプログラムです。ただ、SPO に価値があると思う理由はそういったところです。それに、SPO が報われ、デリゲーターが報われ、RealFi が SPO やデリゲーターと組む強い動機を持つという、実際の与え合いがあります。すみません、マイクを長く取りすぎました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:54:19</span></div>
+  <div class="turn-body"><p>まさにそのとおりです。先ほど言ったように、私は Cardano のエコシステムには本当に新しく入ったばかりです。あなたがその方面でやってきたことは私にとって非常に興味深く、私自身も追いつこうとしているところです。先ほど私が話したことで響くものがあって、私自身とつながりたい、あるいは私が担当している成長やパートナーシップの仕事で SPO に関係する形で助けが必要であれば、言ってください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:54:51</span></div>
+  <div class="turn-body"><p>DM は開いています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:54:52</span></div>
+  <div class="turn-body"><p>喜んで手伝います。</p></div>
+</div>
+
+<div class="sec">mainnet とその先</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:54:53</span></div>
+  <div class="turn-body"><p>それから、チャットの質問を見ていればお分かりのとおりですが、Cardano は我々のホームグラウンドで、RealFi はここで立ち上がります。ただ、testnet で仕事の大部分が終わったあと、mainnet についてはどう考えていますか。どこへ向かうのですか。コミュニティは何を楽しみにしていられますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:55:23</span></div>
+  <div class="turn-body"><p>これも段階がいくつかある話です。先ほどほのめかしたとおり、Cardano だけでなく、その先には Ethereum への展開もあります。ステーブルコインの深い流動性はすでにそこにありますし、プロのルーパーの多くもそこにいます。先ほど話したループ戦略の担い手です。それに機関の資本の多くもそこにあります。ただ、話を戻すと、考え方としては TVL は Cardano に戻ってくる、ということです。資産は Cardano にあります。なので活動が Ethereum で起きても、それは Cardano に戻ってきます。面白いことがいろいろあって</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:56:13</span></div>
+  <div class="turn-body"><p>そのための設計の一部でした。Ethereum で mint された 1 ドルが、それでも Cardano の TVL として数えられるように設計するのは面白いところです。ただ Cardano の mainnet に話を戻すと、面白いのは先ほど話したようなことです。きちんとした流動性を立ち上げること。主要な DEX パートナーである SundaeSwap に、適切な流動性プールを用意する作業もそうです。レンディング市場側でも Liqwid と面白いことをしています。たとえば、隔離された市場ができて、ADA を担保に USDC を借り、それを我々の利回り付き商品に投じられるようになります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:57:11</span></div>
+  <div class="turn-body"><p>ADA のステークとそのステーキング利回りは保ったままです。売るわけでも手放すわけでもありません。それを担保に借りて、借りた資金を、借入コストより高い利回りを目標とする商品に投じられる。ポジティブ・キャリーの取引です。面白い機会です。そうした戦略を設計し、Cardano エコシステムのプロトコルと組んで、Cardano で最初の利回り付き商品にできるだけ多くの実用性をもたらすのは、とてもわくわくすることだと思います。Cardano の mainnet が立ち上がったときに、そうしたものを出すのが楽しみです。</p></div>
+</div>
+
+<div class="sec">どんな紹介が助けになるか、そしてクロージング</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:57:58</span></div>
+  <div class="turn-body"><p>かなり面白くなりそうですね。DM をさばいていて分かるのですが、すべての DM や機会が有望なものとは限りません。こういう紹介やつながりなら聞きたい、あるいは人につないでほしい、というものはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:58:24</span></div>
+  <div class="turn-body"><p>いえ、実用性をもたらしてくれるパートナー、流通を広げるのを助けてくれるパートナー、信頼の面をもたらしてくれるパートナーなら何でも。Cardano のエコシステムでも、それ以外でも、どんな案件でもありがたいです。このコミュニティで一緒にやっているので。もし万一、ファンドやトレジャリーやファミリーオフィスを運営していたり、そういう人を知っていたりするなら、ぜひ紹介してください。いつも言っているのですが、私はこの Discord というものが得意ではありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:59:02</span></div>
+  <div class="turn-body"><p>Discord で DM をもらっても、私には届きません。X（Twitter）で DM をください。始めますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:59:10</span></div>
+  <div class="turn-body"><p>始めますか。では 登壇者A を X でフォローしてください。1,000 まで伸ばしたいところです。今は 100 なので、なかなかの目標です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:59:28</span></div>
+  <div class="turn-body"><p>ツイート全般はあなたにお任せします。私は少し古い人間なので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:59:33</span></div>
+  <div class="turn-body"><p>ですが</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">00:59:35</span></div>
+  <div class="turn-body"><p>念のためもう一度。Discord で DM をもらっても、私は読みません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">00:59:39</span></div>
+  <div class="turn-body"><p>参加してくれたみなさん、ありがとうございました。少し事務連絡です。サマリーを出すのをもっと上手にやっていきます。マーケティングチームと、このコンテンツをどう使えば非同期でもっとアクセスしやすくなるかを話しています。サマリーは追って共有します。RealFi のコンテンツでもっといろいろやって、もっと多くの場所に届けられるようにしたいです。登壇者A、あらためてありがとうございました。最後の一言をお願いします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">01:00:20</span></div>
+  <div class="turn-body"><p>本当に、プロトコルをテストして、いじってみてください。何が気に入って何が気に入らないかを教えてください。我々にとって価値がありそうな紹介や情報があれば、DM で教えてください。それ以外にも、この数週間・数か月で本当に面白いものが出てきます。mainnet を出して、Cardano コミュニティで DeFi の機会を開くのを本当に楽しみにしています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">01:00:55</span></div>
+  <div class="turn-body"><p>きちんと裏付けのあるプロトコルとして、初めてのものです。みなさんもわくわくしていてくれるといいのですが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<span class="turn-time">01:01:08</span></div>
+  <div class="turn-body"><p>呼んでいただき、ありがとうございました。</p></div>
+</div>
+</section>
+
+<section class="part lang-en" id="en">
+<div class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">匿名化とプロダクト名の修正以外は未編集</span><span class="l-en">Unedited apart from anonymisation and product-name fixes</span></span></div>
+<div class="sec">Before the stage</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>Is my it say something.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:00:03</span></div>
+  <div class="turn-body"><p>Hello, can you hear me?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:04</span></div>
+  <div class="turn-body"><p>Great, perfect, it&#x27;s working. Sometimes it was bugging out earlier but it&#x27;s working now. Going live now and let me just tweet it out as well. We need to get you some more followers.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:00:19</span></div>
+  <div class="turn-body"><p>Then do I just we&#x27;re still in the green room?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:24</span></div>
+  <div class="turn-body"><p>We&#x27;re going to move into the main stage. I&#x27;m going to start it. Then you&#x27;ll find the functionality that allows you to request to speak, and then I&#x27;ll bring you up to stage. Are you ready to start?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:00:38</span></div>
+  <div class="turn-body"><p>You might need to help me on the functionality bit.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:00:41</span></div>
+  <div class="turn-body"><p>I&#x27;m going to start the stage which is the room above us. You&#x27;re going to join that room. Then you&#x27;re going to look down in your control to make sure that you can either accept my invitation to speak, or you&#x27;ll be able to request it one of those two things. That&#x27;s how we get up on the stage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:01:12</span></div>
+  <div class="turn-body"><p>Testing. Hello. [参加者の呼びかけ。ハンドル名は記載しない] Invite to speak, 登壇者A. Let&#x27;s get you up here.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:01:32</span></div>
+  <div class="turn-body"><p>Can you hear me?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:01:34</span></div>
+  <div class="turn-body"><p>Great. Thanks so much for coming. This is going to be a really good one because there&#x27;s loads of stuff I want to learn from you. It&#x27;s totally selfish, but I&#x27;ve shared some of the questions we prepped. We&#x27;ll be able to run through those. Just give it a minute or two until everybody comes in. I&#x27;m going to tweet out as well.</p></div>
+</div>
+
+<div class="sec">Origin story — from capital markets to crypto</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:02:19</span></div>
+  <div class="turn-body"><p>So RealFi office hours number five. We saved the best not till last, but until now. So certainly just to warm up the room, do you want to give us a tell us how you got involved in RealFi and tell us what you do and your kind of origin story? So we get to know you a little bit. Could we kick it off like that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:02:43</span></div>
+  <div class="turn-body"><p>for sure. You can hear me right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:02:45</span></div>
+  <div class="turn-body"><p>Yes sir I can hear.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:02:48</span></div>
+  <div class="turn-body"><p>Perfect. Cool. Nice to be here. Thanks for having me. Excited to do this. I am 登壇者A. I run go to market at RealFi. Before crypto, I started my career in traditional finance. So I spent probably the first half of my career, too many years, in large investment banks working in traditional equity capital markets. Working on sort of.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:03:23</span></div>
+  <div class="turn-body"><p>Big billion dollar transactions for companies doing IPOs, um equity issuances, things like that. Um and yeah, I also had a secondment to a policy-side institution, where I ended up working on some of the mess that we managed to get ourselves in on the regulatory front. Uh but whilst I was there, I got to do some research on the future of capital markets and sort of. What the opportunities might be, and unlike anyone else probably in crypto, that&#x27;s actually where I kind of came across crypto property and properly got interested. Right, It&#x27;s like the first time I properly ran into smart contracts platforms and tokenization and things like that. Right, This was like twenty eighteen nineteen when these sorts of things were making a lot of noise.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:04:22</span></div>
+  <div class="turn-body"><p>And the idea really stuck with me, capital markets that anyone can reach, settle instantly, rebuild our software essentially is something that really fascinated me. I ended up going back to school to do an MBA at a business school. This was over COVID and a lot of us were stuck at home, playing around with or trading crypto. I ended up doing that during DeFi summer. I saw all of these things happening around DeFi and NFTs, watching this parallel financial system assemble itself in a few months. I decided I want to work in crypto full time. This is such an innovative space. So interesting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:05:17</span></div>
+  <div class="turn-body"><p>And basically ended up going into crypto after finishing my MBA. Pretty much joining right at the top of the market, and it&#x27;s probably been a bit of a choppier ride since then. I&#x27;ve worked across a few different places. So a permissioned blockchain attempt, which was quite a good way to plug into how institutions adopt this technology. I then spent some time at a crypto market maker and liquidity provider. And then most recently, worked at a few layer two ecosystems as well. So one focused on emerging markets. And that was quite cool to work with them and see where stablecoin dollar demand really lives. Which to me is in a lot of emerging markets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:06:15</span></div>
+  <div class="turn-body"><p>And also spent some time at a layer two trying to bridge native Bitcoin into Ethereum style DeFi and saw what it takes to bootstrap a DeFi economy with a chain with a big community, but no DeFi habit in Bitcoin. Which I guess there is like some parallel lessons to now working in the Cardano ecosystem. But to say it plainly, I&#x27;m not a Cardano native. I came up more on the Ethereum side. So apologies if I say anything that&#x27;s sacristant to the community. I&#x27;m pretty new here. But excited to build here. And excited to kickstart something really interesting in DeFi on Cardano.</p></div>
+</div>
+
+<div class="sec">What go-to-market actually does</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:07:08</span></div>
+  <div class="turn-body"><p>That was a great introduction, 登壇者A. Thank you. Walk me through the timeline briefly. How long have you been in RealFi? What does that timeline look like? Can you describe what GTM is? Educate me on the role and the function.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:07:26</span></div>
+  <div class="turn-body"><p>For sure. So I actually joined RealFi fairly recently in March. I was really attracted to the fact that it was a protocol trying to bring real world assets into DeFi through a stablecoin. All of these things really resonated with me and my background. I also like the emerging market angle that the team has. So really nice sort of meeting melting pot for me in terms of my backgrounds and what I&#x27;ve worked on before.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:08:06</span></div>
+  <div class="turn-body"><p>Go to market actually means that a stablecoin protocol like RealFi for me, it&#x27;s really like three things, right? Number one is to make sure that our tokens, our stablecoin has deep liquid and healthy markets wherever it trades. That&#x27;s the incentive designs and the liquidity is there and stays there once incentives taper, right? Which is a lot of work that we do together with the product team. But it&#x27;s also working with market makers and trading shops, who are the professionals who provide liquidity on venues. Then secondly is connecting the protocol to anything that gives it utility, so that may be decentralized exchanges, lending markets, wallets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:09:05</span></div>
+  <div class="turn-body"><p>Custodians, centralized exchanges, et cetera. And then finally also bringing in capital that stays. I spend a lot of time getting institutional allocators to come in, speak to crypto native funds, treasuries, family offices and really anyone who can also introduce me to these kind of folks. A normal week is having conversations with allocators, with people who open their stores, with trading firms and venues and potential partners who can distribute this to real users. And also obviously a lot of work working internally with our product and data and engineering teams as well.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:09:55</span></div>
+  <div class="turn-body"><p>That&#x27;s really interesting. If we were talking about Cardano, you were saying you&#x27;re still finding your way around. And we talked about roles. What are the key roles that you mentioned there that are relevant to your function? You said allocators. Are there a set of roles that you tend to focus on?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:10:22</span></div>
+  <div class="turn-body"><p>I&#x27;ve got aum You mean likeum Potential partners and that kind of stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:10:29</span></div>
+  <div class="turn-body"><p>Thinking about how you could give anyone listening an aerial map of what parts of say the industry you&#x27;re really engaging with the most.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:10:41</span></div>
+  <div class="turn-body"><p>On the liquidity side, market makers and liquidity providers. Then connecting with partner protocols, it&#x27;s again lending markets and decentralized exchanges. There&#x27;s also infrastructure partners that make the protocol work, like wallets, custodians, for example. And then, as I mentioned before, the other part of the job, once you set up the liquidity and set up the infrastructure to make things operate smoothly, is getting people to put money into our protocol so that we can then.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:11:21</span></div>
+  <div class="turn-body"><p>Go and invest that money on the back end into our strategies and deliver the yield for the token.</p></div>
+</div>
+
+<div class="sec">Explaining RealFi in one minute</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:11:28</span></div>
+  <div class="turn-body"><p>Yes, that&#x27;s great. Let me just do a bit of housekeeping. Um, as a few more people have joined, um if you&#x27;ve got the Discord stage open, there&#x27;s a chat bubble in the top right. You can open chat and ask 登壇者A questions as we&#x27;re going along, and me and 登壇者A will both be reading that chat. Um secondly if you can retweet or invite more people into the Discord, that would be great too or let&#x27;s see the numbers get up, Um, and also, 登壇者A, You know, we mocked up some questions earlier and um got some voting going on with the SPOs. So I was gonna sort of hit those questions up first. Um, sound good to you if I do them in sort of order of votes? Yeah. Okay, great. Yeah, sounds good. Um so first one is uh a delegator asks their SPO what RealFi is. Um what&#x27;s the one minute answer you&#x27;d want them to give? How would you want someone to explain RealFi?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:12:20</span></div>
+  <div class="turn-body"><p>To someone in the movie wasn&#x27;t technical or familiar with it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:12:28</span></div>
+  <div class="turn-body"><p>Sure. RealFi is a yield-bearing stablecoin protocol. I think it&#x27;s probably fair to say the first yield-bearing instrument of note on Cardano. In terms of the design, there are two tokens. There&#x27;s USD R, which is our one to one US dollar pegged liquid stablecoin, and you stake that in order to get access to the yield bearing portfolio. The yield for us comes from real world assets. I think that&#x27;s one of the sort of differentiators versus other similar products out there in the market.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:13:16</span></div>
+  <div class="turn-body"><p>Cardano, or Ethereum, or Solana, whatever it may be. Our portfolio is comprised entirely of real world assets. What that means in practice is money market funds, T bills, things like collateralized loan obligation ETFs, which are all fairly liquid yielding instruments. Then there is also the direct fintech lending and private credit element. Which is something that the team has been doing for the last four or so years, and that&#x27;s a strategy that they&#x27;ve been running for a long time and have built up a track record in that. And that&#x27;s what kind of delivers a little bit more of that juice in the APYs that we&#x27;re targeting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:14:06</span></div>
+  <div class="turn-body"><p>And is there a difference in the portfolio of U.S., D.R. and then S.U.S.D.R.? Just clarity. Do we have any? What&#x27;s the difference between those two things?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:14:18</span></div>
+  <div class="turn-body"><p>Hundred percent. So the USCR is backed by a much more liquid instruments, right? Given that private credit and direct fintech lending is a lot more illiquid. Typically the duration of the investments that we make is more like six to twelve months, and given that we have to meet the redemptions and make sure that it&#x27;s fully liquid. The backing of that is a lot more liquid instruments. That&#x27;s your sort of money market funds, T bills, Clo ETFs, all which are instruments that can be essentially sold very quickly to meet any of the redemptions.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:15:11</span></div>
+  <div class="turn-body"><p>And in terms of the design and the protocol, I think someone from our data team was on last week, and he talked a lot about the stress testing and the modeling that the team has done around ensuring the design of the protocol and ensuring that we can always meet the worst case redemption queues and scenarios that we&#x27;ve seen in the market. We&#x27;ve really spent a lot of time battle testing the protocol.</p></div>
+</div>
+
+<div class="sec">What holds the peg, and what a bad day looks like</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:15:41</span></div>
+  <div class="turn-body"><p>And that pairs well into question five. I am just going by the numbers in the chat. But what keeps USD at one dollar and what happens on a genuinely bad day?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:15:57</span></div>
+  <div class="turn-body"><p>What keeps the way you know there is an institutional mandate right forum.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:16:09</span></div>
+  <div class="turn-body"><p>Arbitrage. So we work with institutional market makers, as I mentioned before. They help arbitrage and keep the peg at one dollar. Only institutions can mint and redeem. Institutions have whitelisted addresses that we allow to arbitrage. If the price deviates from one dollar, they can buy elsewhere and arbitrage that trade, bringing the peg back to one. That&#x27;s one of the mechanisms we enable. In terms of bad, what did you say? What was a bad kind of day scenario?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:16:51</span></div>
+  <div class="turn-body"><p>I am thinking of one of those films. I can&#x27;t remember what it was called. What happens on a really bad day?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:17:04</span></div>
+  <div class="turn-body"><p>So this is something that I was alluding to. We&#x27;ve done a lot of modeling to ensure that, if a lot of the book wants out at the same time, we have the right sort of portfolio of instruments that is able to meet redemptions very quickly, especially if there are stresses in the market. It&#x27;s really about doing that modeling and back testing around the portfolio composition.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:17:38</span></div>
+  <div class="turn-body"><p>To ensure that we&#x27;ve covered all of the worst case scenarios we&#x27;ve seen in the past. And a lot of back testing and data work has gone into ensuring that we are able to cope with those scenarios.</p></div>
+</div>
+
+<div class="sec">From the chat — the Clarity Act, and the biggest milestone</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:17:55</span></div>
+  <div class="turn-body"><p>I&#x27;m just posting my rough bank of questions into the chat, so people can see them and let us know which they want us to ask, or if there&#x27;s any that we haven&#x27;t thought of. But let me just pick up a couple of questions that came in while we were talking. 参加者A wants to know, and you may not have an opinion on this, so don&#x27;t let me put you on the spot. Do you have an opinion on the potential effects based on what may or may not have happened with the Clarity Act over the next few days, weeks or months? Is that something you would talk about, or should we leave it for another office hours?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:18:36</span></div>
+  <div class="turn-body"><p>Well, I mean, I would just say, you know. You know my understanding is a lot of this stuff is still very much in flux. Um, you know the Clarity Act is. I&#x27;m not based in the US. I&#x27;m not super close to it, but uh you know there&#x27;s a lot of um you know. A lot of debate still happening I think uh around it and exactly what it would look like. Uh and so you know once. No pun intended. Once, we do actually have more clarity on exactly how it&#x27;s constituted and exactly what it says, I think you know, Obviously, that would be helpful for the market. And you know, protocols like ours will be able to plan according to today&#x27;s rules once they&#x27;re set in stone.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:19:22</span></div>
+  <div class="turn-body"><p>Thank you. 参加者B wants to know what&#x27;s the biggest milestone? I guess either 登壇者A that you&#x27;ve achieved so far or that you&#x27;re working on looking ahead.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:19:37</span></div>
+  <div class="turn-body"><p>The biggest milestone, it&#x27;s a good question. Obviously, delivering the test net for this protocol was a big initial milestone that we&#x27;re very proud of. I mean the road is long from here. It&#x27;s great that testnet is live. And thank you to everyone here who is breaking it in and helping us find the bugs or whatever it may be. The next milestone from here is obviously mainnet landing. Hopefully next month and expanding to Ethereum thereafter.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:20:34</span></div>
+  <div class="turn-body"><p>This community is very helpful and testing things and telling us what works and what doesn&#x27;t work. If there&#x27;s any frictions, we obviously want to make the product as good as it can possibly be. That&#x27;s my kind of ask for people here: help us test the product and test its functionality.</p></div>
+</div>
+
+<div class="sec">Why liquidity is existential, and what a loop is</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:21:04</span></div>
+  <div class="turn-body"><p>My recollection was that RealFi is a product that works better with economies of scale. And one of the questions I&#x27;ve got here is about liquidity and it being make or break for a stablecoin. So for those of us who aren&#x27;t DeFi natives, can you walk us through how RealFi benefits from economies of scale and why liquidity is so important?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:21:31</span></div>
+  <div class="turn-body"><p>I spent a lot of time thinking about liquidity and designing for liquidity. Obviously, liquidity is the difference between the price you see on a screen and the price you actually get. The depth of liquidity is how much you can buy or sell before you move that price. Most tokens have thin liquidity.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:22:01</span></div>
+  <div class="turn-body"><p>It&#x27;s annoying, but for a stablecoin, it&#x27;s pretty existential. You know, Like a dollar, a dollar, you could only sell at ninety eight cents. Isn&#x27;t isn&#x27;t really a dollar or a stablecoin at that point, right? So yeah. Having having the liquidity and designing liquidity around the peg is super important, right? And also liquidity. You know, Beyond giving tight prices is is what gives what gives the market confidence and then brings in other holders, which deepens more like deepens liquidity and pools and creates a flywheel. Um, And it&#x27;s also like super important for everything that we want to build on top uh in DeFi, right? So for example, like a concrete example of that is you know.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:22:57</span></div>
+  <div class="turn-body"><p>Lending markets, which are super important in DeFi. We work with Liqwid quite a lot on the lending market side, where a lending market will only accept a token as collateral if it can sell that token quickly at a fair price if a loan goes bad. If there is no depth or liquidity to do that, then there is no lending market, which means there is no borrowing, which means there is no real DeFi economy and no ability to grow through leverage looping strategies, for example, which is a popular sort of DeFi strategy for yield bearing assets like collars.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:23:39</span></div>
+  <div class="turn-body"><p>That&#x27;s kind of the area. I was being a little bit slow. Walk me through what a looping strategy is and how it might look.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:23:51</span></div>
+  <div class="turn-body"><p>This is a little bit nerdy, I guess DeFi nerdy, but something that I enjoy and spend a lot of time doing myself. Leverage loops are probably the most important growth mechanic in yield bearing stablecoins and is something that&#x27;s helped protocols like Ethena grow to fifteen billion dollars at their peak. To explain what it is, if you post a yield bearing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:24:25</span></div>
+  <div class="turn-body"><p>Token as collateral, so sUSD R in our case in a lending market. You can then borrow ordinary stable coins against it, then buy more of the yield bearing token, post that to repeat. And so each loop you add exposure on the same starting capital rate. Say if you start with ten million dollars of a yielding instrument at nine percent. At an eighty percent loan to value, you can lever that up to fifty million dollars of exposure, with forty million of that being borrowed. And then your nine percent yield on that fifty million, and say you are paying like a five percent to borrow on the forty million dollar nets. That yield basically leverages up to like twenty five percent APR on your starting ten million dollar position.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:25:22</span></div>
+  <div class="turn-body"><p>That&#x27;s obviously good for us as a protocol, because 10 million of deposits became 50 million dollars of supply. So it&#x27;s definitely a big kind of growth mechanism. I guess what I would be clear on is that looping amplifies losses as well as gains. So I&#x27;m not suggesting anyone runs five times leverage strategies on their phone, but it&#x27;s definitely a mechanic that does work well in growing DeFi and your various stables.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:26:01</span></div>
+  <div class="turn-body"><p>Do, you know, um if the audience doesn&#x27;t, it will indulge me if you don&#x27;t mindum and tell me whether this is different, right? Because like I don&#x27;t mind admitting I am an idiot. People have known me long enough, butum I was messing around on Kraken, and they had this thing calledum. Funds or challenges is really fascinating. Where like you go and buy twenty dollars, fifty dollars, ninety dollars, And uh, if you spend ninety dollars, they give you a hundred. Uh let&#x27;s say, ten k in funds to then go and trade with. But, you have to pass a challenge first. So you&#x27;ve got to get like twelve percent profit and you don&#x27;t get anything. You only get entry into spending that ten k. So the twelve percent you&#x27;ve just won in theory, we don&#x27;t get anything from it. But then, You do get uh.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:26:48</span></div>
+  <div class="turn-body"><p>Whatever it is, ten k to play with, and you can start trading and you get to keep any profit. But if it drops below a certain amount then you&#x27;re liquidated and it&#x27;s gone. And I thought that was really interesting and fascinating. Is that totally unrelated or do there is a parallel there? Do you know what I&#x27;m talking about?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:27:14</span></div>
+  <div class="turn-body"><p>In terms of this, I guess DeFi is looking to connect with a little bit more. Going into the weeds of DeFi, right? It&#x27;s definitely amplifying risk. You are taking on more risk if you are doing it. It&#x27;s definitely something if you kind of want to read up on.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:27:35</span></div>
+  <div class="turn-body"><p>Entry to that challenge. So from like a mathematical point of view, or however, you want to a risk management point of view, they&#x27;re gaining most of those entry fees aren&#x27;t they and then, Of the ones that make it, they then have to have a performance metric, otherwise they get liquidated. So I thought that was just fascinating in terms of how they make it profitable. Um, but perhaps I&#x27;ve I&#x27;ve taken us off on a detour. Sorry. And I am not making i am not recommending Kraken. This is not financial advice either just just for the record, you know? Um 参加者C sorry, 参加者C&#x27;s asked a question and anyone listening, please if you got questions, put them in chat 登壇者A&#x27;s here.</p></div>
+</div>
+
+<div class="sec">Private credit — staying liquid, and pricing what has no price</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:28:16</span></div>
+  <div class="turn-body"><p>Really, more for you than he is for me. 参加者C asks, &#x27;How do you keep USD risk liquid and safe when part of the reserves are in private credit and direct lending?&#x27;</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:28:33</span></div>
+  <div class="turn-body"><p>That kind of goes back to what we were discussing a little bit earlier. On the composition of the portfolio, the stress testing that we&#x27;ve done, looking at scenarios like what a bad day in the market looks like and planning around all of these things. And making sure that our portfolio comprises the right portion of liquid instruments in its makeup. And yes, whilst some of that sort of</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:29:06</span></div>
+  <div class="turn-body"><p>Higher yielding stuff is coming from more illiquid instruments like private credit and direct lending. The vast majority of the assets in the portfolio are highly liquid instruments like money, market funds and T - bills, Which can be liquidated on a sort of either instantaneous or worst case on a sort of T plus one basis, and CLO ETFs, which again are sort of T plus two to T plus five. And deliver like a higher yield, right? So, yeah, Like the vast majority of the bucket is highly liquid instruments that are designed to to meet any bad scenario.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:29:48</span></div>
+  <div class="turn-body"><p>That we&#x27;ve seen before. I&#x27;ll put you on the spot here. But, how do you price an asset in private credit where it doesn&#x27;t have a price? I think if I recollect the question.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:30:02</span></div>
+  <div class="turn-body"><p>There were some assets on there where they may not have met the market. They may not have a price, but you have to manage the risk. Is that right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:30:21</span></div>
+  <div class="turn-body"><p>So I am not a private credit kind of professional. These are basically real world deals where we lend capital to real borrowers. Some of the things that we may look to lend to are fintechs that are investing in opportunities and capital constrained markets, where the yield may be high, places in emerging markets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:30:57</span></div>
+  <div class="turn-body"><p>Typically, more capital constrained than they are in Western Europe and the US. But they&#x27;re all asset backed opportunities with credit enhancements. All pretty non risky stuff, but with nice yields because of that capital constraint in those markets. At the end of the day, the folks that are receiving the capital, like the things that we invest through these fintechs in the end are real borrowers with contractual interest payments. There&#x27;ll be full reserves on with, folks will be able to check what we&#x27;re allocating the capital to. These opportunities are valued by independent parties as well. There is a sort of a fund administrator that we report to. Who won&#x27;t publish any figures that they disagree with.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:31:55</span></div>
+  <div class="turn-body"><p>And say there are specialist firms that actually value the book and what the lending positions that we lend to actually look like. And what flows into the value of stake USD R and independent specialist underwriters who work with auditors, like proof of reserve auditors and the likes. There is again, I&#x27;m not a private credit expert, but there&#x27;s a lot of folks that we work with that are. Obviously, two people from our investment team, I think will be coming up in a few weeks. Definitely brought them on this.</p></div>
+</div>
+
+<div class="sec">What a market maker is</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:32:36</span></div>
+  <div class="turn-body"><p>Let&#x27;s go back to basics. I&#x27;m working through the questions in chat. What is a market maker? Give me the TL;DR. What is a protocol like RealFi, and why do they work with market makers?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:32:53</span></div>
+  <div class="turn-body"><p>I guess I mentioned that before in terms of the liquidity and the importance of liquidity. And I spent a little bit of time working at a market maker myself. It&#x27;s basically a professional firm that stands there and quotes prices ready to buy and sell. They provide the depth and the peg defense. When a market is genuinely stressed, they stand there across the venues they operate and provide liquidity for everyone and provide the depth to maintain the peg.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:33:44</span></div>
+  <div class="turn-body"><p>It&#x27;s hard to make DeFi happen without professional firms with balance sheets behind them that stand ready to provide liquidity in all market scenarios. And I guess going back to that point, we spoke about earlier on keeping the peg and the machinery behind it, we need an institution that can always mint and redeem U S C R at exactly one dollar. So that if the price moves down to.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:34:15</span></div>
+  <div class="turn-body"><p>Say ninety nine cents somewhere else, they can buy it there, redeem at a dollar and push the price back. So these farms help us keep the peg, do the arbitrage trade that makes it constant. Also provide depth and liquidity on partner venues whether that&#x27;s in decentralized exchanges etc.</p></div>
+</div>
+
+<div class="sec">Growth, and who is actually paying the yield</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:34:41</span></div>
+  <div class="turn-body"><p>A lot of times in there, There are real reasons why people want to see an open financial operating system, and they want to see these tools democratized. And those are important. So I&#x27;m not dismissing this at all. It&#x27;s a large reason why we&#x27;re here. But as I&#x27;ve worked with the teams and professionals like you, 登壇者A, I developed this thesis or I learned that really it&#x27;s also about like growth, Like naming the game, which is growth in Web 3, and growth is defined by some as capital productivity, right? And I&#x27;m remembering this quote from someone. He said like, where there&#x27;s a yield, there&#x27;s a way. So I&#x27;m kind of hearing that in, I&#x27;m trying to zoom out a little bit for the less technical. Although actually probably here everybody is way more technical than me. But is that the case? It is about a yield? That is ultimately what&#x27;s going to drive activity on RealFi and Cardano and attract people? What are your thoughts?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:35:42</span></div>
+  <div class="turn-body"><p>Whether it&#x27;s only about yield, and this is I&#x27;m kind of going off kilter here, but like you know, and how ecosystems really are going to get growth. So we&#x27;ll find maybe a lighthouse win for Cardano. That&#x27;s what I&#x27;m hoping. And that TVL can be brought to Cardano. But what are your thoughts on growth and what growth means and really how growth is driven in these Web three ecosystems, independent of Cardano, reference Ethereum or Solana or any other ecosystem? What are your thoughts?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:36:24</span></div>
+  <div class="turn-body"><p>I mean there are many ways to answer this. I guess to go back to the yield. You know there are farms out there that provide triple digit APYs and if we&#x27;re talking about sort of eight to ten percent, like why should anyone care? How is this an opportunity that anyone should care about? And how does it deliver growth? From my perspective, I think the financial world now is becoming like the blockchain space, is becoming a lot more institutional.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:37:05</span></div>
+  <div class="turn-body"><p>At least in my opinion, I think there are three things making a lot of waves in the market. There is stablecoins. There is already three hundred billion dollars worth of stablecoins today. Big banks project that to be more than ten times in the next five years. And then there is tokenization of real world assets. And a lot of financial instruments like funds, credit funds, and equities coming on chain and people being able to use them in vaults and on chain packaging layers that make those assets more productive. I guess going back to yield. Yield is someone.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:38:03</span></div>
+  <div class="turn-body"><p>Someone is paying someone else for something, right? So like I guess the first question is, You know not how big is the number, but who is who&#x27;s paying it? And why. And like in our case, right again it&#x27;s like it&#x27;s real borrowers paying contractual durable interest. Um and yeah, there&#x27;s like other, you know protocols out there, you know it may be. Paying funding rates, like with a project like Ethena, and yeah, that&#x27;s real, but it&#x27;s pretty cyclical. Or, it might be a token treasury printing emissions on its own token to pay you right, which which is yield, but it&#x27;s it&#x27;s more yeah It&#x27;s not really real. It&#x27;s like dilution with a countdown. So I think for me, It&#x27;s like always important to kind of ask who who&#x27;s paying the yield and why? And if you can&#x27;t answer that I guess you are the yield. Um.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:39:01</span></div>
+  <div class="turn-body"><p>But I think you know. Also, if you see massive triple digit APYs, typically that&#x27;s the market&#x27;s telling you there is a risk of losing everything usually. So that&#x27;s typically a bit of a warning label as well. But I think this is what attracted me to join this project. And I think users should judge collateral like a lender would and ask questions around what backs it. Can you verify it? How deep is the liquidity if you want to get out of that instrument? We discussed already what happens on a bad day or with stressed markets and volatility. And I think people need to judge different assets on what backs them.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:39:53</span></div>
+  <div class="turn-body"><p>The liquidity around them, and I think that&#x27;s why what we&#x27;re working on and what we&#x27;re building is designed to stand up to today&#x27;s tests and deliver something real and deliver something that&#x27;s fair. Deliver something that should hopefully be attractive to the market. There is also something that interests institutions and increasingly funds and capital allocators and institutions that are coming on chain and want to allocate into these instruments. They&#x27;re all kind of dipping their toes and they&#x27;re interested in these kinds of things.</p></div>
+</div>
+
+<div class="sec">The clearest product-market fit so far</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:40:28</span></div>
+  <div class="turn-body"><p>It&#x27;s interesting. So kind of circling around two things here. So I&#x27;m going to kind of ask you directly, like not just RealFi, But what do you think are the most interesting product market fits that you&#x27;ve seen in web three? Because we&#x27;ve talked or gone around a few different examples like financial instruments, but where do you think the best product market fit is so far? Stablecoins is one.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:40:56</span></div>
+  <div class="turn-body"><p>I mean, there&#x27;s definitely stablecoins for me. Given if you look at crypto market cap or well in general, obviously, that number has probably fallen quite a lot over the last year or twelve months or whatever it is, but stablecoins continue to grow. You look at stablecoins market cap. It continues to grow, pretty smoothly. There&#x27;s no drawdowns that obviously tells you that people increasingly want to use stablecoins. And again, from my previous experiences at working at places focused on emerging markets. You look at places like Nigeria, Argentina, like those types of places people do their day-to-day work.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:41:48</span></div>
+  <div class="turn-body"><p>Business and run their lives on stablecoins because those markets aren&#x27;t as easy to get US dollar fiat access with, and their local currencies are highly inflating. Stablecoins there are just like a massive product market fit. And then I don&#x27;t know, at least in my opinion, you add a US dollar denominated yield into the mix like ours. Again, I think that&#x27;s a no brainer for a lot of people in those markets. To be able to save in US dollars and get an attractive yield, in a market where the local currencies have such high inflation, is very attractive. And then I think increasingly as I kind of was leading to like the tokenization of real world assets and putting them on chain and making them more composable. For example, I don&#x27;t know if you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:42:45</span></div>
+  <div class="turn-body"><p>Hold like a tokenized stock, being able to go on an on-chain lending market and borrow stablecoins against that, whilst still holding the position is something that you can&#x27;t do unless you are like a high net worth individual in traditional financial markets. Typically, that&#x27;s basically like getting a margin loan, which is usually reserved for like higher net worth people via brokers or who have access to brokers. So I think we&#x27;re going to see more and more growth of these real world financial instruments coming on chain, and people becoming more and more financially interested and literate, and doing more cool and interesting things with those assets that are coming on chain. So I&#x27;m pretty excited about these trends in particular.</p></div>
+</div>
+
+<div class="sec">Tools for judging collateral, and transparency</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:43:35</span></div>
+  <div class="turn-body"><p>Inspect books or evaluate types of credit. Are there any specific tools that you use regularly or educational resources you direct people to regularly, like your top two or three that come to mind.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:44:01</span></div>
+  <div class="turn-body"><p>There&#x27;s a bunch of crypto tools out there. I&#x27;ve spent the last four or five years playing around with crypto quite a bit. There are a bunch of data sources out there like DefiLlama, which is pretty good at telling you about different yields and what might be backing them. There are more and more institutional providers that teach you about vaults and what looks like a good vault or not. I was looking at a platform called Cerberus.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:44:37</span></div>
+  <div class="turn-body"><p>The other day, which gives risk ratings to vaults. The sort of backing for a bunch of different protocols and their sort of op risk setups and all that kind of stuff. But I guess that&#x27;s something that we&#x27;re trying to do is introduce as much transparency as possible. And what we&#x27;re doing is providing as much transparency into live data views of what&#x27;s backing the tokens and doing these weekly attestations on the private credit book. Really introducing as much transparency possibly can into people having a live view of what backs the asset on chain. Which not everyone does. There&#x27;s definitely been some other blow ups.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:45:33</span></div>
+  <div class="turn-body"><p>In the last six months or so, people have not been doing this properly or sort of marking their own homework, rather than using independent verifiers on the backing of different assets. It&#x27;s definitely something that we take very seriously. And I think also generally the DeFi market is forcing people to take this more seriously as well. Again, there have been so many blow ups that I think unfortunately a lot of institutions are being burnt or are wary of getting burnt.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:46:03</span></div>
+  <div class="turn-body"><p>And they&#x27;re kind of forcing the market to do this anyway. I do think I am hoping that the space matures with us and does a lot of this stuff. So moving.</p></div>
+</div>
+
+<div class="sec">What success looks like in twelve to eighteen months</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:46:19</span></div>
+  <div class="turn-body"><p>From where we are today and looking ahead, say twelve months from now, eighteen months from now, what does success look like for you and for GTM? And what can the community do to help if anything?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:46:40</span></div>
+  <div class="turn-body"><p>Hundred percent. TVL matters and my role is kind of measured solely on that metric. I would say, obviously, TVL isn&#x27;t Cardano&#x27;s strength point right now. There&#x27;s obviously an amazing crypto community or an amazing community behind Cardano, and there&#x27;s obviously so much in stake data out there. I guess hoping that some of that moves into protocols like us, which are delivering an institutional grade sort of yield protocol for the first time on Cardano. I hope some of that capital translates into TVL into our protocol. But beyond sort of just TVL, like you know it&#x27;s not the only number that matters.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:47:38</span></div>
+  <div class="turn-body"><p>It&#x27;s also easy to fabricate, and you can buy it with rent liquidity. So for me personally, what does success look like? It&#x27;s having a stablecoin that has a tight peg that trades well. It has large pools in order to be able to swap and absorb swaps before the price moves. It&#x27;s working with our DeFi partners on getting utilization up and the lending market side of things. It&#x27;s now having integrations that get used rather than just announced. And generally working with distribution partners. I am excited about the future of partnering with fintechs in emerging markets, for example, where I think there is a lot of use case and need for our product.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:48:36</span></div>
+  <div class="turn-body"><p>And getting institutional allocators to come in, deposit money with us and build trust and build that capital base of institutional holders that stick around. If they stick around, we can obviously typically tie up our money for a longer time and deliver a better yield for everyone else as well.</p></div>
+</div>
+
+<div class="sec">What SPOs can do — the dark forest</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:48:58</span></div>
+  <div class="turn-body"><p>So yeah, that&#x27;s kind of the things that I am focused on growing. That was a nice segue. One of the, Questions I was looking at, it&#x27;s in the chat by the way. I&#x27;ve been marking off what we&#x27;ve been going through. Was about what verified SPOs fit into in terms of you know GTM and what the operator community can do for growth that marketing spend can&#x27;t. And just setting us up here, I actually linked a couple of images, I put them in the chat because I was on a call earlier. Yeah yeah well, I&#x27;m gonna answer it yeah, I&#x27;m gonna put the question to myself but This one&#x27;s for you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:49:32</span></div>
+  <div class="turn-body"><p>This one&#x27;s for you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:49:34</span></div>
+  <div class="turn-body"><p>I like this idea called dark forest theory. It&#x27;s that as AI comes along, people are going to retreat, and everything&#x27;s astroturfed and everything becomes bot activity. People are going to retreat into the cozy web, into private telegrams, discords, in person meetups, this kind of stuff. To illustrate the point, I&#x27;ve put it in chat for anyone here. Fifty percent fifty to eighty percent of internet activity is bots according to Cloudflare. Cloudflare even. And on chain activity at least Solana, I think it was is like ninety percent is bots. And I think one of the things that&#x27;s really special about SPOs is that they are trusted infrastructure, and they have relational capital with their delegators. And so I think one thing that an accelerator program does a couple of things actually is.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:50:29</span></div>
+  <div class="turn-body"><p>You&#x27;ll be able to take on chain activity and just to be clear, I&#x27;m not saying KYC AML or anyone gets doxxed, But I&#x27;m saying you can look at the online activity and the on chain activity. And if people are claiming points uh to verify to claim the points, you&#x27;ll be able to have a much higher degree certainty that they&#x27;re real humans. And I think that the accelerator program, the SPOs are building out here is novel in that respect. I&#x27;m not aware of um Anything similar and I I didn&#x27;t plan I&#x27;ll be honest, something I didn&#x27;t plan it when this kind of emerged from talking to SPOs. So it&#x27;s um but I think it&#x27;s novel, it&#x27;s really interesting. And, then the second thing is um I see some of the Japanese SPOs here, But also thinking about kind of a uh train the trainer or an educate the educator model where presentation materials or topics that might be important to an SPO.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:51:25</span></div>
+  <div class="turn-body"><p>Can be taken to their delegators, so you&#x27;ll be able to get out of traditional marketing distribution channels. And you&#x27;ve got people that are able to advocate. Some of those things they might advocate for is, obviously, let&#x27;s try and increase the decentralization of Cardano&#x27;s network because we want to see single pool operators attract that delegation. I know someone from a community organisation is going to slap my wrist because there may be one or two SPOs that aren&#x27;t strictly single pools, but broadly it&#x27;s like ninety five percent, ninety seven percent. The point about that is there were multiple MPOs, multiple pool operators that have a lot of stake, and we&#x27;d like to see that go to more stake pool operators so that they&#x27;re more viable. There is a sweet spot somewhere between one million twelve million. Somebody will better tell me in chat.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:52:18</span></div>
+  <div class="turn-body"><p>That makes the rewards more predictable and therefore, the business or the stake pool more viable. Other examples that I think are important is, you know, Cardano&#x27;s network activity too. We&#x27;ve talked about ecosystem growth and you know, essentially it&#x27;s about attracting capital and making capital productive. One of the things I&#x27;m talking about with Japanese SPOs is there&#x27;s a lot of ADA in Japan. That&#x27;s relatively idle, and I think that there is an argument to be made that yeah, You know, maybe in the past, it was thought of as staking was your duty. You know if you were an ADA holder, if you staked, you were fulfilling your end of the network. You know, but I think that now maybe economic activity is something that you know an argument could be made for that. That if you&#x27;ve got capital what could you be doing with it? You know to drive activity on Cardano and actually just by.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:53:17</span></div>
+  <div class="turn-body"><p>Two thoughts came into my head as we were talking. I saw something on X about a lot of LATAM is getting into Cardano, I think also. And then I saw Cardano&#x27;s founder talking about Cardano needing a new narrative as well. And I think that these are critical parts to that. So if you have to hold me accountable, 登壇者A, but my answer to you know what do SPOs do? And and why are they so important? And it&#x27;s nascent, by the way. This is a program we&#x27;re building out here, right in flight. But those are some of the reasons that I think the SPOs are valuable. And there&#x27;s some real gives and gets in terms of SPOs getting awarded, delegators being awarded, and RealFi having a strong incentive to work with SPOs and delegators. Um, but sorry 登壇者A, I&#x27;ve probably took the mic there for too long. But.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:54:19</span></div>
+  <div class="turn-body"><p>Hundred percent. As I said, I am really new to the Cardano ecosystem. The work you&#x27;ve been doing on that front is super interesting for me, and I am getting up to speed myself. If there is any way any of what I previously said resonated with you, and you need any help in connecting with myself or any of the work that I am doing on the growth and partnership side as it is relevant for SPOs, then let me know.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:54:51</span></div>
+  <div class="turn-body"><p>DMs are open.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:54:52</span></div>
+  <div class="turn-body"><p>And happy to help.</p></div>
+</div>
+
+<div class="sec">Mainnet and what comes after</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:54:53</span></div>
+  <div class="turn-body"><p>And obviously, if you listen to the questions in chat, butum Cardano is our home turf; it&#x27;s where RealFi is being launched. But once the bulk of your work&#x27;s done during testnet, 登壇者A, how are we thinking about mainnet? Where are we going? What have the community got to look forward to?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:55:23</span></div>
+  <div class="turn-body"><p>Again, a lot of this is that there&#x27;s going to be several phases. And again, it&#x27;s as I kind of alluded to before. It&#x27;s not just Cardano, but also expanding to Ethereum as well down the line, which is where the deep stablecoin liquidity already lives, where a lot of the professional loopers already live. In terms of that looping strategy that I was speaking to before about and a lot of the institutional capital lives. But coming back to it, the idea is that the TVL accrues back to Cardano. The assets sit on Cardano. So even when the activity happens on Ethereum, it comes back to Cardano. There&#x27;s a lot of interesting things where.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:56:13</span></div>
+  <div class="turn-body"><p>It was part of design for that, And um you know, designing for a dollar being minted on Ethereum still counting for Cardano. TVL is is exciting. Um, but yeah I think to bring it back to Cardano mainnet. The interesting things will be, you know, some of the stuff I talked about earlier, right? Like standing up, proper liquidity. And you know all the work we&#x27;re doing on making sure that we have the right liquidity pools on. You know, SundaeSwap, which is our main sort of DEX partner. Enabling that. We&#x27;re doing some interesting things on the lending market side as well with Liqwid, right? Where folks will be able to For example, You know, there&#x27;ll be an isolated market where folks will be able to borrow USDC against their ADA collateral. And deploy it back into into our yield bearing instrument, right, which enables you to.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:57:11</span></div>
+  <div class="turn-body"><p>Keep hold of your ADA stake and the staking yield on it. You are not selling it; you are not letting go of that. You are borrowing against it, and then you are able to also deploy those borrowed funds into a yield product that has our target to deliver a much higher yield than the cost to borrow. It&#x27;s a positive carry trade rate. It&#x27;s an interesting opportunity. Designing those strategies and working with the protocols in the Cardano ecosystem to bring as much utility to the first sort of yield bearing instrument on Cardano, I think it&#x27;s going to be really exciting. I am looking forward to launching those things when Cardano mainnet launches.</p></div>
+</div>
+
+<div class="sec">Which introductions help, and closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:57:58</span></div>
+  <div class="turn-body"><p>It&#x27;s going to be pretty cool. I already know from blowing through DMs that not every DM or opportunity is necessarily a qualified one. Are there any qualified introductions or connections that you would want to hear from or about, or for people to make to you?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:58:24</span></div>
+  <div class="turn-body"><p>No. I mean like any partner that brings utility or helps us expand distribution or brings us a trust angle. Whether it&#x27;s in the Cardano ecosystem or elsewhere, we appreciate any leads. We&#x27;re all working in this community together. On the off chance you happen to run a fund or a treasury or a family office, or know some folks doing those things, then please feel free to make any intros. I&#x27;ll always say that I definitely don&#x27;t do this Discord thing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:59:02</span></div>
+  <div class="turn-body"><p>If you DM me on Discord, it&#x27;s not going to reach me. Feel free to DM me on X or Twitter. Are we setting up?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:59:10</span></div>
+  <div class="turn-body"><p>Are we setting up? So give 登壇者A a follow on X where I want to break. One K. He&#x27;s currently on one hundred, so that&#x27;s a stretch target.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:59:28</span></div>
+  <div class="turn-body"><p>I am putting you for the whole tweeting thing. I&#x27;m a bit old school.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:59:33</span></div>
+  <div class="turn-body"><p>But</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">00:59:35</span></div>
+  <div class="turn-body"><p>Just the flag. If you do DM me on Discord, I will not read it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">00:59:39</span></div>
+  <div class="turn-body"><p>And thank you everybody for that, that&#x27;s joinedum and joined in. I am doing a bit of housekeeping. I am going to get better at doing summaries. I am talking to the marketing team about how we could use some of this content so it&#x27;s easier to access asynchronously. I&#x27;ll follow up with the summary. Hopefully, we&#x27;ll be able to do more with the RealFi content and get it out in more places. Thank you again, 登壇者A. I&#x27;ll give you the final word. Any last thoughts?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">01:00:20</span></div>
+  <div class="turn-body"><p>Honestly, keep testing the protocol and playing around with it. Let us know what you like and what you don&#x27;t like. Any intros or things that may be valuable, you think may be valuable to us? Please let me know via DM. And otherwise, there&#x27;s some really cool stuff coming in the coming weeks and months. I&#x27;m really excited about launching mainnet and unlocking some DeFi opportunities in the Cardano community.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">01:00:55</span></div>
+  <div class="turn-body"><p>For the first time with a proper sort of pre or last step back your protocol. Hopefully you&#x27;re all excited too.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A<span class="turn-time">01:01:08</span></div>
+  <div class="turn-body"><p>Thanks for having me.</p></div>
+</div>
+</section>
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">このページには 3 つの版が入っています。</span><span class="l-en">This page contains all three versions.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+</nav>
+
+<footer>
+<p><span class="l-ja">RealFi Office Hours アーカイブ<br>このコールはチャタムハウスルールで運用されています。発言者の氏名は記載していません。</span><span class="l-en">RealFi Office Hours archive<br>These calls run under the Chatham House Rule, so no speaker is named.</span></p>
+</footer>
+
+</div>
