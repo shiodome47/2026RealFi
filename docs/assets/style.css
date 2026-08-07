@@ -708,6 +708,16 @@ code {
 
 .card:hover { border-color: var(--accent); transform: translateY(-1px); }
 
+/* RealFi Office Hours の通し番号。カードの見出しの上に小さく出す */
+.card-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
 .card h2 {
   border: none;
   padding: 0;
