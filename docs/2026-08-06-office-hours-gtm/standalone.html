@@ -867,7 +867,7 @@ footer {
   <li><a href="#yield"><span class="n">07</span>利回りは誰が払っているのか</a></li>
   <li><a href="#pmf"><span class="n">08</span>効いているプロダクトマーケットフィット</a></li>
   <li><a href="#success"><span class="n">09</span>12〜18 か月後の成功の姿</a></li>
-  <li><a href="#spo"><span class="n">10</span>SPO に何ができるか — 暗い森</a></li>
+  <li><a href="#spo"><span class="n">10</span>SPO に何ができるか —「暗い森」のたとえ</a></li>
   <li><a href="#mainnet"><span class="n">11</span>mainnet とその先</a></li>
   <li><a href="#overall"><span class="n">12</span>全体像</a></li>
   <li><a href="#qa"><span class="n">13</span>Q&amp;A</a></li>
@@ -1372,6 +1372,38 @@ footer {
 </div>
 </details>
 
+<h3>この基準を RealFi 自身に当てはめると</h3>
+
+<p>では、この物差しを RealFi に当てると何が見えるか。第 2 節の内訳を<strong>「誰が払っているか」の順に並べ直す</strong>と、答えは <strong>2 つの層</strong>になります。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="RealFi の利回りが、流動性の高い実世界資産の土台と、プライベートクレジットの上乗せの二層でできていることを示す図">
+  <text x="16" y="20" class="d-s">RealFi の利回りは 2 つの層でできている</text>
+
+  <rect x="16" y="32" width="648" height="76" rx="8" class="d-box-accent"/>
+  <text x="32" y="60" class="d-t">上乗せ</text>
+  <text x="32" y="82" class="d-s">プライベートクレジット</text>
+  <text x="32" y="100" class="d-s">フィンテックへの直接融資</text>
+  <text x="300" y="60" class="d-s">払っているのは、契約で利払いの義務を負う実在の借り手</text>
+  <text x="300" y="82" class="d-s">投資期間は 6〜12 か月。すぐには動かせない</text>
+  <text x="300" y="100" class="d-s d-a">APY の上乗せ分をここで作る</text>
+
+  <rect x="16" y="112" width="648" height="76" rx="8" class="d-box"/>
+  <text x="32" y="140" class="d-t">土台</text>
+  <text x="32" y="162" class="d-s">マネー・マーケット・ファンド</text>
+  <text x="32" y="180" class="d-s">T-Bill・CLO の ETF</text>
+  <text x="300" y="140" class="d-s">払っているのは、米国政府と、社債・ローンの借り手</text>
+  <text x="300" y="162" class="d-s">即時〜T+5 で現金化できる</text>
+  <text x="300" y="180" class="d-s">USDR の償還に応えるのもこの層</text>
+
+  <rect x="16" y="204" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="227" class="d-s" text-anchor="middle">どちらの層も、外から利息が入ってくる。自分のトークンを刷って払っている層はない</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>それぞれの層を「誰が払っているか」で整理したのはこちらです。コール中では、保有している商品の一覧と、利回りの出所を問う基準とが別々に語られています。</p>
+</div>
+
+<p>つまり <strong>T-Bill やマネー・マーケット・ファンドという「動かしやすくて堅い土台」の上に、プライベートクレジットで利回りを載せている</strong>という構成です。図の右端にあった「自分のトークンを刷って払う」層は、この設計には出てきません。<span class="badge">補足</span>コール中で語られた水準は <strong>8〜10%</strong> ですが、<strong>土台と上乗せがそれぞれ何 % かは示されていません</strong>。</p>
+
 <p>ユーザー側の判断基準としては、<strong>「貸し手のように担保を評価しろ」</strong>という言い方がされました。何が裏付けているのか、それを検証できるのか、抜けたいときに流動性はどれだけ深いのか、の 3 つです。</p>
 
 
@@ -1410,10 +1442,12 @@ footer {
 <p>流通の面では、<strong>新興国市場のフィンテックとの提携</strong>が今後の期待として挙げられました。</p>
 
 
-<h2 id="spo">10. SPO に何ができるか — 暗い森</h2>
+<h2 id="spo">10. SPO に何ができるか —「暗い森」のたとえ</h2>
 <p class="deck">この節だけは進行役が答えている。bot が増えるほど、人であることを担保できる立場の価値が上がるという筋立て。</p>
 
-<p>「verified SPO は GTM のどこに位置づくのか」という質問に対して、<strong>進行役が自分で答える</strong>形になった節です。出発点は「暗い森」理論でした。</p>
+<p>チャットに来ていた質問は、<strong>「認証を受けた SPO は、GTM のどこで効くのか。マーケティング費用では買えないものを、プール運営者のコミュニティは出せるのか」</strong>というものでした。これに<strong>進行役が自分で答える</strong>形になった節です。<span class="badge">補足</span>ここでいう「認証を受けた SPO」は、<strong>RealFi の SPO アクセラレータープログラムに参加しているステークプールの運営者</strong>を指します。</p>
+
+<p>出発点になったのが、「暗い森」というたとえでした。</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 270" role="img" aria-label="オープンなウェブが bot で埋まるほど、人々は閉じた場に退き、デリゲーターとの関係を持つ SPO の価値が上がるという構図の図">
@@ -1434,7 +1468,7 @@ footer {
   <rect x="348" y="30" width="316" height="104" rx="8" class="d-box"/>
   <text x="506" y="58" class="d-t" text-anchor="middle">居心地のよいウェブ（cozy web）</text>
   <text x="506" y="84" class="d-s" text-anchor="middle">非公開の Telegram、Discord、対面の集まり</text>
-  <text x="506" y="110" class="d-s" text-anchor="middle">人は見える場所から退いていく</text>
+  <text x="506" y="110" class="d-s" text-anchor="middle">誰が書いたか分かる場所へ、人が移っていく</text>
 
   <line x1="340" y1="140" x2="340" y2="168" class="d-line-accent" marker-end="url(#m5)"/>
 
@@ -1671,7 +1705,7 @@ footer {
   <li><a href="#en-yield"><span class="n">07</span>Who is paying the yield</a></li>
   <li><a href="#en-pmf"><span class="n">08</span>The clearest product-market fit</a></li>
   <li><a href="#en-success"><span class="n">09</span>Success in twelve to eighteen months</a></li>
-  <li><a href="#en-spo"><span class="n">10</span>What SPOs can do — the dark forest</a></li>
+  <li><a href="#en-spo"><span class="n">10</span>What SPOs can do — the dark forest analogy</a></li>
   <li><a href="#en-mainnet"><span class="n">11</span>Mainnet and after</a></li>
   <li><a href="#en-overall"><span class="n">12</span>How it fits together</a></li>
   <li><a href="#en-qa"><span class="n">13</span>Q&amp;A</a></li>
@@ -2176,6 +2210,38 @@ footer {
 </div>
 </details>
 
+<h3>Applying the test to RealFi itself</h3>
+
+<p>So what does the test return when pointed at RealFi? Reorder section 2's holdings <strong>by who is paying</strong> and the answer comes out as <strong>two layers</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram showing RealFi's yield as a base of liquid real-world assets with a private credit overlay on top">
+  <text x="16" y="20" class="d-s">RealFi's yield is built in two layers</text>
+
+  <rect x="16" y="32" width="648" height="76" rx="8" class="d-box-accent"/>
+  <text x="32" y="60" class="d-t">Overlay</text>
+  <text x="32" y="82" class="d-s">Private credit</text>
+  <text x="32" y="100" class="d-s">Direct fintech lending</text>
+  <text x="300" y="60" class="d-s">Paid by real borrowers under contractual interest</text>
+  <text x="300" y="82" class="d-s">6–12 month duration. Not movable on demand</text>
+  <text x="300" y="100" class="d-s d-a">This is where the extra APY is made</text>
+
+  <rect x="16" y="112" width="648" height="76" rx="8" class="d-box"/>
+  <text x="32" y="140" class="d-t">Base</text>
+  <text x="32" y="162" class="d-s">Money market funds</text>
+  <text x="32" y="180" class="d-s">T-bills, CLO ETFs</text>
+  <text x="300" y="140" class="d-s">Paid by the US government and corporate borrowers</text>
+  <text x="300" y="162" class="d-s">Sellable instantly through T+5</text>
+  <text x="300" y="180" class="d-s">This is also the layer that meets redemptions</text>
+
+  <rect x="16" y="204" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="227" class="d-s" text-anchor="middle">Both layers take interest in from outside. Neither is paid by printing the protocol's own token</text>
+</svg>
+<p class="figcap"><span class="badge">added</span>Sorting each layer by who pays was done here. On the call, the list of holdings and the who-pays test are made in separate places.</p>
+</div>
+
+<p>In other words: <strong>a solid, movable base of T-bills and money market funds, with private credit layered on top to lift the yield</strong>. The third box in the figure above — paying with your own newly printed token — does not appear anywhere in this design. <span class="badge">added</span>The level discussed on the call is <strong>eight to ten percent</strong>, but <strong>how much of that comes from each layer is not given</strong>.</p>
+
 <p>The test offered to holders was to <strong>“judge collateral like a lender would”</strong>: what backs it, can you verify it, and how deep is the liquidity if you want out.</p>
 
 
@@ -2214,10 +2280,12 @@ footer {
 <p>On distribution, <strong>partnering with fintechs in emerging markets</strong> was named as what's ahead.</p>
 
 
-<h2 id="en-spo">10. What SPOs can do — the dark forest</h2>
+<h2 id="en-spo">10. What SPOs can do — the dark forest analogy</h2>
 <p class="deck">The one section the host answers himself. The more bots there are, the more valuable it is to be able to vouch for a human.</p>
 
-<p>Asked where verified SPOs fit into GTM, <strong>the host took the question himself</strong>. He starts from dark forest theory.</p>
+<p>The question from the chat was <strong>where verified SPOs fit into GTM, and what the operator community can do for growth that marketing spend can't</strong>. <strong>The host took this one himself.</strong> <span class="badge">added</span>“Verified SPOs” here means <strong>stake pool operators taking part in RealFi's SPO accelerator programme</strong>.</p>
+
+<p>He starts from the dark forest analogy.</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 270" role="img" aria-label="Diagram showing the open web filling with bots, people retreating to private spaces, and SPOs holding relational capital with delegators">
@@ -2238,7 +2306,7 @@ footer {
   <rect x="348" y="30" width="316" height="104" rx="8" class="d-box"/>
   <text x="506" y="58" class="d-t" text-anchor="middle">The cozy web</text>
   <text x="506" y="84" class="d-s" text-anchor="middle">Private Telegrams, Discords, in-person meetups</text>
-  <text x="506" y="110" class="d-s" text-anchor="middle">People retreat out of view</text>
+  <text x="506" y="110" class="d-s" text-anchor="middle">People move to where you can tell who wrote it</text>
 
   <line x1="340" y1="140" x2="340" y2="168" class="d-line-accent" marker-end="url(#e5)"/>
 
