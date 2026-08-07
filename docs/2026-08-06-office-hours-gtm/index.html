@@ -117,13 +117,81 @@
 <h2 id="gtm">1. go-to-market は何をする仕事か</h2>
 <p class="deck">「マーケティング」ではない。流動性・使い道・資本という 3 つの配管を通す仕事だと説明された。</p>
 
-<p>ステーブルコインのプロトコルにおける go-to-market は、次の 3 つだと整理されました。</p>
+<p>ステーブルコインのプロトコルにおける go-to-market は、次の 3 つだと整理されました。<strong>3 つとも社外に相手が要る仕事</strong>で、プロダクトを良くするだけでは 1 つも進みません。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 352" role="img" aria-label="go-to-market の 3 つの仕事を、具体的にやることと、組む相手に分けて並べた図">
+  <text x="200" y="20" class="d-s">具体的にやること</text>
+  <text x="440" y="20" class="d-s">相手になるのは</text>
+
+  <rect x="16" y="30" width="648" height="84" rx="8" class="d-box"/>
+  <rect x="24" y="50" width="158" height="44" rx="6" class="d-box-accent"/>
+  <text x="103" y="77" class="d-t" text-anchor="middle">① 流動性</text>
+  <text x="200" y="62" class="d-s">板を厚くする。インセンティブが</text>
+  <text x="200" y="84" class="d-s">細ったあとも残る設計にする</text>
+  <text x="440" y="62" class="d-s">マーケットメイカー</text>
+  <text x="440" y="84" class="d-s">トレーディング会社</text>
+
+  <rect x="16" y="122" width="648" height="84" rx="8" class="d-box"/>
+  <rect x="24" y="142" width="158" height="44" rx="6" class="d-box-accent"/>
+  <text x="103" y="169" class="d-t" text-anchor="middle">② 使い道</text>
+  <text x="200" y="154" class="d-s">トークンが実際に使われる先を</text>
+  <text x="200" y="176" class="d-s">ひとつずつ増やす</text>
+  <text x="440" y="154" class="d-s">DEX・レンディング市場</text>
+  <text x="440" y="176" class="d-s">ウォレット・カストディアン・CEX</text>
+
+  <rect x="16" y="214" width="648" height="84" rx="8" class="d-box"/>
+  <rect x="24" y="234" width="158" height="44" rx="6" class="d-box-accent"/>
+  <text x="103" y="261" class="d-t" text-anchor="middle">③ 資本</text>
+  <text x="200" y="240" class="d-s">短期で抜けない資金を集める。</text>
+  <text x="200" y="262" class="d-s">預かる期間が長いほど、返せる</text>
+  <text x="200" y="284" class="d-s">利回りも高くできる</text>
+  <text x="440" y="240" class="d-s">機関投資家のアロケーター</text>
+  <text x="440" y="262" class="d-s">crypto ネイティブのファンド</text>
+  <text x="440" y="284" class="d-s">トレジャリー・ファミリーオフィス</text>
+
+  <rect x="16" y="310" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="333" class="d-s" text-anchor="middle">① が ② を可能にし、② が ③ を呼び、③ が ① を厚くする — 順番ではなく循環として語られた</text>
+</svg>
+<p class="figcap">左が「何をするか」、右が「誰と組むか」です。<span class="badge">補足</span>組んでいる会社の具体名は、プロトコル以外はコール中で挙がっていません。</p>
+</div>
 
 <ul>
   <li><strong>流動性をつくり、残す。</strong>トークンが取引されるあらゆる場所で、深く健全な市場を持つこと。インセンティブを設計し、<strong>インセンティブが細ったあとも流動性がそこに残るようにする</strong>。マーケットメイカーやトレーディング会社と組む仕事でもある</li>
   <li><strong>使い道につなぐ。</strong>DEX、レンディング市場、ウォレット、カストディアン、中央集権取引所など、トークンに実用性を与えるもの</li>
   <li><strong>居つく資本を連れてくる。</strong>機関投資家のアロケーター、crypto ネイティブのファンド、トレジャリー、ファミリーオフィス</li>
 </ul>
+
+<div class="term">
+<p class="term-name">アロケーター <small>allocator</small></p>
+<p>他人から預かった資金を、どこに置くかを決める人・組織。年金基金、大学基金、ファンド・オブ・ファンズなどが典型です。<span class="badge">補足</span>「アロケーターを連れてくる」のは、<strong>個人に買ってもらうのとは別の仕事</strong>です。相手が見ているのは利回りの数字よりも、<strong>抜けたいときに抜けられるか、裏付けを第三者が検証しているか</strong>で、第 6 節と第 7 節の内容がそのまま審査項目になります。</p>
+</div>
+
+<details class="explain">
+<summary>相手の呼び名が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+
+<h4>「インセンティブが細る」と何が起きるのか</h4>
+<p>新しいトークンの流動性は、たいてい報酬で買います。プールに預けた人へ上乗せの利回りを配り、預ける理由を作る。問題は、<strong>その上乗せを止めた瞬間に何が残るか</strong>です。</p>
+<p>数値の例で言うと（説明のための仮の数字です）——年率 20% の上乗せを出している間にプールへ 1 億円集まったとして、上乗せを 0 にしたときに 8,000 万円が抜けていくなら、<strong>実際に定着したのは 2,000 万円分だけ</strong>だったことになります。GTM の仕事は「1 億円を集めること」ではなく、<strong>この 2,000 万円をどう厚くするか</strong>です。だから「残るようにする」という言い方になります。</p>
+
+<h4>マーケットメイカーとトレーディング会社の違い</h4>
+<p>マーケットメイカーは<strong>常に買値と売値の両方を出し続ける</strong>のが仕事で、相手が買いたいときに売り、売りたいときに買います。トレーディング会社は<strong>自分の判断で片側に張る</strong>ことができます。前者がいないと板が空になり、後者がいないと出来高が細ります。ステーブルコインで死活的に重要なのは前者のほうです。</p>
+
+<h4>カストディアンと中央集権取引所（CEX）</h4>
+<p><strong>カストディアン</strong>は、他人の資産を預かって保管する会社です。機関投資家は自分で秘密鍵を管理しないことが多く、<strong>カストディアンが対応していない資産は、そもそも買えない</strong>ことがあります。だから「使い道」の一覧に入っています。<strong>CEX</strong> は取引所のうち、注文を運営側のシステムで突き合わせる形式のもの。DEX と違い、上場するかどうかは運営が決めます。</p>
+
+<h4>トレジャリーとファミリーオフィス</h4>
+<p><strong>トレジャリー</strong>は、会社やプロトコルが持っている手元資金そのもの、またはそれを運用する部署のこと。<strong>ファミリーオフィス</strong>は、資産家一族の資産をまとめて運用する組織です。どちらも<strong>「短期で出入りしない資金」の代表例</strong>として挙げられていて、③の「居つく資本」がこれにあたります。</p>
+
+<h4>一言でいうと</h4>
+<p>3 つとも<strong>相手のある仕事</strong>で、しかも相手の種類が全部違います。だから「普通の一週間」が対話で埋まる、という説明につながります。</p>
+
+<h4>このコールで語られていないこと</h4>
+<p>組んでいるマーケットメイカーやカストディアンの<strong>具体名は挙がっていません</strong>（プロトコルとして名前が出るのは第 11 節の SundaeSwap と Liqwid だけです）。インセンティブの<strong>規模と期間</strong>も示されていません。</p>
+</div>
+</details>
 
 <p>「普通の一週間」の中身として挙げられたのは、アロケーター・トレーディング会社・取引の場・流通のパートナーとの対話と、社内のプロダクト／データ／エンジニアリングとの調整でした。</p>
 
@@ -235,7 +303,53 @@
 <p>常に買値と売値を出し続けるプロの会社。厚みとペッグの防衛を提供し、市場がストレス下にあるときも自分が出ている取引の場で立ち続ける、と説明されました。<span class="badge">補足</span>ボランティアではなく、スプレッドと、プロトコル側から支払われる条件で動きます。<strong>バランスシートを持つ会社なしに DeFi を成立させるのは難しい</strong>、というのがこの回での位置づけです。</p>
 </div>
 
-<p>流動性が薄いと何が起きないのか、という連鎖も示されました。<strong>レンディング市場がトークンを担保として受け入れるのは、ローンが焦げついたときに妥当な価格で素早く売れる場合だけ</strong>です。売れないなら担保にできず、担保にできないなら借入がなく、借入がないなら DeFi 経済も、次の節のループも成り立ちません。</p>
+<p>流動性が薄いと、何が<strong>「起きなくなる」</strong>のか。その連鎖も示されました。</p>
+
+<p>出発点はレンディング市場の側の事情です。お金を貸す側は、<strong>借り手が返せなくなったときに、預かった担保を売って回収します</strong>。だから担保として受け取れるのは、<strong>そのとき妥当な値段ですぐ売れるもの</strong>だけです。<span class="badge">補足</span>質屋が、売り先のある腕時計は預かるのに、売り先のない物は預からないのと同じ理屈です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="流動性が薄い場合と厚い場合とで、担保・借入・ループが成立するかどうかを対比した図">
+  <defs>
+    <marker id="m8" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="18" class="d-s d-w">売りたいときに売れないと</text>
+
+  <rect x="16" y="28" width="140" height="56" rx="7" class="d-box-warn"/>
+  <text x="86" y="62" class="d-t" text-anchor="middle">流動性が薄い</text>
+  <line x1="158" y1="56" x2="178" y2="56" class="d-line" marker-end="url(#m8)"/>
+  <rect x="182" y="28" width="140" height="56" rx="7" class="d-box-plain"/>
+  <text x="252" y="62" class="d-t" text-anchor="middle">担保に取れない</text>
+  <line x1="324" y1="56" x2="344" y2="56" class="d-line" marker-end="url(#m8)"/>
+  <rect x="348" y="28" width="140" height="56" rx="7" class="d-box-plain"/>
+  <text x="418" y="62" class="d-t" text-anchor="middle">借りられない</text>
+  <line x1="490" y1="56" x2="510" y2="56" class="d-line" marker-end="url(#m8)"/>
+  <rect x="514" y="28" width="140" height="56" rx="7" class="d-box-plain"/>
+  <text x="584" y="62" class="d-t" text-anchor="middle">ループが回らない</text>
+
+  <text x="16" y="112" class="d-s d-a">売りたいときに売れれば</text>
+
+  <rect x="16" y="122" width="140" height="56" rx="7" class="d-box-accent"/>
+  <text x="86" y="156" class="d-t" text-anchor="middle">流動性が厚い</text>
+  <line x1="158" y1="150" x2="178" y2="150" class="d-line" marker-end="url(#m8)"/>
+  <rect x="182" y="122" width="140" height="56" rx="7" class="d-box"/>
+  <text x="252" y="156" class="d-t" text-anchor="middle">担保になる</text>
+  <line x1="324" y1="150" x2="344" y2="150" class="d-line" marker-end="url(#m8)"/>
+  <rect x="348" y="122" width="140" height="56" rx="7" class="d-box"/>
+  <text x="418" y="156" class="d-t" text-anchor="middle">借りられる</text>
+  <line x1="490" y1="150" x2="510" y2="150" class="d-line" marker-end="url(#m8)"/>
+  <rect x="514" y="122" width="140" height="56" rx="7" class="d-box"/>
+  <text x="584" y="156" class="d-t" text-anchor="middle">ループが回る</text>
+
+  <rect x="16" y="194" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="217" class="d-s" text-anchor="middle">連鎖の起点はいちばん左。流動性は「あると便利なもの」ではなく、他が全部その上に載っている</text>
+</svg>
+<p class="figcap">点線の枠は「成立しない」ことを表しています。上の段では、次の段階へ進めないまま止まります。</p>
+</div>
+
+<p>コール中の言い方では、<strong>「厚みや流動性がなければレンディング市場は成立せず、借入も成立せず、本当の DeFi 経済も、レバレッジのループ戦略のような形で伸びる余地も生まれない」</strong>となります。第 5 節のループは、この一番右にあたります。</p>
 
 <p>逆向きの循環も語られました。流動性が厚いと価格が安心して見られ、他の保有者が入り、プールがさらに深くなる — <strong>フライホイール</strong>です。<span class="badge">補足</span>フライホイールは弾み車のことで、各ステップが次を強くし、一周ごとに勢いが増す循環を指します。</p>
 
@@ -730,13 +844,81 @@
 <h2 id="en-gtm">1. What go-to-market actually does</h2>
 <p class="deck">Not marketing. Three sets of plumbing: liquidity, utility, and capital.</p>
 
-<p>For a stablecoin protocol, go-to-market was broken into three jobs.</p>
+<p>For a stablecoin protocol, go-to-market was broken into three jobs. <strong>All three need a counterparty outside the company</strong> — none of them move by making the product better.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 352" role="img" aria-label="The three go-to-market jobs, split into what each concretely means and who you work with">
+  <text x="200" y="20" class="d-s">What it concretely means</text>
+  <text x="440" y="20" class="d-s">Who you work with</text>
+
+  <rect x="16" y="30" width="648" height="84" rx="8" class="d-box"/>
+  <rect x="24" y="50" width="158" height="44" rx="6" class="d-box-accent"/>
+  <text x="103" y="77" class="d-t" text-anchor="middle">① Liquidity</text>
+  <text x="200" y="62" class="d-s">Build depth, and design it so it</text>
+  <text x="200" y="84" class="d-s">survives the incentives tapering</text>
+  <text x="440" y="62" class="d-s">Market makers</text>
+  <text x="440" y="84" class="d-s">Trading firms</text>
+
+  <rect x="16" y="122" width="648" height="84" rx="8" class="d-box"/>
+  <rect x="24" y="142" width="158" height="44" rx="6" class="d-box-accent"/>
+  <text x="103" y="169" class="d-t" text-anchor="middle">② Utility</text>
+  <text x="200" y="154" class="d-s">Add places where the token</text>
+  <text x="200" y="176" class="d-s">actually gets used, one by one</text>
+  <text x="440" y="154" class="d-s">DEXs, lending markets</text>
+  <text x="440" y="176" class="d-s">Wallets, custodians, CEXs</text>
+
+  <rect x="16" y="214" width="648" height="84" rx="8" class="d-box"/>
+  <rect x="24" y="234" width="158" height="44" rx="6" class="d-box-accent"/>
+  <text x="103" y="261" class="d-t" text-anchor="middle">③ Capital</text>
+  <text x="200" y="240" class="d-s">Bring in money that doesn't leave.</text>
+  <text x="200" y="262" class="d-s">The longer it can be tied up, the</text>
+  <text x="200" y="284" class="d-s">better the yield that comes back</text>
+  <text x="440" y="240" class="d-s">Institutional allocators</text>
+  <text x="440" y="262" class="d-s">Crypto-native funds</text>
+  <text x="440" y="284" class="d-s">Treasuries, family offices</text>
+
+  <rect x="16" y="310" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="333" class="d-s" text-anchor="middle">① enables ②, ② draws in ③, and ③ thickens ① — described as a cycle, not a sequence</text>
+</svg>
+<p class="figcap">On the left, what the job is; on the right, who has to say yes. <span class="badge">added</span>No firms are named on the call apart from the protocol partners.</p>
+</div>
 
 <ul>
   <li><strong>Build liquidity, and keep it.</strong> Deep, healthy markets wherever the token trades — designing the incentives, and making sure <strong>the liquidity stays once incentives taper</strong>. That means working with market makers and trading firms.</li>
   <li><strong>Connect it to utility.</strong> Decentralised exchanges, lending markets, wallets, custodians, centralised exchanges.</li>
   <li><strong>Bring in capital that stays.</strong> Institutional allocators, crypto-native funds, treasuries, family offices.</li>
 </ul>
+
+<div class="term">
+<p class="term-name">Allocator</p>
+<p>Someone who decides where other people's money goes — pension funds, endowments, funds of funds. <span class="badge">added</span>“Getting allocators in” is <strong>a different job from getting individuals to buy</strong>. What they look at is less the headline yield and more <strong>whether they can get back out, and whether the backing is verified by someone independent</strong> — which makes sections 6 and 7 the actual due-diligence checklist.</p>
+</div>
+
+<details class="explain">
+<summary>A lot of counterparty names in this section — open for a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written here to explain the section. None of it was said on the call.</p>
+
+<h4>What “once incentives taper” actually means</h4>
+<p>Liquidity for a new token is usually bought. You pay depositors an extra yield, which gives them a reason to be there. The question is <strong>what is left the moment you stop paying it</strong>.</p>
+<p>With made-up numbers, purely to show the shape: if a 20% incentive brings in $100m and $80m walks out when the incentive goes to zero, then <strong>only $20m ever really settled</strong>. The job isn't gathering the $100m — it's <strong>making that $20m bigger</strong>. Hence “stays once incentives taper.”</p>
+
+<h4>Market makers vs trading firms</h4>
+<p>A market maker's job is to <strong>quote both sides continuously</strong> — selling when you want to buy, buying when you want to sell. A trading firm can <strong>take a view and sit on one side</strong>. Without the former the book empties out; without the latter volume thins. For a stablecoin, the former is the one that matters.</p>
+
+<h4>Custodians and centralised exchanges</h4>
+<p>A <strong>custodian</strong> holds assets on someone else's behalf. Institutions often don't hold their own keys, so <strong>an asset their custodian doesn't support is an asset they cannot buy</strong> — which is why custody sits on the utility list. A <strong>CEX</strong> matches orders on the operator's own systems; unlike a DEX, the operator decides what gets listed.</p>
+
+<h4>Treasuries and family offices</h4>
+<p>A <strong>treasury</strong> is a company's or protocol's own cash, or the desk that manages it. A <strong>family office</strong> manages a wealthy family's assets in one place. Both are named as archetypes of <strong>money that doesn't move in and out on a short horizon</strong> — the “capital that stays” in ③.</p>
+
+<h4>In one line</h4>
+<p>All three jobs need someone else to agree, and the someone else is different in each case. That's why a normal week is described as being made of conversations.</p>
+
+<h4>What this call doesn't cover</h4>
+<p>No market maker or custodian is <strong>named</strong> — the only protocol partners named anywhere are SundaeSwap and Liqwid, in section 11. The <strong>size and duration</strong> of the incentives are not given either.</p>
+</div>
+</details>
 
 <p>A normal week was described as conversations with allocators, trading firms, venues and distribution partners, plus internal work with product, data and engineering.</p>
 
@@ -848,7 +1030,53 @@
 <p>A professional firm that stands there quoting both sides, providing depth and peg defence, and staying at its venues when the market is genuinely stressed. <span class="badge">added</span>They are not volunteers — they work on spread and on terms agreed with the protocol. The framing here was that <strong>it's hard to make DeFi happen without firms with balance sheets behind them</strong>.</p>
 </div>
 
-<p>The chain of consequences was spelled out. <strong>A lending market will accept a token as collateral only if it can sell that token quickly at a fair price when a loan goes bad.</strong> No depth, no collateral; no collateral, no borrowing; no borrowing, no real DeFi economy — and none of the loops in the next section.</p>
+<p>The chain of what <strong>stops happening</strong> was spelled out too.</p>
+
+<p>It starts on the lender's side. A lender gets its money back, when a borrower can't pay, <strong>by selling the collateral it was holding</strong>. So the only things it can accept as collateral are things that <strong>can be sold at a fair price at that moment</strong>. <span class="badge">added</span>Same reason a pawnbroker takes a watch it can resell and turns away something it can't.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="Comparison of what happens to collateral, borrowing and loops when liquidity is thin versus deep">
+  <defs>
+    <marker id="e8" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="18" class="d-s d-w">If you can't sell when you need to</text>
+
+  <rect x="16" y="28" width="140" height="56" rx="7" class="d-box-warn"/>
+  <text x="86" y="62" class="d-t" text-anchor="middle">Thin liquidity</text>
+  <line x1="158" y1="56" x2="178" y2="56" class="d-line" marker-end="url(#e8)"/>
+  <rect x="182" y="28" width="140" height="56" rx="7" class="d-box-plain"/>
+  <text x="252" y="62" class="d-t" text-anchor="middle">No collateral</text>
+  <line x1="324" y1="56" x2="344" y2="56" class="d-line" marker-end="url(#e8)"/>
+  <rect x="348" y="28" width="140" height="56" rx="7" class="d-box-plain"/>
+  <text x="418" y="62" class="d-t" text-anchor="middle">No borrowing</text>
+  <line x1="490" y1="56" x2="510" y2="56" class="d-line" marker-end="url(#e8)"/>
+  <rect x="514" y="28" width="140" height="56" rx="7" class="d-box-plain"/>
+  <text x="584" y="62" class="d-t" text-anchor="middle">No loops</text>
+
+  <text x="16" y="112" class="d-s d-a">If you can sell when you need to</text>
+
+  <rect x="16" y="122" width="140" height="56" rx="7" class="d-box-accent"/>
+  <text x="86" y="156" class="d-t" text-anchor="middle">Deep liquidity</text>
+  <line x1="158" y1="150" x2="178" y2="150" class="d-line" marker-end="url(#e8)"/>
+  <rect x="182" y="122" width="140" height="56" rx="7" class="d-box"/>
+  <text x="252" y="156" class="d-t" text-anchor="middle">Collateral works</text>
+  <line x1="324" y1="150" x2="344" y2="150" class="d-line" marker-end="url(#e8)"/>
+  <rect x="348" y="122" width="140" height="56" rx="7" class="d-box"/>
+  <text x="418" y="156" class="d-t" text-anchor="middle">Borrowing works</text>
+  <line x1="490" y1="150" x2="510" y2="150" class="d-line" marker-end="url(#e8)"/>
+  <rect x="514" y="122" width="140" height="56" rx="7" class="d-box"/>
+  <text x="584" y="156" class="d-t" text-anchor="middle">Loops work</text>
+
+  <rect x="16" y="194" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="217" class="d-s" text-anchor="middle">The chain starts at the far left. Liquidity isn't a nice-to-have — everything else is stacked on top of it</text>
+</svg>
+<p class="figcap">The dashed boxes are the things that never happen. On the top row the chain simply stops.</p>
+</div>
+
+<p>As it was put on the call: <strong>“If there is no depth or liquidity to do that, then there is no lending market, which means there is no borrowing, which means there is no real DeFi economy and no ability to grow through leverage looping strategies.”</strong> The loops in section 5 are the far right of that chain.</p>
 
 <p>The loop runs the other way too: depth gives the market confidence, which brings other holders, which deepens the pools further — a <strong>flywheel</strong>. <span class="badge">added</span>A flywheel is a cycle where each step strengthens the next, so momentum builds with every turn.</p>
 
