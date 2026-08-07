@@ -30,10 +30,6 @@ EXTRA_CSS = """/* ===== 単一ページ版（1 ファイル完結）用の追加
 .part-head h2::before { display: none; }
 .part-head span { font-size: .8125rem; color: var(--text-muted); }
 .part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
-.jump-top {
-  margin: 2.2rem 0 0; padding: 0 0 1.4rem;
-  border-top: none; border-bottom: 1px solid var(--border);
-}
 .jump {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
   margin: 3.5rem 0 0; padding-top: 1.3rem;
@@ -114,13 +110,6 @@ def build(d):
 
 {head}
 
-<nav class="jump jump-top" aria-label="このページの構成 / Page contents">
-  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
-  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
-  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
-  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
-</nav>
-
 <section class="part" id="summary">
 {content(d / "index.html")}
 </section>
@@ -136,7 +125,7 @@ def build(d):
 </section>
 
 <nav class="jump" aria-label="Page navigation">
-  <span class="jump-label"><span class="l-ja">このページには 3 つの版が入っています。</span><span class="l-en">This page contains all three versions.</span></span>
+  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
   <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
   <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
   <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
