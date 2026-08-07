@@ -762,6 +762,22 @@ footer {
 .part-head h2::before { display: none; }
 .part-head span { font-size: .8125rem; color: var(--text-muted); }
 .part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+
+/* 全文は畳んでおく。開くまでは、このページはまとめだけの長さで開く。 */
+details.part { display: block; }
+details.part > summary.part-head { cursor: pointer; list-style: none; margin: 0; }
+details.part > summary.part-head::-webkit-details-marker { display: none; }
+details.part[open] > summary.part-head { margin-bottom: 2rem; }
+details.part > summary.part-head::after {
+  content: "開く"; margin-left: auto; white-space: nowrap;
+  font-size: .75rem; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .75rem;
+}
+details.part[open] > summary.part-head::after { content: "閉じる"; }
+:root[data-lang="en"] details.part > summary.part-head::after { content: "Open"; }
+:root[data-lang="en"] details.part[open] > summary.part-head::after { content: "Close"; }
+details.part > summary.part-head:hover { background: var(--surface-alt); }
+details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .jump {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
   margin: 3.5rem 0 0; padding-top: 1.3rem;
@@ -805,6 +821,28 @@ footer {
       root.lang = nl;
       try { localStorage.setItem('lang', nl); } catch (e) {}
     }
+  });
+})();
+</script>
+
+<script>
+// 全文は畳んであるので、リンクや印刷で中に入るときは開いておく。
+(function () {
+  function openTo(el) {
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+  }
+  function openHash() {
+    if (!location.hash) return;
+    try { openTo(document.querySelector(location.hash)); } catch (e) {}
+  }
+  window.addEventListener('hashchange', openHash);
+  window.addEventListener('DOMContentLoaded', openHash);
+  window.addEventListener('beforeprint', function () {
+    var all = document.querySelectorAll('details');
+    for (var i = 0; i < all.length; i++) all[i].open = true;
   });
 })();
 </script>
@@ -2148,8 +2186,8 @@ footer {
 </div>
 </section>
 
-<section class="part" id="ja">
-<div class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></div>
+<details class="part" id="ja">
+<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
 <div class="note">
 <p><strong>このページについて。</strong>この対談は <a href="https://www.youtube.com/watch?v=Om7sKYWlmuY">YouTube で公開されているもの</a>なので、チャタムハウスルールの対象ではなく、発言者は実名のまま扱っています。元の文字起こしには話者ラベルもタイムスタンプもないため、話者は文脈から推定しており、確度が低い箇所には<em>（推定）</em>を付けています。とくにホスト 2 人の切り分けは推定に留まります。</p>
 <p>訳出にあたり、<strong>固有名詞の明らかな誤変換</strong>は修正しています（“Realfly” → RealFi、“Amergo” → EMURGO、“Metcaf’s law” → Metcalfe の法則、“Morfo” → Morpho、“pith” → Pyth、“Pogen” → Pogun など）。固有名詞はすべて確認できたので、推測で置き換えた箇所はありません。聞き取り自体が崩れている箇所は原文のまま残しています。原文を確認したい場合は<a href="#en">英語全文</a>をご覧ください。</p>
@@ -2762,10 +2800,10 @@ footer {
   <div class="turn-who host">Brian <em>（推定）</em></div>
   <div class="turn-body"><p>そのためにここにいるんです。A Dose of Alpha。それでは。</p></div>
 </div>
-</section>
+</details>
 
-<section class="part lang-en" id="en">
-<div class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">固有名詞の誤変換を修正済み</span><span class="l-en">Obvious proper-noun misrecognitions corrected</span></span></div>
+<details class="part lang-en" id="en">
+<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">固有名詞の誤変換を修正済み</span><span class="l-en">Obvious proper-noun misrecognitions corrected</span></span></summary>
 <div class="note">
 <p><strong>About this page.</strong> This conversation was <a href="https://www.youtube.com/watch?v=Om7sKYWlmuY">published on YouTube</a>, so it is not covered by the Chatham House Rule and the speakers are named. The source transcript has no speaker labels and no timestamps, so speakers are <strong>inferred from context</strong> and marked <em>(inferred)</em> where the attribution is uncertain — in particular, telling the two hosts apart.</p>
 <p>The wording is unedited apart from <strong>obvious proper-noun misrecognitions</strong>, which have been corrected (“Realfly” → RealFi, “Amergo” → EMURGO, “Metcaf’s law” → Metcalfe’s law, “Morfo” → Morpho, “pith” → Pyth, “Pogen” → Pogun, and so on). Every proper noun has been checked, so nothing is guesswork; passages where the transcription itself breaks down are left exactly as heard.</p>
@@ -3378,7 +3416,7 @@ footer {
   <div class="turn-who host">Brian <em>(inferred)</em></div>
   <div class="turn-body"><p>That&#x27;s why we&#x27;re here. Dose of Alpha. Take care.</p></div>
 </div>
-</section>
+</details>
 
 <nav class="jump" aria-label="Page navigation">
   <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
