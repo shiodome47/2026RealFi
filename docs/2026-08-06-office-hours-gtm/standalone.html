@@ -846,7 +846,7 @@ footer {
   <li><strong>mainnet は「うまくいけば来月」。</strong>そのあと Ethereum に展開するが、<strong>資産は Cardano にあり、Ethereum で mint された分も Cardano の TVL として数えられるよう設計した</strong>と説明された。</li>
   <li><strong>利回りの見分け方は「誰が払っているか」。</strong>実在の借り手の契約利息か、ファンディングレート（本物だが循環的）か、自分のトークンの発行（＝「カウントダウン付きの希薄化」）か。<strong>答えられないなら、自分が利回りの出所</strong>。</li>
   <li><strong>成長の主機構はレバレッジループ。</strong>元手 1,000 万ドルが 5,000 万ドルのエクスポージャーになり、実効 25% APR になる数値例が示された。<strong>同じ倍率で損失も増幅する</strong>と明示的に注意された。</li>
-  <li><strong>USDR の裏付けは流動性の高いものに寄せてある</strong> — マネー・マーケット・ファンド、T-Bill、CLO の ETF。プライベートクレジットと直接融資は「上乗せ」の側で、期間は 6〜12 か月。ペッグは<strong>ホワイトリストされた機関だけ</strong>が mint・redeem できるアービトラージで保つ。</li>
+  <li><strong>USDR の裏付けは流動性の高いものに寄せてある</strong> — マネー・マーケット・ファンド、T-Bill（米国の短期国債）、CLO の ETF。プライベートクレジットと直接融資は「上乗せ」の側で、期間は 6〜12 か月。ペッグは<strong>ホワイトリストされた機関だけ</strong>が mint・redeem できるアービトラージで保つ。</li>
   <li><strong>進行役から「暗い森」理論。</strong>bot が増えるほど、<strong>委任者（デリゲーター）との関係資本を持つ SPO の価値が上がる</strong>という筋立てで、SPO アクセラレータープログラムの狙いが説明された。</li>
 </ul>
 </div>
@@ -996,6 +996,8 @@ footer {
 </svg>
 <p class="figcap">USDR 側は「償還に応えられること」を優先し、利回りを厚くする部分は sUSDR 側に置く、という分け方です。</p>
 </div>
+
+<p><span class="badge">補足</span>土台にある 3 つは、いずれも<strong>短期で確実に現金化しやすい</strong>ものです。<strong>T-Bill</strong> は米国財務省が発行する満期 1 年以内の国債（Treasury bill）で、ドル建ての資産のなかで最も安全とされる部類のもの。<strong>マネー・マーケット・ファンド</strong>は、そうした短期の安全資産をまとめて運用する投資信託です。<strong>CLO の ETF</strong> は次のとおり。</p>
 
 <p>プライベートクレジットと直接融資の戦略は<strong>チームが 4 年ほど運用してきたもの</strong>で、そのトラックレコードが APY の上乗せ部分を生んでいる、と説明されました。</p>
 
@@ -1407,7 +1409,7 @@ footer {
 <p class="figcap"><span class="badge">補足</span>それぞれの層を「誰が払っているか」で整理したのはこちらです。コール中では、保有している商品の一覧と、利回りの出所を問う基準とが別々に語られています。</p>
 </div>
 
-<p>つまり <strong>T-Bill やマネー・マーケット・ファンドという「動かしやすくて堅い土台」の上に、プライベートクレジットで利回りを載せている</strong>という構成です。図の右端にあった「自分のトークンを刷って払う」層は、この設計には出てきません。<span class="badge">補足</span>コール中で語られた水準は <strong>8〜10%</strong> ですが、<strong>土台と上乗せがそれぞれ何 % かは示されていません</strong>。</p>
+<p>つまり <strong>T-Bill（米国の短期国債）やマネー・マーケット・ファンドという「動かしやすくて堅い土台」の上に、プライベートクレジットで利回りを載せている</strong>という構成です。図の右端にあった「自分のトークンを刷って払う」層は、この設計には出てきません。<span class="badge">補足</span>コール中で語られた水準は <strong>8〜10%</strong> ですが、<strong>土台と上乗せがそれぞれ何 % かは示されていません</strong>。</p>
 
 <p>ユーザー側の判断基準としては、<strong>「貸し手のように担保を評価しろ」</strong>という言い方がされました。何が裏付けているのか、それを検証できるのか、抜けたいときに流動性はどれだけ深いのか、の 3 つです。</p>
 
@@ -1842,6 +1844,8 @@ footer {
 <p class="figcap">The USDR side is built to meet redemptions; the yield-thickening instruments live on the sUSDR side.</p>
 </div>
 
+<p><span class="badge">added</span>All three on the base side are things that <strong>convert to cash quickly and reliably</strong>. A <strong>T-bill</strong> is US Treasury debt maturing within a year — about as safe as a dollar asset gets. A <strong>money market fund</strong> pools short-dated safe assets like those. <strong>CLO ETFs</strong> are below.</p>
+
 <p>The private credit and direct lending strategy was described as something <strong>the team has been running for the last four or so years</strong>, with a track record behind it — that's what delivers “a little bit more of that juice in the APYs.”</p>
 
 <div class="term">
@@ -2252,7 +2256,7 @@ footer {
 <p class="figcap"><span class="badge">added</span>Sorting each layer by who pays was done here. On the call, the list of holdings and the who-pays test are made in separate places.</p>
 </div>
 
-<p>In other words: <strong>a solid, movable base of T-bills and money market funds, with private credit layered on top to lift the yield</strong>. The third box in the figure above — paying with your own newly printed token — does not appear anywhere in this design. <span class="badge">added</span>The level discussed on the call is <strong>eight to ten percent</strong>, but <strong>how much of that comes from each layer is not given</strong>.</p>
+<p>In other words: <strong>a solid, movable base of T-bills (short-dated US government debt) and money market funds, with private credit layered on top to lift the yield</strong>. The third box in the figure above — paying with your own newly printed token — does not appear anywhere in this design. <span class="badge">added</span>The level discussed on the call is <strong>eight to ten percent</strong>, but <strong>how much of that comes from each layer is not given</strong>.</p>
 
 <p>The test offered to holders was to <strong>“judge collateral like a lender would”</strong>: what backs it, can you verify it, and how deep is the liquidity if you want out.</p>
 
