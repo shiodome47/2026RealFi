@@ -32,6 +32,13 @@ NAMES = {
         "OConnor", "Connor", "Oyster", "Fluid", "KTOP", "Namu", "Strap",
         "Hedge", "Meta",
     ],
+    "2026-08-06-office-hours-gtm": [
+        # 話者・言及された同僚・質問者
+        "Sonny", "Sunny", "Sandy", "Vlad", "John", "David", "Harry",
+        "Bashir", "Mauricio", "Rich", "ECP",
+        # 経歴から個人が特定できるため業種の記述に置き換えたもの
+        "UBS", "Keyrock", "Lisk", "R3", "Brexit",
+    ],
 }
 
 # 回をまたぐファイル（shared/ や README）はどの回の名前も残っていてはいけない。

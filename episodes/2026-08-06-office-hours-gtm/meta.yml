@@ -1,0 +1,44 @@
+slug: 2026-08-06-office-hours-gtm
+title: RealFi Office Hours — GTM 回
+title_en: RealFi Office Hours — Go To Market
+date: 2026-08-06
+platform: Discord
+series: 5回目（product / marketing / engineering / data に続く）
+
+# チャタムハウスルールのため実名は保持しない。
+# ラベルの付け方は shared/speakers.md を参照。ラベルは回ごとに独立して振る。
+chatham_house_rule: true
+
+speakers:
+  - 進行役                 # 司会。チャットの質問の読み上げ、SPO プログラムの説明
+  - 登壇者A                # go-to-market 担当
+
+questioners:              # チャットで質問したコミュニティメンバー（登場順）
+  - 参加者A                # Clarity Act の影響
+  - 参加者B                # 最大のマイルストーン
+  - 参加者C                # プライベートクレジットと流動性の両立
+  - 参加者D                # 日本のコミュニティから。値のつかない資産の値付け
+
+# この回は登壇者の経歴が長く語られている。勤務先を並べると個人が特定できるため、
+# 社名・学校名・出向先はすべて業種の記述に置き換えた（例: 投資銀行名 → 「大手投資銀行」）。
+# 置き換えた語は tools/check.py の NAMES に登録してある。
+career_details_generalised: true
+
+# 資料について
+slides:
+  shown: true             # チャットに画像がリンクされた
+  shared_publicly: false  # ここでは扱わない
+  note: |
+    進行役が「暗い森」理論の説明で画像をチャットに貼っている。
+    画像そのものは扱わず、音声で読み上げられた内容だけを記録している。
+
+# 話者ラベル・タイムスタンプのない生テキストから文脈で話者を推定している。
+speaker_labels: inferred
+timestamps: none
+
+# 冒頭のタイトルコールは録音に含まれていない。文字起こしは途中から始まる。
+opening_missing: true
+
+source:
+  audio: null
+  video: null

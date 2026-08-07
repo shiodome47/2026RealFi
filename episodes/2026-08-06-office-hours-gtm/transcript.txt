@@ -1,0 +1,589 @@
+[冒頭のタイトルコールは録音に含まれていない]
+
+So 登壇者A, just to warm up the room, do you wanna give us, um, tell us how you got involved in RealFi, and tell us what you do and, and your kinda origin story, uh, so we can get to know you a little bit.
+
+Could we kick it off like that?Yeah, for sure.Uh, you can hear me, right?Yes, sir, I can hear you.Yeah.Perfect.Yeah, cool.Uh, nice to...Yeah, thanks for having me.Nice to be here.
+
+Uh, excited to, uh, excited to do this.Um, yeah, I'm, I'm 登壇者A.I run go-to-market at RealFi.
+
+Um, yeah, before, before crypto, I started my career in traditional finance, so I spent probably the first half of my career, um, probably too many years, yeah, d- in large investment banks, working in traditional equity capital markets, uh, working on sort of big billion-dollar transactions for companies doing IPOs, um, equity issuances, things like that.
+
+Um, and yeah, I also had a secondment to a policy-side institution where I ended up working on some of the mess that we managed to get ourselves into on the regulatory front.
+
+Uh, but whilst I was there, I got to do some research on the future of capital markets and sort of what the opportunities might be, and unlike anyone else probably in crypto, that's actually where I kind of, uh, came across, uh, crypto properly and properly got interested, right?
+
+Um, it's like the first time I properly ran into smart contracts platforms and tokenization, uh, and things like that, right?
+
+This was like twenty eighteen, nineteen when those sort of sorts of things were making a lot of noise, and yeah, the idea kind of really stuck with me, right?
+
+Like capital markets that anyone can reach, that settle instantly, rebuilt as software essentially is just something that, that really fascinated with me.
+
+And yeah, I ended up going back to school, uh, to do an MBA at a business school.
+
+Um, and yeah, this is like over COVID and a lot of, uh, a lot of us were stuck at home kind of playing around with or trading crypto and, yeah, I ended up doing that during sort of DeFi summer and I saw all of these happening, things happening around DeFi and these, and kind of watching this parallel financial system assemble itself in a few months, right?
+
+And just decided like, "Yeah, I want to work in crypto full-time.
+
+This is such an innovative space, so interesting." Uh, and yeah, basically ended up going into crypto after finishing my MBA, uh, pretty much joining right at the top of the market, and it's probably been, uh, a bit of a choppier ride since then, but, um, yeah, kind of worked across a few different, uh, places.
+
+So a permissioned blockchain a- a- attempt, and was quite a good, uh, way to kind of plug into how institutions adopt this technology.
+
+Um, I then spent some time at a crypto market maker and, and liquidity provider, and then most recently, um, worked with a few layer two ecosystems as well.
+
+Um, so one focused on emerging markets, uh, and that was quite cool to work with them and kind of see where, you know, stablecoin dollar demand really lives, um, which to me is, you know, in a lot of emerging markets.
+
+Uh, and also spent some time at a layer two trying to kind of bridge, uh, native Bitcoin into Ethereum-style DeFi, and, uh, kind of saw what it takes to bootstrap a DeFi economy with, you know, a chain with a big community, but no DeFi habit in Bitcoin, right?
+
+Um, which I guess there's like some parallel lessons to, uh, to, to now working in the Cardano ecosystem.But yeah, to say it plainly, I'm, I'm not like a Cardano native.
+
+I came up more on the Ethereum side, so apologies if I, uh, if I say anything that's, uh, that's, uh, sacrosanct to, uh, to the community.
+
+I'm pretty new here, but, uh, yeah, excited to, excited to build here and, um, yeah, excited to, uh, to kickstart something pretty interesting, um, in DeFi on Cardano.
+
+That was a, that was a great introduction, 登壇者A.Thank you.Um, so walk me through the timeline briefly.So how long have you been in, uh, RealFi?What, what does that timeline look like?
+
+And can you describe what GTM is?Educate me on, on the role and the function.Yeah, for sure.Um, so actually, yeah, I joined RealFi fairly recently, uh, in, in March.
+
+Um, yeah, I was really attracted to, you know, um, the fact that it was a protocol, you know, trying to bring real world assets into DeFi through a stablecoin.
+
+Like all of those things really resonated with me and my background.I also like the sort of emerging market angle, um, that the team, the team has.
+
+Um, so yeah, really nice sort of, uh, meeting, melting pot for me in terms of like my background and what I've worked on before.
+
+Um, and yeah, in terms of what go-to-market actually means at a stablecoin protocol like RealFi, for me it's really like three things, right?
+
+Um, number one is to make sure that our tokens, our stablecoin has deep, uh, liquid and healthy markets, uh, wherever it trades, and that's, you know, the incentive designs and the liquidity Um, is there and, and stays there once, once incentives taper, right?
+
+Which, uh, which is a lot of work that, uh, that we do together with the product team, but it's also working with sort of market makers and, and trading shops, right, who are the professionals who provide liquidity on venues.
+
+Um, yeah.Then secondly is, you know, connecting the protocol to anything that gives it utility.
+
+So that may be decentralized exchanges, lending markets, wallets, custodians, centralized exchanges, et cetera, et cetera.And then finally, uh, also bringing in capital that stays.
+
+Um, so I spend a lot of time getting institutional allocators, uh, to come in, speak to crypto native funds, treasuries, family offices, and really any- anyone who can also introduce me to these kind of folks.
+
+So, so yeah, a normal week is, you know, having conversations with allocators, with people who open those doors with trading firms and venues and potential partners who can contribute this to real users, right?
+
+Um, and also obviously a lot of work working, uh, internally with our product and, and data and engineering teams as well.That's really, that's really interesting.
+
+If we were talking about Cardano, you were saying you're, um, you know, you're still finding your way around, and we talked about roles.
+
+I might talk about, you know, SPOs, which are validators, or we might talk about wallets.Um, what are the key roles that you mentioned there that are relevant to your function?
+
+Um, you know, you said allocators.Are, are there like a set of roles that you tend to focus on?Uh, I've got a...Um, you mean like, um, yeah, potential partners and, and that kind of stuff?
+
+Yeah, trying to like sort of thinking about how could you give anyone listening an aerial, a map, uh, looking down at what parts of, say, the industry you're really engaging with the most.Yeah.
+
+So like on the liquidity side, yeah, market makers and, and liquidity providers.
+
+Then on, you know, connecting with partner protocols, it's again, sort of, you know, lending markets, decentralized exchanges.
+
+Um, then there's also infrastructure partners that, you know, make, make the protocol work, so like wallets, custodians, for example, right.
+
+Um, and then I guess, yeah, as I kind of mentioned before, the other part of the job, once you kind of set up the liquidity and set up the infrastructure to make things operate smoothly, is, is getting people to, you know, put money into our protocol so that we can then go and invest that money on the back end into our strategies and, and deliver the yield for, for the token.
+
+Okay.That's, that's great.Let me, uh, just do a bit of housekeeping, um, as a few more people have joined.Um, if you've got the Discord stage open, there's a chat bubble in the top right.
+
+You can open chat and ask any questions as we're going along, and me and 登壇者A will both be reading that chat.
+
+Um, secondly, if you can retweet or invite more people into the Discord, that would be great too.Always like to see the numbers get up.
+
+Um, and also 登壇者A, you know, we, we mocked up some questions earlier and, um, got some voting going on with the SPOs.So I was gonna sort of hit those questions up first.
+
+Um, is that good to you if I do them in sort of order of votes?Yeah, sounds good.Okay, great.Um, so first one is, uh, a delegator asks their SPO what RealFi is.
+
+Um, what's the one-minute answer you'd want them to give?How would you want someone to explain RealFi to someone that maybe wasn't technical or familiar with it?Yeah, sure.
+
+I mean, RealFi is a yield bearing stable coin protocol, right?Um, I think it's probably fair to say the first, you know, yield bearing instrument of note, uh, on Cardano.Um, yeah.
+
+In terms of the design, there's, you know, two tokens.
+
+Um, there's USDR, which is our one-to-one US dollar pegged liquid stable coin, and you stake that in order to get access to the yield bearing, uh, portfolio.
+
+And the, the yield for us comes from real world assets, right?
+
+So I think that's one of the sort of differentiators versus other similar products out there in the market, whether on Cardano or Ethereum or Solana, what- whatever it may be.
+
+You know, our portfolio is comprised entirely of real world assets.
+
+What that means, uh, in, in, in practice is sort of money market funds, T-bills, um, things like collateralized loan obligation ETFs, um, which are all fairly liquid yielding instruments.
+
+Uh, and then there is also the sort of direct fintech lending and private credit element, which is something that the team has, has been doing for the last four or so years.
+
+Um, and that's a strategy that they've been running, um, yeah, for, for a long time and have, have built up a track record in that.
+
+Um, and that's what kind of delivers a little bit more of that juice, uh, in, in the APYs that we're targeting.And is there a difference in the portfolio of USDR and then sUSDR?
+
+Just, just for clarity, do we have any-- what's the difference between those two things?Yeah, 100%.Um, yeah, so the USDR is backed by much more liquid instruments, right?Um, given that there's, um...
+
+Yeah, given that private credit and, you know, direct fintech lending Is a lot more illiquid.Um, like typically the duration of the investments that we make is more like, you know, six to 12 months.
+
+And given that we have to, you know, for USDR we have to meet, uh, the redemptions, uh, and make sure that it's, it's fully liquid, like the backing of that is, is a lot more liquid instruments.
+
+So that's your sort of again, like your market funds, T-bills, uh CLO ETFs or, or which are instruments that, uh, that can be essentially sold, um, very quickly to, to meet any of the redemptions.
+
+And in terms of like the design of the protocol, I think, you know, someone from our data team was on last week, and he talked a lot about some of, you know, the stress testing and the modeling the, the team has done around, you know, ensuring the design of the protocol and ensuring that we can always sort of meet like the worst case kind of redemption cues and scenarios that we've seen in the market.
+
+Uh, and we've really spent a lot of time on sort of, um, yeah, battle testing the protocol.And, um, uh, that plays well into question five.
+
+I'm just going by the numbers in the chat, but, um, what keeps USDR at one dollar, and what happens on a genuinely bad day?Um, what keeps...
+
+So yeah, the way, you know, the, there is an institutional, uh, mandate, right?For, um, arbitrage, right?
+
+So like we work, as I mentioned before, with sort of institutional market makers and the like, um, they help arbitrage and keep the peg at one dollar.
+
+So firstly, like only institutions can, can mint and redeem, um, and institutions have, you know, whitelisted addresses that we allow that can then arbitrage.
+
+So like, if say the price deviates away from a dollar, they can buy elsewhere and arb that trade away, bringing the peg back to one.That's one of the mechanisms we enable.
+
+Um, and in terms of like bad, what did you say?What was it?A, a bad kind of day scenario, did you say?Yes.I'm thinking of, uh, one of those films.I can't remember what it was called.
+
+Um, what happens on, what happens on a bad day?A really bad day.Yeah.So, um, this is something that I was alluding to, like, we've done a lot of, a lot of modeling, right?
+
+Like, um, to ensure that, you know, if a lot of the book wants out, um, at the same time that we have the, the right sort of portfolio of instruments that's able to meet redemptions, uh, very quickly, right?
+
+Um, if, you know, if there's stresses in the market.
+
+And so, yeah, it's really about sort of doing that modeling and, and back testing around the portfolio composition to, to ensure that we've covered all of the kind of worst case scenarios we've seen in the past.
+
+Um, and so yeah, a lot of back testing, a lot of, a lot of data work that's, that's gone in to, to ensure that, that we are able to, to cope with those scenarios.
+
+I'm just posting my, um, rough bank of questions into the chat so people can see them and, uh, let us know if which they want us to ask or if there's any that we haven't thought of.
+
+But let me just pick up a couple of questions that came in, 登壇者A, while we were talking.
+
+Uh, 参加者A wants to know, and you know, you may not have an opinion on this, so don't let me put you on the spot, but do you have an opinion, um, on potential effects based on where, what may or may not have happened to the Clarity Act in the next few days, weeks, or months?
+
+Is that something you would talk on or something we should leave for another office hours?
+
+Um, well, I mean, I would just say, you know, you know, my understanding is a lot of the stuff is, is still very much in flux.Um, you know, the Clarity Act is, is...
+
+I'm not based in the US, I'm not super close to it, but, uh, you know, there's a lot of, um, you know, a lot of debate still happening, I think, uh, around it and exactly what it would look like.
+
+Uh, and so, you know, once, no pun intended, once we do actually have more, more clarity on exactly how it's constituted and, and exactly what it says, I think, you know, obviously that would, that would be helpful for the market and, you know, protocols like ours would be able to, um, to plan according to, to those rules once they're set in stone.
+
+Thank you.Um, 参加者B wants to know what's the biggest milestone, I guess either 登壇者A, that you've achieved so far or that you're working on, looking ahead?The biggest milestone, um, the...
+
+Ooh, it's, uh, it's a good question.I mean, obviously, you know, um, delivering the test net for this protocol was, was, was a big initial milestone that, uh, that we're very proud of, right?
+
+Um, I mean the, the road is long from here.
+
+Um, but yeah, it's great the test net is live and, and thank you to everyone here who is breaking it in, um, and helping us, you know, find the bugs or whatever it may be.
+
+Um, but yeah, I think the next, the next milestone from here is obviously main net landing, um, hopefully next month and, you know, also expanding to Ethereum thereafter.
+
+Um, and yeah, obviously, you know, I think- This community is, is, is, is very, you know, helpful in, in, you know, testing things and telling us what works, what doesn't work.
+
+You know, if there's any frictions.We obviously, you know, want to make the product as, as good, as, as good as it can possibly be.
+
+Um, and yeah, that's, that's, I guess my kind of ask for, for people here, which is, yeah, help us test the product out and test its functionality.
+
+And RealFi was on a call with a colleague earlier, though I'm not quoting him, just in case I get this wrong.
+
+But, um, my recollection was that, um, you know, RealFi is a product that works better with economies of scale, you know?
+
+And one of the questions I've got in here is about liquidity and it being make or break for a stable coin.So, you know, for those of us who aren't DeFi natives, um, can you walk us through that?It...
+
+How RealFi benefits from economies of scale, and why liquidity is so important?Yeah.I mean, I spend a lot of time thinking and, and thinking about liquidity and designing for liquidity, right?
+
+I mean, um, obviously simply liquidity is like the difference between what you...Like, the price you see on a screen and, and the price you actually get.
+
+Uh, and the depth of liquidity is, you know, how much you can buy or sell before you move that price.
+
+Um, and you know, for most tokens thin liquidity is annoying, but for a stable coin it's pretty existential.
+
+Um, you know, like a dollar , a dollar you could only sell at 98 cents isn't, isn't really a dollar or a stable coin at that point, right?
+
+So, um, yeah, having, having the liquidity and designing liquidity around the peg, uh, is, uh, is super important, right?
+
+Um, and also liquidity, you know, beyond giving tight prices is, is what gives, what gives the market confidence and then brings in further, um, holders, which deepens more by, deepens liquidity in, in pools and creates a flywheel.
+
+Um, and it's also like super important for everything that we want to build on top, uh, in DeFi, right?
+
+So for example, like a concrete example of that is, you know, lending markets, right, which are super important in DeFi and we work with, with Liqwid, uh, quite a lot on the lending market side, where, you know, a lending market will only accept token as collateral, um, if it knows that it can sell that token quickly and at a fair price if a loan goes bad.
+
+And if there's no depth or liquidity to do that then there's no lending market, which means there's no borrowing, you know, which means there's no real DeFi economy and no ability to, to grow through, you know, leverage looping strategies for example, right?
+
+Um, which is a popular sort of DeFi strategy for yield bearing assets like ours.Um, but yeah, that's kind of- So walk me- ...
+
+the area Walk me through that, 'cause I remember you explaining it to me and I was being a little bit slow.So walk me through what a looping strategy is and how it might look.Uh, yeah.So, yeah.
+
+So this is a little bit nerdy, I guess, DeFi nerdy, but something that I enjoy and, and spend a lot of time do- doing myself, right?Uh, yeah.
+
+Leve- leverage loops are like probably the most important growth mechanic in, in yield bearing stable coins and is, is something that's helped protocols like Ethena grow to like $15 billion, right?
+
+Uh, at their, at their peak.
+
+Um, and to kind of explain what it is, so if you post a yield bearing token as collateral, so sUSDR in our case, in a lending market, you can then borrow ordinary stable coins against it, then buy more of the yield bearing token, post that too, repeat.
+
+And so like each loop you add exposure on the same starting capital, right?
+
+So say if you start with like $10 million of a yielding instrument at 9%, at an 80% loan to value you can lever that up to $50 million of exposure with $40 million of that being borrowed, right?
+
+And then your 9% yield on that $50 million, and say you're paying like a 5% to borrow on the $40 million nets...
+
+That, that yield basically leverages up to like 25% APR on your starting $10 million position.
+
+And that's obviously good for us as a protocol because you know that, that $10 million of deposits became $50 million of supply.Um, so yeah, it's definitely like a big kind of growth mechanism.
+
+I guess what, what I would I would be clear, uh, on is that, you know, looping amplifies, uh, you know, losses as well as gains.
+
+Um, so I'm not, I'm not suggesting anyone like runs five time, five times leverage strategies on their phone, but, uh, but it's definitely a mechanic that, uh, that has worked well in, in, in growing DeFi and yield bearing stables.
+
+Are, are you telling me this isn't financial advice?Exactly.Do you know, um, if the audience doesn't...It will indulge me, if you don't mind.Um, t- and tell me whether this is different, right?
+
+'Cause like I don't mind admitting I'm an idiot, right?Pe- people have known me long enough.But, um, I was messing around on Kraken and they had this thing called, um, funds or challenges.
+
+It's really fascinating where like you go and buy $20, $50, $90 and, uh, if you spend $90 they give you 100, uh, sorry, 10K in funds to then go and trade with.
+
+But you- You have to pass a challenge first.So you've got to get, like, 12% profit, and you don't get anything.You only get entry into spending that 10K.
+
+So the 12% you've just won, in theory, you're getting anything from it.But then you do get, uh, whatever it is, 10, 10K to play with, and you can start trading, and you get to keep any profit, right?
+
+Um, but if it drops below a certain amount, then you're liquidated and it's gone.And I thought that was really interesting and fascinating.
+
+Is that totally unrelated, or do you-- is there a parallel there?Um, and forgive me for explaining that badly.Do you know what I'm talking about?Uh, in terms of...
+
+Yeah, I mean, yeah, I guess, like, this, this whole, like, DeFi looping mechanic is a little bit more, mm, yeah, like, into the weeds of DeFi, right?
+
+I guess it's definitely, you know, you're amplifying risk, you're taking on more risk if you're doing it.So it's definitely something- But I feel like- ...you kind of want to read up on ...
+
+what was interesting about the mechanic is most people will lose the entry to that challenge.
+
+So, uh, from, like, a mathematical point of view, or, or however you want to-- a risk management point of view, they're gaining most of those entry fees, aren't they?
+
+And then of the ones that make it, they then have to have a performance metric, otherwise they get liquidated.So I thought that was just fascinating in terms of how they make it profitable.
+
+Um, but perhaps I've, I've taken us off on a detour, so it's And I'm not re- I'm not recommending Kraken.This is not financial advice either.So just, just for the record.You know?
+
+Um, 参加者C, sorry, 参加者C's asked a question.And anyone that's listening, please, if you've got questions, put them in chat.登壇者A's here really more for you than he is for me.
+
+Um, but 参加者C asks, "How do you keep USDR liquid and safe when part of the reserves are in private credit and direct lending?" Yeah, yeah, that, yeah, kind of goes back to, um, what we were discussing a little bit earlier, right, on the, the composition of the portfolio, the, the stress testing that we've done looking at, you know, scenarios like what a, what a bad day in the market looks like and, and planning around all of those things, um, and making sure that our portfolio comprises the, the right portion of, of liquid instruments in its makeup.
+
+Um, and yes, whilst some of that sort of higher yielding stuff is coming from more illiquid instruments like private credit and, and direct lending, the, the vast majority of the assets in the portfolio are highly liquid instruments like, um, money market funds and T-bills, which are-- can be liquidated on a sort of either instantaneous or worst case scenario, sort of T plus one basis, and CLO ETFs, which again are the sort of T plus two to T plus five, um, and deliver like a, a higher yield, right?
+
+Um, so yeah, like the vast majority of the book is, is highly liquid instruments that are designed to, um, to meet, um, any bad scenario that, that we've seen before.Yeah.
+
+I had a really interesting question from the Japanese community.Uh, I'll put you on the spot here.Um, but how do you price an asset in private credit where it doesn't have a price?
+
+I think, if I recollect the question.So there were some assets on there where they may not have met the market.Stop me if I'm embarrassing myself.
+
+But, um, but they may not have a price, but yet you have to manage the risk.Is that right?Um, well, so I'm not a private credit kind of professional, right?
+
+But these are basically, you know, these are real world deals where, you know, we lend capital to real borrowers and some...
+
+By the name, like some of the, some of the things that we may look to lend to are, you know, well, firstly, fintechs that are investing in opportunities in capital constrained markets, right?
+
+Where the, the yield may be high because, you know, uh, places in emerging markets are typically more capital constrained than they are in, in, in sort of Western Europe and the US, right?
+
+But they're all like sort of asset backed opportunities with credit enhancements, like all like pretty non-risky stuff, but with nice yields because of that capital constraint in those markets.
+
+But at the end of the day, like the, you know, the end, like the folks that are receiving the capital, like the, the things that we invest to, you know, through these fintechs, in the end are real borrowers, right?
+
+With contractual interest payments, um, you know, there'll be full reserves on with like, you know, folks will be able to check like, you know, what we're allocating the capital to.
+
+The-- These opportunities are valued by independent parties as well, right?There is a sort of a fund administrator that r- we, we report to, right?
+
+Who won't publish any figures that they disagree with.
+
+Um, and so there are like specialist firms, right, that actually, like, value the book and what the, what the lending positions, um, that we lend to actually look like, right?
+
+And what, what flows into the value of, of staked USDR, and like independent specialists, underwriters we work with, auditors, right?Like, um, proof of reserve auditors and, and the like.
+
+So there's like...
+
+Yeah, again, I'm not, I'm not a private credit expert, but there's like a lot of folks that, that, that we work with that are, and obviously, you know, two people from our investment team I think will be coming up in a few weeks, so definitely throw them on this.
+
+And they've been doing it a long time, yeah.Um, okay, that's great.Uh, let's go back to basics.Um, I'm working through the questions in chat.Uh, what is a market maker?Give me the, uh, the TL;DR.
+
+What is a protocol like RealFi need a market maker?Well, why do they work with them?
+
+Yeah, I guess I mentioned that before in terms of like the liquidity, right, and, and, and the importance of liquidity, and I spent a little bit of time working at a market maker myself.
+
+Um, but yeah, it's basically like a professional firm, um, that, you know, stands there and, and quotes prices ready to buy and sell.
+
+Um, and yeah, you know, they provide the, the depth and the peg defense, uh, when a market is, is genuinely stressed.
+
+Like, they stand there to, um, you know, across, across the venues where they operate and provide liquidity, um, and provide that liquidity for everyone, um, and provide the depth to maintain the peg.
+
+Um, and yeah, like it's hard to make DeFi happen without professional firms with, with balance sheets behind them that, that stand ready to, to provide liquidity in, in all market scenarios.
+
+Um, and yeah, I guess like going back to, you know, going back to that point we spoke about earlier on, on keeping the peg and like the machinery behind it, like, you know, we need an institution that can always mint and redeem USD at exactly one dollar so that, you know, if it, if the price moves down to, say ninety-nine cents somewhere else, they can buy it there, redeem at a dollar, and push the price back in, in the process, right?
+
+So these, these firms help us keep the, the peg, um, keep up...I mean, do the arbitrage trade that makes it constant.
+
+Um, and yeah, also provide depth and liquidity on, on, on partner venues, whether that's in a centralized exchanges, decentralized exchanges, et cetera, et cetera.
+
+I think zooming out, I'm kind of-- My thesis I mentioned at the call is, um, a lot of times in...
+
+There, there are real reasons why people wanna see an open financial operating system, and they wanna see these tools democratized, and those are important, so I'm not dismissing this at all.
+
+It's a large reason why we're all here.
+
+But as I've worked with the teams and professionals, um, like you 登壇者A, I developed this thesis where I learned that really it's also about like growth, like naming the game, which is growth in Web3, and growth is defined by some as capital productivity, right?
+
+And I'm remembering this quote from someone.
+
+Um, he said like, "Where there's a yield, there's a way." So I'm kind of hearing that in-- I'm trying to zoom out a little bit, um, for the less technical, although actually probably here everybody is way more technical than me.
+
+Um, but is, is that the case?It, it is about a yield.That is ultimately what's gonna drive activity on RealFi and Cardano and attract people.What are your thoughts?Whether it's only about the yield?
+
+I guess the, you know, the name of the game really in Web3 and, and how, and this is-- I'm kind of going off kilter here, but like, you know, and how ecosystems really are gonna get growth.
+
+So, you know, we'll find maybe a lighthouse win for Cardano, that's what I'm hoping, and that TVL can be brought to Cardano.
+
+But yeah, what are your thoughts on growth and what growth means and, and really how growth is driven in these Web3 ecosystems, independent of Cardano, you know, reference Ethereum or Solana or any other ecosystem.
+
+But, but what are your thoughts?Yeah.Um, yeah.I mean, there's many ways to answer this.I guess to go, to go back to the yield, right?
+
+Um, you know, there's farms sort of out there that provide, you know, triple digit APYs and I guess like, you know, uh, talking about sort of eight to ten percent, like, why, why should anyone care, right?
+
+Like, how does, how does this sort of-- how is this an opportunity that anyone should care about and how does this deliver growth?
+
+I mean, like from my perspective, I think the financial world now is becoming like, and in the blockchain space is becoming a lot more sort of institutional, um, at least like in my opinion.
+
+And I think there's, you know, three things that are, that are making a lot of waves in the market, right?That's like stable coins.
+
+There's already three hundred billion dollars worth of stable coins today.You know, big banks project that to sort of more than 10X in the next five years.
+
+Um, and then there's tokenization of real world assets, right?
+
+Um, and a lot of like financial instruments like funds, like credit funds and, you know, equities, uh, coming on chain and people being able to use them in, in vaults and in on chain packaging layers that make it, um, like make it more-- make, make those assets more productive.
+
+And yeah, I guess like going back to yield, yield is like some-someone, someone is paying someone else for something, right?
+
+So like, I guess the first question is, you know, not how big is the number, but who is, who's paying it and why?
+
+And like in our case, right, again, it's like it's real borrowers paying contractual, durable interest.Um, and yeah, there's like other, you know, protocols out there.
+
+You know, it may be beta's paying funding rates like with a project like Ethena and, and yeah, that's real, but it's, it's pretty cyclical.
+
+Or it might be a token treasury printing emissions on its own token to pay you, right?Which, which, which is yield, but it's, it's more, you know, it's, it's not really real.
+
+It's like dilution with a countdown So I think for me, it's, like, always important to kind of ask who, who's paying the yield and why.Um, and if you can't answer them, I guess you are the yield .
+
+Um, but, um, yeah, I think, you know, also, like, if you see, you know, massive triple digit APYs, typically that's, like, the market telling you there's a risk of losing everything usually.
+
+Um, so that's typically like, uh, a bit of a warning label as well.But yeah, I think this is, like, what attracted me to join this project, right?
+
+Um, and I think, you know, users should judge collateral like a lender would and ask questions around, you know, what, what backs it, like, can you verify it?
+
+How deep is the liquidity if you want to get out of that instrument?
+
+Um, we discussed already, like, what happens on, on a bad day or with, you know, stress markets and volatility and, um, yeah, I think people, people need to kind of judge different assets on, on what backs them and the liquidity around them.
+
+And I think that's why, you know, what we're working on and what we're building kind of stands as-- is, is designed to stand up today's tests and, and deliver something real and deliver something that's fair, um, and deliver something that, that should hopefully be attractive to the market.
+
+And it's also something that interests institutions and, and increasingly, you know, like the funds and capital allocators and institutions that are increasingly coming on chain and want to allocate into these instruments, right?
+
+They're all kind of dipping their toes and they're interested in these kind of things.And so yeah- We're circling- No, go for it.It, it's interesting, so kind of circling around two things here.
+
+So I'm gonna kinda ask you directly, like what...Not, not just RealFi, but what do you think are the most interesting product market fits that you've seen in Web3?
+
+'Cause we've talked-- we've gone around a few different examples like financial instruments, but where do you think the best product market fit is so far?Stable coins is one.Yeah.
+
+I mean, it's, it's definitely, definitely stable coins.
+
+Um, uh, you know, given if you look at crypto market cap or, well, in general, I guess obviously that number has, has, has probably fallen quite a lot over the last year or 12 months or whatever it is.
+
+But stable coins continue to grow, right?You look at stable coins market cap, it continues to grow, you know, pretty smoothly.There's no drawdowns.
+
+That obviously tells you that, you know, people increasingly want to use stable coins.
+
+Um, and again, like from my previous experiences at, you know, working at places focused on emerging markets, you look at places like, you know, Nigeria, Argentina, like those, those types of places people do their day-to-day work and business and, and, and, and run their lives in-- on stable coins because, you know, those markets aren't as easy to get US dollar fiat access with, and their local currencies are highly inflating.
+
+And so stable coins there are just like a massive, um, product market fit, right?
+
+And then, I don't know, at least in my opinion, you, you add a, a US dollar denominated yield into the mix like ours, and again, I think that's, that's a no-brainer for a lot of people in those markets to be able to save in US dollars and, and get an attractive yield in a market where, you know, the local currencies have such high inflation is, uh, I think is very attractive.
+
+Um, and then, yeah, I think increasingly as I, as I kind of was leading to, yeah, like the tokenization of, of real world assets and putting them on chain and making them more composable.
+
+So like for example, I don't know, if you hold like a, a tokenized stock, being able to go on on-chain lending market and borrow stable coins against that whilst still holding the position is something that you can't, unless you're like a high net worth in- individual do in traditional financial markets typically, right?
+
+That's basically like getting a margin loan, um, which is usually reserved for like, you know, high net worth people, right?By brokers or who have access to brokers.
+
+Um, so I think we're gonna see more and more growth of like real world financial instruments coming on chain and people becoming more and more financially, like, interested and literate and, and doing more cool and interesting things with, with those assets that are coming on chain.
+
+Um, so yeah, I'm pretty, pretty excited about those, those trends in particular.
+
+And just, just a follow-up question 'cause I think you'd mentioned about being able to like inspect books or evaluate, uh, types of, um, credit.
+
+Are there any specific tools that you use regularly or educational resources you direct people to regularly?Like, you know, your top two, three that come to mind.Hmm.Hmm.
+
+Um, there's a, I guess there's a bunch of sort of, you know, crypto tools out there.
+
+I mean, I've kind of spent the last four or five years myself obviously kind of playing around with crypto quite a bit and, um, I don't know, there's, there's a, a bunch of data sources out there, like DefiLlama is pretty good, um, on, you know, telling you about different yields and what might be backing them.
+
+Um, there's a more and more sort of like institutional kind of providers that teach you about vaults and what, what looks like a good vault or not.
+
+Um, I was looking at a platform called Cerberus the other day, which gives like risk ratings to, to vaults and, um, the, yeah, the sort of backing for a bunch of protocols and their sort of op risk setups and all that kind of stuff.
+
+Um, but yeah, I mean, I guess that's, that's something that we're, you know, a lot of what we're trying to do is introduce as much transparency as possible in what we're doing.
+
+Um, so providing as much transparency into, you know, providing like live data views of what's backing the, what's backing the tokens and doing these, you know, weekly, uh, attestations on the private credit book and, yeah, really introducing as much transparency as we possibly can, uh, into people having a live view of, of, of what backs the asset on chain.
+
+Um, which, you know, not, not everyone does and there's definitely been like some, some other blowups, you know, in the last six months, let's say, of, uh, of people not doing this properly or sort of marking their own homework rather than using like independent verifiers, uh, on the backing of different assets.
+
+Yeah, it's definitely something that we, we take very seriously, and I think also generally, like the DeFi market is forcing people to take this more seriously as well.
+
+And again, there's been so many blowups that I think unfortunately a lot of institutions are being burnt or are wary of getting burnt, and they're kind of forcing the market to do this anyway.
+
+Um, so I do think like, you know...I'm hoping that the space matures with us and, uh, and does a lot of this, uh, a lot of this stuff, uh, and becomes a lot more sort of, yeah, institutional grade.
+
+Okay.
+
+So moving from where we are today and looking ahead, um, say 12 months from now, 18 months from now, what does success look like for you and for GTM, and what can the community do to help, if anything?
+
+Yeah, 100%.Um, yeah, I mean, look, TVL matters and my role is kind of measured solely on that metric.Um, and I would say, you know, obviously TVL isn't Cardano's strength point right now.
+
+There's obviously, uh, an amazing crypto community or an amazing community behind Cardano, and there's obviously so much in, in staked data out there and I guess like hoping that some of that moves, uh, you know, into protocols like us, which are delivering, uh, an institutional grade sort of yield protocol for the first time on Cardano.
+
+And, uh, and yeah, I hope, I hope some of, some of that capital, uh, translates into TVL into our protocol.
+
+Um, but, uh, beyond sort of just TVL, right, like, uh, you know, it's not the only number that matters.
+
+Um, it's, you know, it's also easy to fabricate and you can sort of, you can buy it with rental liquidity, right?So for me, for me personally, like what does success look like?
+
+It's, you know, having a stable coin that has a tight peg, that trades, uh, that trades well.
+
+It has, you know, uh, large sw- pools in order to be able to swap, um, and absorb, you know, swaps before the price moves.
+
+It's, uh, it's working with our DeFi partners on, on getting, on getting utilization up in the lending market side of things.
+
+It's, uh, you know, having integrations that, that get used rather than just announced and, and yeah, generally like working with distribution partners.
+
+Um, I'm excited about, you know, the future of partnering with, a- again, like fintechs in emerging markets, for example, right?
+
+Where I think there's a lot of, a lot of use case and, and need for our product.
+
+Uh, and yeah, and getting institutional allocators to come in, um, and, uh, and, and have them, you know, deposit money with us and, and build trust and, and build that capital base of institutional holders that stick around and if they stick around, we can obviously typically tie up our money for a longer time and deliver a better yield for everyone else as well.
+
+So, uh, so yeah, that's kind of the things that I'm focused on growing.Preempting a, a few questions here, 登壇者A, but 'cause I think that was a nice segue.
+
+One of the questions I was looking at, it's in the chat by the way, I've been marking off what we've been going through, was about what verified SPOs fit into in terms of, you know, GTM and what the operator community can do for growth that marketing spend can't.
+
+And just setting us up here, I actually linked a couple of images.I've put them in the chat because I was looking for- This one's for you.This one's for you Yeah, yeah.
+
+Well, I'm gonna, I'm gonna answer it.Yeah, I'm gonna s- I'm gonna put the question to myself.
+
+But, um, so basically I like this idea called dark forest theory, which is that, you know, um, as AI comes along, people are gonna retreat and, you know, everything's astroturfed and everything becomes bot activity.
+
+People are gonna retreat into the cozy web, into, you know, private Telegrams, Discords, in-person meetups, this kind of stuff.
+
+So to illustrate the point, I've put it in chat for anyone that's here, 50%, 50% to 80% of in- internet activity is bots, according to Cloudflare even.
+
+Um, and, you know, on chain activity, at least Solana I think it was, it's like 90% is bots, right?
+
+And I think one of the things that's really special about, um, SPOs is that they are trusted infrastructure and they have relational capital with their delegators, you know?
+
+And so I think one thing that, um, an accelerator program does, or a couple of things actually is, uh, firstly, you're able to take on chain activity and, and just to be clear, I'm not saying KYC, AML or, uh, anyone gets doxxed, but I'm saying you can look at the online activity and the on chain activity, and if people are claiming points, uh, 'cause they have to verify to claim the points, you're able to have a much higher degree of certainty that they're real humans.
+
+And I think that the accelerator program the SPOs are building out here is novel in that respect.
+
+I'm not aware of, um- Anything similar, and I, I didn't plan-- I'll be honest, 登壇者A, I didn't plan it when I-- This kind of emerged from talking to SPOs, so it's, um...
+
+But I think it's novel, it's really interesting.
+
+And then the second thing is, um, I see some of the Japanese SPOs here, but also thinking about kind of a, uh, train the trainer or an educate the educator model, where presentation materials or topics that might be important to an SPO can be taken to their delegators.
+
+So you'll be able to get out of traditional marketing distribution channels, and you've got people that are able to advocate.
+
+And, you know, some of those things they might advocate for is obviously let's try and increase the decentrali- decentralization of Cardano's network, because we wanna see single pool operators attract that delegation.
+
+Um, I know, uh, someone from a community organisation is gonna slap my wrist because there may be one or two SPOs that aren't, uh, strictly single pools, but, but broadly it's like ninety-five percent, ninety-seven percent.
+
+Um, so the point about that is there were multiple MPOs, 登壇者A, multi- multiple pool operators that have a lot at stake, and we'd like to see that go to more stake pool operators so that they're, they're more viable.
+
+You know, there's a sweet spot somewhere between one million, twelve million, somebody will be able to tell me in chat, that makes the rewards more predictable, and therefore the, the business or the stake pool, um, more viable, you know.
+
+Other examples that I think are important is, you know, Cardano's, um, network activity too.
+
+We talked about ecosystem growth and, you know, um, essentially it's about attracting capital and making capital productive.
+
+One of the things I'm talking about with Japanese SPOs is there's a lot of, um, ADA in Japan that's relatively idle.
+
+And I think that there's an argument to be made that, um, yeah, you know, maybe in the past, it was thought of as staking was your duty.
+
+You know, if you were an ADA holder, if you staked, you were fulfilling your end of the network, you know?
+
+Um, but I think that now maybe economic activity is something that, you know, an argument could be made for that, that if you've got capital, what could you be doing with it, you know, to drive activity on Cardano?
+
+Um, and actually just by the way, two thoughts came into my head as we were talking.I saw something on X about a lot of LATAM is getting into Cardano, I think also.
+
+And then I saw Cardano's founder talking about Cardano needing a new narrative as well, and I think that these are critical parts, uh, to that.
+
+So if I-- You'd have to hold me accountable, 登壇者A, but my answer to, uh, you know, w-what do SPOs do, um, and, and why are they so important, uh, and it's nascent, by the way.
+
+This is a program we're, we're building out here, right, in flight.But those are some of the reasons that I think that SPOs are valuable.
+
+And then there's some real gives and gets in terms of SPOs getting rewarded, delegators, um, being rewarded, and RealFi having a strong incentive to work with SPOs and delegators.
+
+Um, but anyway, sorry 登壇者A, I probably took the mic there for too long, but- No, a hundred, a hundred, a hundred percent.
+
+Uh, as I said, I'm, I'm pretty new to the Cardano ecosystem, but the work you, you've been doing, um, on that front is, like, super interesting for me, and I'm, and I'm getting up to speed myself.
+
+Um, and yeah, I mean, if there's, if there's any way, um, any of what I previously said resonated with you then and you need any help and, uh, and, you know, connecting with myself or any of the work that I'm doing on the growth and partnership side as, as it is relevant for SPOs, then let me know.
+
+My DMs are open and, and happy to help.Let me- Whatever way I can ...let me finish on, um, let me finish on one last question, and then we can wrap up unless you've got any more questions in chat.
+
+And obviously, if you're listening, feel free to ask questions in chat.But, um, Cardano is our home turf.It's where RealFi is, uh, being launched.
+
+But once the bulk of your work's done during testnet, um, 登壇者A, how are we thinking about mainnet?Where are we going?And what have the community got to look forward to?Yeah, yeah.
+
+I mean, again, a lot of this is-- There, there's been these several phases, right?
+
+And again, it's, as I kind of alluded to before, it's not just Cardano mainnet, but also expanding to, to Ethereum as well, right down the line, which is, uh, which is, you know, where the deep stablecoin liquidity already lives, where a lot of the professional loopers already live, right?
+
+Um, in terms of, like, that looping strategy that I spoke to, um, before about, and a lot of the institutional capital lives.
+
+Um, but coming back to it, right, the idea is that the TVL, um, accrues back to Cardano, the assets sit on Cardano.So even when the activity happens in Ethereum, it, it comes back to Cardano.
+
+Um, so there's a lot of, like, interesting things where, you know, it was, it was hard to design for that and, um, you know, that designing for a dollar being minted on Ethereum, still counting for Cardano TVL is, is exciting.
+
+Um, but yeah, I think to bring it back to Cardano mainnet, the interesting things will be, you know, some of the stuff I talked about earlier, right?
+
+Like standing up proper liquidity, and, you know, all the work we're doing on, on making sure that we have the right liquidity pools on, you know, SundaeSwap, which is, which is our main sort of DEX partner, um, enabling that.
+
+Um, we're doing some interesting things, uh, on the lending market side as well with, with Liqwid, right?
+
+Where stakes will be able to, uh, for example, you know, there'll be an isolated market where stakes will be able to borrow, um, USDC against their ADA collateral and deploy it back into, into our yield-bearing instrument, right?
+
+Which enables you to, you know, keep hold of your ADA stake.
+
+And the staking yield on it still, you know, you're not, you're not selling it, you're not letting go of it, you're borrowing against it, and then you're able to also deploy those borrowed funds into a yield product that has, you know, our target is to deliver a much higher yield than the cost to borrow, um, and say it's a positive carry trade, right?
+
+So it's an interesting opportunity.
+
+And so yeah, like designing those strategies and working with, um, the protocols in the Cardano ecosystem to bring as much utility to the first sort of yield bearing instrument on Cardano, I think is gonna be, is gonna be really exciting and we, we look forward to launching those things, uh, when Cardano mainnet launches.
+
+It's gonna be pretty cool.That's great.You've been really generous with your time and we've, we've gone over a little bit, but, um, any clear...
+
+Now I, I already know from, um, blowing up your DMs that not every DM or not every opportunity is necessarily a qualified one, but, um, are there any qualified introductions or opportunity connections that you would wanna hear from or about, or for people to make to you?
+
+Yeah, no, I mean, like, uh, any, any partner that brings utility or helps us expand distribution or brings us like a trust angle, whether it's in the Cardano ecosystem or elsewhere, um, is, you know, appreciate any leads.
+
+We're all working in this community together.
+
+Um, and yeah, on the off chance you happen to run a fund or a treasury or a family office or know some folks, uh, you know, doing those things, then yeah, please, uh, please feel free to make any intros.
+
+Um, I'll, uh, I'll, I'll, I will say that I, I definitely don't do this Discord thing, so I probab- if you DM me on Discord, it's not gonna reach me, but, uh, feel free to like DM me on, uh, on X or Twitter or something.
+
+Uh, you beat...登壇者A, I was setting that up.I was I was, I, I was setting it up so I could say it into the call.Give, yeah, so give 登壇者A a follow on X where I wanna see him break, uh, 1K.
+
+He's currently on 100, so that's the stretch target.Yeah, I'm pretty new to the whole like, uh, tweeting thing, so, uh, yeah, I'm a bit old school.But, uh, but yeah, just a flag.
+
+Yeah, if you do DM me on Discord, I, I will not read it.So sorry about that.Well, look, I, I really appreciate you, um, coming to do this RealFi with us.I'm looking forward to doing it again.
+
+And thank you everybody for the- that's joined, um, and joined in.I, I am, as a bit of housekeeping, I am gonna get better at doing summaries.
+
+I am talking to the marketing team about how we could use, uh, some of this content so it's a bit easier to access asynchronously.
+
+Um, so I'll follow up, uh, with the summary and then hopefully we'll be able to do more with the RealFi content, uh, and get it out in more places.Thank you again, 登壇者A.
+
+I'll give you, uh, the final word.Any last thoughts?No.
+
+Um, honestly, yeah, like keep testing the protocol and, uh, playing around with it, letting us know what you like, what you don't like, um, you know, any intros or things that may be valuable, um, you think may be valuable to us, please let me, you know, DM me, let me know.
+
+Um, and otherwise, yeah, there's, there's some really cool stuff, um, coming in the coming weeks and months and, uh, really excited about, you know, launching mainnet and unlocking, unlocking some DeFi opportunities in the Cardano community, um, for, you know, arguably like, uh, you know, the first time with like a proper sort of real world asset backed yield protocol.
+
+So yeah, hopefully you're all excited too.That's brilliant.Thanks 登壇者A.Thank you everybody.Goodbye and we'll see you next week.Thanks for having me
