@@ -1191,7 +1191,84 @@ footer {
 <h2 id="credit">6. 値のつかないものを、どう値付けするか</h2>
 <p class="deck">市場価格のない貸付を、どう評価して sUSDR の価値に反映するか。四者が関わると説明された。</p>
 
-<p>プライベートクレジットの中身として述べられたのは、<strong>資本の制約が強い市場でフィンテックに貸し、そのフィンテックが実在の借り手に貸す</strong>という構造です。利回りが高いのはリスクが高いからではなく<strong>その市場で資本が不足しているから</strong>で、案件はいずれも資産の裏付けと信用補完が付いている、と説明されました。</p>
+<p>プライベートクレジットの中身として述べられたのは、<strong>資本の制約が強い市場でフィンテックに貸し、そのフィンテックが実在の借り手に貸す</strong>という構造です。</p>
+
+<p>利回りについては、<strong>「リスクが高いからではなく、その市場で資本が不足しているから高い」</strong>という説明がされました。案件はいずれも<strong>資産の裏付けと信用補完</strong>が付いており、「リスクの高いものではまったくない」とも述べられています。</p>
+
+<div class="term">
+<p class="term-name">信用補完 <small>credit enhancement</small></p>
+<p>貸し倒れたときの損失を、貸し手が全部かぶらなくて済むようにする仕掛けの総称。<span class="badge">補足</span>代表的なのは ①<strong>超過担保</strong>（100 貸すのに 130 分の担保を取る）②<strong>劣後の受け皿</strong>（損失が出たら、まず別の出資者が先に損をする）③<strong>保証</strong>（第三者が肩代わりする）④<strong>リザーブ口座</strong>（あらかじめ積んでおく緩衝資金）の 4 つです。<strong>このうちどれが使われているかは、コール中では述べられていません。</strong></p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — 利回りが高いのは、やっぱりリスクが高いからでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+
+<h4>結論から言うと、両方が同時に効いています</h4>
+<p>この 2 つは、どちらかが正しくてどちらかが間違い、という関係ではありません。<strong>金利は複数のものの足し算</strong>で、リスクも資本の不足も、その中の<strong>別々の項目</strong>だからです。</p>
+<ul>
+  <li><strong>期待損失</strong> — 貸した相手のうちどれだけが返せなくなるかの見込み。ここが「リスク」</li>
+  <li><strong>事務・調達のコスト</strong> — 審査、回収、貸し手自身の資金調達にかかる分</li>
+  <li><strong>資本が足りないことによる上乗せ</strong> — 借り手に「他に借りる先がない」ときに乗る分</li>
+</ul>
+<p>「リスクが高いから資本が来ないのでは」という感覚は<strong>正しくて、実際その経路もあります</strong>。ただ、それだけではありません。</p>
+
+<h4>リスク以外の理由で資本が来ないことがある</h4>
+<ul>
+  <li><strong>免許と規制</strong> — 外国の貸し手が現地で貸すには免許が要る、資金の持ち出しに制限がある。<strong>借り手の返済能力とは無関係に</strong>入れない</li>
+  <li><strong>調べるコストが高い</strong> — 信用情報の仕組みや監査済みの決算が整っていないと、1 件あたりの審査に手間がかかる。これは損失ではなく<strong>手間賃</strong></li>
+  <li><strong>案件が小さすぎる</strong> — 大きなファンドは、1 件が小口だと内容が良くても採算に合わず、そもそも見に行けない</li>
+  <li><strong>国ごと避けられる</strong> — 投資家がその国全体を対象外にすると、<strong>個々の借り手の質と関係なく</strong>資金が来ない</li>
+  <li><strong>国内の資本市場が浅い</strong> — 現地で集められる原資がそもそも少ない</li>
+</ul>
+<p>この 5 つは、どれも<strong>「返ってこない確率」を上げていません</strong>。それでも金利は上がります。「資本が不足しているから高い」という説明が指しているのは、ここです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="同じ年 15% の利回りでも、期待損失が大きい場合と資本不足による上乗せが大きい場合とで内訳が違うことを示す図">
+  <text x="16" y="22" class="d-s">どちらも年 15%。数字は同じでも、中身は違いうる</text>
+
+  <text x="16" y="46" class="d-s d-w">① 借り手のリスクが高いから高い</text>
+  <rect x="16" y="54" width="389" height="40" rx="6" class="d-box-warn"/>
+  <text x="210" y="80" class="d-t" text-anchor="middle">9%</text>
+  <rect x="405" y="54" width="130" height="40" rx="6" class="d-box"/>
+  <text x="470" y="80" class="d-t" text-anchor="middle">3%</text>
+  <rect x="535" y="54" width="129" height="40" rx="6" class="d-box-accent"/>
+  <text x="599" y="80" class="d-t" text-anchor="middle">3%</text>
+
+  <text x="16" y="120" class="d-s d-a">② その市場で資本が足りないから高い</text>
+  <rect x="16" y="128" width="86" height="40" rx="6" class="d-box-warn"/>
+  <text x="59" y="154" class="d-t" text-anchor="middle">2%</text>
+  <rect x="102" y="128" width="130" height="40" rx="6" class="d-box"/>
+  <text x="167" y="154" class="d-t" text-anchor="middle">3%</text>
+  <rect x="232" y="128" width="432" height="40" rx="6" class="d-box-accent"/>
+  <text x="448" y="154" class="d-t" text-anchor="middle">10%</text>
+
+  <rect x="16" y="190" width="14" height="12" rx="2" class="d-box-warn"/>
+  <text x="38" y="200" class="d-s">期待損失（貸倒れの見込み）</text>
+  <rect x="210" y="190" width="14" height="12" rx="2" class="d-box"/>
+  <text x="232" y="200" class="d-s">事務・調達のコスト</text>
+  <rect x="360" y="190" width="14" height="12" rx="2" class="d-box-accent"/>
+  <text x="382" y="200" class="d-s">資本が足りないことによる上乗せ</text>
+
+  <rect x="16" y="216" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="239" class="d-s" text-anchor="middle">見分ける手がかりは実際の貸倒率。金利が高くても貸倒れが少なければ、②の説明が成り立つ</text>
+</svg>
+<p class="figcap">割合は説明のための仮の数字です。コール中で内訳は示されていません。</p>
+</div>
+
+<h4>では、外から見てどう見分けるのか</h4>
+<p>見るべき数字は 1 つです。<strong>実際の貸倒率</strong>。</p>
+<p>資本の不足が主な理由なら、<strong>金利は高いのに貸倒れは少ない</strong>という組み合わせになります。リスクが主な理由なら、貸倒れも実際に多く出ます。<strong>同じ「年 15%」でも、履歴を見れば区別がつきます。</strong></p>
+
+<h4>身近なものへのたとえ</h4>
+<p>同じ「1 泊 5 万円」でも、危険な地域だから空室が多くて高い宿と、<strong>近くに宿がその 1 軒しかないから高い宿</strong>があります。値段は同じでも、後者に泊まった人は無事に帰ってきます。見分けるには値段ではなく、<strong>過去に泊まった人がどうなったか</strong>を見ることになります。</p>
+
+<h4>このコールで語られていないこと</h4>
+<p>述べられたのは<strong>「資産の裏付けと信用補完がある」「リスクの高いものではまったくない」</strong>という説明までで、<strong>過去の貸倒率も、損失の実績も示されていません</strong>。</p>
+<p>この節で挙げられている評価体制（専門の評価会社、独立アンダーライター、プルーフ・オブ・リザーブ監査）は<strong>「今いくらの価値があるか」を検証する仕組み</strong>で、<strong>「過去にどれだけ焦げついたか」とは別の話</strong>です。毎週のアテステーションが出ている以上、<strong>貸倒率の実績が公開されるのか</strong>は次の回で聞く価値があります。</p>
+</div>
+</details>
 
 <div class="fig">
 <svg viewBox="0 0 680 250" role="img" aria-label="貸付先の評価に、ファンド・アドミニストレーター、専門の評価会社、独立アンダーライター、プルーフ・オブ・リザーブ監査人の四者が関わる構成の図">
@@ -1918,7 +1995,84 @@ footer {
 <h2 id="en-credit">6. Pricing what has no price</h2>
 <p class="deck">How a loan with no market price gets valued and fed into sUSDR. Four parties were named — by role.</p>
 
-<p>The private credit book was described as <strong>lending to fintechs in capital-constrained markets, who then lend to real borrowers</strong>. The yield is high not because the risk is high but because <strong>capital is scarce in those markets</strong>, and the opportunities are asset-backed with credit enhancements.</p>
+<p>The private credit book was described as <strong>lending to fintechs in capital-constrained markets, who then lend to real borrowers</strong>.</p>
+
+<p>On the yield, the explanation given was that it is high <strong>not because the risk is high but because capital is scarce in those markets</strong>. The opportunities were described as <strong>asset-backed with credit enhancements</strong>, and “all pretty non risky stuff.”</p>
+
+<div class="term">
+<p class="term-name">Credit enhancement</p>
+<p>Anything that stops the lender absorbing the whole loss when a loan goes bad. <span class="badge">added</span>The usual four: <strong>over-collateralisation</strong> (post 130 to borrow 100), <strong>a junior tranche</strong> (someone else's money takes the first loss), <strong>a guarantee</strong> (a third party covers it), and <strong>a reserve account</strong> (a buffer funded up front). <strong>Which of these is in use is not stated on the call.</strong></p>
+</div>
+
+<details class="explain">
+<summary>A basic question — isn't the yield high because the risk is high?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written here to answer the question. None of it was said on the call.</p>
+
+<h4>Short answer: both are operating at once</h4>
+<p>This isn't a case where one explanation is right and the other is wrong. <strong>An interest rate is a sum of several things</strong>, and risk and capital scarcity are <strong>separate line items</strong> in it.</p>
+<ul>
+  <li><strong>Expected losses</strong> — how much of what you lend won't come back. This is the “risk” part.</li>
+  <li><strong>Cost of underwriting and funding</strong> — assessing, collecting, and the lender's own cost of money.</li>
+  <li><strong>A premium for capital being scarce</strong> — what gets added when the borrower has nowhere else to go.</li>
+</ul>
+<p>The instinct that <strong>risk is why the capital stays away is correct — that path is real</strong>. It just isn't the only one.</p>
+
+<h4>Capital can stay away for reasons that aren't risk</h4>
+<ul>
+  <li><strong>Licensing and capital controls</strong> — a foreign lender may need a local licence, or face limits on moving money out. That blocks entry <strong>regardless of whether the borrower repays</strong>.</li>
+  <li><strong>Diligence is expensive</strong> — without credit bureaus and audited accounts, each individual loan costs more to assess. That's <strong>labour, not loss</strong>.</li>
+  <li><strong>The deals are too small</strong> — a large fund can't justify the work on a small ticket, however good it is.</li>
+  <li><strong>Whole countries get excluded</strong> — when an investor rules out a jurisdiction, money doesn't arrive <strong>irrespective of any individual borrower's quality</strong>.</li>
+  <li><strong>Shallow local capital markets</strong> — there is simply less money available domestically to lend.</li>
+</ul>
+<p>None of these five <strong>raise the probability of not being repaid</strong>. They raise the rate anyway. That's what “high because capital is scarce” is pointing at.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="Two 15 percent yields broken down, one dominated by expected losses and one by a scarcity premium">
+  <text x="16" y="22" class="d-s">Both are 15% a year. Same number, different composition</text>
+
+  <text x="16" y="46" class="d-s d-w">① High because the borrower risk is high</text>
+  <rect x="16" y="54" width="389" height="40" rx="6" class="d-box-warn"/>
+  <text x="210" y="80" class="d-t" text-anchor="middle">9%</text>
+  <rect x="405" y="54" width="130" height="40" rx="6" class="d-box"/>
+  <text x="470" y="80" class="d-t" text-anchor="middle">3%</text>
+  <rect x="535" y="54" width="129" height="40" rx="6" class="d-box-accent"/>
+  <text x="599" y="80" class="d-t" text-anchor="middle">3%</text>
+
+  <text x="16" y="120" class="d-s d-a">② High because capital is scarce in that market</text>
+  <rect x="16" y="128" width="86" height="40" rx="6" class="d-box-warn"/>
+  <text x="59" y="154" class="d-t" text-anchor="middle">2%</text>
+  <rect x="102" y="128" width="130" height="40" rx="6" class="d-box"/>
+  <text x="167" y="154" class="d-t" text-anchor="middle">3%</text>
+  <rect x="232" y="128" width="432" height="40" rx="6" class="d-box-accent"/>
+  <text x="448" y="154" class="d-t" text-anchor="middle">10%</text>
+
+  <rect x="16" y="190" width="14" height="12" rx="2" class="d-box-warn"/>
+  <text x="38" y="200" class="d-s">Expected losses (defaults)</text>
+  <rect x="204" y="190" width="14" height="12" rx="2" class="d-box"/>
+  <text x="226" y="200" class="d-s">Cost of underwriting and funding</text>
+  <rect x="426" y="190" width="14" height="12" rx="2" class="d-box-accent"/>
+  <text x="448" y="200" class="d-s">Premium for scarce capital</text>
+
+  <rect x="16" y="216" width="648" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="239" class="d-s" text-anchor="middle">The tell is the actual default rate — a high rate with few defaults is what supports explanation ②</text>
+</svg>
+<p class="figcap">The proportions are made up to show the shape. No breakdown was given on the call.</p>
+</div>
+
+<h4>So how would you tell from the outside?</h4>
+<p>There's one number to look at: <strong>the realised default rate</strong>.</p>
+<p>If scarcity is the main driver, you get <strong>a high rate together with few defaults</strong>. If risk is the main driver, the defaults actually show up. <strong>Two books can both quote 15% and look nothing alike once you see the history.</strong></p>
+
+<h4>An everyday analogy</h4>
+<p>A room can cost $500 a night because the area is dangerous and half the rooms sit empty, or because <strong>it's the only place to stay for miles</strong>. The price is the same; the people who stayed in the second one all came home fine. You tell them apart by <strong>what happened to previous guests</strong>, not by the price.</p>
+
+<h4>What this call doesn't cover</h4>
+<p>What was said stops at <strong>“asset-backed with credit enhancements”</strong> and <strong>“all pretty non risky stuff.”</strong> <strong>No default rate and no loss history are given.</strong></p>
+<p>The verification described in this section — specialist valuers, independent underwriters, proof-of-reserve auditors — establishes <strong>what the book is worth now</strong>. That is a different question from <strong>how much of it has gone bad in the past</strong>. Given that weekly attestations are already being produced, <strong>whether realised default rates get published</strong> is worth asking on a later call.</p>
+</div>
+</details>
 
 <div class="fig">
 <svg viewBox="0 0 680 250" role="img" aria-label="Diagram of the four independent parties that value the lending book before it feeds into the sUSDR price">
