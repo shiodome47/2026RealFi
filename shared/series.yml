@@ -28,3 +28,16 @@ cardano:
 
   # 一本ごとに独立した収録なので通し番号は振らない。
   numbered: false
+
+masumi:
+  title_ja: Masumi
+  title_en: Masumi
+  blurb_ja: Masumi が主催する、Cardano 上の AI エージェントについてのコミュニティコール。登録制で、録画は一般公開されていません。特定のプロジェクトのための場ではない、と主催者が明言しています。
+  blurb_en: A community call on AI agents on Cardano, hosted by Masumi. Registration only, and the recording is not published publicly. The host states explicitly that it is not a platform for any single project.
+
+  # 登録制で録画が公開されない前提。回ごとに必ず確認する。
+  chatham_default: true
+
+  # 単発として扱う。コール中では「第 3 回」と呼ばれ隔週の予定だが、
+  # 開催間隔が流動的（"bi-weekly or almost bi-weekly"）なので通し番号は振らない。
+  numbered: false

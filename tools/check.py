@@ -43,6 +43,15 @@ NAMES = {
         # 経歴から個人が特定できるため業種の記述に置き換えたもの
         "UBS", "Keyrock", "Lisk", "R3", "Brexit",
     ],
+    "2026-08-11-masumi-ai-forum": [
+        # 話者・チャットで発言した参加者
+        "Patrick", "Sharan", "Scott", "Kelly", "Sandro",
+        "Edgar", "Eris", "Jacob", "Umar", "Ken",
+        # 第三者として名前が挙がった人物。役割に置き換えた
+        "Hoskinson", "Dorsey",
+        # 所属・役職から個人が特定できるため置き換えたもの
+        "utxo AG", "Hydra team", "IEO",
+    ],
 }
 
 # 回をまたぐファイル（shared/ や README）はどの回の名前も残っていてはいけない。

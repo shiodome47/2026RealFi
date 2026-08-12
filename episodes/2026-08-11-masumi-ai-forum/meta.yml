@@ -1,0 +1,57 @@
+slug: 2026-08-11-masumi-ai-forum
+title: Masumi — AI on Cardano フォーラム 第 3 回
+title_en: Masumi — AI on Cardano Forum, third edition
+date: 2026-08-11
+platform: オンライン会議（画面共有つき）
+series: masumi                # shared/series.yml のキー。単発なので通し番号は振らない
+
+# 匿名化の判定
+#
+# **登録制のコールで、録画は一般に公開されていない**（参加者およそ 50 名）。
+# 公開録画の回ではないので、実名は残さない。
+# 「録画は公開されていないかもしれない」という不確かな状態だったため、
+# 迷ったら匿名化する側に倒すという方針に従っている。
+# 公開されていることが確認できれば、実名に戻すことはできる（逆はできない）。
+chatham_house_rule: true
+
+speakers:
+  - 進行役                 # 主催。Masumi 側。ニュース紹介と Sokosumi のデモ
+  - 登壇者A                # ゲスト。エージェント × ブロックチェーンの調査を発表
+
+questioners:              # 発言・チャットで参加したコミュニティメンバー（登場順）
+  - 参加者A                # セキュリティの軍拡競争について
+  - 参加者B                # セキュリティはどのカテゴリにも入りうる、という補足
+  - 参加者C                # チャット。エージェント自身がチェーンを選ぶようになる
+  - 参加者D                # チャット。各チェーンの AI 分野への予算
+  - 参加者E                # チャット。自前の LLM 契約を接続できるか
+
+# この回は所属と役職が名乗られている。役職まで書くと個人が特定できるため、
+# 勤務先と担当プロダクトは業種・領域の記述に置き換えた。
+# 置き換えた語は tools/check.py の NAMES に登録してある。
+career_details_generalised: true
+
+# 第三者として名前が挙がった人物も役割に置き換えている。
+# チャタムハウスルールの回で下の名前だけが出ると、参加者と見分けがつかないため。
+third_party_names_generalised: true
+
+# 資料について
+slides:
+  shown: true             # 画面共有あり。発表者のスライドと Sokosumi の実画面
+  shared_publicly: false
+  note: |
+    ゲストのスライドと、主催者による Sokosumi の画面デモがある。
+    スライドの図表そのものは扱わず、音声で読み上げられた内容だけを記録している。
+    発表者自身が「スライドは LLM で作ったので、割り引いて聞いてほしい」と断っている。
+
+# 話者ラベル・タイムスタンプのない生テキストから文脈で話者を推定している。
+speaker_labels: inferred
+timestamps: none
+
+# 冒頭のマイク確認から録音が始まっている。
+opening_missing: false
+
+attendees: 約 50 名
+
+source:
+  audio: null
+  video: null             # 録画はあるが一般公開されていない

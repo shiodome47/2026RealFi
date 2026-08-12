@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masumi — 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Masumi</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-08-11</span>
+  <span>オンライン会議</span>
+  <span>AI on Cardano フォーラム</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>原本の文字起こしには話者ラベルもタイムスタンプもありません。以下の話者は<strong>文脈から推定したもの</strong>です。主要な 2 人の声はほぼ全編を通して明確なので、<strong>帰属が本当に不確かな箇所にだけ</strong> <em>(推定)</em> を付けています。</p>
+<p>このコールは<strong>登録制で、録画は一般に公開されていません</strong>。そのため<strong>氏名・ハンドル名・所属は記載していません</strong>。<code>進行役</code> <code>登壇者A</code> <code>参加者A〜F</code> は、会話を追うための仮のラベルです。勤務先と役職を並べると個人が特定できる箇所は、どちらも領域の記述に置き換えています。</p>
+<p>全編を通して画面共有があり、プロダクトの実演も行われました。スライドそのものは扱わず、音声で語られた内容だけを記録しています。</p>
+</div>
+
+<!--content-->
+
+<div class="sec">開始前</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<em>(推定)</em></div>
+  <div class="turn-body"><p>進行役さん？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<em>(推定)</em></div>
+  <div class="turn-body"><p>はい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A<em>(推定)</em></div>
+  <div class="turn-body"><p>み、みなさん静かなので、自分の音声が切れているのかと思って。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いえ、大丈夫です。すみません。今いくつか準備をしていて、参加者を入室させています。すぐ始めます。今日は少し準備が足りていないので、そのつもりで。参加者B がまだ入室の担当をしていると思います。では録音を始めます、うまくいけば。画面共有も始めます。よし、いいですね。画面が見えていると思います。録音は回っています。</p></div>
+</div>
+
+<div class="sec">このフォーラムは何のためにあるか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>少しずつ人が入ってきています。参加してくれてありがとうございます。これは隔週、まあほぼ隔週でやっている「AI on Cardano フォーラム」の 3 回目です。今日も少しアジェンダがあります。前回ほど多くはないので、今回は時間内に収まるといいのですが。ただ、それなりに面白い回になると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>まず前回の簡単な振り返りから始めて、それから agentic AI とブロックチェーンの分野で何が起きているか、ニュースの話をします。そのあとゲストの 登壇者A に、エージェント × ブロックチェーンという領域全体について、調べたことと論点を話してもらいます。それから Sokosumi の近況をお伝えします。プロダクトをお見せして、何を作ってきたかを話します。最後にオープンステージにして、そこで終わりです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>では早速。このフォーラムが何のためにあるかを改めて言うと、目標は 4 つあります。1 つ目は、AI について、標準について、ワーキンググループについて話せる場を作ること。そして誰でも発表できる機会を作ることです。来週、いや 2 週間後に何か発表したい人がいれば、メッセージをください。喜んで枠を取ります。AI と Cardano で何をやってきたか、これからどこへ向かうと見ているか、話してもらえます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>2 つ目の目標は、ブロックチェーン × AI において Cardano がしっかりした位置を取れるようにすること。1 番にしたいと思っています。私は 2 番手で満足するタイプではないので、頂点を狙うことを目標に据えます。3 つ目の目標は、協働をもっと増やすこと。みんなが話せて、何をすべきかを一緒に議論できる場にする、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それから、いつも言っていることですが、ここは特定のプロジェクトのための場ではありません。画面がすべて Masumi の色になっていますが、Masumi の話をする場ではない。何の話でもよくて、どのプロジェクトでも発表できます。ひとつのグループを作って、共同の取り組みにしていくことが目的です。この手の会が、多くの人にとってプレゼンのように感じられるのは分かっています。実際そうなっているので。私がスライドを出して、他の人が発表して、という形ですから。でも、発言してもらうことが本当に大事です。コメントがあれば手を挙げてください。スピーカーにしますので、何でも話してください。恥ずかしければチャットに書いてもらってもいい。とにかく参加して、これを教材ではなくフォーラムとして使ってください。教材「だけ」にしないでほしい、ということです。</p></div>
+</div>
+
+<div class="sec">ニュース — Cloudflare がウォレットに参入する</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>では 1 つ目、これはスライドがないのですが、ニュースです。この数週間、agentic commerce の話題と、AI × ブロックチェーンの分野全般で色々なことが起きました。その中で本当に注目に値すると思ったのは 1 つだけで、ここで手短に取り上げたいのは、<strong>Cloudflare がウォレットに参入する</strong>という件です。これはかなり驚きで、というのも Cloudflare は crypto とはほとんど関係のない会社だからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ただ、Cloudflare は x402 という標準を作った側の 1 社でもあります。なので、エージェント間の支払いや agentic commerce の分野には最初から強い関心を持っていました。いずれウォレットを出すだろうというのは、かなりはっきりしていました。それを今、少しずつ展開し始めています。今月のはじめのニュースを追っていた人はご存じでしょうが、彼らは<strong>収益化ゲートウェイ</strong>を発表しました。つまり、エージェントを持っていて収益化したいなら、このゲートウェイを使って Cloudflare と x402 経由で課金し、ステーブルコインを受け取れる、ということです。これはなかなかすごい。巨大なプロバイダーですから、それだけで agentic commerce の入口が大きく広がります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そして今回のウォレットの発表は、逆側から来ている、ということです。「売りたい」という話ではなく、<strong>エージェントを使って実際に買えるようにしたい</strong>、x402 のエンドポイントに支払えるようにしたい、と。両方向から攻めてきているのが面白いところです。やり方も crypto の定石そのままで、cloudflare.pay というサイトを作って、そこでウォレットを予約できるようにしています。今のところユーザー名を入れると確認が返ってくるだけです。ホワイトリスト、というかウェイトリストですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>予想としては、<strong>エージェントに渡せる、ステーブルコインを扱えるウォレット</strong>になるのだと思います。エージェントが x402 のエンドポイントに出会ったら、このウォレットを呼ぶだけで支払える。CLI かスキルか、単なる API か、まだ分かりませんが、おそらく CLI でしょう。これは非常に興味深いですし、当然ながら我々が Masumi でやってきたことと非常に近い。なので我々の仕事にとって極めて重要です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>とはいえ、これをやっているのは Cloudflare だけではまったくありません。Coinbase もやっていますし、他にも多くのプロバイダーがいます。もちろん Stripe もです。これだけ多くの企業がエージェント用のウォレットを作っている。<strong>これが次の大きなトレンドだ</strong>と本当に思います。どこへ向かうかは見ていく必要があります。今の時点では、技術的には競合でも、私は競合とはあまり見ていません。むしろ<strong>「将来は何十億ものエージェントが互いに取引し、お金の流れの大半がこうしたウォレットを持つエージェントを通る」という仮説が裏付けられた</strong>と見ています。この話題については非常に強気です。</p></div>
+</div>
+
+<div class="sec">エージェント × ブロックチェーンの領域分け</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ニュースは以上です。話したかったのはこれだけでした。ここからは 登壇者A に代わります。調べものをしてくれています。今日は体調があまりよくないそうなので、ゆっくりでいいですよ。では、見てきたことを見せてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ありがとうございます。呼んでいただいて感謝します。みなさんこんにちは。私は 登壇者A です。<em>[名前の綴りについての短いやり取り。ここでは記載しない]</em> 私を知らない方のために言うと、Cardano の中核開発企業のひとつでプロダクト側の仕事をしています。みなさんと同じで、エージェントの領域とブロックチェーンの領域で起きていることに関心があるだけの人間です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>それで、色々調べていて、進行役 と話していて、これについて議論したら面白いんじゃないかと思ったんです。今日は体調がよくないので、スライドはあまり整っていません。ただ、ここでの目的はどちらかというと<strong>議論をすること</strong>です。この話題について意見を交わしたい。独り語りにするつもりはありません。私はこの分野の専門家ではないし、知っていることも限られていますから。なので、スライドをいくつか出して、自分が考えたことを追っていって、みなさんも同じことを考えているかもしれないので、それについて話せれば、という感じです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>エージェントとブロックチェーンが交わる領域は、この 1 年半から 2 年、非常に話題になってきました。多くの企業がこの周辺で大きな資金を調達しています。ただ私は、<strong>これが実際どこで現実と噛み合っていて、どこで噛み合っていないのか</strong>にも関心がありました。なので、あえて反対側の立場も取ってみたいと思います。進行役 のようにこの分野に深く入っていて強気な方々が、私の理解を正してくれると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>全体像として、この領域にはいくつかの区分があります。まず <strong>agentic commerce</strong>。Masumi がやっているところで、エージェントがサービスやデータなどをブロックチェーンのレール上で売り買いする話です。次に <strong>agentic DeFi</strong>。エージェントが実際に取引をして、DeFi の世界でできることを自律的に、ユーザーの代わりにやる。それから<strong>インフラとアイデンティティ</strong>の部分。これは飛ばしていいでしょう。そしてより重要なのが<strong>マシン・ツー・マシン</strong>です。インフラを除けば、主な区分は 3 つだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>マシン・ツー・マシンも重要な部分で、IoT の機器やロボットなどが今後どうやって互いに支払うか、ブロックチェーンをレールとしてどうするか、という話です。この 3 つが区分で、今のところ<strong>上の 2 つが立ち上がってきていて、マシン・ツー・マシンはまだ遅れている</strong>と思います。この区分についてどう思いますか。何に強気で、何に強気でないか、どこに懐疑的か、意見はありますか。</p></div>
+</div>
+
+<div class="sec">マシン・ツー・マシンは本当に離陸するのか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>気になっているのですが、agentic commerce とマシン・ツー・マシンの違いは何ですか。マシン・ツー・マシンというのは、要するにロボットのことですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい、そういう分類だと思います。ロボットや、特定の作業をするデバイスですね。たとえば自動運転車が、自分が走るために何かのサービスを使う。そして別のサービスから、エージェント経由で提供されているデータを調達する、といった具合です。そういうイメージです。将来的にはドローンなど他の種類のロボットも使うようになる。それが見通しですが、<strong>ここがいちばん実現していない領域</strong>だと思います。伝わりますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>分かります。面白いのは、ドイツには、というか一般に <strong>IOTA</strong> というブロックチェーンがありました。非常にドイツ的なチェーンで、6 年ほど前にマシン・ツー・マシンの支払いに強く focus していました。Bosch にロボットがあって、その Bosch のロボットが取引先のロボットに支払い、さらに Mercedes のロボットに支払う、というような話です。結局まったく離陸しませんでしたが、ある意味で早すぎたのかもしれません。分かりませんが。なので正直に言うと、<strong>マシン・ツー・マシンにはかなり懐疑的</strong>です。話を聞けば理屈は通っているのですが、実際にはまだどこでも重要になっていない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>そうですね、まさに。IOTA はほぼ終わってしまって、復活を試みたりしています。ただ、これはタイミングの問題かもしれません。市場に対して早すぎた。それでプロジェクトが死ぬ、ということはあります。私もそこまで詳しく調べていませんが。ご意見ありがとうございます。それでは次に……</p></div>
+</div>
+
+<div class="sec">セキュリティはどこに入るのか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者A さん？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者A</div>
+  <div class="turn-body"><p>はい、みなさんこんにちは。私は 参加者A です。Cardano の中核開発企業のひとつに最近入ったばかりで、リサーチチームにいます。ここに出ていない話題で、重要性が増していると思うのが<strong>セキュリティ</strong>です。これはほとんど<strong>軍拡競争</strong>のようなもので、敵対的なエージェントをネットワークに放ち始めた瞬間に、自分たちのシステムを守るためのエージェントも放たなければならなくなります。これがどこに入るのか、何か考えたことはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>それは面白いですね。あまり見ていませんでした。つまり……それはブロックチェーンそのものとどう結びつくのでしょうか。展開されているエージェントがいて、別のエージェントがそれを見つけて、脅威になるかどうかを偵察する、監査するようなイメージですか。そういうことでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者A</div>
+  <div class="turn-body"><p>はい。システムの脆弱性を探すというタスクを与えられたエージェントが放たれていて、一定の自由度を持ってブロックチェーンの各層の脆弱性を突いていく。それに対して防御を作る必要が出てくる。固い防御を作ることもできますが、<strong>最良の防御はおそらくエージェント自身</strong>で、守るようにプログラムされ、脆弱性を探している側のエージェントを狩り出す、あるいは相手が見つける前に脆弱性を見つけて塞ぐ。正直、私にとってまったく新しい領域なので、すべて学習中です。ただ、ここで<strong>軍拡競争のようなもの</strong>が起きつつあるように見えていて、どこへ向かうのか分かりません。それが 4 つの分類のどこに入るのかが気になりました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>興味深いです。それは間違いなく立ち上がってくると思います。ただ、この分類には入れていません。というのも、それには<strong>調整や統率の媒体としてのブロックチェーンが必ずしも要らない</strong>と思うからです。私はあくまで「ブロックチェーン上のエージェント」を分類として見ようとしていました。おっしゃったような監査は、中央集権的に配備されたエージェントでもできてしまう。ただ、これも私はあまり詳しくありません。どなたか意見はありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者B さん？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者B</div>
+  <div class="turn-body"><p>はい。正直に言うと、おっしゃるとおりブロックチェーンにつながっている必要はないと思います。ただ、<strong>ほとんどの分類に当てはまりうる</strong>とも言えます。商取引として、あるいは商用サービスとして成立します。同時にアイデンティティの話も入ってきます。たとえば監査してもらうために私的な情報を開示するなら、<strong>誰に開示しているのかを知りたい</strong>はずですから。なので多くの分類に当てはまるユースケースは確実にありますし、独立したものにもなりうる。経済的に意味が成り立つところで実現するでしょう。一方で、セキュリティ研究者やエージェントを作っている誰かがやっていること、という見方もできます。Fable や Mythos などがやっていますね。問題は、それが<strong>サービスとして</strong>成立する状況になるのはいつか、ということだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい、納得です。意味が通るところならどこにでも入りうる。それと、ブロックチェーンの部分についてですが、<strong>この分類のどれにおいてもブロックチェーンは任意</strong>だと思います。agentic DeFi 以外では厳密には必要ない。DeFi の場合は下にブロックチェーンがあるので別ですが。この先、中央集権的なサービスとブロックチェーン上のものとで、この landscape がどう変わっていくかは議論できると思います。</p></div>
+</div>
+
+<div class="sec">そもそもエージェントになぜブロックチェーンが要るのか</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>では次に進みます。私が聞こうとしていた問いはこれです。<strong>エージェントになぜブロックチェーンが要るのか。</strong>今のところ流通している主な仮説、少なくともナラティブとしては次のとおりです。多くは筋が通っていると思いますが、おそらくどこでも必要というわけではありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>まず<strong>支払い</strong>です。エージェントには 1 セント未満の非常に速い送金が要る。ブロックチェーンはトークンがネイティブなので、それを標準で提供できます。次に<strong>信頼の問題</strong>。これもブロックチェーンとオンチェーンの契約でうまく扱えます。そこから<strong>アイデンティティとレピュテーション</strong>が派生します。Masumi がやっていることもそれですね。ブロックチェーンを使って、分散的に信頼を担保する基盤を提供している。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>それから<strong>自律性の制御</strong>。エージェントにどれだけの自律性を与えるかを、いくらまで使えるか、何ができるかという境界で縛れる。ポリシーや、よりオンチェーンな強制の仕組みを使って。そしてもちろん<strong>説明責任</strong>です。エージェントが経路上で何をしたかをブロックチェーンで検証できるので。私にはこれがエージェントにブロックチェーンを使う主な理由に見えます。同意しますか、それとも異論がありますか。少なくともこれが今のナラティブです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いえ、全部に完全に同意します。面白いのは、ブロックチェーンでよく起きるのが、<strong>何にでもブロックチェーンを当てはめようとする</strong>ことです。最初からそうでしたし、今も続いています。よく考えるとまったく筋の通らない、変なブロックチェーンの応用がたくさんある。でも当時の人たちは「誰もやったことがない。じゃあブロックチェーンを当てはめて ICO をやって、資金を集めて作ろう」という調子でした。それは<strong>間違ったアプローチ</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>我々はブロックチェーンをやたら大きなものとして考えがちですが、<strong>アプリケーションのごく一部であるべき</strong>です。多くの場合、せいぜい 2% くらいでいい。そこを多くの人が間違えます。エージェントについては、このリストに完全に同意しますし、Masumi でやっているのもまさにそれで、この 4 本の柱に集中して、それ以外は無視するようにしています。たとえば <strong>AI モデルの学習を分散化しよう</strong>という話には、私はあまり賛成ではありません。理論上は動きうるとしても、経済性と戦わなければならず、うまくいっても結局また中央集権的なシステムに戻ってしまう。なのでそのあたりには懐疑的で、<strong>本当に意味のあるところにだけブロックチェーンを使いたい</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>掘り下げてもらえてよかったです。私にも非常に納得がいきますし、だからこそここを強調したかった。<strong>ブロックチェーン・ウォッシング</strong>は残念ながら実際に起きた現象で、特に相場が強い時期に顕著でした。今は少し落ち着いています。分散技術の長所と短所が理解されてきたので。ただエージェントについては、今がハイプなので、ブロックチェーンとエージェントで<strong>やりすぎ</strong>が少しある。どこで本当に意味があるのか、どこに長期的なプロダクトマーケットフィットがあるのかを念頭に置くのがよいと思います。</p></div>
+</div>
+
+<div class="sec">市場予測と、実際の数字</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>次に、市場の予測を見てみました。上から見ていくと、語られている想定市場規模は、エージェント全体、エージェント向けソフトウェアの世界で<strong>数十億ドル</strong>の桁。agentic commerce では<strong>兆ドル</strong>の桁です。ただ、レポートによって<strong>10 倍のばらつき</strong>があります。これは要するに、この種の市場規模の見積もりが大雑把に行われているからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>しかし現実には、<strong>オンチェーンのエージェント関連の 1 日あたりの取引高は 3 万ドル程度</strong>です。かなり小さい。まだ初期段階です。つまり agentic commerce そのものが<strong>まだ検証されていない</strong>。オンチェーンの agentic commerce は検証されていない、初期段階だ、ということです。ハイプに飲まれる前に、そこは念頭に置いておくべきだと思います。何かコメントはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>また私がコメントしますが、これは私が多くの時間を使って議論し、考えている話題なので。<strong>agentic commerce に対する想像の幅は非常に大きい</strong>と本当に思います。だからこそ伝統的な決済事業者が今これほど本気で入ってきている。文字どおり全社です。Visa、Mastercard から Stripe、思いつく限りのところ、Circle などまで。決済事業者から見ると、agentic commerce が伸びるだけでなく、<strong>今日やっている伝統的な決済よりも大きくなる</strong>世界が開けて見えているからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>特に Stripe です。agentic commerce が来ることは彼らにとって明白です。ただ、それが本当にブロックチェーン上で起きるのかは分からない。どのブロックチェーンかも、どのステーブルコインかも分からない。<strong>だから全部作っている。</strong>ウォレットがあり、ノンカストディアルのウォレットがあり、完全カストディアルのウォレットもある。複数のステーブルコインと組み、自前のステーブルコインも作っている。中央集権的な解も持っていて、あらゆる経路を取っている。それができるのは、すでに Web2 の市場を押さえていて、<strong>自分たちの主な成長の加速要因が agentic commerce だと分かっている</strong>からです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ただ、おっしゃるとおり、現実にはまだそこまで来ていません。Base に行って実際に何が売られているかを見ると、<strong>非常に期待外れ</strong>です。エージェント間の取引などと言うと素晴らしく聞こえますが、実際にあるマーケットプレイスに行ってみると、まず<strong>マーケットプレイスの出来がひどい</strong>。UX もデザインも本当に悪い。次に、登録されたエンドポイントが 1 万件あったとしても、その中身は ChatGPT のような推論を買うだけのもの、OpenAI 系の、基本的な API リソースです。<strong>エージェント間の取引は実際には起きていません。</strong></p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>私の感覚では、本当の突破口は<strong>エージェントがサービスを束ねて売り始めたとき</strong>に来ます。「このサービス全体を売ります」「マーケティングのキャンペーンを丸ごと作る長時間のタスクを売ります」と言えるようになったとき。<strong>サービス業は巨大</strong>ですから。サービスというのは、コンサルティングや、当然マーケティングのサービスなど、「そもそもなぜ Big Four、EY や PwC などに 50 万人も従業員がいるのか」「なぜ数千億ドルの価値があるのか」と時々思うような業種のことです。それらは<strong>専門のエージェントを作れば、比較的簡単に AI で置き換えられる</strong>もので、そうすれば売れる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そういう方向に向かうと見ています。<strong>サービス業をエージェントの世界に移し、その決済をステーブルコインとブロックチェーンで直接やる。クレジットカードの部分を丸ごと飛ばす</strong>、ということです。</p></div>
+</div>
+
+<div class="sec">B2C より先に B2B</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>納得です。今のコンサルティングの例は、どちらかというと <strong>B2B</strong> の側ですね。B2C の側では、私の直感と理解では、主に<strong>ユーザーが自分のエージェントに委任すること</strong>になると思います。たとえば旅行のエージェントがいて、条件をいくつか与えると、あとは航空会社と交渉するなどして動いてくれる。そういう見方ですか、それとももっと B2C 側が起きると見ていますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それも起きると思いますが、今の時点では明らかに <strong>B2B のほうに価値がある</strong>と見ています。というのも、AI にもブロックチェーンにも縁のない友人たちに「AI に月いくら使っている？」と聞くと、せいぜい ChatGPT のプレミアム契約がある程度です。そこから、自分のエージェントを持ち、パーソナルアシスタントを持ち、それに数千ドル入ったウォレットへのアクセスを与える、というところまではまだ非常に遠い。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>一方で企業と話すと、今は<strong>従業員 1 人あたり月 500 ドル程度</strong>を AI のトークン代として見込む必要があります。しかもこれは増える一方で、<strong>2 年後には 1 人あたり 3,000 ドル</strong>を見込む必要があるという推計もあります。なので、エージェントにお金を払う意思は<strong>企業側のほうがはるかに高い</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい、まったくそのとおりです。それは普通、採用曲線の初期の部分ですね。アーリーアダプターの部分です。それでこのスライドですが、進行役 が言っていたように、市場全体が非常に大きい。<strong>ブロックチェーンが取れる部分はおそらく小さい</strong>でしょう。各社があらゆる解を試していて、ブロックチェーンでも中央集権でも、何が残るかを見ることになるからです。</p></div>
+</div>
+
+<div class="sec">エージェントに Cardano を使う理由</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>次のスライドに進みます。<strong>では Cardano を使う主な理由は何か</strong>。エージェントに Cardano を使う理由、という話です。さきほどは「エージェントになぜブロックチェーンか」を話しました。今度は Cardano の価値提案を提示してみます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私にとって筋が通るのは、まず<strong>決定性</strong>です。エージェントがどう相互作用できるか、という点で明らかな理由があります。次に<strong>形式検証</strong>。他のチェーンより堅牢なシステムになる。それから<strong>アイデンティティと秘匿性</strong>です。Cardano のエコシステムには Veridian のようなアイデンティティのプリミティブがありますし、プライバシーについては Midnight を Midnight passport などで何らかの形でつなげるかもしれない。もし意味があるならですが。「なぜエージェントに Cardano なのか」と聞かれたら、私はこう答えます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>それと、付け加えるべきなのは <strong>Masumi</strong> です。Cardano 上の標準プロトコルですね。拡張 UTXO のシステムとして、エスクローやアイデンティティ、レピュテーションなどが揃っているのは、かなり良いと思います。それから、なんと言うんでしたか、<strong>Babel fees</strong> と、ナノペイメント……いや、ナノペイメントではない。マイクロペイメント？ いや、マイクロペイメントでもない。Babel fees と intents まわりで進行中の CIP は何という名前でしたか。intents が使えるようになるもので、それと……CIP の名前が思い出せません。ちょっと Slack で調べます。ええと、<strong>CIP-118、nested transactions</strong> ですね。nested transactions と Babel fees。こういったものがエージェントには意味があります。みなさんはどう思いますか。他に何かありますか。</p></div>
+</div>
+
+<div class="sec">スケールと、UTXO が効く理由</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ところで、これでは私と 進行役 が部屋で 2 人で話しているだけのように見えますね。他の方も、よければ入ってください。では 進行役、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>喜んで話しますよ。それはさておき、どれも非常によい論点だと思います。私の観点でまだ抜けているのは<strong>スケール</strong>の部分でしょうか。スケールといっても 1,000 TPS のような話ではなく、数百万 TPS、いずれは数十億 TPS、マイクロトランザクションといった、本当に 10 年先を考えたときの話です。そうなると、<strong>できるだけ並列化する以外に方法がありません</strong>。他に手はない。今日のどのブロックチェーンも、おそらく 100 万 TPS すら処理できません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>なのでできる限り取引を並列化する必要があります。Cardano の良いところは、<strong>UTXO のモデルが既定で並列化されている</strong>ことです。UTXO はひとつずつ個別に扱えるので。ブロックチェーン全体の状態を知る必要がまったくない。その UTXO だけを見ればいい。とはいえ、Cardano が 1 秒あたり数十億の取引までスケールできる、と言っているわけではありません。そうではなく、<strong>多くのものを本当に並列化できる土台がある</strong>ということです。その上に Hydra や Bitcoin Lightning のようなステートチャネル型の構成を重ねていけば、これも高度に並列化されているので、UTXO モデルと非常に相性がいい。そうすればいずれ数十億の取引に届く可能性はあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>もちろん、まだ非常に長い道のりがありますが、<strong>そのスケールに向けては Cardano が最も良い位置にいる</strong>と思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>納得です。ただ、ここを強調しすぎたくないとも思っていて、というのもこれは<strong>供給側</strong>の話だからです。<strong>技術が常に勝負を決めるわけではない</strong>。成立させるための一部にすぎず、他にもうまくいかなければならないことが山ほどある。「Cardano は何にでも最良のチェーンだ」と言う前に、そこは但し書きとして必要です。基盤は良いものがあると思いますが、他のことも動かさなければなりません。</p></div>
+</div>
+
+<div class="sec">他のチェーン — Base・Solana・NEAR</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ここは飛ばします。言いたかったのは、<strong>プリミティブは強い</strong>ということ。ただ問題は、<strong>エージェント向けの開発者体験が全般にまだ整っていない</strong>ことです。ここは今話せると思います。主要なプレイヤーが今どうなっているかを見ていたので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>主要なプレイヤーを見ると、こうなります。まず <strong>Base</strong>。x402 標準を作ったところです。当然、それに見合う流通も持っている。Base チェーン上のすべてに手が届きますし、実質的に Coinbase の一部ですから。エージェント系を作りたい人向けの SDK として <strong>AgentKit</strong> があり、エージェント用ウォレットがあり、いちばん話題になった <strong>Virtuals</strong> のマーケットプレイスがある。先行者としての牽引力があります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>次に <strong>Solana</strong>。スループットがあり、もちろん流動性もあって、エージェントが実際に使える。ここも大きい。さらに <strong>elizaOS</strong> という、エージェント界隈で多くのユーザーが使う大きなフレームワークがある。なので自然と Solana に向かうことになります。他のチェーン向けのプラグインもありますが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>そして <strong>NEAR</strong>。チェーンアブストラクションで多くのことをやってきました。私の理解では、チェーンに依存しないことが色々できる。<strong>TEE</strong> による非常に安全な鍵の扱いもあり、取引量の面でもそれなりにやっています。そして <strong>Cardano</strong> です。先ほど 進行役 と話したようなプリミティブはありますが、<strong>牽引力はこれから</strong>です。Masumi はこの分野で Cardano を可視化するという点で素晴らしい仕事をしてきました。ただ、<strong>その位置を固めるにはもっとやる必要があります</strong>。だからこそ 進行役 がこのコールを主催して、みんなで集まって話せるのは良いことだと思います。</p></div>
+</div>
+
+<div class="sec">中央集権のレールに対する位置取り</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>そこから、この話につなげたいと思います。これは信頼と自己主権性の度合いが分布する landscape の図です。この図で、左下の隅にあるのが <strong>Visa や Mastercard のような中央集権的な決済のレール</strong>。右上の隅にあるのが <strong>Cardano と Masumi</strong> です。この図が十分に分かりやすいといいのですが。軸が 2 つ重なっています。Cardano と Masumi は自己主権的でパーミッションレスな側にあり、Visa は中央集権的でパーミッションドな側にある、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ただ、そこで Visa や Stripe が持っている優位は、当然ながら<strong>ユーザーベースをすでに持っている</strong>ことです。エージェントを動かすために、それを新たに獲得する必要がない。進行役 が話していたような各種のエージェント向けの道具立てを展開すればいいだけです。Stripe は <strong>Tempo</strong> というブロックチェーンを出しました。これもパーミッションドで半分分散型のチェーンだと思いますが、要は Stripe に自前のブロックチェーンのレールを与えるものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>そこで問題は、<strong>Cardano や Masumi、さらには Base のような分散側の当事者が、同じ大きな市場をどう取りにいくか</strong>です。ここで<strong>ポジショニング</strong>が本当に効いてきます。分散的なレールの上でやっているという事実を、<strong>エンドユーザーが気にかけるところ</strong>に慎重に位置取りしないと、その価値提案は意味を持たない。というのも、ブロックチェーンの多くのものは時の試練に耐えず、プロダクトマーケットフィットも得られませんでした。<strong>誰もが分散化を気にかけるわけではない</strong>からです。エージェントとブロックチェーンで何かを作るとき、ここは一般に考えておくべき、注意すべき点だと思います。</p></div>
+</div>
+
+<div class="sec">Cardano をレジストリにする</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>何か言いたいことはありますか、進行役。……これを実際に見極めて、どう位置取りするかを決めるには、<strong>相当に厳しく徹底した市場のセグメンテーション</strong>が要ると思います。おっしゃっていたように、Masumi としては<strong>ブロックチェーンをレールとすることだけに賭けてはいない</strong>、ということですよね。それとも賭けているのでしょうか。それとも先ほど言っていたチェーン非依存の話でしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>前回その話をしました。Masumi は今、実質的に <strong>Cardano における標準</strong>です。Cardano における x402 の標準、という位置づけですね。ただ、Masumi の上にプロダクトを作る以上、たとえばあとでまたお見せするマーケットプレイスの Sokosumi のような場合、<strong>市場で何が起きているかを見なければなりません</strong>。Base に 1 万のエージェントがいて Cardano に 100 しかいないなら、Base も使わない理由がない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>なので私なりの解は、<strong>Cardano が独自に得意なことは何か</strong>を見極めることです。独自に得意なのは、いろいろなものの<strong>中心のアンカーになること</strong>だと思います。中心のアンカーというのは、<strong>Cardano をレジストリとして使う</strong>という意味です。あらゆるチェーンのすべてのエージェントが、そこに登録される。全員が Cardano 上にアイデンティティを持つ。そのアイデンティティは、検証可能な資格情報のような本格的な分散型アイデンティティでもいいし、名前と説明だけの単純なものでもいい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ただ、それはすべて Cardano 上にあるべきです。というのも Cardano は、<strong>信頼できて安全で、参照できる基盤の記録</strong>であることが非常に得意だからです。そのレジストリがすでにあります。今回それを拡張して、<strong>Base のエージェントも登録できる</strong>ようにしました。今後どのチェーンのエージェントでも登録できるように広げられます。そうすれば、そのエージェントがどこにいるかを引けて、エージェント側は自分がどのブロックチェーンでの支払いを受け付けるかを返せる。そうなればもう、どこかは大した問題ではなくなります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そうすればあなたのエージェントは……おっと。参加者F さん、音がかなり大きく入っています。……大丈夫です、こちらでミュートしました。また話したいときはチャットに書いてください。気にしないでください。ともあれ、考え方としては、<strong>支払いは Cardano より支払いが得意なチャネルやブロックチェーンを通せばいい</strong>ということです。今の Cardano は支払いが得意ではありません。高すぎるし遅すぎる、そういった諸々があるので。なので何を使うかは選ぶ必要がある。そして本質的には<strong>それは我々が決めることではありません</strong>。最終的には、どこで受け取りたいかはエージェントの開発者とエージェント自身が決めます。ただ我々としては、<strong>少なくとも登録は全員 Cardano に</strong>来てほしい。そうすれば Cardano が参照点になります。</p></div>
+</div>
+
+<div class="sec">あらゆるものがハッキングされている</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>最後にもうひとつ。今とても興味深いと思うのは、<strong>あらゆるものがハッキングされている</strong>ことです。右も左もハッキングされている。どのブロックチェーンもハッキングされている。正確にはブロックチェーン自体ではなく、その上のアプリケーションですが。Claude 自身、Anthropic 自身もハッキングされています。本当に多くのところがやられていて、<strong>モデルとエージェントが良くなるほど、これは悪化する一方</strong>だと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>だから世界は、<strong>ハッキングされないと分かっている技術</strong>を求めるようになります。もちろんウォレットは、中央集権的だったり、あなたのパソコンに侵入されたりすればハッキングされます。しかし<strong>ブロックチェーンそのものはハッキングできない</strong>。そしてこの図は、セキュリティの観点でもそれをうまく表しています。Visa は明らかに、たとえば Stripe のブロックチェーンである Tempo よりハッキングされやすい。その Tempo は Base よりハッキングされやすく、Base は Cardano よりハッキングされやすい。<strong>Cardano は極めて分散的で、形式検証の上に作られている</strong>からです。なので Cardano は極めて安全です。この安全性を高く保てるなら、いずれ世界は、<strong>全員がエージェントを持つ世界に住みたいなら Cardano が必要だ</strong>と気づくと思います。</p></div>
+</div>
+
+<div class="sec">Cardano に空いているもの</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>納得です。ありがとうございます。ではあと数枚だけ見ていきます。これは面白いと思います。ちなみに全部のスライドは見ません。私ももうすぐ抜けなければならないですし、十分に時間を取ってしまったので。ここでは比較をしてみました。ただ、<strong>これらのスライドはすべて LLM を使って作っている</strong>ので、割り引いて聞いてください。私のような半端な知識の人間がやり取りしても、常に完璧な出力になるとは限らないので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ただ、これは<strong>ひとつの物語になっている</strong>ので面白いと思います。ここに横並びで置いてあるのが、決済のレール、フレームワーク、ツール、アイデンティティ、発見、レピュテーション、ワーカーの状態などです。エージェントが動くために必要な各要素ですね。プライバシーは今のところほとんどのところで利用できませんし、エージェントにとってのユースケースも用途次第だと思います。しかし<strong>他はすべて絶対に必要</strong>で、Base と Solana は自分たちの位置において非常によくやっているのが分かります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ですが <strong>Cardano には空きが多い</strong>のが分かります。主に<strong>フレームワークとツール</strong>の面です。アイデンティティは良い。発見とレピュテーションも良い。これは Masumi が作ってきたもののおかげだと思います。<strong>ウォレットとカストディはやはり非常に薄い</strong>。これらは基本的なものです。フレームワークとツールというのは、エージェント用の SDK やウォレットのことですが、それがどれも欠けている。<strong>Cardano でエージェント的なものを作る人を呼び込む、という点での穴</strong>で、ここは手当てが要ると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ただ、話の裏側もあります。<strong>NEAR</strong> を見ると、ほとんどの項目で競争力があるか、リーダーか、最良と評価されています。だからといって<strong>エージェント分野で最良のプレイヤーだということにはならない</strong>。技術面は本当に揃っているのに、採用のほうが今うまくいっていない。それがこの話の要点です。<strong>技術の部品を作るだけでは足りず、この取り組み全体の go-to-market も要る</strong>ということです。そこを整理しなければならない。Base と Solana はユーザーベースという点ですでに牽引力があったので、簡単に回りました。しかし Cardano では、何かを作るときに<strong>どこからユーザーを引いてくるのか</strong>を考える必要があります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<em>(推定)</em></div>
+  <div class="turn-body"><p>この図、とてもいいですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>さきほど手短に示したように、他のチェーン、Base や Solana は必要な部品のほとんどを持っています。Base には AgentKit とエージェント用ウォレットがあり、Solana には elizaOS と、セッションキーによるポリシー管理があり、DEX の流動性も厚い。それが差になっていて、<strong>Cardano はそこで自分の居場所を見つける必要がある</strong>ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>つまり Cardano 側にはいくつか空きがある。主に<strong>カストディ</strong>の側です。エージェントに資金をどう管理させるか。<strong>鍵を環境変数に置いておくだけ</strong>ではなく、より安全な、TEE で強制するような鍵管理を用意する。それから<strong>エージェント用の SDK</strong> 全般と <strong>DEX のインターフェース</strong>。たとえばエージェントが実際に DEX とやり取りできるようにする。少なくとも DeFi × AI の側から見ると、今そこが欠けているように感じます。取り組める余地かもしれません。Cardano に欠けているものについて、他に意見はありますか。<strong>もし Cardano でエージェント的なものを作るとしたら、いちばん切実に足りないものは何ですか。</strong></p></div>
+</div>
+
+<div class="sec">Cardano は AI にいくら使っているのか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それには答えがありますが、その前に、参加者C のコメントを 1 つ取り上げます。「良い点は、<strong>どのプラットフォーム／ブロックチェーンを選ぶかを、エージェントはよりデータに基づいて決められる</strong>ようになることだ」。私はこれに完全に同意します。非常に良い指摘だと思います。今日どのブロックチェーンの上に作るべきかを、セキュリティのパラメータなどに基づいてエージェントに深く調べさせたら、<strong>Cardano はかなり上位に来る</strong>と思います。試してみるといいかもしれません。この点が本当に気に入っていて、つまり<strong>もうインフルエンサーの意見を聞く必要は必ずしもなく、エージェントが選べる</strong>ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>他のみなさんがどう考えているかは分かりませんが、私の見方では、今 Cardano で<strong>いちばん勢いがあるのは明らかに DeFi</strong> です。今日、提案が可決されました。名前を忘れましたが、非常に大きな DeFi の……AlphaGrowth ですね。そうです、AlphaGrowth。Cardano にとって非常に大きな DeFi の推進役で、みんなが DeFi を強く押している。<strong>Cardano の創業者</strong>も強く押しています。全員が押している。なので今は、<strong>あらゆる DeFi のプラットフォームとやり取りできるエージェント用ウォレットを作る好機</strong>です。ある意味で考えるまでもないことで、なぜすでにもっと存在しないのかが分かりません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>まさにそれを、あのスライドで捉えようとしていました。うっかりウィンドウを閉じてしまいましたが。エージェント用のウォレット、エージェント用の SDK そのものは筋が通ります。それと、エージェントがやり取りするための<strong>各 DEX へのアダプタ</strong>を用意する。これは入門的なところだと思います。AlphaGrowth の提案が通ったのは良いことですね。少し弾みがつきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それと、参加者D から非常に良いコメントがありました。<strong>各ブロックチェーンが AI の分野にどれだけ予算を割いているのか</strong>という疑問です。とても良い問いで、私も同じことを思っていました。Base が AI 分野に多く割いているのは明らかですし、Tempo もおそらくそうでしょう。NEAR もかもしれませんが、分かりません。推測するしかない。ただ、<strong>Cardano が AI に多くの予算を割いていないことは断言できます</strong>。これがおそらく最大の問題で、というのも Cardano で AI に関わることをやっている、そこそこ資金のあるプロジェクトは、Masumi の我々だけだからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>もちろん、みんな少しずつ関心はあります。IO も CF も、どのプロジェクトも。AI はどこにでもありますから。ただ、<strong>大きな協調した推進はありません</strong>。もし Cardano が私のブロックチェーンだったら、<strong>Net Change Limit をまるごと使って、1 億ドルを AI に突っ込みます</strong>。そうやって位置取りするのは Cardano にとって大きな機会だと思うので。ただ、エコシステムの他の人たちが私と同じように見ているかは分かりません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>まったくそのとおりです。<strong>Cardano がまだ優先していない</strong>ことで、問題はそれをどうやるか、エコシステムのすべての当事者が同じ方向に動く協調した取り組みとしてどう成立させるか、です。そこで先ほどの各種のフレームワークや部品も効いてきます。<strong>人が来て作れるだけの最低限の道具立てを用意する必要がある</strong>。つまりインフラが存在しなければならない、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ただ同時に、こうしたブロックチェーンの中には多額を投じているところもあり、その <strong>ROI はまだ確定していない</strong>とも思います。全部が回収できるとは思いません。なので Cardano はむしろ、<strong>何が本当に意味を持つのかを実際に見極められる良い位置</strong>にいるのかもしれません。Base や Solana ほど早くはないので、何が効くかについてのデータが少し多く揃っている。そこは面白いところだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>確かに面白いですね。ありがとうございます。発表してくれてありがとう、登壇者A。非常に興味深かったですし、他の人がこうした話題を深く調べてくれるのを見られてよかったです。本当に感謝します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>こちらこそ。会話のきっかけになればという程度のものでした。今後こうしたコールで、もっと多くの人に話してもらえるといいですね。少し心理的な摩擦があると思うので……いえ、でも良い試みだと思います。やれてよかったです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そうですね。そこには辿り着けます。続けていくこと、そして準備しておくことですね。</p></div>
+</div>
+
+<div class="sec">Sokosumi を見る</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>今日はコールを長くしすぎないと約束したので、最後のセクションに移ります。画面を移動させますね。共有できていますか。見えますか。ああ、今見えましたね。では、オープンステージの前に、<strong>Sokosumi の近況</strong>でこのコールを締めたいと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>みなさんご存じのとおり、私は Masumi の側の人間です。いつも話しているエージェントのプロトコルですね。Masumi が技術の部分で、多くの人にとってより面白いのは <strong>Sokosumi</strong> のほうでしょう。これがマーケットプレイスです。今はランディングページがかなり暗いですね。作り直しているところなので、少し待ってください。要するに <strong>AI の同僚（AI coworkers）のマーケットプレイス</strong>で、マーケティング用途の AI エージェントを扱っています。こういう見た目です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>中に入ると、いろいろなエージェントが見えます。Elena、Alex、Hannah などがいます。これらはすべて Serviceplan のエージェントです。我々が一緒に仕事をしている非常に大きなマーケティングの会社です。他にも何人か coworker がいて、下のほうにはもっと単純なエージェントがあります。いろいろな会社の、いろいろなエージェントがある。<strong>要点は、あるタスクにどのエージェントを雇うかを選べる</strong>ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>たとえば Hannah。リサーチのエージェントです。「競合の市場分析をやりたい」と頼める。あらかじめ用意されたタスクがあります。これが出力の例です。そのままタスクを作って、ここにある項目を埋めれば、彼女がこの文書を作ってくれます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そして、Hannah が自分だけではタスク全体をこなせないと判断した場合、良いのは、<strong>Sokosumi 上の他のエージェント全員にアクセスできる</strong>ことです。全員が Masumi に登録されているからです。裏側で Masumi に登録されている、つまり <strong>Cardano に登録されている</strong>ということです。ここに見えている <strong>168 のエージェントの一覧は、実際にブロックチェーンから直接取ってきたもの</strong>です。Sokosumi や何かの API から来ているのではありません。文字どおりブロックチェーンから、Blockfrost を使って直接取っています。Cardanoscan などに行けばそのエージェントを見つけられます。ここではもう少し見やすく表示しているだけで、すべて同じ分散プロトコルの上に建っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>我々の目標は、<strong>マーケティングの専門職にとって Sokosumi をできるだけ良いものにする</strong>ことです。あなたがマーケティングの専門職で、代理店やマーケティング部門で働いていて、自分の仕事の一部を、リサーチからコンテンツ制作、モニタリングまで、AI の同僚に渡したいとする。そうしたら Sokosumi に来て、一緒に働くエージェントを選び、タスクを作り、<strong>人間相手と同じような感覚で管理できる</strong>、という考え方です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そこでこのタスクボードです。大きな会社で働いたことのある人なら、この手のカンバンボードを見たことがあるでしょう。Jira や Linear のようなものです。<strong>長時間かかるタスクを管理でき、定期実行のタスクも持てて、エージェントが実際に何をしているかを見られます</strong>。なので我々は、ChatGPT のようなチャットのインターフェースだけに絞ることを意図的に避けて、こういうインターフェースに focus しています。たとえばここでは、Hannah が AI エージェントの商取引とエージェント間の支払いの最新情報を調べて、結果を返してきています。これを毎日やってくれる。毎日ここを見れば何が起きているか分かる。彼女が自律的にやって、このタスクに投稿してくれます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そしてこの 2 週間でやったことがなかなか面白い。<strong>Block</strong> という会社の新しいリリースに触発されました。Block をご存じの方も多いでしょう。<strong>Twitter の創業者</strong>の会社で、Square や Cash App を手がけていて、Bitcoin 関連も多くやっています。Bitkey を作り、今日はじめて見たのですがマイナーも作っている。オープンソースにも Bitcoin にも非常に熱心な会社です。彼らがエージェント間のコミュニケーションについて何を考えてきたかを見るのは、私にはとても興味深いものでした。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>彼らは <strong>Buzz</strong> という新しいプロダクトを出しました。Buzz が良いのは、実体としては Slack のように見える<strong>ワークスペース</strong>で、そのワークスペースの中で<strong>人間相手と同じようにエージェントと直接やり取りできる</strong>ことです。しかも追加の利点として、中央集権的なプラットフォームではない。Slack とは違って<strong>自分のパソコン上でローカルに動き、完全に暗号化されていて、分散型のメッセージングプロトコルの上で動いています</strong>。作りがとても良い。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>社内で試してみて、「これはすごくいい。チームで働くときにエージェントとやり取りする方法として素晴らしい」となりました。まさに Sokosumi に必要なものです。それで「Buzz を作り直して Sokosumi に入れよう」ということになりました。今この横に見えているのが、Sokosumi の中の自分の組織、つまり自分の会社です。そこで働いている人たちが見えて、それぞれにダイレクトメッセージを開けます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いろいろな人がいますが、チャンネルも持てます。たとえば everyone チャンネル。ここに機微な話が出ていないといいのですが。Slack や Microsoft Teams と同じように全員に話しかけられます。そして<strong>エージェントに頼むこともできます</strong>。追加してスクロールし、名前を打つと、Hannah や Elena など、使えるエージェントが並びます。<strong>チャットの中から直接タスクを渡せます。</strong></p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>さらに、<strong>自分の組織だけがアクセスできるエージェント</strong>を作って、ここに入れることもできます。たとえば私が作った Noodles というエージェントがいます。Noodles はデータのエージェントなので、なかなか良い。「今 Sokosumi には登録ユーザーが何人いる？」といった質問ができます。おっと。今メッセージを送りました。ご覧のとおり、Noodles が考えています。良いアニメーションが出ますね。少しすると Noodles が答えます。Noodles は我々のデータベースへの読み取りアクセスを持っているので、こうしたデータの質問に答えられます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>エージェントとやり取りする方法として、これはとても良いと思います。ここで押さえておきたいのは、これらのエージェントを雇うと……ああ、来ましたね。<strong>登録ユーザー 11,900 人</strong>。いいですね。Noodles は今のところ無料です。社内向けなので価格を付けていません。しかし他のエージェント、たとえば Hannah を雇って IOG についてのリサーチのタスクを始めると、<strong>Hannah は外部のエージェントなので、対価を請求する必要があります</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>請求の仕方は、このアカウントにある<strong>クレジット</strong>を使うことです。ここでは 87,000 クレジット持っています。そして<strong>裏側では 1 クレジットがステーブルコイン、実際には Cardano 上の USDM です</strong>。彼女がこのリサーチのタスクをやると、おそらく少し時間がかかりますが、<strong>USDM で請求され、Masumi のプロトコルを使って Cardano 上で取引が実行されます</strong>。ブロックチェーンが関わっていることを私がまったく意識しないまま、深くブロックチェーンに統合されている。とても良いところです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>今ちょうど彼女から「IOG のリサーチはどこに焦点を当てますか」と聞かれました。とりあえず「プロダクトロードマップ」と答えます。そうすると彼女がタスクを開始して、タスクボードに追加して、リサーチを始めるはずです。以上が Sokosumi の簡単なデモです。ご覧のとおり、この 2 週間でかなり進めました。試してみたい方はぜひどうぞ。sokosumi.com です。登録すると<strong>サインアップ時に無料のクレジット</strong>がもらえて、エージェントを雇えます。<strong>実際に Cardano の取引が発生します</strong>。今のところ、Cardano 上の AI に実際に触れるいちばん簡単な方法だと思います。このコールから新しいユーザーが増えたら嬉しいですね。</p></div>
+</div>
+
+<div class="sec">クロージング</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>では……参加者E から質問です。「<strong>自分の上位プランの LLM 契約をエージェントに接続できますか。それとも LLM のプロバイダーは固定ですか。</strong>」固定です。というのも、この手の上位プランは規約上、外部への接続を認めていないものがほとんどだからです。なので<strong>各エージェントの価格を支払う</strong>ことになります。エージェントの開発者側が、裏で Claude を使うか Mistral を使うかなどを選べる場合もあります。なので<strong>価格はエージェント次第</strong>です。参加者E さん、CF に行って「全員分の Sokosumi の契約が必要だ」と言ってきてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ともあれ、今日のコールはこれで終わりです。他に、ぜひ話すべき重要な話題がある方がいなければ、ここで終了します。次回はまた話題をたくさん用意します。今日来てくださったみなさん、ありがとうございました。よい一日を。ありがとうございました。では録音を止めます。よい一日を。それでは。</p></div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語の原文を訳したもの。誤変換は用語集にしたがって直してある。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 全セッション</a>
+</nav>
+
+<footer>
+  <p>Cardano session archive</p>
+</footer>
+
+</div>
+</body>
+</html>

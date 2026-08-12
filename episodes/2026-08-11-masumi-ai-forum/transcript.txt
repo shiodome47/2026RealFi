@@ -1,0 +1,1548 @@
+進行役?
+Yes.
+E- everybody's so quiet,
+so I thought maybe my audio is off.
+No, no, it's all good.
+Sorry.
+Uh, we're-- I'm just setting up some more stuff,
+admitting people, and, uh,
+and then we'll start in a second.
+I'm a bit unprepared today, so bear with me.
+Okay.
+Um, okay.
+I think 参加者B is still on letting people in duty, and, uh,
+and then I'm gonna start the recording now if it will work.
+And start to share my screen.
+So...
+Okay, fantastic.
+I think you're able to see my screen.
+The recording is running.
+Um, people are slowly trickling in.
+So thank you everyone for, for joining.
+This is the, uh,
+third edition of our for bi-weekly or almost bi-weekly, um,
+AI on Cardano forum.
+We have, uh, a little bit of an agenda today.
+Um, it's not as much as we had last, last time, um,
+so I hope we'll be under the time limit this time.
+But, um, but it's gonna be quite interesting.
+So I'm gonna start with, uh, just a little bit of recap,
+um, what happened in, in the last, uh, kind of meeting,
+and also about-- talk about some news, uh,
+what's happening in the agentic AI blockchain space.
+And then we have a special guest, uh, 登壇者A,
+who is gonna talk about some, like,
+research and some discussion points he, uh,
+found for this general agentic x blockchain kind of
+landscape.
+Then I'm gonna, uh, give you some updates about Sokosumi.
+So I'll just show you the,
+the product and talk about what we've been building.
+And, um, and then we open the stage, and then we, uh, yeah,
+we end the meeting.
+So without further ado, just to,
+to recap what this forum is about, uh, we have four,
+four goals.
+One of them is, uh,
+we want to just enable a sort of like platform to talk
+about AI, talk about, uh, standards,
+talk about working groups, um,
+and give everyone a chance to present stuff as well.
+So if you want to present something next week or in two
+weeks rather, um,
+just send me a message and I'll glad you- gladly, uh,
+book in a time slot for you and then give you the chance to
+talk about what you've been doing with AI and with, uh,
+Cardano and,
+and where do you-- where you see it going and so on.
+Um,
+the second goal is we want to make sure that Cardano is very
+well positioned when it comes to, uh, blockchain AI.
+So we want to have it as the number one.
+I'm not the type of person who would, uh,
+ever settle for second best,
+so we need to aim for the top and really have that as our
+goal.
+And then the third goal is to foster more collaboration.
+So really, uh, yeah,
+just give a platform where everyone can talk and really,
+uh, discuss together what we need to do.
+And then, um, as I, as I keep mentioning, this is not a,
+a platform for one single project,
+even though everything is in Masumi, uh, colors here.
+It's not about Masumi.
+Um, it's about anything, and any project can, can present,
+and it's really about just creating a sort of like group
+and, um, and a joint effort.
+And I know a lot of these, uh,
+kind of meetings feel like a presentation to many of you
+because that's kind of what they are.
+I have some slides here,
+and then other people are gonna present and so on.
+But it's really important that you speak up.
+And if you have any comments, just, you know,
+raise your hand.
+Um, I'll put you on, on speaker mode,
+and you can just talk about whatever you want.
+You can write it in the chat if you're too shy.
+It doesn't matter.
+Just participate and really use it as a forum and not as a,
+as educational material, basically.
+Not only as educational material.
+Now, the, the first point,
+and I don't have a slide for this actually,
+the first point is, uh, news.
+So, uh, obviously in the last few weeks,
+a lot of stuff has happened, um,
+when it comes to this agentic commerce topic and the
+general like AI blockchain space.
+And the only, only thing that I found really noteworthy,
+and I just quickly want to highlight here, is, um,
+is that Cloudflare is now going into wallets,
+which is actually really crazy because,
+'cause Cloudflare doesn't really have anything to do with,
+with crypto.
+But they have been one of the, uh,
+creators of the x402 standard,
+so they were really interested in this whole like
+agent-to-agent payment space and agentic commerce space
+from the beginning.
+And it was pretty clear that they would at some point, um,
+do this step and actually release a wallet.
+And now they are rolling it out slowly.
+So, um, if you followed the news earlier this month,
+they announced, uh, an, a monetization gateway.
+So that basically means if you have an agent and you want
+to, uh, monetize the agent,
+then you can just use this monetization gateway and
+basically charge for it in, uh,
+using Cloudflare and x402 and receive stable coins.
+Which is quite, uh, crazy actually,
+because it simply-- Yeah, it's a huge provider,
+and it simply, um,
+opens up the doors to a lot of more agentic commerce.
+And now with this announcement of the, of the wallets, um,
+they're basically coming from the other side.
+So they're not saying, "Okay,
+now we want to sell stuff." We want to enable people to
+actually buy stuff using agents and, um,
+and pay for those x402 endpoints.
+So they're really coming from both directions here,
+which I find interesting.
+So, um, what they've done is they,
+they kinda went the full crypto playbook,
+and they built this website here, cloudflare.pay,
+and you can reserve your wallet here.
+At the moment, you just enter your, your username,
+and then you get like, uh, a confirmation or something.
+It's, it's like a whitelist, basically, or waitlist rather,
+um, for the wallet.
+But what I expect this to be is basically, um, a,
+a wallet that you can give to your agent which can handle
+stable coins.
+And then it's an easy way that whenever your agent
+encounters an x402 endpoint, that it just calls this wallet,
+which would be a CLI or a skill or just an API, we,
+we don't know yet, but probably a CLI, um,
+and then pay for that, for that kind of endpoint.
+And that's really, uh, interesting,
+and it is very similar to what we've been do-doing with,
+uh, with Masumi, of course.
+So this is extremely, uh, relevant for, for our work.
+But Cloudflare are by no means the only ones who are doing
+it at this, um, base.
+So, so Coinbase is also doing this.
+Uh, many other providers are out there now.
+Um, Stripe, of course, is doing it.
+So many people are building these kind of like agent
+wallets, and I really think that this is the next big,
+big trend.
+Um, and we'll have to see where it goes.
+And I don't really see it as much of a,
+of competition at this point,
+even though it technically is.
+But I see it really as a validation for this thesis that in
+the future, there will be, you know,
+billions of agents doing transactions with each other,
+and the majority of kind of like money flow happening
+through agents that have access to these kinds of, uh,
+wallets.
+So, uh, yeah, very, very bullish on the topic.
+Now, um, before-- Yeah.
+I-I'm kinda done with the news.
+This is the only thing that I wanted to talk about.
+But now I want to give it over to 登壇者A, who, uh,
+has done some research and, um,
+I think he's not feeling super well today.
+So yeah, take it slow, 登壇者A.
+But, uh,
+please go ahead and show us what you've been looking at.
+Oh, yeah.
+Thanks, 進行役.
+Thanks for having me here.
+Um, uh, hi, everybody.
+Uh, my name is 登壇者A.
+[名前の綴りについての短いやり取り。ここでは記載しない]
+Um, uh, but yeah, thanks for having me here.
+Um, uh, so for those of you who don't know me,
+I work at one of Cardano's core development companies, um, uh, uh,
+on the product side.
+Um, just an enthusiast, like most of you guys,
+about what's happening in the agent space,
+blockchain space.
+So, um, you know, I, I was just, uh, looking into it and,
+um, um, you know, and, uh, yeah, 進行役, uh, and I just,
+uh,
+thought it would be interesting to have a chat about this.
+I've not been feeling great today, so my slides are a bit,
+uh, not polished.
+Um, but my objective here is to more have a, um,
+discussion, right?
+So, uh, I'd like to just, uh,
+invite discourse on this topic.
+This is not meant to be a monologue, uh,
+because I'm not an expert on the subject,
+and I know only so much.
+Um, so it's, uh, um, more intended to, yeah, just, um,
+ha- Yeah, like have some slides and, um, go through...
+S-Sorry.
+Um, yeah, some, uh, some thoughts that I've had,
+and maybe you guys have thought about this as well,
+and we can, uh, um, yeah, just talk about it.
+So yeah, you know,
+when you-- when we look at the agents meets blockchain
+space, this has been like a hyped topic the past, uh,
+year and a half, uh, or two years, right?
+Um, and, uh,
+a lot of companies have raised lots of money around this.
+But, uh, y- I was also curious, you know,
+where this actually meets reality and where it doesn't.
+So I also wanna play the devil's advocate in talking about
+this.
+And I'm sure people like, uh,
+進行役 and others who are deep into this domain and, uh,
+you know, very bullish on it will correct my understanding.
+So yeah, just as an overview,
+there are like many segments in this, right?
+So there's the agentic commerce part, uh,
+which is what like Masumi does, which entails, you know,
+agents buying and selling services, data, and other things,
+um, on blockchain rails.
+Um, there's the agentic DeFi part, which,
+which is like agents actually trading, you know,
+and doing everything that you can do in trade in, in,
+in the DeFi world, but with, uh,
+with an autonomous aspect to it, so on behalf of users.
+Uh, there is the i-infrastructure, uh, and identity part,
+which you can skip, and the-- and more importantly,
+there's the machine-to-machine part, right?
+So I think there are three main segments here if you skip
+the infrastructure part.
+Um,
+and the machine-to-machine part is also quite important because
+that entails, you know, like how, like, you know, um, IoT,
+uh, stuff and robots, et cetera, will pay each other, um,
+going forward on, uh, you know, um,
+with agents as the-- uh, with blockchain as the rails,
+essentially.
+So, um, these are the three segments, and, um,
+I think it's like, you know, the agent, the,
+the first two on the top that has kinda taken off right
+now, right?
+You know, the machine-to-machine part is still lagging.
+Um, do you guys have any, um, thoughts on about,
+on these segments, and what do you think is, uh, you know,
+what are you bullish about and, uh, what you're not,
+and like where you might have skepticism?
+I'm, I'm just wondering, like,
+what's kind of the difference between agentic commerce and
+machine-to-machine?
+With machine-to-machine, you mean, like, robots,
+basically Yeah, I think that's how it's kinda classified.
+Like, you know, it's, uh ...
+Yeah, exactly.
+Robots or, like, you know, um, uh,
+devices performing certain, um, um, tasks, right?
+So it could be, like, an autonomous car that uses, um,
+some service for itself, you know, uh, to, to run itself.
+Then it, you know, procures, like,
+whatever data from some other service which is, like, uh,
+which is served agentically, right?
+So that's what I would think, you know.
+And then going forward, it'll be, like,
+more other kinds of robots,
+like drones and other kind of things that would use, right?
+So I think that's, like, the projection, but that's, like,
+I think the, the, the,
+the area that is le- no- landed the least.
+Does that make sense?
+I, I think it makes sense.
+I think it's, uh, it's interesting because in,
+in Germany we had this ...
+Or in general, we had this blockchain, IOTA, um,
+which was- Ah.
+...
+yeah, a very German blockchain,
+and it was very focused on machine-to-machine payments,
+like, six years ago, and pitching this whole, like,
+you know, Bosch has a robot,
+and then the robot from Bosch is, like,
+paying the robot of one of its, uh, suppliers,
+and then pays one of the Mercedes robots, and so on.
+Um, and it never really took off, but maybe it was,
+in a way, too early for that.
+I'm not sure.
+Um, so, so I'm very skeptical about machine-to-machine,
+to be honest.
+Like, it makes sense in theory if you hear it,
+but in practice it's, it's not relevant anywhere yet,
+you know?
+So, yeah.
+Yeah.
+Um, exactly, right.
+IOTA, I think it's pretty much died,
+and they've tried to revive themselves and stuff.
+Um, uh, but perhaps it's, like, a timing thing,
+that they were too early to the market, you know,
+and that kills the- Maybe ...
+projects, right?
+So, uh, yeah.
+Uh, but I've not looked into it much either.
+Um, I'm just curious if ...
+Thought ...
+Thanks for pitching in on that.
+Um, and then yeah, I think the ...
+参加者A?
+Yeah.
+Hi, hi everyone.
+I'm 参加者A.
+So I'm a recent, uh, new starter at one of Cardano's core
+development companies, um,
+in the research team.
+Um, an interesting subject which I don't see on here,
+which I think is, um, becoming more important, is security.
+Where do you see ...
+It's, it's almost like an arms race as well,
+'cause as soon as you start releasing agents onto the
+network, um, as, um, adversarial,
+then you need to start releasing agents on there as well to
+protect the systems that you have.
+And so I'm wondering where, where that would fit in,
+and if you've done any thinking on that.
+Um, oh, that's interesting.
+I've not really looked into it.
+And, uh ...
+So you mean, um ...
+Is it ...
+So how does it tie into, like, the, to,
+to blockchain per se?
+So you're just saying, like, you know,
+agents that are deployed out there,
+and then you have other agents somehow discovering these
+agents and then, like, scouting if they are,
+if they pose any threat, you know, doing an audit on them,
+something like that?
+Is, is, is that what you're thinking?
+Yes.
+So maybe agents that are out there given a task to seek
+vulnerabilities in the system, um, you know,
+g- given certain levels of freedom to go out there and
+exploit vulnerabilities at different layers of the
+blockchain.
+And then, and then you see, um, well,
+we need to build defenses for that.
+So you can build hard defenses,
+but I s- expect that probably some of the best defenses are
+gonna be agents themselves programmed to defend and hunt
+out these other agents that are looking for these exploits,
+or to find the exploits and patch them before the agents
+are able to find them.
+I mean, I, I don't know.
+This is a, a completely new area to me, so it's,
+it's all a learning curve.
+But I'm, I'm kind of seeing something and,
+of an arms race happening, um, here,
+and I d- I don't know where it's gonna go.
+But I just wondered where,
+where it fitted in with your four categories.
+No, that's interesting.
+Um, I think that's something that's, uh, you know,
+definitely gonna take off.
+But, uh, it's not in ...
+I've not scoped it out in these categories because I don't
+think that necessarily needs blockchain rails, you know,
+like, uh, as a coordination and orchestration medium.
+So I was trying to just see, like, um,
+agents on blockchain as a category, right?
+So, uh, those could be just, like,
+centrally deployed agents that, uh,
+kinda do whatever you said, auditing that they need to do,
+and, um, don't necessarily ...
+Yeah.
+But I, I, again, I don't know too much about that.
+So somebody wants to pitch in?
+参加者B?
+Yeah.
+I mean, to be honest, it,
+it doesn't need to be connected to blockchain, as you said,
+I think.
+Um, but it could fit honestly in,
+in most of those categories.
+You could have it as a commerce or, like,
+a commercial service, right?
+Um, but then also identity comes in there as well because,
+uh, of course you want to know, for example,
+if you disclose some information, for example, some, like,
+private information you want audited or something like
+that, you want to know who are you disclosing it to, right?
+So I think there are definitely use cases that it could fit
+in a lot of those things,
+but it could also be a standalone, um, uh, thing.
+And where- wherever it benefits,
+wherever it makes sense economically is, uh, where,
+where that could happen.
+But then on the other hand, um, I see it as, like,
+kind of a, like,
+maybe some security researcher or somebody building agents,
+right, and, uh, working on that.
+And, um, I mean, Fable is doing it or, like,
+Mythos and others.
+So that, that could come in.
+Um, the, the question is when it's more, like,
+as a service kind of a situation, I think.
+Yeah.
+Yeah.
+Yeah, I think that makes sense.
+It could fit into any of these wherever it makes sense.
+Um, and yeah, about the blockchain part, right?
+Like, for all these categories,
+I think the blockchain part is also optional.
+It's not strictly required besides the d- agentic DeFi
+part, of course,
+because there's a blockchain underpinning there.
+And I think that we can discuss, like, going down,
+you know, what then ...
+What, like- How the landscape might evolve in terms of,
+like, centralized services versus, uh,
+things on blockchain grids.
+So, uh, yeah, just going forward then that, that's like,
+yeah, the question that I was gonna ask, trying to ask,
+right?
+So why do you need blockchain for agents, right?
+So, so the, the main kind of, like,
+hypothesis that's being floated right now, you know,
+at least, uh, in terms of the narrative,
+I'm not sure how ...
+Um, I think many of these make sense,
+but they're probably not required everywhere.
+So there's the payments part, you know, that agents need,
+um, you know, a very fast sub-cent, um, um, um,
+transfers and that like, you know,
+blockchain natively offers that because of its being, um,
+um, token native.
+Um, and then you have the trust problem, you know,
+then that, that's also, uh,
+handled well with the blockchain and, uh, contracts on, on,
+on chain.
+So, uh, and, you know,
+which begets things like identity and reputation,
+and you see that like with what, what Masumi does as well,
+right?
+So that's ...
+It, it, it provides like a decentralized, uh, trust, uh,
+uh, assurance, uh, um, platform, uh, by using a blockchain.
+And then you have the, um, the, um, yeah, um, um, uh,
+the amount of ...
+You can control the amount of autonomy that it can offer to
+an agent by, uh,
+bounding how much it can spend and what it can do,
+et cetera, by using policies or other more, uh, on-chain,
+uh, enforcement.
+Um,
+and then of course you have accountability because you can
+use blockchain for like verifying what, what,
+what agents did along the pathway, right?
+So those to me seem the main reasons why blockchain is used
+for agents.
+Would you guys concur or would you challenge any of these?
+That's at least the running narrative.
+Now where this is all- I completely agree ...
+when this is all going ...
+Yeah.
+Sorry, go ahead.
+Go on.
+No, that's it.
+I'm done.
+Okay.
+No, I, I completely agree with all of these.
+Um, I think it's very interesting or, or ...
+Like the thing that happens with blockchain is that people
+try to fit blockchain onto everything and,
+and that happened like from the beginning, still happening.
+And I ...
+There's a lot of weird, uh,
+kind of blockchain applications that don't really make a
+lot of sense if you think about it.
+But people were just like- Exactly ...
+"Oh, there's a ...
+No one has done this before.
+Let's just fit blockchain onto it, raise an ICO,
+and like get a bunch of money to build it." Um,
+and that's the, the wrong way to approach it.
+And I ...
+And, and blockchain is ...
+Like blockchain, we,
+we keep thinking about it in this like huge way,
+but it should be a tiny part of the application.
+Like it should be like 2% or something of the application
+in most cases at least.
+And, um, and ma- many get that wrong.
+And, and for agents, I,
+I completely agree with this list and that's basically what
+we're doing with Masumi that we focus on exactly those
+like four pillars and we try to ignore everything outside.
+Like I, I'm not a big proponent, um, of, for example,
+trying to decentralize like, uh,
+the training of AI models or something like that because,
+um, because it like in theory, yes it can work,
+but there's just economics that you have to fight here and,
+and then you end up in the best case scenario with a
+centralized kind of system again.
+So, so I'm a bit, uh, skeptical with all that and I,
+I just want to use blockchain for the things the way it
+actually makes sense.
+So, um, yeah.
+So yeah.
+Yeah, exactly.
+Long, long response for basically saying, "Yes,
+agreed." Yeah.
+No, thanks.
+Yeah, I think it's good, good to expound on that, right?
+That as you did.
+Thanks.
+I think that makes a lot of sense, uh,
+to me as well and that's why I wanted to kind of highlight
+this because it ...
+You know,
+blockchain washing is an unfortunate phenomenon that's
+happened, right?
+Especially during, uh, bull runs.
+Um, now it's kinda, uh,
+died out a little bit because the people have come to
+realize, uh, the pros and cons of having, uh,
+decentralized technologies.
+Um, so I think yeah, uh, but with agents it's, you know,
+like because the agents thing is a hype right now,
+there's a bit of like over in, um,
+doing things with blockchain and a- agents.
+But it, so yeah,
+I think it's kinda good to keep in mind where it can really
+make sense and, uh,
+have like a long-term product market fit.
+So, uh, yeah.
+Then going further, you know, I just wanted to ...
+I looked at like what the kind of market projections are,
+right?
+So if you look at like from the top, if you look at the,
+the market sizes that are being, um, uh,
+the addressable markets that are being talked about,
+for the whole agents world it's like in the order of, uh,
+uh, uh, agent software world is in the order of billions.
+For agentic commerce it's trillions, right?
+But if you look at different reports there,
+there's like a 10X vary, variance, right?
+So that basically is because of the hand-wavy way in which
+they do these kind of, uh, uh, um, market sizing.
+Uh, but the reality is that today the daily volume on, on,
+on-chain agentic stuff is like 30K, so it's,
+it's pretty small.
+So it's still early days, right?
+So this whole thing of agentic commerce even, uh,
+is not yet validated.
+So it's early days.
+Uh, I, I mean, yeah,
+agentic commerce on chain is not yet validated.
+It's early days.
+So I think one has to keep that in mind, you know, um, uh,
+before like just, uh, falling for the, the, the,
+the hype around it.
+Did you ...
+Any comments?
+I mean, I, I'll comment again,
+but because this is ob- obviously the topic that I spend a
+lot of time with, um, discussing- Yeah ...
+and thinking about.
+And I, I really think that, um, like yeah, the,
+the imagination for ima- agentic commerce is extremely
+large.
+Yeah.
+And that's why all these traditional payment providers are
+going so hard into it right now.
+Like it's, it's literally every single one of them.
+It's from Visa,
+Mastercard to Stripe to like whatever you can imagine,
+Circle and so on.
+Um, because all these payment pro- providers,
+they just see a world opening Where not only are,
+is agentic commerce growing,
+agentic commerce is probably gonna be bigger than their
+traditional commerce payment, uh, stuff that they do today.
+Especially Stripe.
+Like,
+Stripe is-- it's very clear to them that agentic commerce
+is gonna be a thing.
+They don't know if it's actually gonna happen on
+blockchain.
+They don't know which blockchain.
+They don't know which stablecoin.
+So they just build everything.
+Like, they have a wallet.
+They have a non-custodial wallet.
+They have a fully custodial wallet.
+They are partnering with multiple stablecoins.
+They are working on their own stablecoin.
+Like, they're-- they have a centralized solution,
+so they go all the different routes.
+Um, and they can afford to do it because there's no...
+Like, they already captured the Web2 kind of market, and,
+uh,
+and they know that their main growth accelerator will be
+agen-agentic commerce.
+But as you said, like,
+the reality right now is that it's not really there yet.
+And even if you just go on,
+on base and you look at what is actually being sold,
+it's extremely disappointing.
+Like, we, we talk about agent to agent and all that stuff,
+and it sounds amazing, but then you go to,
+to all these like marketplaces that are out there.
+And first of all, the marketplaces suck.
+They're really bad UX.
+They're really bad design.
+Then secondly, they might have, you know,
+ten thousand registered endpoints,
+but these endpoints are just for buying, you know, like,
+uh, ChatGPT kind of, uh, inference or something,
+like OpenAI stuff, like basic API resources.
+So there's not really agent to agent happening.
+And, um, and my kind of feeling is that the,
+the real unlock will be when agents actually start do-
+bundling services.
+Like really saying, "Okay, I'm selling this whole service.
+I'm selling like a long-running task where I create a whole
+marketing campaign for you,
+or I create this and that for you,"
+and then they sell that because that's a huge-- Like,
+a services business is gigantic.
+Uh, you know, and with, with services,
+what I'm talking about is like consulting services and, um,
+marketing services obviously,
+and like all these kind of businesses that exist that you
+sometimes wonder, like, why in the world do the Big Four,
+for example, the EY, PwC, and so on,
+why do they have five hundred thousand employees?
+And why are they all worth like hundreds of billions of
+dollars?
+But these are all things that you can really relatively
+easily replace with AI, uh,
+if you build an agent that specializes in them,
+and then they can sell stuff.
+So, so yeah, that's kinda,
+that's kinda where I see it going and,
+and by r- by basically moving this services business into
+the agentic world and then immediately using it, uh,
+with like stablecoins and blockchain and then like
+completely skipping the credit card kind of, uh,
+part of it.
+Yeah, makes sense.
+So like the example that you mentioned with the,
+the consulting stuff, that's on the more B2B side, right?
+So, uh- Yeah ...
+on the B2C side, like, um, you know, um, uh, um,
+my intuition and knowledge is that it's mainly gonna be for
+things like, you know,
+what users actually delegate to their agent to do stuff,
+right?
+Like, for example, if I have a travel agent, you know,
+and I-- y-you give it some kind of like, uh, uh,
+boundary conditions about what I want, you know,
+and then it goes and does stuff, right?
+Like negotiates with an airline or whatever and then...
+Is that what you see, or do you see more, uh, kind of, uh,
+B2C stuff happening?
+Uh, I think, I think that's gonna happen, but I,
+I definitely see more value at the moment in B2B.
+Mm-hmm.
+Um, because, uh, like right now,
+when I talk to all my friends, uh,
+that are not into AI and n-not into blockchain,
+and I ask them like,
+"How much are you spending a month on AI stuff?" They're
+like may- they maybe have a ChatGPT premium subscription.
+That's the max that they do.
+And the step for them to actually give their agent or even
+have an agent, even have like a personal assistant,
+Hermes or OpenChat or whatnot,
+and then give it access to a wallet with like thousands of
+dollars on it is like still very far away.
+But on the other side, if you talk to businesses, um,
+I mean,
+businesses nowadays have to calculate probably around five
+hundred dollars per month per employee for AI tokens.
+And- Yeah ...
+this is only growing.
+Like the estimate is that in like two years from now,
+you will have to calculate with three thousand dollars per
+employee.
+Um, so the willingness to spend money with agents is, uh,
+a lot higher on the business side.
+Yeah.
+Yeah.
+Yeah.
+Hundred percent makes sense.
+That's, uh, the-- usually the early, uh,
+adoption part of the curve, right?
+So e-early adopter part of the curve.
+Um, okay, makes sense.
+And so here in this slide here, basically,
+like as 進行役 was saying, like the, the, uh,
+the whole market is so big.
+Like the block-blockchain addressable part is likely gonna
+be a small part, right?
+Because all these different companies,
+they're trying out every possible solution that they can,
+you know, blockchain or centralized,
+and then we'd have to see what lands.
+Um, yeah.
+And then, uh, just going forward to my next slide, uh,
+yeah, I was, I was wondering, okay,
+like what is the main reasons you'd wanna use Cardano,
+right?
+So this is why Cardano for agents kind of stuff.
+Like so-- See, earlier we talked about, okay, why,
+why blockchain for, um, for agents?
+And now, you know, I was just, yeah,
+like we-- just y- trying to propose this thing about like
+the value proposition of Cardano.
+So the way, um,
+the-- what makes sense to me is the determinism, you know,
+uh, uh, for obvious reasons of, uh, like, uh, uh,
+how you can-- how the agents can, uh, uh, i- uh, uh, uh,
+interact,
+and then formal verification so to-- so that you have a
+more robust system than you have in other chains,
+and then identity and confidentiality, right?
+So like what-- because we have identity primitives like
+Veridian in the Cardano ecosystem,
+and maybe Midnight can be plugged in somehow with the
+Midnight passport, et cetera, for a privacy thing,
+if that were to make sense at all.
+So these are the kind of things that ki- if somebody asked
+me why Cardano for blockchain-- uh, for, for agents,
+this is what I would say.
+Um, I will, yeah, sorry.
+I should also add because there's Masumi,
+which is a standard protocol on the Cardano, right?
+So as a, as a, um, as a, a extended UTXO system, uh,
+with all this, uh,
+escrow and identity and reputation and stuff,
+I think that's pretty cool.
+And then maybe there is also the, um, what's it called?
+The, uh, Babel fees and, uh, na- nano payments.
+No, not nano payments.
+What's the, what's it called?
+Um- Micropayments?
+Micro- Uh, not micropayments.
+Uh,
+what's that CIP around Babel fees and the intents thing that's
+being, uh-- that's in, in progress,
+like being able to use intents and also, uh, uh,
+there's a- Smart wallet ...
+CIP.
+Yeah.
+It's, uh- I'm not, I'm not sure what the CIP is called,
+but, uh- It's, uh...
+Damn it.
+Let me just, uh, look it up somewhere in my Slack.
+Um, uh, yeah, CIP, uh, uh, one-one eight,
+nested transactions, right?
+So nested transactions and, uh, Babel fees.
+So those are the kind of things that make sense for agents.
+For...
+What do you guys think?
+Is there anything else?
+Oh, by the way,
+it looks like it's just me and 進行役 in a room sitting
+and talking.
+If anybody else wants to pitch in, please do.
+Okay, 進行役, it's you.
+I, I gladly talk to you, so, uh, But yeah, no, I,
+I think these are all extremely good points, and I think,
+um, maybe the, the part that's still missing from,
+from my perspective is, um,
+if you really think about scale,
+and not just thinking about scale in terms of like,
+I don't know, a thousand TPS,
+but you think about like millions of TPS and,
+and maybe even billions at some point, um, and,
+and micro-transactions and all that kind of stuff,
+like really thinking ten years into the future, then, um,
+the only way you can do this is by parallelizing as much as
+possible.
+Like, there's no other way.
+No blockchain today can handle, you know,
+probably even a million TPS.
+Um, so you need to parallelize, uh,
+as many transactions as you can,
+and what's nice about Cardano is that the UTXO model by
+default is parallelized, um,
+because every UTXO can be treated individually.
+You never n- need to know the entire state of the
+blockchain.
+You can look at just the UTXO.
+And that's not to say that Cardano can scale up to,
+you know, billions of transactions per second.
+Um, that's not what I'm saying.
+But it gives us a pretty good kind of, um,
+basis to build upon where you can really parallelize like a
+lot of things, and then extending, you know,
+concepts like Hydra, um, or, or Bitcoin Lightning, um,
+like state channel kind of architecture,
+which is also highly parallelized.
+That's a really good fit with the UTXO model, model,
+and that way you could potentially at some point get, uh,
+to these like billions of, of transactions.
+So, um, so yeah,
+this is obvious-obviously still a very long, far, uh,
+road ahead of us, but, uh,
+I think Cardano is definitely like the best positioned for
+that kind of scale at some point.
+Yeah, cool.
+Thanks.
+Um, uh, makes sense.
+Um, and, um, yeah,
+so but I think we should also just keep in mind, uh,
+didn't want to overemphasize this side because this is on
+the supply side, right?
+It's technology doesn't always win the game,
+and this is just a part of it, right,
+that makes it kind of viable,
+but there's so many other things that need to work out.
+So that's a caveat before, uh, saying, "Oh,
+Cardano is the best chain for, for anything," right?
+So, uh, uh, we had-- think we have good foundations,
+so but we need to make other things work as well.
+Um, I think I'll skip that, right?
+So yeah, that was my point here that, yeah,
+we have like strong primitives, right?
+But the problem is that the developer experience for agents
+in general is, uh, not there yet, right?
+And I think that's something that we can talk about now
+because I was kinda just like looking at like what are the
+main big players there right now.
+And if you look on what are the, the main players,
+so it's like these, right?
+So like this base, uh, you know, with the, um, who, who,
+uh, came up with the x402 standard.
+Uh, they obviously have, uh,
+the distribution to go along with it as well, uh,
+because they can tap into everything that is, uh,
+on the base chain, um, and a part of, uh, uh,
+Coinbase essentially.
+And, uh, you know, they have like an agent kit, uh, um, um,
+as an SDK for people to wanted to build agentic stuff.
+They have agentic wallets.
+They have the Virtuals marketplace, you know,
+that create the most buzz.
+So they have this kind of first mover traction there.
+There's Solana, which has the throughput and the,
+of course, the, um, the, uh, the liquidity as well,
+you know, that agents can actually tap into.
+So that's also a big place.
+Um, and there's the, they have the, the elizaOS was, uh,
+has, was and is like a big, uh, framework, uh,
+in the agent space that a lot of users use.
+So they then they kind of natively, um, go to, uh, Solana,
+even though there are like, uh,
+plugins to other chains as well.
+And there is NEAR, you know,
+that's done a lot of stuff with, with chain abstractions.
+So they are like-- they-- you can do a lot of chain
+agnostic stuff as I understand there.
+And they have like very secure key handling with,
+with the TEEs and, uh, and they're also, uh, you know,
+doing, um, decently in terms of like volume.
+Um, so yeah, you know, and then there is like, um, uh,
+Cardano, right?
+So we are-- like we have the, um, primitives like, uh,
+the-- what 進行役 and I just mentioned, but there's the,
+the attraction that still needs to come, right?
+So like the Masumi has done a great job in positioning
+Cardano, uh, to, to, um, uh,
+to make it visible in this whole space.
+But, uh, now we need to, um, do more to, uh,
+kind of consolidate the position.
+Um, um,
+so I think that's why it's great that 進行役 hosts this
+call,
+and we can all just get together and have a chat as well.
+So, um, yeah.
+So with that, I just kinda wanna segue to this.
+You know,
+here it was just like a chart about like this whole
+landscape of trust and, um, you know, um, um, um,
+self-sovereignty, um, that varies, right?
+So if you look at the-- this picture,
+the top-- or the bottom left corner is where, like,
+the centralized payment rails like Visa and Mastercard are,
+right?
+And then the top right corner is where Mas- Cardano and
+Masumi are.
+I hope this chart is, uh, clear enough.
+It's, it has two superimposed axes.
+But yeah, so like Cardano with Masumi is on the, you know,
+self-sovereign, uh, and, um, uh, permissionless, uh, side.
+Um, and the other ones, uh, the Visa is on the, in the,
+on the centralized permission side, right?
+But the advantage that Visa and Stripe have in that place
+is that of course they have the user base, right?
+It's that they don't need to capture to make agents work.
+So they just need to deploy all the agent tooling,
+like 進行役 was talking about, the different kinds, right?
+So Stripe has come up with a Tempo blockchain, um, uh,
+be- uh, which is also, uh,
+I think it's like a permissioned, um,
+semi-decentralized chain,
+but basically offers Stripe kind of like a blockchain rails
+to work on, right?
+So, um, um, so yeah,
+I think the question here is then how do decentralized
+parties like Cardano, Masumi,
+and even like Base try to capture the same larger market
+that decentralized players do?
+And this is where I think positioning really comes to play
+because you have to position very carefully where the,
+the end users then care about the fact that you're working
+on a decentralized rails, you know,
+for that value proposition to matter, right?
+Because I think for like the most part,
+many things in blockchain have not survived, uh,
+the test of time and, you know,
+and have not had pro- pro- product market fit because not
+everybody cares about decentralization.
+So I think this is an interesting thing to think about and
+be-- to be wary of in general in,
+in building stuff on blockchain with agents.
+Want to say something, 進行役?
+No, I think it was a, a good explanation.
+Yeah.
+Yeah.
+Um, I think this, um...
+I think it, this is-- I think it's a really, um, um, uh,
+um,
+tough and thorough market segmentation work that goes into
+actually figuring this out, you know, uh,
+and how to position, right?
+Like, um, as you said, like, um, like from Masumi,
+you don't bank on purely blockchain, um, as rails,
+as a premise, right?
+Um- Yeah.
+Or, or, or do you?
+Or was it the chain agnosticism that you mentioned?
+Uh- Well- ...
+was that, uh- Yeah.
+Um, yeah, I ha- I had a part about that last, last time.
+Um, I mean,
+we-- Masumi right now is basically the standard for
+Cardano, um, the X for two standard for Cardano.
+We , like, we have to look at obviously like,
+especially building products on top of Masumi,
+like Sokosumi, the marketplace,
+which I'm also gonna show again, uh, later.
+We have to look at like what's happening in the market
+because if there's ten thousand agents on Base and there's
+only a hundred on Cardano,
+it doesn't make sense to not use Base as well, right?
+Um, so, so my kind of solution to that is I,
+I try to figure out like what is Cardano uniquely good,
+good at?
+And what I think it is uniquely good at is, um,
+it's very good at being like the central anchor, um,
+for kind of different things.
+So by, by central anchor,
+what I mean is I want to use Cardano as the registry, um,
+where all agents from all different chains are registered
+essentially.
+So they all have an identity living on Cardano,
+and that identity can either be a really like, um,
+like a verified credential,
+like a really decentralized identity,
+or it can be just an identity with a name and a description
+on Cardano.
+But it should all live on Cardano because,
+because Cardano is very good at like having-- at like being
+this like, uh, record,
+this like underlying kind of system that you can trust,
+that is secure, um,
+and that you can look up things at-- on.
+So, so we have this registry.
+We now expanded this registry so that you can register
+agents from Base there as well,
+and we can expand it so you can register agents from any
+chains there.
+And then you can look up where the agent lives,
+and then the agent can tell you like which, uh,
+blockchain it accepts as payments.
+And, um, and then it doesn't really matter anymore.
+Then like your agent- Oops.
+参加者F, you're very loud right now.
+Oh, no.
+I'm so sorry.
+No worries.
+I force muted you.
+If you wanna talk again, uh, just write in the chat.
+Um, no worries.
+But yeah.
+Anyway, so,
+so the idea is like payments can go through a channel or a
+blockchain which is better at doing payments than Cardano
+is.
+Because right now,
+Cardano is not good at doing payments because it's too
+expensive, too slow, um, all these kinds of things.
+So you kind of have to pick and choose like what you wanna
+use.
+And essentially, um, it's not up to us.
+In the end,
+it's up to the agent developers and the agen- agents
+themselves where they want to receive the money.
+But we want to bring them all to Cardano to at least
+register there,
+and then Cardano is the like the lookup point, so to say.
+And maybe o-one last thought.
+Um,
+w- another thing that I think is really interesting right
+now is that everything is getting hacked.
+Like left and right, everything is getting hacked.
+Every blockchain is getting hacked.
+Uh, or not the blockchains necessarily, but like the,
+the applications on the blockchains.
+Um, you know, Claude themselves,
+Anthropic themselves are getting hacked.
+Uh, so many people are getting hacked,
+and I think this will only get worse, um,
+over time with better models and better agents.
+So- So the world will be looking towards a technology where
+they know that it cannot be hacked.
+Like it's clear, okay,
+wallets can be hacked if they're centralized or if,
+you know, I get access to your computer,
+but the blockchain itself cannot be hacked.
+And,
+and this chart that you have here is a very nice kind of,
+um, representation of that in terms of security as well,
+because Visa obviously is like a lot easier to get hack- to
+be hacked than, uh, the Stripe blockchain, for example,
+Tempo.
+But then Tempo is easier to be hacked than Base,
+and then Base is easier to be hacked than Cardano because,
+because Cardano is extremely decentralized.
+It's built on form- formal verification, all that stuff.
+So Cardano is extremely secure,
+and if we can keep the security that high,
+then at some point the world will realize that it actually
+needs Cardano if they want to live in a world where
+everyone has an agent.
+Cool.
+Makes sense.
+Thanks, 進行役.
+Um, yeah, then let me go through a couple more slides.
+Oh, yeah, I think this is interesting.
+And by the way, I'm not gonna go through all,
+all slides because I also have to bounce soon, 進行役,
+and I think I've taken up enough time.
+But, um, yeah, here, you know,
+I just tried to do a comparison,
+and this is with-- obviously all these slides are with LLM,
+so you have to take it with a pinch of salt, um, because,
+uh,
+somebody like me with half-knowledge interacting with it
+doesn't always result in, uh, uh, perfect, uh, outputs.
+But, um,
+I think this is interesting because this tells like a
+story, right?
+So it's...
+If you look at this, you know, the leader here,
+th- these are the different kind of, uh, uh,
+horizontals here like, um, like payment rails, framework,
+tooling, identity, re- d- discovery, reputation,
+worker state, et cetera, right?
+The different components that you need kinda-- for agents
+to work.
+Privacy is maybe, um, um, uh,
+right now not available in most things, but,
+and the use case for agents is also,
+I think depends on the, uh, uh, um, intent.
+But all the, all the others are absolutely required,
+and we can see that like Base and Solana,
+they do really well, um, in, uh, uh, where they are.
+Uh, uh, but you see Cardano has a lot of gaps here, right?
+So primarily in terms of like the framework and tooling.
+Um, the, the identity part is good.
+The, the discovery reputation part is good,
+and I think that's, that's also because of the Masumi, uh,
+what Masumi has built, right?
+Wallet and custody is again, very thin, right?
+So these are basic things.
+So like framework and tooling would be like an agent SDK
+and a wallet, a custom XCL wallet.
+It's like they're all missing here,
+and I think that's like a bit of a gap in terms of like
+attracting builders to build anything agentic on, uh,
+Cardano that needs to be addressed.
+But I think the other side of the story is,
+if you look at NEAR,
+you see most of it is competitive or like,
+like out leader or it's like the best thing and we're
+ranking here.
+But it doesn't mean that they're the best player in the
+agent space, right?
+They've really got the tech part sorted, but, um,
+they don't have the adoption play going that well for them
+right now, right?
+So I think that's the story.
+That, that's what I'm trying to say.
+It's not just building out the tech components,
+it's also the go-to-market for this kind of,
+this whole endeavor, right?
+So that needs to be sorted.
+Base and Solana,
+they obviously had the traction already to-- so, um,
+in terms of their user base, so it, it worked easily.
+But for Cardano one has to think about like,
+where exactly do you pull in users when building something.
+It's a very cool chart actually.
+Right.
+It, uh, um...
+Yeah, I think, um, yeah, I think it kinda makes sense.
+Um, uh, yeah, so, um, um, and then I just wanted to like,
+yeah,
+say like w- in terms of like other chains as I briefly
+showed ear- earlier, like Base, Solana,
+they have like most of the components that you need.
+You have like Base, like the AgentKit, agentic wallets, um,
+uh, Solana, uh, it is the OS and, you know, uh, policy, uh,
+uh, uh, ma- uh, management through like session keys,
+and they have like deep, um, Dex liquidity.
+So that all makes a difference and that's where like
+Cardano needs to kind of, uh, yeah, uh, find its place.
+So there are like some gaps, right?
+So on the Cardano side.
+So those gaps are like mainly on this like, you know, um,
+the, the custody side.
+Like how do you let agents manage their fu- manage funds,
+right?
+Not just, uh, um, uh,
+storing keys as environment variables, you know, um, and,
+um, providing more secure things like, um, yeah, um, uh,
+T kind of enforced the key management.
+And then the, yeah,
+whole agent SDK stuff and like Dex interfaces.
+So, um, you know, for example,
+that agents can actually interact with Dexes, right?
+Um, so, yeah, I think that's kinda like what's, uh,
+feels missing right now, at least, uh, um, yeah,
+when you look at the, um, um, uh, the DeFi AI side and, uh,
+perhaps something that we can look into.
+Do you guys have any other thoughts on what's missing on
+Cardano, like in terms of its gaps?
+Um,
+what-- if you were to build anything agentic on Cardano,
+what would be the most pressing thing that's missing to
+you?
+Um, I have an answer to that, but before that, uh,
+maybe just one comment, uh,
+I'm gonna highlight here from 参加者C.
+Um- Where is the chat?
+I can't see.
+On the right-hand side.
+Chat button.
+Um, but 参加者C posted, uh,
+"The good thing is that agents will have a more data-driven
+way to decide what plat- platform/blockchain to choose."
+And I actually completely agree with that.
+I think that's a very, very good point,
+and I think if you ask An agent to do like deep research on
+what blockchain to build on today, um,
+based on security parameters and stuff like that.
+I think Cardano would rank pretty highly actually for the
+agent.
+So, um, maybe we should try that, but I, I,
+I really like that, uh, you know,
+we don't necessarily have to kind of like listen to
+whatever influencer's opinion anymore, but, um,
+the agent can choose.
+But, uh, I don't know what the,
+what the rest here is thinking,
+but I think from my perspective right now, the,
+the biggest mo- momentum in Cardano is obviously with DeFi.
+Um, so now today, uh, the proposal passed from ...
+I forgot what they're called,
+but they're a very large DeFi- Alpha.
+Alpha Growth.
+Alpha Growth.
+Yeah, exactly.
+So Alpha Growth, so very large DeFi, uh,
+booster for Cardano and- Yeah ...
+and everyone is trying to push DeFi really hard.
+Cardano's founder is pushing it really hard.
+Everyone is pushing it hard.
+So it's like a good opportunity right now to build an agent
+wallet that can interact with all the De- DeFi platforms.
+It's a very ...
+It's like a no-brainer to me in a way and I don't really
+understand why we don't have more of that already.
+Yeah, exactly.
+I think that's,
+that's what I tried to capture in that slide.
+I accidentally closed my window.
+Uh, but, um, yeah, an agent wallet, you know, um,
+an agent SDK itself, right, um, um, would make sense.
+And like, you know, uh, uh,
+providing adapters to different DEXs, uh, for, uh,
+the agents to interact with, uh,
+I think would be a lo- yeah, kind of entry-level stuff.
+Um, uh, yeah.
+So it's good that the Alpha Growth proposal has passed.
+It gives a bit of impetus.
+Also, very cool kind of comment from 参加者D, who,
+um,
+was wondering how much each blockchain basically is budgeting
+into the AI sector, and that's a very good question.
+I wondered the same.
+I know that obviously Base is budgeting a lot into the AI
+sector, and Tempo probably as well.
+Um, maybe Near too, I don't know, but we can only guess.
+But I can tell you that Cardano is not budgeting a lot into
+AI.
+That's maybe the biggest problem because the only well ...
+like semi-well-funded project doing anything with AI in
+Cardano is, is us with Masumi.
+And, um, and there's a,
+there's like a little bit of interest, of course,
+from everyone, from IO, from CF and so on,
+and all the projects, like AI is everywhere, right?
+But,
+but there's not really a huge kind of coordinated push.
+And, um, if Cardano was my blockchain,
+I would be going and I would take the entire net change
+limit, and I would take,
+just take like $100 million and put it into AI because I
+think it's a huge opportunity for Cardano to posi- position
+themselves that way.
+But, um, I don't know if the rest of, uh,
+the ecosystem sees it like me.
+Yeah, 100% right.
+I think, um,
+this is something that Cardano has not prioritized yet,
+and, uh, the question is how that would be done, you know,
+as a consolidated effort from all,
+all the actors in the ecosystem to move in that direction,
+and that's where all these different, uh, uh,
+frameworks and components come into play as well, right?
+So, uh,
+you need to of- offer the minimum viable tooling for people
+to even come and build then.
+Uh, uh, so yeah, the infrastructure needs to exist.
+Um, but I also think that, you know,
+some of these blockchains are spending a lot.
+Their ROI is still to be determined, I think, you know?
+So like, uh, I don't think it's like all going to pay off.
+So probably Cardano is in that good spot where we can
+actually assess like what makes real sense and whatnot
+because you're not as early as like, you know, uh,
+Base and Solana.
+So, um, um,
+there's a bit more like data on like what can work, right?
+So think that'd be interesting.
+It will be interesting for sure, yeah.
+So, uh, yeah.
+Thank you.
+Yeah.
+Thank you for doing that presentation, 登壇者A.
+Um,
+it was really interesting and great to see someone else do
+a lot of like research into these topics.
+So, um, yeah, really appreciate it.
+Um- No, my pleasure.
+Yeah.
+It was just a, a little bit to have a conversation,
+and I hope in these calls we can get more people to, uh,
+to talk, uh, in future.
+I think there's a bit of, uh, friction in terms of, uh,
+uh ...
+Yeah, but, uh, yeah, no, it's cool.
+It's, it's, it's great to do this.
+Yeah, for sure.
+We'll get there.
+We'll get there.
+We'll just, uh, be consistent and, um, yeah,
+and be prepared.
+So I promised that we would, um,
+not do the call too long today,
+so I'm gonna go over to the last section of this, um, call.
+Let me move my thing over there.
+Am I sharing my screen?
+Can you see it again?
+Ah, now you can.
+Okay, great.
+So, um, so yeah.
+So I wanted to, uh,
+basically end the call a little bit with, um ...
+well, not with the open stage yet, but with, uh,
+Sokosumi updates.
+So because of course all of you know, um, I,
+I'm on the, uh, Masumi side,
+this like agent protocol that we talk about all the time,
+and while Masumi is the, is the tech part, um,
+the more interesting part for most people is Sokosumi.
+So this is the, the marketplace.
+It's a very dark landing page right now.
+We're working on rebuilding the landing page, so give me a,
+give me a while.
+But, uh, it's basically a marketplace for AI coworkers, uh,
+so AI agents for marketing purposes, and, uh,
+this is what it looks like So let me go in here.
+So this is what it looks like.
+Um, you can go in here, you can see different agents.
+So you see Elena, you see Alex, uh, you see Hannah.
+These are all agents from Serviceplan.
+That's like super large marketing, uh,
+company that we work with.
+Then there's a few more coworkers,
+and then down here are more simple agents.
+So there's like a lot of different agents from different
+kind of companies.
+And basically,
+the whole point is that you can now pick and choose which
+agent you want to hire for a task.
+So for example, here with Hannah, I could-- Uh,
+she's a research agent, and I could just say, "Okay,
+I want to do a competitive market analysis with you,
+Hannah." There's like this, uh, pre-built task.
+So this is what the output would, ex-for example,
+look like.
+And then I can, um, simply, you know,
+create this task for her,
+and I can fill out here the different kind of, uh,
+pre-filled things,
+and then she will create this document for me.
+And if Hannah realizes that she cannot do the entire task
+herself,
+then the cool thing is that she has access to all of these
+other agents on, uh,
+Sokosumi because they're all re-registered on Masumi,
+right?
+So they're all registered in the background here on, um,
+on Masumi, which means they're registered on Cardano.
+So here, this list that you can see here of the 168 agents,
+um, is actually taken directly from the blockchain.
+So this is not coming from Sokosumi or some API or so.
+This is literally taken directly from the blockchain,
+from using Blockfrost.
+And, uh,
+and you can just go to Cardano scan or whatever and, um,
+and basically find those agents.
+And, and then here they are displayed a little bit nicer.
+But, um,
+but it's all built on this kind of like same decentralized
+protocol.
+And,
+and our mission is we want to make Sokosumi as good as possible
+for marketing professionals.
+So the idea is really you are a marketing professional,
+you work in an agency or something,
+or like marketing department,
+and you want to offload some of the work that you do,
+like from research to content creation, to monitoring,
+whatever it is, to some AI coworkers.
+Then you go to Sokosumi, and you can, uh,
+pick and choose which agents you want to work with,
+and you can create tasks for them,
+and you can manage it in a very kind of like human way.
+So, so we have this like task board here.
+Everyone who has ever worked in a larger company has
+probably seen this, uh, kind of Kanban board.
+So it's like Jira or like, uh,
+Linear or something like that.
+Um, and you can manage really long-running tasks,
+and you can have scheduled tasks,
+and you can really like see what the agent actually does.
+So,
+so we intentionally are not focused only on a chat interface
+like ChatGPT, but we are actually focused on, um, on,
+on this kind of interface where you can see like,
+for example, here,
+Hannah has done the research on the latest, uh,
+AI agent commerce and agent-to-agent payments,
+and then she returns to me, uh,
+kind of like the result here.
+And she does that every day for me.
+So I can literally just check every day like what's going
+on, and she does it autonomously and, uh,
+and just posts it in this, in this task.
+And, um,
+and what we've now done over the last two weeks is quite
+interesting because we, we've seen-- Uh,
+we've actually been inspired by this new release, uh,
+from a company called Block.
+And many of you probably know Block because Block is the
+company by, um, by the founder of Twitter,
+and they are behind Square and behind Cash App,
+and they also have a lot of like, uh, Bitcoin stuff.
+So they built Bitkey,
+and they built this like miner that I saw for the first
+time today.
+So they're very into open source, very much into Bitcoin.
+Um, and it was really interesting for,
+for me to see what they've been thinking about this,
+like agent-to-agent, uh, yeah, like communication.
+And they, they released a new product called Buzz.
+And Buzz is, is nice because what it actually is, is it's a,
+a workspace, here you can see it, that looks like Slack,
+and you can basically interact with agents directly in the
+workspace, um,
+the same way you would interact with humans as well.
+And, uh,
+and the additional benefit of this is that it's not-- Like
+it's not some centralized platform.
+It's not like Slack, actually.
+It's more-- It's local on your own computer, and, uh,
+it's completely encrypted,
+and it's running actually on a decentralized messaging
+protocol.
+So it's built in a really cool way.
+And we tried it out internally, and we said, "Okay,
+this is super cool.
+This is an amazing way to interact with agents when you are
+working on a team,"
+and it's exactly what we need in Sokosumi.
+So we basically said, "Okay, let's rebuild, uh, Buzz and,
+and just put it into Sokosumi." So what you can see here on
+the side is, um,
+that I am currently in my organizations here-- in my
+organization here in Sokosumi, so my own company, and I can
+see all the different, um,
+people that, that work there, and I can, uh,
+open like direct messages to them.
+Um, so all kinds of different people,
+but I can also have channels.
+So for example, I have an everyone channel.
+I hope there's nothing, uh, sensitive in here.
+But I can basically talk to everyone like I would talk to
+them on Slack or on Microsoft Teams.
+But I can also go ahead, and I can, um,
+basically ask an agent.
+So I can add, and then I can just, uh, scroll down.
+I can type in the name, and then you see, okay, I,
+I also have Hannah and Elena,
+all these different agents available here to me,
+and I can basically give them tasks, uh,
+directly from inside the chat.
+Um, additionally,
+you can build agents that are only accessible to your
+organization, and you can also bring them in here.
+So for example, I have this agent Noodles that I built,
+and Noodles is quite cool because, uh, it's a data agent.
+So I can ask a question like, uh,
+"How many registered users are there currently on
+Sokosumi?" So Oops.
+Uh, so I just sent this message, and as you can see,
+now Noodles is thinking.
+There's a nice animation there.
+And, um, in a bit,
+Noodles will respond because Noodles has access-- read
+access to our database and can basically answer these kind
+of like data questions.
+Um,
+so I think this is a really nice way to interact with agents.
+And the thing to keep in mind here is that if I hire these
+agents-- Oh, yeah, here he is.
+So 11,900 registered new users.
+Very cool.
+Um, now the cool thing is that Noodles is now free,
+so because it's internal, I didn't give it a price.
+But if I hire any of the other agents, so if I hire Hannah,
+for example, um, start a research task about IOG,
+for example, then what Hannah is gonna do is,
+Hannah is an external agent, so, uh,
+she needs to charge me something for this.
+And the way she charges me is by using my credits in my
+account here.
+So you see I have 80,000-- uh, 87,000 credits,
+and in the background, each credit is a stable coin,
+actually USDM on Cardano.
+So if she is now doing this research task,
+and it will probably take a while, then, um,
+she will charge me in USDM,
+and she will do a transaction on Cardano using the Masumi,
+uh, protocol.
+So very cool, very much, uh,
+blockchain integrated without me actually seeing that
+there's any blockchain involved.
+And here she just asked me, you know,
+"What focus for the IOG research?" Uh, I'll just respond,
+I don't know, um, product roadmap.
+And then she is probably gonna start a task,
+add it here to the task board, and then, you know,
+start the research.
+So, um, so yeah, that's my little demonstration of,
+of Sokosumi.
+As you can see, we,
+we've been doing a lot in the last two weeks.
+And, uh, if you wanna try it out, uh, please do.
+It's literally just sokosumi.com.
+You can register,
+you'll get credits for free at the sign-up,
+and you can hire those agents,
+and it will trigger actual Cardano transactions.
+It's probably the easiest way for you to actually interact
+with AI, AI on Cardano right now.
+And, um, yeah, would be cool to,
+to get some new users out of this call.
+Okay.
+So, uh, then...
+Okay.
+参加者E has a question.
+Uh,
+"Can I connect my own high-tier LLM subscription to the agents,
+or are they limited to the LLM providers?" They are
+limited, um,
+because most of these high-tier subscriptions are-- they
+don't allow you in their terms to connect to anything.
+So you kinda have to pay, um, yeah, each agent's price.
+And sometimes, you know,
+the agent developers can also choose, like, uh,
+if they want to have, you know,
+Claude in the background or if they want to have Mistral in
+the background and so on.
+So it really depends on, on the agent,
+how expensive they are.
+But, uh, yeah, 参加者E, you should, uh, you know,
+go to the CF and tell them that they need to get a Sokosumi
+subscription for everyone.
+Anyways, um, that's basically it with our call for today.
+If no one has any topics that they think are super
+important that we should talk about,
+then we are gonna end the call here.
+Um,
+and next time we're gonna have a lot more talking points
+again.
+But I still appreciate everyone coming out today and, uh,
+yeah, I hope you have a great rest of your day.
+Thanks, everyone.
+Okay.
+I'm gonna stop the recording.
+Okay.
+Have a great day.
+Bye, everyone.

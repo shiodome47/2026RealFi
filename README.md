@@ -77,6 +77,10 @@ GitHub Pages の公開元を **`docs/`** にすれば公開できる。設定は
 - [2026-07-31 データ回](docs/2026-07-31-data-and-insights/) — testnet 3 週間の数字、SPO プログラムの効果、流動性の 3 層、フライホイール
 - [2026-07-24 エンジニアリング回](docs/2026-07-24-office-hours-engineering/) — クロスチェーン構想、ワンクリックフロー、USDR と sUSDR、プラットフォーム化
 
+### Masumi（登録制・録画は非公開）
+
+- [2026-08-11 AI on Cardano フォーラム](docs/2026-08-11-masumi-ai-forum/) — 予測は兆ドル・実際は 1 日 3 万ドル、Cloudflare のウォレット参入、Cardano に空いているもの、レジストリ構想
+
 ### Cardano（公開録画）
 
 - [2026-07-26 A Dose of Alpha](docs/2026-07-26-a-dose-of-alpha/) — Charles Hoskinson × AlphaGrowth。第三の府（行政機能）、ベンチャースタジオ化、第 4 世代の 4 要素、RWA 1.0 と 2.0、ゴーストチェーン論と PRIME 提案

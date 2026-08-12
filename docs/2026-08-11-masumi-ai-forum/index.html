@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masumi — AI on Cardano フォーラム / AI on Cardano Forum</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Masumi</p>
+<h1><span class="l-ja">AI on Cardano フォーラム — 支払いではなく、レジストリを取る</span><span class="l-en">AI on Cardano Forum — take the registry, not the payments</span></h1>
+<p class="meta">
+  <span>2026-08-11</span>
+  <span><span class="l-ja">オンライン会議</span><span class="l-en">Online call</span></span>
+  <span><span class="l-ja">参加者およそ 50 名</span><span class="l-en">around 50 attendees</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>エージェント × ブロックチェーンは巨額が動いている話題だが、<strong>オンチェーンの実取引は 1 日 3 万ドル</strong>。<br>
+  その落差を認めたうえで、Cardano は<strong>支払いの場所ではなく「レジストリ」を取りにいく</strong>という構想が語られた。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>想定市場は兆ドル、実際は 1 日 3 万ドル。</strong>レポート間で 10 倍のばらつきがあり、<strong>「オンチェーンの agentic commerce はまだ検証されていない」</strong>とゲストが明言した。</li>
+  <li><strong>Cloudflare がウォレットに参入。</strong>x402 の作り手の 1 社が、売る側（収益化ゲートウェイ）に続いて<strong>買う側（ウォレット）</strong>を出す。Coinbase も Stripe も同じ方向へ動いている。</li>
+  <li><strong>Cardano の狙いは支払いではなくレジストリ。</strong>「今の Cardano は支払いが得意ではない。高すぎるし遅すぎる」と主催者自身が認めたうえで、<strong>どのチェーンのエージェントも Cardano に登録させ、そこを参照点にする</strong>構想。Base のエージェントの登録はすでに可能になった。</li>
+  <li><strong>空いているのはフレームワークとツール。</strong>アイデンティティと発見・レピュテーションは Masumi のおかげで良いが、<strong>エージェント用の SDK、ウォレット、カストディ、DEX のアダプタ</strong>が欠けている。</li>
+  <li><strong>Cardano は AI にほとんど予算を割いていない</strong>と主催者が述べた。「AI をやっている、そこそこ資金のあるプロジェクトは我々だけ」「自分のチェーンなら Net Change Limit を全部使って 1 億ドル入れる」。</li>
+  <li><strong>技術だけでは勝てない。</strong>NEAR は技術面でほぼ全項目が競争力ありと評価されているのに採用が伸びていない、という反例が示された。</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>この回は匿名化の対象です。</strong>登録制のコールで、<strong>録画は一般に公開されていません</strong>。内容は共有できますが、<strong>誰が発言したかは書きません</strong>。発言者は「進行役」「登壇者A」などのラベルで扱い、勤務先と役職は領域の記述に置き換えています。</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#news"><span class="n">01</span>Cloudflare がウォレットに参入する</a></li>
+  <li><a href="#segments"><span class="n">02</span>3 つの領域と、動いているのはどれか</a></li>
+  <li><a href="#why-blockchain"><span class="n">03</span>なぜエージェントにブロックチェーンが要るのか</a></li>
+  <li><a href="#reality"><span class="n">04</span>予測は兆ドル、実際は 1 日 3 万ドル</a></li>
+  <li><a href="#b2b"><span class="n">05</span>B2C より先に B2B</a></li>
+  <li><a href="#why-cardano"><span class="n">06</span>なぜ Cardano なのか</a></li>
+  <li><a href="#gaps"><span class="n">07</span>空いているのはフレームワークとツール</a></li>
+  <li><a href="#registry"><span class="n">08</span>レジストリとしての Cardano</a></li>
+  <li><a href="#budget"><span class="n">09</span>AI への予算がない</a></li>
+  <li><a href="#sokosumi"><span class="n">10</span>Sokosumi — 実際に動いているもの</a></li>
+  <li><a href="#overall"><span class="n">11</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">12</span>やり取りと、持ち帰りになった論点</a></li>
+</ol>
+</div>
+
+
+<h2 id="news">1. Cloudflare がウォレットに参入する</h2>
+<p class="deck">crypto と縁のない巨大インフラ企業が、売る側と買う側の両方から入ってきた。</p>
+
+<p>ニュースとして取り上げられたのは 1 件だけでした。<strong>Cloudflare がウォレットを出す</strong>という話です。「Cloudflare は crypto とはほとんど関係がないので、かなり驚きだ」と前置きされたうえで、<strong>彼らは x402 という標準を作った側の 1 社</strong>であり、エージェント間の支払いには最初から関心があった、と説明されました。</p>
+
+<div class="term">
+<p class="term-name">x402</p>
+<p>エージェントが API などの有料エンドポイントに<strong>その場で自動的に支払う</strong>ための標準。<span class="badge">補足</span>名前は HTTP のステータスコード <code>402 Payment Required</code> に由来します。長らく使われないまま予約されていた番号で、<strong>「支払いが必要」とサーバーが返し、呼び出し側がその場で払って再試行する</strong>という流れを、人間の操作なしに成立させる想定です。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="Cloudflare が売る側の収益化ゲートウェイと買う側のウォレットの両方を出し、エージェント経済を挟み込む構図の図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="40" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="116" y="70" class="d-t" text-anchor="middle">売る側</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">収益化ゲートウェイ</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">（今月はじめに発表）</text>
+
+  <rect x="464" y="40" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="564" y="70" class="d-t" text-anchor="middle">買う側</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">エージェント用ウォレット</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">（今回の発表。順次公開）</text>
+
+  <rect x="244" y="55" width="192" height="60" rx="8" class="d-box"/>
+  <text x="340" y="80" class="d-t" text-anchor="middle">x402 の</text>
+  <text x="340" y="102" class="d-t" text-anchor="middle">エンドポイント</text>
+
+  <line x1="222" y1="85" x2="238" y2="85" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="458" y1="85" x2="442" y2="85" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="16" y="152" width="648" height="72" rx="7" class="d-box-plain"/>
+  <text x="340" y="178" class="d-s" text-anchor="middle">「両方向から来ているのが面白い」── 売れるようにするだけでなく、買えるようにもする</text>
+  <text x="340" y="202" class="d-s" text-anchor="middle">同じ方向に Coinbase・Stripe も動いている。「これが次の大きなトレンドだと本当に思う」</text>
+</svg>
+<p class="figcap">ウォレットは <code>cloudflare.pay</code> でウェイトリストの受付が始まった段階です。<span class="badge">補足</span>中身の仕様は公開されておらず、「おそらく CLI だろう」という推測として語られました。</p>
+</div>
+
+<p>これを競合とは見ていない、という立場も示されました。むしろ<strong>「将来は何十億ものエージェントが互いに取引し、お金の流れの大半がそうしたウォレットを通る」という仮説の裏付け</strong>として受け取っている、という説明です。</p>
+
+
+<h2 id="segments">2. 3 つの領域と、動いているのはどれか</h2>
+<p class="deck">エージェント × ブロックチェーンは 3 つに分かれる。うち 1 つは 6 年前にも試みられて、離陸しなかった。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="agentic commerce、agentic DeFi、マシン・ツー・マシンの三領域と、それぞれの立ち上がり具合を示した図">
+  <rect x="16" y="34" width="204" height="120" rx="8" class="d-box-accent"/>
+  <text x="118" y="62" class="d-t" text-anchor="middle">agentic commerce</text>
+  <text x="118" y="88" class="d-s" text-anchor="middle">エージェントがサービスや</text>
+  <text x="118" y="108" class="d-s" text-anchor="middle">データを売り買いする</text>
+  <text x="118" y="136" class="d-s d-a" text-anchor="middle">立ち上がりつつある</text>
+
+  <rect x="238" y="34" width="204" height="120" rx="8" class="d-box-accent"/>
+  <text x="340" y="62" class="d-t" text-anchor="middle">agentic DeFi</text>
+  <text x="340" y="88" class="d-s" text-anchor="middle">エージェントがユーザーに</text>
+  <text x="340" y="108" class="d-s" text-anchor="middle">代わって自律的に取引する</text>
+  <text x="340" y="136" class="d-s d-a" text-anchor="middle">立ち上がりつつある</text>
+
+  <rect x="460" y="34" width="204" height="120" rx="8" class="d-box-warn"/>
+  <text x="562" y="62" class="d-t" text-anchor="middle">マシン・ツー・マシン</text>
+  <text x="562" y="88" class="d-s" text-anchor="middle">ロボット・自動運転車・</text>
+  <text x="562" y="108" class="d-s" text-anchor="middle">ドローンが互いに支払う</text>
+  <text x="562" y="136" class="d-s d-w" text-anchor="middle">いちばん実現していない</text>
+
+  <rect x="16" y="172" width="648" height="62" rx="7" class="d-box-plain"/>
+  <text x="340" y="196" class="d-s" text-anchor="middle">4 つ目にインフラとアイデンティティがあるが、発表者自身が「これは飛ばしていい」としている</text>
+  <text x="340" y="220" class="d-s" text-anchor="middle">セキュリティは分類に入っていない ── 参加者からの指摘（第 12 節）</text>
+</svg>
+<p class="figcap">上の 2 つが動いていて、マシン・ツー・マシンは遅れている、という整理でした。</p>
+</div>
+
+<p>マシン・ツー・マシンについては、司会側から<strong>はっきりした懐疑</strong>が述べられました。根拠として挙げられたのが <strong>IOTA</strong> です。6 年ほど前に「Bosch のロボットが取引先のロボットに支払い、さらに Mercedes のロボットに支払う」という構想でマシン・ツー・マシンの支払いに注力していたが、<strong>まったく離陸しなかった</strong>、と。</p>
+
+<blockquote>
+<p>話を聞けば理屈は通っているのですが、実際にはまだどこでも重要になっていない。</p>
+</blockquote>
+
+<p>ただし「早すぎただけかもしれない」という留保も、双方から付けられています。<strong>筋が悪いのか、時期が悪かったのかは、この回では結論が出ていません。</strong></p>
+
+
+<h2 id="why-blockchain">3. なぜエージェントにブロックチェーンが要るのか</h2>
+<p class="deck">ナラティブとして流通している 4 つの理由。ただし「どこでも必要というわけではない」と自ら留保が付いた。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="エージェントにブロックチェーンを使う四つの理由を並べた図">
+  <rect x="16" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="94" y="58" class="d-t" text-anchor="middle">支払い</text>
+  <text x="94" y="82" class="d-s" text-anchor="middle">1 セント未満の</text>
+  <text x="94" y="102" class="d-s" text-anchor="middle">高速な送金</text>
+
+  <rect x="180" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="258" y="58" class="d-t" text-anchor="middle">信頼</text>
+  <text x="258" y="82" class="d-s" text-anchor="middle">オンチェーンの契約</text>
+  <text x="258" y="102" class="d-s" text-anchor="middle">アイデンティティ・評判</text>
+
+  <rect x="344" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="422" y="58" class="d-t" text-anchor="middle">自律性の制御</text>
+  <text x="422" y="82" class="d-s" text-anchor="middle">いくらまで使えるか</text>
+  <text x="422" y="102" class="d-s" text-anchor="middle">何ができるかを縛る</text>
+
+  <rect x="508" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="586" y="58" class="d-t" text-anchor="middle">説明責任</text>
+  <text x="586" y="82" class="d-s" text-anchor="middle">エージェントが何を</text>
+  <text x="586" y="102" class="d-s" text-anchor="middle">したかを検証できる</text>
+
+  <rect x="16" y="146" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="170" class="d-t" text-anchor="middle">「ブロックチェーンはアプリケーションのごく一部であるべき。せいぜい 2% くらい」</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">agentic DeFi 以外では、ブロックチェーンは厳密には必要ない ── と発表者自身が述べた</text>
+</svg>
+<p class="figcap">この 4 つは Masumi が集中している柱でもある、と司会側が応じています。</p>
+</div>
+
+<p>ここで両者が一致したのが、<strong>「何にでもブロックチェーンを当てはめようとする」</strong>ことへの警戒でした。「誰もやったことがない。じゃあブロックチェーンを当てはめて ICO をやって、資金を集めて作ろう」という進め方は間違いだ、と。<strong>ブロックチェーン・ウォッシング</strong>という言葉も使われています。</p>
+
+<p>具体例として挙げられたのが <strong>AI モデルの学習の分散化</strong>です。「理論上は動きうるとしても、経済性と戦わなければならず、うまくいっても結局また中央集権的なシステムに戻ってしまう」として、否定的な立場が示されました。</p>
+
+
+<h2 id="reality">4. 予測は兆ドル、実際は 1 日 3 万ドル</h2>
+<p class="deck">この回でいちばん冷静な数字。ゲスト自身が「まだ検証されていない」と言い切った。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="想定市場が兆ドル規模で語られる一方、オンチェーンの実際の日次取引高は 3 万ドルであることを対比した図">
+  <text x="16" y="22" class="d-s">語られている想定市場</text>
+
+  <rect x="16" y="32" width="648" height="46" rx="7" class="d-box-accent"/>
+  <text x="340" y="61" class="d-t" text-anchor="middle">agentic commerce ＝ 兆ドルの桁（エージェント向けソフトは数十億ドルの桁）</text>
+
+  <rect x="16" y="88" width="648" height="34" rx="6" class="d-box-warn"/>
+  <text x="340" y="110" class="d-s" text-anchor="middle">ただしレポートによって 10 倍のばらつき ──「見積もりが大雑把だから」</text>
+
+  <text x="16" y="152" class="d-s d-w">実際に起きていること</text>
+
+  <rect x="16" y="162" width="60" height="46" rx="6" class="d-box-warn"/>
+  <text x="46" y="191" class="d-t d-w" text-anchor="middle">3 万</text>
+  <text x="92" y="184" class="d-s">オンチェーンのエージェント関連の 1 日あたり取引高（ドル）</text>
+  <text x="92" y="204" class="d-s d-w">「agentic commerce はまだ検証されていない。初期段階だ」</text>
+
+  <rect x="16" y="222" width="648" height="26" rx="6" class="d-box-plain"/>
+  <text x="340" y="240" class="d-s" text-anchor="middle">この 2 つを並べたのは発表者本人。ハイプに飲まれる前に念頭に置くべき、という趣旨</text>
+</svg>
+<p class="figcap">図の長方形の長さは実際の比率ではありません。<span class="badge">補足</span>兆ドルと 3 万ドルは 8 桁違うため、同じ図に比率どおりでは描けません。</p>
+</div>
+
+<p>司会側もこれを否定していません。<strong>Base で実際に何が売られているかを見ると「非常に期待外れ」</strong>だと認めています。マーケットプレイスの出来が悪いこと、そして登録エンドポイントが 1 万件あっても<strong>中身は ChatGPT のような推論を買うだけの基本的な API リソース</strong>で、<strong>エージェント間の取引は実際には起きていない</strong>、と。</p>
+
+<p>そのうえで示された突破口の見立てが、<strong>エージェントがサービスを束ねて売り始めたとき</strong>です。「マーケティングのキャンペーンを丸ごと作る長時間のタスクを売る」といった形。<strong>コンサルティングやマーケティングのサービス業を、エージェントの世界に移す</strong>という構想でした。</p>
+
+
+<h2 id="b2b">5. B2C より先に B2B</h2>
+<p class="deck">個人が自分のエージェントにウォレットを預けるのはまだ遠い。企業はすでに月 500 ドル使っている。</p>
+
+<p>B2C か B2B かという問いに対して、<strong>今の時点では明らかに B2B</strong>という答えが返りました。根拠は支出の実態です。</p>
+
+<ul>
+  <li><strong>個人</strong> — AI にもブロックチェーンにも縁のない友人に聞くと、せいぜい ChatGPT のプレミアム契約がある程度。そこから<strong>自分のエージェントに数千ドル入りのウォレットを預ける</strong>までは「まだ非常に遠い」</li>
+  <li><strong>企業</strong> — 今は<strong>従業員 1 人あたり月 500 ドル程度</strong>を AI のトークン代として見込む必要があり、<strong>2 年後には 1 人あたり 3,000 ドル</strong>という推計もある</li>
+</ul>
+
+<p><span class="badge">補足</span>この 500 ドル／3,000 ドルという数字について、<strong>出典はコール中で示されていません</strong>。「見込む必要がある」「推計」という言い方で語られました。</p>
+
+
+<h2 id="why-cardano">6. なぜ Cardano なのか</h2>
+<p class="deck">決定性・形式検証・アイデンティティ。そして UTXO が並列化に向いている、という司会側からの追加。</p>
+
+<p>ゲストが挙げた理由は 3 つでした。<strong>決定性</strong>（エージェントがどう相互作用できるかに効く）、<strong>形式検証</strong>（他のチェーンより堅牢になる）、そして<strong>アイデンティティと秘匿性</strong>です。後者については、Cardano のエコシステムにある <strong>Veridian</strong> というアイデンティティのプリミティブと、プライバシーについては <strong>Midnight</strong> を接続する可能性が挙がりました。加えて <strong>Masumi</strong> 自体が、エスクロー・アイデンティティ・レピュテーションを備えた標準プロトコルとして数えられています。</p>
+
+<div class="term">
+<p class="term-name">CIP-118（nested transactions）と Babel fees</p>
+<p>コール中で「エージェントに意味がある」として名前が挙がった 2 つ。<span class="badge">補足</span><strong>Babel fees</strong> は、手数料を ADA 以外のトークンで払えるようにする仕組みです。<strong>エージェントがステーブルコインしか持っていなくても動ける</strong>ようになる、という点でここに関係します。<strong>nested transactions</strong> は取引を入れ子にする提案です。<strong>どちらもコール中では名前が挙がっただけで、中身の説明はされていません</strong>（発表者も CIP の番号をその場で調べていました）。</p>
+</div>
+
+<p>ここに司会側が<strong>スケール</strong>の観点を足しました。1,000 TPS ではなく数百万から数十億 TPS を 10 年先に見据えるなら、<strong>並列化する以外に方法がない</strong>、と。</p>
+
+<details class="explain">
+<summary>なぜ UTXO だと並列にしやすいのか — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中では「UTXO は既定で並列化されている」という結論だけが述べられました。</p>
+
+<h4>2 つの記帳方式</h4>
+<p>ブロックチェーンの記帳には大きく 2 通りあります。<strong>アカウント方式</strong>は銀行口座と同じで、「この口座の残高はいくら」という<strong>1 つの数字</strong>を持ち、取引のたびに書き換えます。<strong>UTXO 方式</strong>は財布の中の紙幣と同じで、<strong>「まだ使っていないお金の切れ端」の集まり</strong>として持ちます。支払うときは、その切れ端を使い切って、お釣りを新しい切れ端として作ります。</p>
+
+<h4>なぜ並列にしやすいのか</h4>
+<p>アカウント方式では、同じ口座への 2 つの取引を<strong>同時に処理できません</strong>。どちらが先かで残高が変わるからです。UTXO 方式では、<strong>別々の切れ端を使う取引どうしは互いに無関係</strong>なので、順番を気にせず同時に処理できます。コール中の「UTXO はひとつずつ個別に扱える」「ブロックチェーン全体の状態を知る必要がない」はこのことです。</p>
+
+<h4>身近なものへのたとえ</h4>
+<p>1 つの窓口に行列を作るのがアカウント方式、<strong>セルフレジが何台も並んでいる</strong>のが UTXO 方式です。同じ商品を取り合っていない限り、客は好きな台で同時に会計できます。</p>
+
+<h4>一言でいうと</h4>
+<p><strong>取引どうしが独立していれば同時に捌ける</strong>のが UTXO の性質で、Hydra のようなステートチャネルとも相性がよい、というのが議論の筋です。</p>
+
+<h4>このコールで語られていないこと</h4>
+<p>司会側は<strong>「Cardano が数十億 TPS までスケールできると言っているわけではない」と自分から明確に否定しています。</strong>言われたのは「その上に積み上げられる土台がある」までで、<strong>実際にどこまで出るのか、いつ出るのかには一切触れていません</strong>。</p>
+</div>
+</details>
+
+<p>ゲストはこの直後に、自ら重要な留保を付けています。<strong>「これは供給側の話であって、技術が常に勝負を決めるわけではない」</strong>。次の節がその中身です。</p>
+
+
+<h2 id="gaps">7. 空いているのはフレームワークとツール</h2>
+<p class="deck">プリミティブは強い。足りないのは、作る人が最初に触る部分。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="Base・Solana・NEAR・Cardano を部品ごとに比較し、Cardano ではフレームワークとウォレットが薄いことを示した図">
+  <text x="150" y="24" class="d-s" text-anchor="middle">フレームワーク・ツール</text>
+  <text x="330" y="24" class="d-s" text-anchor="middle">ウォレット・カストディ</text>
+  <text x="510" y="24" class="d-s" text-anchor="middle">アイデンティティ・発見</text>
+  <text x="620" y="24" class="d-s" text-anchor="middle">採用</text>
+
+  <text x="20" y="60" class="d-t">Base</text>
+  <rect x="80" y="42" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="240" y="42" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="400" y="42" width="140" height="24" rx="4" class="d-box"/>
+  <rect x="560" y="42" width="104" height="24" rx="4" class="d-box-accent"/>
+
+  <text x="20" y="102" class="d-t">Solana</text>
+  <rect x="80" y="84" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="240" y="84" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="400" y="84" width="140" height="24" rx="4" class="d-box"/>
+  <rect x="560" y="84" width="104" height="24" rx="4" class="d-box-accent"/>
+
+  <text x="20" y="144" class="d-t">NEAR</text>
+  <rect x="80" y="126" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="240" y="126" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="400" y="126" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="560" y="126" width="104" height="24" rx="4" class="d-box-warn"/>
+
+  <text x="20" y="186" class="d-t">Cardano</text>
+  <rect x="80" y="168" width="140" height="24" rx="4" class="d-box-plain"/>
+  <rect x="240" y="168" width="140" height="24" rx="4" class="d-box-plain"/>
+  <rect x="400" y="168" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="560" y="168" width="104" height="24" rx="4" class="d-box-warn"/>
+
+  <rect x="16" y="210" width="648" height="42" rx="7" class="d-box-plain"/>
+  <text x="340" y="228" class="d-s" text-anchor="middle">NEAR は技術面がほぼ揃っているのに採用が伸びていない ── 技術だけでは勝てないことの実例</text>
+  <text x="340" y="246" class="d-s" text-anchor="middle">点線は「薄い・欠けている」。塗りは相対的に強いところ</text>
+</svg>
+<p class="figcap">元の比較表を、コール中で言及された 4 つの軸に絞って描き直したものです。<span class="badge">補足</span>発表者自身が<strong>「スライドはすべて LLM で作ったので割り引いて聞いてほしい」</strong>と断っています。</p>
+</div>
+
+<p>Cardano で良いとされたのは<strong>アイデンティティ</strong>と<strong>発見・レピュテーション</strong>で、これは <strong>Masumi が作ったもののおかげ</strong>だと明言されています。逆に薄いのが次の 3 つです。</p>
+
+<ul>
+  <li><strong>エージェント用の SDK</strong> — Base の AgentKit にあたるもの</li>
+  <li><strong>ウォレットとカストディ</strong> — 「鍵を環境変数に置いておくだけ」ではない、TEE で強制するような鍵管理</li>
+  <li><strong>DEX のアダプタ</strong> — エージェントが実際に DEX とやり取りできるようにするもの</li>
+</ul>
+
+<div class="term">
+<p class="term-name">TEE <small>trusted execution environment</small></p>
+<p>計算を、外から中身を覗けない箱の中で走らせる仕組み。<span class="badge">補足</span>エージェントに秘密鍵を持たせるとき、<strong>鍵を環境変数やファイルに平文で置くと、そのマシンに入られた時点で資金を全部持っていかれます</strong>。TEE の中に鍵を閉じ込めれば、エージェントは署名を頼めるが鍵そのものは読み出せない、という状態を作れます。コール中では NEAR の強みとして挙げられました。</p>
+</div>
+
+
+<h2 id="registry">8. レジストリとしての Cardano</h2>
+<p class="deck">この回の核心。支払いでは勝てないと認めたうえで、では何を取るのか。</p>
+
+<p>ここが最も踏み込んだ部分です。出発点は<strong>市場の現実を認めること</strong>でした。「Base に 1 万のエージェントがいて Cardano に 100 しかいないなら、Base も使わない理由がない」。</p>
+
+<p>そして<strong>Cardano の支払い能力についての率直な評価</strong>が続きます。</p>
+
+<blockquote>
+<p>今の Cardano は支払いが得意ではありません。高すぎるし遅すぎる、そういった諸々があるので。</p>
+</blockquote>
+
+<p>そのうえで示された解が、<strong>Cardano を「中心のアンカー」＝レジストリとして使う</strong>という構想です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 280" role="img" aria-label="各チェーンのエージェントが Cardano のレジストリに登録され、支払いはそれぞれのチェーンで行われる構図の図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="34" width="140" height="52" rx="7" class="d-box"/>
+  <text x="86" y="65" class="d-t" text-anchor="middle">Cardano の agent</text>
+  <rect x="16" y="98" width="140" height="52" rx="7" class="d-box"/>
+  <text x="86" y="129" class="d-t" text-anchor="middle">Base の agent</text>
+  <rect x="16" y="162" width="140" height="52" rx="7" class="d-box-plain"/>
+  <text x="86" y="187" class="d-s" text-anchor="middle">今後、他チェーンの</text>
+  <text x="86" y="205" class="d-s" text-anchor="middle">agent も</text>
+
+  <line x1="162" y1="60" x2="228" y2="110" class="d-line-accent" marker-end="url(#m2)"/>
+  <line x1="162" y1="124" x2="228" y2="124" class="d-line-accent" marker-end="url(#m2)"/>
+  <line x1="162" y1="188" x2="228" y2="140" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="234" y="86" width="200" height="80" rx="8" class="d-box-accent"/>
+  <text x="334" y="116" class="d-t" text-anchor="middle">Cardano のレジストリ</text>
+  <text x="334" y="140" class="d-s" text-anchor="middle">全員がここに登録され、</text>
+  <text x="334" y="158" class="d-s" text-anchor="middle">ここで引ける</text>
+
+  <line x1="440" y1="126" x2="500" y2="126" class="d-line" marker-end="url(#m3)"/>
+  <text x="470" y="116" class="d-s" text-anchor="middle">参照</text>
+
+  <rect x="506" y="86" width="158" height="80" rx="8" class="d-box"/>
+  <text x="585" y="112" class="d-s" text-anchor="middle">「このエージェントは</text>
+  <text x="585" y="132" class="d-s" text-anchor="middle">どのチェーンでの支払いを</text>
+  <text x="585" y="152" class="d-s" text-anchor="middle">受け付けるか」</text>
+
+  <rect x="16" y="230" width="648" height="42" rx="7" class="d-box-plain"/>
+  <text x="340" y="248" class="d-s" text-anchor="middle">支払いは、Cardano より支払いが得意なチェーンを通ればよい</text>
+  <text x="340" y="266" class="d-s" text-anchor="middle">「どこで受け取りたいかは、エージェントの開発者とエージェント自身が決めること」</text>
+</svg>
+<p class="figcap">Cardano が得意なのは「信頼できて安全で、参照できる基盤の記録」であること、という位置づけです。<strong>Base のエージェントの登録は、すでにできるようになった</strong>と述べられました。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — 登録だけ Cardano で、支払いが他チェーンなら、Cardano には何が残るのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+
+<h4>まず、この疑問は正しい</h4>
+<p>ブロックチェーンで<strong>価値が溜まるのは、ふつう取引のあるところ</strong>です。手数料が落ち、流動性が集まり、それが次の利用者を呼ぶ。<strong>登録という行為は 1 回きりで、しかも安い。</strong>そこだけ取っても経済的な蓄積は小さいのではないか、という直感は筋が通っています。</p>
+
+<h4>それでも、この構想が成り立ちうる理由</h4>
+<p>賭けているのは<strong>「どこが正となる記録なのか」という地位</strong>です。似た例で考えると分かりやすいかもしれません。</p>
+<ul>
+  <li><strong>ドメイン名の登録簿</strong> — 通信そのものは登録簿を通りません。しかし「そのドメインが誰のものか」を決めているのは登録簿で、その地位は簡単には移りません</li>
+  <li><strong>証券の保管振替機関</strong> — 売買は取引所で起きますが、<strong>最終的に誰が持っているかの記録</strong>は別のところにあります</li>
+</ul>
+<p>コール中の言葉では、Cardano が得意なのは「信頼できて安全で、参照できる基盤の記録」であることでした。<strong>取引の場所ではなく、名簿の場所を取りにいく</strong>という賭けです。</p>
+
+<h4>外から見分ける方法</h4>
+<p>この賭けが効いているかどうかは、<strong>他チェーンのエージェントが実際に何件登録されるか</strong>で分かります。Cardano 上のエージェントしか登録されていないなら、それは「Cardano のレジストリ」ではなく単に「Cardano のディレクトリ」です。<strong>コール中で示された 168 件が、どのチェーンの内訳なのかは述べられていません。</strong></p>
+
+<h4>このコールで語られていないこと</h4>
+<p><strong>なぜ他チェーンのエージェントが Cardano に登録する動機を持つのか</strong>は説明されていません。登録に手数料がかかるなら、なおさら理由が要ります。競合するレジストリが現れたときに何が優位になるのかにも触れていません。</p>
+</div>
+</details>
+
+
+<h2 id="budget">9. AI への予算がない</h2>
+<p class="deck">この回でいちばん率直な指摘。しかも主催者自身が、自分たちが唯一だと言っている。</p>
+
+<p>参加者からチャットで<strong>「各ブロックチェーンは AI 分野にどれだけ予算を割いているのか」</strong>という問いが出たことをきっかけに、この話題になりました。</p>
+
+<p>返ってきた答えは<strong>「Cardano が AI に多くの予算を割いていないことは断言できる」</strong>でした。理由として、<strong>Cardano で AI に関わることをやっている、そこそこ資金のあるプロジェクトは Masumi だけ</strong>だ、と述べられています。IO や CF を含め関心はあるが、<strong>「大きな協調した推進はない」</strong>という評価です。</p>
+
+<blockquote>
+<p>もし Cardano が私のブロックチェーンだったら、Net Change Limit をまるごと使って、1 億ドルを AI に突っ込みます。</p>
+</blockquote>
+
+<div class="term">
+<p class="term-name">Net Change Limit</p>
+<p>一定期間に Cardano の財務庫から出せる<strong>総額の上限</strong>。<span class="badge">補足</span>「これをまるごと使う」というのは、<strong>その期間に財務庫から出せる全額を AI 一分野に充てる</strong>という意味です。実際には他の提案と取り合いになるため、<strong>この発言は提案ではなく、優先度についての主張</strong>として述べられています。</p>
+</div>
+
+<p>ゲスト側はこれに同意しつつ、<strong>逆向きの見方</strong>も添えました。多額を投じているチェーンもあるが<strong>その ROI はまだ確定していない</strong>、全部が回収できるとは思わない、と。そのうえで、Cardano は Base や Solana ほど早くない分、<strong>何が効くかのデータが少し多く揃っている位置にいる</strong>のかもしれない、という整理です。</p>
+
+<p><span class="badge">補足</span>この回では <strong>AlphaGrowth の提案が「今日可決された」</strong>ことにも触れられています。<strong>DeFi に勢いがある今が、DeFi と繋がるエージェント用ウォレットを作る好機だ</strong>、という文脈で挙げられました。</p>
+
+
+<h2 id="sokosumi">10. Sokosumi — 実際に動いているもの</h2>
+<p class="deck">構想の話のあとに、動いている画面。エージェントの一覧はブロックチェーンから直接読んでいる。</p>
+
+<p>最後は主催者によるプロダクトのデモでした。<strong>Sokosumi</strong> は「AI の同僚（AI coworkers）のマーケットプレイス」と説明され、マーケティング用途のエージェントを扱っています。位置づけとしては <strong>Masumi が技術の部分、Sokosumi がその上のプロダクト</strong>です。</p>
+
+<p>実演で示された点のうち、確認できる形で述べられたものは次のとおりです。</p>
+
+<ul>
+  <li><strong>エージェントの一覧（168 件）はブロックチェーンから直接読んでいる。</strong>「Sokosumi や何かの API から来ているのではなく、Blockfrost を使ってブロックチェーンから直接取っている」。Cardanoscan などでも同じものを見つけられる、と</li>
+  <li><strong>エージェントは他のエージェントを使える。</strong>タスクを自分だけでこなせないと判断した場合、Masumi に登録された他のエージェントにアクセスできる</li>
+  <li><strong>チャットではなくタスクボード。</strong>ChatGPT のようなチャット画面だけに絞ることを意図的に避け、Jira や Linear のようなカンバン形式にしている。長時間タスクと定期実行を扱うため</li>
+  <li><strong>クレジットの実体はステーブルコイン。</strong>1 クレジットが Cardano 上の <strong>USDM</strong>。外部のエージェントを雇うと USDM で請求され、<strong>Masumi のプロトコルを使って Cardano 上で取引が実行される</strong></li>
+  <li><strong>登録ユーザーは 11,900 人</strong>（デモ中に社内のデータエージェントが返した数字）</li>
+</ul>
+
+<p>この 2 週間の作業として紹介されたのが、<strong>Slack のようなワークスペースの中でエージェントに直接タスクを渡せる</strong>画面です。<strong>Block が出した Buzz</strong> という製品に触発されたもので、Buzz 自体は<strong>自分のパソコン上でローカルに動き、完全に暗号化され、分散型のメッセージングプロトコルの上で動いている</strong>と説明されました。</p>
+
+<p><span class="badge">補足</span>「ブロックチェーンが関わっていることを意識しないまま、深く統合されている」というのがこのデモの主張です。<strong>裏返すと、ユーザーから見て何がオンチェーンで何がそうでないかは画面からは分かりません。</strong>第 8 節の「レジストリは Cardano、支払いは別でもよい」という構想とあわせて読むと、<strong>どの部分が Cardano 上の取引なのかは、外からは追いにくくなります。</strong></p>
+
+
+<h2 id="overall">11. 全体像</h2>
+<p class="deck">この回で語られたことが、どうつながっているか。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="市場の現実、Cardano の強みと弱み、レジストリ構想、予算の不足がどうつながるかを示した全体像の図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="26" width="300" height="70" rx="8" class="d-box-warn"/>
+  <text x="166" y="52" class="d-t" text-anchor="middle">市場の現実</text>
+  <text x="166" y="76" class="d-s" text-anchor="middle">オンチェーンは 1 日 3 万ドル。まだ検証されていない</text>
+
+  <rect x="364" y="26" width="300" height="70" rx="8" class="d-box"/>
+  <text x="514" y="52" class="d-t" text-anchor="middle">Cardano の強み</text>
+  <text x="514" y="76" class="d-s" text-anchor="middle">決定性・形式検証・UTXO・アイデンティティ</text>
+
+  <rect x="364" y="110" width="300" height="70" rx="8" class="d-box-warn"/>
+  <text x="514" y="136" class="d-t" text-anchor="middle">Cardano の弱み</text>
+  <text x="514" y="160" class="d-s" text-anchor="middle">支払いが高く遅い。SDK・ウォレット・DEX 接続が薄い</text>
+
+  <path d="M514 100 L514 106" class="d-line-accent"/>
+  <line x1="360" y1="145" x2="330" y2="145" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="16" y="110" width="300" height="70" rx="8" class="d-box-accent"/>
+  <text x="166" y="136" class="d-t" text-anchor="middle">だから、レジストリを取る</text>
+  <text x="166" y="160" class="d-s" text-anchor="middle">登録は Cardano、支払いは得意なチェーンで</text>
+
+  <line x1="166" y1="184" x2="166" y2="212" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="16" y="216" width="300" height="70" rx="8" class="d-box"/>
+  <text x="166" y="242" class="d-t" text-anchor="middle">Sokosumi で実装されている</text>
+  <text x="166" y="266" class="d-s" text-anchor="middle">168 件の一覧はチェーンから直読み。決済は USDM</text>
+
+  <rect x="364" y="194" width="300" height="92" rx="8" class="d-box-plain"/>
+  <text x="514" y="220" class="d-t" text-anchor="middle">残っている問題</text>
+  <text x="514" y="244" class="d-s" text-anchor="middle">Cardano は AI にほとんど予算を割いていない</text>
+  <text x="514" y="266" class="d-s" text-anchor="middle">技術だけでは勝てない（NEAR の例）</text>
+</svg>
+<p class="figcap">「支払いでは勝てない」と認めたところから構想が始まっているのが、この回の特徴です。</p>
+</div>
+
+
+<h2 id="qa">12. やり取りと、持ち帰りになった論点</h2>
+<p class="deck">参加者から出た問いと、答えの出なかったもの。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者A</span>セキュリティがこの分類に入っていない。敵対的なエージェントを放つ側と守る側の「軍拡競争」が起きるのでは。</p>
+<p class="qa-a" data-by="回答"><strong>「見ていなかった、興味深い」</strong>としたうえで、分類に入れなかった理由が示されました。<strong>調整や統率の媒体としてのブロックチェーンが必ずしも要らない</strong>から、というものです。監査するエージェントは中央集権的に配備しても成立してしまう、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者B</span>セキュリティは、どの分類にも入りうるのではないか。</p>
+<p class="qa-a" data-by="補強"><strong>商取引としても、商用サービスとしても成立する</strong>と応じています。加えて<strong>アイデンティティが関わる</strong>点も指摘されました。監査のために私的な情報を開示するなら、<strong>誰に開示しているのかを知る必要がある</strong>からです。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者C（チャット）</span>エージェントは、どのプラットフォーム／ブロックチェーンを選ぶかを、よりデータに基づいて決められるようになるのでは。</p>
+<p class="qa-a" data-by="同意">主催者が<strong>完全に同意</strong>。セキュリティのパラメータなどをもとにエージェントに調べさせれば <strong>Cardano はかなり上位に来る</strong>はずだ、と。<strong>「もうインフルエンサーの意見を聞く必要は必ずしもなく、エージェントが選べる」</strong>という受け止めでした。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者D（チャット）</span>各ブロックチェーンは AI 分野にどれだけ予算を割いているのか。</p>
+<p class="qa-a" data-by="回答">Base は多く割いていることが明らか、Tempo もおそらく、NEAR もかもしれない。<strong>ただしいずれも「推測するしかない」</strong>と断られています。Cardano については断言する形で「多くは割いていない」（第 9 節）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者E（チャット）</span>自分が契約している上位プランの LLM をエージェントに接続できるか。</p>
+<p class="qa-a" data-by="回答"><strong>できない。</strong>この手の上位プランは<strong>規約上、外部への接続を認めていない</strong>ものがほとんどだから、という説明です。したがって<strong>各エージェントの価格を支払う</strong>ことになります。裏で Claude を使うか Mistral を使うかは<strong>エージェントの開発者側が選べる</strong>ため、価格はエージェントによって変わります。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記録として</span>マシン・ツー・マシンは筋が悪いのか、時期が早すぎただけなのか。</p>
+<p class="qa-a" data-by="結論なし">IOTA が離陸しなかったことを根拠に強い懐疑が示され、双方が<strong>「早すぎただけかもしれない」という留保</strong>も付けています。<strong>どちらなのかは詰められないまま次の話題に移りました。</strong></p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記録として</span>他チェーンのエージェントが Cardano に登録する動機は何か。</p>
+<p class="qa-a" data-by="未説明">レジストリ構想の要は「全員がここに登録する」ことですが、<strong>なぜ他チェーンのエージェントがそうするのかは説明されていません</strong>。168 件のうち他チェーンのものが何件かも述べられていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記録として</span>Cardano の AI 予算を、誰がどう作るのか。</p>
+<p class="qa-a" data-by="問題提起のみ">「エコシステムのすべての当事者が同じ方向に動く協調した取り組みが要る」という一般論までで、<strong>誰が旗を振るのか、どの経路で予算化するのかには触れていません</strong>。1 億ドルという数字も、提案ではなく優先度の主張として述べられたものです。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>このコールは<strong>登録制で、録画は一般に公開されていません</strong>（参加者およそ 50 名）。そのため<strong>氏名・ハンドル名・所属は記載していません</strong>。全文ページで使っている <code>進行役</code> <code>登壇者A</code> <code>参加者A〜F</code> は、会話の流れを追うための仮のラベルです。</p>
+<p><strong>所属について。</strong>このコールでは複数の参加者が勤務先と役職を名乗っていますが、<strong>両方を並べると個人が特定できる</strong>ため、どちらも領域の記述に置き換えています。第三者として名前が挙がった人物も、同じ理由で役割に置き換えました。</p>
+<p><strong>話者について。</strong>原本には話者ラベルもタイムスタンプもないため、話者は文脈から推定しています。主要な 2 人の声はほぼ全編を通して明確なので、<strong>帰属が本当に不確かな箇所にだけ</strong>全文ページで <code>(推定)</code> を付けています。</p>
+<p><strong>資料について。</strong>全編を通して画面共有がありましたが、<strong>スライドは公開されていません</strong>。このページの内容は<strong>すべて音声で語られたもの</strong>で、図表から補完したものはありません。発表者自身が<strong>「スライドはすべて LLM で作ったので割り引いて聞いてほしい」</strong>と断っています。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">IN ONE LINE</span>
+  <p>Agents × blockchain attracts enormous money, but <strong>on-chain agentic volume is about $30k a day</strong>.<br>
+  Granting that gap, the plan put forward is that Cardano goes after <strong>the registry, not the payments</strong>.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Trillions projected, $30k a day actual.</strong> Reports vary by 10×, and the guest stated plainly that <strong>on-chain agentic commerce “is not yet validated.”</strong></li>
+  <li><strong>Cloudflare is moving into wallets.</strong> One of the creators of x402 followed its monetisation gateway (the selling side) with <strong>a wallet (the buying side)</strong>. Coinbase and Stripe are moving the same way.</li>
+  <li><strong>Cardano's play is the registry, not payments.</strong> The host conceded outright that <strong>“Cardano is not good at doing payments because it's too expensive, too slow”</strong> — so register every chain's agents on Cardano and make it the lookup point. Registering Base agents already works.</li>
+  <li><strong>The gaps are frameworks and tooling.</strong> Identity and discovery/reputation are strong because of Masumi, but <strong>an agent SDK, wallets, custody and DEX adapters</strong> are missing.</li>
+  <li><strong>Cardano is barely budgeting for AI</strong>, per the host: the only semi-well-funded project doing AI on Cardano is his own. “If Cardano were my blockchain, I'd take the entire net change limit and put $100 million into AI.”</li>
+  <li><strong>Technology doesn't win on its own.</strong> NEAR was offered as the counter-example: near-leader on the tech components, but adoption isn't following.</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>This session is anonymised.</strong> It was a registration-only call and <strong>the recording is not published publicly</strong>. The content can be shared, but <strong>who said what is not recorded</strong>. Speakers appear as “the host,” “Speaker A” and so on, and employers and job titles have been replaced with descriptions of the field.</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">What this session covered</p>
+<ol>
+  <li><a href="#en-news"><span class="n">01</span>Cloudflare moves into wallets</a></li>
+  <li><a href="#en-segments"><span class="n">02</span>Three segments, and which are moving</a></li>
+  <li><a href="#en-why-blockchain"><span class="n">03</span>Why agents need a blockchain</a></li>
+  <li><a href="#en-reality"><span class="n">04</span>Trillions projected, $30k a day actual</a></li>
+  <li><a href="#en-b2b"><span class="n">05</span>B2B before B2C</a></li>
+  <li><a href="#en-why-cardano"><span class="n">06</span>Why Cardano</a></li>
+  <li><a href="#en-gaps"><span class="n">07</span>The gaps are frameworks and tooling</a></li>
+  <li><a href="#en-registry"><span class="n">08</span>Cardano as the registry</a></li>
+  <li><a href="#en-budget"><span class="n">09</span>There is no AI budget</a></li>
+  <li><a href="#en-sokosumi"><span class="n">10</span>Sokosumi — what actually runs</a></li>
+  <li><a href="#en-overall"><span class="n">11</span>How it fits together</a></li>
+  <li><a href="#en-qa"><span class="n">12</span>Exchanges, and what was left open</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-news">1. Cloudflare moves into wallets</h2>
+<p class="deck">A vast infrastructure company with no crypto history, entering from both the selling and the buying side.</p>
+
+<p>Only one item was raised as news: <strong>Cloudflare is releasing a wallet</strong>. Prefaced with “that's actually really crazy because Cloudflare doesn't really have anything to do with crypto,” the explanation was that <strong>they were one of the creators of the x402 standard</strong> and have been interested in agent-to-agent payments from the beginning.</p>
+
+<div class="term">
+<p class="term-name">x402</p>
+<p>A standard for an agent to <strong>pay a metered endpoint on the spot, automatically</strong>. <span class="badge">added</span>The name comes from the HTTP status code <code>402 Payment Required</code> — a number reserved for decades and barely used. The flow it enables is <strong>the server answering “payment required,” the caller paying, and retrying</strong>, with no human in the loop.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="Diagram showing Cloudflare shipping both a monetisation gateway on the selling side and a wallet on the buying side, bracketing the agent economy">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="40" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="116" y="70" class="d-t" text-anchor="middle">Selling side</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">Monetisation gateway</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">(announced earlier this month)</text>
+
+  <rect x="464" y="40" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="564" y="70" class="d-t" text-anchor="middle">Buying side</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">Wallet for your agent</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">(this announcement; rolling out)</text>
+
+  <rect x="244" y="55" width="192" height="60" rx="8" class="d-box"/>
+  <text x="340" y="80" class="d-t" text-anchor="middle">x402</text>
+  <text x="340" y="102" class="d-t" text-anchor="middle">endpoints</text>
+
+  <line x1="222" y1="85" x2="238" y2="85" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="458" y1="85" x2="442" y2="85" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="16" y="152" width="648" height="72" rx="7" class="d-box-plain"/>
+  <text x="340" y="178" class="d-s" text-anchor="middle">“They're really coming from both directions here, which I find interesting”</text>
+  <text x="340" y="202" class="d-s" text-anchor="middle">Coinbase and Stripe are moving the same way. “I really think that this is the next big trend”</text>
+</svg>
+<p class="figcap">The wallet is at the waitlist stage at <code>cloudflare.pay</code>. <span class="badge">added</span>No specification is public; “probably a CLI” was offered as a guess.</p>
+</div>
+
+<p>It was explicitly not framed as competition. Instead it was taken as <strong>validation of the thesis that billions of agents will transact with each other, with most of the money flow running through wallets like these</strong>.</p>
+
+
+<h2 id="en-segments">2. Three segments, and which are moving</h2>
+<p class="deck">Agents × blockchain splits three ways. One of them was already attempted six years ago, and never landed.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram of the three segments — agentic commerce, agentic DeFi and machine-to-machine — and how far each has got">
+  <rect x="16" y="34" width="204" height="120" rx="8" class="d-box-accent"/>
+  <text x="118" y="62" class="d-t" text-anchor="middle">Agentic commerce</text>
+  <text x="118" y="88" class="d-s" text-anchor="middle">Agents buying and selling</text>
+  <text x="118" y="108" class="d-s" text-anchor="middle">services and data</text>
+  <text x="118" y="136" class="d-s d-a" text-anchor="middle">Taking off</text>
+
+  <rect x="238" y="34" width="204" height="120" rx="8" class="d-box-accent"/>
+  <text x="340" y="62" class="d-t" text-anchor="middle">Agentic DeFi</text>
+  <text x="340" y="88" class="d-s" text-anchor="middle">Agents trading autonomously</text>
+  <text x="340" y="108" class="d-s" text-anchor="middle">on behalf of users</text>
+  <text x="340" y="136" class="d-s d-a" text-anchor="middle">Taking off</text>
+
+  <rect x="460" y="34" width="204" height="120" rx="8" class="d-box-warn"/>
+  <text x="562" y="62" class="d-t" text-anchor="middle">Machine-to-machine</text>
+  <text x="562" y="88" class="d-s" text-anchor="middle">Robots, autonomous cars and</text>
+  <text x="562" y="108" class="d-s" text-anchor="middle">drones paying each other</text>
+  <text x="562" y="136" class="d-s d-w" text-anchor="middle">Landed the least</text>
+
+  <rect x="16" y="172" width="648" height="62" rx="7" class="d-box-plain"/>
+  <text x="340" y="196" class="d-s" text-anchor="middle">A fourth — infrastructure and identity — was set aside by the presenter himself</text>
+  <text x="340" y="220" class="d-s" text-anchor="middle">Security is absent from the taxonomy — raised from the floor (section 12)</text>
+</svg>
+<p class="figcap">The framing was that the top two are moving while machine-to-machine lags.</p>
+</div>
+
+<p>On machine-to-machine the host was <strong>openly sceptical</strong>, and grounded it in <strong>IOTA</strong>. Six years ago it was focused squarely on machine-to-machine payments, pitching “Bosch has a robot, and then the robot from Bosch is paying the robot of one of its suppliers, and then pays one of the Mercedes robots” — and it <strong>never really took off</strong>.</p>
+
+<blockquote>
+<p>It makes sense in theory if you hear it, but in practice it's not relevant anywhere yet.</p>
+</blockquote>
+
+<p>Both sides did allow that it may simply have been too early. <strong>Whether the idea is wrong or the timing was wrong is not resolved on this call.</strong></p>
+
+
+<h2 id="en-why-blockchain">3. Why agents need a blockchain</h2>
+<p class="deck">Four reasons, as the narrative runs — with the presenter's own caveat that they aren't required everywhere.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="The four stated reasons for putting agents on a blockchain">
+  <rect x="16" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="94" y="58" class="d-t" text-anchor="middle">Payments</text>
+  <text x="94" y="82" class="d-s" text-anchor="middle">Fast sub-cent</text>
+  <text x="94" y="102" class="d-s" text-anchor="middle">transfers</text>
+
+  <rect x="180" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="258" y="58" class="d-t" text-anchor="middle">Trust</text>
+  <text x="258" y="82" class="d-s" text-anchor="middle">On-chain contracts</text>
+  <text x="258" y="102" class="d-s" text-anchor="middle">identity, reputation</text>
+
+  <rect x="344" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="422" y="58" class="d-t" text-anchor="middle">Bounded autonomy</text>
+  <text x="422" y="82" class="d-s" text-anchor="middle">How much it can spend</text>
+  <text x="422" y="102" class="d-s" text-anchor="middle">and what it can do</text>
+
+  <rect x="508" y="30" width="156" height="96" rx="8" class="d-box"/>
+  <text x="586" y="58" class="d-t" text-anchor="middle">Accountability</text>
+  <text x="586" y="82" class="d-s" text-anchor="middle">Verifying what agents</text>
+  <text x="586" y="102" class="d-s" text-anchor="middle">did along the way</text>
+
+  <rect x="16" y="146" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="170" class="d-t" text-anchor="middle">“It should be a tiny part of the application — like 2% or something”</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">Outside agentic DeFi, the blockchain part is optional — the presenter's own words</text>
+</svg>
+<p class="figcap">The host confirmed these are the same four pillars Masumi focuses on, ignoring everything outside them.</p>
+</div>
+
+<p>Where both agreed most sharply was the warning against <strong>trying to fit blockchain onto everything</strong>. “No one has done this before. Let's just fit blockchain onto it, raise an ICO, and get a bunch of money to build it” was named as the wrong approach, and <strong>blockchain washing</strong> as the phenomenon.</p>
+
+<p>The concrete example given was <strong>decentralising the training of AI models</strong>: “in theory, yes it can work, but there's just economics that you have to fight here, and then you end up in the best case scenario with a centralized kind of system again.”</p>
+
+
+<h2 id="en-reality">4. Trillions projected, $30k a day actual</h2>
+<p class="deck">The coldest number in the call — and it came from the guest, unprompted.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram contrasting trillion-dollar market projections against thirty thousand dollars of actual daily on-chain volume">
+  <text x="16" y="22" class="d-s">The addressable markets being talked about</text>
+
+  <rect x="16" y="32" width="648" height="46" rx="7" class="d-box-accent"/>
+  <text x="340" y="61" class="d-t" text-anchor="middle">Agentic commerce = trillions (agent software = billions)</text>
+
+  <rect x="16" y="88" width="648" height="34" rx="6" class="d-box-warn"/>
+  <text x="340" y="110" class="d-s" text-anchor="middle">But a 10× variance between reports — “the hand-wavy way in which they do market sizing”</text>
+
+  <text x="16" y="152" class="d-s d-w">What is actually happening</text>
+
+  <rect x="16" y="162" width="60" height="46" rx="6" class="d-box-warn"/>
+  <text x="46" y="191" class="d-t d-w" text-anchor="middle">$30k</text>
+  <text x="92" y="184" class="d-s">Daily volume of on-chain agentic activity</text>
+  <text x="92" y="204" class="d-s d-w">“Agentic commerce on chain is not yet validated. It's early days.”</text>
+
+  <rect x="16" y="222" width="648" height="26" rx="6" class="d-box-plain"/>
+  <text x="340" y="240" class="d-s" text-anchor="middle">The presenter put both on the same slide himself — the point being to keep it in mind before believing the hype</text>
+</svg>
+<p class="figcap">The bar lengths are not to scale. <span class="badge">added</span>Trillions and $30k are eight orders of magnitude apart and cannot be drawn proportionally.</p>
+</div>
+
+<p>The host did not push back. He conceded that looking at <strong>what is actually being sold on Base is “extremely disappointing”</strong>: the marketplaces have bad UX and bad design, and even with ten thousand registered endpoints, <strong>those endpoints are for buying basic API resources — ChatGPT-style inference</strong>. <strong>“So there's not really agent to agent happening.”</strong></p>
+
+<p>His view of where the unlock comes is <strong>when agents start bundling services</strong> — selling a long-running task like producing a whole marketing campaign. The bet is on <strong>moving the consulting and marketing services business into the agentic world</strong>, settled in stablecoins, skipping the card rails entirely.</p>
+
+
+<h2 id="en-b2b">5. B2B before B2C</h2>
+<p class="deck">Handing your own agent a funded wallet is still far off. Companies are already spending $500 a month per head.</p>
+
+<p>Asked whether B2C or B2B moves first, the answer was <strong>clearly B2B for now</strong>, argued from what people actually spend.</p>
+
+<ul>
+  <li><strong>Individuals</strong> — friends outside AI and crypto have at most a ChatGPT premium subscription. Getting from there to <strong>a personal agent holding a wallet with thousands of dollars in it</strong> is “still very far away.”</li>
+  <li><strong>Businesses</strong> — currently need to budget <strong>around $500 per month per employee</strong> for AI tokens, with an estimate of <strong>$3,000 per employee</strong> two years out.</li>
+</ul>
+
+<p><span class="badge">added</span>No source was given for the $500 and $3,000 figures. They were framed as what a business “has to calculate” and as an “estimate.”</p>
+
+
+<h2 id="en-why-cardano">6. Why Cardano</h2>
+<p class="deck">Determinism, formal verification, identity — plus a scaling argument added by the host.</p>
+
+<p>The guest gave three: <strong>determinism</strong> (which matters for how agents interact), <strong>formal verification</strong> (“a more robust system than you have in other chains”), and <strong>identity and confidentiality</strong> — pointing at <strong>Veridian</strong> as an identity primitive in the ecosystem and at <strong>Midnight</strong> as a possible privacy attachment. <strong>Masumi</strong> itself was added to the list, as a standard protocol carrying escrow, identity and reputation.</p>
+
+<div class="term">
+<p class="term-name">CIP-118 (nested transactions) and Babel fees</p>
+<p>Two things named as “making sense for agents.” <span class="badge">added</span><strong>Babel fees</strong> let a transaction pay its fee in something other than ADA — relevant here because <strong>an agent holding only stablecoins could still transact</strong>. <strong>Nested transactions</strong> is a proposal to compose transactions inside one another. <strong>Both were named and not explained</strong> — the presenter was looking up the CIP number during the call.</p>
+</div>
+
+<p>The host added <strong>scale</strong>. Thinking ten years out — millions and eventually billions of TPS rather than a thousand — <strong>there is no way to get there except by parallelising</strong>.</p>
+
+<details class="explain">
+<summary>Why UTXO parallelises more easily — open for a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written here. The call gave only the conclusion, that “the UTXO model by default is parallelized.”</p>
+
+<h4>Two ways of keeping the books</h4>
+<p>An <strong>account model</strong> works like a bank account: one number per account, rewritten with every transaction. A <strong>UTXO model</strong> works like the notes in your wallet: a collection of <strong>discrete unspent pieces</strong>. To pay, you consume some pieces and create new ones as change.</p>
+
+<h4>Why that parallelises</h4>
+<p>With accounts, two transactions touching the same account <strong>cannot be processed at once</strong> — the balance depends on which went first. With UTXOs, <strong>transactions consuming different pieces are unrelated</strong> and can be processed simultaneously. That's what “every UTXO can be treated individually” and “you never need to know the entire state of the blockchain” mean.</p>
+
+<h4>An everyday analogy</h4>
+<p>The account model is one queue at one counter. The UTXO model is <strong>a bank of self-checkouts</strong>: as long as two customers aren't reaching for the same item, they can both ring up at the same time.</p>
+
+<h4>In one line</h4>
+<p><strong>Independent transactions can be handled at the same time</strong> — which is also why state-channel designs like Hydra fit the model well.</p>
+
+<h4>What this call doesn't claim</h4>
+<p>The host <strong>explicitly disclaimed the strong version himself</strong>: “that's not to say that Cardano can scale up to billions of transactions per second. That's not what I'm saying.” The claim stops at having a good basis to build on. <strong>No actual throughput figure and no timeline is given.</strong></p>
+</div>
+</details>
+
+<p>The guest immediately attached his own caveat: <strong>this is all the supply side, and “technology doesn't always win the game.”</strong> The next section is what he meant.</p>
+
+
+<h2 id="en-gaps">7. The gaps are frameworks and tooling</h2>
+<p class="deck">The primitives are strong. What's missing is the part a builder touches first.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="Comparison of Base, Solana, NEAR and Cardano by component, showing Cardano thin on frameworks and wallets">
+  <text x="150" y="24" class="d-s" text-anchor="middle">Frameworks, tooling</text>
+  <text x="330" y="24" class="d-s" text-anchor="middle">Wallets, custody</text>
+  <text x="510" y="24" class="d-s" text-anchor="middle">Identity, discovery</text>
+  <text x="620" y="24" class="d-s" text-anchor="middle">Adoption</text>
+
+  <text x="20" y="60" class="d-t">Base</text>
+  <rect x="80" y="42" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="240" y="42" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="400" y="42" width="140" height="24" rx="4" class="d-box"/>
+  <rect x="560" y="42" width="104" height="24" rx="4" class="d-box-accent"/>
+
+  <text x="20" y="102" class="d-t">Solana</text>
+  <rect x="80" y="84" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="240" y="84" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="400" y="84" width="140" height="24" rx="4" class="d-box"/>
+  <rect x="560" y="84" width="104" height="24" rx="4" class="d-box-accent"/>
+
+  <text x="20" y="144" class="d-t">NEAR</text>
+  <rect x="80" y="126" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="240" y="126" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="400" y="126" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="560" y="126" width="104" height="24" rx="4" class="d-box-warn"/>
+
+  <text x="20" y="186" class="d-t">Cardano</text>
+  <rect x="80" y="168" width="140" height="24" rx="4" class="d-box-plain"/>
+  <rect x="240" y="168" width="140" height="24" rx="4" class="d-box-plain"/>
+  <rect x="400" y="168" width="140" height="24" rx="4" class="d-box-accent"/>
+  <rect x="560" y="168" width="104" height="24" rx="4" class="d-box-warn"/>
+
+  <rect x="16" y="210" width="648" height="42" rx="7" class="d-box-plain"/>
+  <text x="340" y="228" class="d-s" text-anchor="middle">NEAR has the tech part sorted and the adoption isn't following — the counter-example</text>
+  <text x="340" y="246" class="d-s" text-anchor="middle">Dashed = thin or missing. Filled = relatively strong</text>
+</svg>
+<p class="figcap">The original comparison redrawn along the four axes actually discussed. <span class="badge">added</span>The presenter's own caveat: <strong>“all these slides are with LLM, so you have to take it with a pinch of salt.”</strong></p>
+</div>
+
+<p>Cardano was rated good on <strong>identity</strong> and on <strong>discovery and reputation</strong> — explicitly credited to <strong>what Masumi has built</strong>. Thin on three things:</p>
+
+<ul>
+  <li><strong>An agent SDK</strong> — the equivalent of Base's AgentKit</li>
+  <li><strong>Wallets and custody</strong> — key management enforced by a TEE, rather than “storing keys as environment variables”</li>
+  <li><strong>DEX adapters</strong> — so agents can actually interact with DEXs</li>
+</ul>
+
+<div class="term">
+<p class="term-name">TEE <small>trusted execution environment</small></p>
+<p>Running a computation inside a box nobody can see into from outside. <span class="badge">added</span>When an agent holds a private key, <strong>leaving that key in plaintext in an environment variable means anyone who gets onto the machine takes the funds</strong>. A TEE lets the agent ask for a signature without ever being able to read the key. It came up as one of NEAR's strengths.</p>
+</div>
+
+
+<h2 id="en-registry">8. Cardano as the registry</h2>
+<p class="deck">The core of the call. Having conceded that payments aren't winnable, what do you take instead?</p>
+
+<p>This is the furthest the call goes. It starts by <strong>conceding the market</strong>: “if there's ten thousand agents on Base and there's only a hundred on Cardano, it doesn't make sense to not use Base as well.”</p>
+
+<p>Then comes a blunt assessment of Cardano's payment capability.</p>
+
+<blockquote>
+<p>Right now, Cardano is not good at doing payments because it's too expensive, too slow, all these kinds of things.</p>
+</blockquote>
+
+<p>The answer offered is to use Cardano as <strong>“the central anchor”</strong> — the registry.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 280" role="img" aria-label="Diagram showing agents from every chain registering on Cardano while payments settle on their own chains">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="34" width="140" height="52" rx="7" class="d-box"/>
+  <text x="86" y="65" class="d-t" text-anchor="middle">Cardano agents</text>
+  <rect x="16" y="98" width="140" height="52" rx="7" class="d-box"/>
+  <text x="86" y="129" class="d-t" text-anchor="middle">Base agents</text>
+  <rect x="16" y="162" width="140" height="52" rx="7" class="d-box-plain"/>
+  <text x="86" y="187" class="d-s" text-anchor="middle">any other chain,</text>
+  <text x="86" y="205" class="d-s" text-anchor="middle">in future</text>
+
+  <line x1="162" y1="60" x2="228" y2="110" class="d-line-accent" marker-end="url(#e2)"/>
+  <line x1="162" y1="124" x2="228" y2="124" class="d-line-accent" marker-end="url(#e2)"/>
+  <line x1="162" y1="188" x2="228" y2="140" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="234" y="86" width="200" height="80" rx="8" class="d-box-accent"/>
+  <text x="334" y="116" class="d-t" text-anchor="middle">Registry on Cardano</text>
+  <text x="334" y="140" class="d-s" text-anchor="middle">everyone registers here,</text>
+  <text x="334" y="158" class="d-s" text-anchor="middle">everyone is looked up here</text>
+
+  <line x1="440" y1="126" x2="500" y2="126" class="d-line" marker-end="url(#e3)"/>
+  <text x="470" y="116" class="d-s" text-anchor="middle">look up</text>
+
+  <rect x="506" y="86" width="158" height="80" rx="8" class="d-box"/>
+  <text x="585" y="112" class="d-s" text-anchor="middle">“which blockchain</text>
+  <text x="585" y="132" class="d-s" text-anchor="middle">it accepts</text>
+  <text x="585" y="152" class="d-s" text-anchor="middle">as payments”</text>
+
+  <rect x="16" y="230" width="648" height="42" rx="7" class="d-box-plain"/>
+  <text x="340" y="248" class="d-s" text-anchor="middle">Payments go through whichever chain is better at payments than Cardano</text>
+  <text x="340" y="266" class="d-s" text-anchor="middle">“It's up to the agent developers and the agents themselves where they want to receive the money”</text>
+</svg>
+<p class="figcap">What Cardano is good at, per the argument, is being “this record, this underlying kind of system that you can trust.” <strong>Registering Base agents already works.</strong></p>
+</div>
+
+<details class="explain">
+<summary>A basic question — if only the registration is on Cardano, what does Cardano actually keep?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written here. None of it was said on the call.</p>
+
+<h4>The question is a fair one</h4>
+<p>On a blockchain, <strong>value normally accrues where the transactions are</strong>: fees land, liquidity gathers, and that pulls in the next user. <strong>Registration happens once, and it is cheap.</strong> Holding only that looks like a thin position, and the instinct is sound.</p>
+
+<h4>Why the bet can still work</h4>
+<p>What is being bet on is <strong>the status of being the record of truth</strong>. Two analogies make the shape clearer.</p>
+<ul>
+  <li><strong>A domain name registry.</strong> None of the traffic goes through it. But it decides who owns the name, and that position is very hard to displace.</li>
+  <li><strong>A securities depository.</strong> Trading happens at the exchange; <strong>the record of who ultimately holds what</strong> sits somewhere else entirely.</li>
+</ul>
+<p>In the call's own words, what Cardano is good at is being a record “that you can trust, that is secure, and that you can look up things on.” The bet is on <strong>owning the register rather than the venue</strong>.</p>
+
+<h4>How you would tell from the outside</h4>
+<p>Whether the bet is landing shows up in <strong>how many agents from other chains actually register</strong>. If only Cardano-native agents are there, it is a directory of Cardano, not a registry of agents. <strong>The 168 figure quoted in the demo is never broken down by chain.</strong></p>
+
+<h4>What this call doesn't cover</h4>
+<p><strong>Why an agent on another chain would want to register on Cardano</strong> is not explained — a question that gets sharper if registration costs a fee. Nor is what would defend the position if a competing registry appeared.</p>
+</div>
+</details>
+
+
+<h2 id="en-budget">9. There is no AI budget</h2>
+<p class="deck">The bluntest thing said all call — and the host's own project is the example.</p>
+
+<p>This came out of a chat question: <strong>how much is each blockchain budgeting into the AI sector?</strong></p>
+
+<p>The answer was that <strong>“Cardano is not budgeting a lot into AI”</strong> — stated as fact, on the grounds that <strong>the only semi-well-funded project doing anything with AI on Cardano is Masumi</strong>. There is interest from IO, from CF and across projects, but <strong>“there's not really a huge kind of coordinated push.”</strong></p>
+
+<blockquote>
+<p>If Cardano was my blockchain, I would take the entire net change limit, and just take like $100 million and put it into AI.</p>
+</blockquote>
+
+<div class="term">
+<p class="term-name">Net change limit</p>
+<p>The cap on <strong>how much can leave the Cardano treasury</strong> in a given period. <span class="badge">added</span>“Taking the entire net change limit” means <strong>directing everything the treasury can pay out in that window into one sector</strong>. In practice it would compete with every other proposal, so <strong>the remark reads as an argument about priority rather than a proposal</strong>.</p>
+</div>
+
+<p>The guest agreed, and added the other side: some chains are spending heavily and <strong>their ROI is still to be determined</strong> — “I don't think it's all going to pay off.” Being later than Base and Solana may put Cardano in <strong>a good spot to assess what actually works</strong>, with more data to go on.</p>
+
+<p><span class="badge">added</span>The call also notes in passing that <strong>the AlphaGrowth proposal “passed today,”</strong> raised in the context that <strong>DeFi momentum makes now a good moment to build an agent wallet that talks to DeFi platforms</strong>.</p>
+
+
+<h2 id="en-sokosumi">10. Sokosumi — what actually runs</h2>
+<p class="deck">After the strategy, a live screen. The agent list is read straight off the chain.</p>
+
+<p>The call closed with a product demo. <strong>Sokosumi</strong> was described as a marketplace for “AI coworkers” aimed at marketing work, with <strong>Masumi as the tech layer underneath and Sokosumi as the product on top</strong>.</p>
+
+<p>What was stated in checkable form:</p>
+
+<ul>
+  <li><strong>The list of 168 agents is read directly from the blockchain.</strong> “This is not coming from Sokosumi or some API. This is literally taken directly from the blockchain, from using Blockfrost.” The same entries can be found on Cardanoscan.</li>
+  <li><strong>Agents can hire agents.</strong> If one can't complete a task alone, it has access to every other agent registered on Masumi.</li>
+  <li><strong>A task board, not a chat window.</strong> Deliberately not only a ChatGPT-style interface — a Jira- or Linear-style kanban, to handle long-running and scheduled tasks.</li>
+  <li><strong>Credits are stablecoins.</strong> One credit is <strong>USDM</strong> on Cardano. Hiring an external agent bills in USDM and <strong>executes a transaction on Cardano through the Masumi protocol</strong>.</li>
+  <li><strong>11,900 registered users</strong>, per the internal data agent answering live during the demo.</li>
+</ul>
+
+<p>The past two weeks' work was a <strong>Slack-like workspace where you hand tasks to agents in the chat itself</strong>, inspired by <strong>Buzz</strong>, released by Block. Buzz itself was described as <strong>local to your own machine, fully encrypted, and running on a decentralised messaging protocol</strong>.</p>
+
+<p><span class="badge">added</span>The pitch is that it is “very much blockchain integrated without me actually seeing that there's any blockchain involved.” <strong>The flip side is that a user cannot tell from the screen which parts are on-chain.</strong> Read alongside section 8 — registry on Cardano, payments possibly elsewhere — <strong>which portion is a Cardano transaction becomes hard to follow from outside.</strong></p>
+
+
+<h2 id="en-overall">11. How it fits together</h2>
+<p class="deck">How the pieces of this call connect.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Overview diagram connecting market reality, Cardano's strengths and weaknesses, the registry plan and the missing budget">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="26" width="300" height="70" rx="8" class="d-box-warn"/>
+  <text x="166" y="52" class="d-t" text-anchor="middle">Market reality</text>
+  <text x="166" y="76" class="d-s" text-anchor="middle">$30k a day on-chain. Not yet validated</text>
+
+  <rect x="364" y="26" width="300" height="70" rx="8" class="d-box"/>
+  <text x="514" y="52" class="d-t" text-anchor="middle">Cardano's strengths</text>
+  <text x="514" y="76" class="d-s" text-anchor="middle">Determinism, formal verification, UTXO, identity</text>
+
+  <rect x="364" y="110" width="300" height="70" rx="8" class="d-box-warn"/>
+  <text x="514" y="136" class="d-t" text-anchor="middle">Cardano's weaknesses</text>
+  <text x="514" y="160" class="d-s" text-anchor="middle">Payments slow and dear. Thin SDK, wallets, DEX access</text>
+
+  <path d="M514 100 L514 106" class="d-line-accent"/>
+  <line x1="360" y1="145" x2="330" y2="145" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="16" y="110" width="300" height="70" rx="8" class="d-box-accent"/>
+  <text x="166" y="136" class="d-t" text-anchor="middle">So: take the registry</text>
+  <text x="166" y="160" class="d-s" text-anchor="middle">Register on Cardano, settle wherever is better</text>
+
+  <line x1="166" y1="184" x2="166" y2="212" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="16" y="216" width="300" height="70" rx="8" class="d-box"/>
+  <text x="166" y="242" class="d-t" text-anchor="middle">Already built in Sokosumi</text>
+  <text x="166" y="266" class="d-s" text-anchor="middle">168 read off-chain directly. Settlement in USDM</text>
+
+  <rect x="364" y="194" width="300" height="92" rx="8" class="d-box-plain"/>
+  <text x="514" y="220" class="d-t" text-anchor="middle">What's left unsolved</text>
+  <text x="514" y="244" class="d-s" text-anchor="middle">Cardano barely budgets for AI</text>
+  <text x="514" y="266" class="d-s" text-anchor="middle">Technology alone doesn't win (see NEAR)</text>
+</svg>
+<p class="figcap">What marks this call out is that the plan begins by conceding the payments fight rather than contesting it.</p>
+</div>
+
+
+<h2 id="en-qa">12. Exchanges, and what was left open</h2>
+<p class="deck">What was asked from the floor, and what never got an answer.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant A</span>Security is missing from the taxonomy. Isn't there an arms race between adversarial agents and defensive ones?</p>
+<p class="qa-a" data-by="Answer"><strong>“That's interesting. I've not really looked into it”</strong> — followed by the reason it was left out: it <strong>doesn't necessarily need blockchain rails as a coordination and orchestration medium</strong>. An auditing agent works fine deployed centrally.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant B</span>Couldn't security fit into any of the categories?</p>
+<p class="qa-a" data-by="Added">Yes — it works as commerce or as a commercial service. And <strong>identity comes into it</strong>: if you disclose private information to be audited, <strong>you need to know who you are disclosing it to</strong>.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant C (chat)</span>Agents will have a more data-driven way to decide which platform or blockchain to choose.</p>
+<p class="qa-a" data-by="Agreement">The host <strong>completely agreed</strong>. Asked to research which chain to build on today, weighting security parameters, <strong>“Cardano would rank pretty highly actually for the agent.”</strong> The appeal: <strong>“we don't necessarily have to listen to whatever influencer's opinion anymore.”</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant D (chat)</span>How much is each blockchain budgeting into the AI sector?</p>
+<p class="qa-a" data-by="Answer">Base clearly a lot, Tempo probably, NEAR maybe — but <strong>“we can only guess”</strong> for all of them. Cardano was the exception, answered as a statement of fact (section 9).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant E (chat)</span>Can I connect my own high-tier LLM subscription to the agents?</p>
+<p class="qa-a" data-by="Answer"><strong>No.</strong> Most high-tier subscriptions <strong>don't allow connecting to anything under their terms</strong>, so you pay each agent's price instead. Whether an agent runs Claude or Mistral underneath is <strong>the agent developer's choice</strong>, so pricing varies by agent.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Noted here</span>Is machine-to-machine a bad idea, or was it just too early?</p>
+<p class="qa-a" data-by="Unresolved">Strong scepticism grounded in IOTA's failure, with <strong>both speakers allowing that it may have been a timing problem</strong>. <strong>Which it is never gets settled before the call moves on.</strong></p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Noted here</span>Why would an agent on another chain register on Cardano?</p>
+<p class="qa-a" data-by="Not addressed">The registry plan rests on everyone registering there, but <strong>the incentive to do so is never given</strong>. Nor is the chain-by-chain breakdown of the 168 entries.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Noted here</span>Who would actually assemble a Cardano AI budget, and how?</p>
+<p class="qa-a" data-by="Raised only">The answer stops at “a consolidated effort from all the actors in the ecosystem.” <strong>Who leads it, and through what funding route, is not addressed.</strong> The $100 million figure was an argument about priority, not a proposal.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> This was a <strong>registration-only call and the recording is not published publicly</strong> (around 50 attendees). <strong>No names, handles or affiliations appear.</strong> The labels used on the transcript pages — <code>Host</code>, <code>Speaker A</code>, <code>Participant A–F</code> — are placeholders for following the conversation.</p>
+<p><strong>On affiliations.</strong> Several participants named their employer and job title. <strong>Together those identify the individual</strong>, so both have been replaced with a description of the field. Third parties named during the call were replaced with their role for the same reason.</p>
+<p><strong>On speakers.</strong> The source has no speaker labels and no timestamps, so speakers are inferred from context. The two main voices are unambiguous for most of the call, so <strong>only genuinely uncertain attributions</strong> carry <code>(inferred)</code> on the transcript pages.</p>
+<p><strong>On the slides.</strong> Screens were shared throughout but <strong>the slides are not published</strong>. Everything on this page was <strong>spoken aloud</strong>; nothing has been filled in from the visuals. The presenter's own caveat: <strong>“all these slides are with LLM, so you have to take it with a pinch of salt.”</strong></p>
+<p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the call</strong>.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All sessions</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano セッションのアーカイブ</span><span class="l-en">Cardano session archive</span></p>
+</footer>
+
+</div>
+</body>
+</html>
