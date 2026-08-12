@@ -2,7 +2,7 @@ slug: 2026-07-26-a-dose-of-alpha
 title: A Dose of Alpha — Charles Hoskinson × AlphaGrowth
 title_en: A Dose of Alpha — Charles Hoskinson × AlphaGrowth
 date: 2026-07-26          # 番組内に日付の言及はない。公開時期からの特定
-series: cardano           # RealFi Office Hours ではなく、Cardano まわりの公開収録
+series: cardano             # shared/series.yml のキー。通し番号は振らない
 
 # チャタムハウスルールの対象ではない。
 # YouTube で公開されている録画にもとづく記録であり、発言者は実名のまま扱う。

@@ -1,0 +1,30 @@
+# シリーズの定義
+#
+# `episodes/<slug>/meta.yml` の `series:` は、必ずここのキーを使う。
+# **新しいシリーズを足すときは、先にここへ書いてから meta.yml で参照する。**
+# tools/check.py が、ここにないキーを使っている回を落とす。
+#
+# シリーズが違っても、匿名化の判定は回ごとの `chatham_house_rule` で決める。
+# シリーズの既定値（chatham_default）は「たいていこうなる」という目安にすぎない。
+# **回ごとに必ず確認すること。**
+
+realfi-office-hours:
+  title_ja: RealFi Office Hours
+  title_en: RealFi Office Hours
+  blurb_ja: チャタムハウスルールで運用されているコミュニティコール。発言者の氏名は記載していません。
+  blurb_en: Community calls run under the Chatham House Rule. No speaker is named.
+  chatham_default: true
+
+  # 通し番号を振る。番号は**回の実施順**で、アーカイブにある回数ではない。
+  # #1 product と #2 marketing は文字起こしを受け取っていないため欠番。詰めない。
+  numbered: true
+
+cardano:
+  title_ja: Cardano
+  title_en: Cardano
+  blurb_ja: 公開されている録画にもとづく回。チャタムハウスルールの対象ではないため、発言者は実名のまま扱います。
+  blurb_en: Sessions based on publicly published recordings. Not covered by the Chatham House Rule, so speakers are named.
+  chatham_default: false
+
+  # 一本ごとに独立した収録なので通し番号は振らない。
+  numbered: false

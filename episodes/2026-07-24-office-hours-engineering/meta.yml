@@ -2,6 +2,8 @@ slug: 2026-07-24-office-hours-engineering
 title: RealFi Office Hours — エンジニアリング回
 title_en: RealFi Office Hours — Engineering
 date: 2026-07-24
+series: realfi-office-hours      # shared/series.yml のキー
+series_no: 3               # RealFi Office Hours の通し番号（回の実施順）
 platform: Discord
 attendees: 30-35          # 通話中の言及より
 

@@ -166,9 +166,28 @@ docs/YYYY-MM-DD-<slug>/
 
 新しい回が上に来るように、既存のカードより前に挿入する。カードの説明文には「一言でいうと」の内容を入れる。
 
-**RealFi Office Hours には通し番号を振る。**カードの見出しの上に `<p class="card-no">#5</p>`、各回のページの `.eyebrow` に `RealFi Office Hours #5` と出す（まとめ・日本語全文・英語全文の 3 ページとも）。
+カードは**シリーズごとにまとめる**。どのシリーズに入るかは `meta.yml` の `series` が決める（次節）。
 
-番号は**回の実施順**で、アーカイブにある回数ではない。既知の対応は次のとおり。
+**通し番号を振るシリーズでは**、カードの見出しの上に `<p class="card-no">#5</p>`、各回のページの `.eyebrow` に `RealFi Office Hours #5` と出す（まとめ・日本語全文・英語全文の 3 ページとも）。`tools/check.py` が `meta.yml` の `series_no` と突き合わせる。
+
+**通し番号を振らないシリーズでは、`.eyebrow` は番組名にする**（例: `A Dose of Alpha`）。シリーズ名は一覧ページの見出しにしか出ない。
+
+## シリーズ（RealFi 以外の回を足すとき）
+
+このアーカイブは **RealFi 専用ではない**。Cardano まわりのコールなら何でも置ける。混ざらないようにしているのは次の 2 つだけ。
+
+### 1. `shared/series.yml` にシリーズを定義してから使う
+
+`episodes/<slug>/meta.yml` の `series:` は、必ず `shared/series.yml` のキーにする。**先に series.yml へ書く。**`check.py` が、定義にないキーを落とす（タイプミスで別グループができるのを防ぐため）。
+
+```yaml
+series: realfi-office-hours   # shared/series.yml のキー
+series_no: 5                  # numbered: true のシリーズだけ。回の実施順
+```
+
+`numbered: true` なら `series_no` が必須で、シリーズ内で重複してはいけない。`numbered: false` なら `series_no` を書いてはいけない。どちらも `check.py` が見る。
+
+RealFi Office Hours の番号は**回の実施順**で、アーカイブにある回数ではない。
 
 | # | 回 | アーカイブ |
 | --- | --- | --- |
@@ -180,7 +199,17 @@ docs/YYYY-MM-DD-<slug>/
 
 **#1 と #2 は文字起こしを受け取っていないのでページがない。**番号を詰めてはいけない。次の回は #6 から。
 
-**公開録画の回（A Dose of Alpha など）には番号を振らない。**Office Hours ではないため。
+### 2. 匿名化はシリーズで決めない。回ごとに決める
+
+series.yml の `chatham_default` は「たいていこうなる」という目安にすぎない。**新しい回では毎回、最優先のルール（このファイルの先頭）に戻って、その回がどちらかを確定させる。**同じシリーズでも、公開録画の回とクローズドの回が混ざりうる。
+
+`check.py` の `NAMES` は**回の slug ごと**なので、シリーズが増えても安全性は変わらない。
+
+### 3. `shared/` は分けない
+
+`glossary.md` と `open-questions.md` はシリーズをまたいで 1 ファイルのままにする。**Cardano の用語（DRep、SPO、CIP-1694、ADA、エポックなど）はどのシリーズでも出る**ので、分けると同じ説明を二重に持つことになる。シリーズ固有の語は、ファイル内で見出しを分けて追記する。
+
+`speakers.md` の匿名化ルールは全シリーズ共通。
 
 ### 8. 完成条件（毎回チェックする）
 

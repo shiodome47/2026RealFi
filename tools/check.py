@@ -146,6 +146,82 @@ def check_page(path):
     return text
 
 
+def read_series():
+    """shared/series.yml を読む。2 階層しかないので素朴に読む。"""
+    series, cur = {}, None
+    for line in (ROOT / "shared" / "series.yml").read_text().split("\n"):
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        if not line[0].isspace():
+            cur = line.split(":")[0].strip()
+            series[cur] = {}
+        elif cur:
+            k, _, v = line.strip().partition(":")
+            series[cur][k.strip()] = v.split("#")[0].strip()
+    return series
+
+
+def field(text, name):
+    m = re.search(r"^%s:\s*(.*)$" % re.escape(name), text, re.M)
+    return m.group(1).split("#")[0].strip() if m else None
+
+
+def check_series():
+    """シリーズの定義と、ページに出ている通し番号が食い違っていないか。"""
+    series = read_series()
+    index = (DOCS / "index.html").read_text()
+    seen = {}
+
+    for meta in sorted(ROOT.glob("episodes/*/meta.yml")):
+        slug, text = meta.parent.name, meta.read_text()
+        rel = meta.relative_to(ROOT)
+
+        sid = field(text, "series")
+        if sid not in series:
+            fail(rel, "series が shared/series.yml にない: %r" % sid)
+            continue
+        spec = series[sid]
+        numbered = spec.get("numbered") == "true"
+        no = field(text, "series_no")
+
+        if numbered and not no:
+            fail(rel, "%s は通し番号を振るシリーズだが series_no がない" % sid)
+        if not numbered and no:
+            fail(rel, "%s は通し番号を振らないシリーズなのに series_no がある" % sid)
+        if numbered and no:
+            if (sid, no) in seen:
+                fail(rel, "series_no %s が %s と重複している" % (no, seen[(sid, no)]))
+            seen[(sid, no)] = slug
+
+        # ページのヘッダー。番号を振るシリーズは「シリーズ名 #番号」に固定する。
+        # 振らないシリーズの見出しは番組名なので（例: A Dose of Alpha）中身は問わず、
+        # 通し番号が紛れ込んでいないかだけ見る。
+        want = "%s #%s" % (spec.get("title_ja", ""), no) if numbered and no else None
+        for page in sorted((DOCS / slug).glob("*.html")):
+            if page.name == "standalone.html":
+                continue          # 3 ページから組み直すので元が正しければ正しい
+            got = re.search(r'<p class="eyebrow">([^<]*)</p>', page.read_text())
+            if not got or not got.group(1).strip():
+                fail(page.relative_to(ROOT), "eyebrow がない")
+            elif want and got.group(1).strip() != want:
+                fail(page.relative_to(ROOT),
+                     "eyebrow が meta.yml と違う: %r（期待 %r）" % (got.group(1).strip(), want))
+            elif not want and re.search(r"#\d", got.group(1)):
+                fail(page.relative_to(ROOT),
+                     "通し番号を振らないシリーズなのに eyebrow に番号がある: %r" % got.group(1).strip())
+
+        # 一覧ページのカードにも同じ番号が出ていること
+        card = re.search(r'<a class="card" href="\./%s/">(.*?)</a>' % re.escape(slug),
+                         index, re.S)
+        if not card:
+            fail("docs/index.html", "%s のカードがない" % slug)
+        elif numbered and no:
+            if '<p class="card-no">#%s</p>' % no not in card.group(1):
+                fail("docs/index.html", "%s のカードに #%s が出ていない" % (slug, no))
+        elif 'class="card-no"' in (card.group(1) if card else ""):
+            fail("docs/index.html", "%s は通し番号を振らないシリーズなのに番号が出ている" % slug)
+
+
 def main():
     pages = sorted(DOCS.rglob("*.html"))
     if not pages:
@@ -201,6 +277,8 @@ def main():
             if n_en != n_ja:
                 fail(en.parent.relative_to(ROOT),
                      ".%s の数が英日で違う（en=%d / ja=%d）" % (cls, n_en, n_ja))
+
+    check_series()
 
     # 実名の残存。回ごとに切り替える
     chatham = {}
