@@ -1106,20 +1106,20 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
     </marker>
   </defs>
 
-  <rect x="16" y="40" width="260" height="96" rx="8" class="d-box-accent"/>
-  <text x="146" y="70" class="d-t" text-anchor="middle">Cardano</text>
-  <text x="146" y="94" class="d-s" text-anchor="middle">正となる台帳（source of truth）</text>
-  <text x="146" y="114" class="d-s" text-anchor="middle">かつ会計の層。資産はここにある</text>
+  <rect x="16" y="40" width="242" height="96" rx="8" class="d-box-accent"/>
+  <text x="137" y="70" class="d-t" text-anchor="middle">Cardano</text>
+  <text x="137" y="94" class="d-s" text-anchor="middle">正となる台帳（source of truth）</text>
+  <text x="137" y="114" class="d-s" text-anchor="middle">かつ会計の層。資産はここにある</text>
 
-  <line x1="284" y1="72" x2="392" y2="72" class="d-line-accent" marker-end="url(#m4)"/>
-  <text x="338" y="62" class="d-s d-a" text-anchor="middle">burn / mint</text>
-  <line x1="392" y1="104" x2="284" y2="104" class="d-line-accent" marker-end="url(#m4)"/>
-  <text x="338" y="124" class="d-s d-a" text-anchor="middle">残高は Cardano で増える</text>
+  <line x1="266" y1="72" x2="414" y2="72" class="d-line-accent" marker-end="url(#m4)"/>
+  <text x="340" y="62" class="d-s d-a" text-anchor="middle">burn / mint</text>
+  <line x1="414" y1="104" x2="266" y2="104" class="d-line-accent" marker-end="url(#m4)"/>
+  <text x="340" y="124" class="d-s d-a" text-anchor="middle">残高は Cardano で増える</text>
 
-  <rect x="398" y="40" width="266" height="96" rx="8" class="d-box"/>
-  <text x="531" y="70" class="d-t" text-anchor="middle">Ethereum / EVM</text>
-  <text x="531" y="94" class="d-s" text-anchor="middle">ネイティブに発行される</text>
-  <text x="531" y="114" class="d-s" text-anchor="middle">Pendle・Aave などで使われる</text>
+  <rect x="422" y="40" width="242" height="96" rx="8" class="d-box"/>
+  <text x="543" y="70" class="d-t" text-anchor="middle">Ethereum / EVM</text>
+  <text x="543" y="94" class="d-s" text-anchor="middle">ネイティブに発行される</text>
+  <text x="543" y="114" class="d-s" text-anchor="middle">Pendle・Aave などで使われる</text>
 
   <rect x="16" y="152" width="648" height="40" rx="7" class="d-box-plain"/>
   <text x="340" y="177" class="d-s" text-anchor="middle">現在は Circle の CCTP のフォーク → LayerZero が Cardano に来たら、そちらへ移す予定（年末に向けて）</text>
@@ -1186,20 +1186,21 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>まず値付けの方法自体は単純だとされます。<strong>実際のクーポン（支払われることになっている利息）で値付けし、ポートフォリオの予想損失で割り引く。</strong>問題はその先です。</p>
 
 <div class="fig">
-<svg viewBox="0 0 680 240" role="img" aria-label="ダッシュボード上では単調に増えて見える一方、実世界で壊れていることが反映されないという乖離を示した図">
+<svg viewBox="0 0 680 226" role="img" aria-label="ダッシュボード上では単調に増えて見える一方、実世界で壊れていることが反映されないという乖離を示した図">
   <defs>
     <marker id="m6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
       <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
     </marker>
   </defs>
 
-  <text x="16" y="22" class="d-s">crypto のダッシュボード上</text>
-  <path d="M20 96 L200 46" class="d-line-accent"/>
-  <text x="210" y="52" class="d-s d-a">金利ぶんで単調に増え続ける</text>
+  <text x="16" y="24" class="d-s">crypto のダッシュボード上</text>
+  <path d="M20 88 L176 44" class="d-line-accent"/>
+  <text x="188" y="72" class="d-s d-a">金利ぶんで単調に増え続ける</text>
 
-  <text x="16" y="130" class="d-s d-w">実世界では</text>
-  <path d="M20 176 L120 170 L200 210" class="d-line" marker-end="url(#m6)"/>
-  <text x="210" y="200" class="d-s d-w">何かが壊れているが、反映されていない</text>
+  <text x="16" y="134" class="d-s d-w">実世界では</text>
+  <path d="M20 188 L104 182 L176 212" class="d-line" marker-end="url(#m6)"/>
+  <text x="188" y="182" class="d-s d-w">何かが壊れているが、</text>
+  <text x="188" y="200" class="d-s d-w">反映されていない</text>
 
   <rect x="400" y="40" width="264" height="80" rx="8" class="d-box-warn"/>
   <text x="532" y="66" class="d-t" text-anchor="middle">この乖離が破綻を生む</text>
@@ -1210,8 +1211,6 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <text x="532" y="158" class="d-t" text-anchor="middle">答えは第三者の評価</text>
   <text x="532" y="182" class="d-s" text-anchor="middle">「自分ではない誰かに見てもらう」</text>
   <text x="532" y="200" class="d-s" text-anchor="middle">安くはないが必要、と述べられた</text>
-
-  <rect x="16" y="222" width="648" height="0" rx="0" class="d-box-plain"/>
 </svg>
 <p class="figcap">評価が難しい資産について、ファンド・アドミニストレーターは<strong>専門家ではない</strong>という指摘が要点です。大きな CLO ETF や T-Bill は簡単に値付けできる、しかしそれ以外は別だ、と。</p>
 </div>
@@ -1588,34 +1587,36 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>Asked by Participant B whether RealFi runs on Cardano or is its own chain or a fork, the answer was unambiguous: <strong>“It runs directly on Cardano.”</strong> USDR is a native asset, visible on <strong>Cexplorer</strong>.</p>
 
 <div class="fig">
-<svg viewBox="0 0 680 250" role="img" aria-label="Diagram of Cardano as the canonical source of truth with native issuance on Ethereum via burn and mint">
+<svg viewBox="0 0 680 276" role="img" aria-label="Diagram of Cardano as the canonical source of truth with native issuance on Ethereum via burn and mint">
   <defs>
     <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
       <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
     </marker>
   </defs>
 
-  <rect x="16" y="40" width="260" height="96" rx="8" class="d-box-accent"/>
-  <text x="146" y="70" class="d-t" text-anchor="middle">Cardano</text>
-  <text x="146" y="94" class="d-s" text-anchor="middle">Canonical source of truth</text>
-  <text x="146" y="114" class="d-s" text-anchor="middle">and accounting layer. The assets sit here</text>
+  <rect x="16" y="40" width="242" height="96" rx="8" class="d-box-accent"/>
+  <text x="137" y="70" class="d-t" text-anchor="middle">Cardano</text>
+  <text x="137" y="94" class="d-s" text-anchor="middle">Canonical source of truth</text>
+  <text x="137" y="114" class="d-s" text-anchor="middle">and accounting layer; assets sit here</text>
 
-  <line x1="284" y1="72" x2="392" y2="72" class="d-line-accent" marker-end="url(#e4)"/>
-  <text x="338" y="62" class="d-s d-a" text-anchor="middle">burn / mint</text>
-  <line x1="392" y1="104" x2="284" y2="104" class="d-line-accent" marker-end="url(#e4)"/>
-  <text x="338" y="124" class="d-s d-a" text-anchor="middle">balance grows on Cardano</text>
+  <line x1="266" y1="72" x2="414" y2="72" class="d-line-accent" marker-end="url(#e4)"/>
+  <text x="340" y="62" class="d-s d-a" text-anchor="middle">burn / mint</text>
+  <line x1="414" y1="104" x2="266" y2="104" class="d-line-accent" marker-end="url(#e4)"/>
+  <text x="340" y="124" class="d-s d-a" text-anchor="middle">balance grows on Cardano</text>
 
-  <rect x="398" y="40" width="266" height="96" rx="8" class="d-box"/>
-  <text x="531" y="70" class="d-t" text-anchor="middle">Ethereum / EVM</text>
-  <text x="531" y="94" class="d-s" text-anchor="middle">Issued natively there too</text>
-  <text x="531" y="114" class="d-s" text-anchor="middle">Used on Pendle, Aave and so on</text>
+  <rect x="422" y="40" width="242" height="96" rx="8" class="d-box"/>
+  <text x="543" y="70" class="d-t" text-anchor="middle">Ethereum / EVM</text>
+  <text x="543" y="94" class="d-s" text-anchor="middle">Issued natively there too</text>
+  <text x="543" y="114" class="d-s" text-anchor="middle">Used on Pendle, Aave and so on</text>
 
-  <rect x="16" y="152" width="648" height="40" rx="7" class="d-box-plain"/>
-  <text x="340" y="177" class="d-s" text-anchor="middle">Currently a fork of Circle's CCTP → will shift to LayerZero once it arrives on Cardano (understood to be late this year)</text>
+  <rect x="16" y="152" width="648" height="46" rx="7" class="d-box-plain"/>
+  <text x="340" y="171" class="d-s" text-anchor="middle">Currently a fork of Circle's CCTP → will shift to LayerZero</text>
+  <text x="340" y="189" class="d-s" text-anchor="middle">once it arrives on Cardano (understood to be late this year)</text>
 
-  <rect x="16" y="200" width="648" height="42" rx="7" class="d-box-plain"/>
-  <text x="340" y="218" class="d-t" text-anchor="middle">“Even if you have loads of demand on EVM, you'll still be growing the stablecoin balance on Cardano”</text>
-  <text x="340" y="236" class="d-s" text-anchor="middle">Because that's where the assets sit — “kind of a nice externality”</text>
+  <rect x="16" y="206" width="648" height="62" rx="7" class="d-box-plain"/>
+  <text x="340" y="226" class="d-t" text-anchor="middle">“Even if you have loads of demand on EVM, you'll still be</text>
+  <text x="340" y="244" class="d-t" text-anchor="middle">growing the stablecoin balance on Cardano”</text>
+  <text x="340" y="262" class="d-s" text-anchor="middle">Because that's where the assets sit — “kind of a nice externality”</text>
 </svg>
 <p class="figcap">This is the <strong>implementation detail</strong> behind the GTM session's line about a dollar minted on Ethereum still counting toward Cardano TVL.</p>
 </div>
@@ -1675,32 +1676,32 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>The pricing itself is simple enough: <strong>price it off the actual coupon, then discount by expected losses in the portfolio.</strong> The problem is what comes after.</p>
 
 <div class="fig">
-<svg viewBox="0 0 680 240" role="img" aria-label="Diagram contrasting a dashboard value rising monotonically against real-world deterioration that is not reflected">
+<svg viewBox="0 0 680 226" role="img" aria-label="Diagram contrasting a dashboard value rising monotonically against real-world deterioration that is not reflected">
   <defs>
     <marker id="e6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
       <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
     </marker>
   </defs>
 
-  <text x="16" y="22" class="d-s">On the crypto dashboard</text>
-  <path d="M20 96 L200 46" class="d-line-accent"/>
-  <text x="210" y="52" class="d-s d-a">rises monotonically with the interest rate</text>
+  <text x="16" y="24" class="d-s">On the crypto dashboard</text>
+  <path d="M20 88 L176 44" class="d-line-accent"/>
+  <text x="188" y="64" class="d-s d-a">rises monotonically</text>
+  <text x="188" y="82" class="d-s d-a">with the interest rate</text>
 
-  <text x="16" y="130" class="d-s d-w">In the real world</text>
-  <path d="M20 176 L120 170 L200 210" class="d-line" marker-end="url(#e6)"/>
-  <text x="210" y="200" class="d-s d-w">something has broken, and isn't reflected</text>
+  <text x="16" y="134" class="d-s d-w">In the real world</text>
+  <path d="M20 188 L104 182 L176 212" class="d-line" marker-end="url(#e6)"/>
+  <text x="188" y="182" class="d-s d-w">something has broken,</text>
+  <text x="188" y="200" class="d-s d-w">and isn't reflected</text>
 
-  <rect x="400" y="40" width="264" height="80" rx="8" class="d-box-warn"/>
-  <text x="532" y="66" class="d-t" text-anchor="middle">That gap is where blow-ups come from</text>
-  <text x="532" y="90" class="d-s" text-anchor="middle">“That's actually where we've seen some of</text>
-  <text x="532" y="108" class="d-s" text-anchor="middle">the blow-ups in crypto recently”</text>
+  <rect x="340" y="40" width="324" height="80" rx="8" class="d-box-warn"/>
+  <text x="502" y="66" class="d-t" text-anchor="middle">That gap is where blow-ups come from</text>
+  <text x="502" y="90" class="d-s" text-anchor="middle">“That's actually where we've seen some of</text>
+  <text x="502" y="108" class="d-s" text-anchor="middle">the blow-ups in crypto recently”</text>
 
-  <rect x="400" y="132" width="264" height="80" rx="8" class="d-box-accent"/>
-  <text x="532" y="158" class="d-t" text-anchor="middle">The answer is third-party valuation</text>
-  <text x="532" y="182" class="d-s" text-anchor="middle">“Someone who's not you”</text>
-  <text x="532" y="200" class="d-s" text-anchor="middle">“Not that cheap, but still kind of required”</text>
-
-  <rect x="16" y="222" width="648" height="0" rx="0" class="d-box-plain"/>
+  <rect x="340" y="132" width="324" height="80" rx="8" class="d-box-accent"/>
+  <text x="502" y="158" class="d-t" text-anchor="middle">The answer is third-party valuation</text>
+  <text x="502" y="182" class="d-s" text-anchor="middle">“Someone who's not you”</text>
+  <text x="502" y="200" class="d-s" text-anchor="middle">“Not that cheap, but still kind of required”</text>
 </svg>
 <p class="figcap">The crux is that a fund administrator <strong>isn't a specialist in hard-to-value assets</strong>. A globally traded CLO ETF or a T-bill is trivial for them; this is not.</p>
 </div>

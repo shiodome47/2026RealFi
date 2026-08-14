@@ -10,6 +10,7 @@ import html.parser
 import pathlib
 import re
 import sys
+import unicodedata
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
@@ -168,6 +169,67 @@ def check_page(path):
     return text
 
 
+# 図の文字が箱や viewBox からはみ出していないかを、字幅の概算で調べる。
+# 実際のフォントで測るわけではないので厳密ではないが、
+# 「文字が隠れる」ほどの食い違いは十分に拾える。
+FONT = {"d-t": 14.0, "d-s": 11.5}
+
+
+def text_width(text, size, bold):
+    """全角は size、半角は size の約半分として概算する。"""
+    w = 0.0
+    for ch in text:
+        if unicodedata.east_asian_width(ch) in ("W", "F", "A"):
+            w += size
+        else:
+            w += size * (0.56 if bold else 0.5)
+    return w
+
+
+def check_svg_fit(path):
+    rel = path.relative_to(ROOT)
+    body_re = re.compile(r'<svg[^>]*viewBox="0 0 (\d+) (\d+)"[^>]*>(.*?)</svg>', re.S)
+    rect_re = re.compile(
+        r'<rect x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)"'
+        r'[^>]*?class="(d-box[^"]*)"')
+    text_re = re.compile(r'<text x="([\d.]+)" y="([\d.]+)" class="([^"]*)"([^>]*)>([^<]*)</text>')
+
+    for vw, _vh, body in body_re.findall(path.read_text()):
+        vw = int(vw)
+        boxes = []
+        for m in rect_re.finditer(body):
+            x, y, w, h = (float(v) for v in m.group(1, 2, 3, 4))
+            if h > 0:                      # 高さ 0 の飾り罫は判定しない
+                boxes.append((x, y, w, h))
+
+        for m in text_re.finditer(body):
+            x, y = float(m.group(1)), float(m.group(2))
+            cls, attrs, txt = m.group(3), m.group(4), m.group(5)
+            bold = "d-t" in cls.split()
+            w = text_width(txt, FONT["d-t"] if bold else FONT["d-s"], bold)
+            if 'text-anchor="middle"' in attrs:
+                x0 = x - w / 2
+            elif 'text-anchor="end"' in attrs:
+                x0 = x - w
+            else:
+                x0 = x
+            x1 = x0 + w
+
+            if x1 > vw - 2 or x0 < 2:
+                fail(rel, "図の文字が viewBox からはみ出す（%.0f–%.0f / 幅 %d）: %s"
+                     % (x0, x1, vw, txt[:30]))
+                continue
+            for (rx, ry, rw, rh) in boxes:
+                if not (ry - 4 <= y <= ry + rh + 4):
+                    continue
+                if x0 >= rx - 2 and x1 <= rx + rw + 2:     # 箱の中に収まっている
+                    continue
+                if x1 > rx and x0 < rx + rw:               # 箱に食い込んでいる
+                    fail(rel, "図の文字が箱に重なる（文字 %.0f–%.0f / 箱 %.0f–%.0f）: %s"
+                         % (x0, x1, rx, rx + rw, txt[:30]))
+                    break
+
+
 def read_series():
     """shared/series.yml を読む。2 階層しかないので素朴に読む。"""
     series, cur = {}, None
@@ -268,6 +330,7 @@ def main():
             fail(rel, "節が %d 個あるのに目次がない" % len(body_heads))
         if 'class="fig"' not in text:
             fail(rel, "図が 1 つもない")
+        check_svg_fit(summary)
 
         # まとめは日英そろっていること
         if 'class="l-en"' not in text:
