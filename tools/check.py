@@ -16,8 +16,10 @@ DOCS = ROOT / "docs"
 
 # 匿名化の漏れ検出。**回ごとに持つ。**
 #
-# チャタムハウスルールの回だけが対象。meta.yml の chatham_house_rule を見て
-# 判定するので、公開録画の回（実名を残す回）はここに書かない。
+# meta.yml の chatham_house_rule が true か partial の回だけが対象。
+# 公開録画の回（false。実名を残す回）はここに書かない。
+# **partial の回は「残してはいけない名前」だけを書く。**残してよい実名を書くと、
+# その回のページが自分の名前で落ちてしまう。
 # 名前は回をまたいで衝突する（別の回では普通の単語や別人の名前として出る）ため、
 # 全体を一括で検索してはいけない。新しい回で新しい名前が出たらここに足す。
 NAMES = {
@@ -289,14 +291,22 @@ def main():
 
     check_series()
 
-    # 実名の残存。回ごとに切り替える
+    # 実名の残存。回ごとに切り替える。
+    #
+    # chatham_house_rule は 3 値。
+    #   true    … 全員の実名を落とす。NAMES にはその回の全員を入れる
+    #   partial … 一部の実名を残す（登壇者は実名、質問者は匿名など）。
+    #             **NAMES には「残してはいけない名前」だけ**を入れる
+    #   false   … 公開録画。実名を残すので走査しない
     chatham = {}
     for meta in sorted(ROOT.glob("episodes/*/meta.yml")):
-        slug = meta.parent.name
-        chatham[slug] = "chatham_house_rule: true" in meta.read_text()
+        slug, rel = meta.parent.name, meta.relative_to(ROOT)
+        mode = field(meta.read_text(), "chatham_house_rule") or "false"
+        if mode not in ("true", "false", "partial"):
+            fail(rel, "chatham_house_rule は true / partial / false のどれか: %r" % mode)
+        chatham[slug] = mode in ("true", "partial")
         if chatham[slug] and slug not in NAMES:
-            fail(meta.relative_to(ROOT),
-                 "チャタムハウスルールの回だが tools/check.py の NAMES にない")
+            fail(rel, "実名を落とす回だが tools/check.py の NAMES にない")
 
     def names_for(path):
         """このファイルに対して検索すべき名前のリスト。None なら対象外。"""
