@@ -120,7 +120,12 @@
 <p>おおよそですが、mainnet の時期は 9 月中旬になると思います。今後 2 週間ほどで残りの項目を片付けながら、確定した日付を出します。</p>
 </blockquote>
 
-<p>そのうえで、<strong>何が終わっていて何が残っているのか</strong>が分解されました。</p>
+<p>そのうえで、<strong>何が終わっていて何が残っているのか</strong>が分解されました。残りは全部、コール中で <strong>TradFi</strong> と呼ばれている側の手続きです。</p>
+
+<div class="term">
+<p class="term-name">TradFi <small>traditional finance</small></p>
+<p><strong>伝統的な金融</strong>のこと。銀行・証券会社・取引所・規制当局といった、<strong>crypto より前からある金融の世界</strong>を指す crypto 側の言い方です。<span class="badge">補足</span>DeFi（分散型金融）と対にして使われます。ここで重要なのは、<strong>TradFi 側の作業は書類と審査と人の判断で進む</strong>ということ。コードのように「並行して書いて、まとめてデプロイ」ができません。CEO が<strong>「依存関係のリストは非常に長い」</strong>と言っているのはこの意味で、技術が終わっていても mainnet が動かない理由がここにあります。</p>
+</div>
 
 <div class="fig">
 <svg viewBox="0 0 680 250" role="img" aria-label="技術は完了しており、CIMA 登録から StoneX の口座開設、実資金での hardening を経て mainnet に至る依存関係を示した図">
@@ -164,7 +169,7 @@
 
 <div class="term">
 <p class="term-name">hardening</p>
-<p>本番と同じ経路を、<strong>実際のお金で通してみる</strong>段階。<span class="badge">補足</span>testnet との違いは、<strong>失敗したら本当に損が出る</strong>ことです。テスト用の資金では気づけない問題 —— 取引の場ごとの入出金の制約、ウォレット側の挙動、実際の手数料 —— は、この段階でしか出てきません。コール中では「いささか退屈な名前の工程」と紹介されました。</p>
+<p>本番と同じ経路を、<strong>実際のお金で通してみる</strong>段階。<span class="badge">補足</span>testnet との違いは、<strong>失敗したら本当に損が出る</strong>ことです。テスト用の資金では気づけない問題 —— 取引の場ごとの入出金の制約、ウォレット側の挙動、実際の手数料 —— は、この段階でしか出てきません。コール中では<strong>「quite boringly called hardening（ずいぶん退屈な名前ですが hardening といいます）」</strong>と紹介されました。<span class="badge">補足</span>この <strong>boring（退屈）は自嘲まじりの前置き</strong>です。新しい技術の発表でも、ローンチのイベントでもなく、<strong>実際のお金を、取引の場・ウォレット・出金経路と順に通して、壊れるところがないか見ていくだけ</strong>の作業だからです。この回の CEO は<strong>同じ言い方をもう一度使っています</strong> —— 第三者による評価について「to be quite boring about it, it's what traditional TradFi does（退屈な話ですが、これは伝統的な金融がやってきたことです）」。<strong>地味だが、すでに枯れていて効く</strong>ものを指すときの言い回しで、<strong>謙遜であって、軽視ではありません</strong>。</p>
 </div>
 
 
@@ -324,6 +329,12 @@
 <div class="term">
 <p class="term-name">CCTP <small>Cross-Chain Transfer Protocol</small></p>
 <p>Circle（USDC の発行体）が作った、チェーン間でトークンを移す仕組み。<span class="badge">補足</span>要点は<strong>「ロックして預かる」のではなく「片方で燃やして、もう片方で発行する」</strong>ことです。ブリッジによくある、<strong>大量の資産をロックした金庫（コール中の言葉では honeypot＝蜜壺）</strong>を作らずに済むため、そこを狙った攻撃の的にならない。CEO は<strong>「USDCx のブリッジができて、それがかなり楽になった」</strong>と述べています。</p>
+</div>
+
+<div class="term">
+<p class="term-name">LayerZero</p>
+<p><strong>チェーンとチェーンの間でメッセージを運ぶ、共通の配線</strong>です。<span class="badge">補足</span>ブリッジと混同されやすいのですが、レイヤーが 1 つ下だと考えると分かりやすい。ブリッジが<strong>「トークンを移す」1 つのサービス</strong>なのに対して、LayerZero は<strong>「あちらのチェーンでこれを実行してくれ」という指示を届ける土台</strong>で、トークンの移動はその上に載る使い方の 1 つにすぎません。すでに多数のチェーンをつないでいるため、<strong>1 本つなぐと、そこに繋がっているチェーン全部と話せるようになる</strong>のが利点です。</p>
+<p>RealFi にとっての意味は<strong>置き換え先</strong>です。<span class="badge">補足</span>今使っている CCTP は <strong>Circle の仕組みなので、Circle が対応しているチェーンと資産の範囲で動きます</strong>。LayerZero に移せば、その範囲に縛られなくなる。CEO は<strong>「メッセージングの層を差し替えやすいように設計してある」</strong>と述べており、<strong>移行そのものは前提として組んである</strong>という説明でした。ただし LayerZero 側の到着時期については<strong>「年末に向けて来ると理解している」という伝聞にとどまり、断定はされていません</strong>（<a href="#qa">Q&amp;A</a> 参照）。</p>
 </div>
 
 <p><strong>Alpha Growth の提案が可決された</strong>ことにも触れられました。<span class="badge">補足</span>これは 7 月 26 日の回で「投票中」として記録していた PRIME 提案です（<code>shared/open-questions.md</code> の項目 17）。<strong>この回で可決が確認できました。</strong>CEO は「Cardano 上の各プロジェクトにまたがって調整できるようになる投資と合わせれば、<strong>DeFi の TVL を本当に積み上げる好機がある</strong>」と述べています。</p>
@@ -608,7 +619,12 @@
 <p>So approximately, I think mainnet date's gonna be mid-September. We will give a firm date as we close out some of the items that we've got in basically in the next two weeks.</p>
 </blockquote>
 
-<p>And then a breakdown of <strong>what is done and what isn't</strong>.</p>
+<p>And then a breakdown of <strong>what is done and what isn't</strong>. Everything left sits on what he calls the <strong>TradFi</strong> side.</p>
+
+<div class="term">
+<p class="term-name">TradFi <small>traditional finance</small></p>
+<p>Banks, brokers, exchanges, regulators — <strong>the financial world that predates crypto</strong>, as crypto refers to it, and the counterpart to DeFi. <span class="badge">added</span>What matters here is that <strong>TradFi work moves through paperwork, review and human judgement</strong>. You cannot write it in parallel and ship it in one go the way you can with code. That is what the <strong>“long, long list of dependencies”</strong> is made of, and why the engineering being finished doesn't put anything on mainnet.</p>
+</div>
 
 <div class="fig">
 <svg viewBox="0 0 680 250" role="img" aria-label="Diagram showing the technology complete, with a sequential chain from CIMA registration to StoneX account opening and hardening with real money before mainnet">
@@ -652,7 +668,7 @@
 
 <div class="term">
 <p class="term-name">Hardening</p>
-<p>Running the production path <strong>with real money</strong>. <span class="badge">added</span>What separates it from testnet is that <strong>failure costs something</strong>. Problems test funds never surface — per-venue deposit and withdrawal limits, wallet behaviour, actual fees — only appear here. Described on the call as “quite boringly called hardening.”</p>
+<p>Running the production path <strong>with real money</strong>. <span class="badge">added</span>What separates it from testnet is that <strong>failure costs something</strong>. Problems test funds never surface — per-venue deposit and withdrawal limits, wallet behaviour, actual fees — only appear here. Introduced on the call as <strong>“quite boringly called hardening.”</strong> <span class="badge">added</span>The <strong>“boringly” is self-deprecating</strong>: this is not a launch or a new piece of technology, just pushing real money through every venue, wallet and withdrawal path to see what breaks. He reaches for the same register later — third-party valuation is, <strong>“to be quite boring about it, it's what traditional TradFi does”</strong> — using <em>boring</em> for things that are unglamorous but long since proven. It is modesty, not dismissal.</p>
 </div>
 
 
@@ -814,6 +830,12 @@
 <div class="term">
 <p class="term-name">CCTP <small>Cross-Chain Transfer Protocol</small></p>
 <p>Circle's mechanism for moving tokens between chains. <span class="badge">added</span>The key property is that it <strong>burns on one side and mints on the other</strong> rather than locking. That avoids the vault of locked assets most bridges accumulate — <strong>“creating a honeypot,”</strong> in the CEO's words — and therefore the target that goes with it. He credits the <strong>USDCx bridge</strong> with making this much easier.</p>
+</div>
+
+<div class="term">
+<p class="term-name">LayerZero</p>
+<p><strong>Shared wiring for carrying messages between chains.</strong> <span class="badge">added</span>It is easily confused with a bridge, but it sits a layer below one. A bridge is <strong>one service that moves a token</strong>; LayerZero is <strong>the substrate for delivering “go do this on that chain” instructions</strong>, of which moving a token is a single use. Because it already connects a large number of chains, <strong>wiring into it once reaches everything else wired into it</strong>.</p>
+<p>For RealFi it is <strong>the replacement</strong>. <span class="badge">added</span>CCTP is <strong>Circle's mechanism, so it works across the chains and assets Circle supports</strong>; LayerZero lifts that constraint. The CEO says they <strong>“architected everything so that it's easy for us to switch out that messaging layer”</strong> — the migration is designed in from the start. On LayerZero's own arrival, though, he offers only <strong>“my understanding is that it's coming towards the end of the year”</strong> — reported, not asserted (see the <a href="#en-qa">Q&amp;A</a>).</p>
 </div>
 
 <p>The <strong>AlphaGrowth proposal passing</strong> was also noted. <span class="badge">added</span>This is the PRIME proposal recorded as “in voting” after the 26 July episode (item 17 in <code>shared/open-questions.md</code>). <strong>Its passage is confirmed here.</strong> With the investment AlphaGrowth can now coordinate across Cardano projects, the CEO reckons “we've got a really good shot of really building some DeFi TVL.”</p>
