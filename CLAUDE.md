@@ -316,7 +316,12 @@ python3 tools/check.py
 
 ## 公開
 
-`docs/` を GitHub Pages の公開元に設定する。`episodes/` と `shared/` は Pages では配信されない。
+**すでに <https://shiodome47.github.io/2026RealFi/> で公開されている。**
+
+公開元はこのブランチの `docs/`。**push すれば数分で自動的に反映されるので、デプロイのために何かする必要はない。**
+`episodes/` と `shared/` は Pages では配信されない。
+
+**設定済みかどうかは推測しない。**確認するなら `pages build and deployment` のワークフローの実行履歴を見る（`mcp__github__actions_list` の `list_workflow_runs`）。この環境からは `github.io` に接続できないので、URL を叩いて確かめることはできない。
 
 ## ディレクトリ
 
