@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #6 — 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #6</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-08-14</span>
+  <span>40:24</span>
+  <span>Discord</span>
+  <span>Ask the CEO</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>この回は他の RealFi Office Hours と扱いが違います。依頼により、<strong>発話した 2 名は実名のまま</strong>（ホストと RealFi の CEO）で、<strong>読み上げられた質問者の名前だけ</strong>を <code>参加者A〜F</code> に置き換えています。名前が挙がった社内の 2 名も同様に置き換えました。<strong>このコールで発話したのはこの 2 名だけ</strong>です。</p>
+<p>原本は SRT なので<strong>タイムスタンプはありますが話者ラベルがありません</strong>。しかも 1 つの字幕ブロックの中で話者が入れ替わることがあります。そのため分割は文脈から判断していますが、<strong>声が 2 つしかないため全編を通して明確</strong>で、<em>(推定)</em> は 1 つも付けていません。文言は上記の匿名化以外は原文のままです。</p>
+<p>スライドはありません。コール中にチャットへリンクが貼られていますが、リンク先はここでは扱いません。</p>
+</div>
+
+<!--content-->
+
+<div class="sec">開始前</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:03</span></div>
+  <div class="turn-body"><p>John、どうも。ええと、いつも忘れるんですが、こちらから招待するか、そちらから発言をリクエストするかのどちらかで。はい、できました。いいですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:14</span></div>
+  <div class="turn-body"><p>John、どうも。動いていますか。—— はい。—— もう入っていますか。ウェブ…… ああ、入っていますね。カメラは使いますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:00:25</span></div>
+  <div class="turn-body"><p>権限を出しているところです。はい、カメラは使いましょう。</p></div>
+</div>
+
+<div class="sec">生い立ち — Cardano Foundation から RealFi へ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:32</span></div>
+  <div class="turn-body"><p>いいですね。このコール、なかなか華やかになってきました。さて、前回あなたが AMA をやってから、RealFi の office hours はかなり good なものが続きました。プロダクト、マーケティング、エンジニアリング、データとやってきて、それらをまとめたブログも出しました。なので今回は、各チームと各機能を一通り見てきたことの集大成にあたります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:59</span></div>
+  <div class="turn-body"><p>John、では……何人か入ってこられるように少し時間を取りつつ。まずは簡単な自己紹介と、RealFi に至るまでの生い立ちを話してもらえますか。これまで全員にやってもらっているので。そのあと mainnet の準備状況、Cardano、そして次に来るものに入っていきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:01:14</span></div>
+  <div class="turn-body"><p>他のみんなが何を言ったのかは、けっこう気になりますね。いくつかのセッションの時間は別の打ち合わせが入っていたので。みんなが何を話したのか、私がどうやって RealFi に引き込んだと言っていたのか、あとで聞かないと。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:01:28</span></div>
+  <div class="turn-body"><p>そうですね。この構想自体は、形を変えながらかなり長いこといじってきたと思います。crypto で働き始めてから、ずっと関心があったことが 2 つあります。まずは、どうやって crypto の仕事を始めたかから話しましょうか。半ば偶然でした。当時の Cardano Foundation の会長だった Michael Parsons に、ロンドン北西部の喫茶店で会ったんです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:01:54</span></div>
+  <div class="turn-body"><p>私からすると、話しかけてくる少し変わった年配の男性、という感じでした。何をしているのかと聞かれて、当時はロンドンでテック企業のプロダクトとビジネスの仕事をしていました。まだ誰もが crypto を知っているという時代ではなかったので、彼は「crypto って知ってる？」と。私は「ええ、Bitcoin の論文も Ethereum のホワイトペーパーも読みました」と答えた。すると「なんてことだ、助かった」と。彼は名目上 Cardano Foundation の立ち上げを任されていて、その中身に少し怖気づいていたのだと思います。それで私が参加することになりました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:02:30</span></div>
+  <div class="turn-body"><p>当時の Cardano Foundation では色々やりました。戦略の責任者、エコシステムの責任者のような立場で。初期のマーケティングやナラティブを多く手がけ、それからエコシステムとコミュニティの立ち上げ、そして戦略。かなり雑多にやっていました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:02:44</span></div>
+  <div class="turn-body"><p>その後、アフリカでやっていた仕事を通じて、こうした残高がどんどん増えていくのを見て強い関心を持ちました。Bitcoin の残高、Ethereum の残高、そして Tether が出てきて USDT の残高。ただ、人々がそれを何に使っているかというと、取引から降りるためくらいしか見えなかった。つまり Bitcoin を売ってせめてドルにする。Eth に売るのではなく。「まずい、Bitcoin が下がっている。Eth に替えよう」というような。—— 実際にはほぼ同じ方向に動いているのに。ドルに逃げられるようになる前は、かなり無茶な時代でした。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:03:23</span></div>
+  <div class="turn-body"><p>そして、人々が Tether を主に何に使っていたかというと、Bitcoin を担保に借りて、そのお金でさらに Bitcoin を買う、ということでした。それはそれで結構なことで、何も悪くありません。ただ、そこから考え始めたんです。<strong>これだけ大きく、増え続けているドルの残高がある。他に何ができるだろうか</strong>と。みんなが crypto の中のことしかやっていなかったのは、<strong>その資本を使って crypto の外の資産にアクセスする橋を、誰もちゃんと架けていなかったから</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:03:48</span></div>
+  <div class="turn-body"><p>そうなっていた理由は退屈なものが色々あって、その多くはかなり easy になってきました。私にとっては、その機会が見えたということ。そして新興国市場でも先進国市場でも、私の見方では<strong>リスク調整後の利回りがしっかり取れる、非常に良い債券の機会</strong>がたくさんあると見えたこと。それで「これを全部つなげられたらどうなるか」と考えました。そうすれば crypto の側では、人々のドルがもっと生産的なことをできるという utility が生まれる。そして実世界の側では、経済成長や機会を生み出すこともできる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:04:29</span></div>
+  <div class="turn-body"><p>もちろん、言うのは簡単で、やるのは大変です。リスク管理、法務の設計、その周りの諸々がある。ただ、RealFi についてはそういう考え方でした。実際に形にするまでには時間がかかりました。おかしな話ですが、<strong>私自身はこれを立ち上げたくなかった</strong>んです。適任だと思う知人がいたので、彼に立ち上げてもらって CEO をやってもらおうと説得していました。残念ながらそうはならず、結局<strong>私という間抜けがやる羽目になった</strong>。そういう経緯です。何年もかかりましたが、今ここにいます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:05:04</span></div>
+  <div class="turn-body"><p>わくわくしています。話せないことも多いのですが、今日話せることも多いので、いくつか見ていければと。</p></div>
+</div>
+
+<div class="sec">インターフェースとインフラ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:05:15</span></div>
+  <div class="turn-body"><p>それを 2 つの言葉でまとめるなら、<strong>インターフェースとインフラ</strong>、ということになりますか。それで合っていますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:05:18</span></div>
+  <div class="turn-body"><p>いや、それはあなたの言葉ですよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:05:22</span></div>
+  <div class="turn-body"><p>私の言葉です、はい。エコシステムとのインターフェースということを考えていて、あなたが実世界の資産や、crypto の外にある与信・資産の話をしていたので。Parsons さんと話していた頃の話ですね。<strong>つながっていない 2 つの世界</strong>があるように見えたので、それはインターフェースなのかなと。まあ、勝手に言葉を入れてしまっていますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:05:52</span></div>
+  <div class="turn-body"><p>ええ、そうなり得るとは思います。みなさんが <strong>Hyperliquid</strong> で起きていることを追っているか分かりませんが、その成長は常軌を逸しています。crypto について色々と悪く言うことはできますが、Hyperliquid が実世界の資産を次々に追加していく中で、<strong>世界最大級の伝統的な取引所でも見られないような出来高</strong>が出ているのには理由があります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:06:11</span></div>
+  <div class="turn-body"><p>多くのことが正しく作られているからです。DeFi には良いところがたくさんある。<strong>24 時間 365 日の決済、すべてがプログラムで動くこと</strong>。そして<strong>持っているポジションを別のポジションの担保に使える</strong>こと。良いものがたくさん作られてきました。私にとっては、Hyperliquid が金・原油・先物などを追加していくのと似たことを、我々もやろうとしている。ただ、私の見方では、<strong>もう少し普通の人に役立つプロダクト</strong>で、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:06:46</span></div>
+  <div class="turn-body"><p>では、ちょっと外して……いや、カメラは切らずに。ドアを閉めてきます。少しだけ。</p></div>
+</div>
+
+<div class="sec">mainnet の準備状況</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:53</span></div>
+  <div class="turn-body"><p>はい。John がドアを閉めに行っている間に。今日は mainnet の準備状況を扱います。大きく 3 つのテーマがあったと思いますが、合っていますか。まず mainnet の準備状況。他には何を扱う予定でしたか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:07:09</span></div>
+  <div class="turn-body"><p>そうですね、mainnet の準備状況、そして <strong>Cardano における mainnet とは実際に何を意味するのか</strong>。ローンチしたら何ができるのか。それから<strong>その次に来るもの</strong>、EVM への展開、より広い GTM。そして、コミュニティからの質問がありますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:07:31</span></div>
+  <div class="turn-body"><p>はい、あります。では mainnet の準備状況から説明してください。今どういう状態ですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:07:37</span></div>
+  <div class="turn-body"><p><strong>準備はほぼ整っています。</strong>testnet でのご支援、みなさんありがとうございました。この数週間、バグを潰し、フィードバックを受け、機能を追加してきました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:07:50</span></div>
+  <div class="turn-body"><p>現状としては、<strong>技術的には準備ができている</strong>と考えています。スマートコントラクトもその他もプロダクトも。今やっているのは、<strong>TradFi 側の提供事業者とのオンボーディングの仕上げ</strong>です。少し分解して説明します。RealFi の構成は、オンチェーンの部分があって、その裏側に一連の資産がある。その資産の一部はトークン化されたもの、たとえばトークン化されたマネー・マーケット・ファンドやトークン化された T-Bill。そして一部はオフチェーンのものです。オフチェーンのものには<strong>規制を受けた取引所</strong>が必要で、我々は <strong>StoneX</strong> を使っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:08:29</span></div>
+  <div class="turn-body"><p>それに加えて、自前の直接融資・プライベートクレジットの部分もあります。この一部が TradFi 側に手を伸ばすことになるので、<strong>望むより少し遅い</strong>。たとえばケイマン諸島の <strong>CIMA の登録</strong>を提出する必要がありました。それを取引所（StoneX）に渡さないと、口座の開設すら始まらない。<strong>こうしたことは順番にしか進まない</strong>ので、それを一つずつやっているところです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:08:56</span></div>
+  <div class="turn-body"><p>準備はできます。今は<strong>実際のお金を使って RealFi をテストしている</strong>段階です。<strong>10 万ドルほどを mint して</strong>、各種の取引の場やウォレットなどを通して動かしています。<strong>hardening</strong> という、いささか退屈な名前の工程です。実際のお金での hardening の段階にいて、そのあと mainnet に行く形になります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:09:21</span></div>
+  <div class="turn-body"><p>おおよそですが、<strong>mainnet の時期は 9 月中旬</strong>になると思います。今後 2 週間ほどで残りの項目を片付けながら、<strong>確定した日付を出します</strong>。正直に言うと、依存関係のリストは非常に長い。ただ順に潰しているので、現実的な見通しだと思います。</p></div>
+</div>
+
+<div class="sec">Cardano のローンチで何ができるか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:09:38</span></div>
+  <div class="turn-body"><p>分かりました。ローンチの前に他に必要なことはありますか。それでだいたい網羅していますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:09:49</span></div>
+  <div class="turn-body"><p>それは「mainnet で何ができるか」の話につながりますね。いくつかあります。ひとつは <strong>Liqwid でプロダクトを開く</strong>こと。かなり良いもので、<strong>ADA を預けて、それを担保に借り、USDr にして、USDr をステークできる</strong>。つまり、<strong>ADA を持っている人が、それを売らずに RealFi に参加できる</strong>ように設計したプロダクトです。出すのが楽しみです。Liqwid と一緒に、近いうちに詳しくお伝えします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:10:16</span></div>
+  <div class="turn-body"><p>Cardano での 2 つ目のローンチは <strong>Sundae</strong> と。彼らの新しい <strong>linear swap</strong> の機能を使わせてもらう予定です。V2 だったか V3 だったか、覚えていませんが。ともかく Sundae は次のバージョンを作っていて、いずれ出す予定です。良い新機能で、<strong>我々のために前倒しで出してくれている</strong>と思います。なので、Sundae に行ってスワップして、そのあと我々のアプリから直接ステークするか、Liqwid で ADA を使って面白いことをするか、どちらもできるようになります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:11:03</span></div>
+  <div class="turn-body"><p>これが Cardano でのローンチ時のアプリケーションです。近いうちに <strong>testnet にも追加する</strong>ので、テスト用の ADA とテスト用の USDr で触ってもらえるようになります。これが Cardano でのローンチの部品です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:11:22</span></div>
+  <div class="turn-body"><p>聞いているみなさん、探す手間を省くためにチャットにリンクを貼っておきます。ご存じない方のために。それと、話している間に John への質問があれば、チャットに書いてください。終わりのほうで拾っていきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:11:36</span></div>
+  <div class="turn-body"><p>はい、ぜひ。私が喋りすぎてしまうので。質問があれば投げてください。それと、みなさん関心があると思うので付け加えると、testnet でポイントを出してきたのと同じように、<strong>mainnet に移ってからもポイントの仕組みとシーズンがあります</strong>。特に、今話した 2 つの場所の周りで。ぜひ参加してください。</p></div>
+</div>
+
+<div class="sec">与信がデフォルトしたら — 損失の順番</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:12:09</span></div>
+  <div class="turn-body"><p>参加者A からの質問です。「<strong>ポートフォリオの中の与信資産のひとつがデフォルトした場合</strong>、USDr や sUSDr の保有者を守る仕組みを説明してもらえますか」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:12:22</span></div>
+  <div class="turn-body"><p>はい。ここはかなり力を入れて取り組んできました。<strong>まだ完全には確定と言えない</strong>のですが、近いうちに言えるようになります。基本的には、まず<strong>エクイティ・バッファ</strong>という形のリスク緩和があり、<strong>そこが最初に食われます</strong>。ポートフォリオの中には、通常のローンポートフォリオと同じように<strong>予想される信用損失</strong>が織り込まれています。その信用損失は<strong>利回りが出る前に差し引かれている</strong>、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:13:03</span></div>
+  <div class="turn-body"><p>それを超えたところにエクイティ・バッファがあり、これが最初に出ていきます。<strong>これは、この保護のために私が特に調達するお金</strong>です。その次に<strong>プロトコルの準備金</strong>があります。これは時間をかけて積み上がるもので、<strong>初日には存在しません</strong>。だからこそ、その最初の部分のためにエクイティを調達する、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:13:28</span></div>
+  <div class="turn-body"><p>時間の経過とともに、プロトコルが収益を上げる順序としては、まず特定のものに資金を回します。<strong>安定化ファンドを先に満たしてから</strong>、プロトコルが残余の収益を生む。そういうやり方です。<strong>Ethena のようなところと似ています</strong>。重要なのは、そのためのリスク緩和を持ち込めるよう、調達しようとしているという点です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:13:57</span></div>
+  <div class="turn-body"><p>ここで話していないのは、<strong>そもそも何がうまくいかなくなり得るのか</strong>という理由のすべてです。実際にはそこに大半の時間を使わなければならない。ただ、実際に何かが起きた場合には、その側に保護が組み込まれている。はっきりさせておくべきだと思うのは、ここには<strong>損失のウォーターフォール（滝）</strong>がある、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:14:20</span></div>
+  <div class="turn-body"><p>エクイティ・バッファのあと、プロトコルの安定化ファンドが食われたあとで、それでも損失が残ったとします。そうすると、<strong>sUSDr の数値を切り下げる</strong>ことになります。つまり <strong>sUSDr の保有者が先に損を受け、最後に USDr の保有者</strong>。これが、事態が悪化したときに何が起きるかの順序、損失のウォーターフォールです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:14:49</span></div>
+  <div class="turn-body"><p>繰り返しになりますが、そうならないようにするために多くの時間を使います。ただ、<strong>誰がいつ損を受けるのかについて、透明な劣後の順序（優先順位）がある</strong>ということです。</p></div>
+</div>
+
+<div class="sec">RealFi は Cardano の上で動くのか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:15:01</span></div>
+  <div class="turn-body"><p>参加者B からの質問です。「<strong>RealFi は Cardano の上で直接動くのですか。それとも独自のチェーン、あるいは Cardano のフォークですか</strong>」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:15:12</span></div>
+  <div class="turn-body"><p><strong>Cardano の上で直接動きます。</strong>ネイティブアセットとして載っていて、実際に見ることができます。<strong>Cexplorer にも出ている</strong>ので、USDr を確認できます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:15:29</span></div>
+  <div class="turn-body"><p>そういう構成で動いています。そして <strong>EVM 側では少し工夫</strong>をしています。<strong>Cardano が正となる台帳（canonical source of truth）であり会計の層</strong>であり続けて、burn と mint によって <strong>Ethereum 上でもネイティブに発行</strong>できるようにする。これは実質的に <strong>Circle の CCTP（Cross-Chain Transfer Protocol）のフォーク</strong>で、<strong>LayerZero が Cardano に来たらそちらに移す</strong>可能性が高いです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:16:03</span></div>
+  <div class="turn-body"><p>この構成の良いところは、<strong>EVM 側や Pendle、Aave などで需要がいくら大きくなっても、Cardano 上のステーブルコインの残高が増える</strong>ことです。資産がそこにあるからです。つまり、<strong>Ethereum で面白いことが起きても、それが Cardano 上のステーブルコインの供給を押し上げる</strong>。なかなか良い副次効果です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:16:32</span></div>
+  <div class="turn-body"><p>それと、<strong>Alpha Growth の提案が可決されました</strong>。これは非常に嬉しい。我々にとっても大きな機会だと思います。良いプロダクトを作っていると思いますし、Alpha Growth が Cardano 上の各プロジェクトにまたがって調整できるようになる投資と合わせれば、<strong>DeFi の TVL を本当に積み上げる好機</strong>があると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:17:02</span></div>
+  <div class="turn-body"><p>彼らは各所と話していて、<strong>基準を満たすためにプロトコルの何を変える必要があるか</strong>を伝えています。Cardano の人だけでなく、crypto エコシステム全体から LP を呼べるようにするためです。<strong>それなりの規模のインセンティブ予算があるはず</strong>です。これはかなり良いことになり得ると思います。すみません、少し脱線しました。</p></div>
+</div>
+
+<div class="sec">ウォレットと、ADA の最低数量の質問</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:29</span></div>
+  <div class="turn-body"><p>いえ、面白かったです。念のため確認したいのですが、Cexplorer の USDr のリンクをチャットに貼りました。<strong>これで合っていますか</strong>。<strong>偽物を作る人もいる</strong>ので、正しいリンクを渡しているか確かめたくて。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:17:45</span></div>
+  <div class="turn-body"><p>分かりません。ありがとうございます。見てみます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:51</span></div>
+  <div class="turn-body"><p>見ている間に、参加者A からの質問です。「<strong>必要な ADA の最低数量はいくらですか</strong>」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:17:58</span></div>
+  <div class="turn-body"><p>これは以前も言いましたが、<strong>報酬を得るための委任に必要な ADA の最低数量は公開しません</strong>。<strong>アンチシビル・アンチファーミングの措置</strong>が入っているためです。その情報を出すと、ファーミングがやりやすくなるだけなので。なのでアンチシビルの措置は「<strong>まあ信用してくれ</strong>」という部分がある。<strong>善意の参加者は問題ありません。</strong>0.0 いくつという残高で最適化しようとする人は、そうではない、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:18:29</span></div>
+  <div class="turn-body"><p>……ええと、Ben、それを言ってはいけないと思い出させてくれてありがとう。—— はい。—— では USDr ですが、リンクは合っていますか。—— はい。—— 分かりました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:18:39</span></div>
+  <div class="turn-body"><p>では、Cardano の mainnet の次に来るものは何ですか。—— あ、ウォレットの話はしましたか。ローンチ時のアプリの話はしましたが。<strong>ローンチ時に対応しているウォレットは何ですか</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:18:52</span></div>
+  <div class="turn-body"><p><strong>Lace</strong> が、我々が組んでいる主要なパートナーです。ただ、結局のところ<strong>ネイティブトークンなので、どこでも保有できる</strong>はずです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:19:08</span></div>
+  <div class="turn-body"><p>もう少しよい答え方をすると、<strong>Lace と一緒に、スワップの出入りとステークができる専用の体験</strong>を作ってきました。とにかく単純で気持ちのよいものにしようとしています。よく言っていることですが、<strong>ボタンひとつにしたい</strong>。<strong>複雑さを単純さに変えたい</strong>ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:19:36</span></div>
+  <div class="turn-body"><p>ちなみに私は Lace を入れたのですが、<strong>メインのウォレットを連携させることすらできていません</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:19:43</span></div>
+  <div class="turn-body"><p>それは直してもらえるといいですね。ともあれ、これが我々が作っている最初の体験です。私の場合、<strong>Lace は今はとてもよく動いています</strong>。いつもそうだとは言いませんが、今は快調です。</p></div>
+</div>
+
+<div class="sec">LayerZero とブリッジ</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:20:03</span></div>
+  <div class="turn-body"><p>それで……すみません、どこまで話しましたっけ、Ben。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:20:08</span></div>
+  <div class="turn-body"><p>Cardano の mainnet の話が終わって、次に来るもの、他のクロスチェーンの取り組みに入ろうとしていたところです。私が引き戻してしまいました。参加者C から <strong>LayerZero</strong> についての質問が来ています。「<strong>ビルダーの立場から見て、LayerZero を活用できる現状はどうなっていますか</strong>」私のほうには情報がないのですが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:20:32</span></div>
+  <div class="turn-body"><p>少し前は、これをかなり心配していました。最初にこれを設計していた頃は、<strong>USDC を Ethereum や EVM の世界から Cardano に持ってきて、また戻す簡単な方法が本当になかった</strong>。<strong>USDCx のブリッジができて、それがかなり easy になりました</strong>。そこの技術をかなり使えるので、<strong>大量の資産をロックして honeypot（蜜壺）を作らなくて済むブリッジ</strong>を立てられる。しかも Circle の非常に堅牢な仕事の上に成り立っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:21:20</span></div>
+  <div class="turn-body"><p>とはいえ、<strong>できれば LayerZero に移りたい</strong>。私の理解では<strong>年末に向けて来る</strong>ということです。なので<strong>メッセージングの層を差し替えやすいように全体を設計してあります</strong>。使えるようになったら、その層を入れ替えて移行するだけです。</p></div>
+</div>
+
+<div class="sec">次に来るもの — 「Cardano サンドイッチ」</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:21:41</span></div>
+  <div class="turn-body"><p>ありがとうございます。では、Cardano の mainnet のあと、あるいはそれと並行して、次に来るものを説明してください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:21:52</span></div>
+  <div class="turn-body"><p>私の中では、これは<strong>「Cardano サンドイッチ」</strong>のようなものです。まず Cardano のローンチから始めて、その次に <strong>EVM 側の取り組みが大量に来る</strong>。典型的には、<strong>取引の場を通じて流通を広げる</strong>こと。もっと多くの場所、もっと多くの人がプロダクトにアクセスできるようにしたい。同時に、<strong>キュレーターと組んで、特定の戦略を持つ vault を立ててもらい、深い流動性を作る</strong>ことでもあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:22:20</span></div>
+  <div class="turn-body"><p>たとえばレバレッジのループ戦略です。馴染みのない方のために言うと、単純な発想です。<strong>これは利回りの約束ではありませんが</strong>、仮に sUSDr で 8.5% 得られるとします。100 ドル入れてステークすると sUSDr になる。次にそのポジションを担保に借りる。普通のドル、たとえば USDC を貸してもらえる金利次第ですが、仮に 5% で貸してもらえるとする。そのお金でさらに USDr を買ってステークし、また同じことをする。<strong>これはレバレッジです。</strong>crypto の人がループと呼んでいるもので、<strong>我々はレバレッジをループと呼び替えた</strong>だけで、実態はそれです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:23:19</span></div>
+  <div class="turn-body"><p>我々のプロダクトの良いところは、<strong>これがひどく失敗するのは、当然ながら原資産のボラティリティが高いとき</strong>だという点です。我々の見方では、<strong>債券はこれに向いた資産クラス</strong>です。なので、ループ戦略を組んで運用する人にとって魅力的な選択肢になれると期待しています。<strong>EVM の世界ではこれが非常に大きい</strong>。キュレーターに vault を立ててもらって、そこからプロダクトにアクセスできるようにしたいと考えています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:23:47</span></div>
+  <div class="turn-body"><p>そしてサンドイッチのもう一方、最後のパンの部分で、<strong>Alpha Growth と Cardano 上の各所に戻ってくる</strong>。その頃には各プロトコルがアップグレードや追加の監査を済ませる時間が取れているはずで、Alpha Growth が追加の LP を呼び込み始める。これがごく普通のまとめです。<strong>もちろん話せないのは、具体的な上場先などの話</strong>です。話せるようになったらお伝えします。</p></div>
+</div>
+
+<div class="sec">値のつかない資産をどう評価するか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:24:17</span></div>
+  <div class="turn-body"><p>別のコールで非常に良い質問がありました。あのときはあなたが答えるべき人だったのですが。要するに、<strong>プライベートクレジットや、確立した価格のない債権をどう値付けするのか</strong>という質問です。以前あなたが説明してくれたことがあると思うので、それを扱えたらと。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:24:45</span></div>
+  <div class="turn-body"><p>値付けはできます。<strong>実際のクーポン（利札）で値付けする</strong>。つまり、いくら支払われることになっているか。そこからポートフォリオの<strong>予想損失で割り引く</strong>。問題は、そして<strong>この種の資産の根本的な問題</strong>は、<strong>何かがうまくいかなくなったときにどうなるか</strong>です。crypto のダッシュボードの上では、金利ぶんの期待上昇によって<strong>単調に増え続けているように見える</strong>。しかし実世界では実際に何かが壊れていて、それが反映されていないかもしれない。<strong>最近 crypto で起きた破綻のいくつかは、まさにそこ</strong>だと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:25:29</span></div>
+  <div class="turn-body"><p>答えは<strong>第三者によるアテステーション</strong>です。<strong>自分ではない誰かに見てもらい、評価してもらう</strong>。安くはありませんが、必要なものです。しかもこれは我々だけでなく、<strong>実世界の資産を crypto に持ち込もうとする全員にとって、ますます重要になる</strong>と思います。ファンド・アドミニストレーターがポートフォリオの純資産価値を報告してくれますが、彼らが偽の数字を出すことはないにせよ、保有している資産を考えると、<strong>世界中で取引されている大きな CLO ETF を値付けするのは彼らにとって非常に簡単</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:26:06</span></div>
+  <div class="turn-body"><p>T-Bill の値付けも彼らには非常に簡単です。「うちは違う T-Bill のレートを持っているので、そちらを使ってくれ」などと言えるはずもない。しかし<strong>評価が難しい資産については、彼らは専門家ではありません</strong>。なので<strong>時期ごとの第三者によるアテステーションが本当に重要</strong>だと思います。退屈な言い方をすれば、<strong>これは伝統的な金融がやっていること</strong>です。彼らは非常に長いことこれをやってきた。crypto では、この手のことにまだ慣れていないだけだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:26:31</span></div>
+  <div class="turn-body"><p>見た方がいるか分かりませんが、Accountable というような名前の会社をめぐって、かなりの問題が起きています。彼らは複数のプロジェクトで検証を提供する立場にあり、そうした実世界資産のものが<strong>最近まとめて償還を止めた</strong>。これは要するに、<strong>この手の資産を評価するには実際に手を動かす必要がある</strong>ということだと思います。ダッシュボードを出して、アンケートに記入してもらえばいいという話ではない。長い答えになりましたが、<strong>第三者による検証、つまり我々ではない人がやることが本当に重要</strong>です。</p></div>
+</div>
+
+<div class="sec">チャットからの質問</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:27:27</span></div>
+  <div class="turn-body"><p>チャットに質問がたくさん来ていますね。Ben、いくつか手早く回していきませんか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:27:35</span></div>
+  <div class="turn-body"><p>はい、そうしましょう。参加者C からの質問です。「<strong>sUSDr が取引所でポジションを持った状態にあるとき、利回りは発生していますか。発生しているなら、その利回りは取引所のポジションを自動的に増やしますか</strong>」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:27:41</span></div>
+  <div class="turn-body"><p><strong>取引所によります。</strong>CEX ごとに扱いが違います。<strong>ある CEX では答えは「はい」、別のところでは「いいえ」</strong>かもしれない。またあるところでは、<strong>ステークしていないほうしか預からず、報酬は自分たちに支払われることを前提にする</strong>場合もある。この業界には、やり方のモデルが色々混在しています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:28:13</span></div>
+  <div class="turn-body"><p>参加者C さん、そこに書いてくれたのは、<strong>まさに私が今まとめようとしている中心的なユースケース</strong>です。私が本当に実現したいのは、<strong>取引所で sUSDr を保有したまま、価値が増え続けている状態でそれを他のポジションの担保に使える</strong>ことです。<strong>NAV が積み上がっていく担保</strong>というのは、キラーユースケースだと思います。書いてくれたのは、それに対応しようとする取引所での動き方の良い例です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:01</span></div>
+  <div class="turn-body"><p>参加者D からの質問です。「<strong>もっと多くの SPO が RealFi を支援するために参加することはできますか</strong>」まだ計画の段階だと思いますが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:29:12</span></div>
+  <div class="turn-body"><p>これは Ben に答えてもらうほうがいいかもしれませんね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:14</span></div>
+  <div class="turn-body"><p>はい。基本的には、<strong>mainnet の先でそれがどういう形になり得るかの案を作っている</strong>ところです。プロダクトとマーケティングとかなり細かいところまで詰めて、John に案を出しています。<strong>ただ承認は下りていないので、まだ進行中</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:32</span></div>
+  <div class="turn-body"><p>参加者A から、<strong>どの CEX かの見込み</strong>についての質問です。これは言えないとすでにお伝えしています。それと、<strong>USDr が MiCA や GENIUS の要件を満たすのか</strong>。ただ、それらは地域制限のかかる場所ですよね、John。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:29:49</span></div>
+  <div class="turn-body"><p>はい、<strong>現時点でその基準に対応する予定はありません</strong>。理由は色々あります。対応できればよいのですが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:30:04</span></div>
+  <div class="turn-body"><p>次は 参加者B からで、質問というより申し出です。「<strong>DeFi Llama がオフチェーンのアテステーションに取り組んでいる。関心があれば紹介できる</strong>」とのことです。私からフォローしましょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:30:15</span></div>
+  <div class="turn-body"><p>はい、それはよいですね。<strong>Token Terminal</strong> とは一緒にやってきていて、そこから DeFi Llama に話が通ったこともあったと思います。少し前に話したことはあったはずです。よい話だと思います。Ben、社内の担当者が連絡を取りたいか確認してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:30:35</span></div>
+  <div class="turn-body"><p>その点について言うと、参加者F さんはお気づきでしょうが、<strong>DeFi Llama がオフチェーンの準備資産をどう計上するかは、かなり変わってきています</strong>。彼らにとっては悪夢のような話ですから。<strong>彼らのプロダクトの本質は、実データのフィードに対する透明性</strong>なのに、そこに<strong>完全にオフチェーンのもの</strong>が入ってくる。きちんとやられていないと、痛い目を見ることになる。</p></div>
+</div>
+
+<div class="sec">フォームからの質問</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:09</span></div>
+  <div class="turn-body"><p>いいですね。では切り替えて……フォームから届いた質問もあるので、それも拾っておきたい。「<strong>USDr は国ごとにどのような課題に直面し、どんな準備や対策が必要ですか</strong>」もしすでに扱っていたら止めてください。関連して、「<strong>米国・英国・EU にまたがるグローバルな展開に、どういう法人の構成が最も適していますか</strong>」という質問も来ています。混ざっていますが、どう答えますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:31:43</span></div>
+  <div class="turn-body"><p><strong>構成の話というより、何をやろうとしているかの話</strong>だと思います。どこに法人を置くかを決める前に、<strong>やろうとしている活動を決める</strong>。そして、特定の国でカバーが取れるかどうかは、<strong>自分たちのコントロールの外にある部分もある</strong>。米国で <strong>CLARITY Act</strong> をめぐって動いていることは、我々にとって非常に関係が深い。<strong>最近また遅れました。</strong></p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:32:13</span></div>
+  <div class="turn-body"><p>多くは<strong>自分たちより大きなものに左右される</strong>話です。米国では、<strong>crypto の会社が銀行のようになっていくこと</strong>と、<strong>そのリスクに気づいてそうさせたくない銀行側</strong>との争いがあり、それが議会で戦われている。それは我々についての話ではありません。ただ最終的には、<strong>面白いと言えるだけのグローバルな流通は取れる</strong>と信じられるプロダクトを作りました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:32:45</span></div>
+  <div class="turn-body"><p>私があまりやりたくないのは、<strong>特定のひとつの法域、たとえば米国に合わせてプロダクトを丸ごと変えること</strong>です。大きくなったあとなら、その市場向けの版を考えることはあるかもしれません。ただ、<strong>T-Bill ベースのプロダクトはすでに多くの人が出しています</strong>。それをもう 1 つ作る必要はない。我々は少し違うことをやろうとしていて、<strong>ステーブルコインをもう少し生産的にし、ユーザーにとってより良いプロダクトを作る</strong>。その結果、<strong>適さない地域が出てくることもあり、それはそれで構わない</strong>と考えています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:31</span></div>
+  <div class="turn-body"><p>次の質問です。RealFi についてなのか、もっと広く聞いているのか判然としないので、両方いきましょうか。「<strong>RealFi について、そしてより一般に、特に楽しみにしている今後の機能やプロダクトのローンチはありますか</strong>」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:33:46</span></div>
+  <div class="turn-body"><p>RealFi については <strong>vault</strong> だと思います。vault のキュレーターがやってくれることはいくつかあります。<strong>立ち上げて LP を呼び込み、パラメータを設定する</strong>だけでなく、<strong>第三者として、ファンドマネージャーのように振る舞う</strong>。リスク管理やデューデリジェンスをやってくれる。これは我々にとって<strong>非常に重要な信用のチェック</strong>だと思います。なので vault を立ててもらうことは重要で、とても楽しみにしています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:34:22</span></div>
+  <div class="turn-body"><p>それが 1 つ目。2 つ目は、いわゆる<strong>「実業」</strong>との会話が始まっていることです。<strong>短めの期間、ドルの資金の流れを持っていて、その期間に追加の経済性を得たいと考えている</strong>人たちです。必ずしも crypto の事業ではなく、<strong>送金の事業</strong>のようなものを思い浮かべてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:34:54</span></div>
+  <div class="turn-body"><p>つまり、<strong>crypto ではない事業において USDr と sUSDr にプロダクトマーケットフィットがあるか</strong>を確かめようとしています。crypto に隣接してはいても、<strong>実世界で実際のことをやっている人たち</strong>です。今日もその線で良い会話がありました。<strong>最初の実世界の顧客</strong>を得られるか。たとえば<strong>家具工場を経営していて、複数の口座にドルを持っていて、それを資金管理のプロダクトとして使いたい</strong>人かもしれないし、<strong>送金の流れを支える</strong>形かもしれない。<strong>市場は、crypto の中で利回りを追う人たちよりずっと大きい</strong>と思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:35:36</span></div>
+  <div class="turn-body"><p>そこで何か掴めるかは楽しみです。より広い話では、<strong>Anthropic の IPO</strong> に興奮していない人はいないでしょう。目標株価として 2 兆ドルという数字を見ました。SpaceX の大騒ぎのあとなので、どこに着地するのか楽しみです。<strong>crypto の数字が大きいと思われていましたが</strong>、ね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:03</span></div>
+  <div class="turn-body"><p>そうですね。昨日、名前は出しませんが、ある人と非常に興味深い会話をしました。<strong>Web3 の問題のひとつは、L1 が Web3 の経済圏の中に閉じ込められていることで、他の経済圏に出ていかなければならない</strong>、と。今おっしゃったことと重なると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:17</span></div>
+  <div class="turn-body"><p>次はコミュニティへのインセンティブについてです。「<strong>testnet に積極的に参加して支援した初期のユーザーは、限定のロールやバッジ、その他の特別なインセンティブを受け取れますか</strong>」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:31</span></div>
+  <div class="turn-body"><p>それはチームと議論していて、案を出しているところです。社内にも独自の案を持っている人がいます。かなり検討はしていますが、<strong>まだ何も確約はしません</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:42</span></div>
+  <div class="turn-body"><p>次は Cardano の mainnet についてです。統合の話はすでに扱ったと思いますが、「<strong>SundaeSwap は RealFi の公式な DEX になりますか</strong>」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:36:52</span></div>
+  <div class="turn-body"><p>はい、<strong>Sundae とは間違いなく組みます</strong>。ただ、<strong>「公式」が何を意味するのかは分かりません</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:02</span></div>
+  <div class="turn-body"><p>公式にも非公式にも、両方ということで。あらゆる意味で公式に。—— では、mainnet の準備状況、Cardano での mainnet、次に来るもの、という 3 つの柱を一通り見てきました。これまでに来た質問も回りました。質問があればチャットに書いてください。<strong>John、まだ聞かれていないことで、私が気を利かせて聞くべきだったことはありますか</strong>。話しておくべきことは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:37:33</span></div>
+  <div class="turn-body"><p>いえ、<strong>おおよその mainnet の時期</strong>、<strong>稼働後に Cardano で何ができるか</strong>、<strong>EVM 側が Cardano 上の USDr の流通量をどう増やすのか</strong>、<strong>EVM で起きている面白いこと</strong>、そしてもちろん <strong>Alpha Growth の提案でそれらをどう Cardano に持ってくるか</strong>。大きなところはそれだと思います。</p></div>
+</div>
+
+<div class="sec">vault とは何か、なぜ重要か</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:59</span></div>
+  <div class="turn-body"><p>まとめのため、そしてコールに参加していなかった人のために、<strong>vault とは何で、なぜそれが面白いのか</strong>を改めて説明してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:38:07</span></div>
+  <div class="turn-body"><p>はい。vault は<strong>プログラムで動くデジタルのファンド</strong>のようなものです。<strong>パラメータと戦略の設定に責任を持つ vault マネージャー</strong>がいて、そこに <strong>LP（資金の出し手）</strong>が入ってくる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:38:26</span></div>
+  <div class="turn-body"><p>この仕組みが作られた理由は、<strong>vault のキュレーターの上に説明責任の層をもう 1 枚足す</strong>ことにあります。ファンドマネージャーのたとえで言えばそうなります。<strong>彼らが仕事をきちんとしていれば、良い資産だけが入るようにパラメータを設定し、レバレッジがかかりすぎていないかも見てくれる</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:38:43</span></div>
+  <div class="turn-body"><p>つまり<strong>信用の追加のポイント</strong>として存在しています。<strong>vault の世界で常に何もかもうまくいってきたとは言いません</strong>が、DeFi で見られたばかげたことのいくつかを解決するために作られたものです。<strong>確実に改善ではある</strong>と思います。</p></div>
+</div>
+
+<div class="sec">クロージング</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:17</span></div>
+  <div class="turn-body"><p>ありがとうございました。John、本当に感謝します。どれだけ忙しいかは分かっているので。常に打ち合わせと仕事に追われていますよね。出てきて時間を割いてくれてありがとうございます。<strong>これは持ち回りでやっているので、だいたい 6 週間後にまた出てもらうことになる</strong>と思います。締める前に、最後に一言ありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:39:34</span></div>
+  <div class="turn-body"><p>はい。参加してくれた <strong>25 名</strong>のみなさん、ありがとうございます。Discord を追っていて見覚えのある名前が多くあります。SPO の方々も来てくれていますね。ありがとうございます。準備を整えている間、<strong>少し静かに見えたかもしれません</strong>。ただ、<strong>実際にはこれまでになく忙しい</strong>ことは約束します。まもなく mainnet に向かい、日付を決めて、そこからもっと多くの発信をしていきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:40:03</span></div>
+  <div class="turn-body"><p>ともあれ、<strong>Discord は覗いています</strong>。みなさんがそこにいるのを見られるのは本当に good です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:40:14</span></div>
+  <div class="turn-body"><p>ありがとうございました。みなさんもありがとうございます。John、ありがとうございました。他に質問があれば、いつでも声をかけてください。ではまた。</p></div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語の原文を訳したもの。誤変換は用語集にしたがって直してある。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 全セッション</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>

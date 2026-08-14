@@ -45,6 +45,17 @@ NAMES = {
         # 経歴から個人が特定できるため業種の記述に置き換えたもの
         "UBS", "Keyrock", "Lisk", "R3", "Brexit",
     ],
+    # partial の回。**残してはいけない名前だけ**を書く。
+    # 話者（ホストと CEO）の実名は依頼により残しているので、ここには書かない。
+    "2026-08-14-ask-the-ceo": [
+        # 読み上げられた質問者
+        "Louis", "Sebastian", "Funky", "Chris", "Adolf",
+        # ハンドル名 "Key" も置換したが、**一覧に入れられない**。
+        # 英語版まとめの見出し "Key points" と衝突して、自分のページが落ちるため。
+        # 置換は手作業で行い、shared/speakers.md に記録してある。
+        # 社内の人物として名前が挙がった同僚
+        "Danelle", "Rob",
+    ],
     "2026-08-11-masumi-ai-forum": [
         # 話者・チャットで発言した参加者
         "Patrick", "Sharan", "Scott", "Kelly", "Sandro",
@@ -321,7 +332,7 @@ def main():
     for path in sorted(ROOT.rglob("*")):
         if not path.is_file() or ".git/" in str(path) or "tools/" in str(path):
             continue
-        if path.suffix not in (".html", ".md", ".txt", ".yml"):
+        if path.suffix not in (".html", ".md", ".txt", ".yml", ".srt"):
             continue
         targets = names_for(path)
         if targets is None:

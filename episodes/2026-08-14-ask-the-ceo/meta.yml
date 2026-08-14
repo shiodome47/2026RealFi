@@ -1,0 +1,61 @@
+slug: 2026-08-14-ask-the-ceo
+title: RealFi Office Hours — Ask the CEO
+title_en: RealFi Office Hours — Ask the CEO
+date: 2026-08-14
+platform: Discord
+series: realfi-office-hours   # shared/series.yml のキー
+series_no: 6                  # RealFi Office Hours の通し番号（回の実施順）
+
+# 匿名化の判定
+#
+# **この回だけ partial。**依頼により、話者 2 名（ホストと CEO）は実名のまま扱い、
+# **読み上げられた質問者の名前だけを匿名化する。**
+#
+# tools/check.py の NAMES には「残してはいけない名前」だけを入れてある。
+# 話者の実名を NAMES に入れると、この回のページが自分の名前で落ちる。
+#
+# **回をまたぐ影響**: 過去の #3 / #4 / #5 では同じホストを `進行役` として
+# 匿名化している。この回でホスト名を出すと、**過去の回の `進行役` が誰かも
+# 実質的に分かる**。CEO の名前も 2026-07-31 の回で言及されており同様。
+# 影響を広げないため、実名はこの回のページの中だけにとどめ、
+# docs/index.html と README.md では役割（ホスト / CEO）で書いている。
+chatham_house_rule: partial
+
+speakers:                 # この回で発話したのはこの 2 名だけ
+  - ホスト                 # 進行。チャットとフォームの質問の読み上げ
+  - CEO                   # 回答者
+
+# 読み上げられた質問者・言及された同僚。すべて匿名化した。
+questioners:
+  - 参加者A                # 与信のデフォルト時の保護、ADA の最低必要数量、CEX と規制
+  - 参加者B                # RealFi は Cardano 上で動くのか、DeFi Llama への橋渡しの申し出
+  - 参加者C                # 取引所上の sUSDR は利回りを生むか、LayerZero の現状
+  - 参加者D                # SPO の追加参加
+  - 参加者F                # 呼びかけのみ
+colleagues_generalised:   # 社内の人物として名前が挙がった 2 名
+  - 同僚A
+  - 同僚B
+
+# 第三者として名前が挙がった人物のうち、**公的な立場での言及はそのまま残している**。
+# 元 Cardano Foundation 会長。CEO が crypto に入るきっかけとして語られる。
+third_party_names_kept: true
+
+# 資料について
+slides:
+  shown: false            # 画面共有なし。ウェブカメラ通話
+  note: |
+    スライドはない。ホストがチャットにリンクを貼る場面があるが、
+    リンク先そのものは扱わず、音声で語られた内容だけを記録している。
+
+# 原本は SRT（字幕）。タイムスタンプは付いているが話者ラベルはない。
+# 1 つの字幕ブロックの中で話者が入れ替わるため、分割は文脈から判断している。
+source_format: srt
+speaker_labels: inferred
+timestamps: yes
+
+duration: "40:24"
+attendees: 25             # CEO が「25 名が参加している」と述べている
+
+source:
+  audio: null
+  video: null

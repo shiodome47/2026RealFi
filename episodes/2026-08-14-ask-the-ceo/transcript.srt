@@ -1,0 +1,1391 @@
+1
+00:00:03,260 --> 00:00:11,860
+Hey, John. Um, just need you to-- I always forget. I
+either have to invite you or you have to, uh, invite
+to speak. There we go. Brilliant.
+
+2
+00:00:14,680 --> 00:00:22,820
+Hey, John. Cool. Is that working? Yes. Is it on yet,
+man? Doing web- Okay. It's on. Uh, we doing webcams?
+
+3
+00:00:25,900 --> 00:00:29,860
+I am giving permissions. Yes, we're doing webcams.
+
+4
+00:00:32,540 --> 00:00:45,200
+Brilliant. So much, uh, so much handsome energy on
+this call now. So, um, we've had a-- we've had some
+really good RealFi, um, office hours actually, uh,
+since, uh, since you last did the AMA.
+
+5
+00:00:45,480 --> 00:00:58,860
+We've had, um, product marketing, engineering, data,
+and we put out a blog actually, um, to recap all of
+those office hours. So this is a, a culmination in
+kind of going through the different teams and the
+functions.
+
+6
+00:00:59,560 --> 00:01:14,300
+Um, so John, if everyone... And I'm, I'm sort of
+giving a couple of minutes so people can join. Um,
+but give us a little bit of an introduction and your
+origin story into RealFi. Uh, we've done that with
+everybody so far, and then we'll get into some of
+the mainnet readiness,
+
+7
+00:01:14,640 --> 00:01:27,300
+Cardano, and what comes next. I'm kind of intrigued
+what everyone else said. I know I've had calls
+across, uh, some of these sessions. I need to go and
+listen to what, what everyone said, uh, how they,
+how I lured them into, into RealFi.
+
+8
+00:01:28,060 --> 00:01:41,080
+Um, I don't know. I think I've been sort of playing
+around with this idea in many different forms for,
+like, a very long time. Uh, I think I've always been
+interested in two things since I started working in
+crypto.
+
+9
+00:01:41,660 --> 00:01:54,259
+Um, maybe I'll start with that, how I started
+working in crypto. Uh, I kind of fell into it. I
+met, um, the then chairman of the Cardano
+Foundation, Michael Parsons, uh, in like a coffee
+shop in Northwest London.
+
+10
+00:01:54,610 --> 00:02:06,020
+And, uh, to me he was like maybe, uh, a slightly
+strange older man that was trying to talk to me.
+And, uh, he was asking me what I did. And I worked
+in, um, I was working in tech in London in product
+and business roles.
+
+11
+00:02:06,920 --> 00:02:19,080
+And, uh, this was a, a time I suppose when not
+everyone really did know what crypto was, and he was
+like, uh, "Oh, do you know what crypto is?" I was
+like, "Yeah, you know, I read the Bitcoin paper, I
+read the Ethereum white paper." Uh, and he was like,
+"Oh my God.
+
+12
+00:02:19,180 --> 00:02:29,500
+Thank God." Um, because, you know, he was nominally
+in charge of setting up the Cardano Foundation and I
+think, uh, was, was kind of a bit scared over what
+entailed. So I joined then.
+
+13
+00:02:30,020 --> 00:02:44,180
+Um, I did a lot of stuff then, um, back in the day
+at Cardano Foundation. I was kind of head of
+strategy, head of ecosystem. Um, did a lot of the
+initial marketing, um, narratives, and then a lot of
+the ecosystem and community set up, and then a lot
+of the strategy.
+
+14
+00:02:44,500 --> 00:02:59,360
+Uh, a whole mix of stuff. Um, and then anyway, uh,
+across the sort of work I was doing in Africa, I got
+really interested in seeing all these balances
+increase. Balances of Bitcoin, balances of Ethereum,
+and then, you know, with Tether, balances of USDT.
+
+15
+00:02:59,860 --> 00:03:10,680
+Um, and really the only thing I could see people
+using it for was to, to like either get out of a
+trade, say you sell from Bitcoin to at least to
+dollars, versus selling to Eth, right?
+
+16
+00:03:10,820 --> 00:03:23,020
+You're like, "Oh shit, my Bitcoin's going down. Let
+me, let me swap to Eth," right? Yeah. When they're
+pretty much moving one to one with each other. So
+that was a wild time actually before you could
+switch out to dollars.
+
+17
+00:03:23,620 --> 00:03:33,769
+Um, and yeah, mostly what people were using Tether
+for was to, like, borrow against their Bitcoin to go
+and buy more Bitcoin, which is great, right? There's
+nothing wrong with that. Um- Yeah...
+
+18
+00:03:33,820 --> 00:03:47,960
+but, uh, it did start making me think, um, we've got
+these huge and growing balances of dollars, um, what
+else could we do with it? Um, you know, the reason
+why everyone was just doing crypto stuff is 'cause
+no one had really built this bridge to be able to go
+
+19
+00:03:48,000 --> 00:04:02,020
+and start using that capital to access assets
+outside of crypto. There's a whole variety of boring
+reasons why that was the case, and a lot of them
+have gotten a lot easier. Um, so for me it was,
+like, seeing that opportunity and then also, um,
+
+20
+00:04:02,200 --> 00:04:16,579
+seeing both in emerging markets and in developed
+markets, you know, lots of really great fixed income
+opportunities where you can, in my view, you know,
+earn a very solid risk-adjusted yield, and thinking,
+"Okay, well, what if we could pull all of these
+things together?
+
+21
+00:04:16,640 --> 00:04:28,599
+Then we could create more utility in the crypto
+space where people's dollars can do more productive
+things." But then in the real world space we can
+also go and, you know, drive economic growth,
+opportunity, all of these other things.
+
+22
+00:04:29,060 --> 00:04:39,200
+Of course, it's easier to say than it is to do.
+There's a lot of risk management, legal set up, a
+whole bunch of stuff around that. Um, but that's
+kind of how, you know, I was thinking about RealFi.
+
+23
+00:04:39,560 --> 00:04:52,120
+It took me a while to actually put it together. Um,
+funnily enough, I actually didn't want to set this
+up. Um, there was another guy I knew who I thought
+would be really good, so I was trying to persuade
+him to go and, uh, set it up and go and be the CEO.
+
+24
+00:04:52,600 --> 00:05:03,700
+Uh, unfortunately, it didn't work out that way, so
+I'm the shmuck who's, who's had to go and do it. Um,
+and that's kind of how, that's kind of how it's
+happened. You know, multi-year journey. Um, but we
+are here.
+
+25
+00:05:04,380 --> 00:05:18,410
+We're excited. Um, there's a lot that, um, I won't
+be able to talk about, but there's a lot I can talk
+about today, so hopefully, um, hopefully we can go
+through some of that. And is it-- If I had to
+summarize that in two words, it's,
+
+26
+00:05:18,620 --> 00:05:34,660
+it's interface and infrastructure. Is that fair?
+Well, those are your words, Dan, so. Those are my
+words. Yeah. I'm, I'm exploring it because I'm
+thinking about interfaces with the, with the
+ecosystem and you describing, you know, the real
+world assets or there's kind of, um, credit or,
+
+27
+00:05:35,220 --> 00:05:45,860
+uh, assets outside of crypto back when you were
+talking to Parsons. And so there just seemed to be
+kind of like a wor- two worlds that were not
+connected, and so I was thinking about it being an
+interface.
+
+28
+00:05:46,020 --> 00:05:56,780
+But yeah, I'm putting words in your mouth now, John,
+so it's not that. Yeah. Well, I know it can be. I
+mean, like, I'm not sure whether you guys follow
+what ha- what's happening on Hyperliquid and just
+how insane its growth is. Um- Yeah...
+
+29
+00:05:56,820 --> 00:06:11,160
+and look, at the end of the day, people could say a
+lot of, talk a lot of smack about crypto, but you
+know, there's a reason that as Hyperliquid adds a
+bunch of real world assets that you're seeing
+volumes that you don't even see in some of the
+world's largest traditional exchanges.
+
+30
+00:06:11,530 --> 00:06:23,181
+'Cause a lot was done right. There's a lot cool with
+DeFi. There's a lot cool with twenty-four/seven
+settlement, programmatic everything. Like, there's a
+lot there. Um, and being able to use your positions
+as collateral in other positions.
+
+31
+00:06:23,232 --> 00:06:40,052
+Like a lot of cool stuff's been done. Um, and for
+me, similar to what Hyperliquid, you've seen on
+Hyperliquid as they're adding in gold, oil, futures,
+all of this kind of stuff, um, we're trying to do
+something similar, um, but, you know, with maybe
+something or maybe a product that in my view is
+
+32
+00:06:40,272 --> 00:06:45,012
+maybe more useful for normies, right? Than, um, than
+what you're seeing with that kind of stuff.
+
+33
+00:06:46,552 --> 00:06:51,992
+Okay, cool. But I'm just gonna go, I'm just gonna go
+off, um... Actually, I won't even go off camera. I'm
+just gonna go close my door. One second.
+
+34
+00:06:53,532 --> 00:07:05,852
+Okay. While John's going to close his door, um,
+we're gonna cover mainnet readiness. There's sort of
+three broad, uh, themes that, uh, we might go
+through, John, if I got it right. I think we might
+be talking about mainnet readiness.
+
+35
+00:07:06,252 --> 00:07:08,072
+Um, what are the other things that we're gonna
+cover?
+
+36
+00:07:09,732 --> 00:07:25,032
+Um, well, mainnet readiness, what does mainnet
+actually mean on Cardano? Like, what can you do, um,
+once we're launched? Um, then what comes afterwards,
+EVM expansion, broader GTM, um, and, uh,
+
+37
+00:07:25,592 --> 00:07:38,411
+then you've got some questions from the community.
+Yes, we do. Okay, cool. So walk me through mainnet
+readiness. What does that look like? Where would you
+say- Uh, we're close to ready.
+
+38
+00:07:39,532 --> 00:07:49,872
+So, uh, thank you everyone for all of the, the
+support with testnet, and we've been squashing bugs,
+um, you know, uh, taking feedback, adding, adding
+features I think for the last few weeks now.
+
+39
+00:07:50,532 --> 00:08:05,942
+Um, in terms of where we are, we are, we believe,
+ready technologically in terms of smart contracts,
+all the rest of it, the product. Um, we are
+finishing basically the onboarding with our,
+
+40
+00:08:06,092 --> 00:08:16,292
+like, TradFi providers. So I'll just break that down
+a little bit. The way in which we're set up in
+RealFi is you've got all of the on-chain stuff, and
+behind that you have a set of assets.
+
+41
+00:08:16,892 --> 00:08:29,632
+Some of those assets are tokenized, like tokenized
+money market funds, tokenized T-bills, and then some
+of them are off-chain things as well, right? And for
+those off-chain things, you need to have a regulated
+exchange.
+
+42
+00:08:29,672 --> 00:08:44,052
+We're actually using StoneX. And then, um, also
+we've got some of our own direct lending private
+credit stuff. So, uh, because some of this sort of
+reaches out into TradFi stuff, um, it's a little bit
+slower than you'd like, so we needed to submit, for
+instance,
+
+43
+00:08:44,111 --> 00:08:56,152
+our CIMA registration in the Cayman Islands. You
+need to give that to the exchange, StoneX, before
+they'll even start setting up the account. So a lot
+of these things have to happen sequentially, and we
+are doing all of those things.
+
+44
+00:08:56,312 --> 00:09:10,712
+So, um, we will be ready, um, we're currently
+testing out RealFi with real money. Um, there's
+about 100K, uh, USD that we've minted, um, that
+we're just moving through all of the different, uh,
+
+45
+00:09:10,922 --> 00:09:21,152
+like venues, wallets, et cetera, um, quite boringly
+called hardening. So we're in the hardening phase
+with real money. Uh, and then we'll be looking to go
+to mainnet.
+
+46
+00:09:21,272 --> 00:09:31,592
+So approximately, I think mainnet date's gonna be
+mid-September. Um, we will give a firm date as we
+close out some of the items that we've got in
+basically in the next two weeks.
+
+47
+00:09:32,092 --> 00:09:47,932
+Um, but frankly, it's a long, long, long li- long,
+long list of dependencies, um, but we're shredding
+through them, so I think it's a realistic timeframe.
+Okay, great. Um, um, is there anything else that
+needs to happen before la- uh, before the launch, or
+that pretty much covers it?
+
+48
+00:09:49,172 --> 00:10:01,792
+Well, that kind of moves us on to, I think, what you
+can do on mainnet. Um, so there are a few things
+which I think, uh, we'll see. Um, one is that we are
+opening a product in Liqwid.
+
+49
+00:10:02,292 --> 00:10:16,672
+Uh, it's a pretty cool product where you'll be able
+to deposit your ADA, borrow against it, come into
+USDr, stake your USDr. Um, so basically a product
+that we've designed where people who hold ADA don't
+need to sell it to come and participate in
+
+50
+00:10:16,732 --> 00:10:35,252
+RealFi. So that's something we're excited to launch.
+You'll be hearing more about that soon, um, with
+Liqwid. Uh, the second sort of launch piece for
+Cardano is, uh, with Sundae, um, so we're looking to
+take advantage of their new linear swap
+
+51
+00:10:35,371 --> 00:10:47,172
+feature, um, for Sundae. Is it V2 or V3? I can't
+remember. Anyway, Sundae are in version plus 1, um,
+which they're working on and, uh, are gonna be
+launching at some point.
+
+52
+00:10:47,252 --> 00:11:03,012
+So that's a cool new feature, which they're
+shipping, I think, early for us. Um, so you'll be
+able to, you know, go onto Sundae, swap, and then,
+uh, take a, you know, either just stake natively
+through our application or be able to go and do
+something pretty cool with your ADA on
+
+53
+00:11:03,092 --> 00:11:15,892
+Liqwid. So those are kind of our launch applications
+for, um, Cardano. I think shortly we'll actually be
+adding those into the testnet so you guys can play
+around with that, with, uh, test ADA and test USDr.
+
+54
+00:11:16,472 --> 00:11:28,332
+Um, and then, yeah, those are, those are kind of our
+launch primitives for Cardano. Uh, for anyone
+listening, I'm dropping some links in chat just to
+save you looking for...
+
+55
+00:11:28,992 --> 00:11:40,172
+If you haven't heard of them, um, which they are.
+And if you've got any questions for John as we're
+talking, uh, just put them into the chat- Yeah...
+and we can work through them towards the end. Yeah.
+Yeah, please do. Please go ahead. I find myself
+talking, talking too much.
+
+56
+00:11:40,282 --> 00:11:56,472
+So, please, if you've got any, any questions, throw
+them in. Um, what I'll also just add in, 'cause
+everyone's interested in this, um, yeah, in the same
+way that, you know, we've been offering points for
+the testnet, of course as we move into the mainnet
+there'll also be a
+
+57
+00:11:56,592 --> 00:12:08,932
+points system and season, um, particularly around,
+you know, those kind of two venues which, uh, I've
+just discussed. Um, so yeah. Um, come, come, come
+join.
+
+58
+00:12:09,892 --> 00:12:21,132
+Uh, 参加者A's asking if one of the cr- if one of the
+credit assets in the portfolio defaults- Mm... can
+you go through the protection mechanisms for USDr or
+sUSDr holders?
+
+59
+00:12:22,336 --> 00:12:34,396
+Yes. Um, I've been working very hard on this. Um, we
+will-- I still need to, uh, I'll-- I can't, like,
+fully confirm this, um, but, uh, shortly I will be
+able to.
+
+60
+00:12:34,936 --> 00:12:50,216
+Um, but what you'll essentially have is some level
+of de-risking, which is essentially an equity
+buffer, um, which gets eaten into first. So within
+the portfolio, you have an expectation of credit
+losses like you would
+
+61
+00:12:50,256 --> 00:13:03,216
+normally do within a lo- a loan portfolio. Um, and
+then those credit losses are basically built into,
+uh, before you get yield, right? It's basically you
+subtract those e- those expected credit losses.
+
+62
+00:13:03,756 --> 00:13:14,236
+And then past that, what you've got is essentially
+this equity buffer, which goes first, and this will
+be money that I've raised specifically to provide
+coverage on this.
+
+63
+00:13:14,696 --> 00:13:27,856
+Then after that, you have the protocol, um,
+basically the protocol reserve. So this gets built
+across time. This isn't available on day one, which
+is why, you know, going to raise equity for that,
+for that first part.
+
+64
+00:13:28,436 --> 00:13:42,736
+And across time, uh, the sort of order at which the
+protocol makes money is that you fund certain things
+first. So you fund the stability fund first before,
+you know,
+
+65
+00:13:42,776 --> 00:13:57,536
+the protocol can sort of, um, you know, create, uh,
+residual income. Um, so that's kind of the, the way
+that you do it. Similar to someone like Ethena, um,
+but yeah, as I say, the important part is that
+we're, we're trying to build in,
+
+66
+00:13:57,676 --> 00:14:08,576
+you know, to go and raise to be able to bring in
+some de-risking for that. Uh, so I mean, obviously
+what I haven't talked about here is, uh, all the
+reasons why things should go wrong. That's actually
+where you have to spend the majority of your time.
+
+67
+00:14:08,616 --> 00:14:20,416
+But in the case, of course, that things do, um,
+there'll be some basically some protections built in
+on that side. Um, what I will say, I think it's
+important to also be clear on, there is essentially
+a loss waterfall, right?
+
+68
+00:14:20,456 --> 00:14:35,956
+So after that equity buffer, after the protocol
+stability, um, fund gets eaten out of, um, let's say
+that you, you still have losses. What would
+essentially happen is that you would, um, mark down
+the sUSDr number.
+
+69
+00:14:36,396 --> 00:14:48,716
+So sUSDr people would be hit first, and then finally
+it would be USDr holders. So that's kind of like the
+cascading order of what happens or the loss
+waterfall as things go wrong.
+
+70
+00:14:49,156 --> 00:15:00,316
+Um, as I say, we'll be spending a lot of time
+hopefully to make sure that, that, that doesn't
+happen. Um, but we do have a transparent
+subordination basically, um, seniority, uh, level
+over who gets hit when.
+
+71
+00:15:01,336 --> 00:15:17,396
+Hmm. Um, 参加者B's asking, uh, "Is RealFi gonna run
+directly on top of Cardano, or is RealFi its own
+chain or a fork of Cardano?" It runs--It's adapter,
+it runs, it runs directly on Cardano.
+
+72
+00:15:17,796 --> 00:15:28,576
+Um, you know, we've got our native assets on, uh,
+which you can actually, you can actually see these.
+Um, we're actually on Cexplorer now, so you can see
+USDr.
+
+73
+00:15:29,116 --> 00:15:44,836
+Um- Oh, nice. Yeah. So yeah, that's, that's how we
+operate, and then we are doing something clever for
+the EVM side. So, um, Cardano will still sit as like
+the canonical source of truth and the accounting
+layer, um,
+
+74
+00:15:45,456 --> 00:16:03,076
+and then we'll burn a mint basically, um, to be able
+to issue also natively on Ethereum, and that's
+pretty much a fork of CCTP, Circle's Cross-Chain
+Transfer Protocol, um, that we've been using will
+likely shift over to LayerZero
+
+75
+00:16:03,276 --> 00:16:15,665
+once it arrives on Cardano. But the cool thing about
+this setup, right, is that as even if you have loads
+and loads and loads of demand on EVM and Pendle and,
+you know, Aave, blah, blah, blah- Mm.
+
+76
+00:16:15,786 --> 00:16:31,536
+Uh, you'll still be growing the stablecoin balance
+on Cardano because that's kind of where the asset
+sit. So, um, yeah, so even, you know, cool stuff
+happening on Ethereum, uh, can still drive the,
+
+77
+00:16:32,676 --> 00:16:46,036
+the overall, uh, stablecoin supply on Cardano, which
+is kind of a nice externality. And then, um, Alpha
+Growth also won their proposal, which I'm very happy
+about. Yeah. Um, so I think that's also a huge
+opportunity for us.
+
+78
+00:16:46,376 --> 00:17:01,456
+I think we're building a great product here, and I
+think that with the investment that Alpha Growth
+will be able to coordinate now across, you know,
+some of the projects that exist on Cardano, I think
+we've got a really good shot of, uh, of building,
+
+79
+00:17:02,036 --> 00:17:18,116
+really building some, some DeFi TVL. Um, they've
+been working-- I know they've been speaking to
+everyone, telling them what they need to change to
+their protocols to be able to get them up to scratch
+and to be able to get LPs from across the crypto
+ecosystem, not just Cardano people to participate.
+
+80
+00:17:18,556 --> 00:17:29,376
+Um, they should have a chunky incentives budget. So
+yeah, I think that could be really cool. Sorry, I,
+I, I, I kind of went off that, but, um, hopefully
+it- No, I think it was interesting.
+
+81
+00:17:29,996 --> 00:17:44,376
+Uh, just to, just to make sure that I haven't done
+something silly, I've put the USDr, uh, link in
+Cexplorer into the chat. Is that the correct one,
+John? 'Cause I know sometimes people create arte--
+you know, fake ones, so I just wanna make sure I'm
+giving people the right link.
+
+82
+00:17:45,936 --> 00:17:48,496
+Uh, I don't know. Thank you. Let me look.
+
+83
+00:17:51,236 --> 00:18:05,576
+And while you're looking, uh, 参加者A is asking,
+"What's the minimum amount of ADA required?" Yeah,
+we've said, 参加者A, the minimum amount of ADA
+required for delegation to earn rewards isn't gonna
+be disclosed 'cause there are anti-sybil,
+anti-farming measures in place.
+
+84
+00:18:06,116 --> 00:18:18,916
+So providing that information only makes it easy for
+people to, to b- to farm. So yeah, anti-sybil
+measures are a bit trust us, bro. Which is gonna--
+any good faith actors will be fine.
+
+85
+00:18:19,176 --> 00:18:34,104
+People that are trying to optimize of zero, zero
+point- balances, uh, are not. Um, okay Thank you
+for, thanks for reminding me, Ben, that I'm not
+supposed to say that Yeah Yeah Um, okay,
+
+86
+00:18:34,224 --> 00:18:45,114
+so USDr. Um, is that the right link, John? Yeah
+Okay, cool. Uh, so what, what comes next after
+Cardano mainnet? Oh, did we cover wallets?
+
+87
+00:18:45,164 --> 00:18:49,684
+I think we talked about launch apps, which was
+great. Uh, what are the wallets that are gonna be
+ready at launch?
+
+88
+00:18:52,864 --> 00:19:06,964
+Um, Lace, um, is the primary partner, um, we're
+working f- with. Um, but ultimately it's a, you
+know, it's a native token, so you should be able to
+hold it anywhere, right?
+
+89
+00:19:08,284 --> 00:19:23,514
+Yeah. Okay, so, um- I suppose the better answer is
+that, the better answer is we've been working with
+Lace on building, like, a specific really, hopefully
+really nice experience for you to be able to swap
+in, out, stake, uh,
+
+90
+00:19:23,644 --> 00:19:34,224
+like really trying to make it super simple and super
+nice. Uh, you know, like we've been saying a lot,
+uh, you know, we just, we just want, like, one
+button, right?
+
+91
+00:19:34,304 --> 00:19:41,264
+So we wanna turn complexity into simplicity, and I
+think that I got Lace and I can't even link my main
+wallet.
+
+92
+00:19:43,264 --> 00:19:56,564
+Yeah, well, um, um, I hope they fix that for you.
+Uh, so, uh, anyway, like it's, it's the first
+experience that we're building. Um, I actually, it's
+interesting, so Lace, Lace is working really well
+for me now.
+
+93
+00:19:56,744 --> 00:20:01,764
+Um, it, I'm not gonna say it always does, but it's
+working really nicely now.
+
+94
+00:20:03,524 --> 00:20:18,304
+Um, and then- Yeah... sorry, what, where, where were
+we, Ben? Uh, we were about to jump into, um, uh, we
+talked about Cardano mainnet and we were gonna talk
+about what comes next, maybe other cross-chain, um,
+
+95
+00:20:18,504 --> 00:20:32,324
+endeavors, uh, but then I dragged us back. Uh, 参加者C
+is asking about a LayerZero, which I haven't, um,
+thought about. He says, "As a builder what is the
+current state of LayerZero to leverage it from your
+perspective?" I don't- Yeah...
+
+96
+00:20:32,364 --> 00:20:48,004
+have any updates on So I, yeah, I was, I was quite
+concerned by this actually a while ago, right? In
+that- Mm... um, when I was first designing, thinking
+about this, there wasn't really an easy way to get
+USDC from Eth or EVM
+
+97
+00:20:48,064 --> 00:21:05,664
+world over to Cardano, um, um, back. Um, the USDCx
+bridge has actually made that a lot easier, um, we
+can use a lot of the technology there to basically
+stand up, stand up a bridge that doesn't require
+you, like,
+
+98
+00:21:05,784 --> 00:21:20,964
+holding lots of assets locked and creating a
+honeypot, um, and is also based on very robust, uh,
+yeah, very robust work from Circle. That being said,
+I mean, I'd rather, yeah, I'd rather we,
+
+99
+00:21:21,104 --> 00:21:31,884
+we shift to LayerZero. So my understanding is that
+it's coming towards the end of the year. Um, so we
+basically architected everything, that it's easy for
+us to switch out that messaging layer.
+
+100
+00:21:32,504 --> 00:21:38,364
+Uh, so when it's available, we'll just, just shift
+essentially the messaging layer and shift over to
+that.
+
+101
+00:21:41,664 --> 00:21:50,284
+That's great. Thank you, John. Um, so walk us
+through what comes next, um, either after or
+concurrently, uh, with the Cardano mainnet.
+
+102
+00:21:52,424 --> 00:22:05,223
+Okay. So, um, for me, there's like two-- it's like,
+it's like a Cardano sandwich. So we'll start with
+our Cardano launch, and then we're going to have,
+um, a lot of EVM stuff.
+
+103
+00:22:05,784 --> 00:22:19,944
+Um, so typically that's going to be around
+increasing distribution, um, through venues. We
+wanna obviously have more venues, more people to be
+able to access the product. Uh, but it's also
+working with curators for them to set up vaults
+
+104
+00:22:20,084 --> 00:22:35,144
+with specific strategies and build deep liquidity,
+uh, for people to be able to do cool things. So this
+could be some of these levered looping strategies.
+For those people who aren't familiar with it, uh,
+it's like kind of, it's kind of a simple idea.
+
+105
+00:22:35,464 --> 00:22:50,664
+If you're getting, and this is not a promise of
+return, let's just hypothetically, let's say you
+were getting 8.5%, um, with sUSDr. So you go, you
+put $100 in, you stake it, you've got sUSDr now.
+
+106
+00:22:51,224 --> 00:23:05,844
+Uh, then you borrow against that position, and
+depending on what rate people will lend you normal
+dollars, let's say USDC. Let's say they're lending
+it to you at 5% against your possession, you can
+then go get more USDr, stake it,
+
+107
+00:23:06,224 --> 00:23:19,184
+and then, um, basically do this again. So this is
+leverage. And, uh, it's what crypto people call
+looping. Um, we've renamed leverage as looping, um,
+but that's essentially what that is.
+
+108
+00:23:19,644 --> 00:23:31,764
+And the cool thing about our product is that where
+this goes really badly wrong is of, of course, if
+the underlying asset is volatile. Um, so in our
+view, fixed income's kind of a appropriate asset
+class for this.
+
+109
+00:23:32,144 --> 00:23:46,864
+So we're hoping that we should be an attractive
+option for people to set up and manage looping
+strategies. Um, and in the EVM world, that's really,
+really big. So we'll be looking to get a curator, go
+and set up some vaults for us, um, so people can
+access the product there.
+
+110
+00:23:47,764 --> 00:24:02,964
+And then, uh, the sort of other part of the
+sandwich, the last piece of bread, um, we'll be
+coming back to, uh, start working with Alpha Growth
+and all of the venues on Cardano, who should have,
+uh, basically had that time to be able to do some
+upgrades to
+
+111
+00:24:02,984 --> 00:24:17,004
+their protocols, get some additional audits, Alpha
+Growth to start crowding in additional LPs. Um, so
+that's kind of the, the very vanilla summary. Um,
+the one thing, of course, that I can't talk about is
+specific listings or anything like that.
+
+112
+00:24:17,104 --> 00:24:28,868
+So, um, yeah, um, you'll know more when, when we can
+talk about that kind of thing. There was a really
+good question the other- One of the other calls and,
+uh, you would've been the guy to answer it at the
+time.
+
+113
+00:24:29,628 --> 00:24:44,248
+Um, it was about basically how do you price like,
+um, a private credit or a debt that doesn't have a,
+a s- an established price, and I think you'd
+explained it to me once and I thought it might be
+good just to cover that if you know what I'm
+referring to.
+
+114
+00:24:45,348 --> 00:24:57,808
+Yeah. I mean, look, you can price it... So you can
+price it in terms of, like, the actual coupon,
+right? So what are you going to go and get paid? And
+then you can discount by basically expected,
+expected losses in a portfolio.
+
+115
+00:24:57,888 --> 00:25:14,128
+The issue is, is that, and this is, this is
+essentially a fundamental issue with these kinds of
+assets is, like, what if something goes wrong,
+right? So from that perspective on your crypto
+dashboards, et cetera, it would still be increasing,
+like,
+
+116
+00:25:14,168 --> 00:25:28,588
+monotonically by the expected increase from the
+interest rate, but maybe something's actually gone
+wrong in the real world and it's not being
+reflected, and that's actually where we've seen some
+of the blow-ups, I think, in crypto recently around
+that, those kind of products.
+
+117
+00:25:29,107 --> 00:25:44,648
+So third party attestation is the answer. You're
+gonna have someone who's not you go and look at it
+and value it. Um, it's not that cheap, but it's
+still kind of required, and I also think not just
+for us, I think for all people trying to bring real
+world assets
+
+118
+00:25:44,668 --> 00:25:55,128
+into crypto, it's going to become even more
+important, um, because whilst, you know, we, we have
+a fund administrator who will report the net asset
+value of the portfolio.
+
+119
+00:25:56,008 --> 00:26:06,428
+For them, they're not gonna report fake figures, but
+if you think about the assets that are being held,
+it's very easy for them to price a very large CLO
+ETF that's traded globally.
+
+120
+00:26:06,728 --> 00:26:20,568
+It's very easy for them to price T-bills, right? And
+there's no way you could go to them and say, "Oh,
+I've got a different T-bill rate from you. Um, can
+you use my rate?" But for these harder to value
+assets, um, they're not specialists in that.
+
+121
+00:26:20,668 --> 00:26:31,148
+So I think that sort of third party attestation at
+different periods is really important, and to be
+quite boring about it, it's what traditional TradFi
+does, right?
+
+122
+00:26:31,208 --> 00:26:51,528
+They, they s- they've been doing this for a very
+long time. I think it's just in crypto, um, we're a
+bit newer to some of this stuff. I'm not sure
+whether anyone's seen this, but there's been quite a
+few issues over a firm, I think it's called, like,
+Accountable, um, or, um...
+
+123
+00:26:51,568 --> 00:27:09,328
+Yeah, something like Accountable. Anyway, they-
+they've been responsible for basically providing the
+verification on a number of projects they've been
+using, so the real world asset stuff that have all
+paused, um, paused their, uh, redemptions recently
+and it's because I think people are
+
+124
+00:27:09,368 --> 00:27:23,728
+treating... You know, you need to do some actual
+work to be able to go and value this stuff, right?
+It's not just like a dashboard and asking people to
+fill out a survey. So anyway, it's a long-winded
+answer, but third party verification is really
+important, um,
+
+125
+00:27:23,748 --> 00:27:24,968
+people who aren't us doing it.
+
+126
+00:27:27,188 --> 00:27:41,468
+Mm. Um, and- There's lots of questions in the chat
+here. Do you think maybe, Ben, we just, we just run
+through a couple of these quickly? Yeah, let's do
+that. Yeah. So 参加者C has asked, "When does sUSDr...
+When sUSDr is sitting on an exchange in an open
+trade position, is it earning yield?
+
+127
+00:27:41,598 --> 00:27:56,768
+And if yes, will this yield automatically increase
+the stake on the exchange position?" Depends on your
+exchange. Um, uh, there are different ways in which
+different, uh, CEXs handle this.
+
+128
+00:27:57,408 --> 00:28:13,428
+Um, for some CEXs, the answer is yes. Um, for some,
+maybe the answer is no. Um, for some, the answer can
+be, um, you know, they'll only hold, uh, the
+unstaked version, um,
+
+129
+00:28:13,668 --> 00:28:27,708
+and expect, um, basically rewards to be paid to
+them. There's, like, a whole mix of models in this
+industry about how people do things. Uh, 参加者C, what
+you've put there is basically the key use case that,
+um, I'm trying to close.
+
+130
+00:28:27,888 --> 00:28:42,368
+Uh, what I'd really like is for people to be able to
+hold sUSDr on an exchange, to be able to use that as
+collateral against other positions whilst it's
+accruing in value.
+
+131
+00:28:42,628 --> 00:28:57,548
+I think that's a killer use case of basically, um,
+NAV accruing or accreting collateral. Uh, so yeah,
+that's, that's what you've described is the good
+example over how things would work with an exchange
+who wants to support
+
+132
+00:28:57,557 --> 00:28:57,848
+that.
+
+133
+00:29:01,328 --> 00:29:12,067
+Uh, 参加者D is asking Um, yeah Sorry. Uh, is it gonna
+be possible to jump in for more SPOs to support the
+RealFi? I think we're still in the planning stages.
+
+134
+00:29:12,138 --> 00:29:22,488
+Still wanting maybe one, one for you, Ben. Yeah, I
+mean, fundamentally I'm building out a case, uh, for
+what could lo- what that could l- look like beyond
+the main net.
+
+135
+00:29:22,568 --> 00:29:36,548
+So I'm deep in the weeds with product and marketing
+and submitting ideas to John, but, uh, it's not
+signed off, so, um, it's still in progress. So 参加者A's
+asking estimates regarding which CEXs.
+
+136
+00:29:36,568 --> 00:29:47,108
+We've already said that we can't say, and, um,
+whether USDr is gonna meet, uh, MiCA requirements or
+Genius, but those are, uh, geo-restricted locations,
+right, John?
+
+137
+00:29:49,228 --> 00:29:59,468
+Yeah, we're not currently, um, looking to, um, to,
+to support that standard, um, for a whole bunch of
+reasons.
+
+138
+00:30:00,088 --> 00:30:02,408
+Um, I wish we could.
+
+139
+00:30:04,588 --> 00:30:15,168
+The next question from 参加者B, well, it's more an
+offer, but DeFi Llama is working on off-chain as-
+attestations. Mm. Um, can make intros for us if
+we're interested.
+
+140
+00:30:15,708 --> 00:30:27,448
+So shall I follow up on that? Yeah, that would be
+cool. I'm... We've been working with Token Terminal,
+um, who I think pushed through maybe to DeFi Llama.
+Um, I think we've spoken to them maybe a while ago.
+
+141
+00:30:28,132 --> 00:30:44,432
+Um, but yeah, I think that could be cool. Um, maybe
+Ben just checking whether, um, 同僚A wants to
+reach out. Yeah. But yeah, I think, you know, just
+on, on that front, 参加者F, uh, you've, you've
+definitely seen that, like the way in which they
+account for, uh,
+
+142
+00:30:44,552 --> 00:30:59,182
+off-chain reserves is like changed quite a lot I
+think on DeFi Llama. Um, 'cause it's kind of a
+nightmare for them, right? Their whole product is
+like transparency over, you know, real data feeds,
+and then you've got this thing that's, uh,
+
+143
+00:30:59,292 --> 00:31:06,312
+completely off-chain, which can really bite you if,
+uh, if it's not being done properly. So, yeah.
+
+144
+00:31:09,032 --> 00:31:19,952
+Really good. Uh- Um, so I'm gonna switch just- Yeah,
+go on... oh, we've got questions that came in from
+the form, so I wanna make sure we hit those as well.
+Um- Yeah... so what challenges...
+
+145
+00:31:19,992 --> 00:31:36,652
+Now if we've covered some of this already, then
+just, uh, slap my hand, but what challenges does
+USDr face across different countries, and what pre-
+preparations or measures are needed? And a related
+question that came in was what legal entity
+structures give a project the best global reach
+across US,
+
+146
+00:31:36,732 --> 00:31:41,472
+UK, and EU? So a mix there, John, but how do you
+wanna approach it?
+
+147
+00:31:43,672 --> 00:31:57,732
+Um, yeah, I think it's less about the structure and
+more about what you're trying to do. Um, so you...
+Before you decide on like where you wanna structure
+something, you decide on the activities that you're
+trying to do.
+
+148
+00:31:58,372 --> 00:32:12,972
+Um, part of this, right, over where, how, whether
+you'll get coverage in particular countries is also
+not really in your control. So obviously the stuff
+moving in the US over CLARITY Act is, is kind of
+highly relevant for us.
+
+149
+00:32:13,612 --> 00:32:28,692
+Um, yeah, it was delayed again, again recently. You
+know, a lot of this comes down to stuff that's
+bigger than you, right? So the kind of fight in the
+US between crypto, um, firms kind of becoming banks,
+
+150
+00:32:28,852 --> 00:32:45,352
+and banks realizing that risk and really not wanting
+that to happen, and that being fought in the houses
+in, in the US. Like that's not really about us,
+right? But, um, ultimately we built a product that
+we believe will be able to get enough global
+distribution to be, to be interesting.
+
+151
+00:32:45,812 --> 00:32:57,532
+Um, what, you know, what I'm not really interested
+in doing is changing the product completely, um, to
+match one particular jurisdiction, like let's say
+the, the US.
+
+152
+00:32:57,992 --> 00:33:10,792
+Maybe later on if we get big, we can look at, you
+know, doing a version for that particular market.
+Um, but, you know, there's lots of people who have
+offered T-bill based products already.
+
+153
+00:33:10,852 --> 00:33:22,752
+You don't, you don't really need another one of
+those. Um, so yeah, we're trying to do something a
+bit different and, um, make stable coins a bit more
+productive and hopefully, um, create also a better
+product for users.
+
+154
+00:33:22,922 --> 00:33:29,512
+And sometimes that means that there's particular
+geos that, um, you're not going to be, you're not
+gonna be appropriate for, and that's okay.
+
+155
+00:33:31,692 --> 00:33:46,692
+Okay, the next question, I'm not 100% sure if it's
+RealFi specific or they're more asking you broadly,
+so we'll do both maybe, right? Um, are there
+upcoming features or product launches that you're
+particularly excited about for RealFi and then more
+
+156
+00:33:46,732 --> 00:33:59,362
+generally? Hmm. Um, for RealFi, I think vaults. I
+think that, you know, there's a couple of things
+that vault curators do for you.
+
+157
+00:33:59,392 --> 00:34:10,681
+They don't just set it up and help bring in LPs and
+set parameters, um, but they also kind of act as a
+third party, um, kind of like a fund manager, right?
+They kind of manage risk and due diligence and
+stuff.
+
+158
+00:34:11,012 --> 00:34:22,232
+I think that's like a really important credibility
+check for us. Um, so getting a vault set up, um, I
+think is really important, um, and something I'm
+very excited for.
+
+159
+00:34:22,652 --> 00:34:40,391
+So that's probably like the first part. Um,
+secondly, uh, I've had... I'm starting to have some
+conversations with, quote unquote, "real
+businesses." So these are people who have dollar
+flows for short-ish periods of time and are looking
+for
+
+160
+00:34:40,452 --> 00:34:53,772
+ways to be able to get some additional economics,
+um, during that period. Uh, so this isn't
+necessarily crypto businesses, but think more like
+remittance businesses or, um, things like that.
+
+161
+00:34:54,292 --> 00:35:08,772
+Um, so trying to see whether there's product market
+fit for, you know, USDr and sUSDr in non-crypto
+businesses. They might be crypto adjacent, but you
+know, people doing real things in the real world,
+um, and seeing whether we have product market fit
+there.
+
+162
+00:35:08,852 --> 00:35:23,832
+So I had a, a good conversation today about, uh,
+something along that line. So seeing whether we can
+get our first like real world customer, you know,
+whether that's someone who runs a furniture factory
+who has a bunch of dollars across different accounts
+and they wanna
+
+163
+00:35:23,892 --> 00:35:35,632
+use this as a treasury management product, or
+whether it's like facilitating remittance flows. Um,
+yeah, I think the market's much bigger than just
+people chasing yield in crypto.
+
+164
+00:35:36,152 --> 00:35:49,142
+Um, so yeah, interested to see whether we can get
+something there. Um, and then more broadly, I mean,
+uh, who isn't excited for the Anthropic IPO? I saw
+$2 trillion as a, as a target price.
+
+165
+00:35:49,212 --> 00:36:00,872
+So, uh, after the SpaceX extravaganza, I'm, I'm
+excited to see, to see where we end up with that. I
+mean, uh, yeah, people thought crypto had big
+numbers, right?
+
+166
+00:36:00,912 --> 00:36:01,152
+That...
+
+167
+00:36:03,912 --> 00:36:16,992
+Yes. Um, no, I had a really interesting conversation
+yesterday actually with someone I won't name, but
+saying that one of the issues with Web3 was that,
+um, these L1s were stuck in Web3 economies and
+you've gotta get out into other economies.
+
+168
+00:36:17,032 --> 00:36:31,132
+So I think it kinda echoes what you're saying there.
+Um, the next question is, uh, community incentives.
+Will early users who actively participated in and
+supported Testnet receive exclusive roles, badges,
+or other special incentives?
+
+169
+00:36:31,812 --> 00:36:41,812
+I am discussing that with the team and, um, putting
+ideas, and I think 同僚B's got his own ideas too, t-
+full credit to him. So yeah, there is a lot of
+thinking in that, but I'm not gonna confirm
+anything.
+
+170
+00:36:42,672 --> 00:36:55,092
+Um, Cardano Mainnet is the next question. Cardano
+Mainnet integrations, I think you've covered it,
+John, but is SundaeSwap going to be an official DEX
+for RealFi? Yeah, we'll, we'll be working with,
+definitely working with Sundae.
+
+171
+00:36:55,672 --> 00:36:56,632
+Um, yes.
+
+172
+00:36:58,632 --> 00:37:09,472
+I don't know what official means. Okay, so- But yes,
+we'll be, we'll be working- If, if they're getting-
+Maybe officially and unofficially, both. All kinds
+of official. Mm-hmm.
+
+173
+00:37:10,532 --> 00:37:21,912
+Um, okay, so we've gone through, uh, you know, um,
+those three core points about mainnet readiness,
+mainnet on Cardano, what comes next. We've gone
+through the questions that we've had so far.
+
+174
+00:37:21,952 --> 00:37:31,322
+If anyone's got any questions, put them into chat.
+Is there anything you haven't been asked yet, John,
+that you wish I'd had the foresight to ask you? Mm.
+Is there something we should talk about?
+
+175
+00:37:33,092 --> 00:37:47,872
+Mm, no, I think, you know, approximate mainnet
+dates, what you'll be able to do on Cardano once
+we're live, um, kind of how the EVM side's still
+gonna grow circulating supply for USDr on Cardano,
+um,
+
+176
+00:37:47,972 --> 00:37:58,732
+some of the cool things happening on EVM, and then
+of course how we're gonna bring all of those cool
+things to, uh, to Cardano with the Alpha Growth
+Proposal. So I think those are probably the big
+ones.
+
+177
+00:37:59,612 --> 00:38:06,132
+And for the benefit of the summary and for people
+that weren't on the call, can you just go back and
+explain what vaults are and why they're exciting?
+
+178
+00:38:07,892 --> 00:38:26,202
+Yeah. So vaults are kind of like programmatic
+digital funds. So you've got a vault manager, um,
+who's responsible for setting the parameters and the
+strategies, and then you've got LPs who basically
+come into that vault.
+
+179
+00:38:26,752 --> 00:38:42,832
+Um, ultimately, like, you know, the cool thing
+about, I suppose the sort of reason for this being
+set up is that you add an extra layer of
+accountability on the vault curator or, you know, as
+I say in the analogy of the kind of fund manager.
+
+180
+00:38:43,332 --> 00:38:55,572
+Um, so hopefully if they're doing their job right,
+they're gonna set the parameters so you've got only
+good assets being added to that, um, and also making
+sure that, you know, there's not too much leverage
+or whatever in that.
+
+181
+00:38:55,932 --> 00:39:10,392
+So yeah, they kind of sit as an additional, an, uh,
+additional credibility point. I wouldn't say
+everything's always gone right in vault world, um,
+but, um, uh, you know, they were sort of set up to
+solve a problem over some of the nonsense you saw in
+DeFi.
+
+182
+00:39:10,872 --> 00:39:15,312
+And, uh- Mm... yeah, I, I think they d- they're
+definitely a- an improvement.
+
+183
+00:39:17,512 --> 00:39:33,952
+Okay, great. Well, John, I really appreciate you.
+Uh, and I genuinely know how busy you are, um,
+you're constantly, uh, in calls and working. So
+thank you for coming on and spending some time with
+us, and we're doing this on rotation, so you'll be
+back in about six weeks I think, roughly.
+
+184
+00:39:34,052 --> 00:39:45,612
+Um, any final words before we wrap up? Yeah, I just
+wanna say, like, you know, thank you to all 25 of
+you guys who've all tuned in. Um, I see a lot of
+familiar names from, uh, from following the Discord.
+
+185
+00:39:46,112 --> 00:40:03,142
+Um, so yeah, really appreciate everyone, and also
+some of the SPOs here. Uh, so yeah, thanks guys. I
+think maybe things have been a tiny bit quiet whilst
+we've been getting everything set up. Um, I promise
+you we're actually busier than ever, um, and we'll
+be going towards, uh, mainnet very shortly,
+
+186
+00:40:03,372 --> 00:40:13,532
+so setting dates and then there'll be a lot more
+engagement. Um, so anyway, I do, I'm lurking around
+the Discord, uh, um, so yeah, I, it's really great
+seeing all of you there.
+
+187
+00:40:14,872 --> 00:40:23,942
+Brilliant. Thanks everybody. Thank you John. And
+yeah, anyone just, uh, ping, ping us if you've got
+any further questions. Cheers everybody. Yeah. Bye.

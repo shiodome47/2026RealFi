@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #6 — Ask the CEO</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #6</p>
+<h1><span class="l-ja">Ask the CEO — mainnet は 9 月中旬。残っているのは技術ではない</span><span class="l-en">Ask the CEO — mainnet in mid-September, and what's left isn't technical</span></h1>
+<p class="meta">
+  <span>2026-08-14</span>
+  <span>Discord</span>
+  <span>40:24</span>
+  <span><span class="l-ja">参加者 25 名</span><span class="l-en">25 attendees</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p><strong>技術的な準備はできていて、mainnet を止めているのは TradFi 側の順番待ち</strong>だと明かされた回。<br>
+  そしてこのアーカイブで初めて、<strong>損失が出たときに誰が先に負担するのか</strong>の順序が語られた。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>mainnet はおよそ 9 月中旬。</strong>「今後 2 週間ほどで確定した日付を出す」。<strong>技術的には準備ができている</strong>と述べられ、残っているのは <strong>TradFi 側のオンボーディング</strong>（ケイマン諸島の CIMA 登録 → 規制取引所 StoneX の口座開設、という<strong>順番にしか進まない</strong>手続き）。</li>
+  <li><strong>すでに実際のお金でテスト中。</strong>約 <strong>10 万ドル</strong>を mint し、各種の取引の場やウォレットを通す <strong>hardening</strong> の段階にいる。</li>
+  <li><strong>損失の順序が初めて示された。</strong>①エクイティ・バッファ → ②プロトコルの安定化ファンド → ③<strong>sUSDR の切り下げ</strong> → ④USDR 保有者、の順。ただし <strong>CEO 自身が「まだ完全には確定と言えない」と留保</strong>している。</li>
+  <li><strong>ローンチ時の 2 つ。</strong><strong>Liqwid</strong>（ADA を売らずに預けて借り、USDR にしてステーク）と <strong>Sundae</strong>（新しい linear swap を前倒しで提供）。</li>
+  <li><strong>Cardano は正となる台帳。</strong>EVM 側でも burn/mint でネイティブ発行するが、<strong>資産は Cardano にあるので、EVM 側の需要が Cardano 上の残高を押し上げる</strong>。現在は Circle の CCTP のフォーク、<strong>LayerZero が来たら移行する予定</strong>。</li>
+  <li><strong>値のつかない資産は「自分ではない誰か」が評価する。</strong>最近の crypto の破綻は、<strong>実世界で壊れていることがダッシュボード上に反映されない</strong>ことが原因だと指摘された。</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>この回だけ扱いが違います。</strong>依頼により、<strong>発話した 2 名は実名のまま</strong>（ホストと RealFi の CEO）扱い、<strong>読み上げられた質問者の名前だけ</strong>を <code>参加者A〜F</code> に置き換えています。名前が挙がった社内の 2 名も同様です。<strong>このコールで発話したのはこの 2 名だけ</strong>でした。</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#mainnet"><span class="n">01</span>mainnet はいつか</a></li>
+  <li><a href="#launch"><span class="n">02</span>ローンチ時に何ができるか</a></li>
+  <li><a href="#waterfall"><span class="n">03</span>損失が出たとき、誰が先に負担するか</a></li>
+  <li><a href="#cardano"><span class="n">04</span>Cardano が正となる台帳であること</a></li>
+  <li><a href="#next"><span class="n">05</span>次に来るもの — Cardano サンドイッチ</a></li>
+  <li><a href="#pricing"><span class="n">06</span>値のつかない資産をどう評価するか</a></li>
+  <li><a href="#vaults"><span class="n">07</span>vault とは何か</a></li>
+  <li><a href="#origin"><span class="n">08</span>なぜこれを作ったのか</a></li>
+  <li><a href="#overall"><span class="n">09</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">10</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">11</span>持ち帰りになった論点</a></li>
+</ol>
+</div>
+
+
+<h2 id="mainnet">1. mainnet はいつか</h2>
+<p class="deck">技術は終わっている。止めているのは、順番にしか進まない手続き。</p>
+
+<p>これまでの回では「うまくいけば来月」（8 月 6 日の GTM 回）という言い方でした。今回はより具体的です。</p>
+
+<blockquote>
+<p>おおよそですが、mainnet の時期は 9 月中旬になると思います。今後 2 週間ほどで残りの項目を片付けながら、確定した日付を出します。</p>
+</blockquote>
+
+<p>そのうえで、<strong>何が終わっていて何が残っているのか</strong>が分解されました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="技術は完了しており、CIMA 登録から StoneX の口座開設、実資金での hardening を経て mainnet に至る依存関係を示した図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="30" width="648" height="46" rx="7" class="d-box-accent"/>
+  <text x="340" y="52" class="d-t" text-anchor="middle">技術は準備できている</text>
+  <text x="340" y="70" class="d-s" text-anchor="middle">スマートコントラクト、プロダクト、testnet のバグ潰しとフィードバック反映</text>
+
+  <text x="16" y="104" class="d-s d-w">残っているのはこちら（順番にしか進まない）</text>
+
+  <rect x="16" y="114" width="140" height="52" rx="7" class="d-box-warn"/>
+  <text x="86" y="139" class="d-t" text-anchor="middle">CIMA 登録</text>
+  <text x="86" y="157" class="d-s" text-anchor="middle">ケイマン諸島</text>
+  <line x1="158" y1="140" x2="178" y2="140" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="182" y="114" width="140" height="52" rx="7" class="d-box-warn"/>
+  <text x="252" y="139" class="d-t" text-anchor="middle">StoneX に提出</text>
+  <text x="252" y="157" class="d-s" text-anchor="middle">規制を受けた取引所</text>
+  <line x1="324" y1="140" x2="344" y2="140" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="348" y="114" width="140" height="52" rx="7" class="d-box-warn"/>
+  <text x="418" y="139" class="d-t" text-anchor="middle">口座の開設</text>
+  <text x="418" y="157" class="d-s" text-anchor="middle">ここから始まる</text>
+  <line x1="490" y1="140" x2="510" y2="140" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="514" y="114" width="150" height="52" rx="7" class="d-box"/>
+  <text x="589" y="139" class="d-t" text-anchor="middle">hardening</text>
+  <text x="589" y="157" class="d-s" text-anchor="middle">実資金 10 万ドル</text>
+
+  <rect x="16" y="188" width="648" height="46" rx="7" class="d-box-plain"/>
+  <text x="340" y="210" class="d-t" text-anchor="middle">→ mainnet（9 月中旬の見込み。確定日は 2 週間以内に）</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">「依存関係のリストは非常に長い。ただ順に潰しているので、現実的な見通しだと思います」</text>
+</svg>
+<p class="figcap">CIMA の登録を取引所に渡さないと、口座の開設すら始まらない ── だから<strong>並行させられない</strong>、という説明でした。</p>
+</div>
+
+<div class="term">
+<p class="term-name">hardening</p>
+<p>本番と同じ経路を、<strong>実際のお金で通してみる</strong>段階。<span class="badge">補足</span>testnet との違いは、<strong>失敗したら本当に損が出る</strong>ことです。テスト用の資金では気づけない問題 —— 取引の場ごとの入出金の制約、ウォレット側の挙動、実際の手数料 —— は、この段階でしか出てきません。コール中では「いささか退屈な名前の工程」と紹介されました。</p>
+</div>
+
+
+<h2 id="launch">2. ローンチ時に何ができるか</h2>
+<p class="deck">ADA を売らずに参加できる、というのが Liqwid 側の設計の要。</p>
+
+<p>Cardano のローンチ時に用意されるものとして、2 つが挙げられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="ADA を担保に借りて USDR にしてステークする Liqwid の流れと、Sundae のスワップの二つのローンチ経路を示した図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="22" class="d-s d-a">Liqwid — ADA を売らずに参加する</text>
+
+  <rect x="16" y="32" width="130" height="48" rx="7" class="d-box-accent"/>
+  <text x="81" y="61" class="d-t" text-anchor="middle">ADA を預ける</text>
+  <line x1="148" y1="56" x2="166" y2="56" class="d-line-accent" marker-end="url(#m2)"/>
+  <rect x="170" y="32" width="130" height="48" rx="7" class="d-box"/>
+  <text x="235" y="61" class="d-t" text-anchor="middle">担保に借りる</text>
+  <line x1="302" y1="56" x2="320" y2="56" class="d-line-accent" marker-end="url(#m2)"/>
+  <rect x="324" y="32" width="130" height="48" rx="7" class="d-box"/>
+  <text x="389" y="61" class="d-t" text-anchor="middle">USDR にする</text>
+  <line x1="456" y1="56" x2="474" y2="56" class="d-line-accent" marker-end="url(#m2)"/>
+  <rect x="478" y="32" width="186" height="48" rx="7" class="d-box"/>
+  <text x="571" y="61" class="d-t" text-anchor="middle">ステークして sUSDR に</text>
+
+  <rect x="16" y="90" width="648" height="30" rx="6" class="d-box-plain"/>
+  <text x="340" y="110" class="d-s" text-anchor="middle">「ADA を持っている人が、それを売らずに RealFi に参加できる」ように設計したプロダクト</text>
+
+  <text x="16" y="152" class="d-s d-a">Sundae — 新しい linear swap を前倒しで</text>
+
+  <rect x="16" y="162" width="320" height="48" rx="7" class="d-box-accent"/>
+  <text x="176" y="185" class="d-t" text-anchor="middle">Sundae でスワップ</text>
+  <text x="176" y="203" class="d-s" text-anchor="middle">次のバージョンの新機能を「我々のために前倒しで」</text>
+
+  <rect x="344" y="162" width="320" height="48" rx="7" class="d-box"/>
+  <text x="504" y="185" class="d-t" text-anchor="middle">そのあと、どちらでも</text>
+  <text x="504" y="203" class="d-s" text-anchor="middle">自社アプリから直接ステーク／Liqwid で ADA を使う</text>
+</svg>
+<p class="figcap">この 2 つは<strong>近いうちに testnet にも追加される</strong>ので、テスト用の ADA と USDR で試せるようになる、と述べられました。</p>
+</div>
+
+<p>mainnet に移ってからも<strong>ポイントの仕組みとシーズンがある</strong>ことも、この文脈で触れられています。特にこの 2 つの場所の周りで、とのことでした。</p>
+
+<p>ウォレットは <strong>Lace</strong> が主要なパートナーです。ただし「<strong>ネイティブトークンなので、どこでも保有できるはず</strong>」とも述べられ、Lace と組んでいるのは<strong>スワップの出入りとステークができる専用の体験</strong>を作るためだ、と補足されました。<span class="badge">補足</span>ホスト自身が「Lace を入れたがメインのウォレットを連携できていない」と述べる場面もあり、<strong>ローンチ時点の体験の完成度は、この回では確認されていません</strong>。</p>
+
+
+<h2 id="waterfall">3. 損失が出たとき、誰が先に負担するか</h2>
+<p class="deck">このアーカイブで初めて順序が示された。ただし本人が「まだ完全には確定と言えない」と留保している。</p>
+
+<p>参加者A からの<strong>「ポートフォリオの中の与信資産がデフォルトしたら、USDR や sUSDR の保有者はどう守られるのか」</strong>という質問に対する答えです。これまでの回では、<strong>安定化ファンドや peg stability module の「中身」は繰り返し未説明のまま</strong>でした。今回、その順序が語られています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="損失がエクイティ・バッファ、プロトコルの安定化ファンド、sUSDR の切り下げ、USDR 保有者の順に及ぶウォーターフォールの図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="22" class="d-s">損失はこの順に及ぶ（上から食われる）</text>
+
+  <rect x="16" y="32" width="500" height="46" rx="7" class="d-box-plain"/>
+  <text x="36" y="61" class="d-s">0. 予想される信用損失 — 利回りが出る前に、あらかじめ差し引かれている</text>
+
+  <rect x="16" y="88" width="500" height="46" rx="7" class="d-box-warn"/>
+  <text x="36" y="110" class="d-t">① エクイティ・バッファ</text>
+  <text x="36" y="128" class="d-s">この保護のために CEO が特に調達するお金。最初に食われる</text>
+
+  <rect x="16" y="144" width="500" height="46" rx="7" class="d-box-warn"/>
+  <text x="36" y="166" class="d-t">② プロトコルの安定化ファンド</text>
+  <text x="36" y="184" class="d-s">時間をかけて積み上がる。初日には存在しない</text>
+
+  <rect x="16" y="200" width="500" height="40" rx="7" class="d-box"/>
+  <text x="36" y="226" class="d-t">③ sUSDR の切り下げ</text>
+
+  <rect x="16" y="246" width="500" height="40" rx="7" class="d-box"/>
+  <text x="36" y="272" class="d-t">④ USDR の保有者</text>
+
+  <path d="M540 55 L540 265" class="d-line-accent" marker-end="url(#m3)"/>
+  <text x="560" y="150" class="d-s d-a">損失が</text>
+  <text x="560" y="170" class="d-s d-a">大きいほど</text>
+  <text x="560" y="190" class="d-s d-a">下へ</text>
+</svg>
+<p class="figcap">「誰がいつ損を受けるのかについて、<strong>透明な劣後の順序がある</strong>」という説明でした。Ethena のような設計と似ている、とも述べられています。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — ①のバッファは、ローンチ時点で本当に存在するのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+
+<h4>引っかかるのは正しい</h4>
+<p>この節の説明には、<strong>時制の揺れ</strong>があります。エクイティ・バッファについて、まず<strong>「私が特に調達した（have raised）お金」</strong>と過去形で語られますが、そのすぐあとに <strong>②の安定化ファンドは「初日には存在しない。だからこそ、その最初の部分のためにエクイティを調達する（going to raise）」</strong>と、未来形で語られます。</p>
+<p>さらに、この節の冒頭に <strong>「まだ完全には確定と言えないが、近いうちに言えるようになる」</strong> という留保が置かれています。</p>
+
+<h4>読める範囲で整理すると</h4>
+<ul>
+  <li><strong>②（プロトコルの安定化ファンド）は、初日には存在しない。</strong>これはコール中で明示されています</li>
+  <li><strong>①（エクイティ・バッファ）が初日に満額あるのかは、この説明からは確定しません。</strong>「調達した」とも「これから調達する」とも読める言い方が同居しています</li>
+</ul>
+
+<h4>なぜここが重要か</h4>
+<p>②が初日にないことは確定しているので、<strong>もし①も未充足なら、ローンチ直後に損失が出た場合、③（sUSDR の切り下げ）が実質的に最初の受け皿になります。</strong>順序そのものは同じでも、<strong>手前の 2 段がどれだけ厚いかで、保有者に届く前に吸収される量がまったく変わります。</strong></p>
+
+<h4>外から確かめる方法</h4>
+<p>数字を 1 つ見れば済みます。<strong>①のエクイティ・バッファの金額と、それがいつ払い込まれるか。</strong>この回では<strong>金額も時期も示されていません</strong>。第 6 節で本人が重視している「第三者によるアテステーション」の対象に、このバッファが含まれるのかどうかも語られていません。</p>
+
+<h4>公平に言えば</h4>
+<p>本人が<strong>自分から「まだ確定と言えない」と断っている</strong>点は、隠していないということです。ここは<strong>次の回で数字を聞けばよい箇所</strong>で、矛盾として扱うべきものではありません。</p>
+</div>
+</details>
+
+
+<h2 id="cardano">4. Cardano が正となる台帳であること</h2>
+<p class="deck">EVM 側が伸びるほど Cardano 上の残高が増える、という設計。</p>
+
+<p>参加者B からの<strong>「RealFi は Cardano の上で直接動くのか、それとも独自チェーンかフォークか」</strong>という質問に、<strong>「Cardano の上で直接動く」</strong>と明確に答えられました。USDR はネイティブアセットとして <strong>Cexplorer</strong> でも確認できる、とのことです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Cardano を正となる台帳とし、burn と mint によって Ethereum 上でもネイティブ発行する構成の図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="40" width="260" height="96" rx="8" class="d-box-accent"/>
+  <text x="146" y="70" class="d-t" text-anchor="middle">Cardano</text>
+  <text x="146" y="94" class="d-s" text-anchor="middle">正となる台帳（source of truth）</text>
+  <text x="146" y="114" class="d-s" text-anchor="middle">かつ会計の層。資産はここにある</text>
+
+  <line x1="284" y1="72" x2="392" y2="72" class="d-line-accent" marker-end="url(#m4)"/>
+  <text x="338" y="62" class="d-s d-a" text-anchor="middle">burn / mint</text>
+  <line x1="392" y1="104" x2="284" y2="104" class="d-line-accent" marker-end="url(#m4)"/>
+  <text x="338" y="124" class="d-s d-a" text-anchor="middle">残高は Cardano で増える</text>
+
+  <rect x="398" y="40" width="266" height="96" rx="8" class="d-box"/>
+  <text x="531" y="70" class="d-t" text-anchor="middle">Ethereum / EVM</text>
+  <text x="531" y="94" class="d-s" text-anchor="middle">ネイティブに発行される</text>
+  <text x="531" y="114" class="d-s" text-anchor="middle">Pendle・Aave などで使われる</text>
+
+  <rect x="16" y="152" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="177" class="d-s" text-anchor="middle">現在は Circle の CCTP のフォーク → LayerZero が Cardano に来たら、そちらへ移す予定（年末に向けて）</text>
+
+  <rect x="16" y="200" width="648" height="42" rx="7" class="d-box-plain"/>
+  <text x="340" y="218" class="d-t" text-anchor="middle">「EVM 側でいくら需要が大きくなっても、Cardano 上の残高が増える」</text>
+  <text x="340" y="236" class="d-s" text-anchor="middle">資産が Cardano にあるため ── なかなか良い副次効果、と表現された</text>
+</svg>
+<p class="figcap">GTM 回（#5）で「Ethereum で mint された 1 ドルも Cardano の TVL に数えられる」と語られた設計の、<strong>実装の中身にあたる説明</strong>です。</p>
+</div>
+
+<div class="term">
+<p class="term-name">CCTP <small>Cross-Chain Transfer Protocol</small></p>
+<p>Circle（USDC の発行体）が作った、チェーン間でトークンを移す仕組み。<span class="badge">補足</span>要点は<strong>「ロックして預かる」のではなく「片方で燃やして、もう片方で発行する」</strong>ことです。ブリッジによくある、<strong>大量の資産をロックした金庫（コール中の言葉では honeypot＝蜜壺）</strong>を作らずに済むため、そこを狙った攻撃の的にならない。CEO は<strong>「USDCx のブリッジができて、それがかなり楽になった」</strong>と述べています。</p>
+</div>
+
+<p><strong>Alpha Growth の提案が可決された</strong>ことにも触れられました。<span class="badge">補足</span>これは 7 月 26 日の回で「投票中」として記録していた PRIME 提案です（<code>shared/open-questions.md</code> の項目 17）。<strong>この回で可決が確認できました。</strong>CEO は「Cardano 上の各プロジェクトにまたがって調整できるようになる投資と合わせれば、<strong>DeFi の TVL を本当に積み上げる好機がある</strong>」と述べています。</p>
+
+
+<h2 id="next">5. 次に来るもの — Cardano サンドイッチ</h2>
+<p class="deck">Cardano で始め、EVM で伸ばし、また Cardano に戻ってくる。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="Cardano のローンチ、EVM での展開、そして Alpha Growth とともに Cardano に戻る三段階を示した図">
+  <defs>
+    <marker id="m5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="34" width="200" height="76" rx="8" class="d-box-accent"/>
+  <text x="116" y="62" class="d-t" text-anchor="middle">① Cardano のローンチ</text>
+  <text x="116" y="86" class="d-s" text-anchor="middle">Liqwid と Sundae</text>
+
+  <line x1="222" y1="72" x2="238" y2="72" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="244" y="34" width="192" height="76" rx="8" class="d-box"/>
+  <text x="340" y="58" class="d-t" text-anchor="middle">② EVM 側</text>
+  <text x="340" y="80" class="d-s" text-anchor="middle">流通を広げる。キュレーターに</text>
+  <text x="340" y="98" class="d-s" text-anchor="middle">vault を立ててもらう</text>
+
+  <line x1="442" y1="72" x2="458" y2="72" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="464" y="34" width="200" height="76" rx="8" class="d-box-accent"/>
+  <text x="564" y="58" class="d-t" text-anchor="middle">③ Cardano に戻る</text>
+  <text x="564" y="80" class="d-s" text-anchor="middle">Alpha Growth と各所へ。その頃には</text>
+  <text x="564" y="98" class="d-s" text-anchor="middle">改修と追加監査が済んでいるはず</text>
+
+  <rect x="16" y="126" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="151" class="d-s" text-anchor="middle">EVM 側の狙いはレバレッジのループ戦略 ──「債券はこれに向いた資産クラス」だから、と説明された</text>
+
+  <rect x="16" y="174" width="648" height="34" rx="6" class="d-box-warn"/>
+  <text x="340" y="196" class="d-s" text-anchor="middle">話せないと明言されたのは、具体的な上場先（どの CEX か）についてだけ</text>
+</svg>
+<p class="figcap">ループについては「<strong>これがひどく失敗するのは、原資産のボラティリティが高いとき</strong>」と述べ、だから債券が向いている、という論の運びでした。<span class="badge">補足</span>示された 8.5% と 5% は<strong>「利回りの約束ではない」と本人が明示した仮定の数字</strong>です。</p>
+</div>
+
+
+<h2 id="pricing">6. 値のつかない資産をどう評価するか</h2>
+<p class="deck">GTM 回で「投資チームに聞いて」と回された質問。ここで答えが出た。</p>
+
+<p>8 月 6 日の GTM 回で、<strong>「私はプライベートクレジットの専門家ではない」</strong>として持ち越された質問です。今回はより踏み込んだ答えが出ました。</p>
+
+<p>まず値付けの方法自体は単純だとされます。<strong>実際のクーポン（支払われることになっている利息）で値付けし、ポートフォリオの予想損失で割り引く。</strong>問題はその先です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="ダッシュボード上では単調に増えて見える一方、実世界で壊れていることが反映されないという乖離を示した図">
+  <defs>
+    <marker id="m6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="22" class="d-s">crypto のダッシュボード上</text>
+  <path d="M20 96 L200 46" class="d-line-accent"/>
+  <text x="210" y="52" class="d-s d-a">金利ぶんで単調に増え続ける</text>
+
+  <text x="16" y="130" class="d-s d-w">実世界では</text>
+  <path d="M20 176 L120 170 L200 210" class="d-line" marker-end="url(#m6)"/>
+  <text x="210" y="200" class="d-s d-w">何かが壊れているが、反映されていない</text>
+
+  <rect x="400" y="40" width="264" height="80" rx="8" class="d-box-warn"/>
+  <text x="532" y="66" class="d-t" text-anchor="middle">この乖離が破綻を生む</text>
+  <text x="532" y="90" class="d-s" text-anchor="middle">「最近 crypto で起きた破綻のいくつかは、</text>
+  <text x="532" y="108" class="d-s" text-anchor="middle">まさにそこだと思います」</text>
+
+  <rect x="400" y="132" width="264" height="80" rx="8" class="d-box-accent"/>
+  <text x="532" y="158" class="d-t" text-anchor="middle">答えは第三者の評価</text>
+  <text x="532" y="182" class="d-s" text-anchor="middle">「自分ではない誰かに見てもらう」</text>
+  <text x="532" y="200" class="d-s" text-anchor="middle">安くはないが必要、と述べられた</text>
+
+  <rect x="16" y="222" width="648" height="0" rx="0" class="d-box-plain"/>
+</svg>
+<p class="figcap">評価が難しい資産について、ファンド・アドミニストレーターは<strong>専門家ではない</strong>という指摘が要点です。大きな CLO ETF や T-Bill は簡単に値付けできる、しかしそれ以外は別だ、と。</p>
+</div>
+
+<p>この文脈で、<strong>検証を提供していた会社をめぐる問題</strong>にも言及がありました。その会社が関わっていた実世界資産のプロダクトが<strong>最近まとめて償還を止めた</strong>、と。<span class="badge">補足</span>会社名は「Accountable というような名前」と不確かな形で述べられており、<strong>確定した名指しではありません</strong>。ここでは会社の特定はせず、<strong>起きた事象として記録</strong>します。</p>
+
+<blockquote>
+<p>この手の資産を評価するには実際に手を動かす必要がある。ダッシュボードを出して、アンケートに記入してもらえばいいという話ではない。</p>
+</blockquote>
+
+
+<h2 id="vaults">7. vault とは何か</h2>
+<p class="deck">ホストが「まとめのために」と改めて説明を求めた箇所。信用の層をもう 1 枚足す仕組み。</p>
+
+<p>CEO が「RealFi について今いちばん楽しみなもの」として挙げたのが <strong>vault</strong> でした。定義は<strong>「プログラムで動くデジタルのファンド」</strong>です。</p>
+
+<div class="term">
+<p class="term-name">vault <small>と、そのキュレーター</small></p>
+<p><strong>vault マネージャー（キュレーター）</strong>がパラメータと戦略の設定に責任を持ち、そこに <strong>LP（資金の出し手）</strong>が入る構成。<span class="badge">補足</span>コール中の説明で重要なのは、<strong>これが「集客の仕組み」ではなく「説明責任の層」として位置づけられている</strong>点です。キュレーターは<strong>良い資産だけが入るようにパラメータを設定し、レバレッジがかかりすぎていないかを見る</strong>。CEO の言葉では<strong>「我々にとって非常に重要な信用のチェック」</strong>です。</p>
+</div>
+
+<p>ただし手放しの評価ではありません。<strong>「vault の世界で常に何もかもうまくいってきたとは言いません」</strong>と留保したうえで、<strong>DeFi で見られたばかげたことのいくつかを解決するために作られたもので、確実に改善ではある</strong>、という言い方でした。</p>
+
+<p>もうひとつ楽しみなこととして挙げられたのが、<strong>crypto ではない「実業」との会話</strong>です。<strong>短めの期間ドルの資金の流れを持ち、その間に追加の経済性を得たい</strong>事業者 —— 送金の事業や、例として<strong>「複数の口座にドルを持っている家具工場」</strong>が挙げられました。<strong>「市場は、crypto の中で利回りを追う人たちよりずっと大きい」</strong>という見立てです。</p>
+
+
+<h2 id="origin">8. なぜこれを作ったのか</h2>
+<p class="deck">出発点は「増え続けるドルの残高が、何にも使われていない」という観察だった。</p>
+
+<p>CEO が crypto に入ったきっかけは、<strong>当時の Cardano Foundation の会長だった Michael Parsons とロンドンの喫茶店で会ったこと</strong>だと語られました。Bitcoin の論文と Ethereum のホワイトペーパーを読んでいると答えたところ「なんてことだ、助かった」と言われて参加することになった、という経緯です。Cardano Foundation では戦略とエコシステムの責任者として、初期のマーケティングとナラティブ、コミュニティの立ち上げを手がけたとのことでした。</p>
+
+<p>RealFi の着想は、<strong>アフリカでの仕事を通じて残高が増えていくのを見たこと</strong>から来ています。Bitcoin、Ethereum、そして Tether の USDT。しかし<strong>その使い道は、取引から降りることと、Bitcoin を担保に借りてさらに Bitcoin を買うことくらいしか見えなかった</strong>。</p>
+
+<blockquote>
+<p>これだけ大きく、増え続けているドルの残高がある。他に何ができるだろうか。……みんなが crypto の中のことしかやっていなかったのは、<strong>その資本を使って crypto の外の資産にアクセスする橋を、誰もちゃんと架けていなかったから</strong>です。</p>
+</blockquote>
+
+<p>そこに、新興国市場と先進国市場の両方で見つけた<strong>リスク調整後の利回りが取れる債券の機会</strong>を組み合わせる、というのが構想でした。<strong>「自分では立ち上げたくなかった」</strong>という話も出ています。適任だと思う知人に CEO をやってもらおうと説得していたが、そうならなかった、と。</p>
+
+<p>比較対象として名前が挙がったのが <strong>Hyperliquid</strong> です。実世界の資産を追加していく中で<strong>世界最大級の伝統的な取引所でも見られない出来高</strong>が出ていることを挙げ、DeFi の良さ（24 時間 365 日の決済、すべてがプログラムで動くこと、<strong>持っているポジションを別のポジションの担保に使えること</strong>）を評価しています。そのうえで、RealFi は似たことを<strong>「もう少し普通の人に役立つプロダクト」</strong>でやろうとしている、という位置づけでした。</p>
+
+
+<h2 id="overall">9. 全体像</h2>
+<p class="deck">この回で語られたことが、どうつながっているか。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="技術完了から TradFi 側の手続き、mainnet、EVM 展開、そして損失の順序と第三者評価という前提を示した全体像の図">
+  <defs>
+    <marker id="m7" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="26" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="116" y="52" class="d-t" text-anchor="middle">技術は完了</text>
+  <text x="116" y="76" class="d-s" text-anchor="middle">testnet で潰し切った</text>
+
+  <line x1="222" y1="59" x2="238" y2="59" class="d-line-accent" marker-end="url(#m7)"/>
+
+  <rect x="244" y="26" width="192" height="66" rx="8" class="d-box-warn"/>
+  <text x="340" y="52" class="d-t" text-anchor="middle">TradFi 側の順番待ち</text>
+  <text x="340" y="76" class="d-s" text-anchor="middle">CIMA → StoneX → 口座</text>
+
+  <line x1="442" y1="59" x2="458" y2="59" class="d-line-accent" marker-end="url(#m7)"/>
+
+  <rect x="464" y="26" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="564" y="52" class="d-t" text-anchor="middle">mainnet（9 月中旬）</text>
+  <text x="564" y="76" class="d-s" text-anchor="middle">Liqwid と Sundae で開く</text>
+
+  <line x1="564" y1="98" x2="564" y2="118" class="d-line-accent" marker-end="url(#m7)"/>
+
+  <rect x="464" y="124" width="200" height="66" rx="8" class="d-box"/>
+  <text x="564" y="150" class="d-t" text-anchor="middle">EVM 側で伸ばす</text>
+  <text x="564" y="174" class="d-s" text-anchor="middle">残高は Cardano に積み上がる</text>
+
+  <line x1="564" y1="196" x2="564" y2="216" class="d-line-accent" marker-end="url(#m7)"/>
+
+  <rect x="464" y="222" width="200" height="56" rx="8" class="d-box-accent"/>
+  <text x="564" y="246" class="d-t" text-anchor="middle">Alpha Growth と Cardano へ</text>
+  <text x="564" y="266" class="d-s" text-anchor="middle">提案は可決済み</text>
+
+  <rect x="16" y="124" width="420" height="66" rx="8" class="d-box-plain"/>
+  <text x="226" y="150" class="d-t" text-anchor="middle">前提① 損失の順序が決まっている</text>
+  <text x="226" y="174" class="d-s" text-anchor="middle">バッファ → 安定化ファンド → sUSDR → USDR（手前 2 段の厚みは未開示）</text>
+
+  <rect x="16" y="200" width="420" height="78" rx="8" class="d-box-plain"/>
+  <text x="226" y="226" class="d-t" text-anchor="middle">前提② 評価は自分でやらない</text>
+  <text x="226" y="250" class="d-s" text-anchor="middle">値のつかない資産は第三者のアテステーションで</text>
+  <text x="226" y="268" class="d-s" text-anchor="middle">vault のキュレーターも、もう 1 枚の説明責任の層</text>
+</svg>
+<p class="figcap">右の列が時間軸、左の列が<strong>その全体を支える前提</strong>です。この回はその前提のほうに新しい情報がありました。</p>
+</div>
+
+
+<h2 id="qa">10. Q&amp;A</h2>
+<p class="deck">チャットとフォームから拾われた質問と、その場の答え。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者A</span>ポートフォリオの与信資産のひとつがデフォルトした場合、USDR / sUSDR の保有者を守る仕組みは。</p>
+<p class="qa-a" data-by="回答">第 3 節の損失のウォーターフォール。<strong>「まだ完全には確定と言えないが、近いうちに言えるようになる」</strong>という留保つきです。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者A</span>報酬を得るために必要な ADA の最低数量は。</p>
+<p class="qa-a" data-by="回答"><strong>公開しない。</strong>アンチシビル・アンチファーミングの措置が入っているため、公開するとファーミングがやりやすくなるだけだから、という説明です。<strong>「まあ信用してくれ、という部分がある」</strong>と自ら認めたうえで、<strong>善意の参加者は問題ない</strong>、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者C</span>sUSDR が取引所でポジションを持った状態にあるとき、利回りは発生しているか。発生するならポジションを自動的に増やすか。</p>
+<p class="qa-a" data-by="回答"><strong>取引所による。</strong>CEX ごとに扱いが違い、「はい」のところも「いいえ」のところもある。ステークしていない版しか預からず報酬は自分たちに支払われる前提のところもある。そのうえで <strong>「これはまさに私が今まとめようとしている中心的なユースケース」</strong>だと述べられました。<strong>価値が増え続ける sUSDR を、そのまま他のポジションの担保に使える</strong>状態が「キラーユースケース」だ、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者D</span>もっと多くの SPO が RealFi を支援するために参加できるか。</p>
+<p class="qa-a" data-by="回答">ホストが回答。<strong>mainnet の先での形を検討中</strong>で、プロダクトとマーケティングと詰めて CEO に案を出している段階。<strong>「承認は下りていないので、まだ進行中」</strong>。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">フォームから</span>USDR は国ごとにどんな課題に直面するか。どういう法人構成がグローバル展開に適しているか。</p>
+<p class="qa-a" data-by="回答"><strong>「構成の話というより、何をやろうとしているかの話」。</strong>法人をどこに置くかの前に、やろうとしている活動を決める、と。<strong>CLARITY Act は「最近また遅れた」</strong>と述べられ、<strong>米国で crypto 企業が銀行化することと、それを望まない銀行との争い</strong>が背景にあるが「それは我々についての話ではない」と。<strong>特定の法域に合わせてプロダクトを丸ごと変えるつもりはなく、適さない地域が出るのはそれで構わない</strong>という立場でした。</p>
+</div>
+
+
+<h2 id="pending">11. 持ち帰りになった論点</h2>
+<p class="deck">答えが出なかったもの、意図的に伏せられたもの。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記録として</span>エクイティ・バッファの金額と、払い込みの時期。</p>
+<p class="qa-a" data-by="未開示">損失の順序は示されましたが、<strong>手前 2 段がどれだけ厚いかは示されていません</strong>。②は「初日には存在しない」と明言されているため、<strong>①の規模と時期が、ローンチ直後の保護の実質を決めます</strong>（第 3 節の折りたたみ）。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者A</span>どの CEX に上場するのか。MiCA / GENIUS の要件を満たすのか。</p>
+<p class="qa-a" data-by="意図的に非公開">上場先は<strong>「話せない」と明言</strong>。MiCA / GENIUS については<strong>「現時点でその基準に対応する予定はない。理由は色々ある」</strong>とのみで、<strong>理由の中身は語られていません</strong>。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記録として</span>testnet 参加者へのインセンティブ（ロール・バッジなど）。</p>
+<p class="qa-a" data-by="検討中">ホストが「チームと議論して案を出している」と回答。<strong>「まだ何も確約はしません」</strong>。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">参加者C</span>ビルダーから見た LayerZero の現状は。</p>
+<p class="qa-a" data-by="時期のみ">RealFi 側の対応としては<strong>「メッセージングの層を差し替えやすいように設計してある」</strong>と回答。<strong>LayerZero そのものの現状については「年末に向けて来ると理解している」という伝聞まで</strong>で、ビルダーが今使えるかどうかには答えていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>この回は他の RealFi Office Hours と扱いが違います。依頼により、<strong>発話した 2 名は実名のまま</strong>（ホストと RealFi の CEO）扱い、<strong>読み上げられた質問者の名前だけ</strong>を <code>参加者A〜F</code> に置き換えています。名前が挙がった社内の 2 名も同様です。<strong>このコールで発話したのはこの 2 名だけ</strong>でした。</p>
+<p><strong>第三者について。</strong>公的な立場で名前が挙がった人物（当時の Cardano Foundation 会長）は、<strong>そのまま記載しています</strong>。</p>
+<p><strong>話者について。</strong>原本は SRT で<strong>タイムスタンプはありますが話者ラベルがありません</strong>。1 つの字幕ブロックの中で話者が入れ替わることもあるため、分割は文脈から判断していますが、<strong>声が 2 つしかないため全編を通して明確</strong>で、<code>(推定)</code> は付けていません。</p>
+<p><strong>スライドはありません。</strong>このページの内容は<strong>すべて音声で語られたもの</strong>です。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">IN ONE LINE</span>
+  <p><strong>The technology is done; what is holding mainnet is a queue on the TradFi side.</strong><br>
+  And for the first time in this archive, <strong>the order in which losses hit</strong> was spelled out.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Mainnet around mid-September.</strong> “We will give a firm date” within about two weeks. <strong>Technologically ready</strong>; what remains is <strong>TradFi onboarding</strong> — a CIMA registration in the Cayman Islands, handed to the regulated exchange StoneX, before an account can even be opened. <strong>These steps only happen sequentially.</strong></li>
+  <li><strong>Already testing with real money.</strong> About <strong>$100k</strong> minted and being pushed through venues and wallets — the <strong>hardening</strong> phase.</li>
+  <li><strong>The loss waterfall, stated for the first time:</strong> ① an equity buffer → ② the protocol stability fund → ③ <strong>sUSDR marked down</strong> → ④ USDR holders. With the CEO's own caveat that he <strong>“can't fully confirm this”</strong> yet.</li>
+  <li><strong>Two launch venues.</strong> <strong>Liqwid</strong> (deposit ADA, borrow against it, into USDR, stake — without selling the ADA) and <strong>Sundae</strong>, shipping a new linear swap feature early for them.</li>
+  <li><strong>Cardano is the source of truth.</strong> Issuance on EVM is native via burn-and-mint, but <strong>the assets sit on Cardano, so EVM demand grows the Cardano balance</strong>. Currently a fork of Circle's CCTP, <strong>moving to LayerZero</strong> when it lands.</li>
+  <li><strong>Unpriced assets get valued by someone who isn't you.</strong> Recent crypto blow-ups were attributed to <strong>real-world breakage not showing up on the dashboard</strong>.</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>This session is handled differently.</strong> At the archive owner's request, <strong>the two speakers are named</strong> — the host and RealFi's CEO — while <strong>the names of the people whose questions were read out</strong> have been replaced with <code>Participant A–F</code>, as were two colleagues named in passing. <strong>Nobody else spoke on this call.</strong></p>
+</div>
+
+<div class="toc">
+<p class="toc-label">What this session covered</p>
+<ol>
+  <li><a href="#en-mainnet"><span class="n">01</span>When mainnet lands</a></li>
+  <li><a href="#en-launch"><span class="n">02</span>What you can do at launch</a></li>
+  <li><a href="#en-waterfall"><span class="n">03</span>Who takes the loss first</a></li>
+  <li><a href="#en-cardano"><span class="n">04</span>Cardano as the source of truth</a></li>
+  <li><a href="#en-next"><span class="n">05</span>The Cardano sandwich</a></li>
+  <li><a href="#en-pricing"><span class="n">06</span>Pricing an asset with no price</a></li>
+  <li><a href="#en-vaults"><span class="n">07</span>What vaults are</a></li>
+  <li><a href="#en-origin"><span class="n">08</span>Why he built it</a></li>
+  <li><a href="#en-overall"><span class="n">09</span>How it fits together</a></li>
+  <li><a href="#en-qa"><span class="n">10</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">11</span>Left open</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-mainnet">1. When mainnet lands</h2>
+<p class="deck">The engineering is finished. What's holding it is paperwork that can only happen in order.</p>
+
+<p>Earlier sessions said “hopefully next month” (the GTM call on 6 August). This one is more specific.</p>
+
+<blockquote>
+<p>So approximately, I think mainnet date's gonna be mid-September. We will give a firm date as we close out some of the items that we've got in basically in the next two weeks.</p>
+</blockquote>
+
+<p>And then a breakdown of <strong>what is done and what isn't</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram showing the technology complete, with a sequential chain from CIMA registration to StoneX account opening and hardening with real money before mainnet">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="30" width="648" height="46" rx="7" class="d-box-accent"/>
+  <text x="340" y="52" class="d-t" text-anchor="middle">Technologically ready</text>
+  <text x="340" y="70" class="d-s" text-anchor="middle">Smart contracts, the product, weeks of bug-squashing and feedback on testnet</text>
+
+  <text x="16" y="104" class="d-s d-w">What's left — and it can only happen in order</text>
+
+  <rect x="16" y="114" width="140" height="52" rx="7" class="d-box-warn"/>
+  <text x="86" y="139" class="d-t" text-anchor="middle">CIMA registration</text>
+  <text x="86" y="157" class="d-s" text-anchor="middle">Cayman Islands</text>
+  <line x1="158" y1="140" x2="178" y2="140" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="182" y="114" width="140" height="52" rx="7" class="d-box-warn"/>
+  <text x="252" y="139" class="d-t" text-anchor="middle">Give it to StoneX</text>
+  <text x="252" y="157" class="d-s" text-anchor="middle">the regulated exchange</text>
+  <line x1="324" y1="140" x2="344" y2="140" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="348" y="114" width="140" height="52" rx="7" class="d-box-warn"/>
+  <text x="418" y="139" class="d-t" text-anchor="middle">Account opened</text>
+  <text x="418" y="157" class="d-s" text-anchor="middle">only starts here</text>
+  <line x1="490" y1="140" x2="510" y2="140" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="514" y="114" width="150" height="52" rx="7" class="d-box"/>
+  <text x="589" y="139" class="d-t" text-anchor="middle">hardening</text>
+  <text x="589" y="157" class="d-s" text-anchor="middle">$100k of real money</text>
+
+  <rect x="16" y="188" width="648" height="46" rx="7" class="d-box-plain"/>
+  <text x="340" y="210" class="d-t" text-anchor="middle">→ mainnet (mid-September expected; firm date within two weeks)</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">“It's a long, long list of dependencies, but we're shredding through them”</text>
+</svg>
+<p class="figcap">The registration has to reach the exchange before the account setup even begins — which is why these <strong>cannot be run in parallel</strong>.</p>
+</div>
+
+<div class="term">
+<p class="term-name">Hardening</p>
+<p>Running the production path <strong>with real money</strong>. <span class="badge">added</span>What separates it from testnet is that <strong>failure costs something</strong>. Problems test funds never surface — per-venue deposit and withdrawal limits, wallet behaviour, actual fees — only appear here. Described on the call as “quite boringly called hardening.”</p>
+</div>
+
+
+<h2 id="en-launch">2. What you can do at launch</h2>
+<p class="deck">The point of the Liqwid design is that you take part without selling your ADA.</p>
+
+<p>Two things were named for the Cardano launch.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="Diagram of the Liqwid flow from depositing ADA to borrowing, converting to USDR and staking, alongside the Sundae swap route">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="22" class="d-s d-a">Liqwid — take part without selling your ADA</text>
+
+  <rect x="16" y="32" width="130" height="48" rx="7" class="d-box-accent"/>
+  <text x="81" y="61" class="d-t" text-anchor="middle">Deposit ADA</text>
+  <line x1="148" y1="56" x2="166" y2="56" class="d-line-accent" marker-end="url(#e2)"/>
+  <rect x="170" y="32" width="130" height="48" rx="7" class="d-box"/>
+  <text x="235" y="61" class="d-t" text-anchor="middle">Borrow against it</text>
+  <line x1="302" y1="56" x2="320" y2="56" class="d-line-accent" marker-end="url(#e2)"/>
+  <rect x="324" y="32" width="130" height="48" rx="7" class="d-box"/>
+  <text x="389" y="61" class="d-t" text-anchor="middle">Into USDR</text>
+  <line x1="456" y1="56" x2="474" y2="56" class="d-line-accent" marker-end="url(#e2)"/>
+  <rect x="478" y="32" width="186" height="48" rx="7" class="d-box"/>
+  <text x="571" y="61" class="d-t" text-anchor="middle">Stake it — now sUSDR</text>
+
+  <rect x="16" y="90" width="648" height="30" rx="6" class="d-box-plain"/>
+  <text x="340" y="110" class="d-s" text-anchor="middle">“People who hold ADA don't need to sell it to come and participate in RealFi”</text>
+
+  <text x="16" y="152" class="d-s d-a">Sundae — a new linear swap feature, shipped early</text>
+
+  <rect x="16" y="162" width="320" height="48" rx="7" class="d-box-accent"/>
+  <text x="176" y="185" class="d-t" text-anchor="middle">Swap on Sundae</text>
+  <text x="176" y="203" class="d-s" text-anchor="middle">a next-version feature, “shipping early for us”</text>
+
+  <rect x="344" y="162" width="320" height="48" rx="7" class="d-box"/>
+  <text x="504" y="185" class="d-t" text-anchor="middle">Then either route</text>
+  <text x="504" y="203" class="d-s" text-anchor="middle">stake natively in the app, or use the ADA on Liqwid</text>
+</svg>
+<p class="figcap">Both are to be <strong>added to testnet shortly</strong>, so they can be tried with test ADA and test USDR first.</p>
+</div>
+
+<p>A <strong>points system and season</strong> will carry over to mainnet, particularly around these two venues.</p>
+
+<p>On wallets, <strong>Lace</strong> is the primary partner — though “it's a native token, so you should be able to hold it anywhere.” The work with Lace is a <strong>dedicated swap-in, swap-out and stake experience</strong>. <span class="badge">added</span>The host mentioned he has Lace installed and “can't even link my main wallet,” so <strong>how finished that experience will be at launch is not established on this call</strong>.</p>
+
+
+<h2 id="en-waterfall">3. Who takes the loss first</h2>
+<p class="deck">The first time the order has been stated in this archive — with the speaker's own caveat attached.</p>
+
+<p>This answers Participant A: <strong>what protects USDR and sUSDR holders if one of the credit assets defaults?</strong> Previous sessions repeatedly left the contents of the stability fund and the peg stability module undescribed. Here, the order is given.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="Waterfall diagram showing losses hitting the equity buffer, then the protocol stability fund, then sUSDR, then USDR holders">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="22" class="d-s">Losses land in this order, from the top</text>
+
+  <rect x="16" y="32" width="500" height="46" rx="7" class="d-box-plain"/>
+  <text x="36" y="61" class="d-s">0. Expected credit losses — already subtracted before any yield is paid</text>
+
+  <rect x="16" y="88" width="500" height="46" rx="7" class="d-box-warn"/>
+  <text x="36" y="110" class="d-t">① Equity buffer</text>
+  <text x="36" y="128" class="d-s">Money raised specifically to cover this. Eaten into first</text>
+
+  <rect x="16" y="144" width="500" height="46" rx="7" class="d-box-warn"/>
+  <text x="36" y="166" class="d-t">② Protocol stability fund</text>
+  <text x="36" y="184" class="d-s">Builds across time. “This isn't available on day one”</text>
+
+  <rect x="16" y="200" width="500" height="40" rx="7" class="d-box"/>
+  <text x="36" y="226" class="d-t">③ sUSDR marked down</text>
+
+  <rect x="16" y="246" width="500" height="40" rx="7" class="d-box"/>
+  <text x="36" y="272" class="d-t">④ USDR holders</text>
+
+  <path d="M540 55 L540 265" class="d-line-accent" marker-end="url(#e3)"/>
+  <text x="560" y="150" class="d-s d-a">the larger</text>
+  <text x="560" y="170" class="d-s d-a">the loss,</text>
+  <text x="560" y="190" class="d-s d-a">the further down</text>
+</svg>
+<p class="figcap">“We do have a transparent subordination, seniority level over who gets hit when.” The design was likened to Ethena's.</p>
+</div>
+
+<details class="explain">
+<summary>A basic question — does buffer ① actually exist on day one?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Everything below was written here. None of it was said on the call.</p>
+
+<h4>Stopping on this is right</h4>
+<p>The explanation contains a <strong>shift of tense</strong>. The equity buffer is first described as <strong>“money that I've raised specifically to provide coverage”</strong> — past tense. Moments later, explaining that ② isn't available on day one, the reason given is <strong>“which is why, you know, going to raise equity for that, for that first part”</strong> — future tense.</p>
+<p>And the whole answer opens with <strong>“I can't, like, fully confirm this, but shortly I will be able to.”</strong></p>
+
+<h4>What can be established</h4>
+<ul>
+  <li><strong>② is not there on day one.</strong> That is stated explicitly.</li>
+  <li><strong>Whether ① is fully funded at launch does not follow from this answer.</strong> Both readings — already raised, and about to be raised — sit side by side in it.</li>
+</ul>
+
+<h4>Why it matters</h4>
+<p>Since ② is confirmed absent at launch, <strong>if ① is also unfunded, then ③ — marking down sUSDR — becomes the first real absorber for any early loss.</strong> The order would be unchanged; what changes is <strong>how much gets absorbed before it reaches a holder</strong>.</p>
+
+<h4>How you'd check</h4>
+<p>One number: <strong>the size of the equity buffer, and when it is paid in.</strong> <strong>Neither the amount nor the timing is given on this call.</strong> Nor is it said whether the buffer falls within the third-party attestation the CEO argues for in section 6.</p>
+
+<h4>In fairness</h4>
+<p>He flags the uncertainty himself. This is <strong>a number to ask for next time</strong>, not an inconsistency to hold against the answer.</p>
+</div>
+</details>
+
+
+<h2 id="en-cardano">4. Cardano as the source of truth</h2>
+<p class="deck">The design where EVM growth grows the Cardano balance.</p>
+
+<p>Asked by Participant B whether RealFi runs on Cardano or is its own chain or a fork, the answer was unambiguous: <strong>“It runs directly on Cardano.”</strong> USDR is a native asset, visible on <strong>Cexplorer</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Diagram of Cardano as the canonical source of truth with native issuance on Ethereum via burn and mint">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="40" width="260" height="96" rx="8" class="d-box-accent"/>
+  <text x="146" y="70" class="d-t" text-anchor="middle">Cardano</text>
+  <text x="146" y="94" class="d-s" text-anchor="middle">Canonical source of truth</text>
+  <text x="146" y="114" class="d-s" text-anchor="middle">and accounting layer. The assets sit here</text>
+
+  <line x1="284" y1="72" x2="392" y2="72" class="d-line-accent" marker-end="url(#e4)"/>
+  <text x="338" y="62" class="d-s d-a" text-anchor="middle">burn / mint</text>
+  <line x1="392" y1="104" x2="284" y2="104" class="d-line-accent" marker-end="url(#e4)"/>
+  <text x="338" y="124" class="d-s d-a" text-anchor="middle">balance grows on Cardano</text>
+
+  <rect x="398" y="40" width="266" height="96" rx="8" class="d-box"/>
+  <text x="531" y="70" class="d-t" text-anchor="middle">Ethereum / EVM</text>
+  <text x="531" y="94" class="d-s" text-anchor="middle">Issued natively there too</text>
+  <text x="531" y="114" class="d-s" text-anchor="middle">Used on Pendle, Aave and so on</text>
+
+  <rect x="16" y="152" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="177" class="d-s" text-anchor="middle">Currently a fork of Circle's CCTP → will shift to LayerZero once it arrives on Cardano (understood to be late this year)</text>
+
+  <rect x="16" y="200" width="648" height="42" rx="7" class="d-box-plain"/>
+  <text x="340" y="218" class="d-t" text-anchor="middle">“Even if you have loads of demand on EVM, you'll still be growing the stablecoin balance on Cardano”</text>
+  <text x="340" y="236" class="d-s" text-anchor="middle">Because that's where the assets sit — “kind of a nice externality”</text>
+</svg>
+<p class="figcap">This is the <strong>implementation detail</strong> behind the GTM session's line about a dollar minted on Ethereum still counting toward Cardano TVL.</p>
+</div>
+
+<div class="term">
+<p class="term-name">CCTP <small>Cross-Chain Transfer Protocol</small></p>
+<p>Circle's mechanism for moving tokens between chains. <span class="badge">added</span>The key property is that it <strong>burns on one side and mints on the other</strong> rather than locking. That avoids the vault of locked assets most bridges accumulate — <strong>“creating a honeypot,”</strong> in the CEO's words — and therefore the target that goes with it. He credits the <strong>USDCx bridge</strong> with making this much easier.</p>
+</div>
+
+<p>The <strong>AlphaGrowth proposal passing</strong> was also noted. <span class="badge">added</span>This is the PRIME proposal recorded as “in voting” after the 26 July episode (item 17 in <code>shared/open-questions.md</code>). <strong>Its passage is confirmed here.</strong> With the investment AlphaGrowth can now coordinate across Cardano projects, the CEO reckons “we've got a really good shot of really building some DeFi TVL.”</p>
+
+
+<h2 id="en-next">5. The Cardano sandwich</h2>
+<p class="deck">Start on Cardano, grow on EVM, come back to Cardano.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 220" role="img" aria-label="Three-stage diagram from the Cardano launch through EVM expansion and back to Cardano with AlphaGrowth">
+  <defs>
+    <marker id="e5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="34" width="200" height="76" rx="8" class="d-box-accent"/>
+  <text x="116" y="62" class="d-t" text-anchor="middle">① Cardano launch</text>
+  <text x="116" y="86" class="d-s" text-anchor="middle">Liqwid and Sundae</text>
+
+  <line x1="222" y1="72" x2="238" y2="72" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="244" y="34" width="192" height="76" rx="8" class="d-box"/>
+  <text x="340" y="58" class="d-t" text-anchor="middle">② EVM</text>
+  <text x="340" y="80" class="d-s" text-anchor="middle">More venues; curators set up</text>
+  <text x="340" y="98" class="d-s" text-anchor="middle">vaults with strategies</text>
+
+  <line x1="442" y1="72" x2="458" y2="72" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="464" y="34" width="200" height="76" rx="8" class="d-box-accent"/>
+  <text x="564" y="58" class="d-t" text-anchor="middle">③ Back to Cardano</text>
+  <text x="564" y="80" class="d-s" text-anchor="middle">With AlphaGrowth, once protocols</text>
+  <text x="564" y="98" class="d-s" text-anchor="middle">have upgraded and re-audited</text>
+
+  <rect x="16" y="126" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="151" class="d-s" text-anchor="middle">The EVM target is levered looping — “fixed income's kind of an appropriate asset class for this”</text>
+
+  <rect x="16" y="174" width="648" height="34" rx="6" class="d-box-warn"/>
+  <text x="340" y="196" class="d-s" text-anchor="middle">The one thing explicitly off-limits: specific listings</text>
+</svg>
+<p class="figcap">On looping: “where this goes really badly wrong is if the underlying asset is volatile.” <span class="badge">added</span>The 8.5% and 5% quoted are hypothetical — <strong>“this is not a promise of return”</strong> in his own words.</p>
+</div>
+
+
+<h2 id="en-pricing">6. Pricing an asset with no price</h2>
+<p class="deck">The question deferred to the investment team on the GTM call. Answered here.</p>
+
+<p>On 6 August this was parked with <strong>“I am not a private credit professional.”</strong> This time the answer goes further.</p>
+
+<p>The pricing itself is simple enough: <strong>price it off the actual coupon, then discount by expected losses in the portfolio.</strong> The problem is what comes after.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-label="Diagram contrasting a dashboard value rising monotonically against real-world deterioration that is not reflected">
+  <defs>
+    <marker id="e6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="16" y="22" class="d-s">On the crypto dashboard</text>
+  <path d="M20 96 L200 46" class="d-line-accent"/>
+  <text x="210" y="52" class="d-s d-a">rises monotonically with the interest rate</text>
+
+  <text x="16" y="130" class="d-s d-w">In the real world</text>
+  <path d="M20 176 L120 170 L200 210" class="d-line" marker-end="url(#e6)"/>
+  <text x="210" y="200" class="d-s d-w">something has broken, and isn't reflected</text>
+
+  <rect x="400" y="40" width="264" height="80" rx="8" class="d-box-warn"/>
+  <text x="532" y="66" class="d-t" text-anchor="middle">That gap is where blow-ups come from</text>
+  <text x="532" y="90" class="d-s" text-anchor="middle">“That's actually where we've seen some of</text>
+  <text x="532" y="108" class="d-s" text-anchor="middle">the blow-ups in crypto recently”</text>
+
+  <rect x="400" y="132" width="264" height="80" rx="8" class="d-box-accent"/>
+  <text x="532" y="158" class="d-t" text-anchor="middle">The answer is third-party valuation</text>
+  <text x="532" y="182" class="d-s" text-anchor="middle">“Someone who's not you”</text>
+  <text x="532" y="200" class="d-s" text-anchor="middle">“Not that cheap, but still kind of required”</text>
+
+  <rect x="16" y="222" width="648" height="0" rx="0" class="d-box-plain"/>
+</svg>
+<p class="figcap">The crux is that a fund administrator <strong>isn't a specialist in hard-to-value assets</strong>. A globally traded CLO ETF or a T-bill is trivial for them; this is not.</p>
+</div>
+
+<p>A firm providing verification to several real-world-asset products was mentioned in this context, with those products having <strong>recently paused redemptions</strong>. <span class="badge">added</span>The name was given tentatively — “I think it's called, like, Accountable” — so <strong>it is not a firm identification</strong>. Recorded here as the event, without naming the firm.</p>
+
+<blockquote>
+<p>You need to do some actual work to be able to go and value this stuff. It's not just like a dashboard and asking people to fill out a survey.</p>
+</blockquote>
+
+
+<h2 id="en-vaults">7. What vaults are</h2>
+<p class="deck">The host asked for this again “for the benefit of the summary.” It's an extra layer of accountability.</p>
+
+<p>Asked what he's most excited about for RealFi, the CEO said <strong>vaults</strong> — defined as <strong>“programmatic digital funds.”</strong></p>
+
+<div class="term">
+<p class="term-name">Vault <small>and its curator</small></p>
+<p>A <strong>vault manager (curator)</strong> is responsible for the parameters and strategies; <strong>LPs</strong> come into the vault. <span class="badge">added</span>What matters in the call's framing is that this is presented as <strong>an accountability layer, not a distribution channel</strong>. The curator <strong>sets parameters so only good assets get added, and watches that leverage doesn't run away</strong>. In the CEO's words, <strong>“a really important credibility check for us.”</strong></p>
+</div>
+
+<p>Not an unqualified endorsement: <strong>“I wouldn't say everything's always gone right in vault world”</strong> — but they were set up to solve some of the nonsense DeFi produced, and are <strong>“definitely an improvement.”</strong></p>
+
+<p>The other thing he's excited about is conversations with <strong>“real businesses”</strong> — outfits with <strong>dollar flows over short-ish periods looking for extra economics during that window</strong>. Remittance businesses, or the example he gave: <strong>a furniture factory with dollars sitting across several accounts</strong>, using this as treasury management. <strong>“The market's much bigger than just people chasing yield in crypto.”</strong></p>
+
+
+<h2 id="en-origin">8. Why he built it</h2>
+<p class="deck">It started from noticing that growing dollar balances were being used for almost nothing.</p>
+
+<p>He came into crypto via <strong>Michael Parsons, then chairman of the Cardano Foundation, in a coffee shop in Northwest London</strong> — “a slightly strange older man that was trying to talk to me.” Having read the Bitcoin paper and the Ethereum white paper was met with “Oh my God. Thank God.” At the Foundation he was head of strategy and head of ecosystem, doing early marketing and narratives and the community setup.</p>
+
+<p>The idea for RealFi came from <strong>watching balances grow through his work in Africa</strong> — Bitcoin, Ethereum, then USDT. But <strong>the only uses he could see were getting out of a trade, and borrowing against Bitcoin to buy more Bitcoin</strong>.</p>
+
+<blockquote>
+<p>We've got these huge and growing balances of dollars — what else could we do with it? … No one had really built this bridge to be able to go and start using that capital to access assets outside of crypto.</p>
+</blockquote>
+
+<p>Combined with <strong>fixed income opportunities offering a solid risk-adjusted yield</strong> in both emerging and developed markets, that became the plan. He also mentions that <strong>he didn't want to set it up</strong> — he tried to persuade someone else to be CEO, and “unfortunately, it didn't work out that way.”</p>
+
+<p><strong>Hyperliquid</strong> came up as the reference point: as it adds real-world assets, it produces <strong>volumes you don't see at some of the world's largest traditional exchanges</strong>. He credits DeFi for 24/7 settlement, everything being programmatic, and <strong>being able to use your positions as collateral in other positions</strong> — and positions RealFi as something similar but <strong>“maybe more useful for normies.”</strong></p>
+
+
+<h2 id="en-overall">9. How it fits together</h2>
+<p class="deck">How the pieces of this call connect.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="Overview connecting completed engineering, TradFi paperwork, mainnet, EVM expansion, and the loss order and third-party valuation as underpinnings">
+  <defs>
+    <marker id="e7" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="26" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="116" y="52" class="d-t" text-anchor="middle">Engineering done</text>
+  <text x="116" y="76" class="d-s" text-anchor="middle">Bugs squashed on testnet</text>
+
+  <line x1="222" y1="59" x2="238" y2="59" class="d-line-accent" marker-end="url(#e7)"/>
+
+  <rect x="244" y="26" width="192" height="66" rx="8" class="d-box-warn"/>
+  <text x="340" y="52" class="d-t" text-anchor="middle">TradFi queue</text>
+  <text x="340" y="76" class="d-s" text-anchor="middle">CIMA → StoneX → account</text>
+
+  <line x1="442" y1="59" x2="458" y2="59" class="d-line-accent" marker-end="url(#e7)"/>
+
+  <rect x="464" y="26" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="564" y="52" class="d-t" text-anchor="middle">Mainnet (mid-Sept)</text>
+  <text x="564" y="76" class="d-s" text-anchor="middle">Opens on Liqwid and Sundae</text>
+
+  <line x1="564" y1="98" x2="564" y2="118" class="d-line-accent" marker-end="url(#e7)"/>
+
+  <rect x="464" y="124" width="200" height="66" rx="8" class="d-box"/>
+  <text x="564" y="150" class="d-t" text-anchor="middle">Grow on EVM</text>
+  <text x="564" y="174" class="d-s" text-anchor="middle">Balance accrues on Cardano</text>
+
+  <line x1="564" y1="196" x2="564" y2="216" class="d-line-accent" marker-end="url(#e7)"/>
+
+  <rect x="464" y="222" width="200" height="56" rx="8" class="d-box-accent"/>
+  <text x="564" y="246" class="d-t" text-anchor="middle">Back with AlphaGrowth</text>
+  <text x="564" y="266" class="d-s" text-anchor="middle">Proposal has passed</text>
+
+  <rect x="16" y="124" width="420" height="66" rx="8" class="d-box-plain"/>
+  <text x="226" y="150" class="d-t" text-anchor="middle">Underpinning ① a stated order of loss</text>
+  <text x="226" y="174" class="d-s" text-anchor="middle">buffer → stability fund → sUSDR → USDR (top two undisclosed in size)</text>
+
+  <rect x="16" y="200" width="420" height="78" rx="8" class="d-box-plain"/>
+  <text x="226" y="226" class="d-t" text-anchor="middle">Underpinning ② you don't value your own book</text>
+  <text x="226" y="250" class="d-s" text-anchor="middle">Unpriced assets go to third-party attestation</text>
+  <text x="226" y="268" class="d-s" text-anchor="middle">Vault curators are a second accountability layer</text>
+</svg>
+<p class="figcap">The right column is the timeline; the left is what holds it up. The new information in this session is on the left.</p>
+</div>
+
+
+<h2 id="en-qa">10. Q&amp;A</h2>
+<p class="deck">Questions from the chat and the form, and what came back.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant A</span>If one of the credit assets in the portfolio defaults, what protects USDR and sUSDR holders?</p>
+<p class="qa-a" data-by="Answer">The loss waterfall in section 3 — with the caveat <strong>“I can't fully confirm this, but shortly I will be able to.”</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant A</span>What's the minimum amount of ADA required to earn rewards?</p>
+<p class="qa-a" data-by="Answer"><strong>Not disclosed</strong>, because anti-sybil and anti-farming measures are in place and publishing the threshold “only makes it easy for people to farm.” Acknowledged as <strong>“a bit trust us, bro”</strong> — with the assurance that <strong>“any good faith actors will be fine.”</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant C</span>When sUSDR sits on an exchange in an open position, is it earning yield — and does that yield increase the position?</p>
+<p class="qa-a" data-by="Answer"><strong>Depends on the exchange.</strong> Some CEXs yes, some no, some will only hold the unstaked version and expect the rewards paid to them. He then called this <strong>“basically the key use case that I'm trying to close”</strong>: holding sUSDR on an exchange and <strong>using it as collateral against other positions while it accrues</strong> — “a killer use case of NAV-accruing collateral.”</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant D</span>Can more SPOs get involved in supporting RealFi?</p>
+<p class="qa-a" data-by="Answer">Taken by the host: <strong>a case is being built for what that looks like beyond mainnet</strong>, worked through with product and marketing and submitted to the CEO. <strong>“It's not signed off, so it's still in progress.”</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">From the form</span>What challenges does USDR face across countries, and what entity structure gives the best global reach?</p>
+<p class="qa-a" data-by="Answer"><strong>“It's less about the structure and more about what you're trying to do.”</strong> Decide the activities first. On the CLARITY Act — <strong>“it was delayed again recently”</strong> — the framing was that the fight in the US between crypto firms becoming banks and banks resisting that is <strong>“not really about us.”</strong> He is <strong>not interested in reshaping the product for one jurisdiction</strong>, and accepts that some geographies won't be appropriate.</p>
+</div>
+
+
+<h2 id="en-pending">11. Left open</h2>
+<p class="deck">What didn't get answered, and what was withheld deliberately.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Noted here</span>The size of the equity buffer, and when it is funded.</p>
+<p class="qa-a" data-by="Undisclosed">The order of loss is given; <strong>the depth of the top two layers is not</strong>. Since ② is stated to be absent on day one, <strong>the size and timing of ① determine what protection actually exists at launch</strong> (see the collapsible in section 3).</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Participant A</span>Which CEXs? Will USDR meet MiCA or GENIUS requirements?</p>
+<p class="qa-a" data-by="Deliberately withheld">Listings: <strong>explicitly can't say.</strong> On MiCA and GENIUS: <strong>“we're not currently looking to support that standard, for a whole bunch of reasons”</strong> — <strong>the reasons themselves are not given</strong>.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Noted here</span>Incentives for testnet participants — roles, badges and so on.</p>
+<p class="qa-a" data-by="Under discussion">The host is discussing it with the team and submitting ideas. <strong>“I'm not gonna confirm anything.”</strong></p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Participant C</span>As a builder, what is the current state of LayerZero?</p>
+<p class="qa-a" data-by="Timing only">On RealFi's side: <strong>“we basically architected everything, that it's easy for us to switch out that messaging layer.”</strong> On LayerZero itself, only <strong>“my understanding is that it's coming towards the end of the year”</strong> — <strong>nothing on whether a builder can use it today</strong>.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> This session is handled differently from the other RealFi Office Hours. At the archive owner's request, <strong>the two speakers are named</strong> — the host and RealFi's CEO — while <strong>the names of the people whose questions were read out</strong> have been replaced with <code>Participant A–F</code>, as were two colleagues named in passing. <strong>Nobody else spoke on this call.</strong></p>
+<p><strong>On third parties.</strong> Someone named in a public capacity — the then chairman of the Cardano Foundation — <strong>is named here</strong>.</p>
+<p><strong>On speakers.</strong> The source is an SRT: timestamps but no speaker labels, and a single subtitle block sometimes spans a change of speaker. The split into turns is judged from context; with only two voices it is unambiguous throughout, so nothing is marked <code>(inferred)</code>.</p>
+<p><strong>There were no slides.</strong> Everything on this page was <strong>spoken aloud</strong>.</p>
+<p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the call</strong>.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All sessions</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">RealFi Office Hours アーカイブ</span><span class="l-en">RealFi Office Hours archive</span></p>
+</footer>
+
+</div>
+</body>
+</html>

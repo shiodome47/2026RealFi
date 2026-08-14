@@ -73,6 +73,7 @@ GitHub Pages の公開元を **`docs/`** にすれば公開できる。設定は
 
 ### RealFi Office Hours（チャタムハウスルール）
 
+- [2026-08-14 Ask the CEO](docs/2026-08-14-ask-the-ceo/) — mainnet は 9 月中旬、止めているのは TradFi 側の手続き、損失の順番、Cardano が正となる台帳であること
 - [2026-08-06 GTM 回](docs/2026-08-06-office-hours-gtm/) — go-to-market の 3 つの仕事、利回りの出所、レバレッジループ、値のつかない貸付の評価、「暗い森」と SPO
 - [2026-07-31 データ回](docs/2026-07-31-data-and-insights/) — testnet 3 週間の数字、SPO プログラムの効果、流動性の 3 層、フライホイール
 - [2026-07-24 エンジニアリング回](docs/2026-07-24-office-hours-engineering/) — クロスチェーン構想、ワンクリックフロー、USDR と sUSDR、プラットフォーム化

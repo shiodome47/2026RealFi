@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #6 — Full transcript (English original)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語全文を読む" title="日本語全文を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #6</p>
+<h1>Full transcript — English (original)</h1>
+<p class="meta">
+  <span>2026-08-14</span>
+  <span>40:24</span>
+  <span>Discord</span>
+  <span>Ask the CEO</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> This session is handled differently from the other RealFi Office Hours. At the request of the archive's owner, <strong>the two speakers are named</strong> — the host and RealFi's CEO — while <strong>the names of the people whose questions were read out have been replaced</strong> with <code>Participant A–F</code>. Two colleagues named in passing were replaced the same way. Nobody else spoke on this call.</p>
+<p>The source is an SRT, so it carries timestamps but no speaker labels, and a single subtitle block often spans a change of speaker. The split into turns is therefore judged from context; with only two voices it is unambiguous throughout, so nothing is marked <em>(inferred)</em>. The wording is unedited apart from the anonymisation above.</p>
+<p>There were no slides. Links were dropped into the chat during the call; the linked pages are not reproduced here.</p>
+</div>
+
+<!--content-->
+
+<div class="sec">Before the start</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:03</span></div>
+  <div class="turn-body"><p>Hey, John. Um, just need you to-- I always forget. I either have to invite you or you have to, uh, invite to speak. There we go. Brilliant.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:14</span></div>
+  <div class="turn-body"><p>Hey, John. Cool. Is that working? Yes. Is it on yet, man? Doing web- Okay. It's on. Uh, we doing webcams?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:00:25</span></div>
+  <div class="turn-body"><p>I am giving permissions. Yes, we're doing webcams.</p></div>
+</div>
+
+<div class="sec">Origin story — from the Cardano Foundation to RealFi</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:32</span></div>
+  <div class="turn-body"><p>Brilliant. So much, uh, so much handsome energy on this call now. So, um, we've had a-- we've had some really good RealFi, um, office hours actually, uh, since, uh, since you last did the AMA. We've had, um, product marketing, engineering, data, and we put out a blog actually, um, to recap all of those office hours. So this is a, a culmination in kind of going through the different teams and the functions.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:59</span></div>
+  <div class="turn-body"><p>Um, so John, if everyone... And I'm, I'm sort of giving a couple of minutes so people can join. Um, but give us a little bit of an introduction and your origin story into RealFi. Uh, we've done that with everybody so far, and then we'll get into some of the mainnet readiness, Cardano, and what comes next.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:01:14</span></div>
+  <div class="turn-body"><p>I'm kind of intrigued what everyone else said. I know I've had calls across, uh, some of these sessions. I need to go and listen to what, what everyone said, uh, how they, how I lured them into, into RealFi.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:01:28</span></div>
+  <div class="turn-body"><p>Um, I don't know. I think I've been sort of playing around with this idea in many different forms for, like, a very long time. Uh, I think I've always been interested in two things since I started working in crypto. Um, maybe I'll start with that, how I started working in crypto. Uh, I kind of fell into it. I met, um, the then chairman of the Cardano Foundation, Michael Parsons, uh, in like a coffee shop in Northwest London.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:01:54</span></div>
+  <div class="turn-body"><p>And, uh, to me he was like maybe, uh, a slightly strange older man that was trying to talk to me. And, uh, he was asking me what I did. And I worked in, um, I was working in tech in London in product and business roles. And, uh, this was a, a time I suppose when not everyone really did know what crypto was, and he was like, uh, "Oh, do you know what crypto is?" I was like, "Yeah, you know, I read the Bitcoin paper, I read the Ethereum white paper." Uh, and he was like, "Oh my God. Thank God." Um, because, you know, he was nominally in charge of setting up the Cardano Foundation and I think, uh, was, was kind of a bit scared over what entailed. So I joined then.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:02:30</span></div>
+  <div class="turn-body"><p>Um, I did a lot of stuff then, um, back in the day at Cardano Foundation. I was kind of head of strategy, head of ecosystem. Um, did a lot of the initial marketing, um, narratives, and then a lot of the ecosystem and community set up, and then a lot of the strategy. Uh, a whole mix of stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:02:44</span></div>
+  <div class="turn-body"><p>Um, and then anyway, uh, across the sort of work I was doing in Africa, I got really interested in seeing all these balances increase. Balances of Bitcoin, balances of Ethereum, and then, you know, with Tether, balances of USDT. Um, and really the only thing I could see people using it for was to, to like either get out of a trade, say you sell from Bitcoin to at least to dollars, versus selling to Eth, right? You're like, "Oh shit, my Bitcoin's going down. Let me, let me swap to Eth," right? Yeah. When they're pretty much moving one to one with each other. So that was a wild time actually before you could switch out to dollars.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:03:23</span></div>
+  <div class="turn-body"><p>Um, and yeah, mostly what people were using Tether for was to, like, borrow against their Bitcoin to go and buy more Bitcoin, which is great, right? There's nothing wrong with that. Um- but, uh, it did start making me think, um, we've got these huge and growing balances of dollars, um, what else could we do with it? Um, you know, the reason why everyone was just doing crypto stuff is 'cause no one had really built this bridge to be able to go and start using that capital to access assets outside of crypto.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:03:48</span></div>
+  <div class="turn-body"><p>There's a whole variety of boring reasons why that was the case, and a lot of them have gotten a lot easier. Um, so for me it was, like, seeing that opportunity and then also, um, seeing both in emerging markets and in developed markets, you know, lots of really great fixed income opportunities where you can, in my view, you know, earn a very solid risk-adjusted yield, and thinking, "Okay, well, what if we could pull all of these things together? Then we could create more utility in the crypto space where people's dollars can do more productive things." But then in the real world space we can also go and, you know, drive economic growth, opportunity, all of these other things.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:04:29</span></div>
+  <div class="turn-body"><p>Of course, it's easier to say than it is to do. There's a lot of risk management, legal set up, a whole bunch of stuff around that. Um, but that's kind of how, you know, I was thinking about RealFi. It took me a while to actually put it together. Um, funnily enough, I actually didn't want to set this up. Um, there was another guy I knew who I thought would be really good, so I was trying to persuade him to go and, uh, set it up and go and be the CEO. Uh, unfortunately, it didn't work out that way, so I'm the shmuck who's, who's had to go and do it. Um, and that's kind of how, that's kind of how it's happened. You know, multi-year journey. Um, but we are here.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:05:04</span></div>
+  <div class="turn-body"><p>We're excited. Um, there's a lot that, um, I won't be able to talk about, but there's a lot I can talk about today, so hopefully, um, hopefully we can go through some of that.</p></div>
+</div>
+
+<div class="sec">Interface and infrastructure</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:05:15</span></div>
+  <div class="turn-body"><p>And is it-- If I had to summarize that in two words, it's, it's interface and infrastructure. Is that fair?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:05:18</span></div>
+  <div class="turn-body"><p>Well, those are your words, Dan, so.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:05:22</span></div>
+  <div class="turn-body"><p>Those are my words. Yeah. I'm, I'm exploring it because I'm thinking about interfaces with the, with the ecosystem and you describing, you know, the real world assets or there's kind of, um, credit or, uh, assets outside of crypto back when you were talking to Parsons. And so there just seemed to be kind of like a wor- two worlds that were not connected, and so I was thinking about it being an interface. But yeah, I'm putting words in your mouth now, John, so it's not that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:05:52</span></div>
+  <div class="turn-body"><p>Yeah. Well, I know it can be. I mean, like, I'm not sure whether you guys follow what ha- what's happening on Hyperliquid and just how insane its growth is. Um- and look, at the end of the day, people could say a lot of, talk a lot of smack about crypto, but you know, there's a reason that as Hyperliquid adds a bunch of real world assets that you're seeing volumes that you don't even see in some of the world's largest traditional exchanges.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:06:11</span></div>
+  <div class="turn-body"><p>'Cause a lot was done right. There's a lot cool with DeFi. There's a lot cool with twenty-four/seven settlement, programmatic everything. Like, there's a lot there. Um, and being able to use your positions as collateral in other positions. Like a lot of cool stuff's been done. Um, and for me, similar to what Hyperliquid, you've seen on Hyperliquid as they're adding in gold, oil, futures, all of this kind of stuff, um, we're trying to do something similar, um, but, you know, with maybe something or maybe a product that in my view is maybe more useful for normies, right? Than, um, than what you're seeing with that kind of stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:06:46</span></div>
+  <div class="turn-body"><p>Okay, cool. But I'm just gonna go, I'm just gonna go off, um... Actually, I won't even go off camera. I'm just gonna go close my door. One second.</p></div>
+</div>
+
+<div class="sec">Mainnet readiness</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:53</span></div>
+  <div class="turn-body"><p>Okay. While John's going to close his door, um, we're gonna cover mainnet readiness. There's sort of three broad, uh, themes that, uh, we might go through, John, if I got it right. I think we might be talking about mainnet readiness. Um, what are the other things that we're gonna cover?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:07:09</span></div>
+  <div class="turn-body"><p>Um, well, mainnet readiness, what does mainnet actually mean on Cardano? Like, what can you do, um, once we're launched? Um, then what comes afterwards, EVM expansion, broader GTM, um, and, uh, then you've got some questions from the community.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:07:31</span></div>
+  <div class="turn-body"><p>Yes, we do. Okay, cool. So walk me through mainnet readiness. What does that look like? Where would you say-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:07:37</span></div>
+  <div class="turn-body"><p>Uh, we're close to ready. So, uh, thank you everyone for all of the, the support with testnet, and we've been squashing bugs, um, you know, uh, taking feedback, adding, adding features I think for the last few weeks now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:07:50</span></div>
+  <div class="turn-body"><p>Um, in terms of where we are, we are, we believe, ready technologically in terms of smart contracts, all the rest of it, the product. Um, we are finishing basically the onboarding with our, like, TradFi providers. So I'll just break that down a little bit. The way in which we're set up in RealFi is you've got all of the on-chain stuff, and behind that you have a set of assets. Some of those assets are tokenized, like tokenized money market funds, tokenized T-bills, and then some of them are off-chain things as well, right? And for those off-chain things, you need to have a regulated exchange. We're actually using StoneX.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:08:29</span></div>
+  <div class="turn-body"><p>And then, um, also we've got some of our own direct lending private credit stuff. So, uh, because some of this sort of reaches out into TradFi stuff, um, it's a little bit slower than you'd like, so we needed to submit, for instance, our CIMA registration in the Cayman Islands. You need to give that to the exchange, StoneX, before they'll even start setting up the account. So a lot of these things have to happen sequentially, and we are doing all of those things.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:08:56</span></div>
+  <div class="turn-body"><p>So, um, we will be ready, um, we're currently testing out RealFi with real money. Um, there's about 100K, uh, USD that we've minted, um, that we're just moving through all of the different, uh, like venues, wallets, et cetera, um, quite boringly called hardening. So we're in the hardening phase with real money. Uh, and then we'll be looking to go to mainnet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:09:21</span></div>
+  <div class="turn-body"><p>So approximately, I think mainnet date's gonna be mid-September. Um, we will give a firm date as we close out some of the items that we've got in basically in the next two weeks. Um, but frankly, it's a long, long, long li- long, long list of dependencies, um, but we're shredding through them, so I think it's a realistic timeframe.</p></div>
+</div>
+
+<div class="sec">What you can do on Cardano at launch</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:09:38</span></div>
+  <div class="turn-body"><p>Okay, great. Um, um, is there anything else that needs to happen before la- uh, before the launch, or that pretty much covers it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:09:49</span></div>
+  <div class="turn-body"><p>Well, that kind of moves us on to, I think, what you can do on mainnet. Um, so there are a few things which I think, uh, we'll see. Um, one is that we are opening a product in Liqwid. Uh, it's a pretty cool product where you'll be able to deposit your ADA, borrow against it, come into USDr, stake your USDr. Um, so basically a product that we've designed where people who hold ADA don't need to sell it to come and participate in RealFi. So that's something we're excited to launch. You'll be hearing more about that soon, um, with Liqwid.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:10:16</span></div>
+  <div class="turn-body"><p>Uh, the second sort of launch piece for Cardano is, uh, with Sundae, um, so we're looking to take advantage of their new linear swap feature, um, for Sundae. Is it V2 or V3? I can't remember. Anyway, Sundae are in version plus 1, um, which they're working on and, uh, are gonna be launching at some point. So that's a cool new feature, which they're shipping, I think, early for us. Um, so you'll be able to, you know, go onto Sundae, swap, and then, uh, take a, you know, either just stake natively through our application or be able to go and do something pretty cool with your ADA on Liqwid.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:11:03</span></div>
+  <div class="turn-body"><p>So those are kind of our launch applications for, um, Cardano. I think shortly we'll actually be adding those into the testnet so you guys can play around with that, with, uh, test ADA and test USDr. Um, and then, yeah, those are, those are kind of our launch primitives for Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:11:22</span></div>
+  <div class="turn-body"><p>Uh, for anyone listening, I'm dropping some links in chat just to save you looking for... If you haven't heard of them, um, which they are. And if you've got any questions for John as we're talking, uh, just put them into the chat- and we can work through them towards the end.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:11:36</span></div>
+  <div class="turn-body"><p>Yeah. Yeah, please do. Please go ahead. I find myself talking, talking too much. So, please, if you've got any, any questions, throw them in. Um, what I'll also just add in, 'cause everyone's interested in this, um, yeah, in the same way that, you know, we've been offering points for the testnet, of course as we move into the mainnet there'll also be a points system and season, um, particularly around, you know, those kind of two venues which, uh, I've just discussed. Um, so yeah. Um, come, come, come join.</p></div>
+</div>
+
+<div class="sec">If a credit asset defaults — the loss waterfall</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:12:09</span></div>
+  <div class="turn-body"><p>Uh, Participant A's asking if one of the cr- if one of the credit assets in the portfolio defaults- can you go through the protection mechanisms for USDr or sUSDr holders?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:12:22</span></div>
+  <div class="turn-body"><p>Yes. Um, I've been working very hard on this. Um, we will-- I still need to, uh, I'll-- I can't, like, fully confirm this, um, but, uh, shortly I will be able to. Um, but what you'll essentially have is some level of de-risking, which is essentially an equity buffer, um, which gets eaten into first. So within the portfolio, you have an expectation of credit losses like you would normally do within a lo- a loan portfolio. Um, and then those credit losses are basically built into, uh, before you get yield, right? It's basically you subtract those e- those expected credit losses.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:13:03</span></div>
+  <div class="turn-body"><p>And then past that, what you've got is essentially this equity buffer, which goes first, and this will be money that I've raised specifically to provide coverage on this. Then after that, you have the protocol, um, basically the protocol reserve. So this gets built across time. This isn't available on day one, which is why, you know, going to raise equity for that, for that first part.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:13:28</span></div>
+  <div class="turn-body"><p>And across time, uh, the sort of order at which the protocol makes money is that you fund certain things first. So you fund the stability fund first before, you know, the protocol can sort of, um, you know, create, uh, residual income. Um, so that's kind of the, the way that you do it. Similar to someone like Ethena, um, but yeah, as I say, the important part is that we're, we're trying to build in, you know, to go and raise to be able to bring in some de-risking for that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:13:57</span></div>
+  <div class="turn-body"><p>Uh, so I mean, obviously what I haven't talked about here is, uh, all the reasons why things should go wrong. That's actually where you have to spend the majority of your time. But in the case, of course, that things do, um, there'll be some basically some protections built in on that side. Um, what I will say, I think it's important to also be clear on, there is essentially a loss waterfall, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:14:20</span></div>
+  <div class="turn-body"><p>So after that equity buffer, after the protocol stability, um, fund gets eaten out of, um, let's say that you, you still have losses. What would essentially happen is that you would, um, mark down the sUSDr number. So sUSDr people would be hit first, and then finally it would be USDr holders. So that's kind of like the cascading order of what happens or the loss waterfall as things go wrong.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:14:49</span></div>
+  <div class="turn-body"><p>Um, as I say, we'll be spending a lot of time hopefully to make sure that, that, that doesn't happen. Um, but we do have a transparent subordination basically, um, seniority, uh, level over who gets hit when.</p></div>
+</div>
+
+<div class="sec">Does RealFi run on Cardano itself?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:15:01</span></div>
+  <div class="turn-body"><p>Hmm. Um, Participant B's asking, uh, "Is RealFi gonna run directly on top of Cardano, or is RealFi its own chain or a fork of Cardano?"</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:15:12</span></div>
+  <div class="turn-body"><p>It runs--It's adapter, it runs, it runs directly on Cardano. Um, you know, we've got our native assets on, uh, which you can actually, you can actually see these. Um, we're actually on Cexplorer now, so you can see USDr.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:15:29</span></div>
+  <div class="turn-body"><p>Um- Yeah. So yeah, that's, that's how we operate, and then we are doing something clever for the EVM side. So, um, Cardano will still sit as like the canonical source of truth and the accounting layer, um, and then we'll burn a mint basically, um, to be able to issue also natively on Ethereum, and that's pretty much a fork of CCTP, Circle's Cross-Chain Transfer Protocol, um, that we've been using will likely shift over to LayerZero once it arrives on Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:16:03</span></div>
+  <div class="turn-body"><p>But the cool thing about this setup, right, is that as even if you have loads and loads and loads of demand on EVM and Pendle and, you know, Aave, blah, blah, blah- Uh, you'll still be growing the stablecoin balance on Cardano because that's kind of where the asset sit. So, um, yeah, so even, you know, cool stuff happening on Ethereum, uh, can still drive the, the overall, uh, stablecoin supply on Cardano, which is kind of a nice externality.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:16:32</span></div>
+  <div class="turn-body"><p>And then, um, Alpha Growth also won their proposal, which I'm very happy about. Um, so I think that's also a huge opportunity for us. I think we're building a great product here, and I think that with the investment that Alpha Growth will be able to coordinate now across, you know, some of the projects that exist on Cardano, I think we've got a really good shot of, uh, of building, really building some, some DeFi TVL.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:17:02</span></div>
+  <div class="turn-body"><p>Um, they've been working-- I know they've been speaking to everyone, telling them what they need to change to their protocols to be able to get them up to scratch and to be able to get LPs from across the crypto ecosystem, not just Cardano people to participate. Um, they should have a chunky incentives budget. So yeah, I think that could be really cool. Sorry, I, I, I, I kind of went off that, but, um, hopefully it-</p></div>
+</div>
+
+<div class="sec">Wallets, and the minimum ADA question</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:29</span></div>
+  <div class="turn-body"><p>No, I think it was interesting. Uh, just to, just to make sure that I haven't done something silly, I've put the USDr, uh, link in Cexplorer into the chat. Is that the correct one, John? 'Cause I know sometimes people create arte-- you know, fake ones, so I just wanna make sure I'm giving people the right link.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:17:45</span></div>
+  <div class="turn-body"><p>Uh, I don't know. Thank you. Let me look.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:51</span></div>
+  <div class="turn-body"><p>And while you're looking, uh, Participant A is asking, "What's the minimum amount of ADA required?"</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:17:58</span></div>
+  <div class="turn-body"><p>Yeah, we've said, Participant A, the minimum amount of ADA required for delegation to earn rewards isn't gonna be disclosed 'cause there are anti-sybil, anti-farming measures in place. So providing that information only makes it easy for people to, to b- to farm. So yeah, anti-sybil measures are a bit trust us, bro. Which is gonna-- any good faith actors will be fine. People that are trying to optimize of zero, zero point- balances, uh, are not.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:18:29</span></div>
+  <div class="turn-body"><p>Um, okay Thank you for, thanks for reminding me, Ben, that I'm not supposed to say that Yeah Yeah Um, okay, so USDr. Um, is that the right link, John? Yeah Okay, cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:18:39</span></div>
+  <div class="turn-body"><p>Uh, so what, what comes next after Cardano mainnet? Oh, did we cover wallets? I think we talked about launch apps, which was great. Uh, what are the wallets that are gonna be ready at launch?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:18:52</span></div>
+  <div class="turn-body"><p>Um, Lace, um, is the primary partner, um, we're working f- with. Um, but ultimately it's a, you know, it's a native token, so you should be able to hold it anywhere, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:19:08</span></div>
+  <div class="turn-body"><p>I suppose the better answer is that, the better answer is we've been working with Lace on building, like, a specific really, hopefully really nice experience for you to be able to swap in, out, stake, uh, like really trying to make it super simple and super nice. Uh, you know, like we've been saying a lot, uh, you know, we just, we just want, like, one button, right? So we wanna turn complexity into simplicity,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:19:36</span></div>
+  <div class="turn-body"><p>and I think that I got Lace and I can't even link my main wallet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:19:43</span></div>
+  <div class="turn-body"><p>Yeah, well, um, um, I hope they fix that for you. Uh, so, uh, anyway, like it's, it's the first experience that we're building. Um, I actually, it's interesting, so Lace, Lace is working really well for me now. Um, it, I'm not gonna say it always does, but it's working really nicely now.</p></div>
+</div>
+
+<div class="sec">LayerZero and the bridge</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:20:03</span></div>
+  <div class="turn-body"><p>Um, and then- sorry, what, where, where were we, Ben?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:20:08</span></div>
+  <div class="turn-body"><p>Uh, we were about to jump into, um, uh, we talked about Cardano mainnet and we were gonna talk about what comes next, maybe other cross-chain, um, endeavors, uh, but then I dragged us back. Uh, Participant C is asking about a LayerZero, which I haven't, um, thought about. He says, "As a builder what is the current state of LayerZero to leverage it from your perspective?" I don't- have any updates on</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:20:32</span></div>
+  <div class="turn-body"><p>So I, yeah, I was, I was quite concerned by this actually a while ago, right? In that- um, when I was first designing, thinking about this, there wasn't really an easy way to get USDC from Eth or EVM world over to Cardano, um, um, back. Um, the USDCx bridge has actually made that a lot easier, um, we can use a lot of the technology there to basically stand up, stand up a bridge that doesn't require you, like, holding lots of assets locked and creating a honeypot, um, and is also based on very robust, uh, yeah, very robust work from Circle.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:21:20</span></div>
+  <div class="turn-body"><p>That being said, I mean, I'd rather, yeah, I'd rather we, we shift to LayerZero. So my understanding is that it's coming towards the end of the year. Um, so we basically architected everything, that it's easy for us to switch out that messaging layer. Uh, so when it's available, we'll just, just shift essentially the messaging layer and shift over to that.</p></div>
+</div>
+
+<div class="sec">What comes next — the Cardano sandwich</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:21:41</span></div>
+  <div class="turn-body"><p>That's great. Thank you, John. Um, so walk us through what comes next, um, either after or concurrently, uh, with the Cardano mainnet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:21:52</span></div>
+  <div class="turn-body"><p>Okay. So, um, for me, there's like two-- it's like, it's like a Cardano sandwich. So we'll start with our Cardano launch, and then we're going to have, um, a lot of EVM stuff. Um, so typically that's going to be around increasing distribution, um, through venues. We wanna obviously have more venues, more people to be able to access the product. Uh, but it's also working with curators for them to set up vaults with specific strategies and build deep liquidity, uh, for people to be able to do cool things.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:22:20</span></div>
+  <div class="turn-body"><p>So this could be some of these levered looping strategies. For those people who aren't familiar with it, uh, it's like kind of, it's kind of a simple idea. If you're getting, and this is not a promise of return, let's just hypothetically, let's say you were getting 8.5%, um, with sUSDr. So you go, you put $100 in, you stake it, you've got sUSDr now. Uh, then you borrow against that position, and depending on what rate people will lend you normal dollars, let's say USDC. Let's say they're lending it to you at 5% against your possession, you can then go get more USDr, stake it, and then, um, basically do this again. So this is leverage. And, uh, it's what crypto people call looping. Um, we've renamed leverage as looping, um, but that's essentially what that is.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:23:19</span></div>
+  <div class="turn-body"><p>And the cool thing about our product is that where this goes really badly wrong is of, of course, if the underlying asset is volatile. Um, so in our view, fixed income's kind of a appropriate asset class for this. So we're hoping that we should be an attractive option for people to set up and manage looping strategies. Um, and in the EVM world, that's really, really big. So we'll be looking to get a curator, go and set up some vaults for us, um, so people can access the product there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:23:47</span></div>
+  <div class="turn-body"><p>And then, uh, the sort of other part of the sandwich, the last piece of bread, um, we'll be coming back to, uh, start working with Alpha Growth and all of the venues on Cardano, who should have, uh, basically had that time to be able to do some upgrades to their protocols, get some additional audits, Alpha Growth to start crowding in additional LPs. Um, so that's kind of the, the very vanilla summary. Um, the one thing, of course, that I can't talk about is specific listings or anything like that. So, um, yeah, um, you'll know more when, when we can talk about that kind of thing.</p></div>
+</div>
+
+<div class="sec">Pricing an asset that has no price</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:24:17</span></div>
+  <div class="turn-body"><p>There was a really good question the other- One of the other calls and, uh, you would've been the guy to answer it at the time. Um, it was about basically how do you price like, um, a private credit or a debt that doesn't have a, a s- an established price, and I think you'd explained it to me once and I thought it might be good just to cover that if you know what I'm referring to.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:24:45</span></div>
+  <div class="turn-body"><p>Yeah. I mean, look, you can price it... So you can price it in terms of, like, the actual coupon, right? So what are you going to go and get paid? And then you can discount by basically expected, expected losses in a portfolio. The issue is, is that, and this is, this is essentially a fundamental issue with these kinds of assets is, like, what if something goes wrong, right? So from that perspective on your crypto dashboards, et cetera, it would still be increasing, like, monotonically by the expected increase from the interest rate, but maybe something's actually gone wrong in the real world and it's not being reflected, and that's actually where we've seen some of the blow-ups, I think, in crypto recently around that, those kind of products.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:25:29</span></div>
+  <div class="turn-body"><p>So third party attestation is the answer. You're gonna have someone who's not you go and look at it and value it. Um, it's not that cheap, but it's still kind of required, and I also think not just for us, I think for all people trying to bring real world assets into crypto, it's going to become even more important, um, because whilst, you know, we, we have a fund administrator who will report the net asset value of the portfolio. For them, they're not gonna report fake figures, but if you think about the assets that are being held, it's very easy for them to price a very large CLO ETF that's traded globally.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:26:06</span></div>
+  <div class="turn-body"><p>It's very easy for them to price T-bills, right? And there's no way you could go to them and say, "Oh, I've got a different T-bill rate from you. Um, can you use my rate?" But for these harder to value assets, um, they're not specialists in that. So I think that sort of third party attestation at different periods is really important, and to be quite boring about it, it's what traditional TradFi does, right? They, they s- they've been doing this for a very long time. I think it's just in crypto, um, we're a bit newer to some of this stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:26:31</span></div>
+  <div class="turn-body"><p>I'm not sure whether anyone's seen this, but there's been quite a few issues over a firm, I think it's called, like, Accountable, um, or, um... Yeah, something like Accountable. Anyway, they- they've been responsible for basically providing the verification on a number of projects they've been using, so the real world asset stuff that have all paused, um, paused their, uh, redemptions recently and it's because I think people are treating... You know, you need to do some actual work to be able to go and value this stuff, right? It's not just like a dashboard and asking people to fill out a survey. So anyway, it's a long-winded answer, but third party verification is really important, um, people who aren't us doing it.</p></div>
+</div>
+
+<div class="sec">Questions from the chat</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:27:27</span></div>
+  <div class="turn-body"><p>Um, and- There's lots of questions in the chat here. Do you think maybe, Ben, we just, we just run through a couple of these quickly?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:27:35</span></div>
+  <div class="turn-body"><p>Yeah, let's do that. Yeah. So Participant C has asked, "When does sUSDr... When sUSDr is sitting on an exchange in an open trade position, is it earning yield? And if yes, will this yield automatically increase the stake on the exchange position?"</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:27:41</span></div>
+  <div class="turn-body"><p>Depends on your exchange. Um, uh, there are different ways in which different, uh, CEXs handle this. Um, for some CEXs, the answer is yes. Um, for some, maybe the answer is no. Um, for some, the answer can be, um, you know, they'll only hold, uh, the unstaked version, um, and expect, um, basically rewards to be paid to them. There's, like, a whole mix of models in this industry about how people do things.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:28:13</span></div>
+  <div class="turn-body"><p>Uh, Participant C, what you've put there is basically the key use case that, um, I'm trying to close. Uh, what I'd really like is for people to be able to hold sUSDr on an exchange, to be able to use that as collateral against other positions whilst it's accruing in value. I think that's a killer use case of basically, um, NAV accruing or accreting collateral. Uh, so yeah, that's, that's what you've described is the good example over how things would work with an exchange who wants to support that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:01</span></div>
+  <div class="turn-body"><p>Uh, Participant D is asking Um, yeah Sorry. Uh, is it gonna be possible to jump in for more SPOs to support the RealFi? I think we're still in the planning stages.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:29:12</span></div>
+  <div class="turn-body"><p>Still wanting maybe one, one for you, Ben.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:14</span></div>
+  <div class="turn-body"><p>Yeah, I mean, fundamentally I'm building out a case, uh, for what could lo- what that could l- look like beyond the main net. So I'm deep in the weeds with product and marketing and submitting ideas to John, but, uh, it's not signed off, so, um, it's still in progress.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:32</span></div>
+  <div class="turn-body"><p>So Participant A's asking estimates regarding which CEXs. We've already said that we can't say, and, um, whether USDr is gonna meet, uh, MiCA requirements or Genius, but those are, uh, geo-restricted locations, right, John?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:29:49</span></div>
+  <div class="turn-body"><p>Yeah, we're not currently, um, looking to, um, to, to support that standard, um, for a whole bunch of reasons. Um, I wish we could.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:30:04</span></div>
+  <div class="turn-body"><p>The next question from Participant B, well, it's more an offer, but DeFi Llama is working on off-chain as- attestations. Um, can make intros for us if we're interested. So shall I follow up on that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:30:15</span></div>
+  <div class="turn-body"><p>Yeah, that would be cool. I'm... We've been working with Token Terminal, um, who I think pushed through maybe to DeFi Llama. Um, I think we've spoken to them maybe a while ago. Um, but yeah, I think that could be cool. Um, maybe Ben just checking whether, um, 同僚A wants to reach out.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:30:35</span></div>
+  <div class="turn-body"><p>Yeah. But yeah, I think, you know, just on, on that front, 参加者F, uh, you've, you've definitely seen that, like the way in which they account for, uh, off-chain reserves is like changed quite a lot I think on DeFi Llama. Um, 'cause it's kind of a nightmare for them, right? Their whole product is like transparency over, you know, real data feeds, and then you've got this thing that's, uh, completely off-chain, which can really bite you if, uh, if it's not being done properly. So, yeah.</p></div>
+</div>
+
+<div class="sec">Questions from the form</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:09</span></div>
+  <div class="turn-body"><p>Really good. Uh- Um, so I'm gonna switch just- oh, we've got questions that came in from the form, so I wanna make sure we hit those as well. Um- so what challenges... Now if we've covered some of this already, then just, uh, slap my hand, but what challenges does USDr face across different countries, and what pre- preparations or measures are needed? And a related question that came in was what legal entity structures give a project the best global reach across US, UK, and EU? So a mix there, John, but how do you wanna approach it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:31:43</span></div>
+  <div class="turn-body"><p>Um, yeah, I think it's less about the structure and more about what you're trying to do. Um, so you... Before you decide on like where you wanna structure something, you decide on the activities that you're trying to do. Um, part of this, right, over where, how, whether you'll get coverage in particular countries is also not really in your control. So obviously the stuff moving in the US over CLARITY Act is, is kind of highly relevant for us. Um, yeah, it was delayed again, again recently.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:32:13</span></div>
+  <div class="turn-body"><p>You know, a lot of this comes down to stuff that's bigger than you, right? So the kind of fight in the US between crypto, um, firms kind of becoming banks, and banks realizing that risk and really not wanting that to happen, and that being fought in the houses in, in the US. Like that's not really about us, right? But, um, ultimately we built a product that we believe will be able to get enough global distribution to be, to be interesting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:32:45</span></div>
+  <div class="turn-body"><p>Um, what, you know, what I'm not really interested in doing is changing the product completely, um, to match one particular jurisdiction, like let's say the, the US. Maybe later on if we get big, we can look at, you know, doing a version for that particular market. Um, but, you know, there's lots of people who have offered T-bill based products already. You don't, you don't really need another one of those. Um, so yeah, we're trying to do something a bit different and, um, make stable coins a bit more productive and hopefully, um, create also a better product for users. And sometimes that means that there's particular geos that, um, you're not going to be, you're not gonna be appropriate for, and that's okay.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:31</span></div>
+  <div class="turn-body"><p>Okay, the next question, I'm not 100% sure if it's RealFi specific or they're more asking you broadly, so we'll do both maybe, right? Um, are there upcoming features or product launches that you're particularly excited about for RealFi and then more generally?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:33:46</span></div>
+  <div class="turn-body"><p>Hmm. Um, for RealFi, I think vaults. I think that, you know, there's a couple of things that vault curators do for you. They don't just set it up and help bring in LPs and set parameters, um, but they also kind of act as a third party, um, kind of like a fund manager, right? They kind of manage risk and due diligence and stuff. I think that's like a really important credibility check for us. Um, so getting a vault set up, um, I think is really important, um, and something I'm very excited for.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:34:22</span></div>
+  <div class="turn-body"><p>So that's probably like the first part. Um, secondly, uh, I've had... I'm starting to have some conversations with, quote unquote, "real businesses." So these are people who have dollar flows for short-ish periods of time and are looking for ways to be able to get some additional economics, um, during that period. Uh, so this isn't necessarily crypto businesses, but think more like remittance businesses or, um, things like that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:34:54</span></div>
+  <div class="turn-body"><p>Um, so trying to see whether there's product market fit for, you know, USDr and sUSDr in non-crypto businesses. They might be crypto adjacent, but you know, people doing real things in the real world, um, and seeing whether we have product market fit there. So I had a, a good conversation today about, uh, something along that line. So seeing whether we can get our first like real world customer, you know, whether that's someone who runs a furniture factory who has a bunch of dollars across different accounts and they wanna use this as a treasury management product, or whether it's like facilitating remittance flows. Um, yeah, I think the market's much bigger than just people chasing yield in crypto.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:35:36</span></div>
+  <div class="turn-body"><p>Um, so yeah, interested to see whether we can get something there. Um, and then more broadly, I mean, uh, who isn't excited for the Anthropic IPO? I saw $2 trillion as a, as a target price. So, uh, after the SpaceX extravaganza, I'm, I'm excited to see, to see where we end up with that. I mean, uh, yeah, people thought crypto had big numbers, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:03</span></div>
+  <div class="turn-body"><p>Yes. Um, no, I had a really interesting conversation yesterday actually with someone I won't name, but saying that one of the issues with Web3 was that, um, these L1s were stuck in Web3 economies and you've gotta get out into other economies. So I think it kinda echoes what you're saying there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:17</span></div>
+  <div class="turn-body"><p>Um, the next question is, uh, community incentives. Will early users who actively participated in and supported Testnet receive exclusive roles, badges, or other special incentives?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:31</span></div>
+  <div class="turn-body"><p>I am discussing that with the team and, um, putting ideas, and I think 同僚B's got his own ideas too, t- full credit to him. So yeah, there is a lot of thinking in that, but I'm not gonna confirm anything.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:42</span></div>
+  <div class="turn-body"><p>Um, Cardano Mainnet is the next question. Cardano Mainnet integrations, I think you've covered it, John, but is SundaeSwap going to be an official DEX for RealFi?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:36:52</span></div>
+  <div class="turn-body"><p>Yeah, we'll, we'll be working with, definitely working with Sundae. Um, yes. I don't know what official means.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:02</span></div>
+  <div class="turn-body"><p>Okay, so- Maybe officially and unofficially, both. All kinds of official. Mm-hmm. Um, okay, so we've gone through, uh, you know, um, those three core points about mainnet readiness, mainnet on Cardano, what comes next. We've gone through the questions that we've had so far. If anyone's got any questions, put them into chat. Is there anything you haven't been asked yet, John, that you wish I'd had the foresight to ask you? Is there something we should talk about?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:37:33</span></div>
+  <div class="turn-body"><p>Mm, no, I think, you know, approximate mainnet dates, what you'll be able to do on Cardano once we're live, um, kind of how the EVM side's still gonna grow circulating supply for USDr on Cardano, um, some of the cool things happening on EVM, and then of course how we're gonna bring all of those cool things to, uh, to Cardano with the Alpha Growth Proposal. So I think those are probably the big ones.</p></div>
+</div>
+
+<div class="sec">What vaults are, and why they matter</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:59</span></div>
+  <div class="turn-body"><p>And for the benefit of the summary and for people that weren't on the call, can you just go back and explain what vaults are and why they're exciting?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:38:07</span></div>
+  <div class="turn-body"><p>Yeah. So vaults are kind of like programmatic digital funds. So you've got a vault manager, um, who's responsible for setting the parameters and the strategies, and then you've got LPs who basically come into that vault.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:38:26</span></div>
+  <div class="turn-body"><p>Um, ultimately, like, you know, the cool thing about, I suppose the sort of reason for this being set up is that you add an extra layer of accountability on the vault curator or, you know, as I say in the analogy of the kind of fund manager. Um, so hopefully if they're doing their job right, they're gonna set the parameters so you've got only good assets being added to that, um, and also making sure that, you know, there's not too much leverage or whatever in that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:38:43</span></div>
+  <div class="turn-body"><p>So yeah, they kind of sit as an additional, an, uh, additional credibility point. I wouldn't say everything's always gone right in vault world, um, but, um, uh, you know, they were sort of set up to solve a problem over some of the nonsense you saw in DeFi. And, uh- yeah, I, I think they d- they're definitely a- an improvement.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:17</span></div>
+  <div class="turn-body"><p>Okay, great. Well, John, I really appreciate you. Uh, and I genuinely know how busy you are, um, you're constantly, uh, in calls and working. So thank you for coming on and spending some time with us, and we're doing this on rotation, so you'll be back in about six weeks I think, roughly. Um, any final words before we wrap up?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:39:34</span></div>
+  <div class="turn-body"><p>Yeah, I just wanna say, like, you know, thank you to all 25 of you guys who've all tuned in. Um, I see a lot of familiar names from, uh, from following the Discord. Um, so yeah, really appreciate everyone, and also some of the SPOs here. Uh, so yeah, thanks guys. I think maybe things have been a tiny bit quiet whilst we've been getting everything set up. Um, I promise you we're actually busier than ever, um, and we'll be going towards, uh, mainnet very shortly, so setting dates and then there'll be a lot more engagement.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:40:03</span></div>
+  <div class="turn-body"><p>Um, so anyway, I do, I'm lurking around the Discord, uh, um, so yeah, I, it's really great seeing all of you there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:40:14</span></div>
+  <div class="turn-body"><p>Brilliant. Thanks everybody. Thank you John. And yeah, anyone just, uh, ping, ping us if you've got any further questions. Cheers everybody. Yeah. Bye.</p></div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original, unedited apart from anonymisation.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All sessions</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>
