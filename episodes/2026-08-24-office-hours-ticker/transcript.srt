@@ -1,0 +1,1792 @@
+1
+00:00:00,460 --> 00:00:06,380
+Thanks also everyone for rearranging this to Monday because I was pretty sick last
+week. Mm-hmm.
+
+2
+00:00:08,340 --> 00:00:15,620
+That's great. So I'm just, uh, sending some tweets out to, uh ... I'm posting it into
+announcements to get a few more people in the room.
+
+3
+00:00:16,329 --> 00:00:30,480
+Okay. Um, just while we're waiting, what, what are we gonna be talking about? Yeah, so
+today is gonna be a bit, is about last week's announcement and the campaign about it,
+the change in the ticker name for USDR, SUSDR, and RFG,
+
+4
+00:00:30,860 --> 00:00:44,720
+how that's come about. Um, and also give a little bit of progress from when we last
+had an office hours and we set up the Miro board where loads of SPOs have contributed
+fantastically and what to expect is gonna come from that after the discussions we've
+
+5
+00:00:44,760 --> 00:00:54,700
+had from those awesome ideas. That's great. Yeah, I'm definitely excited about the
+ambassador program. Two seconds and, um ...
+
+6
+00:00:58,280 --> 00:01:04,599
+Okay, brilliant. Uh, so if we kick off, um, beginning with the ticker, uh, how did ...
+
+7
+00:01:04,660 --> 00:01:10,910
+What was the ticker originally and how did we, how did we arrive at it and, and what
+are the reasons for, for changing it?
+
+8
+00:01:12,040 --> 00:01:25,140
+I mean, that kind of happened before I joined. Um, I think it probably was quite ...
+Re- 'cause we're called RealFi, it probably made a lot of sense to do something along
+the lines of USD but with something that's connected to RealFi,
+
+9
+00:01:25,220 --> 00:01:32,380
+which is where the R came from. So I think it just became we went with it 'cause it
+was the, the most obvious option to start with.
+
+10
+00:01:32,480 --> 00:01:46,840
+But the problem we've encountered, 'cause obviously we are quite ambitious, we're
+thinking of the future and we're thinking about what top quality exchanges we can be
+on, and what came was an issue with actually using USDR because other people had used
+it previously, uh,
+
+11
+00:01:47,460 --> 00:01:53,680
+m- failed projects. So what happened on ... Well, yeah, the, the whole point of why
+this, uh ...
+
+12
+00:01:53,750 --> 00:02:05,660
+So now we've decided it's an opportunity because we've got to change it to let the
+community decide what was the right, which route we go down, give them the first real
+big decision of any big changes that are coming to RealFi.
+
+13
+00:02:06,360 --> 00:02:14,460
+Um, and yeah, and, uh, quite an exciting time, but I think where it came from
+initially is purely because RealFi starts with the letter R.
+
+14
+00:02:15,120 --> 00:02:25,940
+Um, but now this has actually given us a unique opportunity. We did a bit of research
+onto what different type of ticker names we could use that still have the R and the F,
+uh, and even the L at some point.
+
+15
+00:02:26,480 --> 00:02:32,800
+Um, and yeah, we've, uh, we've, we came up with two solutions, which is, uh, what the
+vote is about.
+
+16
+00:02:38,540 --> 00:02:44,040
+Which I can add to. Uh- I'll just ... Yeah, no, that's fine. What I'll do, what I'll
+do, I don't know if it's, um ...
+
+17
+00:02:44,080 --> 00:02:50,560
+I know you have, you've already put you- Um, I'll put the link in as well to the
+specific message on Discord where we're actually looking for the votes.
+
+18
+00:02:51,340 --> 00:02:57,260
+Um- So walk me through the options and, uh, where, where are we at with that vote?
+Yeah.
+
+19
+00:02:57,360 --> 00:03:09,320
+So right now we, we launched it on Wednesday. The two top options that we came to that
+made complete sense, to give you an idea as well, it was quite a bit of research that
+went into the different options that were available.
+
+20
+00:03:09,520 --> 00:03:19,880
+So the reason why you've only got the two options to choose from is 'cause these are
+the two that made the most sense, um, after the research was done, any conflicting
+projects, anything like that.
+
+21
+00:03:20,100 --> 00:03:30,940
+Um, the two options they came up with was B f- was option A is we would swap USDR into
+RFUSD, SUSDR into SRFUSD,
+
+22
+00:03:31,380 --> 00:03:38,980
+and RFG would be changed into RFIG. Um, so still keeping the core aspects, what some
+that are available and giving the RealFi name.
+
+23
+00:03:39,460 --> 00:03:51,600
+And very similar with option B, so USDR would move into USD RF, uh, SUSDR turn into
+SUSDRF, and RFG turned into RLFJ, which, uh,
+
+24
+00:03:51,760 --> 00:03:57,640
+I like because it's very Web3. Um, but in general as well, I know option B is
+currently winning.
+
+25
+00:03:57,760 --> 00:04:02,900
+Um, we ideally, like my- the dream would be that we get 100 people to participate in
+it.
+
+26
+00:04:02,940 --> 00:04:16,920
+We're almost there. We're not too far. We've got until Wednesday. Uh, 63 people have
+voted at the moment. Option B is currently winning, and I think what actually swayed
+that was a conversation that happened within the community on Wednesday when we
+
+27
+00:04:16,959 --> 00:04:24,320
+launched this, which was, um, they felt that if you put RF after USD, you're gonna ...
+
+28
+00:04:24,760 --> 00:04:37,560
+People that are looking for other stable coins are gonna accidentally find us and I
+think that's what got- 'cause it was until that moment it was fairly 50/50, and now
+right now it's 66% for option B and 34% for option A.
+
+29
+00:04:38,060 --> 00:04:44,060
+Um, I voted. Uh, everyone's entitled to a vote, so, uh- Yeah.
+
+30
+00:04:44,120 --> 00:04:50,960
+So walk me through, I don't think you've actually, um, walked me through in detail,
+but walk me through what will happen after the vote passes.
+
+31
+00:04:51,000 --> 00:04:57,540
+So how is the- how is this vote gonna drive outcomes? So once we close the vote,
+that's it.
+
+32
+00:04:57,660 --> 00:05:04,140
+You've made the decision for us. The RealFi OGs have become one of the original
+decision makers.
+
+33
+00:05:04,620 --> 00:05:10,600
+Um, we will start the process, uh, internally to, to start changing things.
+
+34
+00:05:10,700 --> 00:05:18,850
+It's gonna be a lot of work for, uh, members of the team because obviously we've--
+everything right now is under USDR, SUSDR, and RFG.
+
+35
+00:05:19,340 --> 00:05:24,680
+So we'll have to go through a lot of that. But in essence, when it comes to RealFi and
+the protocol, absolutely zero changes.
+
+36
+00:05:24,740 --> 00:05:31,400
+It really is just a name change. So everything you've heard about RealFi, that's all
+staying. All the positive solid stuff is, is all staying.
+
+37
+00:05:31,860 --> 00:05:42,740
+We're doing this, this is again an actually a positive. Uh, we're doing this to make
+sure we don't ha- we're thinking long term, not just short term, and we're thinking
+about those top exchanges that we can be on in the future.
+
+38
+00:05:43,120 --> 00:05:55,240
+So that's where this has come from. And once that decision's been made, which, um,
+right now is looking like option B, that's when we'll start the process internally to
+start changing that and those will become our official ticker names.
+
+39
+00:05:55,780 --> 00:06:03,352
+So you won't hear us probably say USDR after Thursday. Mm. Or you, you'll slap my hand
+if I do.
+
+40
+00:06:03,452 --> 00:06:15,022
+But so I don't know, we can't say what exchanges we may be talking to or not talking
+to, but it will help us in that conversation or i- i- in getting that, um- Absolutely
+...
+
+41
+00:06:15,032 --> 00:06:23,392
+placement as well, yeah Absolutely. And I mean, we can give a bit of an insight that
+we've had some positive talks, and so this is w- why this has come maybe a bit sooner.
+
+42
+00:06:23,432 --> 00:06:32,632
+And also gives us plenty of time pre mainnet to focus in on this and to, to not have
+this coming up later in the line and cause us any issues later in the line.
+
+43
+00:06:32,672 --> 00:06:45,002
+We're totally fully prepared while we're in testnet. So, um, yeah, that's, that's the
+main reason we've driven it, and we've driven it now before we come to, um, before we
+come to the next stages of RealFi- Mm ...
+
+44
+00:06:45,012 --> 00:06:51,112
+which would be the end of testnet and obviously leading up to the mainnet launch. So
+it's a, it's a great point.
+
+45
+00:06:51,192 --> 00:06:58,612
+So pre mainnet, uh, what else are we doing? I think we were talking before the call
+about ambassador programs.
+
+46
+00:06:59,252 --> 00:07:07,292
+Um- Yeah ... activity world building. Yeah, walk, walk me through what you want us as
+a community to have achieved before we get to the point that we're going cross chain.
+
+47
+00:07:08,272 --> 00:07:22,392
+Absolutely. Yeah. So, uh, what, um, a lot... Well, what we've covered is particularly
+since Ben has been a, uh, how, been, been a part of RealFi is th- that SPOs have come
+on board and SPOs have shown have been really engaged and are showing really, really
+positive signs for us.
+
+48
+00:07:22,992 --> 00:07:33,092
+And we've been doing a lot of work of what's the best way to utilize this? What's the
+best things that we can do? And we came up with, you know, different people working on
+different things, but what,
+
+49
+00:07:33,172 --> 00:07:41,152
+what came out of it is Ben, Ben's been doing a lot of work in ac- um, internally about
+how we can make this work and how to make a real plan.
+
+50
+00:07:41,182 --> 00:07:50,792
+And last week we kind of had a bit of a brainwave because we'd set up this whole
+thought process of squads and getting different people to do the things that they
+wanna do best.
+
+51
+00:07:50,842 --> 00:07:56,372
+That's what we found from the Miro board that people did after the, that we set up
+just before the marketing office hours.
+
+52
+00:07:56,912 --> 00:08:04,552
+We found that, you know, the people really participated in it. So really the RealFi
+community is your community, it's not our community.
+
+53
+00:08:04,992 --> 00:08:16,672
+But there's obviously things that we need to do internally to ensure that you do the
+best, y- y- you're able to utilize your best skills to help give RealFi and hit our
+goals.
+
+54
+00:08:17,032 --> 00:08:25,292
+And that came up with taking different community members', um, specialities and
+putting that to where it would be best used.
+
+55
+00:08:25,672 --> 00:08:33,172
+You know, a bit like, because we've seen how well the engagement's already been. And
+so what we're now starting to build is more of a mainnet.
+
+56
+00:08:33,192 --> 00:08:43,532
+Uh, it's something that in time for mainnet, which will be of an ambass- ambassador
+program, which we're still working out the fundamentals, but what's actually come out
+of all this-- Apologies.
+
+57
+00:08:43,832 --> 00:08:54,772
+What has actually come out of all this SPO work, uh, and all the contributions that
+you've done, uh, the, uh, particularly the SPO guys have done, is you've kind of
+helped us create the foundations for what
+
+58
+00:08:54,832 --> 00:09:00,852
+we believe can be a real re- ve- a real, a real, RealFi ambassador program.
+
+59
+00:09:01,222 --> 00:09:10,112
+And so that's what we're kind of now working on is how we present that to you guys.
+What would be the best three districts to start with and what would keep you guys the
+most engaged?
+
+60
+00:09:10,432 --> 00:09:15,872
+So these are the little things that we're working on secretly, I guess, but not so
+secret now I've said it- ... on stage.
+
+61
+00:09:16,012 --> 00:09:28,702
+Um, and I don't know if you want, because obviously you've worked closer to it, feel
+free to add anything. I mean- Yeah, let me- Uh Yeah, I'll put, let me pull a thread on
+that because, um, I think if there was a criticism, uh, of me so far,
+
+62
+00:09:28,752 --> 00:09:36,872
+it's that we haven't launched those crews. So I just wanna kind of walk backwards. So
+we, we ran a workshop on Miro that was a huge success.
+
+63
+00:09:36,912 --> 00:09:46,552
+It was brilliant. They came, some really strong themes came out of that as to what we
+should do. So what I'm gonna do now briefly is walk through why we haven't kicked
+those crews off yet.
+
+64
+00:09:47,032 --> 00:09:55,992
+So, you know, there's sort of five, six key themes that came out of it, and I wanted
+to create the crews and we could start building these campaigns out.
+
+65
+00:09:56,552 --> 00:10:10,952
+But as we were planning for mainnet and what was gonna happen, um, beyond the first
+iteration, right, once we've gone cross chain, the question is how are we gonna secure
+resources or how are we gonna make the arguments to say that this activity
+
+66
+00:10:10,992 --> 00:10:18,532
+is aligned with business outcomes and so therefore we want more points, we want
+resources, we want RealFi to invest in it?
+
+67
+00:10:19,032 --> 00:10:24,212
+So we pumped the brakes briefly so that we could have a look.
+
+68
+00:10:24,252 --> 00:10:33,312
+If you think about it, like what is the interface, right, between the community and
+the ecosystem activity, and then through which the business will understand that
+activity.
+
+69
+00:10:33,412 --> 00:10:46,052
+So we wanna make sure that there's a handshake going on and that the SPOs and their
+communities are rewarded and they're getting value out of it, but also the business on
+the other side of that handshake is getting that value.
+
+70
+00:10:46,152 --> 00:10:58,492
+So over the past, I'd say about a week, I've been working with data, uh, the data lead in the
+data and engineering team, to kind of establish some system-wide units of account
+which we'd call like L1s.
+
+71
+00:10:58,692 --> 00:11:11,612
+And let me grab my, um... Hang on, give me two seconds. Uh. And think about that ha-
+handshake as we're talking because on the one side, you know, you've got the, um,
+
+72
+00:11:11,912 --> 00:11:17,812
+the business and the other ha- on the other side you've got the community and the
+SPOs, right? Uh, here we go.
+
+73
+00:11:21,112 --> 00:11:28,072
+Just while we're waiting, I'll just quickly answer 参加者A's question. It's, it, I
+can't really answer it yet, so I'll just acknowledge it's there.
+
+74
+00:11:28,572 --> 00:11:36,532
+But, um, while we're in testnet nothing's actually live, so, um, we don't have, uh,
+actual exchange rates for it yet.
+
+75
+00:11:36,652 --> 00:11:44,652
+Um, that, but I see what you're saying. That's something that when we can, we can, we
+can talk about, but we're just not there yet as a project.
+
+76
+00:11:47,072 --> 00:11:58,992
+Yeah. Sorry about the delay there. So, um, previously on other calls we talked about
+what the North Stars are, but once we'd got into it with the data, good examples of
+layer one, L1, uh,
+
+77
+00:11:59,692 --> 00:12:07,772
+numbers or business-wide outcomes are TVL, peg stability- Protocol profit, monthly
+active wallets and yield spread.
+
+78
+00:12:07,832 --> 00:12:15,772
+So this is sort of thinking about this stuff internally. There's also some guardrails
+by which we mean sort of a, a range rather than a target.
+
+79
+00:12:16,272 --> 00:12:23,712
+So that might be like over-collateralization ratio, protocol liquid coverage, staking
+ratio, risk compliance score, this kind of thing.
+
+80
+00:12:24,142 --> 00:12:31,242
+So Rob and I are thinking how do we ensure an ambassador program gets well-resourced?
+
+81
+00:12:31,752 --> 00:12:38,072
+We have to think about how it's going to ultimately drive some of those numbers, and
+we've got some ideas.
+
+82
+00:12:38,192 --> 00:12:49,112
+Um, so going back to the workshop that got launched, we had these crews and we're in a
+position where we can say to people, "Would you like to found, found these crews?
+
+83
+00:12:49,192 --> 00:12:54,472
+Let's start these campaigns." But now we've tied some of these, um, KPIs to it.
+
+84
+00:12:54,572 --> 00:13:05,412
+Um, just in case I haven't been clear, you know, we've got L2s that are below that.
+Um, such as share of search and, um, the wallets, capital stickiness, this kind of
+thing.
+
+85
+00:13:05,972 --> 00:13:16,212
+Um, so we understand that a community is inherently self-organizing and
+self-determining and self-directing.
+
+86
+00:13:16,432 --> 00:13:24,432
+And anyone that's been in Cardano, as you all have, understand that about the
+ecosystem. It's not like a top-down control structure that you're trying to create.
+
+87
+00:13:24,452 --> 00:13:34,272
+What you're actually trying to do, this is the other side of the handshake, right?
+You're trying to allow people as an individual to come in and find what has meaning
+and purpose and relevance to them.
+
+88
+00:13:34,972 --> 00:13:45,292
+So Rob, I've probably over explained, but to go back to the crews that we wanna form,
+the crews will be inherently, um, uh, they'll have a life cycle, you know,
+
+89
+00:13:45,352 --> 00:13:58,712
+'cause they're there to solve a problem as part of a campaign. So, you know, the,
+they'll be formed and then they'll disband, and other crews will form and they'll
+disband 'cause it's sort of the nature of the swarm in these ecosystems to be
+
+90
+00:13:58,892 --> 00:14:04,212
+s- trying to solve problems co-currently. Um, and then when they're solved, they move
+on to the next thing.
+
+91
+00:14:04,312 --> 00:14:17,712
+So what I'm saying is me and Rob are talking about world-building. Everything I've
+said up to this point has been about how do we, uh, on the behalf of the community,
+talk to leadership within RealFi to secure resources.
+
+92
+00:14:17,762 --> 00:14:32,252
+And now if we turn around and we're looking at the other side of the handshake, the
+conversation me and Rob are having is, well, how do we create a RealFi world that's
+easy to navigate for your delegators and community members that make sense?
+
+93
+00:14:32,612 --> 00:14:41,442
+That ensures there is purpose and meaning, um, and that people can find, uh, where
+they can get the most value or output from.
+
+94
+00:14:41,932 --> 00:14:47,912
+So this kind of world-building is leading us into, um, I'm a little bit of a sucker
+for Baldur's Gate, right?
+
+95
+00:14:48,372 --> 00:14:58,492
+But not just forming crews, but forming districts that those crews would reside in. So
+the difference is that a crew is a social group that will form and it may disband,
+
+96
+00:14:58,552 --> 00:15:09,002
+and other for- other groups may form and they may disband. A district would be a
+permanent location where that knowledge or those practices have been captured,
+
+97
+00:15:09,072 --> 00:15:19,832
+like a methods bank, like a playbook. Um, and you can build on it. And so in that
+sense, the first crews that we form would be the first crews in those districts.
+
+98
+00:15:20,012 --> 00:15:29,532
+But as we scale, I think this is probably the critical point, Rob, right? We're trying
+to build structure that will scale as we go cross-chain.
+
+99
+00:15:29,572 --> 00:15:35,732
+And so rather than just trying to have one crew that's in charge of, I don't know,
+events or something like this, right?
+
+100
+00:15:36,472 --> 00:15:46,692
+We want the capacity and capability to have multiple crews forming around problems so
+that, you know, you're playing to the advantage, um, of ecosystems in the community.
+
+101
+00:15:47,332 --> 00:15:57,472
+Um, so that's kind of w- where, where my head's been at is how do we establish the
+KPIs and the internal structure so this handshake, uh,
+
+102
+00:15:57,632 --> 00:16:07,292
+can occur betw- an ongoing handshake right, can occur while the community's able to
+self-organize but also get the support and resources that they need.
+
+103
+00:16:07,352 --> 00:16:19,012
+Is, is that a fair representation, Rob, of what we've been talking about? Yeah,
+absolutely. I mean, in essence, we are just, um, we're Simon Cowell and we're forming
+loads of boy bands or girl bands.
+
+104
+00:16:20,812 --> 00:16:26,491
+Oh, no. You've, you, you've revealed my deepest, darkest secret, Simon Cowell.
+
+105
+00:16:27,032 --> 00:16:36,142
+Um- Well, that's kind of what it feels like. I know it's a random analogy, but it is
+like he-- When you think about when he was at his peak, when it comes to- Mm ...
+
+106
+00:16:36,142 --> 00:16:48,142
+the X Factor and American Idol and whatever, he, you know, saw, saw certain qualities
+in individuals that weren't necessarily right as individuals,
+
+107
+00:16:48,212 --> 00:16:53,742
+but together they ended up becoming One Direction or becoming Little Mix .
+
+108
+00:16:53,832 --> 00:17:01,272
+And so, so in a way, it, it's, it's, it's one of my weird metaphors, which for some
+reason, Ben, you seem to get all of them.
+
+109
+00:17:01,812 --> 00:17:12,941
+Um, I don't tend to get on with anyone. No, you're, you're, you're scouting for talent
+and working out where, where that talent can be best best deployed, right?
+
+110
+00:17:12,941 --> 00:17:27,432
+Um- 'Cause at, at the end of the day, there's none of-- I mean, I, I do not like One
+Direction, but none of them, apart from Harry potentially, would have had any-- would,
+would've been famous had they not been formed into something that would make 'em
+into-- That would get the best of their ability.
+
+111
+00:17:27,952 --> 00:17:38,272
+But at the same time, it's for you to show us what the best is and what you wanna do.
+In a way, the Miro board showed us the first signs of that 'cause so many people took
+part.
+
+112
+00:17:39,602 --> 00:17:49,452
+Yeah. To, to bring it into, like, to make it more practical, um, for people listening,
+it's like some of the themes that came out of the workshop is there were like regional
+hubs, right?
+
+113
+00:17:49,592 --> 00:17:55,652
+There was like, um, you know, people that were talking about doing, uh, engagement,
+like one to many or X spaces.
+
+114
+00:17:55,712 --> 00:18:07,304
+There was, there was offers of connections and partnerships and this kind of stuff.
+So- When we talk about districts, and I think, Rob, you were interested in the
+community naming it because it's a cultural thing.
+
+115
+00:18:07,804 --> 00:18:15,184
+But, you know, I always say, well, like, you know, you could have a harbor, which is
+regional hubs, and you can establish that as a specific place, right?
+
+116
+00:18:15,584 --> 00:18:20,824
+You could have a, a stage, which is about engagement. You could have a bazaar, which
+is GTM and partners.
+
+117
+00:18:21,374 --> 00:18:26,464
+So other than this being a bit nerdy with D&D or something, why, why would that be
+useful?
+
+118
+00:18:26,964 --> 00:18:38,824
+And the argument is that in RealFi, inside the team or inside any team, there's a
+language and a culture and a set of, you know, terms that are unique or, or niche that
+everybody understands.
+
+119
+00:18:39,204 --> 00:18:45,564
+But as you're scaling, going cross-chain, you can't scale all that internal knowledge
+at the same way.
+
+120
+00:18:45,664 --> 00:18:55,104
+So instead you wanna use some kind of artifacts to build this world up in somebody's
+mind that they can find their way around and easily orientate each other, you know?
+
+121
+00:18:55,644 --> 00:19:05,544
+And so for that reason, I think this ambassador program that we're developing will
+want the community to feed into it, but it's about world-building.
+
+122
+00:19:05,743 --> 00:19:11,824
+It's about how do we create locations or districts where specific work can be done.
+
+123
+00:19:12,004 --> 00:19:19,884
+So you might have a forge that's to do with product and innovation. You might have, I
+don't know, a, a dark forest, right?
+
+124
+00:19:19,924 --> 00:19:28,464
+Where you're talking about advocates that are gonna go beyond the channels
+distribution that RealFi could into spaces that only they could.
+
+125
+00:19:28,504 --> 00:19:41,974
+So a good example is, I'm not saying we're against China or anything, but imagine if
+we were in China, I'm not gonna be able to go into, uh, groups or channels and engage
+those communities.
+
+126
+00:19:42,024 --> 00:19:47,544
+It would have to be from someone that was comfortable in those spaces that could be in
+those rooms, you know?
+
+127
+00:19:47,704 --> 00:19:58,784
+So, um, I'll come back to the point, but the dark forest thing is interesting because
+we were looking at Cloudflare, like 50% to 80% of internet activity is bots.
+
+128
+00:19:58,864 --> 00:20:06,794
+We're looking at Messari and, uh, DefiLlama, where it's something like 90% of on-chain
+activity is estimated to be bots.
+
+129
+00:20:07,324 --> 00:20:18,424
+And this dark forest idea is that as AI is coming more and more the internet will
+become bot activity and real people will retreat into, I think it's called the cozy
+web,
+
+130
+00:20:19,084 --> 00:20:33,544
+into private channels and into discourse and this kind of stuff, right? And you can
+kind of expect that, and that is relevant to what SPOs are doing, the value that SPOs
+have brought to RealFi because one of the novel solutions about the ambassador program
+or the
+
+131
+00:20:33,564 --> 00:20:39,604
+accelerated program is that SPOs are influential on chain and online.
+
+132
+00:20:39,684 --> 00:20:45,344
+And so you're able to see to a far greater degree of probability that this is like
+proof of human.
+
+133
+00:20:45,384 --> 00:20:57,704
+These are real, um, authentic activity, right? So just to bring that to a loop, I
+think it's a really interesting novel program that we've got, which the SPOs have
+helped us build,
+
+134
+00:20:57,764 --> 00:21:04,804
+and I'd love to see us publish more about it later. But, um, so to stop my rant, Rob.
+
+135
+00:21:04,864 --> 00:21:16,234
+So, so that's what the- What you're also saying is we wanted to, to, which is true,
+you said it briefly at the beginning, but it's that w- certain decisions about this
+will be put into you, um,
+
+136
+00:21:16,264 --> 00:21:21,384
+to make sure that you control the vibe- Yes ... and the, the assets, and that's what a
+lot of the point was that you started with.
+
+137
+00:21:21,404 --> 00:21:27,824
+And I think that's a really valid and important point because if it was my
+dictatorship, everything would be football related.
+
+138
+00:21:28,664 --> 00:21:38,904
+So um, it's better you deci-- I mean, it's one of the things you look at Web3 in
+general and, um, Cardano has done-- Look, you guys are all part of Cardano, and you
+are doing it.
+
+139
+00:21:38,944 --> 00:21:46,664
+It's very community driven. But-- And you look at the other projects that are on par
+with Cardano, you have like Solana who do it very, very well.
+
+140
+00:21:47,284 --> 00:21:57,304
+So we can-- You know, we're, we're taking-- We're gonna just take the, the best, uh,
+the b- the best that you guys have shown and the best ideas that we've got and kind of
+put it all together into,
+
+141
+00:21:57,364 --> 00:22:06,264
+into one. Uh, but making you core decision-makers into everything that we do on it,
+which kind of started with the whole ticker thing in the, in the whole process.
+
+142
+00:22:06,324 --> 00:22:14,324
+It originally wasn't meant to be, um, a community decision, but I just had a bit of a
+brainwave that, you know, keep the engagement.
+
+143
+00:22:14,384 --> 00:22:21,104
+I mean, we know our testnet is limited compared to others. You know, other people have
+a lot more activities to do.
+
+144
+00:22:21,124 --> 00:22:31,204
+But the fact that we're able to keep you all here is a testament. Um, and we're gonna
+keep-- Yeah, we're, we're-- By part of that, we're gonna make you feel as a part of it
+as possible.
+
+145
+00:22:31,544 --> 00:22:44,704
+It's your, it's your program as much as it is our program. Well, I like-- I really
+like the governance taken idea and the more decisions that we're actually-- If we're
+building the muscle now where the community can make the decisions
+
+146
+00:22:44,784 --> 00:22:57,644
+around the precedence and the culture that are being created and things like the
+ticker are meaningful decisions, I think it's a good start to building a community and
+an ecosystem that goes beyond the product, you know?
+
+147
+00:22:57,984 --> 00:23:03,384
+Um, even if an ecosystem is a bit of a grandiose word. Oh, by the way, I, I'm totally
+remiss.
+
+148
+00:23:03,484 --> 00:23:09,964
+We should be inviting questions. So if anybody's got any questions as we're talking,
+please put them in the chat, and we can bring them to Rob.
+
+149
+00:23:10,544 --> 00:23:19,884
+Um, and we're gonna be inviting feedback for the ambassador program. People have been
+asking about, um, what, you know, uh-- Well, we'd love your feedback.
+
+150
+00:23:19,964 --> 00:23:29,004
+Yeah, you know, what roles or, uh, status or points or how these things work. So
+that's what I'm gonna be focusing on this week and next is building that out with you,
+Rob.
+
+151
+00:23:29,584 --> 00:23:38,744
+Um, looking ahead to the future though, um, what kind of role do you think these
+ambassador programs can have in more mature projects?
+
+152
+00:23:38,884 --> 00:23:51,164
+You've, you've had quite a bit of experience, haven't you, in- Yeah, absolutely. So I
+mean, so to-- What I would do rather than say what I think could go well for RealFi
+'cause I know that's something I want you guys to decide, I will kind of just do what
+Ben has mentioned,
+
+153
+00:23:51,224 --> 00:24:03,624
+that what's gone well for me in the past. And one of the reasons I actually mentioned
+Solana was 'cause I used to work-- If you haven't met me already, I used to work for a
+Solana project called Amulet, where the community really drove the project.
+
+154
+00:24:04,432 --> 00:24:09,572
+Um, and the two b- two big things that like one of the...
+
+155
+00:24:09,592 --> 00:24:15,352
+It's a good... You actually mentioned it, Ben. Uh, one of the things you mentioned was
+about people's partnerships.
+
+156
+00:24:15,632 --> 00:24:27,732
+Um, some of the best co-marketing partnerships that we had at Amulet was, uh, given
+by, uh, was given by the community, was introduced by the community 'cause they seemed
+like-minded.
+
+157
+00:24:27,762 --> 00:24:34,172
+And one guy actually took it upon himself to become the partnership king, but there
+were other people who had...
+
+158
+00:24:34,572 --> 00:24:41,272
+They, they weren't, they, they weren't comfortable doing that. So what their main
+focus was introducing us to their languages and their language community.
+
+159
+00:24:41,752 --> 00:24:55,612
+As you would have seen, I've kind of implemented a bit of that. We introduced the, um,
+language ambassadors, uh, where I know 参加者Bさんが here, and, uh, 参加者C
+is also helping out on the Indonesian and shown interest to, to drive that further.
+
+160
+00:24:56,232 --> 00:25:03,872
+Um, I include Spanish, and at one point at Amulet, we ended up having, um, probably
+about 17 or 18 different languages.
+
+161
+00:25:04,472 --> 00:25:12,612
+Um, we'd attracted quite a lot of people from the former Soviet countries, so Russia,
+Ukraine, Belarus, Kazakhstan.
+
+162
+00:25:13,072 --> 00:25:19,512
+And what was interesting is normally most people would group that together because
+they can all understand the initial version.
+
+163
+00:25:19,952 --> 00:25:29,752
+But because we developed our own communities within the specific regions, we found
+that, you know, there was a huge Kazakh community that we never thought even existed.
+
+164
+00:25:30,292 --> 00:25:42,512
+Um, we knew that there was a huge Russian and Ukraine one, but we didn't know as much
+that the other cis language speakers came, and we were- I think we had five channels
+that if you were like me and you don't read anything,
+
+165
+00:25:42,732 --> 00:25:49,372
+you only read one set of alphabet, you would have thought it all looked exactly the
+same, but obviously they were different languages.
+
+166
+00:25:49,412 --> 00:25:55,912
+And that also led out to different continents as well. We ended up having Yoruba,
+which is a dialect of Nigeria.
+
+167
+00:25:56,472 --> 00:26:01,652
+Uh, we ended up having Chinese and Japanese and Korean. Um, and yeah, things weren't
+really... Things...
+
+168
+00:26:01,852 --> 00:26:08,572
+Then the, the... People did those type of things. We also had, uh, people wanting to
+represent us in their own region, so we'd send them stuff.
+
+169
+00:26:08,652 --> 00:26:20,292
+I know Ben's talked about this before, uh, for the SPOs. Um, and then there's, there's
+different, different, um, there's different districts as well, not necessarily just on
+the marketing perspective.
+
+170
+00:26:20,452 --> 00:26:32,732
+Obviously, I'm always going to think on a marketing perspective 'cause I'm the
+marketing lead. But, uh, from a technical perspective, you guys have done an amazing
+job when it comes to bug bounty and testing and what works and what doesn't,
+
+171
+00:26:32,792 --> 00:26:40,572
+and that works very well 'cause we've got a smaller platform. But there can be other
+needs of the technical team that, that you guys might be more benefit...
+
+172
+00:26:41,092 --> 00:26:52,112
+You might, you guys might have the expertise or the connections to do and be a part
+of. I can see Ben started to put down some of the, um, like concepts of, uh, the
+different world that we would create.
+
+173
+00:26:52,172 --> 00:27:03,312
+And yeah, I mean, there's pretty much what... I, and it kind of links. I know, and
+I'll let you speak in a second, Ben, but, like, this Discord server is meant to, meant
+to be your server, and it is meant to, um,
+
+174
+00:27:04,032 --> 00:27:11,232
+a- and it is one of the things I think that point here, and it kind of comes to, to
+the world-building is...
+
+175
+00:27:12,452 --> 00:27:22,632
+Oh, and it's just gone out my mind. Um, it was something. I looked at the image, and
+there was something I was gonna say about it, and it is, it's just completely gone out
+my head, so I can't.
+
+176
+00:27:23,272 --> 00:27:32,512
+Um- No, that's all right. Yeah. I think it's about relevance though, right? It's,
+um... I know I'm throwing some images into the chat for you guys, so you can see kind
+of like a map.
+
+177
+00:27:32,672 --> 00:27:43,652
+But it's about shortening the time it takes somebody from joining a community and, and
+asking themselves like, "Is this for me?" Like, "What role could I play?" In fact,
+
+178
+00:27:43,792 --> 00:27:50,612
+actually shout out to 参加者D, who's in the, um, audience 'cause he was talking about
+decentralized adventures, right?
+
+179
+00:27:50,772 --> 00:27:58,232
+I think that's how this conversation began because- Yeah ... if you go on an
+adventure, you need to know, what role am I gonna play?
+
+180
+00:27:58,952 --> 00:28:06,032
+Where are we going? What's the fight? You know, like, are you're DPS, I'm tank or
+whatever it is.
+
+181
+00:28:06,072 --> 00:28:11,252
+So you need to understand your role, why you're doing it, what the world is like that
+you're entering, right?
+
+182
+00:28:11,312 --> 00:28:22,672
+So this is the concept of world-building that we're talking about, and it's also the
+concept of sort of ecosystem maps and this kind of thing, and we wanna help people,
+like your delegators or community members that come in,
+
+183
+00:28:23,232 --> 00:28:37,152
+quickly understand, based on their strengths and their assets and what they care
+about, where could they find the, the most relevance and purpose in the community if
+they
+
+184
+00:28:37,172 --> 00:28:43,052
+want to contribute, you know? And, um, the reason people join a community isn't why
+they stay, right?
+
+185
+00:28:43,332 --> 00:28:51,292
+They stay because of the relationships or the culture or because they believe in the
+mission overall, which is why Cardano has been so successful, you know?
+
+186
+00:28:51,952 --> 00:28:59,552
+Um, so this is the invitation, I guess, Rob. It's- It's like, it's messages like--
+It's also why messages like 参加者A is quite exciting.
+
+187
+00:29:01,712 --> 00:29:07,012
+The one he's written in the group before we talked where he, he talks, it's like this
+is going to be interesting.
+
+188
+00:29:07,052 --> 00:29:12,222
+It's, it's the same concept. We've already got signs of that already in this
+community, which is what I was... That was just the point there.
+
+189
+00:29:12,432 --> 00:29:17,852
+You can continue saying what you were gonna say. Yeah. Yeah. Well, it's, this is an,
+it's a, it's an invitation to kick off.
+
+190
+00:29:17,892 --> 00:29:29,512
+And as we're talking, I think the place that... What I'll do is I'll bring these ideas
+into the workshop Miro board that we've got, so we can plan those districts out
+together,
+
+191
+00:29:30,152 --> 00:29:42,112
+but it's about matching a crew with a district or a permanent location. And for those
+that are still, still here, me and Rob would then be able to-- Because remember,
+
+192
+00:29:42,172 --> 00:29:47,712
+the districts are about specialization, right? The crew is coming into, I don't know,
+the harbor because it's a regional harbor.
+
+193
+00:29:47,732 --> 00:30:00,052
+They're coming into, for instance, if we had a, a forge to do with innovation or, or
+dev, it's being able to use those districts as an interface to then come to the team
+and say,
+
+194
+00:30:00,661 --> 00:30:13,636
+"This district is helping product as a function, and here's the different ways that
+we're self-organizing," and, "This district is helping-" Um, you know, engineering or
+GTM or this kind of thing.
+
+195
+00:30:14,096 --> 00:30:23,956
+But everybody on this call would understand those terms. But we don't have to burden
+new community members with, like, KPIs or, or that handshake.
+
+196
+00:30:24,036 --> 00:30:36,496
+We can just focus on making it immersive, interesting, um, and I hope, like all good
+stories or all good world-building, um, engaging, you know, ultimately.
+
+197
+00:30:36,636 --> 00:30:44,256
+But it's-- I've-- Rob's always wanted there to be a high degree of verification that
+things are real.
+
+198
+00:30:44,836 --> 00:30:55,326
+Um, and I've wanted to, you know, really build a community that has genuine purpose in
+it and isn't just a, I guess, like an engagement farm, right?
+
+199
+00:30:55,356 --> 00:31:01,836
+Like a vanity engagement. There's no point in that, in perennial engagement just for
+the sake of engagement.
+
+200
+00:31:01,936 --> 00:31:14,696
+That's not why we're here, right? We're fundamentally here in crypto because of a
+shared set of values, often around cypherpunk and, you know, open financial systems
+and changing, you know,
+
+201
+00:31:14,796 --> 00:31:22,316
+the way that the... Well, if not the world order in RealFi's case, definitely, uh,
+fintech and finance, you know?
+
+202
+00:31:22,956 --> 00:31:28,356
+Um, so I think, yeah, that's-- I also, like, we're trying to have some fun, right,
+Rob? I think are we allowed to have fun?
+
+203
+00:31:29,386 --> 00:31:35,316
+Yeah. Absolutely. Yeah. Yeah. No, I think that makes-- I think that's all pretty
+clear, to be fair.
+
+204
+00:31:36,896 --> 00:31:47,176
+So next steps are, I guess, I need to finish off this ambassador program proposal.
+Then maybe I will build out that in the Miro board we've already been working in,
+
+205
+00:31:47,296 --> 00:31:55,156
+and we can get those feedbacks and districts' names, this kind of thing, Rob. And I
+think that's what we'll be doing this week next.
+
+206
+00:31:55,616 --> 00:32:01,216
+Um- And we'll send them-- We'll send a reminder tomorrow about before the- Yeah ...
+
+207
+00:32:01,236 --> 00:32:07,496
+before the vote closes on Wednesday, so people have enough time. Um- Actually, good
+call.
+
+208
+00:32:07,536 --> 00:32:13,036
+Let's bring it back to the ticker because- Sorry ... we, we've really gone off on a
+tangent, haven't we?
+
+209
+00:32:13,136 --> 00:32:18,735
+Let's bring it back to the ticker. Yeah. Yeah, yeah. So the ticker vote will close on
+Thursday. So, Wednesday, sorry.
+
+210
+00:32:18,836 --> 00:32:23,936
+So we will, we'll do a reminder tomorrow, um, just to get the final votes.
+
+211
+00:32:24,016 --> 00:32:31,696
+If we can get it to 100, I'd be very happy. If not, not the end of the world. At least
+right now, I think we're on 60, 65.
+
+212
+00:32:31,706 --> 00:32:38,296
+It was 66, so someone's removed their vote. 'Cause I was hoping it would get to 67,
+and then I'd say 67 like I was a child.
+
+213
+00:32:39,216 --> 00:32:48,136
+Um, but yeah. Um, the-- we will, we will send a final reminder, and then we'll do an
+official announcement once that...
+
+214
+00:32:48,436 --> 00:32:57,676
+Which right now is looking for option B. So if you're really into option A, I'd advise
+you to just invite all your friends and get them into the RealFi and get them to vote
+for option A.
+
+215
+00:32:58,816 --> 00:33:05,136
+Yeah, like- And then if you're really into option B, invite all your friends into the
+server to counteract the people that are really into option A.
+
+216
+00:33:06,756 --> 00:33:11,776
+I'm just putting the Miro board, uh, link in. 参加者E was asking for it.
+
+217
+00:33:11,836 --> 00:33:19,776
+So this is the Miro board where we were running the SPO alpha cohort. Um, what it is
+is a asset-based community development.
+
+218
+00:33:19,896 --> 00:33:27,356
+So you go in, introduce yourself, identify your strengths. Then what is the problem
+and the project, projectization you want to solve?
+
+219
+00:33:27,436 --> 00:33:34,056
+So in this instance, it's a campaign about attracting delegation to single stake
+pools. And then it's about claiming the work.
+
+220
+00:33:34,096 --> 00:33:46,085
+What crew would you want to be in? Um, but, uh, to go back to that with the ticker,
+one really easy, um, I hope easy, uh, ask is,
+
+221
+00:33:46,496 --> 00:34:00,376
+is just to share the RealFi community. You know, me and Rob are working hard on this
+and trying to build something here that's gonna be really sustainable, and we would
+love for you to invite some of your delegators in here or your friends or community
+members to come in,
+
+222
+00:34:00,516 --> 00:34:06,496
+vote and take part. You know, ultimately there are big announcements in the works that
+we can't talk about.
+
+223
+00:34:07,076 --> 00:34:12,696
+Um, and I don't, I don't think anyone's gonna regret it, right? This is, uh, this is a
+project that is going places.
+
+224
+00:34:13,616 --> 00:34:19,295
+Um, I've probably said too much there, Rob, so you'll have to tell me off afterwards.
+Yes. That's all right.
+
+225
+00:34:19,306 --> 00:34:24,416
+Uh, to answer member's question, we didn't look into USDA.
+
+226
+00:34:25,136 --> 00:34:32,976
+I get why you're gonna do it for alphabetical reasons, but, I don't-- I think CEXes
+are probably aware of that, so it probably isn't one, but I'd have to actually look in
+if it was.
+
+227
+00:34:33,876 --> 00:34:39,976
+But it's not gonna be announced- Yeah, good, good question. 参加者F is asking, are there
+scheduled meet, meetings? This is the thing with the crews, right?
+
+228
+00:34:40,076 --> 00:34:45,676
+So if we form crews, then they ought to have at least two or three founding members.
+
+229
+00:34:46,036 --> 00:34:53,476
+Probably they're gonna be SPOs if there's the appetite for it. So a crew forms, and
+it's a self-organizing group.
+
+230
+00:34:54,096 --> 00:35:01,016
+Obviously, we're here to support, but the point with communities is they're not
+top-down audiences, you know?
+
+231
+00:35:01,066 --> 00:35:12,076
+And, um, not naming any names, uh, or anyone in, specifically in Cardano, but you
+often see that, that, that sort of teams will come in and treat it like it's a
+top-down, you know,
+
+232
+00:35:12,086 --> 00:35:20,396
+"We're gonna send you a message." Whereas really in Web3, communities are
+self-organizing, and they identify the problems that they care about, and then they
+work on them.
+
+233
+00:35:20,936 --> 00:35:31,216
+So forming a crew means you would wanna get some meetings. You'd wanna get some
+scheduled, um, time and place, and it'd be down to that group of people to decide what
+kind of cadence that had.
+
+234
+00:35:31,876 --> 00:35:41,366
+Um, what we're also cognizant of is trying to avoid a lot of the working group, um,
+words, like, just 'cause of the Cardano context.
+
+235
+00:35:41,416 --> 00:35:52,736
+Like, there's a lot of insect working groups and lots of value came out of it. But at
+the same time, it was hugely difficult to keep up with everything or, or see where
+everything was headed, you know?
+
+236
+00:35:52,856 --> 00:36:02,456
+So I think with our crews, with districts, we can make it much more laser-focused on
+what we're doing and easier for people to understand, you know?
+
+237
+00:36:02,956 --> 00:36:10,754
+Um, but yeah, 参加者F, you're right. So basically we-- when we form the crews we need to
+have a, a- Process of formation.
+
+238
+00:36:10,844 --> 00:36:18,064
+So we thought about a mandate. We'll try and keep it simple, uh, but something where
+someone can navigate what's going on.
+
+239
+00:36:18,084 --> 00:36:29,644
+And then that can cascade into things like the Luma calendar on RealFi at the moment,
+where it's just RealFi office hours or it's like, you know, a colleague's doing some
+brilliant interviews and the rest of the team,
+
+240
+00:36:29,684 --> 00:36:38,684
+and we can start populating that with community activity as well, you know? Um, now
+don't anyone judge me on this, 'cause I'm not saying that we should be like them.
+
+241
+00:36:38,774 --> 00:36:45,124
+I'm not saying that, Rob, right? But Chainlink Marines were mental. Does anybody
+remember Chainlink Marines?
+
+242
+00:36:45,444 --> 00:36:55,484
+Oh my God, those guys, right? They were just so organized. Um, like way too, way too,
+uh, way too aggressive, I think.
+
+243
+00:36:55,924 --> 00:37:03,924
+Um, and maybe I'm just talking about it from the point of view of having dealt with
+them, but, um, but they were, they were impressive how well organized they were.
+
+244
+00:37:03,974 --> 00:37:09,324
+And, and they, um, the, uh ...
+
+245
+00:37:09,344 --> 00:37:15,764
+What am I trying to say? Like, the fraternity, the camaraderie, the relationship
+between them, they were very committed, you know?
+
+246
+00:37:16,064 --> 00:37:21,784
+Um, so I admire those guys, even if I wouldn't wanna emulate them 100%. Right.
+
+247
+00:37:21,924 --> 00:37:27,983
+So Rob, uh, bring me back to the present. Uh, we're asking people to share and invite
+people into RealFi.
+
+248
+00:37:28,504 --> 00:37:40,464
+We're setting up some expectations that we're gonna continue the workshop that, uh,
+kicked off so well, and that the reason for the delay was that we went back and made
+sure that we were tying KPIs and internal team
+
+249
+00:37:40,544 --> 00:37:48,584
+priorities to districts and crews that could form because we wanna be able to make
+good arguments for resources in the future.
+
+250
+00:37:48,644 --> 00:38:02,024
+Is that fair? Yeah, absolutely. Uh, I mean, it's pretty much everything I think we've,
+we've covered apart from the fact that, uh, we really appreciate people still making
+the time to come to a rearranged office hours on a Monday afternoon in August,
+
+251
+00:38:02,104 --> 00:38:11,384
+which is usually quite difficult for a lot of people. And so, so, uh, it re- re- is
+really happy that, uh, that you, you made the effort and it's fully appreciated.
+
+252
+00:38:12,804 --> 00:38:20,484
+And Rob, thank you for the work you're doing, which I do see on the announcements, and
+the marketing, and the media, and all of this.
+
+253
+00:38:20,564 --> 00:38:28,144
+So, you know, these things will prove, uh, there will be fruit coming to bear, and
+people will be able to see that in the not too distant future.
+
+254
+00:38:28,944 --> 00:38:35,823
+Um, okay, great. Uh, any- Yeah ... now is the time for questions. If anybody's got
+them, hit this up in chat.
+
+255
+00:38:39,204 --> 00:38:50,234
+There's that awkward pause where you didn't know if you were typing. Um, and guys, you
+know- I, I'm, uh, um, it was hilarious 'cause we always had a minimum of like 70, 80
+people in the audience,
+
+256
+00:38:50,924 --> 00:38:59,184
+none of whom really speak English as their first language. But whenever the project lead, the
+project leader was there, he'd always want the questions, and there was never any
+questions.
+
+257
+00:38:59,664 --> 00:39:04,744
+Sometimes it would be me by myself, and I would just get all the questions that there
+otherwise.
+
+258
+00:39:04,764 --> 00:39:10,824
+But no one ever came- Oh sh- No one ever, no one ever called the project lead up when it was a
+project lead. They only came up when it was me by myself for some reason.
+
+259
+00:39:12,284 --> 00:39:24,584
+Shall I, shall I give you an update about Japan and keep it quite broad? Yeah, come
+do. So, um, 参加者I, who's in the audience, uh, is, uh, one of the key Japanese, um,
+SPOs.
+
+260
+00:39:25,244 --> 00:39:31,663
+And I think everybody would know just by having a look at... Thank you 参加者I for
+joining us and being here.
+
+261
+00:39:32,224 --> 00:39:42,404
+And I think everybody will know, um, if you've been at all involved in governance that
+something like 4 to 5 billion, um, ADA has moved around, um,
+
+262
+00:39:42,844 --> 00:39:48,324
+and that's in Japan, you know, uh, over the past, since over the past 12 months I
+would say.
+
+263
+00:39:48,724 --> 00:40:02,304
+And so, um, what we've got running at the minute is a survey that's going out to the
+Japanese community, and we're asking the Japanese SPOs and KOLs who I've built up a
+relationship with, and 参加者I is helping us,
+
+264
+00:40:02,364 --> 00:40:12,504
+and 参加者J. And we're essentially asking some questions about the public good, which
+are, um, and this is within the context of the second Fi hack, and so therefore it's
+timely.
+
+265
+00:40:13,224 --> 00:40:24,424
+You know, financial sovereignty in terms of securing your ADA. Um, the fact that
+there's a Japanese accelerator program, so Japanese community can delegate to their
+Japanese SPOs.
+
+266
+00:40:24,884 --> 00:40:35,574
+And the point of that is decentralizing the network. So the public goods are the
+financial sovereignty, protecting your ADA, decentralizing the network by delegating
+to a single stake pool operator.
+
+267
+00:40:36,284 --> 00:40:43,564
+Then we're asking some questions about, well, you know, how much do you care about the
+long-term health of Cardano?
+
+268
+00:40:43,664 --> 00:40:49,403
+Because I think the economic activity is very critical to that, not just...
+
+269
+00:40:49,424 --> 00:40:58,284
+In the early days of Cardano, it would've been staking. Just staking and securing the
+network would've been enough, but I think a public good here is economic activity.
+
+270
+00:40:58,324 --> 00:41:03,844
+And then when you get through those public goods, there's also like, what would keep,
+what would help you to stay in Cardano?
+
+271
+00:41:04,304 --> 00:41:10,564
+You know, would you, um, you know, what kind of utility or abilities would be useful?
+
+272
+00:41:10,704 --> 00:41:20,004
+Now, the reason we've put that survey together, and, oh, this is a spoiler 'cause I
+think it could be useful for the Western, um, SPOs.
+
+273
+00:41:20,114 --> 00:41:32,804
+And when I say Western, I mean everywhere that isn't Asia. Um, the idea is that we
+could create a set of shareables or presentation materials that SPOs could have that
+would help people walk
+
+274
+00:41:32,904 --> 00:41:43,964
+through a RealFi to their delegators. So it's a kind of train the trainer or educate
+the educator model, where rather than us wanting to put words in anybody's mouths,
+
+275
+00:41:44,024 --> 00:41:54,914
+it's like helping to build up the arguments that would make the most sense. And so
+therefore if you want to appeal to the most people, um, and you want it to be
+relevant, our point of view is,
+
+276
+00:41:54,984 --> 00:42:00,564
+well then we should be talking about the public good or, you know, what the common
+good is for everybody.
+
+277
+00:42:00,884 --> 00:42:07,064
+Um, so that's kind of the thinking there. That survey's gone out today, Rob, I think.
+
+278
+00:42:07,124 --> 00:42:19,196
+We've hit everybody up, and so- What we hope to do, um, is engage the Japanese
+community, see Japanese SPOs join, and then their delegators and, um,
+
+279
+00:42:19,556 --> 00:42:33,156
+the Japanese community can be educated on RealFi. And I think that, um, SPOs in
+whatever country they are are trusted infrastructure and have the relational capital,
+uh, to,
+
+280
+00:42:33,856 --> 00:42:43,396
+to be able to talk to their delegates, and it- it's a stronger model if we... This is
+why it's a novel solution, the kind of ambassador program we're building here.
+
+281
+00:42:43,636 --> 00:42:48,916
+When I say ambassador, I mean, um, person with influence, you know, rather than
+just...
+
+282
+00:42:49,056 --> 00:42:55,536
+What was that program that you didn't want to do, Rob? The, um- Like- Yeah, yeah.
+
+283
+00:42:55,756 --> 00:43:01,216
+You know, those kind of... W- what are they called? Sorry. You were telling me- I
+would say that gamified farming.
+
+284
+00:43:01,996 --> 00:43:12,356
+Yes. Yeah, yeah. Exactly. Gamer. So we don't want that, and the, the anti-Sybil and
+anti-farming methods, um, are effective,
+
+285
+00:43:12,496 --> 00:43:18,156
+and the RealFi team really does care about that. You know, it's not vanity metrics
+that we want. We want authentic activity.
+
+286
+00:43:19,696 --> 00:43:24,716
+Right. Well, I've, I've... Rob, I have to apologize to you after this 'cause I've
+probably done too much talking on this call.
+
+287
+00:43:24,756 --> 00:43:34,056
+But you, did we cover everything you wanted to? Absolutely, yeah. No, absolutely. And
+thanks for coming on when you're feeling a bit under the weather 'cause I know you've
+been- No ...
+
+288
+00:43:34,556 --> 00:43:40,556
+you've been achieving- I'm totally, I'm way better. Way better compared to what I was.
+So I wouldn't have been able to probably do it on Friday.
+
+289
+00:43:40,616 --> 00:43:46,876
+So, uh, today's been, today I feel like a new person. Mm-hmm. Well, since yesterday I
+feel like a new person.
+
+290
+00:43:48,736 --> 00:44:01,256
+I also, um, was just thinking that the Midnight City thing could have been interesting
+for this, you know, once you've got a kind of visual way to explore the world, but
+maybe that's something to chuck in the Miro board.
+
+291
+00:44:01,616 --> 00:44:09,576
+We can still, yeah. Yeah. Yeah. Yeah. All right. Well, look, thanks again, and we've
+got another RealFi office hours too this week, so it's, like, action-packed.
+
+292
+00:44:10,256 --> 00:44:16,116
+Um, we've got another one on Friday. Who have we got that with? We've got it with
+investments. Oof, it's gonna be exciting.
+
+293
+00:44:17,256 --> 00:44:22,996
+We're gonna get into the meaty questions there, right? Um, maybe I should put a survey
+out or something. I, I know some people.
+
+294
+00:44:23,036 --> 00:44:28,136
+So I, I had, um, a dinner with the investments team, and I don't think I understood
+any of it.
+
+295
+00:44:30,716 --> 00:44:36,636
+No. I think there's some- Uh, but, I, I, I know. Of, of course I understood it.
+
+296
+00:44:36,936 --> 00:44:44,036
+It's just they, they are, they're so into it that obviously the language they use, if
+you're not fully aware is, can be like, "Whoa." But then when you...
+
+297
+00:44:44,276 --> 00:44:56,246
+There, it's just passion, and they were talking on, obviously, with only crypto
+people. They wouldn't be like- I know some, uh, I know some of the people in,
+listening on this call would love to ask some questions,
+
+298
+00:44:56,285 --> 00:45:01,816
+who, like 参加者F, I think, or 参加者H or, um, uh, 参加者G, you know?
+
+299
+00:45:02,176 --> 00:45:13,676
+Um, there were some great questions that came in that were definitely for the
+investment team. Um, uh, 参加者A's asking, "Are we gonna be around a token 2049?" Just
+answered it.
+
+300
+00:45:14,576 --> 00:45:20,956
+They are. Just that our application's gone in to try and get a booth for the Cardano
+Foundation. Think that closes tomorrow.
+
+301
+00:45:21,136 --> 00:45:28,436
+So hopefully in a week, um, they can make our lives 100 times easier. Are we gonna get
+some...
+
+302
+00:45:28,516 --> 00:45:37,536
+Yeah. I, in my ambassador program- It's good ... we need some swag, don't we? We need
+people to be repping, and if that's what- That's why I think we, we've got, we've,
+we've got swag.
+
+303
+00:45:37,656 --> 00:45:46,056
+I'm a, I own a RealFi, I own RealFi hoodies and T-shirts. Um- We've got the des- we've
+got the designs all ready for that type of stuff.
+
+304
+00:45:46,136 --> 00:45:51,536
+Mm-hmm. I actually changed the design. The original Real... Like, I didn't change the
+current logo that we've got.
+
+305
+00:45:51,656 --> 00:45:58,876
+That, a colleague did that change. Um- Mm-hmm ... there was an old logo, the previous RealFi
+logo, but I prefer this current logo.
+
+306
+00:45:59,216 --> 00:46:04,476
+But the old swag was, uh, I made it, I've made them a bit more stylish.
+
+307
+00:46:04,536 --> 00:46:14,296
+I've made the logos a bit smaller. You know, like, not, um, for example, the old
+hoodies had the big RealFi logo at the front, whereas the- Mm-hmm ...
+
+308
+00:46:14,356 --> 00:46:21,456
+new ones, it's like, it's more like, it's more classy. It's just a RealFi logo in the
+l- left breast.
+
+309
+00:46:23,356 --> 00:46:28,736
+You know, like- Oh ... this is, this is a bit more... So it's, so it's not, you're not
+just...
+
+310
+00:46:28,796 --> 00:46:40,926
+So you'd actually wear it in the street, not just at a crypto event. Well, uh, my, my
+mission now is to get everybody on this call a RealFi hoodie, and, uh, myself
+included.
+
+311
+00:46:42,036 --> 00:46:50,516
+You would have loved looking at your current, uh- ... just looking at your current
+Discord, um, animation.
+
+312
+00:46:50,556 --> 00:46:56,316
+You would have loved- Yes ... this, the, the hoodie I did for Pondo, 'cause that had
+two koi fish on the back.
+
+313
+00:46:57,016 --> 00:47:03,396
+Uh, it was bad quality, but, uh, w- everyone, it wa- that was at, um, the one in
+Denver.
+
+314
+00:47:03,816 --> 00:47:09,356
+What's it called? Den- Mm. Yeah. Eth Denver. Uh, everyone wanted...
+
+315
+00:47:09,396 --> 00:47:18,516
+We only had a co- we only had hoodies for the team. Uh, we were giving away things
+like air tanks, a PlayStation, like really expensive stuff, and everyone was- ...
+
+316
+00:47:18,526 --> 00:47:29,236
+like they all just wanted a hoodie. Do you know, when I was at Token 2049 last year, I
+had to go on this mad mission to get a Labubu for my daughter.
+
+317
+00:47:29,476 --> 00:47:41,456
+It was like... And, uh, you know, an acquaintance and those guys had that hydro vending machine,
+and you had to go and scan stuff to get the points, except the Labubu was, like, loads
+of points,
+
+318
+00:47:41,996 --> 00:47:47,416
+and I spent a good hour trying to, trying to make that happen. So yeah, we should, uh-
+I- ... see what we can do there ...
+
+319
+00:47:47,496 --> 00:48:01,876
+I have, I have a Labubu. I have a Manchester United Labubu. Mm. Are there any- When I
+go back to Manchester, which I will be doing in a couple of weeks, and I, I still go
+and see the lady that owned the sweet shop when I was a kid.
+
+320
+00:48:02,356 --> 00:48:09,216
+She's still got the sweet shop. Mm. And obviously Labubu's are in. And, uh, she bought
+the Labubus directly from China.
+
+321
+00:48:09,996 --> 00:48:15,256
+Um, and then some... Well, no, this man that lived around, he's Chinese, and he would
+bring them.
+
+322
+00:48:15,296 --> 00:48:22,892
+He'd br- he'd buy the Labubas back. Uh, and then he got some- uniforms made for the
+Labubus for Man United and Man City.
+
+323
+00:48:24,012 --> 00:48:32,732
+So she gave me my first ever Labubu because it was a Man United one. So if you want a
+Labubu, I can get you a free Labubu in the future.
+
+324
+00:48:32,792 --> 00:48:38,072
+You just have to come to Sou- south of Wigan. Half an hour south and I'll, I'll get
+you one.
+
+325
+00:48:40,112 --> 00:48:45,612
+Because I'd have to pay for my Labubus. I also bought my hairdresser back one because
+it's like she just...
+
+326
+00:48:45,652 --> 00:48:52,212
+I d- I, I've n- I've not... I think the last time I paid in her shop was 2008, 2009.
+
+327
+00:48:52,782 --> 00:49:00,132
+So, uh, yeah. Yeah. I would need campaigns planned before I mean that almost So
+that's, that's...
+
+328
+00:49:00,352 --> 00:49:07,492
+So essentially, like you form the crews, get, we'll get up into the management board.
+Then you understand what the crew's purpose are.
+
+329
+00:49:07,552 --> 00:49:16,212
+It's, uh, much more focused than just having this kind of, um, open-ended, uh, aspect.
+And campaigns would be, uh, planned from there.
+
+330
+00:49:16,352 --> 00:49:27,612
+And then any points or incentives or resources we needed for those can then be argued
+for, which was why we went backwards and started tying, uh...
+
+331
+00:49:28,232 --> 00:49:40,032
+Well, first of all, truly understanding what the, the numbers were. When I first
+joined RealFi, I had like, okay, so TVL is important, and, uh, staking ratio is
+important, and that seemed good enough at that time.
+
+332
+00:49:40,512 --> 00:49:52,832
+But sort of 60 days into it, that's when I was sitting down with the data team
+involved and saying, "Okay, so like, what are the actual L1s here that, that matter
+and what the L2s?" And then that's gonna help
+
+333
+00:49:52,912 --> 00:49:59,892
+when we do form those campaigns because ultimately you need to be able to plan ahead
+for how you're gonna track it.
+
+334
+00:49:59,922 --> 00:50:09,972
+So we could have loads of really great activity happening through community campaigns,
+but unless at the beginning of the formation of a crew and at the end, unless we're
+there at the beginning and we're able to say,
+
+335
+00:50:10,002 --> 00:50:20,332
+"Okay, so you guys are planning to do this, this and this, how can Rob and I track
+that in a way where we can go and take tho- those wins internally in a way that's
+compelling,
+
+336
+00:50:20,572 --> 00:50:32,852
+right? That's gonna land." And, um, if I learned nothing else working in IOG and
+Cardano over the past five, well, seven years, it really is that you want to be able
+to bring the numbers
+
+337
+00:50:33,112 --> 00:50:38,792
+in that somebody is gonna be able to understand that's, uh, on the other side of that
+handshake, you know?
+
+338
+00:50:39,572 --> 00:50:49,452
+Um, yeah. All right. Well, look, I think we've, uh... I've, I've probably enjoyed this
+one a bit too much, but, uh, we'll see you all again on Friday.
+
+339
+00:50:49,632 --> 00:50:56,952
+I will post a summary, um, once, probably tomorrow, 'cause I need to get legal
+approval, um, before I'm posting stuff.
+
+340
+00:50:57,072 --> 00:51:03,652
+But thank you for joining the call, and obviously we're in the Discord. You can DM me
+or Rob at any time.
+
+341
+00:51:04,112 --> 00:51:15,522
+And if you've got suggestions or questions about the ambassador program or if you've
+got ideas about community campaigns that we should be running, that's all really
+relevant 'cause we can put that in the Miro board and we can say, "Okay, well, maybe
+this is,
+
+342
+00:51:16,252 --> 00:51:22,572
+these are the kind of crews and districts that they could, uh, they could be run on,"
+you know? Rob, I'll give you the final word.
+
+343
+00:51:24,132 --> 00:51:35,252
+Uh, thank you. I've probably said enough. Uh, but yeah, thanks everyone for coming
+and, uh, look forward to, uh, speaking to you all soon. Thanks everyone. Bye. Bye.

@@ -57,6 +57,19 @@ NAMES = {
         # 社内の人物として名前が挙がった同僚
         "Danelle", "Rob",
     ],
+    # partial の回。**残してはいけない名前だけ**を書く。
+    # 話者 2 名（ホストとマーケティング責任者）の実名は残しているので、ここには書かない。
+    "2026-08-24-office-hours-ticker": [
+        # 聴衆として名前が挙がった人
+        "Mehmet", "Sebastian", "Wangris", "Patrick", "Christopher",
+        "Roger", "Shiodome", "Taichi",
+        # ハンドル名 "Chris" と "State Pool" も置換したが、**一覧に入れられない**。
+        # "Chris" は 2026-07-24 の回の別人と綴りが同じで、
+        # "State Pool" は英語版の stake pool の記述と衝突する。
+        # 置換は手作業で行い、shared/speakers.md に記録してある。
+        # 社内・他社で名前が挙がった人物
+        "Liam", "Rupert", "Benj",
+    ],
     "2026-08-11-masumi-ai-forum": [
         # 話者・チャットで発言した参加者
         "Patrick", "Sharan", "Scott", "Kelly", "Sandro",

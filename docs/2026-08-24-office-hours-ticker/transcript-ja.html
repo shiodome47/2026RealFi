@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #7 — 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #7</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-08-24</span>
+  <span>51:35</span>
+  <span>Discord</span>
+  <span>Ticker</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>聴衆として名前が挙がった方は <code>参加者A〜J</code> に置き換えています。社内・他社で名前が挙がった方も役割に置き換えました。<strong>このコールで発話したのは 2 名だけ</strong>です。</p>
+<p>原本は SRT なので<strong>タイムスタンプはありますが話者ラベルがありません</strong>。しかも 1 つの字幕ブロックの中で話者が入れ替わることがあります。分割は文脈から判断していますが、<strong>声が 2 つしかないため全編を通して明確</strong>で、<em>(推定)</em> は 1 つも付けていません。文言は上記の匿名化以外は原文のままです。</p>
+<p>スライドはありません。コール中にチャットへ画像と Miro のリンクが貼られていますが、リンク先はここでは扱いません。</p>
+</div>
+
+<!--content-->
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>月曜への振り替えに応じていただいて、みなさんありがとうございます。先週はかなり体調を崩していたもので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>ええ。よかったです。私のほうは今、ツイートをいくつか出しているところで……アナウンスにも投稿して、もう少し人に入ってもらおうと思っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:16</span></div>
+  <div class="turn-body"><p>はい。待っているあいだに——今日は何の話をするんでしたっけ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:00:16</span></div>
+  <div class="turn-body"><p>はい、今日は先週のアナウンスと、それにまつわるキャンペーンの話です。USDR、sUSDR、RFG の<strong>ティッカー名の変更</strong>と、それがどういう経緯で決まったか。それから、前回の office hours 以降の進捗も少し。Miro のボードを立てたところ、SPO のみなさんが本当にたくさん書き込んでくださったので、そこで出たすばらしいアイデアについて話したあと、何が出てくる見込みなのかをお伝えします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:44</span></div>
+  <div class="turn-body"><p>いいですね。アンバサダー制度は本当に楽しみです。少しお待ちください。</p></div>
+</div>
+
+<div class="sec">ティッカー — もとの名前と、変える理由</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:58</span></div>
+  <div class="turn-body"><p>はい。では始めましょう。まずティッカーから。もともとのティッカーは何で、どういう経緯でそれに決まって、そして変える理由は何でしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:01:12</span></div>
+  <div class="turn-body"><p>それは私が入る前の話ですね。おそらく——社名が RealFi なので、USD 系の名前に RealFi につながる何かを足すのが、いちばん自然だったんだと思います。R はそこから来ています。最初に選ぶものとしていちばん分かりやすかったので、そのまま進んだのでしょう。<br>ただ、そこで問題にぶつかりました。私たちはかなり野心的で、先を見ていますし、<strong>どういう一流の取引所に乗れるか</strong>を考えています。そこで出てきたのが、<strong>USDR を実際に使うことの問題</strong>でした。以前に別の人たちが使っていて、それが——うまくいかなかったプロジェクトだったんです。<br>そこで、これはむしろ<strong>好機</strong>だと考えました。どのみち変えなければならないのだから、<strong>どちらの道を行くかをコミュニティに決めてもらおう</strong>と。RealFi に来るこれからの大きな変更について、<strong>最初の本当に大きな意思決定</strong>を渡すわけです。<br>なかなかわくわくする時期ですが、もとをたどれば、単に <strong>RealFi が R で始まるから</strong>というだけの話でした。<br>それが今回、またとない機会になりました。R と F、場合によっては L も残したまま、どういうティッカー名が取れるのかを少し調べました。そして 2 つの案にたどり着いた。それが今回の投票の対象です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:02:38</span></div>
+  <div class="turn-body"><p>そこに私からも足せます。ちょっと——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:02:38</span></div>
+  <div class="turn-body"><p>ええ、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:02:38</span></div>
+  <div class="turn-body"><p>私がやります。もう貼っていただいているとは思うのですが、投票を募っている <strong>Discord の該当メッセージ</strong>へのリンクも貼っておきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:02:51</span></div>
+  <div class="turn-body"><p>はい。</p></div>
+</div>
+
+<div class="sec">2 つの案と、投票の状況</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:02:57</span></div>
+  <div class="turn-body"><p>今の状況ですが、<strong>水曜に開始</strong>しました。完全に筋が通ると判断した上位 2 案です。念のためお伝えすると、<strong>取れる選択肢についてはかなり調べました</strong>。選べる案が 2 つしかないのは、<strong>調査のあとに——衝突するプロジェクトがないかなども含めて——いちばん筋が通ったのがこの 2 つだった</strong>からです。<br>出てきた 2 案のうち、<strong>案 A</strong> は USDR を <strong>RFUSD</strong> に、sUSDR を <strong>SRFUSD</strong> に、RFG を <strong>RFIG</strong> に変えるもの。核となる部分は残しつつ、取れるもののなかで RealFi の名前を出せます。<br><strong>案 B</strong> もよく似ていて、USDR は <strong>USDRF</strong>、sUSDR は <strong>SUSDRF</strong>、RFG は <strong>RLFJ</strong> になります。これは、とても Web3 っぽくて私は好きです。ちなみに、<strong>今のところ案 B が勝っています</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:03:57</span></div>
+  <div class="turn-body"><p>理想を言えば、<strong>100 人に参加してもらう</strong>のが夢です。あと少しというところまで来ています。<strong>締切は水曜</strong>。現時点で <strong>63 人</strong>が投票しました。案 B が優勢で、流れを変えたのは、開始した水曜にコミュニティのなかで起きた会話だと思います。<strong>USD のあとに RF を付ける形にすると、他のステーブルコインを探している人が偶然こちらを見つける</strong>、という指摘でした。それまではおよそ 50 対 50 だったのが、今は<strong>案 B が 66%、案 A が 34%</strong> です。<br>私も投票しました。全員に 1 票ありますので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:04:38</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="sec">投票のあとに何が起きるか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:04:44</span></div>
+  <div class="turn-body"><p>では、詳しく聞かせてください。まだ詳しくは伺っていないと思うのですが、<strong>投票が通ったあとに何が起きるのか</strong>。この投票はどう結果につながるのでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:04:51</span></div>
+  <div class="turn-body"><p>投票を締め切ったら、それで決まりです。<strong>みなさんが私たちの代わりに決めた</strong>ことになる。RealFi の OG が、最初の意思決定者のひとりになったわけです。<br>そこから社内で、変更の作業を始めます。チームのメンバーにとってはかなりの作業量になります。今はすべてが USDR、sUSDR、RFG のもとにありますから。相当な量を通していく必要がある。<br>ただ本質的なところでは、<strong>RealFi とプロトコルに関しては変更は一切ありません</strong>。本当に名前が変わるだけです。RealFi について聞いてきたことは全部そのまま残ります。前向きで堅い部分は、すべてそのままです。<br>これをやるのは——これもまた前向きな話なのですが——短期ではなく<strong>長期</strong>で考えているからで、将来乗れる一流の取引所のことを考えているからです。<br>そして決定が下されたら——今のところ案 B に見えていますが——社内で変更の作業を始めて、それが<strong>正式なティッカー名</strong>になります。<br>ですので、木曜以降はもう私たちが USDR と言うことはないはずです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:05:55</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:05:55</span></div>
+  <div class="turn-body"><p>もし言ったら、手を叩いてくださいね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:03</span></div>
+  <div class="turn-body"><p>ただ、どの取引所と話しているのか、していないのかは言えませんが、その会話や——枠を取るうえで助けになる、ということですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:03</span></div>
+  <div class="turn-body"><p>そのとおりです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:15</span></div>
+  <div class="turn-body"><p>そういう位置づけということですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:15</span></div>
+  <div class="turn-body"><p>そのとおりです。少しだけ内側をお見せすると、<strong>前向きな話し合いはありました</strong>。だからこれが少し早めに出てきたのかもしれません。<br>それに、<strong>mainnet の前に十分な時間をとって</strong>これに集中でき、あとの段階でこれが出てきて問題を引き起こすことを避けられます。testnet のうちなら完全に備えられる。だからこそ今このタイミングで進めていて、RealFi の次の段階に入る前に済ませておきたいわけです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:32</span></div>
+  <div class="turn-body"><p>なるほど。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:45</span></div>
+  <div class="turn-body"><p>次の段階というのは、testnet の終わりと、そこから mainnet のローンチに向かうところですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:45</span></div>
+  <div class="turn-body"><p>いい指摘だと思います。</p></div>
+</div>
+
+<div class="sec">mainnet の前に何をやるか — アンバサダー制度へ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:51</span></div>
+  <div class="turn-body"><p>では mainnet の前に、ほかに何をやるのか。コールの前にアンバサダー制度の話をしていましたよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:59</span></div>
+  <div class="turn-body"><p>ええ、活動と、世界観づくりですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:59</span></div>
+  <div class="turn-body"><p>では聞かせてください。<strong>クロスチェーンに行く時点までに、コミュニティとして何を達成しておいてほしいのか</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:07:08</span></div>
+  <div class="turn-body"><p>はい。とくに Ben が RealFi に入ってから積み上がってきたのは、<strong>SPO のみなさんが加わってくれて、本当に熱心に関わってくださっている</strong>ということです。私たちにとって非常に前向きな兆しが出ています。<br>そこで、これをどう活かすのがいちばんいいのか、何をするのがいちばんいいのかをずいぶん検討してきました。それぞれが別のことに取り組む形にはなりましたが、そこから出てきたのは——Ben が社内で、<strong>どうすればこれが機能するのか、どう本物の計画にするのか</strong>をかなり詰めてくれたことです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:07:41</span></div>
+  <div class="turn-body"><p>そして先週、ちょっとしたひらめきがありました。<strong>squad</strong> という考え方を立てて、それぞれの人がいちばんやりたいことをやれるようにする、という枠組みを作っていたところだったんです。マーケティング回の office hours の直前に立てた Miro のボードで見えたのがそれでした。<strong>みなさんが本当に参加してくださった</strong>。<br>ですから RealFi のコミュニティは、私たちのものではなく<strong>みなさんのもの</strong>です。とはいえ、みなさんが自分のいちばんの強みを活かして RealFi の目標に貢献できるように、<strong>社内でやるべきこと</strong>はあります。<br>そこで出てきたのが、コミュニティメンバーそれぞれの<strong>得意分野</strong>を、いちばん活きる場所に当てはめていく、という考え方でした。すでに関わりの深さは見えていますから。そこで今、<strong>mainnet に間に合わせる形で</strong>組み立て始めています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:08:33</span></div>
+  <div class="turn-body"><p>それが<strong>アンバサダー制度</strong>です。まだ土台を詰めているところですが、この SPO まわりの取り組みと、みなさんの——とくに SPO のみなさんの——貢献から実際に出てきたのは、<strong>本物の RealFi アンバサダー制度になりうるものの土台を、みなさんが作ってくれた</strong>ということです。<br>今取り組んでいるのは、それをどうお見せするか。<strong>最初に置く district はどの 3 つがいいか</strong>、どうすればみなさんがいちばん関わり続けられるか。こういう細かいところを、いわば内密に進めています——と言ってしまった時点で内密ではありませんが。<br>そちらのほうが近くで見ているので、足したいことがあれば自由にどうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:09:16</span></div>
+  <div class="turn-body"><p>ええ、では少し糸を引っぱらせてください。ここまでの私に批判があるとすれば——</p></div>
+</div>
+
+<div class="sec">なぜ crew の立ち上げが止まっていたのか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:09:28</span></div>
+  <div class="turn-body"><p><strong>crew をまだ立ち上げていない</strong>ことです。少し巻き戻して話します。Miro でワークショップをやって、これは大成功でした。すばらしかった。<strong>何をやるべきかについて、かなり強いテーマがいくつか出てきました</strong>。<br>ですので、ここでは<strong>なぜまだ crew を立ち上げていないのか</strong>を簡単に説明します。出てきたのは 5 つか 6 つの主要なテーマで、私としては crew を作ってキャンペーンを組み立て始めたかった。<br>ただ、mainnet に向けた計画と、その先——クロスチェーンに行ったあとの第 2 段階——を考えていたときに、問いが出てきました。<strong>この活動が事業の成果と結びついていると、どう論じるのか。だからもっとポイントを、資源を、RealFi からの投資を、とどう主張するのか。</strong></p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:10:19</span></div>
+  <div class="turn-body"><p>そこで<strong>いったんブレーキを踏みました</strong>。見直すためです。<br>考えてみてください。<strong>コミュニティとエコシステムの活動のあいだにある接点</strong>は何か。そして事業側は、その活動をどの窓から理解するのか。<br>ですから<strong>握手</strong>が成立している状態にしたい。SPO とそのコミュニティが報われて、価値を得ている。同時に、握手の反対側にいる事業のほうも価値を得ている。<br>この 1 週間ほど、データ・エンジニアリングチームの担当者と一緒に、<strong>全体で共通の勘定単位</strong>を決める作業をしていました。私たちはそれを <strong>L1</strong> と呼んでいます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:11:21</span></div>
+  <div class="turn-body"><p>少し資料を出しますので、お待ちを。そのあいだ、その握手のことを考えていてください。片側に事業があり、もう片側にコミュニティと SPO がいる。……ありました。<br>お待ちいただいているあいだに、<strong>参加者A</strong>さんの質問に手短にお答えします。まだお答えできないので、届いていることだけお伝えします。<strong>testnet のあいだは何も本番稼働していない</strong>ので、実際の交換レートはまだありません。おっしゃりたいことは分かりますし、いずれ話せる話題ですが、プロジェクトとしてまだそこまで来ていません。</p></div>
+</div>
+
+<div class="sec">L1 / L2 — 何を数えるか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:11:47</span></div>
+  <div class="turn-body"><p>遅くなってすみません。<strong>これまでのコールでは North Star（北極星となる指標）</strong>の話をしてきましたが、データを詰めてみたところ、<strong>L1</strong>——事業全体の成果を示す数値——の良い例として出てきたのが、<strong>TVL、ペッグの安定、プロトコルの利益、月間のアクティブウォレット、利回りのスプレッド</strong>です。<br>これは社内で考えているものです。それとは別に<strong>ガードレール</strong>もあります。これは目標値ではなく<strong>幅</strong>のことで、たとえば<strong>過剰担保率、プロトコルの流動性カバー率、ステーキング比率、リスク・コンプライアンスのスコア</strong>といったものです。<br>Rob と私が考えているのは、<strong>どうすればアンバサダー制度にきちんと資源がつくか</strong>。そのためには、それが最終的にこれらの数値をどう動かすのかを考えないといけません。いくつか案はあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:12:38</span></div>
+  <div class="turn-body"><p>立ち上げたワークショップに話を戻すと、そこで crew が出てきていて、私たちは今、みなさんに<strong>「この crew を立ち上げてみませんか。キャンペーンを始めましょう」</strong>と言える位置にいます。ただ今は、そこに <strong>KPI</strong> を結びつけてあります。<br>念のため申し上げると、その下に <strong>L2</strong> もあります。<strong>検索シェア</strong>や<strong>ウォレット、資本の粘着性</strong>といったものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:13:05</span></div>
+  <div class="turn-body"><p>私たちは、<strong>コミュニティは本来、自ら組織し、自ら決め、自ら方向を決めるものだ</strong>と理解しています。Cardano にいた方なら、このエコシステムについてそれは分かるはずです。<strong>作ろうとしているのは上意下達の統制構造ではありません。</strong><br>実際にやろうとしているのは——これが握手のもう片側です——<strong>ひとりの個人として入ってきて、自分にとって意味と目的と関わりのあるものを見つけられるようにする</strong>ことです。<br>Rob、説明しすぎたかもしれませんが、作りたい crew の話に戻ると、crew には本質的に<strong>寿命</strong>があります。キャンペーンの一部として、ある問題を解くために存在するからです。ですから、できては解散し、別の crew ができてはまた解散する。エコシステムにおける群れの性質として、<strong>複数の問題を同時並行で解こうとする</strong>ものだからです。そして解けたら次に移る。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:14:04</span></div>
+  <div class="turn-body"><p>つまり、Rob と私が話しているのは<strong>世界観づくり</strong>です。ここまで話してきたのは全部、<strong>コミュニティを代表して RealFi の経営側と話し、資源を確保する</strong>にはどうするか、という話でした。<br>では向きを変えて、握手のもう片側を見ると、Rob と私が話しているのはこうです。<strong>みなさんの委任者やコミュニティメンバーにとって、たどりやすく筋の通った RealFi の世界</strong>をどう作るか。目的と意味があり、<strong>自分がいちばん価値を出せる場所を見つけられる</strong>状態にどうするか。</p></div>
+</div>
+
+<div class="sec">crew と district</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:14:41</span></div>
+  <div class="turn-body"><p>この世界観づくりから出てきたのが——私は『Baldur's Gate』にわりと弱いのですが——<strong>crew を作るだけでなく、その crew が住む district（地区）も作る</strong>という考えです。<br>違いはこうです。<strong>crew は社会的な集まり</strong>で、できては解散し、別の集まりができてはまた解散する。それに対して <strong>district は恒久的な場所</strong>で、そこに知識や実践が蓄えられていきます。<strong>手法の蓄積、プレイブックのようなもの</strong>です。積み上げていける。<br>ですから、最初に作る crew は、それらの district の最初の crew になります。ただ<strong>規模が大きくなるとき</strong>——ここがおそらく決定的な点ですが——私たちは<strong>クロスチェーンに行ってもスケールする構造</strong>を作ろうとしています。<br>イベント担当の crew を 1 つ置く、というような形ではなく、<strong>問題のまわりに複数の crew が立ち上がれる</strong>だけの容量と能力がほしい。そうすればコミュニティの中で、エコシステムの強みを活かせます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:15:47</span></div>
+  <div class="turn-body"><p>ですから私の頭にあるのは、<strong>KPI と社内の構造をどう決めれば、この握手が続くのか</strong>。コミュニティが自ら組織しながら、同時に必要な支援と資源も得られる状態をどう作るか、ということです。</p></div>
+</div>
+
+<div class="sec">「ボーイバンドを作る」というたとえ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:16:07</span></div>
+  <div class="turn-body"><p>Rob、私たちが話してきたことの説明として、これで公平でしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:16:07</span></div>
+  <div class="turn-body"><p>ええ、まったく。要するに、私たちは <strong>Simon Cowell</strong> で、ボーイバンドやガールバンドを大量に作っているようなものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:16:20</span></div>
+  <div class="turn-body"><p>おっと。私のいちばん深い秘密が明かされてしまいました、Simon Cowell とは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:16:27</span></div>
+  <div class="turn-body"><p>いや、そういう感覚だという話です。突拍子もないたとえだとは分かっていますが、彼の全盛期を思い返すと——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:16:27</span></div>
+  <div class="turn-body"><p>なるほど。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:16:36</span></div>
+  <div class="turn-body"><p>『X Factor』や『American Idol』などで、彼は<strong>個人としては必ずしもぴったりではない人のなかに、ある種の資質を見抜いて</strong>、組み合わせた結果 One Direction や Little Mix になった。<br>ですからある意味、これは私の変なたとえのひとつですが、なぜか Ben はいつも全部通じるんですよね。私はふだん誰とも噛み合わないのに。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:01</span></div>
+  <div class="turn-body"><p>いえ、要は<strong>才能を探して、その才能がいちばん活きる場所を見きわめている</strong>ということですよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:17:12</span></div>
+  <div class="turn-body"><p>結局のところ——私は One Direction が好きではありませんが、Harry を別にすれば、あの形に組まれていなければ誰も有名にはなっていなかったでしょう。<strong>持っている力をいちばん引き出す形</strong>にしてもらったから、ああなった。<br>ただ同時に、<strong>何がいちばんで、何をやりたいのかを見せるのはみなさんのほう</strong>です。Miro のボードは、その最初の兆しを見せてくれました。あれだけ多くの方が参加してくださったので。</p></div>
+</div>
+
+<div class="sec">district の具体例</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:39</span></div>
+  <div class="turn-body"><p>ええ。聞いている方に向けて、もう少し具体的にすると、ワークショップから出てきたテーマには、たとえば<strong>地域ハブ</strong>がありました。それから<strong>1 対多の発信や X のスペース</strong>のような働きかけの話。<strong>つながりや提携の申し出</strong>もありました。<br>district の話でいうと、Rob は<strong>名前をコミュニティに付けてもらう</strong>ことに関心がありましたよね。文化的なことなので。私がよく言うのは、たとえば <strong>harbor（港）</strong>があって、それが地域ハブにあたる。そこを特定の場所として定める。<strong>stage（舞台）</strong>は働きかけ、<strong>bazaar（市場）</strong>は GTM と提携、というように。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:18:21</span></div>
+  <div class="turn-body"><p>では、D&D っぽくて少しオタクっぽいという以外に、なぜこれが役に立つのか。<br>主張はこうです。RealFi の中でも、どのチームの中でも、<strong>そこだけで通じる言葉と文化と用語</strong>があります。ところが<strong>規模を広げてクロスチェーンに行くとき、その内部の知識を同じやり方では広げられない</strong>。<br>ですから代わりに、何らかの<strong>手がかり（artifact）</strong>を使って、相手の頭の中にこの世界を立ち上げ、自分で歩き回れて、互いに位置を確かめられるようにしたい。<br>だからこそ、今作っているこのアンバサダー制度にはコミュニティに参加してほしいのですが、これは<strong>世界観づくり</strong>の話なのです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:19:05</span></div>
+  <div class="turn-body"><p>つまり、<strong>特定の仕事ができる場所や district をどう作るか</strong>。たとえば<strong>プロダクトとイノベーションの forge（鍛冶場）</strong>があるかもしれない。あるいは <strong>dark forest（暗い森）</strong>——RealFi の配信チャネルでは届かない場所に、その人にしか入れない形で入っていく<strong>advocate（代弁者）</strong>の話です。<br>分かりやすい例を挙げると、中国に反対しているという話ではまったくないのですが、仮に中国を相手にするとして、<strong>私はそのグループやチャンネルに入っていってコミュニティと関わることができません</strong>。それができるのは、その場に慣れていて、その部屋にいられる人です。</p></div>
+</div>
+
+<div class="sec">dark forest と proof of human</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:19:47</span></div>
+  <div class="turn-body"><p>この dark forest という考え方が面白いのは、こういうことです。Cloudflare を見ると、<strong>インターネット上の活動の 50〜80% がボット</strong>だとされている。Messari や DeFiLlama を見ると、<strong>オンチェーンの活動の約 90% がボットと推定</strong>されています。<br>dark forest の考え方は、<strong>AI が広がるほどインターネットはボットの活動になり、実在の人間は「cozy web」と呼ばれるほうへ退いていく</strong>——プライベートなチャンネルやディスコースのような場へ——というものです。<br>そしてこれは、<strong>SPO がやっていること、SPO が RealFi にもたらしてきた価値</strong>に直結します。というのも、このアンバサダー制度（あるいはアクセラレーター制度）の新しいところは、<strong>SPO はオンチェーンでもオンラインでも影響力を持っている</strong>という点だからです。<br>だから、<strong>これは「人間である証明（proof of human）」だと、かなり高い確度で見て取れる</strong>。本物の、真正な活動だ、と。<br>ですので、話を閉じると、これは<strong>SPO のみなさんが一緒に作ってくれた、なかなか面白くて新しい制度</strong>だと思っています。これについてはもっと公表したい。では、私の長話はここまでにします。</p></div>
+</div>
+
+<div class="sec">決めるのはコミュニティ</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:21:04</span></div>
+  <div class="turn-body"><p>つまりおっしゃっているのは——これは本当のことで、最初に軽く触れられていましたが——<strong>これについての一定の決定はみなさんに委ねられる</strong>、ということですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:21:16</span></div>
+  <div class="turn-body"><p>そうです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:21:16</span></div>
+  <div class="turn-body"><p><strong>雰囲気も、素材も、みなさんが決める</strong>。最初に言っておられた要点はそこでした。<br>これは本当に妥当で大事な点だと思います。私の独裁だったら、全部サッカーがらみになってしまいますから。<br>ですから、みなさんが決めるほうがいい。Web3 全般を見ても——みなさんは Cardano の一部で、実際にやっておられますが——<strong>とてもコミュニティ主導</strong>です。それと、Cardano と肩を並べる他のプロジェクトを見ると、Solana などは非常にうまくやっています。<br>ですので、みなさんが見せてくれた最良のものと、私たちが持っている最良のアイデアを取って、ひとつにまとめていきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:21:57</span></div>
+  <div class="turn-body"><p>そのうえで、<strong>やること全部について、みなさんを中心的な意思決定者にする</strong>。それがティッカーの一件から始まったわけです。<br>もともとはコミュニティの決定にする予定ではなかったのですが、関わりを保つという点でひらめきがありました。<strong>私たちの testnet は、ほかと比べれば限られている</strong>のは分かっています。もっとやることが多いところもある。それでも<strong>みなさんにここに留まっていただけているのは、その証</strong>です。<br>そして、その一環として、<strong>できるかぎりみなさんに当事者だと感じてもらえるように</strong>していきます。私たちの制度であると同じくらい、みなさんの制度ですから。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:22:31</span></div>
+  <div class="turn-body"><p>私はその<strong>ガバナンスを渡していく</strong>考え方がとても好きです。決定の数が増えていって——<strong>今のうちに、コミュニティが決められるという筋肉を鍛えておく</strong>。慣例や、生まれつつある文化について。そしてティッカーのように<strong>実質のある決定</strong>であれば、プロダクトの先にあるコミュニティとエコシステムを作る出発点として良いと思います。エコシステムというのは少し大げさな言葉ですが。<br>ああ、失礼しました。<strong>質問を募るべきでした</strong>。話しているあいだに質問があれば、チャットに入れてください。Rob に振ります。<br>それと、<strong>アンバサダー制度についてのご意見も募集します</strong>。みなさんから聞かれているのは——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:23:10</span></div>
+  <div class="turn-body"><p>ぜひご意見をいただきたいです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:23:19</span></div>
+  <div class="turn-body"><p>ええ、<strong>どんな役割があるのか、ステータスやポイントはどうなるのか、どういう仕組みなのか</strong>。今週と来週、私が集中するのはそこで、Rob と一緒に組み立てていきます。</p></div>
+</div>
+
+<div class="sec">前職での経験 — 言語コミュニティ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:23:29</span></div>
+  <div class="turn-body"><p>先の話として、<strong>より成熟したプロジェクトにおいて、アンバサダー制度はどんな役割を果たせる</strong>と思いますか。経験がかなりおありですよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:23:38</span></div>
+  <div class="turn-body"><p>はい。RealFi にとって何がうまくいきそうかは<strong>みなさんに決めてほしい</strong>ので、それを言うのではなく、Ben が言ったように、<strong>私自身が過去にうまくいったこと</strong>をお話しします。<br>さきほど Solana を挙げたのは、以前 <strong>Amulet</strong> という Solana のプロジェクトで働いていたからで、そこでは<strong>コミュニティが本当にプロジェクトを引っぱっていました</strong>。<br>大きかったことが 2 つあって、ひとつはさきほど Ben が触れた<strong>提携</strong>です。Amulet でいちばん良かった共同マーケティングの提携のいくつかは、<strong>コミュニティから持ち込まれ、コミュニティが紹介してくれたもの</strong>でした。同じ志の相手だと感じられたからです。<br>ある人は自ら<strong>「提携の王」</strong>を買って出ましたし、それが得意でない人もいて、そういう人たちの中心は<strong>自分の言語とその言語のコミュニティに私たちを紹介すること</strong>でした。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:24:41</span></div>
+  <div class="turn-body"><p>ご覧のとおり、その一部はこちらでも取り入れています。<strong>言語アンバサダー</strong>を導入しました。参加者Bさんがここにおられますし、参加者Cさんもインドネシア語で手伝ってくださっていて、さらに進める意欲も示してくださっています。<br>スペイン語も入れています。Amulet では最終的に、<strong>17 か 18 の言語</strong>になりました。<br>旧ソ連圏——ロシア、ウクライナ、ベラルーシ、カザフスタン——からもかなりの人が集まりました。面白かったのは、<strong>ふつうはそこをひとまとめにする</strong>ことです。共通の言語がだいたい分かるので。ところが<strong>地域ごとに独自のコミュニティを育てたら、存在すら想像していなかった大きなカザフのコミュニティがあった</strong>。<br>ロシアとウクライナのコミュニティが大きいことは知っていましたが、ほかの CIS 諸国の言語話者がこれほど来るとは思っていませんでした。チャンネルが 5 つあって、私のように読めない人間からすると全部同じに見えるのですが、実際には別の言語です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:25:49</span></div>
+  <div class="turn-body"><p>そしてそれは別の大陸にも広がりました。<strong>ヨルバ語</strong>——ナイジェリアの言語です——も出てきましたし、中国語、日本語、韓国語もありました。<br>そういうことを、みなさんがやってくれた。<strong>自分の地域で代表として動きたい</strong>という人もいて、そういう方には物を送っていました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:26:08</span></div>
+  <div class="turn-body"><p>SPO 向けに、Ben が以前これについて話していたと思います。それから、<strong>district はマーケティングの観点だけではありません</strong>。私はマーケティングの責任者なので、どうしてもマーケティング目線になりますが、<strong>技術の観点</strong>でも、みなさんは bug bounty やテスト、何が動いて何が動かないかについて、すばらしい仕事をしてくださっています。<br>それがうまく回っているのは、私たちのプラットフォームが小さめだからでもあります。ただ、<strong>技術チームには他にも必要なこと</strong>があって、みなさんのほうが専門性やつながりを持っていて関われる部分があるかもしれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:26:52</span></div>
+  <div class="turn-body"><p>Ben が、作ろうとしている世界の概念を書き出し始めているのが見えます。<br>それと、これはつながる話ですが——すぐにお話しいただきますが——<strong>この Discord サーバーはみなさんのサーバーです</strong>。そこが、世界観づくりにつながる点のひとつだと思っていて……あ、忘れてしまいました。画像を見て何か言おうと思っていたのですが、完全に頭から抜けてしまいました。</p></div>
+</div>
+
+<div class="sec">世界観づくりは何のためか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:27:23</span></div>
+  <div class="turn-body"><p>いえ、大丈夫です。これは<strong>「自分に関わりがあるか」</strong>の話だと思います。チャットに画像をいくつか投げているので、<strong>地図</strong>のようなものが見えると思います。<br>要は、コミュニティに入ってから<strong>「これは自分向けだろうか」「自分はどんな役割を果たせるだろう」と自問するまでの時間を短くする</strong>ことです。<br>ここで、聴いておられる参加者Dさんに触れておきたいのですが、<strong>「decentralized adventures（分散型の冒険）」</strong>という話をしておられました。この会話はそこから始まったと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:27:50</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:27:50</span></div>
+  <div class="turn-body"><p>冒険に出るなら、<strong>自分がどの役割を担うのか</strong>を知る必要がありますよね。どこへ行くのか。何と戦うのか。あなたが DPS で私がタンク、というように。<br>ですから、<strong>自分の役割、なぜそれをやるのか、これから入る世界がどういうものか</strong>を分かっている必要がある。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:28:11</span></div>
+  <div class="turn-body"><p>これが、私たちの言う<strong>世界観づくり</strong>の考え方で、<strong>エコシステムの地図</strong>のような考え方でもあります。入ってきた委任者やコミュニティメンバーが、<strong>自分の強みと持ち物と関心にもとづいて、貢献したいときにどこがいちばん自分に関わりがあり目的にかなうかを、すばやく理解できる</strong>ようにしたい。<br>それと、<strong>人がコミュニティに入る理由と、留まる理由は違います</strong>。留まるのは、関係性や文化のため、あるいは全体としての使命を信じているからです。<strong>Cardano がこれほどうまくいってきたのはそこ</strong>でしょう。<br>ですのでこれは招待状のようなものです、Rob。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:28:51</span></div>
+  <div class="turn-body"><p>参加者Aさんのようなメッセージが出てくるのは、だからこそ面白いんです。<strong>私たちが話す前にグループに書いておられたもの</strong>で、これは面白くなるぞ、という内容でした。同じ考え方です。<strong>その兆しはもうこのコミュニティに出ている</strong>。私が言いたかったのはそこです。<br>続きをどうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:12</span></div>
+  <div class="turn-body"><p>ええ。これは<strong>始めるための招待</strong>です。話しながら思ったのですが、私がやるのは、<strong>これらの考えを、すでに使っているワークショップの Miro ボードに持ち込む</strong>こと。そうすれば district を一緒に設計できます。<br>要は <strong>crew と district（恒久的な場所）を組み合わせる</strong>ということです。まだ残っておられる方には——覚えておいてください、<strong>district は専門性の話</strong>です。crew は、たとえば地域の harbor に入ってくる。あるいは、イノベーションや開発の forge があれば、そこに入ってくる。<br>そうすると <strong>district を接点として</strong>、チームに対して「<strong>この district はプロダクトという機能を助けています。自己組織のやり方はこうです</strong>」「この district はエンジニアリングを、あるいは GTM を助けています」と言えるようになります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:30:14</span></div>
+  <div class="turn-body"><p>このコールにいる方なら、こうした用語は分かるでしょう。でも<strong>新しく入ってきた人に、KPI やあの握手のことを背負わせる必要はありません</strong>。没入できて、面白く、そして——良い物語や良い世界観づくりがそうであるように——<strong>引き込まれるもの</strong>にすることに集中すればいい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:30:36</span></div>
+  <div class="turn-body"><p>ただ、<strong>Rob はずっと「本物であることの検証の度合いを高く保ちたい」</strong>と考えてきましたし、私は私で、<strong>本当に目的のあるコミュニティ</strong>を作りたかった。<strong>いわば「エンゲージメント農場」ではないもの</strong>を。うわべだけの関わりですね。<strong>関わりのための関わりを延々と続けることに意味はありません</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:01</span></div>
+  <div class="turn-body"><p>私たちがここにいる理由はそこではない。<strong>crypto にいるのは、根本的には共有された価値観のため</strong>で、多くはサイファーパンクや、開かれた金融システム、そして——RealFi の場合、世界秩序とまでは言わないにしても、<strong>フィンテックと金融のあり方</strong>を変えることです。<br>それと、私たちは<strong>楽しもうともしています</strong>よね、Rob。楽しんでもいいんですよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:31:29</span></div>
+  <div class="turn-body"><p>ええ、もちろん。ここまでで十分はっきりしていると思います。</p></div>
+</div>
+
+<div class="sec">次にやることと、投票の締切</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:36</span></div>
+  <div class="turn-body"><p>では次にやることですが、<strong>アンバサダー制度の提案を書き上げる</strong>必要があります。そのうえで、すでに作業している Miro のボードにそれを展開して、<strong>ご意見と district の名前</strong>をいただく。今週から来週はそれをやることになると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:31:55</span></div>
+  <div class="turn-body"><p>それと、リマインドを——<strong>明日リマインドを送りましょう</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:55</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:32:01</span></div>
+  <div class="turn-body"><p><strong>水曜に投票が締まる前</strong>に。十分な時間があるように。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:32:01</span></div>
+  <div class="turn-body"><p>たしかに、それはいい。ティッカーの話に戻しましょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:32:07</span></div>
+  <div class="turn-body"><p>すみません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:32:07</span></div>
+  <div class="turn-body"><p>ずいぶん脱線しましたね。ティッカーに戻しましょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:32:13</span></div>
+  <div class="turn-body"><p>ええ。<strong>ティッカーの投票は木曜——いや、水曜に締まります</strong>。明日リマインドを出して、最後の票を集めます。<strong>100 まで行けばとても嬉しい</strong>ですが、行かなくても大したことではありません。今は 60、65 くらいだと思います。66 だったので、誰かが票を取り下げたようです。67 になってほしかったのですが。<br>いずれにせよ、最後のリマインドを送って、そのあと<strong>正式に告知</strong>します。今のところ案 B に見えています。ですから<strong>案 A 推しの方は、友達を全員 RealFi に呼んで案 A に投票してもらうことをおすすめします</strong>。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:32:58</span></div>
+  <div class="turn-body"><p>ええ。そして<strong>案 B 推しの方は、案 A 推しの人に対抗するために友達を全員サーバーに呼んでください</strong>。<br>Miro のボードのリンクを貼っておきます。参加者Eさんが求めておられたので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:11</span></div>
+  <div class="turn-body"><p>これが、<strong>SPO のアルファ・コホート</strong>を回していた Miro のボードです。中身は<strong>資産ベースのコミュニティ開発</strong>です。入って自己紹介をし、<strong>自分の強み</strong>を挙げる。次に、<strong>解きたい課題とプロジェクト</strong>は何か。この場合は、<strong>単独のステークプールへの委任を集めるキャンペーン</strong>です。そして、その仕事を引き受ける。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:34</span></div>
+  <div class="turn-body"><p><strong>どの crew に入りたいか</strong>。<br>ティッカーの話に戻ると、ひとつ簡単な——簡単だといいのですが——お願いがあります。<strong>RealFi のコミュニティを共有してほしい</strong>のです。Rob と私はここで、長く続くものを作ろうと本気で取り組んでいます。<strong>みなさんの委任者や友人、コミュニティメンバーをここに招いて、投票して参加してもらえたら</strong>と思います。<br>言えない<strong>大きな告知が控えています</strong>。<strong>後悔する人はいないと思います</strong>。このプロジェクトは前に進んでいますから。<br>——ちょっと言いすぎたかもしれません、Rob。あとで叱ってください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:34:13</span></div>
+  <div class="turn-body"><p>いえ、大丈夫です。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — USDA、crew の運営</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:34:19</span></div>
+  <div class="turn-body"><p>参加者の方の質問にお答えすると、<strong>USDA は検討していません</strong>。アルファベット順の理由でそうしたくなるのは分かりますが——<strong>CEX 側はおそらく把握しているはずなので、たぶん候補にはならない</strong>と思います。ただ、そうかどうかは実際に調べてみないと分かりません。<br>いずれにせよ、それが告知されることはないですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:34:33</span></div>
+  <div class="turn-body"><p>いい質問ですね。参加者Fさんから、<strong>定例のミーティングはあるのか</strong>という質問です。これは crew の話ですね。<br>crew を作るなら、<strong>少なくとも 2〜3 人の発起人</strong>が要るでしょう。おそらく、その意欲があれば SPO の方になる。そうして crew ができ、それは<strong>自ら組織する集まり</strong>になります。<br>もちろん私たちは支える側にいますが、<strong>コミュニティは上意下達の聴衆ではありません</strong>。誰と、あるいは Cardano の誰と名指しするつもりはありませんが、<strong>チームが入ってきて上意下達のように扱う</strong>——「こちらからメッセージを送ります」という具合の——場面はよく見ます。実際には Web3 のコミュニティは自ら組織し、<strong>自分たちが気にする問題を見つけて、それに取り組む</strong>ものです。<br>ですので crew を作るなら、ミーティングは持ちたいでしょうし、<strong>時間と場所を決めたい</strong>でしょう。<strong>どういう頻度にするかは、その人たち自身が決めること</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:35:31</span></div>
+  <div class="turn-body"><p>それと私たちが気をつけているのは、<strong>「ワーキンググループ」系の言葉を避ける</strong>ことです。Cardano という文脈があるので。<strong>Intersect のワーキンググループはたくさんあって、そこから大きな価値も出ました</strong>。ただ同時に、<strong>全体を追いかけたり、どこへ向かっているのかを見たりするのが非常に難しかった</strong>。<br>ですから crew と district なら、<strong>やっていることをずっと絞り込めて、人にとっても分かりやすくできる</strong>と思っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:02</span></div>
+  <div class="turn-body"><p>参加者Fさんのおっしゃるとおりです。要するに、<strong>crew を作るときには結成の手続きが要る</strong>。そこで考えたのが<strong>マンデート（任務の定め）</strong>です。できるだけ簡潔にしますが、何が起きているのかをたどれるものにします。<br>そしてそれは、たとえば今 RealFi にある <strong>Luma のカレンダー</strong>——今は RealFi の office hours か、同僚がやっているすばらしいインタビューなどが載っているだけですが——に流し込んでいけます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:29</span></div>
+  <div class="turn-body"><p>そこに<strong>コミュニティの活動</strong>も載せ始められます。<br>それと、これで判断しないでほしいのですが——同じようになるべきだと言っているわけではありません——<strong>Chainlink Marines</strong> はすさまじかった。覚えている方はいますか。あの人たちは本当に組織化されていた。私からすると<strong>攻撃的すぎた</strong>とは思いますし、彼らと相対した側の視点かもしれませんが、<strong>あの組織化の度合いは見事</strong>でした。<br>何と言えばいいか——<strong>仲間意識、団結、互いの関係</strong>。非常に献身的でしたね。ですので、100% 真似したいとは思いませんが、あの人たちには感心しています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:21</span></div>
+  <div class="turn-body"><p>では Rob、現在に引き戻してください。私たちは、<strong>RealFi を共有して人を招いてほしい</strong>とお願いしている。そして、<strong>あれだけうまく立ち上がったワークショップを続ける</strong>という見通しを立てている。そして<strong>遅れた理由は、KPI と社内チームの優先事項を、これからできる district や crew に結びつけるために、いったん戻ったから</strong>だ、と。<strong>将来、資源についてきちんと主張できるようにするため</strong>です。</p></div>
+</div>
+
+<div class="sec">まとめとお礼</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:48</span></div>
+  <div class="turn-body"><p>これで公平でしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:37:48</span></div>
+  <div class="turn-body"><p>ええ、まったく。私たちが話したことはほぼ全部だと思います。あとは——<strong>8 月の月曜の午後という、多くの方にとってたいてい都合の悪い時間に振り替えた office hours</strong> に、それでも時間を作って来てくださったことに本当に感謝しています。足を運んでくださって、本当にありがたく思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:38:12</span></div>
+  <div class="turn-body"><p>そして Rob、アナウンスやマーケティング、メディアなどで進めてくださっている仕事にも感謝します。こうしたことは実を結びますし、<strong>そう遠くない先に、みなさんにも見えるようになる</strong>と思います。<br>では——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:38:28</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:38:28</span></div>
+  <div class="turn-body"><p>質問の時間です。ある方はチャットに入れてください。</p></div>
+</div>
+
+<div class="sec">日本のコミュニティへの調査</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:38:39</span></div>
+  <div class="turn-body"><p>打ち込んでいるのかどうか分からない、あの気まずい間ですね。それでみなさん——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:38:39</span></div>
+  <div class="turn-body"><p>以前は面白くて、<strong>観客はいつも最低でも 70〜80 人</strong>いたのですが、英語が第一言語という人はほとんどいませんでした。それでも<strong>プロジェクトの責任者</strong>がいるときは必ず質問を募るのに、質問はまったく出ない。私ひとりのときは、そうでなければ出てこない質問が全部来るんです。<strong>責任者が出ているときには誰も来なかった</strong>のに、なぜか私ひとりのときだけ来る。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:12</span></div>
+  <div class="turn-body"><p><strong>日本の話</strong>を、大まかにお伝えしましょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:39:12</span></div>
+  <div class="turn-body"><p>ええ、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:12</span></div>
+  <div class="turn-body"><p>聴いておられる参加者Iさんは、<strong>日本の主要な SPO のひとり</strong>です。ご参加いただいてありがとうございます。<br>ガバナンスに少しでも関わっていれば分かると思いますが、<strong>40〜50 億 ADA ほどが動いています</strong>。それが日本で、この 12 か月ほどのあいだにです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:48</span></div>
+  <div class="turn-body"><p>そして今動かしているのが、<strong>日本のコミュニティ向けに出している調査</strong>です。私が関係を築いてきた<strong>日本の SPO や KOL</strong> に伺っていて、参加者Iさんと参加者Jさんに手伝っていただいています。<br>聞いているのは<strong>公共財</strong>についての質問で、これは <strong>SecondFi の一件を踏まえた文脈</strong>なので、時宜にかなっています。<br><strong>自分の ADA を守るという意味での金融的な主権</strong>。そして<strong>日本向けのアクセラレーター制度があるので、日本のコミュニティは日本の SPO に委任できる</strong>ということ。その狙いは<strong>ネットワークの分散</strong>です。<br>ですので公共財とは、<strong>金融的な主権、自分の ADA を守ること、そして単独のステークプール運営者に委任してネットワークを分散させること</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:40:36</span></div>
+  <div class="turn-body"><p>そのうえで、<strong>Cardano の長期的な健全性をどれくらい重視しているか</strong>を伺っています。そこには<strong>経済的な活動</strong>が非常に重要だと思うからです。<br><strong>Cardano の初期であれば、ステーキングだけで——ネットワークを守るだけで十分だった</strong>でしょう。しかし今は、<strong>経済的な活動そのものが公共財</strong>だと思います。<br>そして公共財の質問を抜けたあとには、<strong>何があれば Cardano に留まりやすいか</strong>、<strong>どんな用途や機能が役に立つか</strong>も聞いています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:41:10</span></div>
+  <div class="turn-body"><p>この調査をまとめた理由ですが——これはネタばらしになりますし、<strong>西側の SPO にも役立つ</strong>と思うのでお話しします。西側というのは、アジア以外の全部という意味です。<br>狙いは、<strong>SPO が自分の委任者に RealFi を説明して回れるような、共有素材や説明資料の一式を作る</strong>ことです。いわば<strong>「教える人を教える」</strong>やり方で、こちらが誰かの口に言葉を入れるのではなく、<strong>いちばん筋の通る論の立て方を組み上げる手伝いをする</strong>。<br>ですから、<strong>いちばん多くの人に届き、関わりのあるものにしたい</strong>なら、私たちの見方では、<strong>公共財、つまりみんなにとっての共通の利益</strong>について話すべきだ、ということです。<br>そういう考えです。<strong>その調査は今日出ました</strong>、Rob。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:42:07</span></div>
+  <div class="turn-body"><p>全員に当たっています。<strong>期待しているのは、日本のコミュニティに関わってもらい、日本の SPO に加わってもらい、そしてその委任者と日本のコミュニティが RealFi について知っていく</strong>ことです。<br>そして SPO は、<strong>どの国であっても信頼されるインフラであり、関係の資本を持っている</strong>ので、自分の委任者に話ができる。<strong>そのほうが強いモデル</strong>です。ここが、私たちが作ろうとしているアンバサダー制度の新しいところです。<br>アンバサダーと言うとき、私が指しているのは<strong>影響力のある人</strong>であって、単なる——Rob、あなたがやりたくないと言っていたあの制度は何でしたっけ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:42:49</span></div>
+  <div class="turn-body"><p>ええ、はい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:42:55</span></div>
+  <div class="turn-body"><p>ああいう類の……何と言うんでしたか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:42:55</span></div>
+  <div class="turn-body"><p>おっしゃっていたのは——<strong>ゲーム化した farming</strong> でしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:01</span></div>
+  <div class="turn-body"><p>そう、それです。<strong>私たちはそれを望んでいません</strong>し、<strong>anti-Sybil と anti-farming の手立ては効いています</strong>。RealFi のチームはそこを本当に大事にしています。<strong>ほしいのは見せかけの指標ではなく、真正な活動</strong>です。</p></div>
+</div>
+
+<div class="sec">雑談 — swag と Labubu</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:19</span></div>
+  <div class="turn-body"><p>さて。Rob、このあと謝らないといけませんね。このコールで私が話しすぎたと思うので。<strong>そちらが話したかったことは全部拾えましたか。</strong></p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:43:24</span></div>
+  <div class="turn-body"><p>ええ、まったく問題ありません。それと、体調が万全でないなかで出てくださってありがとうございます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:24</span></div>
+  <div class="turn-body"><p>いえ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:43:34</span></div>
+  <div class="turn-body"><p>しっかり進めてこられて——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:34</span></div>
+  <div class="turn-body"><p>本当に、ずいぶん良くなりました。以前と比べればかなりです。<strong>金曜だったら、たぶんできなかった</strong>と思います。今日は生まれ変わったような感じで——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:43:40</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:40</span></div>
+  <div class="turn-body"><p>いや、昨日から生まれ変わったような感じです。<br>それと、<strong>Midnight City</strong> のあれは、これに使えたら面白かったかもしれないと思っていました。世界を見て回れる形ができたら、ということですが。Miro のボードに放り込んでおくことかもしれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:44:01</span></div>
+  <div class="turn-body"><p>今からでもできますよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:44:01</span></div>
+  <div class="turn-body"><p>ええ。では、あらためてありがとうございました。<strong>今週はもう 1 回 RealFi の office hours があります</strong>ので、盛りだくさんですね。<strong>金曜にもう 1 回</strong>。誰と一緒でしたっけ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:44:10</span></div>
+  <div class="turn-body"><p><strong>投資チーム</strong>です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:44:10</span></div>
+  <div class="turn-body"><p>おお、それは面白くなりますね。<strong>中身の濃い質問に踏み込む</strong>ことになりますよね。調査でも出したほうがいいかもしれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:44:17</span></div>
+  <div class="turn-body"><p>何人か心当たりがあります。<strong>投資チームと食事をしたのですが、正直ほとんど分かりませんでした</strong>。……いや、もちろん分かりましたよ。ただ、あの人たちは本当にのめり込んでいるので、使う言葉が、こちらが十分に分かっていないと「おっと」となる。とはいえ、<strong>あれは情熱です</strong>し、当然ながら crypto の人だけを相手に話していた場面でしたから。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:44:44</span></div>
+  <div class="turn-body"><p>このコールを聴いておられる方のなかにも、質問したい方がいると思います。参加者Fさん、参加者Hさん、参加者Gさんなど。<br><strong>投資チーム向けの良い質問がいくつも来ていました</strong>。参加者Aさんから「<strong>Token 2049 に行くのか</strong>」という質問が来ていますが、もう答えました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:45:14</span></div>
+  <div class="turn-body"><p>行きます。<strong>Cardano Foundation のブースを取れないか申請を出した</strong>ところで、締切は明日だったと思います。うまくいけば 1 週間ほどで、こちらの動きがずっと楽になります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:45:21</span></div>
+  <div class="turn-body"><p>それで、もらえるんでしょうか……ええ。私のアンバサダー制度では——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:45:28</span></div>
+  <div class="turn-body"><p>いいですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:45:28</span></div>
+  <div class="turn-body"><p><strong>swag（グッズ）が要りますよね</strong>。着てくれる人が必要ですし——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:45:28</span></div>
+  <div class="turn-body"><p>そう、それでグッズはあります。私自身、RealFi のパーカーと T シャツを持っています。<strong>そういうもののデザインはもう用意してあります</strong>。<br>実は<strong>デザインを変えました</strong>。今のロゴ自体は変えていません——それは同僚がやった変更です。以前の RealFi のロゴがありましたが、私は今のロゴのほうが好きです。ただ<strong>古いグッズのほうは、もう少し洒落た感じに作り直しました</strong>。<strong>ロゴを少し小さく</strong>したんです。古いパーカーは前面に大きな RealFi のロゴが入っていましたが、新しいほうはもっと上品で、<strong>左胸に RealFi のロゴが入っているだけ</strong>です。<br>つまり、crypto のイベントだけでなく、<strong>街で着られる</strong>ものになっている。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:46:28</span></div>
+  <div class="turn-body"><p>では、このコールにおられる全員に RealFi のパーカーを届けるのが私の使命ですね。もちろん自分の分も含めて。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:46:42</span></div>
+  <div class="turn-body"><p>今の Discord のアニメーションを見ていて思ったのですが、きっと気に入ったと思いますよ——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:46:50</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:46:50</span></div>
+  <div class="turn-body"><p>以前 Pondo 向けに作ったパーカーです。背中に鯉が 2 匹入っていました。品質はいまひとつでしたが、みんな欲しがって——あれは Denver の、そう、ETHDenver でした。<strong>パーカーはチームの分しかなかった</strong>のに、エアタンクや PlayStation のような高価なものを配っていても、<strong>みんなパーカーだけを欲しがった</strong>んです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:47:18</span></div>
+  <div class="turn-body"><p>去年 Token 2049 に行ったとき、娘のために <strong>Labubu</strong> を手に入れる無茶な任務を負ったのを思い出しました。知人のチームが水の自動販売機のようなものを出していて、あちこちスキャンしてポイントを貯める仕組みだったのですが、<strong>Labubu は必要ポイントがものすごく多くて</strong>、1 時間ほど費やしました。ですので、何かできないか——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:47:41</span></div>
+  <div class="turn-body"><p>何とかしてみましょう。私は Labubu を持っています。<strong>マンチェスター・ユナイテッドの Labubu</strong> です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:47:47</span></div>
+  <div class="turn-body"><p>ほう。ほかにも——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:47:47</span></div>
+  <div class="turn-body"><p>数週間後にマンチェスターに帰るのですが、<strong>子どものころに通っていた駄菓子屋のご主人</strong>にいまだに会いに行くんです。その店はまだあって、Labubu は流行っているので、<strong>その方が中国から直接 Labubu を仕入れていました</strong>。近所に住んでいる中国の方が持ってきてくれて、<strong>マンチェスター・ユナイテッドとマンチェスター・シティのユニフォームを Labubu 用に作らせた</strong>んです。<br>それで、初めての Labubu をいただきました。マンチェスター・ユナイテッドのものだったので。ですから Labubu が欲しければ、将来ただで手に入れられます。<strong>ウィガンの南</strong>まで来ていただければ。半時間ほど南です。<br>私は自分の Labubu には払わないといけませんが。美容師さんにもひとつ買って帰りました。あの人の店で最後に払ったのは 2008 年か 2009 年だと思うので。</p></div>
+</div>
+
+<div class="sec">最後に — キャンペーンと数値の話に戻る</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:48:52</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:48:52</span></div>
+  <div class="turn-body"><p>その前にキャンペーンの計画が要りますね。つまりこういうことです。<strong>crew を作り、管理のボードに上げる。すると crew の目的が分かる</strong>。開いたままの状態よりずっと絞り込まれます。そして<strong>キャンペーンはそこから計画される</strong>。<br>そのうえで必要なポイントやインセンティブ、資源について<strong>主張ができる</strong>ようになる。だからこそ、いったん戻って結びつけ始めたわけです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:49:28</span></div>
+  <div class="turn-body"><p>まず何より、<strong>数値が何なのかを本当に理解する</strong>ことでした。RealFi に入ったばかりのころは、TVL が大事で、ステーキング比率が大事で、その時点ではそれで十分だと思っていました。<br>ところが <strong>60 日ほど経ったころ</strong>、データチームと座って「<strong>本当に効く L1 は何で、L2 は何なのか</strong>」と詰めました。それが、実際にキャンペーンを組むときに効いてきます。<strong>どう追跡するのかを、最初に計画しておく必要がある</strong>からです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:49:59</span></div>
+  <div class="turn-body"><p>コミュニティのキャンペーンから、すばらしい活動がいくらでも生まれうる。<strong>けれども crew ができる時点と終わる時点で、私たちがその場にいて</strong>「では、みなさんはこれとこれとこれをやる予定ですね。それを Rob と私が追跡して、<strong>社内に持っていっても説得力のある形で成果にできる</strong>にはどうすればいいか」と言えなければ、意味がない。<br>IOG と Cardano で 5 年——いや 7 年——やってきて学んだことがあるとすれば、それは<strong>握手の反対側にいる人が理解できる数字を持っていけること</strong>が本当に大事だ、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:50:39</span></div>
+  <div class="turn-body"><p>はい。では、私はこの回を少し楽しみすぎたかもしれませんが、<strong>金曜にまたお会いしましょう</strong>。<br><strong>サマリーは投稿します</strong>。おそらく明日です。投稿の前に<strong>法務の承認を取る必要がある</strong>ので。<br>ご参加ありがとうございました。Discord にはいますので、私か Rob にいつでも DM をください。<br>アンバサダー制度についてのご提案や質問、あるいは<strong>やるべきコミュニティのキャンペーンについてのアイデア</strong>があれば、どれも関係があります。Miro のボードに入れて、「では、こういう crew と district で回せそうだ」と話せますので。<br>Rob、最後の一言をどうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:51:24</span></div>
+  <div class="turn-body"><p>ありがとうございます。私は十分に話しました。みなさん、お集まりいただきありがとうございました。またお話しできるのを楽しみにしています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:51:24</span></div>
+  <div class="turn-body"><p>みなさん、ありがとうございました。それでは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:51:24</span></div>
+  <div class="turn-body"><p>それでは。</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語の原文を訳したもの。誤変換は用語集にしたがって直してある。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 全セッション</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+slug: 2026-08-24-office-hours-ticker
+title: RealFi Office Hours — Ticker
+title_en: RealFi Office Hours — Ticker
+date: 2026-08-24            # 月曜。前週から振り替えられた回（「Monday afternoon in August」と本人が言及）
+platform: Discord
+series: realfi-office-hours   # shared/series.yml のキー
+series_no: 7                  # RealFi Office Hours の通し番号（回の実施順）
+
+# 匿名化の判定
+#
+# **partial。**依頼は「チャタムハウスルールは特に気にしなくてよい」だったが、
+# **依頼者が許諾できるのは自分の名前までで、聴衆として名前が挙がった第三者の分ではない。**
+# CLAUDE.md の「判断がつかないときは匿名化する側に倒す」に従い、#6 と同じ扱いにした。
+#
+#   残す   … 発話した 2 名（ホスト / マーケティング責任者）
+#   落とす … 聴衆として名前が挙がった人、社内で名前が挙がった人、他社の人物
+#
+# tools/check.py の NAMES には「残してはいけない名前」だけを入れてある。
+#
+# **回をまたぐ影響**: マーケティング責任者の名前は 2026-08-14 の回で
+# 「社内の人物」として匿名化した 2 名のうちの 1 人。この回で名前を出すと、
+# **#6 のその言及が誰なのかも分かる**。依頼者には伝えてある。
+# 影響を広げないため、実名はこの回のページの中だけにとどめ、
+# docs/index.html と README.md では役割で書く。
+chatham_house_rule: partial
+
+speakers:                 # この回で発話したのはこの 2 名だけ
+  - ホスト                 # 進行。アンバサダー制度と日本向け調査の説明
+  - マーケティング責任者     # ティッカー変更と投票の説明
+
+# 聴衆として名前が挙がった人。すべて匿名化した。
+questioners:
+  - 参加者A                # testnet 中の交換レート、Token 2049 への出展
+  - 参加者B                # 言語アンバサダー（言及のみ）
+  - 参加者C                # 言語アンバサダー（インドネシア語。言及のみ）
+  - 参加者D                # 「decentralized adventures」の発案者として言及
+  - 参加者E                # Miro ボードのリンクを求めた
+  - 参加者F                # crew の定例ミーティングの有無
+  - 参加者G                # 言及のみ
+  - 参加者H                # 言及のみ
+  - 参加者I                # 日本の SPO。日本向け調査への協力者として言及
+  - 参加者J                # 日本向け調査への協力者として言及
+# 参加者E と参加者F は同一人物の可能性がある（原文では正式な綴りと短縮形）。
+# 断定できないため別ラベルにしてある。shared/speakers.md に記録。
+
+colleagues_generalised:   # 社内・他社で名前が挙がった人物。役割に置き換えた
+  - the data lead         # データ／エンジニアリング担当
+  - a colleague           # インタビュー・ロゴ変更を担当したメンバー
+  - the project lead      # マーケティング責任者の前職のプロジェクト責任者
+  - an acquaintance       # Token 2049 の逸話に出てくる知人
+
+# 組織名・プロダクト名はそのまま残している（発言者ではなく話の対象のため）。
+# Amulet, Solana, Chainlink, Cloudflare, Messari, DeFiLlama, Intersect,
+# Token 2049, ETHDenver, Miro, Luma など。
+
+# 資料について
+slides:
+  shown: false            # 画面共有なし。ホストがチャットに画像と Miro のリンクを投げている
+  note: |
+    スライドはない。ホストがチャットに「マップ」の画像と Miro ボードのリンクを
+    貼る場面があるが、リンク先そのものは扱わず、音声で語られた内容だけを記録している。
+
+# 原本は SRT（字幕）。タイムスタンプは付いているが話者ラベルはない。
+# 1 つの字幕ブロックの中で話者が入れ替わるため、分割は文脈から判断している。
+source_format: srt
+speaker_labels: inferred
+timestamps: yes
+
+duration: "51:35"
+attendees: null           # 参加人数は語られていない。投票数（63〜66）は参加者数ではない
+
+source:
+  audio: null
+  video: null

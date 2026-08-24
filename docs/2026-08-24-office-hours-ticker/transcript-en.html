@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #7 — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #7</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-08-24</span>
+  <span>51:35</span>
+  <span>Discord</span>
+  <span>Ticker</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> People named in the audience appear as <code>Participant A–J</code>; colleagues and people at other companies are described by role. <strong>Only two people spoke on this call.</strong></p>
+<p>The source is an SRT: <strong>timestamps but no speaker labels</strong>, and a single subtitle block sometimes spans a change of speaker. The split into turns is judged from context; with only two voices it is unambiguous throughout, so nothing is marked <em>(inferred)</em>. <strong>Apart from the anonymisation above, the wording is unchanged</strong> — mistranscriptions included.</p>
+<p>There were no slides. Images and a Miro link were posted in chat during the call; their contents are not covered here.</p>
+</div>
+
+<!--content-->
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>Thanks also everyone for rearranging this to Monday because I was pretty sick last week.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>Mm-hmm. That's great. So I'm just, uh, sending some tweets out to, uh ... I'm posting it into announcements to get a few more people in the room.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:16</span></div>
+  <div class="turn-body"><p>Okay. Um, just while we're waiting, what, what are we gonna be talking about?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:00:16</span></div>
+  <div class="turn-body"><p>Yeah, so today is gonna be a bit, is about last week's announcement and the campaign about it, the change in the ticker name for USDR, SUSDR, and RFG, how that's come about. Um, and also give a little bit of progress from when we last had an office hours and we set up the Miro board where loads of SPOs have contributed fantastically and what to expect is gonna come from that after the discussions we've had from those awesome ideas.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:44</span></div>
+  <div class="turn-body"><p>That's great. Yeah, I'm definitely excited about the ambassador program. Two seconds and, um ...</p></div>
+</div>
+
+<div class="sec">The ticker — where it came from, and why it changes</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:58</span></div>
+  <div class="turn-body"><p>Okay, brilliant. Uh, so if we kick off, um, beginning with the ticker, uh, how did ... What was the ticker originally and how did we, how did we arrive at it and, and what are the reasons for, for changing it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:01:12</span></div>
+  <div class="turn-body"><p>I mean, that kind of happened before I joined. Um, I think it probably was quite ... Re- 'cause we're called RealFi, it probably made a lot of sense to do something along the lines of USD but with something that's connected to RealFi, which is where the R came from. So I think it just became we went with it 'cause it was the, the most obvious option to start with. But the problem we've encountered, 'cause obviously we are quite ambitious, we're thinking of the future and we're thinking about what top quality exchanges we can be on, and what came was an issue with actually using USDR because other people had used it previously, uh, m- failed projects. So what happened on ... Well, yeah, the, the whole point of why this, uh ... So now we've decided it's an opportunity because we've got to change it to let the community decide what was the right, which route we go down, give them the first real big decision of any big changes that are coming to RealFi. Um, and yeah, and, uh, quite an exciting time, but I think where it came from initially is purely because RealFi starts with the letter R. Um, but now this has actually given us a unique opportunity. We did a bit of research onto what different type of ticker names we could use that still have the R and the F, uh, and even the L at some point. Um, and yeah, we've, uh, we've, we came up with two solutions, which is, uh, what the vote is about.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:02:38</span></div>
+  <div class="turn-body"><p>Which I can add to. Uh- I'll just ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:02:38</span></div>
+  <div class="turn-body"><p>Yeah, no, that's fine.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:02:38</span></div>
+  <div class="turn-body"><p>What I'll do, what I'll do, I don't know if it's, um ... I know you have, you've already put you- Um, I'll put the link in as well to the specific message on Discord where we're actually looking for the votes. Um- So walk me through the options and, uh, where, where are we at with that vote?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:02:51</span></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="sec">The two options, and where the vote stands</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:02:57</span></div>
+  <div class="turn-body"><p>So right now we, we launched it on Wednesday. The two top options that we came to that made complete sense, to give you an idea as well, it was quite a bit of research that went into the different options that were available. So the reason why you've only got the two options to choose from is 'cause these are the two that made the most sense, um, after the research was done, any conflicting projects, anything like that. Um, the two options they came up with was B f- was option A is we would swap USDR into RFUSD, SUSDR into SRFUSD, and RFG would be changed into RFIG. Um, so still keeping the core aspects, what some that are available and giving the RealFi name. And very similar with option B, so USDR would move into USD RF, uh, SUSDR turn into SUSDRF, and RFG turned into RLFJ, which, uh, I like because it's very Web3. Um, but in general as well, I know option B is currently winning.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:03:57</span></div>
+  <div class="turn-body"><p>Um, we ideally, like my- the dream would be that we get 100 people to participate in it. We're almost there. We're not too far. We've got until Wednesday. Uh, 63 people have voted at the moment. Option B is currently winning, and I think what actually swayed that was a conversation that happened within the community on Wednesday when we launched this, which was, um, they felt that if you put RF after USD, you're gonna ... People that are looking for other stable coins are gonna accidentally find us and I think that's what got- 'cause it was until that moment it was fairly 50/50, and now right now it's 66% for option B and 34% for option A. Um, I voted. Uh, everyone's entitled to a vote, so, uh-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:04:38</span></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="sec">What happens after the vote</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:04:44</span></div>
+  <div class="turn-body"><p>So walk me through, I don't think you've actually, um, walked me through in detail, but walk me through what will happen after the vote passes. So how is the- how is this vote gonna drive outcomes?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:04:51</span></div>
+  <div class="turn-body"><p>So once we close the vote, that's it. You've made the decision for us. The RealFi OGs have become one of the original decision makers. Um, we will start the process, uh, internally to, to start changing things. It's gonna be a lot of work for, uh, members of the team because obviously we've-- everything right now is under USDR, SUSDR, and RFG. So we'll have to go through a lot of that. But in essence, when it comes to RealFi and the protocol, absolutely zero changes. It really is just a name change. So everything you've heard about RealFi, that's all staying. All the positive solid stuff is, is all staying. We're doing this, this is again an actually a positive. Uh, we're doing this to make sure we don't ha- we're thinking long term, not just short term, and we're thinking about those top exchanges that we can be on in the future. So that's where this has come from. And once that decision's been made, which, um, right now is looking like option B, that's when we'll start the process internally to start changing that and those will become our official ticker names. So you won't hear us probably say USDR after Thursday.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:05:55</span></div>
+  <div class="turn-body"><p>Mm.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:05:55</span></div>
+  <div class="turn-body"><p>Or you, you'll slap my hand if I do.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:03</span></div>
+  <div class="turn-body"><p>But so I don't know, we can't say what exchanges we may be talking to or not talking to, but it will help us in that conversation or i- i- in getting that, um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:03</span></div>
+  <div class="turn-body"><p>Absolutely ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:15</span></div>
+  <div class="turn-body"><p>placement as well, yeah</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:15</span></div>
+  <div class="turn-body"><p>Absolutely. And I mean, we can give a bit of an insight that we've had some positive talks, and so this is w- why this has come maybe a bit sooner. And also gives us plenty of time pre mainnet to focus in on this and to, to not have this coming up later in the line and cause us any issues later in the line. We're totally fully prepared while we're in testnet. So, um, yeah, that's, that's the main reason we've driven it, and we've driven it now before we come to, um, before we come to the next stages of RealFi-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:32</span></div>
+  <div class="turn-body"><p>Mm ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:45</span></div>
+  <div class="turn-body"><p>which would be the end of testnet and obviously leading up to the mainnet launch.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:45</span></div>
+  <div class="turn-body"><p>So it's a, it's a great point.</p></div>
+</div>
+
+<div class="sec">Before mainnet — towards an ambassador programme</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:51</span></div>
+  <div class="turn-body"><p>So pre mainnet, uh, what else are we doing? I think we were talking before the call about ambassador programs.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:06:59</span></div>
+  <div class="turn-body"><p>Um- Yeah ... activity world building.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:06:59</span></div>
+  <div class="turn-body"><p>Yeah, walk, walk me through what you want us as a community to have achieved before we get to the point that we're going cross chain.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:07:08</span></div>
+  <div class="turn-body"><p>Absolutely. Yeah. So, uh, what, um, a lot... Well, what we've covered is particularly since Ben has been a, uh, how, been, been a part of RealFi is th- that SPOs have come on board and SPOs have shown have been really engaged and are showing really, really positive signs for us. And we've been doing a lot of work of what's the best way to utilize this? What's the best things that we can do? And we came up with, you know, different people working on different things, but what, what came out of it is Ben, Ben's been doing a lot of work in ac- um, internally about how we can make this work and how to make a real plan.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:07:41</span></div>
+  <div class="turn-body"><p>And last week we kind of had a bit of a brainwave because we'd set up this whole thought process of squads and getting different people to do the things that they wanna do best. That's what we found from the Miro board that people did after the, that we set up just before the marketing office hours. We found that, you know, the people really participated in it. So really the RealFi community is your community, it's not our community. But there's obviously things that we need to do internally to ensure that you do the best, y- y- you're able to utilize your best skills to help give RealFi and hit our goals. And that came up with taking different community members', um, specialities and putting that to where it would be best used. You know, a bit like, because we've seen how well the engagement's already been. And so what we're now starting to build is more of a mainnet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:08:33</span></div>
+  <div class="turn-body"><p>Uh, it's something that in time for mainnet, which will be of an ambass- ambassador program, which we're still working out the fundamentals, but what's actually come out of all this-- Apologies. What has actually come out of all this SPO work, uh, and all the contributions that you've done, uh, the, uh, particularly the SPO guys have done, is you've kind of helped us create the foundations for what we believe can be a real re- ve- a real, a real, RealFi ambassador program. And so that's what we're kind of now working on is how we present that to you guys. What would be the best three districts to start with and what would keep you guys the most engaged? So these are the little things that we're working on secretly, I guess, but not so secret now I've said it- ... on stage. Um, and I don't know if you want, because obviously you've worked closer to it, feel free to add anything.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:09:16</span></div>
+  <div class="turn-body"><p>I mean- Yeah, let me- Uh Yeah, I'll put, let me pull a thread on that because, um, I think if there was a criticism, uh, of me so far,</p></div>
+</div>
+
+<div class="sec">Why the crews had not launched</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:09:28</span></div>
+  <div class="turn-body"><p>it's that we haven't launched those crews. So I just wanna kind of walk backwards. So we, we ran a workshop on Miro that was a huge success. It was brilliant. They came, some really strong themes came out of that as to what we should do. So what I'm gonna do now briefly is walk through why we haven't kicked those crews off yet. So, you know, there's sort of five, six key themes that came out of it, and I wanted to create the crews and we could start building these campaigns out. But as we were planning for mainnet and what was gonna happen, um, beyond the first iteration, right, once we've gone cross chain, the question is how are we gonna secure resources or how are we gonna make the arguments to say that this activity is aligned with business outcomes and so therefore we want more points, we want resources, we want RealFi to invest in it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:10:19</span></div>
+  <div class="turn-body"><p>So we pumped the brakes briefly so that we could have a look. If you think about it, like what is the interface, right, between the community and the ecosystem activity, and then through which the business will understand that activity. So we wanna make sure that there's a handshake going on and that the SPOs and their communities are rewarded and they're getting value out of it, but also the business on the other side of that handshake is getting that value. So over the past, I'd say about a week, I've been working with data, uh, the data lead in the data and engineering team, to kind of establish some system-wide units of account which we'd call like L1s. And let me grab my, um... Hang on, give me two seconds. Uh. And think about that ha- handshake as we're talking because on the one side, you know, you've got the, um, the business and the other ha- on the other side you've got the community and the SPOs, right? Uh, here we go.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:11:21</span></div>
+  <div class="turn-body"><p>Just while we're waiting, I'll just quickly answer 参加者A's question. It's, it, I can't really answer it yet, so I'll just acknowledge it's there. But, um, while we're in testnet nothing's actually live, so, um, we don't have, uh, actual exchange rates for it yet. Um, that, but I see what you're saying. That's something that when we can, we can, we can talk about, but we're just not there yet as a project.</p></div>
+</div>
+
+<div class="sec">L1s and L2s — what gets counted</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:11:47</span></div>
+  <div class="turn-body"><p>Yeah. Sorry about the delay there. So, um, previously on other calls we talked about what the North Stars are, but once we'd got into it with the data, good examples of layer one, L1, uh, numbers or business-wide outcomes are TVL, peg stability- Protocol profit, monthly active wallets and yield spread. So this is sort of thinking about this stuff internally. There's also some guardrails by which we mean sort of a, a range rather than a target. So that might be like over-collateralization ratio, protocol liquid coverage, staking ratio, risk compliance score, this kind of thing. So Rob and I are thinking how do we ensure an ambassador program gets well-resourced? We have to think about how it's going to ultimately drive some of those numbers, and we've got some ideas.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:12:38</span></div>
+  <div class="turn-body"><p>Um, so going back to the workshop that got launched, we had these crews and we're in a position where we can say to people, "Would you like to found, found these crews? Let's start these campaigns." But now we've tied some of these, um, KPIs to it. Um, just in case I haven't been clear, you know, we've got L2s that are below that. Um, such as share of search and, um, the wallets, capital stickiness, this kind of thing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:13:05</span></div>
+  <div class="turn-body"><p>Um, so we understand that a community is inherently self-organizing and self-determining and self-directing. And anyone that's been in Cardano, as you all have, understand that about the ecosystem. It's not like a top-down control structure that you're trying to create. What you're actually trying to do, this is the other side of the handshake, right? You're trying to allow people as an individual to come in and find what has meaning and purpose and relevance to them. So Rob, I've probably over explained, but to go back to the crews that we wanna form, the crews will be inherently, um, uh, they'll have a life cycle, you know, 'cause they're there to solve a problem as part of a campaign. So, you know, the, they'll be formed and then they'll disband, and other crews will form and they'll disband 'cause it's sort of the nature of the swarm in these ecosystems to be s- trying to solve problems co-currently. Um, and then when they're solved, they move on to the next thing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:14:04</span></div>
+  <div class="turn-body"><p>So what I'm saying is me and Rob are talking about world-building. Everything I've said up to this point has been about how do we, uh, on the behalf of the community, talk to leadership within RealFi to secure resources. And now if we turn around and we're looking at the other side of the handshake, the conversation me and Rob are having is, well, how do we create a RealFi world that's easy to navigate for your delegators and community members that make sense? That ensures there is purpose and meaning, um, and that people can find, uh, where they can get the most value or output from.</p></div>
+</div>
+
+<div class="sec">Crews and districts</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:14:41</span></div>
+  <div class="turn-body"><p>So this kind of world-building is leading us into, um, I'm a little bit of a sucker for Baldur's Gate, right? But not just forming crews, but forming districts that those crews would reside in. So the difference is that a crew is a social group that will form and it may disband, and other for- other groups may form and they may disband. A district would be a permanent location where that knowledge or those practices have been captured, like a methods bank, like a playbook. Um, and you can build on it. And so in that sense, the first crews that we form would be the first crews in those districts. But as we scale, I think this is probably the critical point, Rob, right? We're trying to build structure that will scale as we go cross-chain. And so rather than just trying to have one crew that's in charge of, I don't know, events or something like this, right? We want the capacity and capability to have multiple crews forming around problems so that, you know, you're playing to the advantage, um, of ecosystems in the community.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:15:47</span></div>
+  <div class="turn-body"><p>Um, so that's kind of w- where, where my head's been at is how do we establish the KPIs and the internal structure so this handshake, uh, can occur betw- an ongoing handshake right, can occur while the community's able to self-organize but also get the support and resources that they need.</p></div>
+</div>
+
+<div class="sec">The boy-band analogy</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:16:07</span></div>
+  <div class="turn-body"><p>Is, is that a fair representation, Rob, of what we've been talking about?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:16:07</span></div>
+  <div class="turn-body"><p>Yeah, absolutely. I mean, in essence, we are just, um, we're Simon Cowell and we're forming loads of boy bands or girl bands.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:16:20</span></div>
+  <div class="turn-body"><p>Oh, no. You've, you, you've revealed my deepest, darkest secret, Simon Cowell.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:16:27</span></div>
+  <div class="turn-body"><p>Um- Well, that's kind of what it feels like. I know it's a random analogy, but it is like he-- When you think about when he was at his peak, when it comes to-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:16:27</span></div>
+  <div class="turn-body"><p>Mm ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:16:36</span></div>
+  <div class="turn-body"><p>the X Factor and American Idol and whatever, he, you know, saw, saw certain qualities in individuals that weren't necessarily right as individuals, but together they ended up becoming One Direction or becoming Little Mix . And so, so in a way, it, it's, it's, it's one of my weird metaphors, which for some reason, Ben, you seem to get all of them. Um, I don't tend to get on with anyone.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:01</span></div>
+  <div class="turn-body"><p>No, you're, you're, you're scouting for talent and working out where, where that talent can be best best deployed, right? Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:17:12</span></div>
+  <div class="turn-body"><p>'Cause at, at the end of the day, there's none of-- I mean, I, I do not like One Direction, but none of them, apart from Harry potentially, would have had any-- would, would've been famous had they not been formed into something that would make 'em into-- That would get the best of their ability. But at the same time, it's for you to show us what the best is and what you wanna do. In a way, the Miro board showed us the first signs of that 'cause so many people took part.</p></div>
+</div>
+
+<div class="sec">What the districts would be</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:17:39</span></div>
+  <div class="turn-body"><p>Yeah. To, to bring it into, like, to make it more practical, um, for people listening, it's like some of the themes that came out of the workshop is there were like regional hubs, right? There was like, um, you know, people that were talking about doing, uh, engagement, like one to many or X spaces. There was, there was offers of connections and partnerships and this kind of stuff. So- When we talk about districts, and I think, Rob, you were interested in the community naming it because it's a cultural thing. But, you know, I always say, well, like, you know, you could have a harbor, which is regional hubs, and you can establish that as a specific place, right? You could have a, a stage, which is about engagement. You could have a bazaar, which is GTM and partners.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:18:21</span></div>
+  <div class="turn-body"><p>So other than this being a bit nerdy with D&amp;D or something, why, why would that be useful? And the argument is that in RealFi, inside the team or inside any team, there's a language and a culture and a set of, you know, terms that are unique or, or niche that everybody understands. But as you're scaling, going cross-chain, you can't scale all that internal knowledge at the same way. So instead you wanna use some kind of artifacts to build this world up in somebody's mind that they can find their way around and easily orientate each other, you know? And so for that reason, I think this ambassador program that we're developing will want the community to feed into it, but it's about world-building.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:19:05</span></div>
+  <div class="turn-body"><p>It's about how do we create locations or districts where specific work can be done. So you might have a forge that's to do with product and innovation. You might have, I don't know, a, a dark forest, right? Where you're talking about advocates that are gonna go beyond the channels distribution that RealFi could into spaces that only they could. So a good example is, I'm not saying we're against China or anything, but imagine if we were in China, I'm not gonna be able to go into, uh, groups or channels and engage those communities. It would have to be from someone that was comfortable in those spaces that could be in those rooms, you know?</p></div>
+</div>
+
+<div class="sec">The dark forest, and proof of human</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:19:47</span></div>
+  <div class="turn-body"><p>So, um, I'll come back to the point, but the dark forest thing is interesting because we were looking at Cloudflare, like 50% to 80% of internet activity is bots. We're looking at Messari and, uh, DefiLlama, where it's something like 90% of on-chain activity is estimated to be bots. And this dark forest idea is that as AI is coming more and more the internet will become bot activity and real people will retreat into, I think it's called the cozy web, into private channels and into discourse and this kind of stuff, right? And you can kind of expect that, and that is relevant to what SPOs are doing, the value that SPOs have brought to RealFi because one of the novel solutions about the ambassador program or the accelerated program is that SPOs are influential on chain and online. And so you're able to see to a far greater degree of probability that this is like proof of human. These are real, um, authentic activity, right? So just to bring that to a loop, I think it's a really interesting novel program that we've got, which the SPOs have helped us build, and I'd love to see us publish more about it later. But, um, so to stop my rant, Rob.</p></div>
+</div>
+
+<div class="sec">The community decides</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:21:04</span></div>
+  <div class="turn-body"><p>So, so that's what the- What you're also saying is we wanted to, to, which is true, you said it briefly at the beginning, but it's that w- certain decisions about this will be put into you, um, to make sure that you control the vibe-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:21:16</span></div>
+  <div class="turn-body"><p>Yes ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:21:16</span></div>
+  <div class="turn-body"><p>and the, the assets, and that's what a lot of the point was that you started with. And I think that's a really valid and important point because if it was my dictatorship, everything would be football related. So um, it's better you deci-- I mean, it's one of the things you look at Web3 in general and, um, Cardano has done-- Look, you guys are all part of Cardano, and you are doing it. It's very community driven. But-- And you look at the other projects that are on par with Cardano, you have like Solana who do it very, very well. So we can-- You know, we're, we're taking-- We're gonna just take the, the best, uh, the b- the best that you guys have shown and the best ideas that we've got and kind of put it all together into,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:21:57</span></div>
+  <div class="turn-body"><p>into one. Uh, but making you core decision-makers into everything that we do on it, which kind of started with the whole ticker thing in the, in the whole process. It originally wasn't meant to be, um, a community decision, but I just had a bit of a brainwave that, you know, keep the engagement. I mean, we know our testnet is limited compared to others. You know, other people have a lot more activities to do. But the fact that we're able to keep you all here is a testament. Um, and we're gonna keep-- Yeah, we're, we're-- By part of that, we're gonna make you feel as a part of it as possible. It's your, it's your program as much as it is our program.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:22:31</span></div>
+  <div class="turn-body"><p>Well, I like-- I really like the governance taken idea and the more decisions that we're actually-- If we're building the muscle now where the community can make the decisions around the precedence and the culture that are being created and things like the ticker are meaningful decisions, I think it's a good start to building a community and an ecosystem that goes beyond the product, you know? Um, even if an ecosystem is a bit of a grandiose word. Oh, by the way, I, I'm totally remiss. We should be inviting questions. So if anybody's got any questions as we're talking, please put them in the chat, and we can bring them to Rob. Um, and we're gonna be inviting feedback for the ambassador program. People have been asking about, um, what, you know, uh--</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:23:10</span></div>
+  <div class="turn-body"><p>Well, we'd love your feedback.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:23:19</span></div>
+  <div class="turn-body"><p>Yeah, you know, what roles or, uh, status or points or how these things work. So that's what I'm gonna be focusing on this week and next is building that out with you, Rob.</p></div>
+</div>
+
+<div class="sec">What worked before — language communities</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:23:29</span></div>
+  <div class="turn-body"><p>Um, looking ahead to the future though, um, what kind of role do you think these ambassador programs can have in more mature projects? You've, you've had quite a bit of experience, haven't you, in-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:23:38</span></div>
+  <div class="turn-body"><p>Yeah, absolutely. So I mean, so to-- What I would do rather than say what I think could go well for RealFi 'cause I know that's something I want you guys to decide, I will kind of just do what Ben has mentioned, that what's gone well for me in the past. And one of the reasons I actually mentioned Solana was 'cause I used to work-- If you haven't met me already, I used to work for a Solana project called Amulet, where the community really drove the project. Um, and the two b- two big things that like one of the... It's a good... You actually mentioned it, Ben. Uh, one of the things you mentioned was about people's partnerships. Um, some of the best co-marketing partnerships that we had at Amulet was, uh, given by, uh, was given by the community, was introduced by the community 'cause they seemed like-minded. And one guy actually took it upon himself to become the partnership king, but there were other people who had... They, they weren't, they, they weren't comfortable doing that. So what their main focus was introducing us to their languages and their language community.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:24:41</span></div>
+  <div class="turn-body"><p>As you would have seen, I've kind of implemented a bit of that. We introduced the, um, language ambassadors, uh, where I know 参加者Bさんが here, and, uh, 参加者C is also helping out on the Indonesian and shown interest to, to drive that further. Um, I include Spanish, and at one point at Amulet, we ended up having, um, probably about 17 or 18 different languages. Um, we'd attracted quite a lot of people from the former Soviet countries, so Russia, Ukraine, Belarus, Kazakhstan. And what was interesting is normally most people would group that together because they can all understand the initial version. But because we developed our own communities within the specific regions, we found that, you know, there was a huge Kazakh community that we never thought even existed. Um, we knew that there was a huge Russian and Ukraine one, but we didn't know as much that the other cis language speakers came, and we were- I think we had five channels that if you were like me and you don't read anything, you only read one set of alphabet, you would have thought it all looked exactly the same, but obviously they were different languages.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:25:49</span></div>
+  <div class="turn-body"><p>And that also led out to different continents as well. We ended up having Yoruba, which is a dialect of Nigeria. Uh, we ended up having Chinese and Japanese and Korean. Um, and yeah, things weren't really... Things... Then the, the... People did those type of things. We also had, uh, people wanting to represent us in their own region, so we'd send them stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:26:08</span></div>
+  <div class="turn-body"><p>I know Ben's talked about this before, uh, for the SPOs. Um, and then there's, there's different, different, um, there's different districts as well, not necessarily just on the marketing perspective. Obviously, I'm always going to think on a marketing perspective 'cause I'm the marketing lead. But, uh, from a technical perspective, you guys have done an amazing job when it comes to bug bounty and testing and what works and what doesn't, and that works very well 'cause we've got a smaller platform. But there can be other needs of the technical team that, that you guys might be more benefit... You might, you guys might have the expertise or the connections to do and be a part of. I can see Ben started to put down some of the, um, like concepts of, uh, the different world that we would create.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:26:52</span></div>
+  <div class="turn-body"><p>And yeah, I mean, there's pretty much what... I, and it kind of links. I know, and I'll let you speak in a second, Ben, but, like, this Discord server is meant to, meant to be your server, and it is meant to, um, a- and it is one of the things I think that point here, and it kind of comes to, to the world-building is... Oh, and it's just gone out my mind. Um, it was something. I looked at the image, and there was something I was gonna say about it, and it is, it's just completely gone out my head, so I can't.</p></div>
+</div>
+
+<div class="sec">What the world-building is for</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:27:23</span></div>
+  <div class="turn-body"><p>Um- No, that's all right. Yeah. I think it's about relevance though, right? It's, um... I know I'm throwing some images into the chat for you guys, so you can see kind of like a map. But it's about shortening the time it takes somebody from joining a community and, and asking themselves like, "Is this for me?" Like, "What role could I play?" In fact, actually shout out to 参加者D, who's in the, um, audience 'cause he was talking about decentralized adventures, right? I think that's how this conversation began because-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:27:50</span></div>
+  <div class="turn-body"><p>Yeah ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:27:50</span></div>
+  <div class="turn-body"><p>if you go on an adventure, you need to know, what role am I gonna play? Where are we going? What's the fight? You know, like, are you're DPS, I'm tank or whatever it is. So you need to understand your role, why you're doing it, what the world is like that you're entering, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:28:11</span></div>
+  <div class="turn-body"><p>So this is the concept of world-building that we're talking about, and it's also the concept of sort of ecosystem maps and this kind of thing, and we wanna help people, like your delegators or community members that come in, quickly understand, based on their strengths and their assets and what they care about, where could they find the, the most relevance and purpose in the community if they want to contribute, you know? And, um, the reason people join a community isn't why they stay, right? They stay because of the relationships or the culture or because they believe in the mission overall, which is why Cardano has been so successful, you know? Um, so this is the invitation, I guess, Rob.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:28:51</span></div>
+  <div class="turn-body"><p>It's- It's like, it's messages like-- It's also why messages like 参加者A is quite exciting. The one he's written in the group before we talked where he, he talks, it's like this is going to be interesting. It's, it's the same concept. We've already got signs of that already in this community, which is what I was... That was just the point there. You can continue saying what you were gonna say.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:29:12</span></div>
+  <div class="turn-body"><p>Yeah. Yeah. Well, it's, this is an, it's a, it's an invitation to kick off. And as we're talking, I think the place that... What I'll do is I'll bring these ideas into the workshop Miro board that we've got, so we can plan those districts out together, but it's about matching a crew with a district or a permanent location. And for those that are still, still here, me and Rob would then be able to-- Because remember, the districts are about specialization, right? The crew is coming into, I don't know, the harbor because it's a regional harbor. They're coming into, for instance, if we had a, a forge to do with innovation or, or dev, it's being able to use those districts as an interface to then come to the team and say, "This district is helping product as a function, and here's the different ways that we're self-organizing," and, "This district is helping-" Um, you know, engineering or GTM or this kind of thing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:30:14</span></div>
+  <div class="turn-body"><p>But everybody on this call would understand those terms. But we don't have to burden new community members with, like, KPIs or, or that handshake. We can just focus on making it immersive, interesting, um, and I hope, like all good stories or all good world-building, um, engaging, you know, ultimately.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:30:36</span></div>
+  <div class="turn-body"><p>But it's-- I've-- Rob's always wanted there to be a high degree of verification that things are real. Um, and I've wanted to, you know, really build a community that has genuine purpose in it and isn't just a, I guess, like an engagement farm, right? Like a vanity engagement. There's no point in that, in perennial engagement just for the sake of engagement.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:01</span></div>
+  <div class="turn-body"><p>That's not why we're here, right? We're fundamentally here in crypto because of a shared set of values, often around cypherpunk and, you know, open financial systems and changing, you know, the way that the... Well, if not the world order in RealFi's case, definitely, uh, fintech and finance, you know? Um, so I think, yeah, that's-- I also, like, we're trying to have some fun, right, Rob? I think are we allowed to have fun?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:31:29</span></div>
+  <div class="turn-body"><p>Yeah. Absolutely. Yeah. Yeah. No, I think that makes-- I think that's all pretty clear, to be fair.</p></div>
+</div>
+
+<div class="sec">Next steps, and the deadline</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:36</span></div>
+  <div class="turn-body"><p>So next steps are, I guess, I need to finish off this ambassador program proposal. Then maybe I will build out that in the Miro board we've already been working in, and we can get those feedbacks and districts' names, this kind of thing, Rob. And I think that's what we'll be doing this week next. Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:31:55</span></div>
+  <div class="turn-body"><p>And we'll send them-- We'll send a reminder tomorrow about before the-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:55</span></div>
+  <div class="turn-body"><p>Yeah ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:32:01</span></div>
+  <div class="turn-body"><p>before the vote closes on Wednesday, so people have enough time. Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:32:01</span></div>
+  <div class="turn-body"><p>Actually, good call. Let's bring it back to the ticker because-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:32:07</span></div>
+  <div class="turn-body"><p>Sorry ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:32:07</span></div>
+  <div class="turn-body"><p>we, we've really gone off on a tangent, haven't we? Let's bring it back to the ticker.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:32:13</span></div>
+  <div class="turn-body"><p>Yeah. Yeah, yeah. So the ticker vote will close on Thursday. So, Wednesday, sorry. So we will, we'll do a reminder tomorrow, um, just to get the final votes. If we can get it to 100, I'd be very happy. If not, not the end of the world. At least right now, I think we're on 60, 65. It was 66, so someone's removed their vote. 'Cause I was hoping it would get to 67, and then I'd say 67 like I was a child. Um, but yeah. Um, the-- we will, we will send a final reminder, and then we'll do an official announcement once that... Which right now is looking for option B. So if you're really into option A, I'd advise you to just invite all your friends and get them into the RealFi and get them to vote for option A.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:32:58</span></div>
+  <div class="turn-body"><p>Yeah, like- And then if you're really into option B, invite all your friends into the server to counteract the people that are really into option A. I'm just putting the Miro board, uh, link in. 参加者E was asking for it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:11</span></div>
+  <div class="turn-body"><p>So this is the Miro board where we were running the SPO alpha cohort. Um, what it is is a asset-based community development. So you go in, introduce yourself, identify your strengths. Then what is the problem and the project, projectization you want to solve? So in this instance, it's a campaign about attracting delegation to single stake pools. And then it's about claiming the work.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:34</span></div>
+  <div class="turn-body"><p>What crew would you want to be in? Um, but, uh, to go back to that with the ticker, one really easy, um, I hope easy, uh, ask is, is just to share the RealFi community. You know, me and Rob are working hard on this and trying to build something here that's gonna be really sustainable, and we would love for you to invite some of your delegators in here or your friends or community members to come in, vote and take part. You know, ultimately there are big announcements in the works that we can't talk about. Um, and I don't, I don't think anyone's gonna regret it, right? This is, uh, this is a project that is going places. Um, I've probably said too much there, Rob, so you'll have to tell me off afterwards.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:34:13</span></div>
+  <div class="turn-body"><p>Yes. That's all right.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — USDA, and how crews would run</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:34:19</span></div>
+  <div class="turn-body"><p>Uh, to answer member's question, we didn't look into USDA. I get why you're gonna do it for alphabetical reasons, but, I don't-- I think CEXes are probably aware of that, so it probably isn't one, but I'd have to actually look in if it was. But it's not gonna be announced-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:34:33</span></div>
+  <div class="turn-body"><p>Yeah, good, good question. 参加者F is asking, are there scheduled meet, meetings? This is the thing with the crews, right? So if we form crews, then they ought to have at least two or three founding members. Probably they're gonna be SPOs if there's the appetite for it. So a crew forms, and it's a self-organizing group. Obviously, we're here to support, but the point with communities is they're not top-down audiences, you know? And, um, not naming any names, uh, or anyone in, specifically in Cardano, but you often see that, that, that sort of teams will come in and treat it like it's a top-down, you know, "We're gonna send you a message." Whereas really in Web3, communities are self-organizing, and they identify the problems that they care about, and then they work on them. So forming a crew means you would wanna get some meetings. You'd wanna get some scheduled, um, time and place, and it'd be down to that group of people to decide what kind of cadence that had.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:35:31</span></div>
+  <div class="turn-body"><p>Um, what we're also cognizant of is trying to avoid a lot of the working group, um, words, like, just 'cause of the Cardano context. Like, there's a lot of insect working groups and lots of value came out of it. But at the same time, it was hugely difficult to keep up with everything or, or see where everything was headed, you know? So I think with our crews, with districts, we can make it much more laser-focused on what we're doing and easier for people to understand, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:02</span></div>
+  <div class="turn-body"><p>Um, but yeah, 参加者F, you're right. So basically we-- when we form the crews we need to have a, a- Process of formation. So we thought about a mandate. We'll try and keep it simple, uh, but something where someone can navigate what's going on. And then that can cascade into things like the Luma calendar on RealFi at the moment, where it's just RealFi office hours or it's like, you know, a colleague's doing some brilliant interviews and the rest of the team,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:36:29</span></div>
+  <div class="turn-body"><p>and we can start populating that with community activity as well, you know? Um, now don't anyone judge me on this, 'cause I'm not saying that we should be like them. I'm not saying that, Rob, right? But Chainlink Marines were mental. Does anybody remember Chainlink Marines? Oh my God, those guys, right? They were just so organized. Um, like way too, way too, uh, way too aggressive, I think. Um, and maybe I'm just talking about it from the point of view of having dealt with them, but, um, but they were, they were impressive how well organized they were. And, and they, um, the, uh ... What am I trying to say? Like, the fraternity, the camaraderie, the relationship between them, they were very committed, you know? Um, so I admire those guys, even if I wouldn't wanna emulate them 100%. Right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:21</span></div>
+  <div class="turn-body"><p>So Rob, uh, bring me back to the present. Uh, we're asking people to share and invite people into RealFi. We're setting up some expectations that we're gonna continue the workshop that, uh, kicked off so well, and that the reason for the delay was that we went back and made sure that we were tying KPIs and internal team priorities to districts and crews that could form because we wanna be able to make good arguments for resources in the future.</p></div>
+</div>
+
+<div class="sec">Wrapping up</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:48</span></div>
+  <div class="turn-body"><p>Is that fair?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:37:48</span></div>
+  <div class="turn-body"><p>Yeah, absolutely. Uh, I mean, it's pretty much everything I think we've, we've covered apart from the fact that, uh, we really appreciate people still making the time to come to a rearranged office hours on a Monday afternoon in August, which is usually quite difficult for a lot of people. And so, so, uh, it re- re- is really happy that, uh, that you, you made the effort and it's fully appreciated.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:38:12</span></div>
+  <div class="turn-body"><p>And Rob, thank you for the work you're doing, which I do see on the announcements, and the marketing, and the media, and all of this. So, you know, these things will prove, uh, there will be fruit coming to bear, and people will be able to see that in the not too distant future. Um, okay, great. Uh, any-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:38:28</span></div>
+  <div class="turn-body"><p>Yeah ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:38:28</span></div>
+  <div class="turn-body"><p>now is the time for questions. If anybody's got them, hit this up in chat.</p></div>
+</div>
+
+<div class="sec">The survey going out in Japan</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:38:39</span></div>
+  <div class="turn-body"><p>There's that awkward pause where you didn't know if you were typing. Um, and guys, you know-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:38:39</span></div>
+  <div class="turn-body"><p>I, I'm, uh, um, it was hilarious 'cause we always had a minimum of like 70, 80 people in the audience, none of whom really speak English as their first language. But whenever the project lead, the project leader was there, he'd always want the questions, and there was never any questions. Sometimes it would be me by myself, and I would just get all the questions that there otherwise. But no one ever came- Oh sh- No one ever, no one ever called the project lead up when it was a project lead. They only came up when it was me by myself for some reason.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:12</span></div>
+  <div class="turn-body"><p>Shall I, shall I give you an update about Japan and keep it quite broad?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:39:12</span></div>
+  <div class="turn-body"><p>Yeah, come do.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:12</span></div>
+  <div class="turn-body"><p>So, um, 参加者I, who's in the audience, uh, is, uh, one of the key Japanese, um, SPOs. And I think everybody would know just by having a look at... Thank you 参加者I for joining us and being here. And I think everybody will know, um, if you've been at all involved in governance that something like 4 to 5 billion, um, ADA has moved around, um, and that's in Japan, you know, uh, over the past, since over the past 12 months I would say.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:48</span></div>
+  <div class="turn-body"><p>And so, um, what we've got running at the minute is a survey that's going out to the Japanese community, and we're asking the Japanese SPOs and KOLs who I've built up a relationship with, and 参加者I is helping us, and 参加者J. And we're essentially asking some questions about the public good, which are, um, and this is within the context of the second Fi hack, and so therefore it's timely. You know, financial sovereignty in terms of securing your ADA. Um, the fact that there's a Japanese accelerator program, so Japanese community can delegate to their Japanese SPOs. And the point of that is decentralizing the network. So the public goods are the financial sovereignty, protecting your ADA, decentralizing the network by delegating to a single stake pool operator.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:40:36</span></div>
+  <div class="turn-body"><p>Then we're asking some questions about, well, you know, how much do you care about the long-term health of Cardano? Because I think the economic activity is very critical to that, not just... In the early days of Cardano, it would've been staking. Just staking and securing the network would've been enough, but I think a public good here is economic activity. And then when you get through those public goods, there's also like, what would keep, what would help you to stay in Cardano? You know, would you, um, you know, what kind of utility or abilities would be useful?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:41:10</span></div>
+  <div class="turn-body"><p>Now, the reason we've put that survey together, and, oh, this is a spoiler 'cause I think it could be useful for the Western, um, SPOs. And when I say Western, I mean everywhere that isn't Asia. Um, the idea is that we could create a set of shareables or presentation materials that SPOs could have that would help people walk through a RealFi to their delegators. So it's a kind of train the trainer or educate the educator model, where rather than us wanting to put words in anybody's mouths, it's like helping to build up the arguments that would make the most sense. And so therefore if you want to appeal to the most people, um, and you want it to be relevant, our point of view is, well then we should be talking about the public good or, you know, what the common good is for everybody. Um, so that's kind of the thinking there. That survey's gone out today, Rob, I think.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:42:07</span></div>
+  <div class="turn-body"><p>We've hit everybody up, and so- What we hope to do, um, is engage the Japanese community, see Japanese SPOs join, and then their delegators and, um, the Japanese community can be educated on RealFi. And I think that, um, SPOs in whatever country they are are trusted infrastructure and have the relational capital, uh, to, to be able to talk to their delegates, and it- it's a stronger model if we... This is why it's a novel solution, the kind of ambassador program we're building here. When I say ambassador, I mean, um, person with influence, you know, rather than just... What was that program that you didn't want to do, Rob? The, um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:42:49</span></div>
+  <div class="turn-body"><p>Like- Yeah, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:42:55</span></div>
+  <div class="turn-body"><p>You know, those kind of... W- what are they called? Sorry.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:42:55</span></div>
+  <div class="turn-body"><p>You were telling me- I would say that gamified farming.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:01</span></div>
+  <div class="turn-body"><p>Yes. Yeah, yeah. Exactly. Gamer. So we don't want that, and the, the anti-Sybil and anti-farming methods, um, are effective, and the RealFi team really does care about that. You know, it's not vanity metrics that we want. We want authentic activity.</p></div>
+</div>
+
+<div class="sec">Off-topic — swag and Labubu</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:19</span></div>
+  <div class="turn-body"><p>Right. Well, I've, I've... Rob, I have to apologize to you after this 'cause I've probably done too much talking on this call. But you, did we cover everything you wanted to?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:43:24</span></div>
+  <div class="turn-body"><p>Absolutely, yeah. No, absolutely. And thanks for coming on when you're feeling a bit under the weather 'cause I know you've been-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:24</span></div>
+  <div class="turn-body"><p>No ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:43:34</span></div>
+  <div class="turn-body"><p>you've been achieving-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:34</span></div>
+  <div class="turn-body"><p>I'm totally, I'm way better. Way better compared to what I was. So I wouldn't have been able to probably do it on Friday. So, uh, today's been, today I feel like a new person.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:43:40</span></div>
+  <div class="turn-body"><p>Mm-hmm.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:43:40</span></div>
+  <div class="turn-body"><p>Well, since yesterday I feel like a new person. I also, um, was just thinking that the Midnight City thing could have been interesting for this, you know, once you've got a kind of visual way to explore the world, but maybe that's something to chuck in the Miro board.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:44:01</span></div>
+  <div class="turn-body"><p>We can still, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:44:01</span></div>
+  <div class="turn-body"><p>Yeah. Yeah. Yeah. All right. Well, look, thanks again, and we've got another RealFi office hours too this week, so it's, like, action-packed. Um, we've got another one on Friday. Who have we got that with?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:44:10</span></div>
+  <div class="turn-body"><p>We've got it with investments.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:44:10</span></div>
+  <div class="turn-body"><p>Oof, it's gonna be exciting. We're gonna get into the meaty questions there, right? Um, maybe I should put a survey out or something.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:44:17</span></div>
+  <div class="turn-body"><p>I, I know some people. So I, I had, um, a dinner with the investments team, and I don't think I understood any of it. No. I think there's some- Uh, but, I, I, I know. Of, of course I understood it. It's just they, they are, they're so into it that obviously the language they use, if you're not fully aware is, can be like, "Whoa." But then when you... There, it's just passion, and they were talking on, obviously, with only crypto people. They wouldn't be like-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:44:44</span></div>
+  <div class="turn-body"><p>I know some, uh, I know some of the people in, listening on this call would love to ask some questions, who, like 参加者F, I think, or 参加者H or, um, uh, 参加者G, you know? Um, there were some great questions that came in that were definitely for the investment team. Um, uh, 参加者A's asking, "Are we gonna be around a token 2049?" Just answered it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:45:14</span></div>
+  <div class="turn-body"><p>They are. Just that our application's gone in to try and get a booth for the Cardano Foundation. Think that closes tomorrow. So hopefully in a week, um, they can make our lives 100 times easier.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:45:21</span></div>
+  <div class="turn-body"><p>Are we gonna get some... Yeah. I, in my ambassador program-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:45:28</span></div>
+  <div class="turn-body"><p>It's good ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:45:28</span></div>
+  <div class="turn-body"><p>we need some swag, don't we? We need people to be repping, and if that's what-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:45:28</span></div>
+  <div class="turn-body"><p>That's why I think we, we've got, we've, we've got swag. I'm a, I own a RealFi, I own RealFi hoodies and T-shirts. Um- We've got the des- we've got the designs all ready for that type of stuff. Mm-hmm. I actually changed the design. The original Real... Like, I didn't change the current logo that we've got. That, a colleague did that change. Um- Mm-hmm ... there was an old logo, the previous RealFi logo, but I prefer this current logo. But the old swag was, uh, I made it, I've made them a bit more stylish. I've made the logos a bit smaller. You know, like, not, um, for example, the old hoodies had the big RealFi logo at the front, whereas the- Mm-hmm ... new ones, it's like, it's more like, it's more classy. It's just a RealFi logo in the l- left breast. You know, like- Oh ... this is, this is a bit more... So it's, so it's not, you're not just... So you'd actually wear it in the street, not just at a crypto event.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:46:28</span></div>
+  <div class="turn-body"><p>Well, uh, my, my mission now is to get everybody on this call a RealFi hoodie, and, uh, myself included.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:46:42</span></div>
+  <div class="turn-body"><p>You would have loved looking at your current, uh- ... just looking at your current Discord, um, animation. You would have loved-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:46:50</span></div>
+  <div class="turn-body"><p>Yes ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:46:50</span></div>
+  <div class="turn-body"><p>this, the, the hoodie I did for Pondo, 'cause that had two koi fish on the back. Uh, it was bad quality, but, uh, w- everyone, it wa- that was at, um, the one in Denver. What's it called? Den- Mm. Yeah. Eth Denver. Uh, everyone wanted... We only had a co- we only had hoodies for the team. Uh, we were giving away things like air tanks, a PlayStation, like really expensive stuff, and everyone was- ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:47:18</span></div>
+  <div class="turn-body"><p>like they all just wanted a hoodie. Do you know, when I was at Token 2049 last year, I had to go on this mad mission to get a Labubu for my daughter. It was like... And, uh, you know, an acquaintance and those guys had that hydro vending machine, and you had to go and scan stuff to get the points, except the Labubu was, like, loads of points, and I spent a good hour trying to, trying to make that happen. So yeah, we should, uh-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:47:41</span></div>
+  <div class="turn-body"><p>I- ... see what we can do there ... I have, I have a Labubu. I have a Manchester United Labubu.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:47:47</span></div>
+  <div class="turn-body"><p>Mm. Are there any-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:47:47</span></div>
+  <div class="turn-body"><p>When I go back to Manchester, which I will be doing in a couple of weeks, and I, I still go and see the lady that owned the sweet shop when I was a kid. She's still got the sweet shop. Mm. And obviously Labubu's are in. And, uh, she bought the Labubus directly from China. Um, and then some... Well, no, this man that lived around, he's Chinese, and he would bring them. He'd br- he'd buy the Labubas back. Uh, and then he got some- uniforms made for the Labubus for Man United and Man City. So she gave me my first ever Labubu because it was a Man United one. So if you want a Labubu, I can get you a free Labubu in the future. You just have to come to Sou- south of Wigan. Half an hour south and I'll, I'll get you one. Because I'd have to pay for my Labubus. I also bought my hairdresser back one because it's like she just... I d- I, I've n- I've not... I think the last time I paid in her shop was 2008, 2009.</p></div>
+</div>
+
+<div class="sec">Back to campaigns and numbers</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:48:52</span></div>
+  <div class="turn-body"><p>So, uh, yeah. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:48:52</span></div>
+  <div class="turn-body"><p>I would need campaigns planned before I mean that almost So that's, that's... So essentially, like you form the crews, get, we'll get up into the management board. Then you understand what the crew's purpose are. It's, uh, much more focused than just having this kind of, um, open-ended, uh, aspect. And campaigns would be, uh, planned from there. And then any points or incentives or resources we needed for those can then be argued for, which was why we went backwards and started tying, uh...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:49:28</span></div>
+  <div class="turn-body"><p>Well, first of all, truly understanding what the, the numbers were. When I first joined RealFi, I had like, okay, so TVL is important, and, uh, staking ratio is important, and that seemed good enough at that time. But sort of 60 days into it, that's when I was sitting down with the data team involved and saying, "Okay, so like, what are the actual L1s here that, that matter and what the L2s?" And then that's gonna help when we do form those campaigns because ultimately you need to be able to plan ahead for how you're gonna track it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:49:59</span></div>
+  <div class="turn-body"><p>So we could have loads of really great activity happening through community campaigns, but unless at the beginning of the formation of a crew and at the end, unless we're there at the beginning and we're able to say, "Okay, so you guys are planning to do this, this and this, how can Rob and I track that in a way where we can go and take tho- those wins internally in a way that's compelling, right? That's gonna land." And, um, if I learned nothing else working in IOG and Cardano over the past five, well, seven years, it really is that you want to be able to bring the numbers in that somebody is gonna be able to understand that's, uh, on the other side of that handshake, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:50:39</span></div>
+  <div class="turn-body"><p>Um, yeah. All right. Well, look, I think we've, uh... I've, I've probably enjoyed this one a bit too much, but, uh, we'll see you all again on Friday. I will post a summary, um, once, probably tomorrow, 'cause I need to get legal approval, um, before I'm posting stuff. But thank you for joining the call, and obviously we're in the Discord. You can DM me or Rob at any time. And if you've got suggestions or questions about the ambassador program or if you've got ideas about community campaigns that we should be running, that's all really relevant 'cause we can put that in the Miro board and we can say, "Okay, well, maybe this is, these are the kind of crews and districts that they could, uh, they could be run on," you know? Rob, I'll give you the final word.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:51:24</span></div>
+  <div class="turn-body"><p>Uh, thank you. I've probably said enough. Uh, but yeah, thanks everyone for coming and, uh, look forward to, uh, speaking to you all soon.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:51:24</span></div>
+  <div class="turn-body"><p>Thanks everyone.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Rob<span class="turn-time">00:51:24</span></div>
+  <div class="turn-body"><p>Bye. Bye.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the anonymisation noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All sessions</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>
