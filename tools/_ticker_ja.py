@@ -13,7 +13,7 @@ JA = {
 9: "ええ、どうぞ。",
 10: "私がやります。もう貼っていただいているとは思うのですが、投票を募っている <strong>Discord の該当メッセージ</strong>へのリンクも貼っておきます。",
 11: "はい。",
-13: "今の状況ですが、<strong>水曜に開始</strong>しました。完全に筋が通ると判断した上位 2 案です。念のためお伝えすると、<strong>取れる選択肢についてはかなり調べました</strong>。選べる案が 2 つしかないのは、<strong>調査のあとに——衝突するプロジェクトがないかなども含めて——いちばん筋が通ったのがこの 2 つだった</strong>からです。<br>出てきた 2 案のうち、<strong>案 A</strong> は USDR を <strong>RFUSD</strong> に、sUSDR を <strong>SRFUSD</strong> に、RFG を <strong>RFIG</strong> に変えるもの。核となる部分は残しつつ、取れるもののなかで RealFi の名前を出せます。<br><strong>案 B</strong> もよく似ていて、USDR は <strong>USDRF</strong>、sUSDR は <strong>SUSDRF</strong>、RFG は <strong>RLFJ</strong> になります。これは、とても Web3 っぽくて私は好きです。ちなみに、<strong>今のところ案 B が勝っています</strong>。",
+13: "今の状況ですが、<strong>水曜に開始</strong>しました。完全に筋が通ると判断した上位 2 案です。念のためお伝えすると、<strong>取れる選択肢についてはかなり調べました</strong>。選べる案が 2 つしかないのは、<strong>調査のあとに——衝突するプロジェクトがないかなども含めて——いちばん筋が通ったのがこの 2 つだった</strong>からです。<br>出てきた 2 案のうち、<strong>案 A</strong> は USDR を <strong>rfUSD</strong> に、sUSDR を <strong>srfUSD</strong> に、RFG を <strong>RFIG</strong> に変えるもの。核となる部分は残しつつ、取れるもののなかで RealFi の名前を出せます。<br><strong>案 B</strong> もよく似ていて、USDR は <strong>USDrf</strong>、sUSDR は <strong>sUSDrf</strong>、RFG は <strong>RLFG</strong> になります。これは、とても Web3 っぽくて私は好きです。ちなみに、<strong>今のところ案 B が勝っています</strong>。",
 14: "理想を言えば、<strong>100 人に参加してもらう</strong>のが夢です。あと少しというところまで来ています。<strong>締切は水曜</strong>。現時点で <strong>63 人</strong>が投票しました。案 B が優勢で、流れを変えたのは、開始した水曜にコミュニティのなかで起きた会話だと思います。<strong>USD のあとに RF を付ける形にすると、他のステーブルコインを探している人が偶然こちらを見つける</strong>、という指摘でした。それまではおよそ 50 対 50 だったのが、今は<strong>案 B が 66%、案 A が 34%</strong> です。<br>私も投票しました。全員に 1 票ありますので。",
 15: "ええ。",
 17: "では、詳しく聞かせてください。まだ詳しくは伺っていないと思うのですが、<strong>投票が通ったあとに何が起きるのか</strong>。この投票はどう結果につながるのでしょうか。",

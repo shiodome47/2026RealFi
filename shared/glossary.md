@@ -230,7 +230,8 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | insect working groups | **Intersect working groups** | Cardano のメンバー制組織 Intersect のワーキンググループ。全文の日本語版では直し、英語版は原文のまま残している |
 | the second Fi hack | **SecondFi の一件** | 2026 年の SecondFi ウォレットの事故。Pentad の項も参照 |
 | cis language speakers | **CIS 諸国の言語話者** | 独立国家共同体。ロシア・ウクライナ・ベラルーシ・カザフスタンなどが挙げられた |
-| RLFJ / RFIG | **確認できていない** | ティッカーの候補として**読み上げられただけ**で、綴りの確認は行われていない。まとめでもその旨を明記した |
+| RLFJ | **RLFG** | ティッカーの候補。**音声では RLFG と RLFJ の区別がつかない。**投票の告知（書き文字）で確認できたので、日本語全文とまとめは告知の表記に合わせた。英語全文は聞こえたまま |
+| RFUSD / SRFUSD / USDRF / SUSDRF | **rfUSD / srfUSD / USDrf / sUSDrf** | 同じく告知で確認した表記。**大文字小文字の別は音声では分からない。**現行の USDR / sUSDR はこのアーカイブの既存表記のまま |
 
 **話者が言い間違えたもの（誤変換ではないので直さない）**
 
