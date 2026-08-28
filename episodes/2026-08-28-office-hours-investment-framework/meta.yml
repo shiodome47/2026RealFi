@@ -53,25 +53,28 @@ questioners:
 # 資料について
 slides:
   shown: true             # **このシリーズで初めてスライドがある回**
-  received: true
+  received: true          # 画像で 5 枚受領
+  published: false        # **ページには反映していない**
   note: |
-    スライドを画像で受領（5 枚）。ページには **`スライド` バッジ付きで反映済み**。
-    **音声で語られたことと、スライドにしか書かれていないことを区別**してある。
+    **中身は再現していない。**理由は 2 つ。
 
-    受領した 5 枚:
-      1. ASSET MIX — Three sleeves doing three jobs
-      2. INVESTMENT SOURCING — Lending and deal sourcing（4 段階）
-      3. STABILITY — How the allocation supports peg stability（セーフティ・オプション）
-      4. STRESS TEST — We tested it against a severe run
-      5. Example: liquidation waterfall and coverage（**下部に Confidential の表示あり**）
+      1. **5 枚目のフッターに「Confidential」の表示がある**（ほかの 4 枚は
+         「Proprietary」）。
+      2. **依頼者から「スライドはライブでのみの共有の可能性がある」との指摘。**
+         配布を前提とした資料かどうかが確認できていない。
 
-    **5 枚目だけフッターが違う。**1〜4 枚目は「©2026. Proprietary, all rights reserved.」
-    だが、**5 枚目は「RealFi Reserve · Portfolio Construction & Evolution ·
-    Risk Committee · Confidential」**。
-    **このため 5 枚目の固有の数値（残高・カバレッジ比率など）はページに載せていない。**
-    音声でも語られた構造（ウォーターフォールの順序、8 日目、待ち行列ゼロ、
-    スリーブ C の売却ゼロ）だけを、音声を出典として書いてある。
-    **依頼者に確認中。**
+    このリポジトリは Public で、**一度出したものは取り消せない**。
+    CLAUDE.md の「判断がつかないときは保守的な側に倒す」に従い、**載せない**。
+
+    ページに書いてあるのは**音声で語られたことだけ**。
+    スライドを参照している発言（「次のスライド」「付録のラン」）は
+    全文にそのまま残っているが、**リンク先の中身は扱っていない**。
+
+    受領したスライドが扱っていた範囲（見出しのみ。中身は書かない）:
+      ASSET MIX / INVESTMENT SOURCING / STABILITY / STRESS TEST / 付録の例示
+
+    **依頼者が配布可能だと確認できた時点で反映する。**そのときは
+    CLAUDE.md 4-b の `スライド` バッジを使い、音声と出典を分けること。
 
 # 原本は SRT（字幕）。タイムスタンプは付いているが話者ラベルはない。
 # 1 ブロックが 1 文と短く、938 ブロックある。分割は文脈から判断している。
