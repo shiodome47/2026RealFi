@@ -350,14 +350,16 @@ h3 {
 /* 見出しにアンカーで飛んだとき、上に余白を残す */
 h2[id] { scroll-margin-top: 1.5rem; }
 
-p { margin: 0 0 1.1rem; }
+p { margin: 0 0 1.35rem; }
 
 a { color: var(--accent); }
 
-ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
-li { margin-bottom: 0.5rem; }
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
 
-strong { font-weight: 700; }
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -490,6 +492,14 @@ code {
 .part-head h2::before { display: none; }
 
 .tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
 
 /* ---- 折りたたみの解説 ---- */
 
@@ -891,7 +901,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2>この回の要点</h2>
 <ul>
   <li><strong>GTM の中身は 3 つ</strong> — ①どこで取引されても深く健全な市場を保つ ②DEX・レンディング市場・ウォレット・カストディアンなど<strong>使い道</strong>につなぐ ③<strong>居ついてくれる資本</strong>を連れてくる。</li>
-  <li><strong>mainnet は「うまくいけば来月」。</strong>そのあと Ethereum に展開するが、<strong>資産は Cardano にあり、Ethereum で mint された分も Cardano の TVL として数えられるよう設計した</strong>と説明された。</li>
+  <li><strong>mainnet は「うまくいけば来月」。</strong>そのあと Ethereum に展開するが、資産は Cardano にあり、Ethereum で mint された分も Cardano の TVL として数えられるよう設計したと説明された。</li>
   <li><strong>利回りの見分け方は「誰が払っているか」。</strong>実在の借り手の契約利息か、ファンディングレート（本物だが循環的）か、自分のトークンの発行（＝「カウントダウン付きの希薄化」）か。<strong>答えられないなら、自分が利回りの出所</strong>。</li>
   <li><strong>成長の主機構はレバレッジループ。</strong>元手 1,000 万ドルが 5,000 万ドルのエクスポージャーになり、実効 25% APR になる数値例が示された。<strong>同じ倍率で損失も増幅する</strong>と明示的に注意された。</li>
   <li><strong>USDR の裏付けは流動性の高いものに寄せてある</strong> — マネー・マーケット・ファンド、T-Bill（米国の短期国債）、CLO の ETF。プライベートクレジットと直接融資は「上乗せ」の側で、期間は 6〜12 か月。ペッグは<strong>ホワイトリストされた機関だけ</strong>が mint・redeem できるアービトラージで保つ。</li>
@@ -1161,7 +1171,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap">点線の枠は「成立しない」ことを表しています。上の段では、次の段階へ進めないまま止まります。</p>
 </div>
 
-<p>コール中の言い方では、<strong>「厚みや流動性がなければレンディング市場は成立せず、借入も成立せず、本当の DeFi 経済も、レバレッジのループ戦略のような形で伸びる余地も生まれない」</strong>となります。第 5 節のループは、この一番右にあたります。</p>
+<p>コール中の言い方では、「厚みや流動性がなければレンディング市場は成立せず、借入も成立せず、本当の DeFi 経済も、レバレッジのループ戦略のような形で伸びる余地も生まれない」となります。第 5 節のループは、この一番右にあたります。</p>
 
 <p>逆向きの循環も語られました。流動性が厚いと価格が安心して見られ、他の保有者が入り、プールがさらに深くなる — <strong>フライホイール</strong>です。<span class="badge">補足</span>フライホイールは弾み車のことで、各ステップが次を強くし、一周ごとに勢いが増す循環を指します。</p>
 
@@ -1212,7 +1222,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <rect x="20" y="252" width="640" height="34" rx="6" class="d-box-plain"/>
   <text x="340" y="274" class="d-s" text-anchor="middle">プロトコルから見ると、1,000 万ドルの預り金が 5,000 万ドルの供給になる — だから成長の機構になる</text>
 </svg>
-<p class="figcap"><strong>これは仕組みを示すための数値例です。</strong>数値はコール中で挙げられたとおりのもので、<strong>RealFi が提示した利回りでも、得られる利回りでもありません</strong>。<span class="badge">補足</span>この計算は<strong>借入コストが 5% のまま、担保価値が下がらない前提</strong>での試算です。<strong>実際には、どれも動きます。</strong></p>
+<p class="figcap"><strong>これは仕組みを示すための数値例です。</strong>数値はコール中で挙げられたとおりのもので、RealFi が提示した利回りでも、得られる利回りでもありません。<span class="badge">補足</span>この計算は借入コストが 5% のまま、担保価値が下がらない前提での試算です。<strong>実際には、どれも動きます。</strong></p>
 </div>
 
 <details class="explain">
@@ -1230,7 +1240,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>家を担保にお金を借り、そのお金でもう一軒買い、それも担保に入れてまた借りる、という動きに近いものです。家賃収入（＝利回り）はどんどん増えますが、<strong>借金も同じだけ増えていて、地価が少し下がるだけで全部の担保が同時に足りなくなります</strong>。ループの危険はここにあります。</p>
 
 <h4>一言でいうと</h4>
-<p><strong>同じ元手で受け取る利回りを何倍にもする代わりに、価格が逆に動いたときの痛みも何倍にもする仕掛け</strong>です。コール中でも、利益と損失の両方が増幅されると明示されています。</p>
+<p>同じ元手で受け取る利回りを何倍にもする代わりに、価格が逆に動いたときの痛みも何倍にもする仕掛けです。コール中でも、利益と損失の両方が増幅されると明示されています。</p>
 
 <h4>このコールでは語られていないこと</h4>
 <p>ループが<strong>どの水準の担保割れで清算されるのか</strong>、そして清算が連鎖したときに sUSDR の価格やペッグに何が起きるのかは、話題に上っていません。ループを「成長の機構」として使う以上、ここは表裏の関係にあります。</p>
@@ -1241,7 +1251,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="credit">6. 値のつかないものを、どう値付けするか</h2>
 <p class="deck">市場価格のない貸付を、どう評価して sUSDR の価値に反映するか。四者が関わると説明された。</p>
 
-<p>プライベートクレジットの中身として述べられたのは、<strong>資本の制約が強い市場でフィンテックに貸し、そのフィンテックが実在の借り手に貸す</strong>という構造です。</p>
+<p>プライベートクレジットの中身として述べられたのは、資本の制約が強い市場でフィンテックに貸し、そのフィンテックが実在の借り手に貸すという構造です。</p>
 
 <p>利回りについては、<strong>「リスクが高いからではなく、その市場で資本が不足しているから高い」</strong>という説明がされました。案件はいずれも<strong>資産の裏付けと信用補完</strong>が付いており、「リスクの高いものではまったくない」とも述べられています。</p>
 
@@ -1304,7 +1314,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <rect x="16" y="216" width="648" height="36" rx="7" class="d-box-plain"/>
   <text x="340" y="239" class="d-s" text-anchor="middle">見分ける手がかりは実際の貸倒率。金利が高くても貸倒れが少なければ、②の説明が成り立つ</text>
 </svg>
-<p class="figcap"><strong>割合はすべて説明のための仮の数字です。</strong>コール中で内訳は示されていません。<strong>「年 15%」も、RealFi の利回りを指したものではありません。</strong></p>
+<p class="figcap"><strong>割合はすべて説明のための仮の数字です。</strong>コール中で内訳は示されていません。「年 15%」も、RealFi の利回りを指したものではありません。</p>
 </div>
 
 <h4>では、外から見てどう見分けるのか</h4>
@@ -1315,7 +1325,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>同じ「1 泊 5 万円」でも、危険な地域だから空室が多くて高い宿と、<strong>近くに宿がその 1 軒しかないから高い宿</strong>があります。値段は同じでも、後者に泊まった人は無事に帰ってきます。見分けるには値段ではなく、<strong>過去に泊まった人がどうなったか</strong>を見ることになります。</p>
 
 <h4>このコールで語られていないこと</h4>
-<p>述べられたのは<strong>「資産の裏付けと信用補完がある」「リスクの高いものではまったくない」</strong>という説明までで、<strong>過去の貸倒率も、損失の実績も示されていません</strong>。</p>
+<p>述べられたのは「資産の裏付けと信用補完がある」「リスクの高いものではまったくない」という説明までで、<strong>過去の貸倒率も、損失の実績も示されていません</strong>。</p>
 <p>この節で挙げられている評価体制（専門の評価会社、独立アンダーライター、プルーフ・オブ・リザーブ監査）は<strong>「今いくらの価値があるか」を検証する仕組み</strong>で、<strong>「過去にどれだけ焦げついたか」とは別の話</strong>です。毎週のアテステーションが出ている以上、<strong>貸倒率の実績が公開されるのか</strong>は次の回で聞く価値があります。</p>
 </div>
 </details>
@@ -1364,7 +1374,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>「自分で自分の答え合わせをする（marking their own homework）」ことへの警戒が、この回では繰り返し出てきました。<strong>この半年ほどで、独立した検証者を使っていなかった例の破綻が続いた</strong>ため、機関側がやけどを警戒し、市場全体がこれを真剣に扱わざるを得なくなっている、という整理です。</p>
 
-<p>透明性の取り組みとして挙げられたのは、<strong>トークンを何が裏付けているかのライブなデータ表示</strong>と、<strong>プライベートクレジットの帳簿についての毎週の「アテステーション」</strong>でした。</p>
+<p>透明性の取り組みとして挙げられたのは、<strong>トークンを何が裏付けているかのライブなデータ表示</strong>と、プライベートクレジットの帳簿についての毎週の「アテステーション」でした。</p>
 
 <div class="term">
 <p class="term-name">アテステーション <small>attestation</small></p>
@@ -1457,7 +1467,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap"><span class="badge">補足</span>それぞれの層を「誰が払っているか」で整理したのはこちらです。コール中では、保有している商品の一覧と、利回りの出所を問う基準とが別々に語られています。</p>
 </div>
 
-<p>つまり <strong>T-Bill（米国の短期国債）やマネー・マーケット・ファンドという「動かしやすくて堅い土台」の上に、プライベートクレジットで利回りを載せている</strong>という構成です。図の右端にあった「自分のトークンを刷って払う」層は、この設計には出てきません。<span class="badge">補足</span>コール中で語られた水準は <strong>8〜10%</strong> ですが、<strong>土台と上乗せがそれぞれ何 % かは示されていません</strong>。</p>
+<p>つまり T-Bill（米国の短期国債）やマネー・マーケット・ファンドという「動かしやすくて堅い土台」の上に、プライベートクレジットで利回りを載せているという構成です。図の右端にあった「自分のトークンを刷って払う」層は、この設計には出てきません。<span class="badge">補足</span>コール中で語られた水準は <strong>8〜10%</strong> ですが、<strong>土台と上乗せがそれぞれ何 % かは示されていません</strong>。</p>
 
 <p>ユーザー側の判断基準としては、<strong>「貸し手のように担保を評価しろ」</strong>という言い方がされました。何が裏付けているのか、それを検証できるのか、抜けたいときに流動性はどれだけ深いのか、の 3 つです。</p>
 
@@ -1469,7 +1479,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>用途の実例として、ナイジェリアやアルゼンチンのような市場が挙げられました。<strong>米ドルの現金にアクセスしにくく、自国通貨のインフレが激しい</strong>ため、日々の仕事と生活がステーブルコインの上で回っている、という説明です。そこに米ドル建ての利回りが乗ると<strong>「考えるまでもない選択」</strong>になる、と続きました。</p>
 
-<p>もう 1 つはトークン化です。示された例は、<strong>トークン化された株式を保有したまま、オンチェーンのレンディング市場でステーブルコインを借りる</strong>というものでした。伝統的な金融でこれにあたるのはマージンローンで、<strong>ブローカーにアクセスできる富裕層に事実上限られている</strong>、という対比です。</p>
+<p>もう 1 つはトークン化です。示された例は、トークン化された株式を保有したまま、オンチェーンのレンディング市場でステーブルコインを借りるというものでした。伝統的な金融でこれにあたるのはマージンローンで、<strong>ブローカーにアクセスできる富裕層に事実上限られている</strong>、という対比です。</p>
 
 <p>市場規模については、<strong>ステーブルコインは今日すでに 3,000 億ドル</strong>、大手銀行は<strong>今後 5 年で 10 倍以上</strong>を予想している、と述べられました。<span class="badge">補足</span>どの銀行のどのレポートかは、コール中では挙げられていません。</p>
 
@@ -1500,7 +1510,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="spo">10. SPO に何ができるか —「暗い森」のたとえ</h2>
 <p class="deck">この節だけは進行役が答えている。bot が増えるほど、人であることを担保できる立場の価値が上がるという筋立て。</p>
 
-<p>チャットに来ていた質問は、<strong>「認証を受けた SPO は、GTM のどこで効くのか。マーケティング費用では買えないものを、プール運営者のコミュニティは出せるのか」</strong>というものでした。これに<strong>進行役が自分で答える</strong>形になった節です。<span class="badge">補足</span>ここでいう「認証を受けた SPO」は、<strong>RealFi の SPO アクセラレータープログラムに参加しているステークプールの運営者</strong>を指します。</p>
+<p>チャットに来ていた質問は、「認証を受けた SPO は、GTM のどこで効くのか。マーケティング費用では買えないものを、プール運営者のコミュニティは出せるのか」というものでした。これに<strong>進行役が自分で答える</strong>形になった節です。<span class="badge">補足</span>ここでいう「認証を受けた SPO」は、<strong>RealFi の SPO アクセラレータープログラムに参加しているステークプールの運営者</strong>を指します。</p>
 
 <p>出発点になったのが、「暗い森」というたとえでした。</p>
 
@@ -1539,7 +1549,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>その延長で、日本のコミュニティに直接関わる話も出ました。<strong>日本には比較的動いていない ADA が多くある</strong>という認識のもと、「ステーキングは ADA 保有者の義務」という従来の見方に対して、<strong>経済活動という考え方もあり得るのではないか</strong>という問いかけがされています。</p>
 
-<p>分散化についても、<strong>大量のステークを持つ MPO（複数プールのオペレーター）から、より多くのシングルプールへ委任が移ってほしい</strong>という希望が述べられました。プールが成り立つスイートスポットとして<strong>100 万〜1,200 万</strong>という幅が挙げられましたが、これは<strong>「誰かがチャットでもっと正確に教えてくれるだろう」と添えられた概算</strong>で、確定した数字としては語られていません。</p>
+<p>分散化についても、大量のステークを持つ MPO（複数プールのオペレーター）から、より多くのシングルプールへ委任が移ってほしいという希望が述べられました。プールが成り立つスイートスポットとして<strong>100 万〜1,200 万</strong>という幅が挙げられましたが、これは<strong>「誰かがチャットでもっと正確に教えてくれるだろう」と添えられた概算</strong>で、確定した数字としては語られていません。</p>
 
 <details class="explain">
 <summary>「暗い森」という言い方が指しているもの — 開く</summary>
@@ -1602,7 +1612,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <ul>
   <li><strong><a href="https://sundae.fi">SundaeSwap</a></strong> — 主要な DEX パートナーとして、適切な流動性プールを立ち上げる</li>
-  <li><strong><a href="https://liqwid.finance">Liqwid</a></strong> — 隔離された市場を用意し、<strong>ADA を担保に USDC を借りて、それを利回り付き商品に投じられる</strong>ようにする</li>
+  <li><a href="https://liqwid.finance">Liqwid</a> — 隔離された市場を用意し、ADA を担保に USDC を借りて、それを利回り付き商品に投じられるようにする</li>
 </ul>
 
 <p>この Liqwid での組み立てを、コール中では<strong>「ポジティブ・キャリーの取引」</strong>と呼んでいます。<strong>ADA を売らずに保ったまま</strong>、それを担保に借りた資金を、借入コストより高い利回りを目標とする商品に投じる、という意味です。</p>
@@ -1946,7 +1956,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-liquidity">4. Why liquidity is existential</h2>
 <p class="deck">For most tokens thin liquidity is an annoyance. For a stablecoin it's the whole thing.</p>
 
-<p>Liquidity was defined as <strong>“the difference between the price you see on a screen and the price you actually get,”</strong> and <strong>depth</strong> as <strong>“how much you can buy or sell before you move that price.”</strong> Then the argument narrows to why stablecoins are the exception.</p>
+<p>Liquidity was defined as “the difference between the price you see on a screen and the price you actually get,” and <strong>depth</strong> as <strong>“how much you can buy or sell before you move that price.”</strong> Then the argument narrows to why stablecoins are the exception.</p>
 
 <blockquote>
 <p>Like a dollar, a dollar you could only sell at ninety-eight cents isn't really a dollar or a stablecoin at that point.</p>
@@ -2008,7 +2018,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap">The dashed boxes are the things that never happen. On the top row the chain simply stops.</p>
 </div>
 
-<p>As it was put on the call: <strong>“If there is no depth or liquidity to do that, then there is no lending market, which means there is no borrowing, which means there is no real DeFi economy and no ability to grow through leverage looping strategies.”</strong> The loops in section 5 are the far right of that chain.</p>
+<p>As it was put on the call: “If there is no depth or liquidity to do that, then there is no lending market, which means there is no borrowing, which means there is no real DeFi economy and no ability to grow through leverage looping strategies.” The loops in section 5 are the far right of that chain.</p>
 
 <p>The loop runs the other way too: depth gives the market confidence, which brings other holders, which deepens the pools further — a <strong>flywheel</strong>. <span class="badge">added</span>A flywheel is a cycle where each step strengthens the next, so momentum builds with every turn.</p>
 
@@ -2077,7 +2087,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>Mortgage a house, use the loan to buy a second, mortgage that, and repeat. The rent (the yield) keeps climbing — but <strong>so does the debt, and a small fall in property prices leaves every one of those mortgages short at the same moment</strong>. That's where the danger in a loop lives.</p>
 
 <h4>In one line</h4>
-<p><strong>It multiplies the yield on the same starting capital, and multiplies the pain when the price moves the other way.</strong> The call says as much: loops amplify losses as well as gains.</p>
+<p>It multiplies the yield on the same starting capital, and multiplies the pain when the price moves the other way. The call says as much: loops amplify losses as well as gains.</p>
 
 <h4>What this call doesn't cover</h4>
 <p>At what level of collateral shortfall a loop gets liquidated, and what a cascade of liquidations would do to the sUSDR price or the peg, never comes up. If loops are the growth mechanic, this is the other side of the same coin.</p>
@@ -2088,7 +2098,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-credit">6. Pricing what has no price</h2>
 <p class="deck">How a loan with no market price gets valued and fed into sUSDR. Four parties were named — by role.</p>
 
-<p>The private credit book was described as <strong>lending to fintechs in capital-constrained markets, who then lend to real borrowers</strong>.</p>
+<p>The private credit book was described as lending to fintechs in capital-constrained markets, who then lend to real borrowers.</p>
 
 <p>On the yield, the explanation given was that it is high <strong>not because the risk is high but because capital is scarce in those markets</strong>. The opportunities were described as <strong>asset-backed with credit enhancements</strong>, and “all pretty non risky stuff.”</p>
 
@@ -2109,14 +2119,14 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>Cost of underwriting and funding</strong> — assessing, collecting, and the lender's own cost of money.</li>
   <li><strong>A premium for capital being scarce</strong> — what gets added when the borrower has nowhere else to go.</li>
 </ul>
-<p>The instinct that <strong>risk is why the capital stays away is correct — that path is real</strong>. It just isn't the only one.</p>
+<p>The instinct that risk is why the capital stays away is correct — that path is real. It just isn't the only one.</p>
 
 <h4>Capital can stay away for reasons that aren't risk</h4>
 <ul>
   <li><strong>Licensing and capital controls</strong> — a foreign lender may need a local licence, or face limits on moving money out. That blocks entry <strong>regardless of whether the borrower repays</strong>.</li>
   <li><strong>Diligence is expensive</strong> — without credit bureaus and audited accounts, each individual loan costs more to assess. That's <strong>labour, not loss</strong>.</li>
   <li><strong>The deals are too small</strong> — a large fund can't justify the work on a small ticket, however good it is.</li>
-  <li><strong>Whole countries get excluded</strong> — when an investor rules out a jurisdiction, money doesn't arrive <strong>irrespective of any individual borrower's quality</strong>.</li>
+  <li><strong>Whole countries get excluded</strong> — when an investor rules out a jurisdiction, money doesn't arrive irrespective of any individual borrower's quality.</li>
   <li><strong>Shallow local capital markets</strong> — there is simply less money available domestically to lend.</li>
 </ul>
 <p>None of these five <strong>raise the probability of not being repaid</strong>. They raise the rate anyway. That's what “high because capital is scarce” is pointing at.</p>
@@ -2156,13 +2166,13 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <h4>So how would you tell from the outside?</h4>
 <p>There's one number to look at: <strong>the realised default rate</strong>.</p>
-<p>If scarcity is the main driver, you get <strong>a high rate together with few defaults</strong>. If risk is the main driver, the defaults actually show up. <strong>Two books can both quote 15% and look nothing alike once you see the history.</strong></p>
+<p>If scarcity is the main driver, you get <strong>a high rate together with few defaults</strong>. If risk is the main driver, the defaults actually show up. Two books can both quote 15% and look nothing alike once you see the history.</p>
 
 <h4>An everyday analogy</h4>
 <p>A room can cost $500 a night because the area is dangerous and half the rooms sit empty, or because <strong>it's the only place to stay for miles</strong>. The price is the same; the people who stayed in the second one all came home fine. You tell them apart by <strong>what happened to previous guests</strong>, not by the price.</p>
 
 <h4>What this call doesn't cover</h4>
-<p>What was said stops at <strong>“asset-backed with credit enhancements”</strong> and <strong>“all pretty non risky stuff.”</strong> <strong>No default rate and no loss history are given.</strong></p>
+<p>What was said stops at <strong>“asset-backed with credit enhancements”</strong> and <strong>“all pretty non risky stuff.”</strong> No default rate and no loss history are given.</p>
 <p>The verification described in this section — specialist valuers, independent underwriters, proof-of-reserve auditors — establishes <strong>what the book is worth now</strong>. That is a different question from <strong>how much of it has gone bad in the past</strong>. Given that weekly attestations are already being produced, <strong>whether realised default rates get published</strong> is worth asking on a later call.</p>
 </div>
 </details>
@@ -2211,7 +2221,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>Wariness about <strong>“marking their own homework”</strong> came up repeatedly. <strong>Blow-ups over the last six months</strong> involving protocols that skipped independent verification were cited as the reason institutions have been burnt or are wary of it — and as the reason the market is being forced to take this seriously.</p>
 
-<p>On RealFi's side, two things were named: <strong>a live data view of what backs the tokens</strong>, and <strong>weekly “attestations” on the private credit book</strong>.</p>
+<p>On RealFi's side, two things were named: <strong>a live data view of what backs the tokens</strong>, and weekly “attestations” on the private credit book.</p>
 
 <div class="term">
 <p class="term-name">Attestation</p>
@@ -2270,7 +2280,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>Three ways a company can pay a dividend: out of trading profit, out of a spread it earns against someone else, or by issuing new shares to existing shareholders. The third leaves you holding more shares that are each worth proportionally less. That's the right-hand box.</p>
 
 <h4>In one line</h4>
-<p>Before looking at the number, check whether the money is <strong>coming in from outside, or just being circulated between participants</strong>.</p>
+<p>Before looking at the number, check whether the money is coming in from outside, or just being circulated between participants.</p>
 </div>
 </details>
 
@@ -2304,7 +2314,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap"><span class="badge">added</span>Sorting each layer by who pays was done here. On the call, the list of holdings and the who-pays test are made in separate places.</p>
 </div>
 
-<p>In other words: <strong>a solid, movable base of T-bills (short-dated US government debt) and money market funds, with private credit layered on top to lift the yield</strong>. The third box in the figure above — paying with your own newly printed token — does not appear anywhere in this design. <span class="badge">added</span>The level discussed on the call is <strong>eight to ten percent</strong>, but <strong>how much of that comes from each layer is not given</strong>.</p>
+<p>In other words: a solid, movable base of T-bills (short-dated US government debt) and money market funds, with private credit layered on top to lift the yield. The third box in the figure above — paying with your own newly printed token — does not appear anywhere in this design. <span class="badge">added</span>The level discussed on the call is <strong>eight to ten percent</strong>, but <strong>how much of that comes from each layer is not given</strong>.</p>
 
 <p>The test offered to holders was to <strong>“judge collateral like a lender would”</strong>: what backs it, can you verify it, and how deep is the liquidity if you want out.</p>
 
@@ -2316,9 +2326,9 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>The use case named was markets like Nigeria and Argentina, where <strong>dollar fiat is hard to access and the local currency inflates hard</strong>, so day-to-day business and life run on stablecoins. Add a dollar-denominated yield on top and it becomes <strong>“a no-brainer for a lot of people in those markets.”</strong></p>
 
-<p>The second was tokenisation, with a concrete example: <strong>holding a tokenised stock and borrowing stablecoins against it on-chain while keeping the position</strong>. The traditional equivalent is a margin loan, which is <strong>effectively reserved for higher-net-worth people with broker access</strong>.</p>
+<p>The second was tokenisation, with a concrete example: holding a tokenised stock and borrowing stablecoins against it on-chain while keeping the position. The traditional equivalent is a margin loan, which is <strong>effectively reserved for higher-net-worth people with broker access</strong>.</p>
 
-<p>On size: <strong>three hundred billion dollars of stablecoins today</strong>, with big banks projecting <strong>more than ten times that in five years</strong>. <span class="badge">added</span>No bank or report was named on the call.</p>
+<p>On size: three hundred billion dollars of stablecoins today, with big banks projecting <strong>more than ten times that in five years</strong>. <span class="badge">added</span>No bank or report was named on the call.</p>
 
 
 <h2 id="en-success">9. Success in twelve to eighteen months</h2>
@@ -2347,7 +2357,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-spo">10. What SPOs can do — the dark forest analogy</h2>
 <p class="deck">The one section the host answers himself. The more bots there are, the more valuable it is to be able to vouch for a human.</p>
 
-<p>The question from the chat was <strong>where verified SPOs fit into GTM, and what the operator community can do for growth that marketing spend can't</strong>. <strong>The host took this one himself.</strong> <span class="badge">added</span>“Verified SPOs” here means <strong>stake pool operators taking part in RealFi's SPO accelerator programme</strong>.</p>
+<p>The question from the chat was where verified SPOs fit into GTM, and what the operator community can do for growth that marketing spend can't. <strong>The host took this one himself.</strong> <span class="badge">added</span>“Verified SPOs” here means <strong>stake pool operators taking part in RealFi's SPO accelerator programme</strong>.</p>
 
 <p>He starts from the dark forest analogy.</p>
 
@@ -2449,7 +2459,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <ul>
   <li><strong><a href="https://sundae.fi">SundaeSwap</a></strong> — the main DEX partner, with the right liquidity pools standing up</li>
-  <li><strong><a href="https://liqwid.finance">Liqwid</a></strong> — an isolated market where you can <strong>borrow USDC against ADA collateral and deploy it into the yield-bearing instrument</strong></li>
+  <li><strong><a href="https://liqwid.finance">Liqwid</a></strong> — an isolated market where you can borrow USDC against ADA collateral and deploy it into the yield-bearing instrument</li>
 </ul>
 
 <p>That Liqwid construction is what the call calls <strong>“a positive carry trade”</strong>: <strong>you keep hold of the ADA rather than selling it</strong>, and the funds borrowed against it go into a product targeting a higher yield than the cost to borrow.</p>

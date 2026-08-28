@@ -350,14 +350,16 @@ h3 {
 /* 見出しにアンカーで飛んだとき、上に余白を残す */
 h2[id] { scroll-margin-top: 1.5rem; }
 
-p { margin: 0 0 1.1rem; }
+p { margin: 0 0 1.35rem; }
 
 a { color: var(--accent); }
 
-ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
-li { margin-bottom: 0.5rem; }
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
 
-strong { font-weight: 700; }
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -490,6 +492,14 @@ code {
 .part-head h2::before { display: none; }
 
 .tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
 
 /* ---- 折りたたみの解説 ---- */
 
@@ -1023,7 +1033,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <h4>CC は「司法府」なのか</h4>
 <p>これも半分です。憲法を解釈して提案の合憲性を判断する点は憲法裁判所に似ています。</p>
-<p>けれど CC は、<strong>紛争を裁かず、制裁も科さず、過去の行為を審理せず、提案を修正することもできません</strong>。原則として賛否を投票するだけです。「司法府」というより<strong>合憲性を事前に審査する委員会</strong>にあたります。</p>
+<p>けれど CC は、紛争を裁かず、制裁も科さず、過去の行為を審理せず、提案を修正することもできません。原則として賛否を投票するだけです。「司法府」というより<strong>合憲性を事前に審査する委員会</strong>にあたります。</p>
 
 <h4>SPOs が抜けると構造を読み違えます</h4>
 <p>番組では触れられませんが、SPOs も独立した 3 つ目の機関です。CC への不信任、CC の更新、ハードフォーク、Info Action などに投票します。とくに<strong>ハードフォークは実際にノードを更新する SPO の協力なしには成立しない</strong>ので、明示的な承認主体として組み込まれています。国家の三権には対応しない、Cardano 独自の存在です。</p>
@@ -1061,12 +1071,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>それでも Intersect は、その後の更新でこれを <strong>“DReps signalled support”（DRep が支持を表明した）</strong>と表現しています。<strong>“ratified”（批准された）とは書いていません。</strong>同時に「Info Action は signaling であって正式な批准を要しない」とも説明しており、<strong>言葉は慎重に使い分けられています</strong>。</p>
 
 <h4>CC が Info Action を審査すべきかも、まだ揺れています</h4>
-<p>憲法は、<strong>Info Action を含むガバナンスアクションの合憲性を CC が審査する</strong>と定めています。一方、プロトコル側の整理では <strong>Info Action は CC の投票対象外</strong>としている資料もあり、両者がきれいに一致していません。</p>
+<p>憲法は、Info Action を含むガバナンスアクションの合憲性を CC が審査すると定めています。一方、プロトコル側の整理では <strong>Info Action は CC の投票対象外</strong>としている資料もあり、両者がきれいに一致していません。</p>
 <p>実際、Eastern Cardano Council は最初の Cardano 2030 提案について「予算案でも、後続の実行可能なアクションへの意向調査でもないため、CC が合憲性を判断する対象ではない」として棄権しました。ところが同じ評議会が、<strong>Net Change Limit</strong> の Info Action については「憲法上の財務ルールを実際に支えるものなので CC の審査が必要で、閾値に届かなければ有効な NCL とは言えない」と主張しています。<strong>同じ Info Action という器でも、扱いを分けようとしている</strong>わけです。</p>
 
 <h4>ここが、行政機能の話に戻ってきます</h4>
 <p>今の運用では、次のことが起こり得ます —— ①Info Action で方向性を問う → ②正式な批准には届かない → ③関係組織が「十分な支持シグナルがあった」と解釈する → ④その組織が実務を続ける。</p>
-<p>そして、<strong>誰が票を解釈するのか、どの程度の支持があれば戦略として採用してよいのか、未批准の Info Action にどこまで正統性を認めるのか</strong>は、制度として決まっていません。</p>
+<p>そして、誰が票を解釈するのか、どの程度の支持があれば戦略として採用してよいのか、未批准の Info Action にどこまで正統性を認めるのかは、制度として決まっていません。</p>
 <p>この意味で「行政機能が足りない」という番組の指摘は当たっています。ただし裏返すと、<strong>行政機能を作る前に Info Action の位置づけを整理しないと、行政の側が投票結果を都合よく解釈できてしまう</strong>という問題が残ります。<span class="badge">補足</span>これは番組では触れられていない論点です。</p>
 
 <h4>正確に言い直すと</h4>
@@ -1123,7 +1133,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>この回には Pogun も出てきますが、性質がまったく違います。<strong>Pogun は作る「製品」、Pentad は大型統合を進める「体制」</strong>です。</p>
 
 <h4>収録時点では 5 組織ではありません</h4>
-<p>名前のとおり発足時は 5 組織でしたが、<strong>2026 年 7 月 8 日に EMURGO が離脱を通知</strong>しており、この収録（7 月 26 日）の時点では <strong>Input Output・Cardano Foundation・Midnight Foundation・Intersect MBO の 4 組織</strong>です。理由は、自社が提供していたウォレット SecondFi の事故対応に専念するため、と説明されています。</p>
+<p>名前のとおり発足時は 5 組織でしたが、<strong>2026 年 7 月 8 日に EMURGO が離脱を通知</strong>しており、この収録（7 月 26 日）の時点では Input Output・Cardano Foundation・Midnight Foundation・Intersect MBO の 4 組織です。理由は、自社が提供していたウォレット SecondFi の事故対応に専念するため、と説明されています。</p>
 <p>番組でも EMURGO は厳しく評されていますが、<strong>この離脱そのものには触れていません</strong>。</p>
 
 <p>状況は 2026 年 8 月 1 日時点のもので、以降変わり得ます。</p>
@@ -1180,14 +1190,14 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li>2026 年 Q4 —— 機関向け機能と BitVM ブリッジ</li>
   <li>財務庫への要求額 —— <strong>1,229 万 ADA</strong></li>
 </ul>
-<p>資金の出方も他と違います。助成ではなく<strong>部分的な投資</strong>の形で、<strong>収益の 20% を出資額の返済が終わるまで、その後は 5% を永続的に</strong>財務庫へ戻す条件が付いています。</p>
+<p>資金の出方も他と違います。助成ではなく<strong>部分的な投資</strong>の形で、収益の 20% を出資額の返済が終わるまで、その後は 5% を永続的に財務庫へ戻す条件が付いています。</p>
 <p><strong>これは提案上のロードマップです。</strong>実際の提供状況や時期は、資金調達・開発・監査の進み方で変わり得ます。数値と状況は 2026 年 8 月 1 日時点のものです。</p>
 </div>
 </details>
 
 <p>番組内では別の箇所で「Bitcoin DeFi のような自然な成長領域もある」と述べられており、Pogun はまさにその領域にあたります。ただし、<strong>この 2 つが結び付けて語られてはいません</strong>。</p>
 
-<p>この 4 つに共通する性質として強調されたのが<strong>「本質的に非対立的（non-adversarial）」</strong>という点でした。新しい人か新しいエコシステムを連れてくるので、<strong>Solana や Ethereum、Hyperliquid からユーザーを奪う必要がない</strong>、と。</p>
+<p>この 4 つに共通する性質として強調されたのが<strong>「本質的に非対立的（non-adversarial）」</strong>という点でした。新しい人か新しいエコシステムを連れてくるので、Solana や Ethereum、Hyperliquid からユーザーを奪う必要がない、と。</p>
 
 <p>そのうえで「Aave が来てくれるのを、Uniswap が来てくれるのを待って 1 億ドル払って問題を解いてもらう、という話ではない」と述べられています。<strong>外から大手プロトコルを誘致するのではなく、自前のベンチャーを育てる</strong>という方針の表明です。</p>
 
@@ -1292,7 +1302,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="mullet">6. DeFi マレット</h2>
 <p class="deck">前面は CeFi、背面は DeFi。すでに起きている収斂のパターンとして紹介された。</p>
 
-<p>ホスト側から持ち込まれた概念です。<strong>髪型のマレット（前は短く整え、後ろは伸ばす）になぞらえて、前面は使い慣れた CeFi のアプリ、裏側の運用は DeFi</strong>という構成を指します。</p>
+<p>ホスト側から持ち込まれた概念です。髪型のマレット（前は短く整え、後ろは伸ばす）になぞらえて、前面は使い慣れた CeFi のアプリ、裏側の運用は DeFiという構成を指します。</p>
 
 <p>例として挙げられたのが Morpho です。Coinbase の預金・アーン口座に入れたドルの利回りは<strong>裏側の Morpho から来ている</strong>こと、Robinhood についても同じ構造で、統合に数億ドルが払われたことが述べられました。</p>
 
@@ -1724,8 +1734,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <h4>Which loops back to executive function</h4>
 <p>What can happen today: an info action asks the question → formal ratification is not reached → an organisation reads it as “sufficient support” → that organisation carries on with the work.</p>
-<p>And <strong>who interprets the vote, how much support is enough to adopt something as strategy, and how much legitimacy an unratified info action carries</strong> are not settled as rules.</p>
-<p>So “we lack executive function” lands. But the inverse is also true: <strong>without settling what an info action means first, an executive would be free to read the votes whichever way suits it.</strong> <span class="badge">added</span>This point is not raised on the show.</p>
+<p>And who interprets the vote, how much support is enough to adopt something as strategy, and how much legitimacy an unratified info action carries are not settled as rules.</p>
+<p>So “we lack executive function” lands. But the inverse is also true: without settling what an info action means first, an executive would be free to read the votes whichever way suits it. <span class="badge">added</span>This point is not raised on the show.</p>
 
 <h4>Stated precisely</h4>
 <p>The constitution, representative voting, constitutionality review and network approval <strong>are live</strong>. A body of law, legislative procedure, general adjudication and executive delivery <strong>are not yet differentiated</strong>. The show's “we need a third branch” is best read as pointing at the delivery part of what remains undifferentiated.</p>
@@ -1778,7 +1788,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>The gaps in integration that sat unrepaired — <strong>the baseline infrastructure a major ecosystem is expected to have and Cardano went years without</strong>. However good the individual DApps are, an ecosystem with thin stablecoins, no trusted price data, no inbound capital from other chains, no institutional custody and no external analytics does not grow.</p>
 
 <h4>Not to be confused with Pogun</h4>
-<p>Both come up in this episode and they are different kinds of thing. <strong>Pogun is a product being built; the Pentad is the arrangement for getting large integrations done.</strong></p>
+<p>Both come up in this episode and they are different kinds of thing. Pogun is a product being built; the Pentad is the arrangement for getting large integrations done.</p>
 
 <h4>It wasn't five at the time of recording</h4>
 <p>Five is where the name comes from, but <strong>EMURGO gave notice on 8 July 2026</strong>, so by this recording (26 July) it was <strong>Input Output, the Cardano Foundation, the Midnight Foundation and Intersect MBO</strong> — four. The stated reason was to concentrate on handling the incident affecting SecondFi, a wallet EMURGO itself provided.</p>
@@ -1838,14 +1848,14 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li>Q4 2026 — institutional features and the BitVM bridge</li>
   <li>Treasury request — <strong>12,290,000 ADA</strong></li>
 </ul>
-<p>The funding shape is unusual too: not a grant but a <strong>partial investment</strong>, returning <strong>20% of earnings to the treasury until the disbursement is repaid, then 5% in perpetuity</strong>.</p>
+<p>The funding shape is unusual too: not a grant but a <strong>partial investment</strong>, returning 20% of earnings to the treasury until the disbursement is repaid, then 5% in perpetuity.</p>
 <p><strong>This is the roadmap as proposed.</strong> What actually ships, and when, depends on funding, development and audits. Figures and status are as of 1 August 2026.</p>
 </div>
 </details>
 
 <p>Elsewhere in the episode there is a line about “natural areas to grow like Bitcoin DeFi”, which is exactly the space Pogun occupies — though <strong>the two are never connected out loud</strong>.</p>
 
-<p>What they share is being <strong>“intrinsically non-adversarial”</strong>: they bring in new people or new ecosystems, so <strong>“we don't have to go and steal users from Solana or Ethereum or Hyperliquid.”</strong></p>
+<p>What they share is being <strong>“intrinsically non-adversarial”</strong>: they bring in new people or new ecosystems, so “we don't have to go and steal users from Solana or Ethereum or Hyperliquid.”</p>
 
 <p>Hence: “It's not like we're waiting for an Aave to come or a Uniswap to come and we have to pay $100 million and hopefully they'll solve our problem, it's more of can we get these ventures where they need to be?” — <strong>grow your own rather than court the incumbents.</strong></p>
 
@@ -1912,7 +1922,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>This one isn't technical — it's <strong>the psychological barrier</strong>. The consumer answer hasn't changed in fifteen years: it's too complex, and I'm going to lose everything through my own mistake. Delegating authority to an agent that warns you before you send to a spoofed address plays <strong>the role antivirus played in making 1990s computing safe</strong>.</p>
 
 <h4>In one line</h4>
-<p>Each of the four takes a different obstacle — <strong>secrecy (PET), friction (abstraction), regulation (smart compliance), fear (agents)</strong>. Drop one and the path is blocked.</p>
+<p>Each of the four takes a different obstacle — secrecy (PET), friction (abstraction), regulation (smart compliance), fear (agents). Drop one and the path is blocked.</p>
 </div>
 </details>
 
@@ -2030,7 +2040,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-agentic">8. Agentic finance</h2>
 <p class="deck">What agents fix isn't speed — it's the asymmetry in access, knowledge and sleep.</p>
 
-<p>Of the three topics, this is the one with the strongest yes — but a conditional one: <strong>“if it has trusted execution to run the agents and if it has ZK and intents to regulate that.”</strong></p>
+<p>Of the three topics, this is the one with the strongest yes — but a conditional one: “if it has trusted execution to run the agents and if it has ZK and intents to regulate that.”</p>
 
 <p>Four benefits are named.</p>
 
@@ -2100,7 +2110,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p><span class="badge">added</span><strong>Background on PRIME.</strong> This is the proposal described as being on chain. AlphaGrowth is asking the Cardano treasury for <strong>120 million ADA</strong> (about $19.2m at the price assumed in the proposal) over 12 months, spending it on protocol audits, liquidity incentives and market expansion to grow DeFi TVL. Treasury withdrawals need <strong>two-thirds (67%) of DReps</strong> in favour. <strong>As of 1 August 2026 the vote is under way and no result is confirmed.</strong> The figures and status are dated here because both move.</p>
 
-<p>Near the end, Charles Hoskinson says <strong>“we'll do what we can on the IO side to help your proposal get through”</strong> — and immediately adds that <strong>“it shows you how decentralized it is that the founder of the system can't just flip a switch and say, okay, you're in the club, you have to earn it.”</strong> Endorsement and the limit of that endorsement land in the same breath.</p>
+<p>Near the end, Charles Hoskinson says <strong>“we'll do what we can on the IO side to help your proposal get through”</strong> — and immediately adds that “it shows you how decentralized it is that the founder of the system can't just flip a switch and say, okay, you're in the club, you have to earn it.” Endorsement and the limit of that endorsement land in the same breath.</p>
 
 <p>The “no ecosystem has won” passage belongs here too. BlackBerry, Internet Explorer, AOL, MySpace and Yahoo are lined up, and <strong>anyone claiming their ecosystem has won “is a bag holder and they're trying to dump their tokens on you.”</strong> Cardano is not exempted from this.</p>
 

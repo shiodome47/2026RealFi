@@ -350,14 +350,16 @@ h3 {
 /* 見出しにアンカーで飛んだとき、上に余白を残す */
 h2[id] { scroll-margin-top: 1.5rem; }
 
-p { margin: 0 0 1.1rem; }
+p { margin: 0 0 1.35rem; }
 
 a { color: var(--accent); }
 
-ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
-li { margin-bottom: 0.5rem; }
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
 
-strong { font-weight: 700; }
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -490,6 +492,14 @@ code {
 .part-head h2::before { display: none; }
 
 .tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
 
 /* ---- 折りたたみの解説 ---- */
 
@@ -891,8 +901,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2>この回の要点</h2>
 <ul>
   <li><strong>Cardano のアクティブウォレットの約 14%（7 分の 1）</strong>が RealFi の testnet でアクティブだった。直近エポック（7/23〜28）で約 2,600 ウォレット。<strong>同じ頃にアクティブだった Cardano のウォレットが約 20,000</strong>（＝ Cardano の総ウォレット数ではない）。</li>
-  <li><strong>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。</strong>それらは <strong>230 万 ADA</strong> を保有。ただしこれは人数でも実際の重なりでもなく、<strong>機械的に関連付けられたステーク資格情報の件数</strong>。ウォレット連携の実装後は増える。</li>
-  <li><strong>SPO プログラム参加プールの 84% が委任を増やした。</strong>参加していない同規模プールは 17%。ただし<strong>因果関係は発表者自身が留保している</strong>。</li>
+  <li>testnet ウォレットのうち約 340 個がメインネットのウォレットと暗号鍵で紐付いた。それらは <strong>230 万 ADA</strong> を保有。ただしこれは人数でも実際の重なりでもなく、<strong>機械的に関連付けられたステーク資格情報の件数</strong>。ウォレット連携の実装後は増える。</li>
+  <li>SPO プログラム参加プールの 84% が委任を増やした。参加していない同規模プールは 17%。ただし<strong>因果関係は発表者自身が留保している</strong>。</li>
   <li>数字はすべて<strong>ファーミングウォレットを除外した「実在ウォレットの最良推定」</strong>。算出方法の詳細は後日共有される。</li>
   <li>流動性は<strong>3 つの層</strong>で設計されており、「将来を予測することに依存しない」運用が強調された。</li>
 </ul>
@@ -981,7 +991,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="note">
 <p><span class="badge">補足</span><strong>「20,000」が何を指しているか。</strong>これは <strong>Cardano に存在するウォレットの総数ではありません。</strong>一定期間内に動いた「アクティブなウォレット」の概数です。つまりこの比較が言っているのは、次のことです。</p>
-<p><strong>RealFi の testnet で直近およそ 2,600 のウォレットが動いた。これは、Cardano で普段アクティブとされる約 20,000 のウォレットと比べると、7 分の 1 程度の規模だった。</strong></p>
+<p>RealFi の testnet で直近およそ 2,600 のウォレットが動いた。これは、Cardano で普段アクティブとされる約 20,000 のウォレットと比べると、7 分の 1 程度の規模だった。</p>
 <p>さらに、これは厳密な同条件比較ではありません。コール中でも母集団の違いは断られています。加えて<strong>両者の集計期間と「アクティブ」の定義は、揃えたものとしては説明されていません</strong>。規模感をつかむための参考値として読むのが適切です。</p>
 </div>
 
@@ -1088,7 +1098,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <ul>
   <li><strong>因果関係は分からない。</strong>「7 月 22 日に何かが起きたことは分かるが、なぜかは必ずしも分からない。プログラムにいること自体によるものなのか、参加した人たちが実際に外に出て努力したからなのか。背後にはおそらくいくつもの要因がある」</li>
   <li><strong>メインネットでの TVL は予測していない。</strong>「『これだけの TVL を集められます』と言ってほしかったんだろうと思うが、正直なところその数字は出せない。誰がメインネットに来るか分からない」。示されたのは<strong>今 testnet を使っている人が現在保有している額</strong>であって、将来の予測ではありません</li>
-  <li><strong>算出方法はまだ公開されていない。</strong>「かなり複雑になった」ため後日共有されます。<strong>算出には Claude を使ったと述べられています</strong></li>
+  <li><strong>算出方法はまだ公開されていない。</strong>「かなり複雑になった」ため後日共有されます。算出には Claude を使ったと述べられています</li>
 </ul>
 
 <h3>TVL を動かす「盤上の駒」</h3>
@@ -1157,14 +1167,14 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <h4>③ 二次流通 — DEX で売買するときの話</h4>
 <p>USDR を他のトークンに交換したいとき、プールが小さいと価格が大きく動き、1 USDR を 1 ドル相当で売れなくなります（スリッページ）。そこで<strong>どの DEX にプールを置くか、どのペアにするか、いくら入れるか</strong>を設計します。</p>
-<p>「スプレッドで削られないだけの深さ」とは、<strong>売買したときに価格差で大きく損をしない程度の流動性を用意しておく</strong>ということです。</p>
+<p>「スプレッドで削られないだけの深さ」とは、売買したときに価格差で大きく損をしない程度の流動性を用意しておくということです。</p>
 
 <h4>peg stability module とは</h4>
 <p>USDR の価格が 1 ドルからずれたときに、1 ドル付近へ戻すための仕組みです。一般的なペッグ安定化では、価格が下がれば「安く買って 1 ドル相当で償還する」経路が働き、買いが入って価格が戻る——という動きになります。<strong>ただし RealFi のものが具体的にどう動くかは、このコールでは説明されていません。</strong></p>
 <p>「常時稼働」とは、誰かが都度判断するのではなく、<strong>あらかじめ決めたルールでいつでも作動する</strong>ということです。</p>
 
 <h4>「予測に依存しない」とは</h4>
-<p>この節で一番わかりにくい部分です。<strong>「金利が上がるはず」「売りが増えるはず」と未来を当てにいって配分を決めるのではない</strong>、という意味です。</p>
+<p>この節で一番わかりにくい部分です。「金利が上がるはず」「売りが増えるはず」と未来を当てにいって配分を決めるのではない、という意味です。</p>
 <p>代わりに、今わかっている数字を使います — 7 日以内に現金化できる資産はいくらか、30 日以内に返済される融資はいくらか、途中解約できるか、現在の TVL はいくらか、DEX プールの取引量はいくらか。それを見て機械的に配分を変える、という設計です。</p>
 
 <h4>たとえるなら</h4>
@@ -1177,14 +1187,14 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>そして<strong>「今日は流行りそうだから大量に仕込む」という予想はしません。</strong>冷蔵庫に今何があるか、何時に食材が届くか、それで今どれだけの注文をさばけるか——を見て調整します。</p>
 
 <h4>一言でまとめると</h4>
-<p><strong>USDR の裏付け資産を「いつ現金化できるか」で分類して管理し、DEX にも十分な流動性を置いて、USDR を 1 ドル付近で売買・償還できる状態を保つ。その調整は未来予測ではなく、返済期限や償還条件といった既知のデータを基準に行う。</strong></p>
+<p>USDR の裏付け資産を「いつ現金化できるか」で分類して管理し、DEX にも十分な流動性を置いて、USDR を 1 ドル付近で売買・償還できる状態を保つ。その調整は未来予測ではなく、返済期限や償還条件といった既知のデータを基準に行う。</p>
 
 </div>
 </details>
 
 <div class="term">
 <p class="term-name">① ポートフォリオ全体 <small>aggregate portfolio</small></p>
-<p>資産の流動性を TVL に対して常に調整し続ける。<strong>現金化までの時間（time to cash）を、後付けではなくあらゆるポジションの性質として扱う</strong>。個々の資産で時間軸が違うため。</p>
+<p>資産の流動性を TVL に対して常に調整し続ける。現金化までの時間（time to cash）を、後付けではなくあらゆるポジションの性質として扱う。個々の資産で時間軸が違うため。</p>
 </div>
 
 <div class="term">
@@ -1277,7 +1287,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </div>
 
 <div class="note">
-<p><span class="badge">補足</span><strong>EVM からの流動性の話ではありません。</strong>このコールで語られた「DeFi 統合」は、<strong>Cardano 上でプロトコル同士がつながる</strong>話です。他チェーンから資金を呼び込む話は前回のエンジニアリング回で扱われたブリッジの話題で、<strong>今回のコールには EVM・ブリッジ・クロスチェーンへの言及が一度もありません</strong>。</p>
+<p><span class="badge">補足</span><strong>EVM からの流動性の話ではありません。</strong>このコールで語られた「DeFi 統合」は、<strong>Cardano 上でプロトコル同士がつながる</strong>話です。他チェーンから資金を呼び込む話は前回のエンジニアリング回で扱われたブリッジの話題で、今回のコールには EVM・ブリッジ・クロスチェーンへの言及が一度もありません。</p>
 <p>2 つは補い合う関係にあります — ブリッジが<strong>資金の入口</strong>を広げ、DeFi 統合がその資金の<strong>使い道</strong>を作る。ただしこの接続は、今回のコール中では明示されていません。</p>
 </div>
 
@@ -1289,7 +1299,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <ul>
   <li><strong>オンチェーン</strong> — プラットフォームとスマートコントラクトはすべてオンチェーンなので監査できる</li>
-  <li><strong>オフチェーン</strong> — ここが難所。<strong>非常に多様な情報源からのデータを 1 つ（または複数）のデータベースに集約し、整合させて外部に提示する</strong>必要がある</li>
+  <li><strong>オフチェーン</strong> — ここが難所。非常に多様な情報源からのデータを 1 つ（または複数）のデータベースに集約し、整合させて外部に提示する必要がある</li>
 </ul>
 
 <p>一般ユーザーにとっての出力は、<strong>アプリ上で日次あるいはリアルタイムに更新される情報</strong>です。ポートフォリオの状況、プラットフォームの活動状況、現状がどうなっているか。「基本的な情報は常に最新で、見たい人が誰でも見られる状態」を目指すとのことでした。</p>
@@ -1352,7 +1362,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="qa-a" data-by="今回の回答"><strong>資産クラスの内訳が示されました</strong> — トークン化されたマネー・マーケット・ファンド、変動利付社債、投資適格の CLO ETF（可能性）、直接のプライベートクレジット案件または機関投資家向けファンド。「いずれも暗号資産ネイティブな配分に依存していない」。<br>さらに、上の第 9 節の通り<strong>与信の流れ方が明確になりました</strong>。ただし<strong>社数と国の分散は未回答</strong>のままです。</p>
 </div>
 
-<p>残る 3 件 — <strong>ガバナンスの枠組み、KYC / AML、マーケティング目的の高 APY</strong> — は今回触れられませんでした。<strong>メインネットのローンチ日</strong>も同様に未公表のままです。</p>
+<p>残る 3 件 — ガバナンスの枠組み、KYC / AML、マーケティング目的の高 APY — は今回触れられませんでした。<strong>メインネットのローンチ日</strong>も同様に未公表のままです。</p>
 
 
 <h2 id="qa">11. Q&amp;A</h2>
@@ -1412,8 +1422,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2>Key points</h2>
 <ul>
   <li><strong>About 14% of active Cardano wallets — one in seven</strong> — were active on RealFi's testnet. Roughly 2,600 wallets in the last epoch (23–28 July), against <strong>about 20,000 Cardano wallets active in the same period</strong> — not Cardano’s total wallet count.</li>
-  <li><strong>Around 340 testnet wallets map to mainnet wallets via cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong>. This is not a headcount or the real overlap but <strong>the number of stake credentials matched mechanically on-chain</strong> — it can only rise once wallet linking ships.</li>
-  <li><strong>84% of pools in the SPO programme grew their delegation</strong>, against 17% of comparable pools outside it. The speaker who presented this <strong>declined to claim causation</strong>.</li>
+  <li>Around 340 testnet wallets map to mainnet wallets via cryptographic keys, and those hold <strong>2.3 million ADA</strong>. This is not a headcount or the real overlap but <strong>the number of stake credentials matched mechanically on-chain</strong> — it can only rise once wallet linking ships.</li>
+  <li>84% of pools in the SPO programme grew their delegation, against 17% of comparable pools outside it. The speaker who presented this <strong>declined to claim causation</strong>.</li>
   <li>Every figure is a <strong>best estimate of genuine wallets</strong>, with suspected farming wallets stripped out. The methodology will be shared later.</li>
   <li>Liquidity is designed in <strong>three layers</strong>, and the team stressed that none of it depends on predicting the future.</li>
 </ul>
@@ -1502,7 +1512,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="note">
 <p><span class="badge">added</span><strong>What the 20,000 actually counts.</strong> It is <strong>not the total number of wallets on Cardano.</strong> It is an approximate count of wallets that were <em>active</em> within a period. So what the comparison says is:</p>
-<p><strong>Around 2,600 wallets moved on RealFi’s testnet recently. Set against the roughly 20,000 wallets that are normally active on Cardano, that is about a seventh of them.</strong></p>
+<p>Around 2,600 wallets moved on RealFi’s testnet recently. Set against the roughly 20,000 wallets that are normally active on Cardano, that is about a seventh of them.</p>
 <p>It is also not a like-for-like comparison. The call flags the different populations, and beyond that <strong>the two figures were not presented as sharing a measurement window or a definition of “active”</strong>. Read it as an indication of scale, not a precise ratio.</p>
 </div>
 
@@ -1510,7 +1520,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-linked">3. What the mainnet link shows</h2>
 <p class="deck">What matched are stake credentials — not people, and not the real overlap.</p>
 
-<p><strong>Around 340 matches were made between testnet and mainnet using cryptographic keys</strong>, and those hold <strong>2.3 million ADA</strong> on mainnet.</p>
+<p>Around 340 matches were made between testnet and mainnet using cryptographic keys, and those hold <strong>2.3 million ADA</strong> on mainnet.</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 210" role="img" aria-label="Diagram showing about 340 stake credentials matched between testnet and mainnet, holding 2.3 million ADA">
@@ -1559,7 +1569,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <h4>When it doesn't</h4>
 <p>If someone generated a <strong>separate seed phrase</strong> for testnet — or used <strong>a different account from the same seed</strong> — the stake credential differs, and a heavy mainnet user still won't be linked.</p>
-<p>So this is not only about whether someone deliberately separated seeds. <strong>Ordinary differences in how a wallet was set up or operated will also break the match.</strong></p>
+<p>So this is not only about whether someone deliberately separated seeds. Ordinary differences in how a wallet was set up or operated will also break the match.</p>
 
 <h4>Which is why it isn't a headcount</h4>
 <p>What matches are stake credentials, not people. One person may hold several; conversely an exchange or shared wallet can consolidate many people behind one.</p>
@@ -1577,7 +1587,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-spo">4. The SPO accelerator programme</h2>
 <p class="deck">84% of pools in the programme grew delegation, against 17% of comparable pools outside it.</p>
 
-<p>The comparison was built by matching <strong>SPOs in the programme against SPOs of comparable size that were not</strong>, over a two-week window.</p>
+<p>The comparison was built by matching SPOs in the programme against SPOs of comparable size that were not, over a two-week window.</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 200" role="img" aria-label="Bar chart comparing 84 percent of pools in the SPO accelerator programme growing delegation against 17 percent of comparable pools outside it">
@@ -1609,7 +1619,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <ul>
   <li><strong>Causation is unclear.</strong> “I can see that something happened on 22 July, but I can't necessarily see why — whether that's just by virtue of being in the programme, or because those people went out there and made an effort. There's probably quite a few causes underlying this”</li>
   <li><strong>No TVL forecast for mainnet.</strong> “You would've loved me to be able to tell you that we are gonna attract this much TVL. I couldn't, in all honesty, give you that number — we don't know who's gonna join mainnet.” What was shown is <strong>TVL currently held by people already using testnet</strong>, not a projection</li>
-  <li><strong>The methodology is not published yet.</strong> “It got pretty complex” and will be shared later. <strong>Claude was used to help produce it</strong></li>
+  <li>The methodology is not published yet. “It got pretty complex” and will be shared later. <strong>Claude was used to help produce it</strong></li>
 </ul>
 
 <h3>“Pieces on the board” for moving TVL</h3>
@@ -1641,7 +1651,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li>Allocation overseen by an independent group</li>
 </ul>
 
-<p>The stated goal is <strong>a net increase of over $200M in qualifying TVL</strong>.</p>
+<p>The stated goal is a net increase of over $200M in qualifying TVL.</p>
 
 <h4>Status as of 31 July 2026</h4>
 <p>On-chain voting is under way. Cardano treasury withdrawals need <strong>a two-thirds (67%) DRep majority</strong>, and <strong>this one has not passed</strong>.</p>
@@ -1666,26 +1676,26 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p><span class="badge">added</span>Everything below was written to explain the section. None of it was said on the call.</p>
 
 <h4>What “liquidity” means here</h4>
-<p>How <strong>quickly something can be turned back into cash</strong> when it is needed.</p>
+<p>How quickly something can be turned back into cash when it is needed.</p>
 <p>If you hold $1M of assets but the mix is “sells today”, “repays in a few days” and “locked up for months”, you cannot treat all of it as the same $1M. <strong>This section is about how that difference is managed.</strong></p>
 
 <h4>1. The aggregate portfolio — how much converts to cash, and by when</h4>
 <p>Assets are sorted by how long they take to turn into cash, and the mix is adjusted so that withdrawals can be met: plenty of the fast stuff, not too much of the locked-up stuff.</p>
-<p>“Calibrating time to cash against TVL” means <strong>holding enough readily available assets to match the amount of USDR actually deposited.</strong></p>
+<p>“Calibrating time to cash against TVL” means holding enough readily available assets to match the amount of USDR actually deposited.</p>
 
 <h4>2. The underlying instruments — what the money is actually in</h4>
 <p>Each asset differs in when it repays, whether it can be sold early, and whether it is collateralised. This session didn't go into it, but <strong>the asset classes are named elsewhere</strong> (section 10) — tokenised money market funds, floating rate corporate bonds, investment grade CLO ETFs, direct private credit deals.</p>
 
 <h4>3. Secondary market — what happens when you trade on a DEX</h4>
 <p>If the pool is thin, swapping USDR moves the price and you can no longer sell 1 USDR for about $1 (slippage). So the design covers <strong>which DEXs hold pools, which pairs, and how much sits in them.</strong></p>
-<p>“Enough depth that traders aren't spread thin” means <strong>enough liquidity that you don't lose meaningfully to the price gap when you trade.</strong></p>
+<p>“Enough depth that traders aren't spread thin” means enough liquidity that you don't lose meaningfully to the price gap when you trade.</p>
 
 <h4>What the peg stability module is</h4>
 <p>A mechanism for pulling USDR back towards $1 when it drifts. In the general pattern, a dip makes it profitable to buy cheap and redeem at par, buying pressure appears, and the price recovers. <strong>How RealFi's specifically works was not described on this call.</strong></p>
-<p>“Running continuously” means it acts <strong>on pre-set rules rather than someone deciding case by case.</strong></p>
+<p>“Running continuously” means it acts on pre-set rules rather than someone deciding case by case.</p>
 
 <h4>What “not dependent on predicting anything” means</h4>
-<p>The hardest line in the section. It means <strong>the allocation is not set by betting that rates will rise or that selling will pick up.</strong></p>
+<p>The hardest line in the section. It means the allocation is not set by betting that rates will rise or that selling will pick up.</p>
 <p>Instead it works off currently known figures — how much converts to cash within 7 days, how much repays within 30, what can be exited early, what TVL is now, what volume the DEX pools are doing — and shifts the mix mechanically from those.</p>
 
 <h4>An analogy</h4>
@@ -1698,7 +1708,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>And crucially, <strong>you don't over-prep on a hunch that today will be busy.</strong> You look at what is in the fridge, when deliveries land, and how many orders that lets you serve.</p>
 
 <h4>The short version</h4>
-<p><strong>Sort the assets backing USDR by how quickly they convert to cash, keep enough liquidity on DEXs that USDR trades and redeems near $1, and drive that calibration from known data — maturities and redemption terms — rather than from a forecast.</strong></p>
+<p>Sort the assets backing USDR by how quickly they convert to cash, keep enough liquidity on DEXs that USDR trades and redeems near $1, and drive that calibration from known data — maturities and redemption terms — rather than from a forecast.</p>
 
 </div>
 </details>
@@ -1789,10 +1799,10 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="note">
 <p><span class="badge">added</span><strong>What a “flywheel” is.</strong> A heavy wheel that stores momentum. In business usage it means <strong>a loop where each step strengthens the next, so every turn adds momentum</strong> — hard to get moving at first, then largely self-sustaining.</p>
-<p><strong>What “DeFi integrations” actually means here.</strong> Not a vague “DeFi gets attached to it”, but <strong>USDR / sUSDR becoming usable inside other protocols</strong>. Looping specifically needs two things:</p>
+<p><strong>What “DeFi integrations” actually means here.</strong> Not a vague “DeFi gets attached to it”, but USDR / sUSDR becoming usable inside other protocols. Looping specifically needs two things:</p>
 <ul>
   <li><strong>Deep trading pools on a DEX</strong> — so sUSDR can be bought and sold. This is the “secondary market depth” in the diagram</li>
-  <li><strong>A lending protocol that accepts sUSDR as collateral</strong> — so it can be deposited and borrowed against</li>
+  <li>A lending protocol that accepts sUSDR as collateral — so it can be deposited and borrowed against</li>
 </ul>
 <p>Only with both does the loop turn: <strong>borrow USDR against sUSDR → stake it into more sUSDR → post that as collateral again</strong>. Remove either piece and the loop stops. “More places it plugs into” means more venues where that loop can run.</p>
 </div>
@@ -1810,7 +1820,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <ul>
   <li><strong>On-chain</strong> — the platform and its smart contracts are all on chain, so they can be audited</li>
-  <li><strong>Off-chain</strong> — the difficult half. Data from <strong>a very diverse set of sources has to converge into one database or schema</strong> so it can be harmonised and presented outward</li>
+  <li><strong>Off-chain</strong> — the difficult half. Data from a very diverse set of sources has to converge into one database or schema so it can be harmonised and presented outward</li>
 </ul>
 
 <p>For an ordinary user the output is <strong>information in the app refreshed daily or in real time</strong> — the portfolio, platform activity, where things stand. The goal is that “at least the basic information is always up to date and available to anyone who wants to see it”.</p>
@@ -1873,7 +1883,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="qa-a" data-by="This session"><strong>The asset mix was named</strong> — tokenised money market funds, floating rate corporate bonds, potentially investment grade CLO ETFs, and direct private credit deals or institutional private credit funds. “None of it relies on any crypto-native allocation.”<br>Section 9 also clarified <strong>how the credit actually flows</strong>. The <strong>number of fintechs and their geographic spread remain unanswered</strong>.</p>
 </div>
 
-<p>The remaining three — <strong>the governance framework, KYC / AML, and marketing-driven APY</strong> — were not touched. <strong>The mainnet launch date</strong> likewise remains unannounced.</p>
+<p>The remaining three — the governance framework, KYC / AML, and marketing-driven APY — were not touched. <strong>The mainnet launch date</strong> likewise remains unannounced.</p>
 
 
 <h2 id="en-qa">11. Q&amp;A</h2>
@@ -1911,7 +1921,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>The headline figure itself came from the community: a participant originally raised that around 16% of Cardano wallets appeared to be active with RealFi, which became the basis for this analysis. <strong>A community observation turned directly into the official data topic.</strong></p>
 
-<p>The rotation ahead is <strong>partnerships → leadership → the investment team</strong>.</p>
+<p>The rotation ahead is partnerships → leadership → the investment team.</p>
 
 
 <div class="note">

@@ -350,14 +350,16 @@ h3 {
 /* 見出しにアンカーで飛んだとき、上に余白を残す */
 h2[id] { scroll-margin-top: 1.5rem; }
 
-p { margin: 0 0 1.1rem; }
+p { margin: 0 0 1.35rem; }
 
 a { color: var(--accent); }
 
-ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
-li { margin-bottom: 0.5rem; }
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
 
-strong { font-weight: 700; }
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -490,6 +492,14 @@ code {
 .part-head h2::before { display: none; }
 
 .tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
 
 /* ---- 折りたたみの解説 ---- */
 
@@ -890,10 +900,10 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="tldr">
 <h2>この回の要点</h2>
 <ul>
-  <li><strong>ティッカーを変える。</strong>理由は<strong>過去に別のプロジェクトが USDR を使っていた</strong>ため。「うまくいかなかったプロジェクト」だと述べられ、<strong>一流の取引所に乗るときに問題になる</strong>と説明されました。</li>
-  <li><strong>案は 2 つ。</strong>案 A は <strong>rfUSD / srfUSD / RFIG</strong>、案 B は <strong>USDrf / sUSDrf / RLFG</strong>。コール時点で<strong>案 B が 66%、案 A が 34%</strong> で優勢でした。<span class="badge">補足</span><strong>投票は 8 月 26 日（水）に締め切られ、案 B に決まりました</strong>（<strong>全 75 票 — 案 B 51 票 68%、案 A 24 票 32%</strong>）。<strong>これはコール後の結果</strong>で、コール中では語られていません。</li>
+  <li><strong>ティッカーを変える。</strong>理由は過去に別のプロジェクトが USDR を使っていたため。「うまくいかなかったプロジェクト」だと述べられ、<strong>一流の取引所に乗るときに問題になる</strong>と説明されました。</li>
+  <li><strong>案は 2 つ。</strong>案 A は rfUSD / srfUSD / RFIG、案 B は <strong>USDrf / sUSDrf / RLFG</strong>。コール時点で<strong>案 B が 66%、案 A が 34%</strong> で優勢でした。<span class="badge">補足</span>投票は 8 月 26 日（水）に締め切られ、案 B に決まりました（全 75 票 — 案 B 51 票 68%、案 A 24 票 32%）。<strong>これはコール後の結果</strong>で、コール中では語られていません。</li>
   <li><strong>プロトコルは変わらない。</strong>「RealFi とプロトコルに関しては<strong>変更は一切ない</strong>。本当に名前が変わるだけ」と明言されました。</li>
-  <li><strong>なぜ今か。</strong>「<strong>前向きな話し合いはあった</strong>」と取引所について触れつつ、相手は明言せず。<strong>testnet のうちに済ませて、mainnet 以降に持ち込まない</strong>ためだと説明されました。</li>
+  <li><strong>なぜ今か。</strong>「<strong>前向きな話し合いはあった</strong>」と取引所について触れつつ、相手は明言せず。testnet のうちに済ませて、mainnet 以降に持ち込まないためだと説明されました。</li>
   <li><strong>アンバサダー制度が止まっていた理由。</strong>Miro のワークショップで出たテーマから <strong>crew</strong> を立ち上げるはずが、<strong>「いったんブレーキを踏んだ」</strong>。活動を <strong>KPI（L1 / L2）</strong>に結びつけてから始めるためでした。</li>
   <li><strong>crew と district の二層。</strong>crew は<strong>問題を解いたら解散する集まり</strong>、district は<strong>手法が貯まる恒久的な場所</strong>。最初は 3 つの district から、と述べられました。</li>
   <li><strong>日本向けの調査が当日発出。</strong><strong>SecondFi の一件</strong>を背景に、<strong>公共財</strong>（自分の ADA を守ること／単独 SPO への委任によるネットワークの分散）について日本の SPO・KOL に問う内容だと説明されました。</li>
@@ -946,7 +956,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p><strong>②連想としての衝突。</strong>ここが今回きついところです。以前 USDR を名乗っていたのは <strong>Real USD</strong>（Polygon 上、Tangible が発行）で、<strong>不動産を裏付けにしたステーブルコイン</strong>でした。2023 年 10 月 11 日に <strong>1 ドルから 0.51 ドル前後まで崩れ</strong>、その後は償還して終了しています。原因は、準備金の流動性のある部分（DAI）が引き出され、資産の約 8 割が不動産に寄っていたことだと報じられました。</p>
 <p><strong>RealFi は、まさに同じ分類の商品です。</strong>実世界の資産を裏付けにしたステーブルコイン。審査する側から見れば、<strong>同じ記号・同じ分類・前例は破綻</strong>という並びになります。単なる記号の重複より重い。</p>
 <h4>コールで語られたのはどこまでか</h4>
-<p>コールで述べられたのは<strong>「以前に使われていて、失敗したプロジェクトだった」</strong>までです。<strong>上の Real USD の件は、こちらで背景として補ったもの</strong>で、名指しはされていません。また、<strong>取引所からどう言われたのかも語られていません</strong>——「前向きな話し合いはあった」とだけです。</p>
+<p>コールで述べられたのは<strong>「以前に使われていて、失敗したプロジェクトだった」</strong>までです。上の Real USD の件は、こちらで背景として補ったもので、名指しはされていません。また、<strong>取引所からどう言われたのかも語られていません</strong>——「前向きな話し合いはあった」とだけです。</p>
 </div>
 </details>
 
@@ -986,8 +996,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="note">
 <p><span class="badge">補足</span><strong>投票の結果（コール後）。</strong>投票は予定どおり <strong>8 月 26 日（水）</strong>に締め切られ、<strong>案 B に決まりました</strong>。</p>
-<p><strong>USDR → USDrf、sUSDR → sUSDrf、RFG → RLFG</strong> になります。<strong>全 75 票で、案 B が 51 票（68%）、案 A が 24 票（32%）。</strong>コール中では <strong>63 票</strong>、のちに「60、65 くらい」と語られていたので、<strong>締切までに票が伸びています</strong>。コール中で「夢は 100 人」と述べられていた目標には届きませんでした。</p>
-<p><strong>以下はすべてコール後の情報</strong>で、この回の中では語られていません。<strong>切り替えがいつ完了するのかも、まだ示されていません。</strong>コール中では<strong>「社内で変更の作業を始める」「チームのメンバーにとってはかなりの作業量になる」</strong>とだけ述べられています。</p>
+<p>USDR → USDrf、sUSDR → sUSDrf、RFG → RLFG になります。全 75 票で、案 B が 51 票（68%）、案 A が 24 票（32%）。コール中では <strong>63 票</strong>、のちに「60、65 くらい」と語られていたので、<strong>締切までに票が伸びています</strong>。コール中で「夢は 100 人」と述べられていた目標には届きませんでした。</p>
+<p><strong>以下はすべてコール後の情報</strong>で、この回の中では語られていません。<strong>切り替えがいつ完了するのかも、まだ示されていません。</strong>コール中では「社内で変更の作業を始める」「チームのメンバーにとってはかなりの作業量になる」とだけ述べられています。</p>
 </div>
 
 <p>案 B に流れが傾いた理由も語られました。開始した水曜にコミュニティ内で出た指摘だといいます。</p>
@@ -1010,7 +1020,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>タイミングの理由は 2 つ挙げられました。1 つは取引所。<strong>「どの取引所と話しているのか、していないのかは言えない」</strong>と前置きしたうえで、<strong>「前向きな話し合いはあった」</strong>と述べています。もう 1 つは工程で、<strong>testnet のうちなら完全に備えられる</strong>ので、あとの段階に持ち越して問題を起こさずに済む、という説明です。</p>
 
-<p>コール中では、<strong>木曜以降は新しい名前で呼ぶ</strong>という言い方もされました。<span class="badge">補足</span>投票の告知には日付が入っており、<strong>締切は 8 月 26 日（水）、結果の発表は 27 日（木）</strong>です。</p>
+<p>コール中では、<strong>木曜以降は新しい名前で呼ぶ</strong>という言い方もされました。<span class="badge">補足</span>投票の告知には日付が入っており、締切は 8 月 26 日（水）、結果の発表は 27 日（木）です。</p>
 
 
 <h2 id="crews">4. なぜ crew はまだ立ち上がっていないのか</h2>
@@ -1062,7 +1072,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <text x="340" y="204" class="d-t" text-anchor="middle">crew が止まっていたのは、この接点を先に決めるため</text>
   <text x="340" y="224" class="d-s" text-anchor="middle">「いったんブレーキを踏んで、見直した」と説明された</text>
 </svg>
-<p class="figcap">「握手」はコール中で繰り返し使われた言葉です。<strong>コミュニティが自ら組織することと、事業側が資源を出すことを、両立させるための接点</strong>という意味で使われています。</p>
+<p class="figcap">「握手」はコール中で繰り返し使われた言葉です。コミュニティが自ら組織することと、事業側が資源を出すことを、両立させるための接点という意味で使われています。</p>
 </div>
 
 
@@ -1089,7 +1099,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="explain-body">
 <p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
 <h4>ガードレールと目標値は何が違うのか</h4>
-<p>コール中では、ガードレールを<strong>「目標値ではなく幅」</strong>だと明確に区別しています。<strong>上げれば上げるほど良い数字ではなく、決めた範囲から出ないでほしい数字</strong>のことです。</p>
+<p>コール中では、ガードレールを<strong>「目標値ではなく幅」</strong>だと明確に区別しています。上げれば上げるほど良い数字ではなく、決めた範囲から出ないでほしい数字のことです。</p>
 <p>たとえば<strong>過剰担保率</strong>。低すぎれば担保が足りませんが、高すぎても<strong>資本を寝かせているだけ</strong>で効率が悪い。だから「最大化」ではなく「この幅に収める」と言うわけです。<strong>ステーキング比率</strong>も同じで、高ければ良いというものではありません。</p>
 <h4>身近なものへのたとえ</h4>
 <p>車の運転で考えると分かりやすい。<strong>L1 は「目的地まであと何 km か」</strong>、<strong>L2 は「今の速度」</strong>、<strong>ガードレールは「エンジンの水温計」</strong>です。水温は上げても下げても良いものではなく、<strong>範囲から外れたら止まる合図</strong>。順調かどうかは L1 と L2 で見て、壊れていないかはガードレールで見る、という分け方です。</p>
@@ -1112,7 +1122,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="term">
 <p class="term-name">crew / district <small>コール中の言葉</small></p>
-<p><strong>crew</strong> は、<strong>ある問題を解くために集まる社会的な集まり</strong>。キャンペーンの一部として存在し、<strong>解けたら解散する</strong>と説明されました。<strong>district</strong> は<strong>恒久的な場所</strong>で、そこに知識や実践が蓄えられます。コール中の言い方では<strong>「手法の蓄積（methods bank）」「プレイブック」</strong>です。<span class="badge">補足</span>つまり <strong>crew は人の集まり、district は残る場所</strong>という分け方で、<strong>人が入れ替わっても蓄積が残る</strong>ようにするための二層構造です。</p>
+<p><strong>crew</strong> は、ある問題を解くために集まる社会的な集まり。キャンペーンの一部として存在し、解けたら解散すると説明されました。district は<strong>恒久的な場所</strong>で、そこに知識や実践が蓄えられます。コール中の言い方では「手法の蓄積（methods bank）」「プレイブック」です。<span class="badge">補足</span>つまり crew は人の集まり、district は残る場所という分け方で、人が入れ替わっても蓄積が残るようにするための二層構造です。</p>
 </div>
 
 <div class="fig">
@@ -1152,7 +1162,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="term">
 <p class="term-name">dark forest / cozy web <small>コール中の言葉</small></p>
-<p><strong>dark forest（暗い森）</strong>は、<strong>外から中が見えない場所</strong>のたとえ。ここでは、RealFi の公式チャネルでは届かない、<strong>その場に慣れた人しか入れないコミュニティ</strong>を指しています。<strong>cozy web</strong> は、<strong>公開の場から退いた先にある、非公開で少人数の場</strong>のことです。<span class="badge">補足</span>どちらもコール中で使われた言葉で、<strong>「暗い」「引きこもる」という否定の意味では使われていません</strong>。<strong>誰が書いたのか分かる場所へ人が移っていく</strong>、という観察です。</p>
+<p>dark forest（暗い森）は、<strong>外から中が見えない場所</strong>のたとえ。ここでは、RealFi の公式チャネルでは届かない、その場に慣れた人しか入れないコミュニティを指しています。<strong>cozy web</strong> は、公開の場から退いた先にある、非公開で少人数の場のことです。<span class="badge">補足</span>どちらもコール中で使われた言葉で、「暗い」「引きこもる」という否定の意味では使われていません。誰が書いたのか分かる場所へ人が移っていく、という観察です。</p>
 </div>
 
 <div class="fig">
@@ -1188,12 +1198,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <text x="340" y="200" class="d-t" text-anchor="middle">だから SPO は「人間である証明」になりうる、と説明された</text>
   <text x="340" y="220" class="d-s" text-anchor="middle">確度が上がるという言い方で、判定の方法は述べられていない</text>
 </svg>
-<p class="figcap">数字の出どころも挙げられました。<strong>ウェブ全体の 50〜80% は Cloudflare、オンチェーンの約 90% は Messari と DeFiLlama</strong>としています。</p>
+<p class="figcap">数字の出どころも挙げられました。ウェブ全体の 50〜80% は Cloudflare、オンチェーンの約 90% は Messari と DeFiLlamaとしています。</p>
 </div>
 
 <div class="term">
 <p class="term-name">proof of human <small>コール中の言葉</small></p>
-<p>コール中では、<strong>SPO はオンチェーンでもオンラインでも影響力を持っている</strong>ため、<strong>その活動が本物の人間によるものだと、かなり高い確度で見て取れる</strong>と述べられました。ここで <strong>「proof of human」</strong> という言葉が使われています。<span class="badge">補足</span>注意すべきは、これが<strong>「確度が上がる」という言い方</strong>であって、<strong>判定の方法は説明されていない</strong>ことです。7 月 24 日の回で出た同じ論点（<code>shared/open-questions.md</code> の項目 21）は、<strong>この回でも方法までは埋まっていません</strong>。</p>
+<p>コール中では、SPO はオンチェーンでもオンラインでも影響力を持っているため、その活動が本物の人間によるものだと、かなり高い確度で見て取れると述べられました。ここで 「proof of human」 という言葉が使われています。<span class="badge">補足</span>注意すべきは、これが<strong>「確度が上がる」という言い方</strong>であって、<strong>判定の方法は説明されていない</strong>ことです。7 月 24 日の回で出た同じ論点（<code>shared/open-questions.md</code> の項目 21）は、この回でも方法までは埋まっていません。</p>
 </div>
 
 <p>これと対になる形で、<strong>やりたくないこと</strong>も明言されました。<strong>「ゲーム化した farming」</strong>——つまり作業をこなしてポイントを集めるだけの仕組みです。</p>
@@ -1202,7 +1212,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>ほしいのは<strong>見せかけの指標ではなく、真正な活動</strong>です。</p>
 </blockquote>
 
-<p><strong>anti-Sybil と anti-farming の手立ては効いている</strong>とも述べられました。<span class="badge">補足</span>Sybil 攻撃とは、<strong>1 人が多数の別人を装って報酬を多重に取る</strong>こと。8 月 14 日の回では、対策の中身は<strong>「明かすと farming が容易になるので開示しない」</strong>と説明されています。</p>
+<p>anti-Sybil と anti-farming の手立ては効いているとも述べられました。<span class="badge">補足</span>Sybil 攻撃とは、<strong>1 人が多数の別人を装って報酬を多重に取る</strong>こと。8 月 14 日の回では、対策の中身は<strong>「明かすと farming が容易になるので開示しない」</strong>と説明されています。</p>
 
 
 <h2 id="japan">8. 日本のコミュニティへの調査</h2>
@@ -1223,16 +1233,16 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <ul>
   <li><strong>金融的な主権</strong> —— 自分の ADA を自分で守れること</li>
   <li><strong>ネットワークの分散</strong> —— 単独のステークプール運営者に委任すること</li>
-  <li><strong>経済的な活動そのもの</strong> —— <strong>「Cardano の初期であれば、ステーキングだけで、ネットワークを守るだけで十分だった」</strong>が、今は経済的な活動が公共財だ、という主張</li>
+  <li><strong>経済的な活動そのもの</strong> —— 「Cardano の初期であれば、ステーキングだけで、ネットワークを守るだけで十分だった」が、今は経済的な活動が公共財だ、という主張</li>
 </ul>
 
-<p>さらに、<strong>Cardano の長期的な健全性をどれくらい重視しているか</strong>、<strong>何があれば Cardano に留まりやすいか</strong>も聞いている、とのことです。</p>
+<p>さらに、Cardano の長期的な健全性をどれくらい重視しているか、<strong>何があれば Cardano に留まりやすいか</strong>も聞いている、とのことです。</p>
 
-<p>調査の目的は<strong>資料づくり</strong>だと明かされました。<strong>SPO が自分の委任者に RealFi を説明して回れる共有素材</strong>を作る。コール中の言い方では <strong>「教える人を教える（train the trainer）」</strong>モデルで、<strong>こちらが誰かの口に言葉を入れるのではなく、いちばん筋の通る論の立て方を組み上げる手伝いをする</strong>、と説明されています。</p>
+<p>調査の目的は<strong>資料づくり</strong>だと明かされました。SPO が自分の委任者に RealFi を説明して回れる共有素材を作る。コール中の言い方では <strong>「教える人を教える（train the trainer）」</strong>モデルで、こちらが誰かの口に言葉を入れるのではなく、いちばん筋の通る論の立て方を組み上げる手伝いをする、と説明されています。</p>
 
-<p>そして<strong>これは日本に閉じた話ではない</strong>と明言されました。<strong>「西側の SPO にも役立つと思う」</strong>——ここでの「西側」は<strong>アジア以外の全部</strong>という意味だと本人が補っています。</p>
+<p>そして<strong>これは日本に閉じた話ではない</strong>と明言されました。「西側の SPO にも役立つと思う」——ここでの「西側」は<strong>アジア以外の全部</strong>という意味だと本人が補っています。</p>
 
-<p><span class="badge">補足</span>この節は<strong>日本の SPO にとって直接関係する内容</strong>ですが、<strong>調査の設問そのものも、締切も、結果をどう公開するのかも述べられていません</strong>。挙がったのは上の論点と目的までです。</p>
+<p><span class="badge">補足</span>この節は<strong>日本の SPO にとって直接関係する内容</strong>ですが、調査の設問そのものも、締切も、結果をどう公開するのかも述べられていません。挙がったのは上の論点と目的までです。</p>
 
 
 <h2 id="overall">9. 全体像</h2>
@@ -1278,7 +1288,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>前半のティッカーは<strong>もともとコミュニティの決定にする予定ではなかった</strong>と明かされています。<strong>「関わりを保つという点でひらめきがあった」</strong>から投票にした、と。後半の district の命名も同じで、<strong>「文化的なことなので」</strong>コミュニティに付けてもらう方向です。</p>
 
-<p>ホスト側はこれを<strong>「ガバナンスを渡していく」</strong>と表現し、<strong>「今のうちに、コミュニティが決められるという筋肉を鍛えておく」</strong>と述べました。</p>
+<p>ホスト側はこれを<strong>「ガバナンスを渡していく」</strong>と表現し、「今のうちに、コミュニティが決められるという筋肉を鍛えておく」と述べました。</p>
 
 
 <h2 id="qa">10. Q&amp;A</h2>
@@ -1286,22 +1296,22 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者A</span>testnet 中の交換レートについて。</p>
-<p class="qa-a" data-by="持ち越し"><strong>「testnet のあいだは何も本番稼働していないので、実際の交換レートはまだない」</strong>。質問が届いていることは認めたうえで、<strong>「いずれ話せる話題だが、プロジェクトとしてまだそこまで来ていない」</strong>と回答しています。</p>
+<p class="qa-a" data-by="持ち越し">「testnet のあいだは何も本番稼働していないので、実際の交換レートはまだない」。質問が届いていることは認めたうえで、<strong>「いずれ話せる話題だが、プロジェクトとしてまだそこまで来ていない」</strong>と回答しています。</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">チャットから</span>ティッカーの候補として <strong>USDA</strong> は検討したのか。</p>
-<p class="qa-a" data-by="検討していない"><strong>「USDA は検討していない」</strong>。<strong>「アルファベット順の理由でそうしたくなるのは分かる」</strong>としつつ、<strong>「CEX 側はおそらく把握しているはずなので、たぶん候補にはならない」</strong>——ただし<strong>「実際に調べないと分からない」</strong>と留保しています。<span class="badge">補足</span><strong>USDA は Cardano 上にすでにあるステーブルコインの記号です</strong>（Anzens が発行、EMURGO と組んで展開）。つまりこの案は、<strong>同じチェーンの上で記号がぶつかります</strong>。この点はコール中では確認されていません。</p>
+<p class="qa-a" data-by="検討していない"><strong>「USDA は検討していない」</strong>。「アルファベット順の理由でそうしたくなるのは分かる」としつつ、「CEX 側はおそらく把握しているはずなので、たぶん候補にはならない」——ただし<strong>「実際に調べないと分からない」</strong>と留保しています。<span class="badge">補足</span>USDA は Cardano 上にすでにあるステーブルコインの記号です（Anzens が発行、EMURGO と組んで展開）。つまりこの案は、同じチェーンの上で記号がぶつかります。この点はコール中では確認されていません。</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者F</span>crew に定例のミーティングはあるのか。</p>
-<p class="qa-a" data-by="形は説明された">crew を作るなら<strong>少なくとも 2〜3 人の発起人</strong>が要り、<strong>「その意欲があれば SPO の方になる」</strong>。そのうえで <strong>「どういう頻度にするかは、その人たち自身が決めること」</strong>と回答しています。結成には<strong>マンデート（任務の定め）</strong>を用意する予定で、<strong>「できるだけ簡潔にする」</strong>とのことです。</p>
+<p class="qa-a" data-by="形は説明された">crew を作るなら少なくとも 2〜3 人の発起人が要り、「その意欲があれば SPO の方になる」。そのうえで 「どういう頻度にするかは、その人たち自身が決めること」と回答しています。結成には<strong>マンデート（任務の定め）</strong>を用意する予定で、<strong>「できるだけ簡潔にする」</strong>とのことです。</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">参加者A</span>Token 2049 には行くのか。</p>
-<p class="qa-a" data-by="申請済み"><strong>行く</strong>。<strong>Cardano Foundation のブースを取れないか申請を出した</strong>ところで、<strong>「締切は明日だったと思う」</strong>。通れば<strong>「1 週間ほどで、こちらの動きがずっと楽になる」</strong>と述べられました。</p>
+<p class="qa-a" data-by="申請済み"><strong>行く</strong>。Cardano Foundation のブースを取れないか申請を出したところで、<strong>「締切は明日だったと思う」</strong>。通れば「1 週間ほどで、こちらの動きがずっと楽になる」と述べられました。</p>
 </div>
 
 
@@ -1310,12 +1320,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">明言せず</span>どの取引所と話しているのか。</p>
-<p class="qa-a" data-by="意図的に非開示"><strong>「どの取引所と話しているのか、していないのかは言えない」</strong>と明確に断ったうえで、<strong>「前向きな話し合いはあった」</strong>とだけ述べられました。<strong>時期も相手も示されていません。</strong></p>
+<p class="qa-a" data-by="意図的に非開示">「どの取引所と話しているのか、していないのかは言えない」と明確に断ったうえで、<strong>「前向きな話し合いはあった」</strong>とだけ述べられました。<strong>時期も相手も示されていません。</strong></p>
 </div>
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">今週から来週</span>アンバサダー制度の役割・ステータス・ポイントはどうなるのか。</p>
-<p class="qa-a" data-by="作成中">聴衆から聞かれている項目として<strong>「どんな役割があるのか、ステータスやポイントはどうなるのか、どういう仕組みなのか」</strong>が挙げられ、<strong>「今週と来週、集中するのはそこ」</strong>と回答。<strong>提案書はまだ書き上がっていません。</strong></p>
+<p class="qa-a" data-by="作成中">聴衆から聞かれている項目として「どんな役割があるのか、ステータスやポイントはどうなるのか、どういう仕組みなのか」が挙げられ、<strong>「今週と来週、集中するのはそこ」</strong>と回答。<strong>提案書はまだ書き上がっていません。</strong></p>
 </div>
 
 <div class="qa pending">
@@ -1325,7 +1335,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">言及のみ</span>改称にともなう既存の統合先の扱い。</p>
-<p class="qa-a" data-by="作業量のみ"><strong>「今はすべてが USDR、sUSDR、RFG のもとにある」「相当な量を通していく必要がある」</strong>と作業量には触れられましたが、<strong>testnet の残高、ドキュメント、連携先での表示がどう切り替わるのかは述べられていません</strong>。</p>
+<p class="qa-a" data-by="作業量のみ">「今はすべてが USDR、sUSDR、RFG のもとにある」「相当な量を通していく必要がある」と作業量には触れられましたが、<strong>testnet の残高、ドキュメント、連携先での表示がどう切り替わるのかは述べられていません</strong>。</p>
 </div>
 
 <div class="qa pending">
@@ -1345,19 +1355,19 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="l-en" lang="en">
 <div class="thesis">
   <span class="label">In one line</span>
-  <p><strong>The name USDR isn't available</strong>, so <strong>USDR, sUSDR and RFG are all being renamed</strong> before mainnet.<br>
+  <p>The name USDR isn't available, so USDR, sUSDR and RFG are all being renamed before mainnet.<br>
   Which names they become was <strong>handed to a community vote</strong> — framed as “<strong>the first real big decision</strong> of any big changes that are coming to RealFi.”</p>
 </div>
 
 <div class="tldr">
 <h2>Key points</h2>
 <ul>
-  <li><strong>The tickers change.</strong> The reason is that <strong>USDR had been used before</strong> — “failed projects,” in the words used on the call — and it <strong>gets in the way of listing on top exchanges</strong>.</li>
-  <li><strong>Two options.</strong> Option A is <strong>rfUSD / srfUSD / RFIG</strong>; option B is <strong>USDrf / sUSDrf / RLFG</strong>. At the time of the call <strong>B leads 66% to 34%</strong>. <span class="badge">added</span><strong>The vote closed on Wednesday 26 August and option B won</strong> — <strong>75 votes in total: B on 51 (68%), A on 24 (32%)</strong>. <strong>That outcome is after the call</strong> and is not discussed on it.</li>
+  <li><strong>The tickers change.</strong> The reason is that <strong>USDR had been used before</strong> — “failed projects,” in the words used on the call — and it gets in the way of listing on top exchanges.</li>
+  <li><strong>Two options.</strong> Option A is <strong>rfUSD / srfUSD / RFIG</strong>; option B is <strong>USDrf / sUSDrf / RLFG</strong>. At the time of the call <strong>B leads 66% to 34%</strong>. <span class="badge">added</span>The vote closed on Wednesday 26 August and option B won — 75 votes in total: B on 51 (68%), A on 24 (32%). <strong>That outcome is after the call</strong> and is not discussed on it.</li>
   <li><strong>The protocol does not change.</strong> “When it comes to RealFi and the protocol, <strong>absolutely zero changes</strong>. It really is just a name change.”</li>
   <li><strong>Why now.</strong> On exchanges: <strong>“we've had some positive talks”</strong> — but who with is explicitly off limits. Doing it <strong>during testnet</strong> keeps it from surfacing later.</li>
   <li><strong>Why the crews stalled.</strong> The Miro workshop produced the themes, but they <strong>“pumped the brakes”</strong> in order to tie the activity to <strong>KPIs (L1s and L2s)</strong> first.</li>
-  <li><strong>Crews and districts.</strong> A crew <strong>forms to solve a problem and disbands</strong>; a district is a <strong>permanent place where the methods accumulate</strong>. Three districts to start.</li>
+  <li><strong>Crews and districts.</strong> A crew forms to solve a problem and disbands; a district is a permanent place where the methods accumulate. Three districts to start.</li>
   <li><strong>A survey went out in Japan that day.</strong> Framed around <strong>public goods</strong> — protecting your own ADA, and decentralising the network by delegating to single stake pools — explicitly <strong>in the context of the SecondFi hack</strong>.</li>
 </ul>
 </div>
@@ -1408,7 +1418,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p><strong>Two: what the symbol is associated with.</strong> This is the harder half. The previous USDR was <strong>Real USD</strong>, issued by Tangible on Polygon — a <strong>stablecoin backed by real estate</strong>. On 11 October 2023 it <strong>fell from about $1 to roughly $0.51</strong> and was wound down through a redemption process. Reporting at the time attributed it to the liquid part of the treasury (DAI) being drained while nearly 80% of assets sat in property.</p>
 <p><strong>RealFi is in precisely that category</strong> — a stablecoin backed by real-world assets. To a listing desk the line reads: <strong>same symbol, same category, previous one blew up</strong>. That is heavier than a plain collision.</p>
 <h4>What the call actually said</h4>
-<p>Only that it had been used before by <strong>“failed projects.”</strong> <strong>The Real USD detail above is background added here</strong>, not a naming from the call — and <strong>what the exchanges themselves said is not disclosed</strong> beyond “some positive talks.”</p>
+<p>Only that it had been used before by <strong>“failed projects.”</strong> <strong>The Real USD detail above is background added here</strong>, not a naming from the call — and what the exchanges themselves said is not disclosed beyond “some positive talks.”</p>
 </div>
 </details>
 
@@ -1447,15 +1457,15 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </div>
 
 <div class="note">
-<p><span class="badge">added</span><strong>The result, after the call.</strong> The vote closed on <strong>Wednesday 26 August</strong> as planned, and <strong>option B won</strong>.</p>
-<p>So: <strong>USDR → USDrf, sUSDR → sUSDrf, RFG → RLFG</strong>. <strong>75 votes in total — B on 51 (68%), A on 24 (32%).</strong> The call reported <strong>63</strong>, then “60, 65,” so <strong>turnout kept rising to the deadline</strong>. It did not reach the <strong>100</strong> hoped for on the call.</p>
-<p><strong>All of this is after the call</strong> and none of it is discussed there. <strong>When the switch completes is still not stated.</strong> The call says only that <strong>“we will start the process internally”</strong> and that it is <strong>“gonna be a lot of work for members of the team.”</strong></p>
+<p><span class="badge">added</span>The result, after the call. The vote closed on <strong>Wednesday 26 August</strong> as planned, and <strong>option B won</strong>.</p>
+<p>So: USDR → USDrf, sUSDR → sUSDrf, RFG → RLFG. 75 votes in total — B on 51 (68%), A on 24 (32%). The call reported <strong>63</strong>, then “60, 65,” so turnout kept rising to the deadline. It did not reach the <strong>100</strong> hoped for on the call.</p>
+<p><strong>All of this is after the call</strong> and none of it is discussed there. When the switch completes is still not stated. The call says only that <strong>“we will start the process internally”</strong> and that it is “gonna be a lot of work for members of the team.”</p>
 </div>
 
 <p>What moved the vote was a conversation in the community on the Wednesday it launched.</p>
 
 <blockquote>
-<p>If you put RF after USD, <strong>people that are looking for other stable coins are gonna accidentally find us</strong>.</p>
+<p>If you put RF after USD, people that are looking for other stable coins are gonna accidentally find us.</p>
 </blockquote>
 
 <p>Before that it had been <strong>“fairly 50/50.”</strong> <span class="badge">added</span>The argument is about sort order and search: a symbol starting <code>USD</code> lands next to USDC and USDT wherever assets are listed alphabetically. <strong>No figure was offered to support the effect.</strong></p>
@@ -1470,9 +1480,9 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>In essence, when it comes to RealFi and the protocol, <strong>absolutely zero changes</strong>. It really is just a name change.</p>
 </blockquote>
 
-<p>Two reasons are given for the timing. Exchanges: <strong>“we can't say what exchanges we may be talking to or not talking to”</strong>, followed by <strong>“we've had some positive talks.”</strong> And sequencing: <strong>“we're totally fully prepared while we're in testnet”</strong>, so it doesn't surface later and cause problems.</p>
+<p>Two reasons are given for the timing. Exchanges: “we can't say what exchanges we may be talking to or not talking to”, followed by <strong>“we've had some positive talks.”</strong> And sequencing: <strong>“we're totally fully prepared while we're in testnet”</strong>, so it doesn't surface later and cause problems.</p>
 
-<p>Practically: <strong>“you won't hear us probably say USDR after Thursday.”</strong> <span class="badge">added</span>The written announcement puts dates on it: <strong>the vote closes Wednesday 26 August and the result comes Thursday the 27th</strong>.</p>
+<p>Practically: <strong>“you won't hear us probably say USDR after Thursday.”</strong> <span class="badge">added</span>The written announcement puts dates on it: the vote closes Wednesday 26 August and the result comes Thursday the 27th.</p>
 
 
 <h2 id="en-crews">4. Why the crews hadn't launched</h2>
@@ -1524,7 +1534,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <text x="340" y="204" class="d-t" text-anchor="middle">The crews waited so that this interface could be settled first</text>
   <text x="340" y="224" class="d-s" text-anchor="middle">“We pumped the brakes briefly so that we could have a look”</text>
 </svg>
-<p class="figcap">“Handshake” is the call's own word, used repeatedly: <strong>the point where a self-organising community and a resourcing business meet</strong>.</p>
+<p class="figcap">“Handshake” is the call's own word, used repeatedly: the point where a self-organising community and a resourcing business meet.</p>
 </div>
 
 
@@ -1574,7 +1584,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="term">
 <p class="term-name">Crew / district <small>the call's own words</small></p>
-<p>A <strong>crew</strong> is <strong>a social group that forms to solve a problem</strong> as part of a campaign, and <strong>disbands once it's solved</strong>. A <strong>district</strong> is <strong>a permanent location</strong> where the knowledge and practices are captured — <strong>“like a methods bank, like a playbook.”</strong> <span class="badge">added</span>So <strong>crews are people, districts are places</strong>: the second tier exists so that <strong>what was learned survives the people rotating through</strong>.</p>
+<p>A <strong>crew</strong> is a social group that forms to solve a problem as part of a campaign, and disbands once it's solved. A <strong>district</strong> is a permanent location where the knowledge and practices are captured — “like a methods bank, like a playbook.” <span class="badge">added</span>So crews are people, districts are places: the second tier exists so that what was learned survives the people rotating through.</p>
 </div>
 
 <div class="fig">
@@ -1600,9 +1610,9 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap">The names themselves are meant to come <strong>from the community</strong> — “because it's a cultural thing.” The five above were offered as examples.</p>
 </div>
 
-<p>The reason for two tiers is <strong>scale</strong>: not one crew in charge of, say, events, but <strong>the capacity for multiple crews to form around problems</strong> — <strong>“structure that will scale as we go cross-chain.”</strong></p>
+<p>The reason for two tiers is <strong>scale</strong>: not one crew in charge of, say, events, but the capacity for multiple crews to form around problems — <strong>“structure that will scale as we go cross-chain.”</strong></p>
 
-<p>And the reason for place-names at all: inside any team there is <strong>a language and a culture that only works inside it</strong>, and <strong>you can't scale that internal knowledge the same way</strong>. So you use artifacts to <strong>“build this world up in somebody's mind that they can find their way around.”</strong></p>
+<p>And the reason for place-names at all: inside any team there is <strong>a language and a culture that only works inside it</strong>, and <strong>you can't scale that internal knowledge the same way</strong>. So you use artifacts to “build this world up in somebody's mind that they can find their way around.”</p>
 
 <p>From the marketing side came the <strong>Simon Cowell</strong> comparison — spotting qualities in people who don't work as individuals and combining them. <span class="badge">added</span>The host reframes it immediately as <strong>“scouting for talent and working out where that talent can be best deployed”</strong>, and the reply insists the other way round: <strong>“it's for you to show us what the best is.”</strong></p>
 
@@ -1650,12 +1660,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <text x="340" y="200" class="d-t" text-anchor="middle">So an SPO can stand as “proof of human,” the argument goes</text>
   <text x="340" y="220" class="d-s" text-anchor="middle">Phrased as a degree of probability; the test itself is not described</text>
 </svg>
-<p class="figcap">The sources were named too: <strong>Cloudflare for the 50–80% of web activity, Messari and DeFiLlama for the ~90% on-chain</strong>.</p>
+<p class="figcap">The sources were named too: Cloudflare for the 50–80% of web activity, Messari and DeFiLlama for the ~90% on-chain.</p>
 </div>
 
 <div class="term">
 <p class="term-name">Proof of human <small>the call's own words</small></p>
-<p>Because <strong>SPOs are influential on-chain and online</strong>, the argument runs, <strong>“you're able to see to a far greater degree of probability that this is like proof of human”</strong> — real, authentic activity. <span class="badge">added</span>Note the framing: it is <strong>a degree of probability</strong>, and <strong>no test is described</strong>. The same question from 24 July (item 21 in <code>shared/open-questions.md</code>) is <strong>still not answered at the mechanism level</strong>.</p>
+<p>Because SPOs are influential on-chain and online, the argument runs, “you're able to see to a far greater degree of probability that this is like proof of human” — real, authentic activity. <span class="badge">added</span>Note the framing: it is <strong>a degree of probability</strong>, and <strong>no test is described</strong>. The same question from 24 July (item 21 in <code>shared/open-questions.md</code>) is still not answered at the mechanism level.</p>
 </div>
 
 <p>The mirror image is stated as clearly: what they don't want is <strong>“gamified farming”</strong> — grinding tasks for points.</p>
@@ -1664,7 +1674,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>It's not vanity metrics that we want. <strong>We want authentic activity.</strong></p>
 </blockquote>
 
-<p>The <strong>anti-Sybil and anti-farming methods “are effective,”</strong> per the call. <span class="badge">added</span>A Sybil attack is <strong>one person posing as many to collect a reward repeatedly</strong>. On 14 August the mechanism was withheld deliberately: publishing it would <strong>make farming easier</strong>.</p>
+<p>The <strong>anti-Sybil and anti-farming methods “are effective,”</strong> per the call. <span class="badge">added</span>A Sybil attack is one person posing as many to collect a reward repeatedly. On 14 August the mechanism was withheld deliberately: publishing it would <strong>make farming easier</strong>.</p>
 
 
 <h2 id="en-japan">8. The survey in Japan</h2>
@@ -1685,14 +1695,14 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <ul>
   <li><strong>Financial sovereignty</strong> — being able to secure your own ADA</li>
   <li><strong>Decentralising the network</strong> — by delegating to a single stake pool operator</li>
-  <li><strong>Economic activity itself</strong> — <strong>“in the early days of Cardano, staking and securing the network would've been enough, but I think a public good here is economic activity”</strong></li>
+  <li><strong>Economic activity itself</strong> — “in the early days of Cardano, staking and securing the network would've been enough, but I think a public good here is economic activity”</li>
 </ul>
 
-<p>Beyond those, the survey asks <strong>how much people care about the long-term health of Cardano</strong>, and <strong>what would help them stay</strong>.</p>
+<p>Beyond those, the survey asks how much people care about the long-term health of Cardano, and <strong>what would help them stay</strong>.</p>
 
-<p>The purpose is material. The aim is <strong>a set of shareables and presentation materials SPOs can walk their delegators through</strong> — <strong>“a kind of train the trainer or educate the educator model”</strong>, where <strong>“rather than us wanting to put words in anybody's mouths”</strong> the point is to help build the arguments that land.</p>
+<p>The purpose is material. The aim is a set of shareables and presentation materials SPOs can walk their delegators through — <strong>“a kind of train the trainer or educate the educator model”</strong>, where <strong>“rather than us wanting to put words in anybody's mouths”</strong> the point is to help build the arguments that land.</p>
 
-<p>And it is explicitly <strong>not only about Japan</strong>: <strong>“this is a spoiler 'cause I think it could be useful for the Western SPOs”</strong> — with “Western” glossed on the spot as <strong>“everywhere that isn't Asia.”</strong></p>
+<p>And it is explicitly <strong>not only about Japan</strong>: “this is a spoiler 'cause I think it could be useful for the Western SPOs” — with “Western” glossed on the spot as <strong>“everywhere that isn't Asia.”</strong></p>
 
 <p><span class="badge">added</span>This section bears directly on Japanese SPOs, but <strong>the survey questions themselves, the deadline, and how the results will be published are all unstated</strong>. What was given is the framing and the purpose.</p>
 
@@ -1740,7 +1750,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>The ticker vote, it is admitted, <strong>“originally wasn't meant to be a community decision”</strong> — it became one after <strong>“a bit of a brainwave”</strong> about keeping people engaged. Naming the districts follows the same logic, <strong>“because it's a cultural thing.”</strong></p>
 
-<p>The host's phrase for it is <strong>governance being handed over</strong>: <strong>“if we're building the muscle now where the community can make the decisions.”</strong></p>
+<p>The host's phrase for it is <strong>governance being handed over</strong>: “if we're building the muscle now where the community can make the decisions.”</p>
 
 
 <h2 id="en-qa">10. Q&amp;A</h2>
@@ -1748,22 +1758,22 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">Participant A</span>About exchange rates during testnet.</p>
-<p class="qa-a" data-by="Deferred"><strong>“While we're in testnet nothing's actually live, so we don't have actual exchange rates for it yet.”</strong> The question is acknowledged rather than answered: <strong>“that's something that when we can, we can talk about, but we're just not there yet as a project.”</strong></p>
+<p class="qa-a" data-by="Deferred">“While we're in testnet nothing's actually live, so we don't have actual exchange rates for it yet.” The question is acknowledged rather than answered: <strong>“that's something that when we can, we can talk about, but we're just not there yet as a project.”</strong></p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">From chat</span>Was <strong>USDA</strong> considered as a ticker?</p>
-<p class="qa-a" data-by="Not looked at"><strong>“We didn't look into USDA.”</strong> <strong>“I get why you're gonna do it for alphabetical reasons”</strong>, but <strong>“I think CEXes are probably aware of that, so it probably isn't one”</strong> — with the caveat <strong>“I'd have to actually look in if it was.”</strong> <span class="badge">added</span><strong>USDA is already a stablecoin ticker on Cardano itself</strong> — issued by Anzens, launched with EMURGO. So that option would <strong>collide on the same chain</strong>. This was not established on the call.</p>
+<p class="qa-a" data-by="Not looked at"><strong>“We didn't look into USDA.”</strong> “I get why you're gonna do it for alphabetical reasons”, but “I think CEXes are probably aware of that, so it probably isn't one” — with the caveat “I'd have to actually look in if it was.” <span class="badge">added</span>USDA is already a stablecoin ticker on Cardano itself — issued by Anzens, launched with EMURGO. So that option would <strong>collide on the same chain</strong>. This was not established on the call.</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">Participant F</span>Would crews have scheduled meetings?</p>
-<p class="qa-a" data-by="Shape given">A crew needs <strong>“at least two or three founding members,”</strong> and <strong>“probably they're gonna be SPOs if there's the appetite for it.”</strong> After that, <strong>“it'd be down to that group of people to decide what kind of cadence that had.”</strong> Formation gets <strong>a mandate</strong>, kept <strong>“simple”</strong> enough to navigate.</p>
+<p class="qa-a" data-by="Shape given">A crew needs “at least two or three founding members,” and “probably they're gonna be SPOs if there's the appetite for it.” After that, “it'd be down to that group of people to decide what kind of cadence that had.” Formation gets <strong>a mandate</strong>, kept <strong>“simple”</strong> enough to navigate.</p>
 </div>
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">Participant A</span>Will RealFi be at Token 2049?</p>
-<p class="qa-a" data-by="Applied"><strong>Yes.</strong> The <strong>application is in for a Cardano Foundation booth</strong>, and <strong>“think that closes tomorrow.”</strong> If it lands, <strong>“hopefully in a week they can make our lives 100 times easier.”</strong></p>
+<p class="qa-a" data-by="Applied"><strong>Yes.</strong> The application is in for a Cardano Foundation booth, and <strong>“think that closes tomorrow.”</strong> If it lands, “hopefully in a week they can make our lives 100 times easier.”</p>
 </div>
 
 
@@ -1772,12 +1782,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Withheld</span>Which exchanges are being talked to.</p>
-<p class="qa-a" data-by="Deliberately withheld">Stated flatly: <strong>“we can't say what exchanges we may be talking to or not talking to.”</strong> All that follows is <strong>“we've had some positive talks.”</strong> <strong>No counterparty, no timing.</strong></p>
+<p class="qa-a" data-by="Deliberately withheld">Stated flatly: “we can't say what exchanges we may be talking to or not talking to.” All that follows is <strong>“we've had some positive talks.”</strong> <strong>No counterparty, no timing.</strong></p>
 </div>
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">This week and next</span>Roles, status and points in the ambassador programme.</p>
-<p class="qa-a" data-by="Being written">Listed as what people are asking — <strong>“what roles or status or points or how these things work”</strong> — and answered with <strong>“that's what I'm gonna be focusing on this week and next.”</strong> <strong>The proposal isn't finished.</strong></p>
+<p class="qa-a" data-by="Being written">Listed as what people are asking — <strong>“what roles or status or points or how these things work”</strong> — and answered with “that's what I'm gonna be focusing on this week and next.” <strong>The proposal isn't finished.</strong></p>
 </div>
 
 <div class="qa pending">
@@ -1787,18 +1797,18 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Volume only</span>What the rename does to existing integrations.</p>
-<p class="qa-a" data-by="Effort acknowledged"><strong>“Everything right now is under USDR, sUSDR, and RFG”</strong> and <strong>“we'll have to go through a lot of that”</strong> — but <strong>how testnet balances, documentation and third-party displays get switched over is not covered</strong>.</p>
+<p class="qa-a" data-by="Effort acknowledged"><strong>“Everything right now is under USDR, sUSDR, and RFG”</strong> and <strong>“we'll have to go through a lot of that”</strong> — but how testnet balances, documentation and third-party displays get switched over is not covered.</p>
 </div>
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Trailed only</span>“Big announcements in the works.”</p>
-<p class="qa-a" data-by="Contents withheld"><strong>“There are big announcements in the works that we can't talk about”</strong> — <strong>no contents and no timing</strong>. It comes in the middle of a request to invite people into the community.</p>
+<p class="qa-a" data-by="Contents withheld">“There are big announcements in the works that we can't talk about” — <strong>no contents and no timing</strong>. It comes in the middle of a request to invite people into the community.</p>
 </div>
 
 
 <div class="note">
 <p><strong>About this page.</strong> People named in the audience appear as <code>Participant A–J</code>.</p>
-<p><strong>There were no slides.</strong> Images and a Miro link were posted in chat, but <strong>everything on this page was spoken aloud</strong>.</p>
+<p><strong>There were no slides.</strong> Images and a Miro link were posted in chat, but everything on this page was spoken aloud.</p>
 <p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the call</strong>.</p>
 <p>For the exact wording see the <a href="#en">English transcript</a>.</p>
 </div>

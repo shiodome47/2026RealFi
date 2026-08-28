@@ -350,14 +350,16 @@ h3 {
 /* 見出しにアンカーで飛んだとき、上に余白を残す */
 h2[id] { scroll-margin-top: 1.5rem; }
 
-p { margin: 0 0 1.1rem; }
+p { margin: 0 0 1.35rem; }
 
 a { color: var(--accent); }
 
-ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
-li { margin-bottom: 0.5rem; }
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
 
-strong { font-weight: 700; }
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -490,6 +492,14 @@ code {
 .part-head h2::before { display: none; }
 
 .tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
 
 /* ---- 折りたたみの解説 ---- */
 
@@ -883,7 +893,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="l-ja">
 <div class="thesis">
   <span class="label">一言でいうと</span>
-  <p><strong>技術的な準備はできていて、mainnet を止めているのは TradFi 側の順番待ち</strong>だと明かされた回。<br>
+  <p>技術的な準備はできていて、mainnet を止めているのは TradFi 側の順番待ちだと明かされた回。<br>
   そしてこのアーカイブで初めて、<strong>損失が出たときに誰が先に負担するのか</strong>の順序が語られた。</p>
 </div>
 
@@ -894,8 +904,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>すでに実際のお金でテスト中。</strong>約 <strong>10 万ドル</strong>を mint し、各種の取引の場やウォレットを通す <strong>hardening</strong> の段階にいる。</li>
   <li><strong>損失の順序が初めて示された。</strong>①エクイティ・バッファ → ②プロトコルの安定化ファンド → ③<strong>sUSDR の切り下げ</strong> → ④USDR 保有者、の順。ただし <strong>CEO 自身が「まだ完全には確定と言えない」と留保</strong>している。</li>
   <li><strong>ローンチ時の 2 つ。</strong><strong>Liqwid</strong>（ADA を売らずに預けて借り、USDR にしてステーク）と <strong>Sundae</strong>（新しい linear swap を前倒しで提供）。</li>
-  <li><strong>Cardano は正となる台帳。</strong>EVM 側でも burn/mint でネイティブ発行するが、<strong>資産は Cardano にあるので、EVM 側の需要が Cardano 上の残高を押し上げる</strong>。現在は Circle の CCTP のフォーク、<strong>LayerZero が来たら移行する予定</strong>。</li>
-  <li><strong>値のつかない資産は「自分ではない誰か」が評価する。</strong>最近の crypto の破綻は、<strong>実世界で壊れていることがダッシュボード上に反映されない</strong>ことが原因だと指摘された。</li>
+  <li><strong>Cardano は正となる台帳。</strong>EVM 側でも burn/mint でネイティブ発行するが、資産は Cardano にあるので、EVM 側の需要が Cardano 上の残高を押し上げる。現在は Circle の CCTP のフォーク、<strong>LayerZero が来たら移行する予定</strong>。</li>
+  <li><strong>値のつかない資産は「自分ではない誰か」が評価する。</strong>最近の crypto の破綻は、実世界で壊れていることがダッシュボード上に反映されないことが原因だと指摘された。</li>
 </ul>
 </div>
 
@@ -1030,7 +1040,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="waterfall">3. 損失が出たとき、誰が先に負担するか</h2>
 <p class="deck">このアーカイブで初めて順序が示された。ただし本人が「まだ完全には確定と言えない」と留保している。</p>
 
-<p>参加者A からの<strong>「ポートフォリオの中の与信資産がデフォルトしたら、USDR や sUSDR の保有者はどう守られるのか」</strong>という質問に対する答えです。これまでの回では、<strong>安定化ファンドや peg stability module の「中身」は繰り返し未説明のまま</strong>でした。今回、その順序が語られています。</p>
+<p>参加者A からの「ポートフォリオの中の与信資産がデフォルトしたら、USDR や sUSDR の保有者はどう守られるのか」という質問に対する答えです。これまでの回では、<strong>安定化ファンドや peg stability module の「中身」は繰り返し未説明のまま</strong>でした。今回、その順序が語られています。</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 290" role="img" aria-label="損失がエクイティ・バッファ、プロトコルの安定化ファンド、sUSDR の切り下げ、USDR 保有者の順に及ぶウォーターフォールの図">
@@ -1073,17 +1083,17 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
 
 <h4>引っかかるのは正しい</h4>
-<p>この節の説明には、<strong>時制の揺れ</strong>があります。エクイティ・バッファについて、まず<strong>「私が特に調達した（have raised）お金」</strong>と過去形で語られますが、そのすぐあとに <strong>②の安定化ファンドは「初日には存在しない。だからこそ、その最初の部分のためにエクイティを調達する（going to raise）」</strong>と、未来形で語られます。</p>
+<p>この節の説明には、<strong>時制の揺れ</strong>があります。エクイティ・バッファについて、まず<strong>「私が特に調達した（have raised）お金」</strong>と過去形で語られますが、そのすぐあとに ②の安定化ファンドは「初日には存在しない。だからこそ、その最初の部分のためにエクイティを調達する（going to raise）」と、未来形で語られます。</p>
 <p>さらに、この節の冒頭に <strong>「まだ完全には確定と言えないが、近いうちに言えるようになる」</strong> という留保が置かれています。</p>
 
 <h4>読める範囲で整理すると</h4>
 <ul>
   <li><strong>②（プロトコルの安定化ファンド）は、初日には存在しない。</strong>これはコール中で明示されています</li>
-  <li><strong>①（エクイティ・バッファ）が初日に満額あるのかは、この説明からは確定しません。</strong>「調達した」とも「これから調達する」とも読める言い方が同居しています</li>
+  <li>①（エクイティ・バッファ）が初日に満額あるのかは、この説明からは確定しません。「調達した」とも「これから調達する」とも読める言い方が同居しています</li>
 </ul>
 
 <h4>なぜここが重要か</h4>
-<p>②が初日にないことは確定しているので、<strong>もし①も未充足なら、ローンチ直後に損失が出た場合、③（sUSDR の切り下げ）が実質的に最初の受け皿になります。</strong>順序そのものは同じでも、<strong>手前の 2 段がどれだけ厚いかで、保有者に届く前に吸収される量がまったく変わります。</strong></p>
+<p>②が初日にないことは確定しているので、もし①も未充足なら、ローンチ直後に損失が出た場合、③（sUSDR の切り下げ）が実質的に最初の受け皿になります。順序そのものは同じでも、<strong>手前の 2 段がどれだけ厚いかで、保有者に届く前に吸収される量がまったく変わります。</strong></p>
 
 <h4>外から確かめる方法</h4>
 <p>数字を 1 つ見れば済みます。<strong>①のエクイティ・バッファの金額と、それがいつ払い込まれるか。</strong>この回では<strong>金額も時期も示されていません</strong>。第 6 節で本人が重視している「第三者によるアテステーション」の対象に、このバッファが含まれるのかどうかも語られていません。</p>
@@ -1097,7 +1107,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="cardano">4. Cardano が正となる台帳であること</h2>
 <p class="deck">EVM 側が伸びるほど Cardano 上の残高が増える、という設計。</p>
 
-<p>参加者B からの<strong>「RealFi は Cardano の上で直接動くのか、それとも独自チェーンかフォークか」</strong>という質問に、<strong>「Cardano の上で直接動く」</strong>と明確に答えられました。USDR はネイティブアセットとして <strong>Cexplorer</strong> でも確認できる、とのことです。</p>
+<p>参加者B からの「RealFi は Cardano の上で直接動くのか、それとも独自チェーンかフォークか」という質問に、<strong>「Cardano の上で直接動く」</strong>と明確に答えられました。USDR はネイティブアセットとして <strong>Cexplorer</strong> でも確認できる、とのことです。</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 250" role="img" aria-label="Cardano を正となる台帳とし、burn と mint によって Ethereum 上でもネイティブ発行する構成の図">
@@ -1134,13 +1144,13 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="term">
 <p class="term-name">CCTP <small>Cross-Chain Transfer Protocol</small></p>
-<p>Circle（USDC の発行体）が作った、チェーン間でトークンを移す仕組み。<span class="badge">補足</span>要点は<strong>「ロックして預かる」のではなく「片方で燃やして、もう片方で発行する」</strong>ことです。ブリッジによくある、<strong>大量の資産をロックした金庫（コール中の言葉では honeypot＝蜜壺）</strong>を作らずに済むため、そこを狙った攻撃の的にならない。CEO は<strong>「USDCx のブリッジができて、それがかなり楽になった」</strong>と述べています。</p>
+<p>Circle（USDC の発行体）が作った、チェーン間でトークンを移す仕組み。<span class="badge">補足</span>要点は<strong>「ロックして預かる」のではなく「片方で燃やして、もう片方で発行する」</strong>ことです。ブリッジによくある、大量の資産をロックした金庫（コール中の言葉では honeypot＝蜜壺）を作らずに済むため、そこを狙った攻撃の的にならない。CEO は<strong>「USDCx のブリッジができて、それがかなり楽になった」</strong>と述べています。</p>
 </div>
 
 <div class="term">
 <p class="term-name">LayerZero</p>
 <p><strong>チェーンとチェーンの間でメッセージを運ぶ、共通の配線</strong>です。<span class="badge">補足</span>ブリッジと混同されやすいのですが、レイヤーが 1 つ下だと考えると分かりやすい。ブリッジが<strong>「トークンを移す」1 つのサービス</strong>なのに対して、LayerZero は<strong>「あちらのチェーンでこれを実行してくれ」という指示を届ける土台</strong>で、トークンの移動はその上に載る使い方の 1 つにすぎません。すでに多数のチェーンをつないでいるため、<strong>1 本つなぐと、そこに繋がっているチェーン全部と話せるようになる</strong>のが利点です。</p>
-<p>RealFi にとっての意味は<strong>置き換え先</strong>です。<span class="badge">補足</span>今使っている CCTP は <strong>Circle の仕組みなので、Circle が対応しているチェーンと資産の範囲で動きます</strong>。LayerZero に移せば、その範囲に縛られなくなる。CEO は<strong>「メッセージングの層を差し替えやすいように設計してある」</strong>と述べており、<strong>移行そのものは前提として組んである</strong>という説明でした。ただし LayerZero 側の到着時期については<strong>「年末に向けて来ると理解している」という伝聞にとどまり、断定はされていません</strong>（<a href="#qa">Q&amp;A</a> 参照）。</p>
+<p>RealFi にとっての意味は<strong>置き換え先</strong>です。<span class="badge">補足</span>今使っている CCTP は Circle の仕組みなので、Circle が対応しているチェーンと資産の範囲で動きます。LayerZero に移せば、その範囲に縛られなくなる。CEO は「メッセージングの層を差し替えやすいように設計してある」と述べており、<strong>移行そのものは前提として組んである</strong>という説明でした。ただし LayerZero 側の到着時期については「年末に向けて来ると理解している」という伝聞にとどまり、断定はされていません（<a href="#qa">Q&amp;A</a> 参照）。</p>
 </div>
 
 <p><strong>Alpha Growth の提案が可決された</strong>ことにも触れられました。<span class="badge">補足</span>これは 7 月 26 日の回で「投票中」として記録していた PRIME 提案です（<code>shared/open-questions.md</code> の項目 17）。<strong>この回で可決が確認できました。</strong>CEO は「Cardano 上の各プロジェクトにまたがって調整できるようになる投資と合わせれば、<strong>DeFi の TVL を本当に積み上げる好機がある</strong>」と述べています。</p>
@@ -1190,7 +1200,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>8 月 6 日の GTM 回で、<strong>「私はプライベートクレジットの専門家ではない」</strong>として持ち越された質問です。今回はより踏み込んだ答えが出ました。</p>
 
-<p>まず値付けの方法自体は単純だとされます。<strong>実際のクーポン（支払われることになっている利息）で値付けし、ポートフォリオの予想損失で割り引く。</strong>問題はその先です。</p>
+<p>まず値付けの方法自体は単純だとされます。実際のクーポン（支払われることになっている利息）で値付けし、ポートフォリオの予想損失で割り引く。問題はその先です。</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 226" role="img" aria-label="ダッシュボード上では単調に増えて見える一方、実世界で壊れていることが反映されないという乖離を示した図">
@@ -1236,12 +1246,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="term">
 <p class="term-name">vault <small>と、そのキュレーター</small></p>
-<p><strong>vault マネージャー（キュレーター）</strong>がパラメータと戦略の設定に責任を持ち、そこに <strong>LP（資金の出し手）</strong>が入る構成。<span class="badge">補足</span>コール中の説明で重要なのは、<strong>これが「集客の仕組み」ではなく「説明責任の層」として位置づけられている</strong>点です。キュレーターは<strong>良い資産だけが入るようにパラメータを設定し、レバレッジがかかりすぎていないかを見る</strong>。CEO の言葉では<strong>「我々にとって非常に重要な信用のチェック」</strong>です。</p>
+<p><strong>vault マネージャー（キュレーター）</strong>がパラメータと戦略の設定に責任を持ち、そこに <strong>LP（資金の出し手）</strong>が入る構成。<span class="badge">補足</span>コール中の説明で重要なのは、これが「集客の仕組み」ではなく「説明責任の層」として位置づけられている点です。キュレーターは良い資産だけが入るようにパラメータを設定し、レバレッジがかかりすぎていないかを見る。CEO の言葉では「我々にとって非常に重要な信用のチェック」です。</p>
 </div>
 
-<p>ただし手放しの評価ではありません。<strong>「vault の世界で常に何もかもうまくいってきたとは言いません」</strong>と留保したうえで、<strong>DeFi で見られたばかげたことのいくつかを解決するために作られたもので、確実に改善ではある</strong>、という言い方でした。</p>
+<p>ただし手放しの評価ではありません。<strong>「vault の世界で常に何もかもうまくいってきたとは言いません」</strong>と留保したうえで、DeFi で見られたばかげたことのいくつかを解決するために作られたもので、確実に改善ではある、という言い方でした。</p>
 
-<p>もうひとつ楽しみなこととして挙げられたのが、<strong>crypto ではない「実業」との会話</strong>です。<strong>短めの期間ドルの資金の流れを持ち、その間に追加の経済性を得たい</strong>事業者 —— 送金の事業や、例として<strong>「複数の口座にドルを持っている家具工場」</strong>が挙げられました。<strong>「市場は、crypto の中で利回りを追う人たちよりずっと大きい」</strong>という見立てです。</p>
+<p>もうひとつ楽しみなこととして挙げられたのが、<strong>crypto ではない「実業」との会話</strong>です。短めの期間ドルの資金の流れを持ち、その間に追加の経済性を得たい事業者 —— 送金の事業や、例として<strong>「複数の口座にドルを持っている家具工場」</strong>が挙げられました。「市場は、crypto の中で利回りを追う人たちよりずっと大きい」という見立てです。</p>
 
 
 <h2 id="origin">8. なぜこれを作ったのか</h2>
@@ -1249,7 +1259,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>CEO が crypto に入ったきっかけは、<strong>当時の Cardano Foundation の会長だった Michael Parsons とロンドンの喫茶店で会ったこと</strong>だと語られました。Bitcoin の論文と Ethereum のホワイトペーパーを読んでいると答えたところ「なんてことだ、助かった」と言われて参加することになった、という経緯です。Cardano Foundation では戦略とエコシステムの責任者として、初期のマーケティングとナラティブ、コミュニティの立ち上げを手がけたとのことでした。</p>
 
-<p>RealFi の着想は、<strong>アフリカでの仕事を通じて残高が増えていくのを見たこと</strong>から来ています。Bitcoin、Ethereum、そして Tether の USDT。しかし<strong>その使い道は、取引から降りることと、Bitcoin を担保に借りてさらに Bitcoin を買うことくらいしか見えなかった</strong>。</p>
+<p>RealFi の着想は、<strong>アフリカでの仕事を通じて残高が増えていくのを見たこと</strong>から来ています。Bitcoin、Ethereum、そして Tether の USDT。しかしその使い道は、取引から降りることと、Bitcoin を担保に借りてさらに Bitcoin を買うことくらいしか見えなかった。</p>
 
 <blockquote>
 <p>これだけ大きく、増え続けているドルの残高がある。他に何ができるだろうか。……みんなが crypto の中のことしかやっていなかったのは、<strong>その資本を使って crypto の外の資産にアクセスする橋を、誰もちゃんと架けていなかったから</strong>です。</p>
@@ -1337,7 +1347,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">フォームから</span>USDR は国ごとにどんな課題に直面するか。どういう法人構成がグローバル展開に適しているか。</p>
-<p class="qa-a" data-by="回答"><strong>「構成の話というより、何をやろうとしているかの話」。</strong>法人をどこに置くかの前に、やろうとしている活動を決める、と。<strong>CLARITY Act は「最近また遅れた」</strong>と述べられ、<strong>米国で crypto 企業が銀行化することと、それを望まない銀行との争い</strong>が背景にあるが「それは我々についての話ではない」と。<strong>特定の法域に合わせてプロダクトを丸ごと変えるつもりはなく、適さない地域が出るのはそれで構わない</strong>という立場でした。</p>
+<p class="qa-a" data-by="回答"><strong>「構成の話というより、何をやろうとしているかの話」。</strong>法人をどこに置くかの前に、やろうとしている活動を決める、と。<strong>CLARITY Act は「最近また遅れた」</strong>と述べられ、米国で crypto 企業が銀行化することと、それを望まない銀行との争いが背景にあるが「それは我々についての話ではない」と。特定の法域に合わせてプロダクトを丸ごと変えるつもりはなく、適さない地域が出るのはそれで構わないという立場でした。</p>
 </div>
 
 
@@ -1351,7 +1361,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">参加者A</span>どの CEX に上場するのか。MiCA / GENIUS の要件を満たすのか。</p>
-<p class="qa-a" data-by="意図的に非公開">上場先は<strong>「話せない」と明言</strong>。MiCA / GENIUS については<strong>「現時点でその基準に対応する予定はない。理由は色々ある」</strong>とのみで、<strong>理由の中身は語られていません</strong>。</p>
+<p class="qa-a" data-by="意図的に非公開">上場先は<strong>「話せない」と明言</strong>。MiCA / GENIUS については「現時点でその基準に対応する予定はない。理由は色々ある」とのみで、<strong>理由の中身は語られていません</strong>。</p>
 </div>
 
 <div class="qa pending">
@@ -1361,7 +1371,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">参加者C</span>ビルダーから見た LayerZero の現状は。</p>
-<p class="qa-a" data-by="時期のみ">RealFi 側の対応としては<strong>「メッセージングの層を差し替えやすいように設計してある」</strong>と回答。<strong>LayerZero そのものの現状については「年末に向けて来ると理解している」という伝聞まで</strong>で、ビルダーが今使えるかどうかには答えていません。</p>
+<p class="qa-a" data-by="時期のみ">RealFi 側の対応としては<strong>「メッセージングの層を差し替えやすいように設計してある」</strong>と回答。LayerZero そのものの現状については「年末に向けて来ると理解している」という伝聞までで、ビルダーが今使えるかどうかには答えていません。</p>
 </div>
 
 
@@ -1378,7 +1388,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="l-en" lang="en">
 <div class="thesis">
   <span class="label">IN ONE LINE</span>
-  <p><strong>The technology is done; what is holding mainnet is a queue on the TradFi side.</strong><br>
+  <p>The technology is done; what is holding mainnet is a queue on the TradFi side.<br>
   And for the first time in this archive, <strong>the order in which losses hit</strong> was spelled out.</p>
 </div>
 
@@ -1389,8 +1399,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>Already testing with real money.</strong> About <strong>$100k</strong> minted and being pushed through venues and wallets — the <strong>hardening</strong> phase.</li>
   <li><strong>The loss waterfall, stated for the first time:</strong> ① an equity buffer → ② the protocol stability fund → ③ <strong>sUSDR marked down</strong> → ④ USDR holders. With the CEO's own caveat that he <strong>“can't fully confirm this”</strong> yet.</li>
   <li><strong>Two launch venues.</strong> <strong>Liqwid</strong> (deposit ADA, borrow against it, into USDR, stake — without selling the ADA) and <strong>Sundae</strong>, shipping a new linear swap feature early for them.</li>
-  <li><strong>Cardano is the source of truth.</strong> Issuance on EVM is native via burn-and-mint, but <strong>the assets sit on Cardano, so EVM demand grows the Cardano balance</strong>. Currently a fork of Circle's CCTP, <strong>moving to LayerZero</strong> when it lands.</li>
-  <li><strong>Unpriced assets get valued by someone who isn't you.</strong> Recent crypto blow-ups were attributed to <strong>real-world breakage not showing up on the dashboard</strong>.</li>
+  <li><strong>Cardano is the source of truth.</strong> Issuance on EVM is native via burn-and-mint, but the assets sit on Cardano, so EVM demand grows the Cardano balance. Currently a fork of Circle's CCTP, <strong>moving to LayerZero</strong> when it lands.</li>
+  <li>Unpriced assets get valued by someone who isn't you. Recent crypto blow-ups were attributed to <strong>real-world breakage not showing up on the dashboard</strong>.</li>
 </ul>
 </div>
 
@@ -1569,7 +1579,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <h4>Stopping on this is right</h4>
 <p>The explanation contains a <strong>shift of tense</strong>. The equity buffer is first described as <strong>“money that I've raised specifically to provide coverage”</strong> — past tense. Moments later, explaining that ② isn't available on day one, the reason given is <strong>“which is why, you know, going to raise equity for that, for that first part”</strong> — future tense.</p>
-<p>And the whole answer opens with <strong>“I can't, like, fully confirm this, but shortly I will be able to.”</strong></p>
+<p>And the whole answer opens with “I can't, like, fully confirm this, but shortly I will be able to.”</p>
 
 <h4>What can be established</h4>
 <ul>
@@ -1578,7 +1588,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </ul>
 
 <h4>Why it matters</h4>
-<p>Since ② is confirmed absent at launch, <strong>if ① is also unfunded, then ③ — marking down sUSDR — becomes the first real absorber for any early loss.</strong> The order would be unchanged; what changes is <strong>how much gets absorbed before it reaches a holder</strong>.</p>
+<p>Since ② is confirmed absent at launch, if ① is also unfunded, then ③ — marking down sUSDR — becomes the first real absorber for any early loss. The order would be unchanged; what changes is <strong>how much gets absorbed before it reaches a holder</strong>.</p>
 
 <h4>How you'd check</h4>
 <p>One number: <strong>the size of the equity buffer, and when it is paid in.</strong> <strong>Neither the amount nor the timing is given on this call.</strong> Nor is it said whether the buffer falls within the third-party attestation the CEO argues for in section 6.</p>
@@ -1636,8 +1646,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="term">
 <p class="term-name">LayerZero</p>
-<p><strong>Shared wiring for carrying messages between chains.</strong> <span class="badge">added</span>It is easily confused with a bridge, but it sits a layer below one. A bridge is <strong>one service that moves a token</strong>; LayerZero is <strong>the substrate for delivering “go do this on that chain” instructions</strong>, of which moving a token is a single use. Because it already connects a large number of chains, <strong>wiring into it once reaches everything else wired into it</strong>.</p>
-<p>For RealFi it is <strong>the replacement</strong>. <span class="badge">added</span>CCTP is <strong>Circle's mechanism, so it works across the chains and assets Circle supports</strong>; LayerZero lifts that constraint. The CEO says they <strong>“architected everything so that it's easy for us to switch out that messaging layer”</strong> — the migration is designed in from the start. On LayerZero's own arrival, though, he offers only <strong>“my understanding is that it's coming towards the end of the year”</strong> — reported, not asserted (see the <a href="#en-qa">Q&amp;A</a>).</p>
+<p><strong>Shared wiring for carrying messages between chains.</strong> <span class="badge">added</span>It is easily confused with a bridge, but it sits a layer below one. A bridge is <strong>one service that moves a token</strong>; LayerZero is the substrate for delivering “go do this on that chain” instructions, of which moving a token is a single use. Because it already connects a large number of chains, wiring into it once reaches everything else wired into it.</p>
+<p>For RealFi it is <strong>the replacement</strong>. <span class="badge">added</span>CCTP is Circle's mechanism, so it works across the chains and assets Circle supports; LayerZero lifts that constraint. The CEO says they “architected everything so that it's easy for us to switch out that messaging layer” — the migration is designed in from the start. On LayerZero's own arrival, though, he offers only <strong>“my understanding is that it's coming towards the end of the year”</strong> — reported, not asserted (see the <a href="#en-qa">Q&amp;A</a>).</p>
 </div>
 
 <p>The <strong>AlphaGrowth proposal passing</strong> was also noted. <span class="badge">added</span>This is the PRIME proposal recorded as “in voting” after the 26 July episode (item 17 in <code>shared/open-questions.md</code>). <strong>Its passage is confirmed here.</strong> With the investment AlphaGrowth can now coordinate across Cardano projects, the CEO reckons “we've got a really good shot of really building some DeFi TVL.”</p>
@@ -1687,7 +1697,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>On 6 August this was parked with <strong>“I am not a private credit professional.”</strong> This time the answer goes further.</p>
 
-<p>The pricing itself is simple enough: <strong>price it off the actual coupon, then discount by expected losses in the portfolio.</strong> The problem is what comes after.</p>
+<p>The pricing itself is simple enough: price it off the actual coupon, then discount by expected losses in the portfolio. The problem is what comes after.</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 226" role="img" aria-label="Diagram contrasting a dashboard value rising monotonically against real-world deterioration that is not reflected">
@@ -1734,12 +1744,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="term">
 <p class="term-name">Vault <small>and its curator</small></p>
-<p>A <strong>vault manager (curator)</strong> is responsible for the parameters and strategies; <strong>LPs</strong> come into the vault. <span class="badge">added</span>What matters in the call's framing is that this is presented as <strong>an accountability layer, not a distribution channel</strong>. The curator <strong>sets parameters so only good assets get added, and watches that leverage doesn't run away</strong>. In the CEO's words, <strong>“a really important credibility check for us.”</strong></p>
+<p>A <strong>vault manager (curator)</strong> is responsible for the parameters and strategies; <strong>LPs</strong> come into the vault. <span class="badge">added</span>What matters in the call's framing is that this is presented as an accountability layer, not a distribution channel. The curator sets parameters so only good assets get added, and watches that leverage doesn't run away. In the CEO's words, “a really important credibility check for us.”</p>
 </div>
 
 <p>Not an unqualified endorsement: <strong>“I wouldn't say everything's always gone right in vault world”</strong> — but they were set up to solve some of the nonsense DeFi produced, and are <strong>“definitely an improvement.”</strong></p>
 
-<p>The other thing he's excited about is conversations with <strong>“real businesses”</strong> — outfits with <strong>dollar flows over short-ish periods looking for extra economics during that window</strong>. Remittance businesses, or the example he gave: <strong>a furniture factory with dollars sitting across several accounts</strong>, using this as treasury management. <strong>“The market's much bigger than just people chasing yield in crypto.”</strong></p>
+<p>The other thing he's excited about is conversations with <strong>“real businesses”</strong> — outfits with dollar flows over short-ish periods looking for extra economics during that window. Remittance businesses, or the example he gave: <strong>a furniture factory with dollars sitting across several accounts</strong>, using this as treasury management. “The market's much bigger than just people chasing yield in crypto.”</p>
 
 
 <h2 id="en-origin">8. Why he built it</h2>
@@ -1747,7 +1757,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>He came into crypto via <strong>Michael Parsons, then chairman of the Cardano Foundation, in a coffee shop in Northwest London</strong> — “a slightly strange older man that was trying to talk to me.” Having read the Bitcoin paper and the Ethereum white paper was met with “Oh my God. Thank God.” At the Foundation he was head of strategy and head of ecosystem, doing early marketing and narratives and the community setup.</p>
 
-<p>The idea for RealFi came from <strong>watching balances grow through his work in Africa</strong> — Bitcoin, Ethereum, then USDT. But <strong>the only uses he could see were getting out of a trade, and borrowing against Bitcoin to buy more Bitcoin</strong>.</p>
+<p>The idea for RealFi came from <strong>watching balances grow through his work in Africa</strong> — Bitcoin, Ethereum, then USDT. But the only uses he could see were getting out of a trade, and borrowing against Bitcoin to buy more Bitcoin.</p>
 
 <blockquote>
 <p>We've got these huge and growing balances of dollars — what else could we do with it? … No one had really built this bridge to be able to go and start using that capital to access assets outside of crypto.</p>
@@ -1815,7 +1825,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">Participant A</span>If one of the credit assets in the portfolio defaults, what protects USDR and sUSDR holders?</p>
-<p class="qa-a" data-by="Answer">The loss waterfall in section 3 — with the caveat <strong>“I can't fully confirm this, but shortly I will be able to.”</strong></p>
+<p class="qa-a" data-by="Answer">The loss waterfall in section 3 — with the caveat “I can't fully confirm this, but shortly I will be able to.”</p>
 </div>
 
 <div class="qa">
@@ -1830,7 +1840,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">Participant D</span>Can more SPOs get involved in supporting RealFi?</p>
-<p class="qa-a" data-by="Answer">Taken by the host: <strong>a case is being built for what that looks like beyond mainnet</strong>, worked through with product and marketing and submitted to the CEO. <strong>“It's not signed off, so it's still in progress.”</strong></p>
+<p class="qa-a" data-by="Answer">Taken by the host: a case is being built for what that looks like beyond mainnet, worked through with product and marketing and submitted to the CEO. <strong>“It's not signed off, so it's still in progress.”</strong></p>
 </div>
 
 <div class="qa">
@@ -1844,12 +1854,12 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Noted here</span>The size of the equity buffer, and when it is funded.</p>
-<p class="qa-a" data-by="Undisclosed">The order of loss is given; <strong>the depth of the top two layers is not</strong>. Since ② is stated to be absent on day one, <strong>the size and timing of ① determine what protection actually exists at launch</strong> (see the collapsible in section 3).</p>
+<p class="qa-a" data-by="Undisclosed">The order of loss is given; <strong>the depth of the top two layers is not</strong>. Since ② is stated to be absent on day one, the size and timing of ① determine what protection actually exists at launch (see the collapsible in section 3).</p>
 </div>
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Participant A</span>Which CEXs? Will USDR meet MiCA or GENIUS requirements?</p>
-<p class="qa-a" data-by="Deliberately withheld">Listings: <strong>explicitly can't say.</strong> On MiCA and GENIUS: <strong>“we're not currently looking to support that standard, for a whole bunch of reasons”</strong> — <strong>the reasons themselves are not given</strong>.</p>
+<p class="qa-a" data-by="Deliberately withheld">Listings: <strong>explicitly can't say.</strong> On MiCA and GENIUS: “we're not currently looking to support that standard, for a whole bunch of reasons” — <strong>the reasons themselves are not given</strong>.</p>
 </div>
 
 <div class="qa pending">
@@ -1859,7 +1869,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Participant C</span>As a builder, what is the current state of LayerZero?</p>
-<p class="qa-a" data-by="Timing only">On RealFi's side: <strong>“we basically architected everything, that it's easy for us to switch out that messaging layer.”</strong> On LayerZero itself, only <strong>“my understanding is that it's coming towards the end of the year”</strong> — <strong>nothing on whether a builder can use it today</strong>.</p>
+<p class="qa-a" data-by="Timing only">On RealFi's side: “we basically architected everything, that it's easy for us to switch out that messaging layer.” On LayerZero itself, only <strong>“my understanding is that it's coming towards the end of the year”</strong> — <strong>nothing on whether a builder can use it today</strong>.</p>
 </div>
 
 
@@ -1867,7 +1877,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p><strong>About this page.</strong> The names of the people whose questions were read out appear as <code>Participant A–F</code>.</p>
 <p><strong>On third parties.</strong> Someone named in a public capacity — the then chairman of the Cardano Foundation — <strong>is named here</strong>.</p>
 <p><strong>On speakers.</strong> The source is an SRT: timestamps but no speaker labels, and a single subtitle block sometimes spans a change of speaker. The split into turns is judged from context; with only two voices it is unambiguous throughout, so nothing is marked <code>(inferred)</code>.</p>
-<p><strong>There were no slides.</strong> Everything on this page was <strong>spoken aloud</strong>.</p>
+<p>There were no slides. Everything on this page was <strong>spoken aloud</strong>.</p>
 <p>Anything marked <span class="badge">added</span> was written to help explain something and was <strong>not said on the call</strong>.</p>
 <p>For the exact wording see the <a href="#en">English transcript</a>.</p>
 </div>

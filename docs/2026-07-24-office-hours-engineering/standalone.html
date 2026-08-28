@@ -350,14 +350,16 @@ h3 {
 /* 見出しにアンカーで飛んだとき、上に余白を残す */
 h2[id] { scroll-margin-top: 1.5rem; }
 
-p { margin: 0 0 1.1rem; }
+p { margin: 0 0 1.35rem; }
 
 a { color: var(--accent); }
 
-ul, ol { margin: 0 0 1.2rem; padding-left: 1.4rem; }
-li { margin-bottom: 0.5rem; }
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
 
-strong { font-weight: 700; }
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -490,6 +492,14 @@ code {
 .part-head h2::before { display: none; }
 
 .tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
 
 /* ---- 折りたたみの解説 ---- */
 
@@ -948,7 +958,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="crosschain">2. クロスチェーン構想 — ハブ&amp;スポーク</h2>
 <p class="deck">入口は複数のチェーンに広げるが、基盤は Cardano に置く。この回の技術的な山場。</p>
 
-<p><strong>これは単なる burn-and-mint ブリッジではありません。</strong>トークンを Cardano から Ethereum などへ移すだけの仕組みではなく、<strong>EVM 側でも RealFi を直接使っているような体験を提供しながら、基盤は Cardano に置き続ける</strong>という設計です。</p>
+<p><strong>これは単なる burn-and-mint ブリッジではありません。</strong>トークンを Cardano から Ethereum などへ移すだけの仕組みではなく、EVM 側でも RealFi を直接使っているような体験を提供しながら、基盤は Cardano に置き続けるという設計です。</p>
 
 <p>具体的には、</p>
 
@@ -1460,7 +1470,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-crosschain">2. The cross-chain design — hub and spokes</h2>
 <p class="deck">Widen the entrances, keep the foundation on Cardano. The most technical stretch of the call.</p>
 
-<p><strong>This is not just a burn-and-mint bridge.</strong> Rather than only moving tokens from Cardano to Ethereum and elsewhere, the intent is to <strong>give EVM users the feeling of using RealFi directly, while the foundation stays on Cardano</strong>.</p>
+<p><strong>This is not just a burn-and-mint bridge.</strong> Rather than only moving tokens from Cardano to Ethereum and elsewhere, the intent is to give EVM users the feeling of using RealFi directly, while the foundation stays on Cardano.</p>
 
 <p>Concretely:</p>
 
@@ -1820,7 +1830,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa">
 <p class="qa-q"><span class="qa-who">Participant I</span>Isn't the rate the same for everyone? It's a fungible token, not an NFT.</p>
-<p class="qa-a" data-by="Answer">Correct. <strong>The rate is the same for everyone — there is one sUSDR/USDR exchange rate.</strong></p>
+<p class="qa-a" data-by="Answer">Correct. The rate is the same for everyone — there is one sUSDR/USDR exchange rate.</p>
 </div>
 
 <div class="qa">

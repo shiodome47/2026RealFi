@@ -104,10 +104,16 @@ VOID = {"meta", "link", "br", "hr", "img", "input", "source"}
 SELF = {"path", "rect", "line", "circle", "polygon", "use", "stop", "polyline", "ellipse"}
 
 problems = []
+notices = []
 
 
 def fail(where, msg):
     problems.append("%s: %s" % (where, msg))
+
+
+def warn(where, msg):
+    """落としはしないが、読みにくさとして報告するもの。"""
+    notices.append("%s: %s" % (where, msg))
 
 
 class TagCheck(html.parser.HTMLParser):
@@ -454,6 +460,24 @@ def main():
     for literal in re.findall(r"#[0-9a-fA-F]{3,8}\b", body):
         fail("docs/assets/style.css", "配色トークンの外で色を直書きしている: %s" % literal)
 
+    # 太字が面になっていないか。**落としはしないが数えて出す。**
+    # 太字は「目が行き先を見つけるための印」なので、段落の半分を超えると
+    # 印として働かなくなり、文字の壁になる。
+    for summary in sorted(DOCS.glob("*/index.html")):
+        rel = summary.relative_to(ROOT)
+        heavy = 0
+        for m in re.finditer(r"<(p|li)[^>]*>(.*?)</\1>", summary.read_text(), re.S):
+            body = m.group(2)
+            plain = re.sub(r"<[^>]+>", "", body)
+            if len(plain) < 60:
+                continue
+            bold = sum(len(re.sub(r"<[^>]+>", "", b))
+                       for b in re.findall(r"<strong>(.*?)</strong>", body, re.S))
+            if bold / len(plain) > 0.5:
+                heavy += 1
+        if heavy:
+            warn(rel, "太字が半分を超える段落が %d 箇所（読み手には文字の壁になる）" % heavy)
+
     if problems:
         print("NG — %d 件\n" % len(problems))
         for p in problems:
@@ -461,6 +485,10 @@ def main():
         return 1
 
     print("OK — %d ページを検証" % len(pages))
+    if notices:
+        print("\n気になるところ — %d 件（落としてはいない）\n" % len(notices))
+        for n in notices:
+            print("  " + n)
     return 0
 
 
