@@ -1,0 +1,3751 @@
+1
+00:00:16,760 --> 00:00:18,620
+Testing, testing.
+
+2
+00:00:20,340 --> 00:00:21,600
+See if I can get to...
+
+3
+00:00:25,800 --> 00:00:27,220
+Hey, David, I can see you're there,
+
+4
+00:00:27,360 --> 00:00:30,200
+so I'm just gonna invite you to the peak.
+
+5
+00:00:31,980 --> 00:00:34,820
+And, uh- Great.
+
+6
+00:00:36,020 --> 00:00:36,920
+Hey, David, how's it going?
+
+7
+00:00:37,640 --> 00:00:38,040
+Yes, sir.
+
+8
+00:00:39,100 --> 00:00:43,610
+Oh, can see a, a, a wild John O'Connor has, uh,
+
+9
+00:00:43,640 --> 00:00:44,280
+joined the chat.
+
+10
+00:00:44,350 --> 00:00:45,460
+Let me see if I can get him up.
+
+11
+00:00:48,420 --> 00:00:49,620
+And then we've got Howie as well.
+
+12
+00:00:49,680 --> 00:00:51,220
+Just- Fantastic ...
+
+13
+00:00:51,240 --> 00:00:52,720
+post in general.
+
+14
+00:00:52,760 --> 00:00:53,110
+Hi, guys.
+
+15
+00:00:56,240 --> 00:00:57,060
+Welcome, everybody.
+
+16
+00:00:57,300 --> 00:00:57,500
+Um,
+
+17
+00:00:57,720 --> 00:01:00,880
+I am just sending out some tweets to say that we're going
+
+18
+00:01:00,940 --> 00:01:01,280
+live.
+
+19
+00:01:01,480 --> 00:01:02,200
+Thanks for joining.
+
+20
+00:01:02,780 --> 00:01:04,269
+If you can invite anybody, uh,
+
+21
+00:01:04,360 --> 00:01:05,360
+if you're in the audience now,
+
+22
+00:01:05,379 --> 00:01:07,660
+and you can invite people to the call,
+
+23
+00:01:07,710 --> 00:01:08,710
+that would be fantastic.
+
+24
+00:01:09,740 --> 00:01:12,170
+And on this, uh, office hours today,
+
+25
+00:01:12,240 --> 00:01:14,780
+we've got the investment team, which is, uh,
+
+26
+00:01:14,820 --> 00:01:18,200
+David and Howie, and we've got John, who's the CEO.
+
+27
+00:01:18,920 --> 00:01:20,760
+Uh, welcome David, and Howie, and John.
+
+28
+00:01:22,960 --> 00:01:23,420
+Hello.
+
+29
+00:01:24,400 --> 00:01:24,800
+Hello.
+
+30
+00:01:25,720 --> 00:01:25,960
+Great.
+
+31
+00:01:26,160 --> 00:01:26,660
+Thanks, guys.
+
+32
+00:01:26,860 --> 00:01:27,460
+Good to be here.
+
+33
+00:01:29,180 --> 00:01:30,360
+Great, so can we, uh,
+
+34
+00:01:30,640 --> 00:01:32,280
+the investment-- This is the one I've been looking forward
+
+35
+00:01:32,340 --> 00:01:32,540
+to.
+
+36
+00:01:33,100 --> 00:01:34,410
+Uh, can we do some introductions?
+
+37
+00:01:34,480 --> 00:01:36,340
+Maybe if we start with, uh, David.
+
+38
+00:01:36,480 --> 00:01:37,480
+Can you introduce yourself,
+
+39
+00:01:37,620 --> 00:01:39,300
+maybe give us a little bit of an origin story,
+
+40
+00:01:39,360 --> 00:01:40,560
+and then Howie,
+
+41
+00:01:40,740 --> 00:01:42,240
+so we can learn more about you and the team?
+
+42
+00:01:44,040 --> 00:01:44,360
+Yeah, no.
+
+43
+00:01:44,610 --> 00:01:45,270
+Uh, hi, guys.
+
+44
+00:01:45,380 --> 00:01:46,780
+So m-my name is David.
+
+45
+00:01:47,020 --> 00:01:48,580
+Um, I'm the CEO at RealFi.
+
+46
+00:01:49,380 --> 00:01:52,790
+Um, basically, my background is in investments,
+
+47
+00:01:53,020 --> 00:01:55,940
+so I've d-done private equity, private credits, well,
+
+48
+00:01:55,980 --> 00:01:58,980
+data-driven private credits in emerging markets.
+
+49
+00:01:59,400 --> 00:02:01,840
+Uh, I've done that for over fifteen years.
+
+50
+00:02:02,640 --> 00:02:06,580
+Um, lived in several different countries, Dubai, Ghana,
+
+51
+00:02:06,760 --> 00:02:09,160
+Peru, and now I'm based in Nairobi.
+
+52
+00:02:10,000 --> 00:02:12,960
+Um, and, uh, yeah, no, the reas- the reason for me to,
+
+53
+00:02:13,000 --> 00:02:15,020
+to join RealFi is that, yeah,
+
+54
+00:02:15,160 --> 00:02:17,900
+I think I'm a big believer in bringing capital to emerging
+
+55
+00:02:17,940 --> 00:02:21,650
+markets and, and, uh, and this is a, an,
+
+56
+00:02:21,700 --> 00:02:24,580
+a different way how, uh, basically traditional, uh,
+
+57
+00:02:24,710 --> 00:02:25,520
+finance has worked.
+
+58
+00:02:25,600 --> 00:02:29,420
+So very excited to, to work on this project and,
+
+59
+00:02:29,600 --> 00:02:31,740
+and also to get ready to launch.
+
+60
+00:02:31,800 --> 00:02:35,120
+So we, we've put a lot of hours and thinking into it, and,
+
+61
+00:02:35,140 --> 00:02:36,900
+and, uh, happy to share that with you guys.
+
+62
+00:02:39,320 --> 00:02:39,760
+Thank you.
+
+63
+00:02:39,800 --> 00:02:40,760
+And Howie- Yeah, guys ...
+
+64
+00:02:40,860 --> 00:02:42,450
+uh, investment expert, so- Yeah, yeah.
+
+65
+00:02:42,460 --> 00:02:44,000
+Thank, thanks everyone.
+
+66
+00:02:44,060 --> 00:02:44,840
+Thanks for your time.
+
+67
+00:02:44,920 --> 00:02:46,760
+Um, hope you can hear me.
+
+68
+00:02:46,860 --> 00:02:47,560
+Um, yeah, so,
+
+69
+00:02:47,740 --> 00:02:50,480
+so I'm a senior investment manager at RealFi on the
+
+70
+00:02:50,520 --> 00:02:51,960
+investment team.
+
+71
+00:02:52,060 --> 00:02:53,720
+Um, I'm a CFA charterholder.
+
+72
+00:02:53,769 --> 00:02:56,370
+I've got around, uh, ten, 11 years of,
+
+73
+00:02:56,660 --> 00:02:58,440
+of front office investment experience.
+
+74
+00:02:59,100 --> 00:03:02,240
+I started out in, in public markets, so, um,
+
+75
+00:03:02,380 --> 00:03:04,900
+cross-asset investment strategy, um,
+
+76
+00:03:05,120 --> 00:03:09,200
+trying to construct portfolios, uh, that, uh, that, uh,
+
+77
+00:03:09,360 --> 00:03:12,940
+consist of equity allocations, fixed income allocations,
+
+78
+00:03:13,580 --> 00:03:14,740
+and derivative overlays.
+
+79
+00:03:14,980 --> 00:03:16,020
+Um, before RealFi,
+
+80
+00:03:16,049 --> 00:03:19,120
+I'd spent the previous six years originating and
+
+81
+00:03:19,160 --> 00:03:22,680
+structuring private credit deals in, in sub-Saharan Africa.
+
+82
+00:03:23,300 --> 00:03:23,400
+Um,
+
+83
+00:03:23,540 --> 00:03:28,500
+so credit risk and liquidity are my kind of primary focuses.
+
+84
+00:03:29,120 --> 00:03:30,740
+Um, what drew me to RealFi, well, I think, you know,
+
+85
+00:03:30,780 --> 00:03:32,300
+this is the way the future is going,
+
+86
+00:03:32,420 --> 00:03:37,620
+so if I can play a role in bringing a certain TradFi rigor
+
+87
+00:03:37,720 --> 00:03:42,040
+to, to a DeFi, um, investment vehicle and protocol, then,
+
+88
+00:03:42,140 --> 00:03:42,769
+um, yep, that's,
+
+89
+00:03:42,920 --> 00:03:45,100
+that's kind of what excites me and gets me going every day.
+
+90
+00:03:45,300 --> 00:03:47,290
+But yeah, thanks everyone for your time, and, uh,
+
+91
+00:03:47,440 --> 00:03:49,560
+we look forward to going through the slide deck.
+
+92
+00:03:51,150 --> 00:03:52,760
+That's great, and just a bit of housekeeping.
+
+93
+00:03:53,260 --> 00:03:55,400
+If you've got any questions, throw them into the chat,
+
+94
+00:03:55,480 --> 00:03:58,120
+and I'm sure David and Howie will get to those after the
+
+95
+00:03:58,180 --> 00:03:58,540
+slides.
+
+96
+00:03:59,220 --> 00:04:01,420
+Um, thanks very much, and o-over to you, David.
+
+97
+00:04:02,900 --> 00:04:03,280
+Yeah, cool.
+
+98
+00:04:03,360 --> 00:04:03,800
+Thanks, guys.
+
+99
+00:04:03,860 --> 00:04:07,740
+And, and I think here we, we have another team, uh, member,
+
+100
+00:04:08,020 --> 00:04:08,680
+uh, Indrafier.
+
+101
+00:04:08,840 --> 00:04:10,080
+He's based in, in Dubai.
+
+102
+00:04:10,220 --> 00:04:11,800
+Uh, and, and we're working a lot with, uh,
+
+103
+00:04:11,860 --> 00:04:13,740
+with the different functions within the teams as well.
+
+104
+00:04:13,780 --> 00:04:16,459
+Just wanted to put that out there as, um...
+
+105
+00:04:16,839 --> 00:04:18,260
+So yeah, no, here, I think, um,
+
+106
+00:04:18,380 --> 00:04:19,660
+from the investment framework,
+
+107
+00:04:19,779 --> 00:04:25,240
+so when we started thinking about, uh, the stable coin,
+
+108
+00:04:25,380 --> 00:04:26,920
+there, there w- there was, of course,
+
+109
+00:04:26,960 --> 00:04:29,300
+a lot of different aspects that, that came into it.
+
+110
+00:04:29,680 --> 00:04:33,020
+Um, and the, yeah, we, we,
+
+111
+00:04:33,200 --> 00:04:36,990
+we have put a lot of thought into what,
+
+112
+00:04:37,040 --> 00:04:39,400
+what we need to do in order to make this work, right?
+
+113
+00:04:39,520 --> 00:04:42,260
+So, uh, of course, liquidity is key.
+
+114
+00:04:42,540 --> 00:04:43,880
+Bank stability is key.
+
+115
+00:04:44,380 --> 00:04:48,010
+Uh, making sure that we're not taking, uh, re- well,
+
+116
+00:04:48,680 --> 00:04:50,680
+pr- uh, out of proportion risk, right?
+
+117
+00:04:50,920 --> 00:04:54,280
+Um, so, so, so yeah, the investment team,
+
+118
+00:04:54,540 --> 00:04:55,820
+actually with the, the whole team,
+
+119
+00:04:55,900 --> 00:04:58,180
+we've been putting a lot of time and effort into,
+
+120
+00:04:58,270 --> 00:05:01,600
+to checking on in terms of what we needed to do in order to
+
+121
+00:05:01,660 --> 00:05:02,300
+make this work.
+
+122
+00:05:02,440 --> 00:05:06,100
+So, um, I think Howie will talk a little bit more about,
+
+123
+00:05:06,620 --> 00:05:08,880
+like, the, the, the tests that we've done, uh,
+
+124
+00:05:08,940 --> 00:05:12,810
+against this, um, because yeah, one of the, the,
+
+125
+00:05:13,260 --> 00:05:17,360
+the main drivers of this model is that, uh, yeah,
+
+126
+00:05:17,880 --> 00:05:18,490
+liquidity.
+
+127
+00:05:18,580 --> 00:05:22,010
+We, we want to be able to meet li- the liquidity standards,
+
+128
+00:05:22,360 --> 00:05:24,930
+uh, that we have put in place, and from there,
+
+129
+00:05:25,040 --> 00:05:26,219
+we've built it actually out.
+
+130
+00:05:26,640 --> 00:05:30,964
+So, uh- As we have USD R and, and as USD R,
+
+131
+00:05:31,124 --> 00:05:33,724
+so basically the staking and un-unstaking, uh,
+
+132
+00:05:33,764 --> 00:05:36,574
+side of things, what we've done is we have actually, uh,
+
+133
+00:05:36,704 --> 00:05:38,044
+created a two-book system.
+
+134
+00:05:38,324 --> 00:05:40,104
+So we have book one.
+
+135
+00:05:40,644 --> 00:05:43,264
+Uh, so there's actually one asset pool, but there's, uh,
+
+136
+00:05:43,344 --> 00:05:46,684
+there's book one, which is, uh, reflecting, um,
+
+137
+00:05:47,144 --> 00:05:49,684
+the instant liquidity from a, from a,
+
+138
+00:05:50,304 --> 00:05:53,644
+from an unstaking perspective because, uh, yeah, you,
+
+139
+00:05:53,944 --> 00:05:56,864
+you will be able to go in and out of, uh,
+
+140
+00:05:56,984 --> 00:05:58,304
+USD R whenever you want.
+
+141
+00:05:59,084 --> 00:06:02,624
+Um, and that's why, uh, we have put into our IPS,
+
+142
+00:06:02,704 --> 00:06:05,844
+our investment, uh, process manual that, um, some...
+
+143
+00:06:05,924 --> 00:06:08,184
+the guardrails that we can and cannot do, uh,
+
+144
+00:06:08,224 --> 00:06:11,424
+in order to make sure that we're, we're protecting, um,
+
+145
+00:06:11,464 --> 00:06:14,484
+that liquidity, um, and also, of course, pack stability.
+
+146
+00:06:14,584 --> 00:06:18,804
+So, so book one is basically, um, uh, well,
+
+147
+00:06:18,864 --> 00:06:21,064
+at least forty-five percent needs to be in,
+
+148
+00:06:21,124 --> 00:06:22,804
+in tokenized money market funds.
+
+149
+00:06:23,144 --> 00:06:25,004
+Um, so yeah, we've screened them.
+
+150
+00:06:25,704 --> 00:06:29,924
+Uh, we're looking into the usual suspects, and I think, um,
+
+151
+00:06:30,044 --> 00:06:32,394
+that will deliver the instant liquidity that,
+
+152
+00:06:32,504 --> 00:06:33,484
+that is required.
+
+153
+00:06:33,864 --> 00:06:37,424
+Um, we're also looking into CLO ETFs, right?
+
+154
+00:06:37,524 --> 00:06:41,544
+So basically, the CLO ETFs that we're now, um, yeah,
+
+155
+00:06:42,344 --> 00:06:46,104
+buying through, uh, more a TradFi platform through StoneX,
+
+156
+00:06:46,804 --> 00:06:51,624
+um, are triple A, uh, very liquid, um, and,
+
+157
+00:06:51,744 --> 00:06:53,294
+and hence you-- the,
+
+158
+00:06:53,364 --> 00:06:56,604
+the volatility on NAV is going to be very minimal there.
+
+159
+00:06:57,344 --> 00:07:00,864
+Um, so what we've said is that, uh, okay, we want to be...
+
+160
+00:07:01,244 --> 00:07:01,464
+that's,
+
+161
+00:07:01,604 --> 00:07:04,044
+that's going to be around twenty-five percent of the
+
+162
+00:07:04,064 --> 00:07:06,724
+allocation or at least of what is the maximum that it can
+
+163
+00:07:06,764 --> 00:07:06,963
+do.
+
+164
+00:07:07,724 --> 00:07:09,764
+Um, and then we also do private credit.
+
+165
+00:07:10,444 --> 00:07:11,624
+So that's for, for book one.
+
+166
+00:07:11,724 --> 00:07:13,814
+So for book two, the staking, uh, uh,
+
+167
+00:07:14,184 --> 00:07:16,864
+side of things is that there is a seven-day cooldown
+
+168
+00:07:16,944 --> 00:07:20,504
+period, and then hence that allows us to, um, yeah,
+
+169
+00:07:20,644 --> 00:07:21,644
+put some money of a...
+
+170
+00:07:22,184 --> 00:07:25,224
+put at least half of the money into CLO ETFs, uh,
+
+171
+00:07:25,324 --> 00:07:27,784
+because we, we then know that the, yeah,
+
+172
+00:07:27,884 --> 00:07:30,184
+that when we did the back testing that we,
+
+173
+00:07:30,504 --> 00:07:33,164
+we are able to meet the liquidity, uh,
+
+174
+00:07:33,224 --> 00:07:35,264
+requirements that we've, uh, put out there.
+
+175
+00:07:35,763 --> 00:07:38,304
+And then fifty percent will, will go into private credit.
+
+176
+00:07:38,704 --> 00:07:41,664
+Um, so maybe if you go...
+
+177
+00:07:41,944 --> 00:07:42,324
+Let me just...
+
+178
+00:07:42,364 --> 00:07:42,704
+Sorry.
+
+179
+00:07:44,664 --> 00:07:45,824
+Um, yeah, the next slide.
+
+180
+00:07:45,904 --> 00:07:47,784
+So, so what we actually have...
+
+181
+00:07:47,944 --> 00:07:48,764
+Uh, sorry, yeah, this one.
+
+182
+00:07:49,504 --> 00:07:51,624
+So we have a two books, uh, two-book system.
+
+183
+00:07:51,964 --> 00:07:55,863
+Um, so, uh, uh, yeah, we're, we're actually-- we,
+
+184
+00:07:55,994 --> 00:07:58,404
+we have created an internal product where we can,
+
+185
+00:07:59,104 --> 00:08:02,604
+on a real-time basis, see what the staking rate, uh,
+
+186
+00:08:02,724 --> 00:08:03,184
+rate is.
+
+187
+00:08:03,844 --> 00:08:06,234
+And then on a daily basis, what, what we will do,
+
+188
+00:08:06,324 --> 00:08:08,924
+we have a treasury function, and then we have a, a,
+
+189
+00:08:08,934 --> 00:08:09,844
+an investment function.
+
+190
+00:08:09,924 --> 00:08:12,784
+So the treasury function will actually then, um,
+
+191
+00:08:13,344 --> 00:08:16,784
+reallocate or rebalance the, um,
+
+192
+00:08:17,124 --> 00:08:19,724
+the portfolio on a daily basis.
+
+193
+00:08:20,444 --> 00:08:22,484
+Um, and, and that then makes,
+
+194
+00:08:22,604 --> 00:08:25,284
+that makes sure that when-- whatever the staking ratio is,
+
+195
+00:08:25,344 --> 00:08:28,004
+that we're always meeting the requirements that we've put
+
+196
+00:08:28,044 --> 00:08:28,444
+out there.
+
+197
+00:08:29,144 --> 00:08:29,564
+Um,
+
+198
+00:08:30,604 --> 00:08:33,364
+and then what I just discussed around the different sleeves.
+
+199
+00:08:33,464 --> 00:08:35,193
+So we're actually calling it different, uh,
+
+200
+00:08:35,384 --> 00:08:36,113
+three different sleeves.
+
+201
+00:08:36,183 --> 00:08:40,244
+So one is the liquidity buffer that I-- we just really, um,
+
+202
+00:08:40,304 --> 00:08:41,404
+uh, just explained, right?
+
+203
+00:08:41,504 --> 00:08:42,484
+This is tier one.
+
+204
+00:08:43,264 --> 00:08:45,364
+Uh, super, super, super liquid.
+
+205
+00:08:45,884 --> 00:08:47,644
+Uh, instant liquidity.
+
+206
+00:08:48,044 --> 00:08:51,564
+Um, yeah, the, the, the, the, this is the one that,
+
+207
+00:08:51,684 --> 00:08:53,444
+that is our liquidity buffer.
+
+208
+00:08:54,364 --> 00:08:57,124
+Then, as mentioned, the B one is the, the CLO ETFs.
+
+209
+00:08:57,964 --> 00:09:01,944
+Um, we are all-- It's, it's floating rates, so no, no,
+
+210
+00:09:02,124 --> 00:09:05,584
+no duration, uh, that's, uh, that comes into play.
+
+211
+00:09:06,264 --> 00:09:10,224
+Um, we're also looking into, once we're bigger, into, uh,
+
+212
+00:09:10,344 --> 00:09:10,964
+corporate notes.
+
+213
+00:09:11,604 --> 00:09:13,784
+However, we, we've, uh, for, for the...
+
+214
+00:09:13,824 --> 00:09:15,254
+you know, you need to be at a, at a,
+
+215
+00:09:15,264 --> 00:09:18,524
+at a substantial size in order for that-- for us to be able
+
+216
+00:09:18,564 --> 00:09:19,364
+to activate that.
+
+217
+00:09:20,134 --> 00:09:22,884
+And then, uh, private credit, and I think this is,
+
+218
+00:09:22,924 --> 00:09:24,424
+let's say, our sweet spot, uh,
+
+219
+00:09:24,504 --> 00:09:28,454
+as you now have heard from myself as well as from Harry and
+
+220
+00:09:28,504 --> 00:09:32,404
+Interfira that, yeah, we have significant, uh, yeah,
+
+221
+00:09:32,664 --> 00:09:33,704
+investment experience.
+
+222
+00:09:34,524 --> 00:09:36,444
+Um, we have done deals in the past.
+
+223
+00:09:36,824 --> 00:09:39,634
+Uh, we've done deals successfully, smaller deals,
+
+224
+00:09:39,864 --> 00:09:42,524
+bigger deals, uh, different kinds of structures.
+
+225
+00:09:42,584 --> 00:09:44,093
+So, um,
+
+226
+00:09:44,124 --> 00:09:47,284
+we believe that we have the right team to be able to
+
+227
+00:09:47,294 --> 00:09:48,764
+execute on that.
+
+228
+00:09:48,884 --> 00:09:50,844
+So from the private credit side, we,
+
+229
+00:09:50,984 --> 00:09:52,944
+we actually believe that the, yeah,
+
+230
+00:09:52,984 --> 00:09:53,904
+there are different ways of how,
+
+231
+00:09:54,104 --> 00:09:55,724
+how to actually source them, right?
+
+232
+00:09:55,764 --> 00:09:56,044
+So we,
+
+233
+00:09:56,144 --> 00:09:59,784
+we have our own proprietary deal sourcing capabilities.
+
+234
+00:10:00,304 --> 00:10:01,684
+That's basically our network.
+
+235
+00:10:01,984 --> 00:10:03,624
+Uh, we've been operating for, well,
+
+236
+00:10:03,864 --> 00:10:05,184
+maybe fifteen and twelve years.
+
+237
+00:10:05,244 --> 00:10:08,724
+So, um, we know, we know the players that are out there,
+
+238
+00:10:09,024 --> 00:10:12,764
+that we know that it's basically investing into fintechs or
+
+239
+00:10:12,804 --> 00:10:14,194
+at least data-driven companies,
+
+240
+00:10:14,284 --> 00:10:16,824
+which I think most companies will get to,
+
+241
+00:10:17,224 --> 00:10:18,084
+to that stage anyway.
+
+242
+00:10:18,844 --> 00:10:21,824
+Um, and then so you have to think around, okay, these are,
+
+243
+00:10:22,564 --> 00:10:28,024
+uh, yeah, fintech players that provide finance or to, to,
+
+244
+00:10:28,164 --> 00:10:32,504
+let's say in, in, in emerging markets, um, to, for example,
+
+245
+00:10:32,644 --> 00:10:34,164
+that they, uh, what is it?
+
+246
+00:10:34,464 --> 00:10:38,704
+Um, uh, yeah, if you want to buy a phone,
+
+247
+00:10:38,964 --> 00:10:41,124
+you can buy a phone on, on credit, right?
+
+248
+00:10:41,224 --> 00:10:42,744
+Or if you wanna buy a motorcycle,
+
+249
+00:10:42,804 --> 00:10:44,624
+you wanna-- you can buy a motorcycle on credit.
+
+250
+00:10:44,724 --> 00:10:46,644
+Or if you just need credit, you can also do that.
+
+251
+00:10:46,684 --> 00:10:48,104
+So what you,
+
+252
+00:10:48,284 --> 00:10:50,604
+what you see is that there are a lot of in emerging markets
+
+253
+00:10:50,644 --> 00:10:53,544
+that these, these players are very well capitalized.
+
+254
+00:10:53,604 --> 00:10:56,164
+They've actually been able to, uh, raise a lot of money,
+
+255
+00:10:56,624 --> 00:10:59,894
+um, with equity, which means that there's a, there, there,
+
+256
+00:10:59,944 --> 00:11:04,084
+there's a, yeah, healthy, um, equity position, uh,
+
+257
+00:11:04,164 --> 00:11:05,424
+which we then can finance.
+
+258
+00:11:06,184 --> 00:11:07,344
+Um, and then what...
+
+259
+00:11:07,424 --> 00:11:10,404
+Uh, so, so in Africa, we ha-- uh, we're, we're basically,
+
+260
+00:11:10,544 --> 00:11:11,654
+we, we know all the players.
+
+261
+00:11:12,364 --> 00:11:13,354
+Uh, for the other countries,
+
+262
+00:11:13,424 --> 00:11:15,734
+we're also working with some of the other, uh, uh,
+
+263
+00:11:15,964 --> 00:11:17,664
+data-driven private credit funds.
+
+264
+00:11:17,754 --> 00:11:21,764
+So, uh, there are about, uh, a dozen of them out there.
+
+265
+00:11:22,164 --> 00:11:24,164
+We, we know who they are.
+
+266
+00:11:24,584 --> 00:11:26,984
+We're actually have started our due diligence on them as
+
+267
+00:11:27,064 --> 00:11:27,284
+well.
+
+268
+00:11:27,856 --> 00:11:30,225
+We're still going to start, uh, investing in them,
+
+269
+00:11:30,836 --> 00:11:32,896
+and that's more of a fund to fund approach.
+
+270
+00:11:33,236 --> 00:11:35,716
+Um, so, so for us, that's a,
+
+271
+00:11:35,796 --> 00:11:38,856
+that's another way how we can get, uh, yeah,
+
+272
+00:11:39,236 --> 00:11:42,836
+very interesting deals in Asia, in Latin America.
+
+273
+00:11:43,276 --> 00:11:46,916
+Um, there's also a possibility to, to,
+
+274
+00:11:46,956 --> 00:11:48,216
+to syndicate something with them.
+
+275
+00:11:48,796 --> 00:11:49,416
+Um, and here,
+
+276
+00:11:49,556 --> 00:11:52,096
+what we also want to make sure is that from a liquidity
+
+277
+00:11:52,176 --> 00:11:54,296
+perspective, um, yeah, we,
+
+278
+00:11:54,396 --> 00:11:56,855
+we don't want to hold longer than twelve-month notes.
+
+279
+00:11:57,056 --> 00:12:01,576
+So that's basically, um, yeah, most often, uh,
+
+280
+00:12:01,956 --> 00:12:03,876
+people want longer tenures, um,
+
+281
+00:12:04,016 --> 00:12:05,516
+but we want to make sure that we,
+
+282
+00:12:05,636 --> 00:12:07,436
+we can provide the liquidity, of course.
+
+283
+00:12:08,076 --> 00:12:11,616
+So how we do due diligence is that, as I mentioned before,
+
+284
+00:12:11,756 --> 00:12:14,056
+we're, we're working a lot with the data team.
+
+285
+00:12:14,196 --> 00:12:15,516
+So we're doing it ourselves, of course,
+
+286
+00:12:15,596 --> 00:12:16,696
+but also with the data team.
+
+287
+00:12:17,176 --> 00:12:20,596
+We look at, uh, the loan tapes of these companies, right?
+
+288
+00:12:20,676 --> 00:12:24,536
+We really go deep into it, um, because we believe if we,
+
+289
+00:12:24,696 --> 00:12:24,816
+like,
+
+290
+00:12:24,896 --> 00:12:28,196
+we have the capability that we can do that due diligence
+
+291
+00:12:28,236 --> 00:12:28,736
+ourselves.
+
+292
+00:12:28,976 --> 00:12:30,916
+And from the loan tape,
+
+293
+00:12:31,136 --> 00:12:34,756
+it's basically trying to match the loan tape with the
+
+294
+00:12:34,816 --> 00:12:37,836
+financial statements of the company and making sure that,
+
+295
+00:12:37,976 --> 00:12:41,216
+um, the, the companies are in a, in a healthy state.
+
+296
+00:12:41,676 --> 00:12:44,596
+Um, and what we also look, looking into is, of course,
+
+297
+00:12:44,696 --> 00:12:45,116
+legal.
+
+298
+00:12:45,236 --> 00:12:46,816
+So we have our own general counsel.
+
+299
+00:12:47,596 --> 00:12:48,676
+Um, there's a bunch of,
+
+300
+00:12:48,876 --> 00:12:54,556
+of very rigorous due diligence that we do, um, which, uh,
+
+301
+00:12:54,776 --> 00:12:55,256
+yeah, which,
+
+302
+00:12:55,296 --> 00:12:58,276
+which will allow us to better structure the deals or
+
+303
+00:12:58,296 --> 00:13:00,376
+don-don't do the deals sometimes as well, right?
+
+304
+00:13:00,436 --> 00:13:02,796
+Like, I mean, sometimes you just have to say no to a deal.
+
+305
+00:13:03,576 --> 00:13:05,536
+Um, and then the structuring comes in place.
+
+306
+00:13:05,616 --> 00:13:08,896
+So yeah, we prefer senior secured, self-amortizing.
+
+307
+00:13:09,716 --> 00:13:10,996
+Um, yeah, we,
+
+308
+00:13:11,036 --> 00:13:13,676
+we're putting coverage and coll-collateral test at the
+
+309
+00:13:13,716 --> 00:13:14,516
+origination.
+
+310
+00:13:14,936 --> 00:13:16,336
+We-we're putting in covenants.
+
+311
+00:13:16,416 --> 00:13:19,136
+So it's, it's actually quite a bit of work.
+
+312
+00:13:19,406 --> 00:13:21,816
+And then I think the one other thing because, uh,
+
+313
+00:13:21,856 --> 00:13:23,036
+that we do is the monitoring.
+
+314
+00:13:23,116 --> 00:13:26,396
+So we actually have data integration with, uh, the,
+
+315
+00:13:26,476 --> 00:13:27,476
+the investments that we do.
+
+316
+00:13:27,696 --> 00:13:32,076
+So that allows us to better monitor and act upon, uh,
+
+317
+00:13:32,216 --> 00:13:34,996
+if there are changes or even reinvest, right?
+
+318
+00:13:35,096 --> 00:13:36,256
+So, um,
+
+319
+00:13:36,456 --> 00:13:40,176
+it just allows us to be able to deploy quicker if we also
+
+320
+00:13:40,376 --> 00:13:43,276
+receive more money for, to, to be able to do that.
+
+321
+00:13:44,096 --> 00:13:46,956
+Um, so I think that's it,
+
+322
+00:13:47,076 --> 00:13:49,396
+what we're doing in a nutshell from, uh, let's say, uh,
+
+323
+00:13:49,496 --> 00:13:53,276
+how we've, uh, how we have constructed the portfolio and,
+
+324
+00:13:53,336 --> 00:13:55,926
+and how we're doing the deals and how we will, uh,
+
+325
+00:13:56,116 --> 00:14:00,316
+will have to say how, how we support pack stability.
+
+326
+00:14:02,996 --> 00:14:03,396
+Yeah.
+
+327
+00:14:03,496 --> 00:14:04,516
+Um, thanks, David.
+
+328
+00:14:04,736 --> 00:14:07,656
+I think maybe what I'll do is I'll briefly touch on a few
+
+329
+00:14:07,756 --> 00:14:11,456
+points that David has already made here in his outline of
+
+330
+00:14:11,536 --> 00:14:15,376
+the framework, but I'm gonna emphasize our focus on,
+
+331
+00:14:15,536 --> 00:14:16,356
+on liquidity.
+
+332
+00:14:16,736 --> 00:14:20,565
+Um, so when we're considering how we allocate these-- the,
+
+333
+00:14:20,565 --> 00:14:22,516
+the capital across the portfolio sleeves,
+
+334
+00:14:22,776 --> 00:14:24,176
+like how are we thinking about this?
+
+335
+00:14:24,256 --> 00:14:27,536
+So the portfolio construction right now is delivery--
+
+336
+00:14:27,776 --> 00:14:31,156
+deliberately built as a, a barbell structure.
+
+337
+00:14:31,316 --> 00:14:33,816
+So on one end, you've got very short,
+
+338
+00:14:34,376 --> 00:14:36,756
+very liquid instruments, obviously with lower yield.
+
+339
+00:14:37,316 --> 00:14:40,776
+At the other end, we're holding these contractual, uh,
+
+340
+00:14:40,896 --> 00:14:42,476
+self-amortizing private credits,
+
+341
+00:14:42,516 --> 00:14:43,556
+so that's sitting in Sleep C.
+
+342
+00:14:44,276 --> 00:14:45,796
+So obviously at, at a higher yield.
+
+343
+00:14:46,376 --> 00:14:49,896
+So we hold kind of very little in between here, um,
+
+344
+00:14:50,236 --> 00:14:51,736
+and that's obviously by choice.
+
+345
+00:14:52,076 --> 00:14:54,706
+Um, so any mid-duration blend will,
+
+346
+00:14:54,796 --> 00:14:58,276
+will tend to give you the worst of both worlds.
+
+347
+00:14:58,336 --> 00:14:58,436
+You,
+
+348
+00:14:58,556 --> 00:15:02,036
+you'll have an asset that's not liquid enough under stressful
+
+349
+00:15:02,096 --> 00:15:03,456
+redemption episodes, and,
+
+350
+00:15:03,505 --> 00:15:04,856
+and that's kind of what we design for.
+
+351
+00:15:04,956 --> 00:15:08,196
+We want to know under stress, can we meet redemptions?
+
+352
+00:15:08,836 --> 00:15:11,196
+Um, so if, if net redemptions are,
+
+353
+00:15:11,276 --> 00:15:14,336
+are exceeding kind of one, two standard deviations,
+
+354
+00:15:14,456 --> 00:15:16,256
+are we still able to fulfill those?
+
+355
+00:15:16,816 --> 00:15:18,836
+Um, so again, in the mid-range,
+
+356
+00:15:19,236 --> 00:15:22,486
+you're not liquid enough to sell under these more, uh,
+
+357
+00:15:22,536 --> 00:15:24,345
+extreme redemption episodes,
+
+358
+00:15:24,796 --> 00:15:28,616
+and you're also not really yielding much more to justify
+
+359
+00:15:28,656 --> 00:15:30,416
+that illiquidity that you've accepted there.
+
+360
+00:15:30,976 --> 00:15:34,036
+Um, so the barbell kind of separates those two jobs nicely.
+
+361
+00:15:34,296 --> 00:15:35,756
+Uh, so between, again,
+
+362
+00:15:35,836 --> 00:15:37,886
+Sleep A and B1 on the more liquid side,
+
+363
+00:15:38,276 --> 00:15:41,056
+and then Sleep C on the higher yielding il-illiquid side.
+
+364
+00:15:41,696 --> 00:15:44,216
+Um, and, um, yeah, so, okay.
+
+365
+00:15:44,596 --> 00:15:49,076
+So our order of defense under a more severe redemption
+
+366
+00:15:49,135 --> 00:15:52,136
+episode will follow naturally from that barbell structure.
+
+367
+00:15:52,576 --> 00:15:53,976
+So as David's mentioned, again,
+
+368
+00:15:54,096 --> 00:15:57,016
+Sleep A will provide that intraday, um,
+
+369
+00:15:57,156 --> 00:15:59,996
+source of cash that's sitting in tokenized money market
+
+370
+00:16:00,016 --> 00:16:00,316
+funds.
+
+371
+00:16:00,366 --> 00:16:03,556
+So we can convert that, uh, within a day.
+
+372
+00:16:03,676 --> 00:16:06,876
+So we'll say T plus zero, T plus one at full value.
+
+373
+00:16:06,936 --> 00:16:09,516
+We won't have to work through the secondary market to
+
+374
+00:16:09,556 --> 00:16:10,236
+realize that value.
+
+375
+00:16:10,876 --> 00:16:14,456
+Sleep B1 obviously comes second in that waterfall, um,
+
+376
+00:16:14,556 --> 00:16:16,556
+that is exchange, exchange traded.
+
+377
+00:16:17,596 --> 00:16:21,036
+Um, we've modeled that at T plus one to T plus three.
+
+378
+00:16:21,656 --> 00:16:22,436
+Uh, so we're,
+
+379
+00:16:22,616 --> 00:16:25,496
+we're not assuming kind of best case execution in our
+
+380
+00:16:25,556 --> 00:16:25,936
+modeling.
+
+381
+00:16:26,496 --> 00:16:27,256
+Um, and I think we,
+
+382
+00:16:27,416 --> 00:16:29,736
+we kind of just wanted to take a more prudent approach
+
+383
+00:16:29,776 --> 00:16:31,906
+there when we work through those, uh,
+
+384
+00:16:32,016 --> 00:16:33,676
+those portfolio stress models.
+
+385
+00:16:33,996 --> 00:16:36,936
+Um, but I'll get to some outputs from those shortly.
+
+386
+00:16:38,016 --> 00:16:41,416
+Again, uh, Sleep C, the private credit will be last, but I,
+
+387
+00:16:41,466 --> 00:16:43,136
+I just wanna be quite precise here.
+
+388
+00:16:43,596 --> 00:16:47,636
+So our coverage calculations that we use to construct the
+
+389
+00:16:47,676 --> 00:16:49,276
+portfolio allocation framework,
+
+390
+00:16:49,756 --> 00:16:52,856
+as well as when we're monitoring the protocol state over
+
+391
+00:16:52,996 --> 00:16:57,396
+time, we, we assume Sleep C is offering zero liquidity.
+
+392
+00:16:57,736 --> 00:16:57,936
+Okay?
+
+393
+00:16:58,316 --> 00:17:02,816
+So like in, you know, in actuality, these, uh,
+
+394
+00:17:02,876 --> 00:17:05,976
+Sleep C private credit instruments do repay on some
+
+395
+00:17:06,016 --> 00:17:07,116
+contractual schedule.
+
+396
+00:17:07,596 --> 00:17:08,056
+So you, you,
+
+397
+00:17:08,175 --> 00:17:12,215
+you can see that they do in practice return cash each
+
+398
+00:17:12,356 --> 00:17:13,396
+month, uh,
+
+399
+00:17:13,516 --> 00:17:16,215
+but we do not include that in our liquidity modeling
+
+400
+00:17:16,256 --> 00:17:16,756
+assumptions.
+
+401
+00:17:16,836 --> 00:17:17,336
+Again,
+
+402
+00:17:17,955 --> 00:17:20,455
+it's to be prudent when building out the portfolio allocation.
+
+403
+00:17:21,164 --> 00:17:22,324
+Um, okay.
+
+404
+00:17:22,444 --> 00:17:27,204
+So, and behind all three of these layers will sit, um, the,
+
+405
+00:17:27,214 --> 00:17:28,674
+the, the extra support,
+
+406
+00:17:28,764 --> 00:17:31,304
+which is the portfolio over-collateralization.
+
+407
+00:17:31,624 --> 00:17:33,224
+So we want excess assets,
+
+408
+00:17:33,304 --> 00:17:37,663
+so net assets within the portfolio in order to absorb any
+
+409
+00:17:37,724 --> 00:17:38,934
+kind of shocks, um,
+
+410
+00:17:39,224 --> 00:17:42,664
+within the portfolio as these instruments evolve over time.
+
+411
+00:17:42,964 --> 00:17:46,634
+So there are three separate defenses here, um, and, uh,
+
+412
+00:17:46,804 --> 00:17:50,804
+those all go towards, uh, defending the peg in the market.
+
+413
+00:17:54,764 --> 00:17:55,144
+All right.
+
+414
+00:17:55,204 --> 00:17:58,024
+So just a couple more points on- Yeah.
+
+415
+00:17:58,034 --> 00:17:59,504
+And maybe, maybe one other thing is that, like, we ...
+
+416
+00:17:59,954 --> 00:18:03,104
+I think the, the, the whole reason why we've been, uh,
+
+417
+00:18:03,244 --> 00:18:06,684
+very conservative when it comes to the, the,
+
+418
+00:18:06,784 --> 00:18:08,044
+the liquidity framework as well,
+
+419
+00:18:08,124 --> 00:18:10,624
+is that the last thing that we als- of course,
+
+420
+00:18:10,664 --> 00:18:13,604
+also wanna do is, is, is sell private credit at a discount,
+
+421
+00:18:13,664 --> 00:18:15,224
+or sell anything at a discount, right?
+
+422
+00:18:15,304 --> 00:18:17,424
+So I think what ...
+
+423
+00:18:17,464 --> 00:18:20,544
+Like, against, well, one, pro- having the ability to,
+
+424
+00:18:20,604 --> 00:18:24,124
+to meet the liquidities, uh, but also what we're,
+
+425
+00:18:24,404 --> 00:18:27,884
+what we're now very much are working towards is, uh,
+
+426
+00:18:28,044 --> 00:18:31,724
+getting, uh, liquidity, uh, or getting credit against, uh,
+
+427
+00:18:31,744 --> 00:18:32,364
+private credit,
+
+428
+00:18:32,444 --> 00:18:35,544
+which then from a liquidity framework would, would, would,
+
+429
+00:18:35,724 --> 00:18:38,684
+yeah, be just a massive, uh, well,
+
+430
+00:18:38,744 --> 00:18:41,444
+I wouldn't say game changer, but it, that's a, that ...
+
+431
+00:18:41,864 --> 00:18:41,984
+Yeah.
+
+432
+00:18:42,104 --> 00:18:44,724
+It will be it will, will mean a lot for us.
+
+433
+00:18:44,844 --> 00:18:46,874
+Um, so, so we are thinking of- Yeah.
+
+434
+00:18:46,884 --> 00:18:47,804
+Just to, just to maybe,
+
+435
+00:18:47,844 --> 00:18:49,944
+just to may- actually just add on that, because I ...
+
+436
+00:18:50,104 --> 00:18:51,704
+By the way, guys, you're doing a fantastic job here,
+
+437
+00:18:51,744 --> 00:18:52,684
+I think, of explaining this.
+
+438
+00:18:53,064 --> 00:18:56,204
+But one thing which I do think is kind of useful to think
+
+439
+00:18:56,264 --> 00:18:58,824
+about as a mental model is, with a business like this,
+
+440
+00:18:58,984 --> 00:19:00,964
+it all gets easier as you get bigger.
+
+441
+00:19:01,544 --> 00:19:03,484
+So at the beginning when you launch,
+
+442
+00:19:03,704 --> 00:19:05,563
+what you don't have is huge, huge,
+
+443
+00:19:05,644 --> 00:19:08,624
+huge numbers of people where you could model the statistics
+
+444
+00:19:08,664 --> 00:19:09,564
+and go, "Okay,
+
+445
+00:19:09,624 --> 00:19:11,924
+I'm really confident that we're gonna be at these kind of
+
+446
+00:19:11,964 --> 00:19:14,704
+numbers." Um, it gets better as you get bigger.
+
+447
+00:19:14,904 --> 00:19:16,704
+As you've got more people involved in the system,
+
+448
+00:19:16,844 --> 00:19:18,784
+things become more predictable, um,
+
+449
+00:19:18,864 --> 00:19:20,524
+and everything just gets a bit calmer.
+
+450
+00:19:20,924 --> 00:19:23,434
+Um, but for those precise reasons,
+
+451
+00:19:23,564 --> 00:19:25,704
+it also means at the beginning that you have to be very,
+
+452
+00:19:25,744 --> 00:19:29,634
+very careful as, as uh, the, uh, investment team, I think,
+
+453
+00:19:29,664 --> 00:19:30,113
+are showing here.
+
+454
+00:19:35,344 --> 00:19:35,844
+Yeah, exactly.
+
+455
+00:19:35,884 --> 00:19:36,564
+So, uh, okay.
+
+456
+00:19:36,644 --> 00:19:38,944
+So I'll jump back into that.
+
+457
+00:19:38,984 --> 00:19:40,764
+I mean, I think that's a, that's a decent segue.
+
+458
+00:19:40,864 --> 00:19:41,354
+So where,
+
+459
+00:19:41,484 --> 00:19:45,324
+where the actual framework that we've got meets our, well,
+
+460
+00:19:45,404 --> 00:19:49,964
+reality, um, what we observe empirically, um, you know,
+
+461
+00:19:50,064 --> 00:19:51,064
+where, when it comes to the,
+
+462
+00:19:51,184 --> 00:19:53,094
+the price action and indeed the,
+
+463
+00:19:53,324 --> 00:19:55,724
+the T- TVL of comparable protocols.
+
+464
+00:19:55,804 --> 00:19:59,004
+So we, we simulate, um, these things with,
+
+465
+00:19:59,084 --> 00:20:01,684
+with daily data as opposed to monthly.
+
+466
+00:20:01,764 --> 00:20:02,084
+Obviously,
+
+467
+00:20:02,144 --> 00:20:04,684
+the monthly average is going to hide a lot under the hood.
+
+468
+00:20:04,924 --> 00:20:05,804
+Um, you know,
+
+469
+00:20:06,124 --> 00:20:08,544
+T- TVL and debt redemptions are extremely volatile, so,
+
+470
+00:20:08,624 --> 00:20:10,864
+so you need to actually look at high-frequency data series
+
+471
+00:20:10,884 --> 00:20:11,264
+for this.
+
+472
+00:20:11,984 --> 00:20:15,284
+Um, and it's, it's calibrated to, to ob- observed, like,
+
+473
+00:20:15,344 --> 00:20:16,764
+empirical, uh,
+
+474
+00:20:16,944 --> 00:20:19,624
+stress events that we've seen in the market rather than
+
+475
+00:20:19,684 --> 00:20:21,993
+just some kind of hypothetical shocks.
+
+476
+00:20:22,584 --> 00:20:22,804
+Um,
+
+477
+00:20:22,944 --> 00:20:27,484
+so we are testing against redemption intensity that has been
+
+478
+00:20:27,524 --> 00:20:28,524
+observed in the market.
+
+479
+00:20:29,384 --> 00:20:31,944
+Um, and we, we, we then ran those scenarios.
+
+480
+00:20:32,024 --> 00:20:35,984
+There were 48 different severe redemption episode series
+
+481
+00:20:36,064 --> 00:20:39,644
+that we, we ran through our model, um, and used those to,
+
+482
+00:20:39,764 --> 00:20:45,084
+to calibrate how, um, we have allocated between Sleeve A,
+
+483
+00:20:45,244 --> 00:20:47,904
+B, and C, um, during the d- you know,
+
+484
+00:20:47,964 --> 00:20:49,204
+depe- on our base case.
+
+485
+00:20:49,864 --> 00:20:53,984
+So, so of course, unstaked USDL can leave instantly, uh,
+
+486
+00:20:54,004 --> 00:20:56,844
+this point has been made early on the call, with no notice,
+
+487
+00:20:57,344 --> 00:20:58,384
+and in the state, uh,
+
+488
+00:20:58,524 --> 00:21:00,764
+sUSDL has to clear that seven-day cooldown.
+
+489
+00:21:01,384 --> 00:21:03,734
+So, um, that means day eight is, is,
+
+490
+00:21:03,744 --> 00:21:04,844
+is critical in the model.
+
+491
+00:21:05,264 --> 00:21:08,124
+Um, day eight, i- if you model from T0,
+
+492
+00:21:08,184 --> 00:21:12,024
+is the moment that both of those cohorts are drawing
+
+493
+00:21:12,204 --> 00:21:13,564
+redemption demand at once.
+
+494
+00:21:14,204 --> 00:21:16,034
+Um, and then so in any of these models,
+
+495
+00:21:16,104 --> 00:21:18,464
+that's kind of the binding constraint we find.
+
+496
+00:21:19,124 --> 00:21:20,254
+Um, so in, in our models,
+
+497
+00:21:20,344 --> 00:21:22,854
+every asset is sold at the stressed price,
+
+498
+00:21:22,944 --> 00:21:24,644
+so not at its current book value.
+
+499
+00:21:25,324 --> 00:21:26,664
+Um, so for Sleeve B1,
+
+500
+00:21:26,744 --> 00:21:30,704
+that could be anything between 10 and 15% below net asset
+
+501
+00:21:30,784 --> 00:21:32,564
+value on the market, so that's our assumption.
+
+502
+00:21:33,404 --> 00:21:33,704
+Um,
+
+503
+00:21:33,724 --> 00:21:36,884
+and we don't assume that anyone is gonna step in at par and,
+
+504
+00:21:37,024 --> 00:21:38,324
+and, and buy those assets.
+
+505
+00:21:38,984 --> 00:21:39,074
+Um,
+
+506
+00:21:39,164 --> 00:21:41,564
+so the waterfall in the model runs in the fixed order we've
+
+507
+00:21:41,604 --> 00:21:42,184
+described.
+
+508
+00:21:42,264 --> 00:21:45,484
+So protocol cash first, then Sleeve A, then B1.
+
+509
+00:21:45,584 --> 00:21:47,384
+But again, Sleeve B1 is,
+
+510
+00:21:47,544 --> 00:21:51,444
+is continuously popping up Sleeve A in our model forecasts.
+
+511
+00:21:52,284 --> 00:21:54,554
+So our results show that, um,
+
+512
+00:21:54,564 --> 00:21:58,504
+these liquid sleeves have absorbed the entire run for
+
+513
+00:21:58,544 --> 00:21:59,164
+these, uh,
+
+514
+00:21:59,244 --> 00:22:03,324
+redemptions for protocols above our critical size limit.
+
+515
+00:22:03,384 --> 00:22:06,784
+So, so no queue, uh, formed at any point.
+
+516
+00:22:07,404 --> 00:22:09,554
+Um, th- this is just a model output.
+
+517
+00:22:09,584 --> 00:22:10,724
+It's obviously not a guarantee,
+
+518
+00:22:10,824 --> 00:22:13,244
+but act- so I do wanna be careful with the framing here.
+
+519
+00:22:13,824 --> 00:22:16,284
+Um, yeah, so, so at least that is,
+
+520
+00:22:16,624 --> 00:22:20,624
+is the kind of precaution we took when allocating between
+
+521
+00:22:20,644 --> 00:22:21,764
+the liquid sleeves and,
+
+522
+00:22:21,804 --> 00:22:24,384
+and the illiquid yield generation in,
+
+523
+00:22:24,464 --> 00:22:26,024
+in the protocol portfolio.
+
+524
+00:22:26,604 --> 00:22:27,924
+Um, and I've actually got a ...
+
+525
+00:22:27,964 --> 00:22:29,124
+We've got a chart here.
+
+526
+00:22:31,204 --> 00:22:32,434
+Those runs in the appendix,
+
+527
+00:22:32,624 --> 00:22:34,124
+maybe I can just refer to this quickly.
+
+528
+00:22:34,544 --> 00:22:36,924
+So this is, this is a, an example run.
+
+529
+00:22:37,624 --> 00:22:39,424
+Um, this was kind of in the mid-range.
+
+530
+00:22:39,464 --> 00:22:40,934
+There were some more severe, some less severe,
+
+531
+00:22:41,324 --> 00:22:43,724
+and it kind of shows what happens to the balance sheet day
+
+532
+00:22:43,764 --> 00:22:47,104
+by day given a starting allocation assumption.
+
+533
+00:22:47,304 --> 00:22:48,944
+So you can read that from the bottom.
+
+534
+00:22:49,484 --> 00:22:53,024
+Um, obviously you have the Sleeve C in the dark, um,
+
+535
+00:22:53,064 --> 00:22:55,844
+and none of that gets sold over this redemption profile.
+
+536
+00:22:56,364 --> 00:22:56,484
+Um,
+
+537
+00:22:56,584 --> 00:22:59,104
+just two mechanics from this that I think are worth drawing
+
+538
+00:22:59,184 --> 00:22:59,424
+out.
+
+539
+00:22:59,724 --> 00:22:59,944
+Okay?
+
+540
+00:23:00,444 --> 00:23:01,744
+So again, those settlemen- uh,
+
+541
+00:23:01,824 --> 00:23:04,184
+settlement assumptions we made are conservative,
+
+542
+00:23:04,284 --> 00:23:05,744
+so those are including haircuts.
+
+543
+00:23:06,484 --> 00:23:07,824
+Um, and then Sleeve A,
+
+544
+00:23:08,324 --> 00:23:11,144
+we've included that converts intraday.
+
+545
+00:23:11,604 --> 00:23:12,524
+Um, but again,
+
+546
+00:23:12,584 --> 00:23:15,024
+we do try and take into account what does that mean.
+
+547
+00:23:15,064 --> 00:23:17,084
+Is it T plus zero hours?
+
+548
+00:23:17,164 --> 00:23:18,144
+Is it T plus one hours?
+
+549
+00:23:18,204 --> 00:23:19,604
+Is it T, is it T plus six hours?
+
+550
+00:23:19,684 --> 00:23:21,324
+Because intraday, that can matter.
+
+551
+00:23:22,204 --> 00:23:22,304
+Um,
+
+552
+00:23:22,344 --> 00:23:26,884
+and Sleeve B1 is modeled at T plus one to T plus three Okay,
+
+553
+00:23:26,944 --> 00:23:28,144
+so the outcomes are on the right.
+
+554
+00:23:28,644 --> 00:23:28,824
+Again,
+
+555
+00:23:28,904 --> 00:23:32,704
+this is just what from one of the forty-eight empirical
+
+556
+00:23:32,764 --> 00:23:33,764
+runs that we modeled.
+
+557
+00:23:34,364 --> 00:23:34,544
+Um,
+
+558
+00:23:34,744 --> 00:23:38,004
+our peak unfilled queue is zero across zero days of c- of
+
+559
+00:23:38,044 --> 00:23:38,324
+course.
+
+560
+00:23:38,904 --> 00:23:39,774
+Um, and the, the,
+
+561
+00:23:39,884 --> 00:23:42,764
+the amount of sleeve C private credit that had to be sold,
+
+562
+00:23:43,444 --> 00:23:44,284
+um, is zero.
+
+563
+00:23:44,364 --> 00:23:46,664
+So just coming back to a point that, that David, um,
+
+564
+00:23:46,784 --> 00:23:48,184
+mentioned earlier on the call.
+
+565
+00:23:48,864 --> 00:23:51,524
+Um, so obviously those are, are not kind of an accident.
+
+566
+00:23:51,624 --> 00:23:51,844
+This ...
+
+567
+00:23:52,044 --> 00:23:54,544
+Th-the allocation is an outcome of us modeling against
+
+568
+00:23:54,584 --> 00:23:58,004
+these empirical events, and hence how we think because,
+
+569
+00:23:58,184 --> 00:24:01,544
+because redemption volatility can be so high,
+
+570
+00:24:02,164 --> 00:24:05,984
+a buyable approach and, and allocation is by far optimal,
+
+571
+00:24:06,344 --> 00:24:07,004
+um, you know,
+
+572
+00:24:07,084 --> 00:24:10,604
+given our intention to secure the peg and always enable
+
+573
+00:24:10,664 --> 00:24:12,324
+redemptions when required.
+
+574
+00:24:12,884 --> 00:24:13,564
+Um, yeah.
+
+575
+00:24:14,124 --> 00:24:14,564
+So, I mean,
+
+576
+00:24:14,724 --> 00:24:17,194
+I think any kind of additional comments from the other
+
+577
+00:24:17,264 --> 00:24:19,324
+guys, or we could take some questions.
+
+578
+00:24:21,004 --> 00:24:22,084
+No, yeah, I think the other ...
+
+579
+00:24:22,124 --> 00:24:25,164
+the one thing that we, uh, yeah, well,
+
+580
+00:24:25,404 --> 00:24:27,384
+forgot to mention is that we also have, uh,
+
+581
+00:24:27,424 --> 00:24:30,983
+within the protocol over-collateralization of the assets,
+
+582
+00:24:31,084 --> 00:24:31,203
+right?
+
+583
+00:24:31,224 --> 00:24:32,694
+So not only us ...
+
+584
+00:24:32,694 --> 00:24:32,694
+uh,
+
+585
+00:24:32,724 --> 00:24:35,844
+do we have overcolla- collateralization in the investments
+
+586
+00:24:35,854 --> 00:24:37,874
+that we do, and probably ...
+
+587
+00:24:37,904 --> 00:24:39,994
+well, and the companies that we invest in,
+
+588
+00:24:40,024 --> 00:24:41,863
+they actually have it with their lenders as well.
+
+589
+00:24:42,484 --> 00:24:42,724
+Uh, they're ...
+
+590
+00:24:42,744 --> 00:24:43,584
+sorry, their borrowers.
+
+591
+00:24:43,884 --> 00:24:46,304
+Um, so we, we also have, uh, you know,
+
+592
+00:24:46,364 --> 00:24:48,584
+we're making sure that there is overcollateralization
+
+593
+00:24:48,624 --> 00:24:49,464
+within the assets.
+
+594
+00:24:50,244 --> 00:24:51,724
+So, so just to make sure that,
+
+595
+00:24:51,884 --> 00:24:57,124
+that there is enough buffer even in cases that, yeah,
+
+596
+00:24:57,184 --> 00:25:00,024
+there might be a default because we're, we're of course ...
+
+597
+00:25:00,064 --> 00:25:03,904
+that, that needs to be absorbed, um, through that buffer.
+
+598
+00:25:04,024 --> 00:25:06,244
+Um, so just wanted to mention that as well.
+
+599
+00:25:10,164 --> 00:25:11,104
+That was great.
+
+600
+00:25:11,444 --> 00:25:11,704
+Wow.
+
+601
+00:25:12,044 --> 00:25:14,344
+Um, we do have some questions.
+
+602
+00:25:14,644 --> 00:25:16,304
+Uh, and if you're listening, please do ...
+
+603
+00:25:16,324 --> 00:25:18,644
+if you click the top right chat bubble,
+
+604
+00:25:18,744 --> 00:25:21,204
+you'll be able to ask questions and, um,
+
+605
+00:25:21,404 --> 00:25:22,364
+we'll be able to answer them.
+
+606
+00:25:22,784 --> 00:25:25,844
+Uh, 参加者A from, uh, is one of our key, uh,
+
+607
+00:25:25,964 --> 00:25:27,184
+Japanese community members.
+
+608
+00:25:27,784 --> 00:25:30,224
+He's asking a, a question of kind of scale.
+
+609
+00:25:30,384 --> 00:25:33,384
+Do you have a target for how large Realfi ultimately aims
+
+610
+00:25:33,424 --> 00:25:34,104
+to become,
+
+611
+00:25:34,244 --> 00:25:37,904
+or roughly how much capital a USDR would need to operate
+
+612
+00:25:38,004 --> 00:25:39,584
+effectively or optimally?
+
+613
+00:25:39,953 --> 00:25:42,524
+And what does the roadmap to get there look like as far as
+
+614
+00:25:42,564 --> 00:25:43,724
+you can share at this stage?
+
+615
+00:25:45,284 --> 00:25:45,524
+Yeah.
+
+616
+00:25:45,664 --> 00:25:47,684
+Maybe, maybe I take that one.
+
+617
+00:25:48,214 --> 00:25:51,124
+Um, so yeah.
+
+618
+00:25:51,204 --> 00:25:57,924
+I mean, look, in my view, um, this becomes a far, far,
+
+619
+00:25:58,024 --> 00:26:01,064
+far easier business in the nine figures.
+
+620
+00:26:01,644 --> 00:26:05,894
+Um, so what kind of nine figures is kind of like, you know,
+
+621
+00:26:05,904 --> 00:26:07,104
+how long's a piece of string?
+
+622
+00:26:07,644 --> 00:26:11,684
+Um, but I do believe that, you know, $100 million plus, uh,
+
+623
+00:26:11,804 --> 00:26:15,024
+it becomes significantly easier from basically an
+
+624
+00:26:15,064 --> 00:26:18,134
+investment portfolio allocation, uh, perspective.
+
+625
+00:26:18,644 --> 00:26:19,584
+Uh, not ...
+
+626
+00:26:19,624 --> 00:26:21,264
+basically 'cause of two key reasons.
+
+627
+00:26:21,844 --> 00:26:22,564
+Um, one,
+
+628
+00:26:23,044 --> 00:26:26,044
+your check sizes can be bigger in terms of the investments
+
+629
+00:26:26,054 --> 00:26:26,584
+that you do,
+
+630
+00:26:26,764 --> 00:26:29,004
+which actually typically means you can negotiate better
+
+631
+00:26:29,044 --> 00:26:33,404
+terms, um, which is great, just Pareto better terms.
+
+632
+00:26:33,524 --> 00:26:39,724
+Uh, two, uh, if you have a large private credit portfolio,
+
+633
+00:26:40,264 --> 00:26:42,644
+then I think David was alluding to this earlier,
+
+634
+00:26:42,724 --> 00:26:46,204
+at a certain scale you can borrow against that portfolio.
+
+635
+00:26:47,064 --> 00:26:50,364
+So let's say we were in the kind of nightmare situation
+
+636
+00:26:50,424 --> 00:26:51,384
+where, um,
+
+637
+00:26:51,684 --> 00:26:54,724
+something crazy's happened in crypto and everyone wants to
+
+638
+00:26:54,764 --> 00:26:56,804
+redeem, get out all of their exposure.
+
+639
+00:26:57,233 --> 00:27:00,124
+That would mean that we redeem people and basically sell
+
+640
+00:27:00,184 --> 00:27:01,904
+out all of our liquid sleeves.
+
+641
+00:27:01,964 --> 00:27:05,644
+That's our money market funds and our collateralized loan
+
+642
+00:27:05,684 --> 00:27:06,864
+obligation ETFs.
+
+643
+00:27:07,384 --> 00:27:10,244
+And what we could then do, rather than saying,
+
+644
+00:27:10,344 --> 00:27:11,744
+"We're out of liquid cash,
+
+645
+00:27:12,204 --> 00:27:15,534
+everyone needs to wait until our private credit basically
+
+646
+00:27:15,624 --> 00:27:16,384
+amortizes,"
+
+647
+00:27:16,764 --> 00:27:20,644
+we could borrow against that position to be able to repay
+
+648
+00:27:20,724 --> 00:27:21,024
+people.
+
+649
+00:27:21,124 --> 00:27:23,624
+So we'd be switching from an individual holding this
+
+650
+00:27:23,984 --> 00:27:26,824
+towards a bank giving us a facility, um,
+
+651
+00:27:26,944 --> 00:27:28,584
+so we could repay with that money.
+
+652
+00:27:28,894 --> 00:27:31,304
+And at that stage, you're very, very, very robust.
+
+653
+00:27:31,784 --> 00:27:35,824
+Um, so that starts to happen, I think, uh,
+
+654
+00:27:35,844 --> 00:27:39,044
+past the upwards of the $100 million TVL mark.
+
+655
+00:27:39,704 --> 00:27:40,944
+So how ...
+
+656
+00:27:40,984 --> 00:27:42,094
+where would I like us to get?
+
+657
+00:27:42,483 --> 00:27:46,644
+You know, in my view, this could scale to, you know,
+
+658
+00:27:46,983 --> 00:27:50,464
+name a figure, $5 billion, $7 billion, $10 billion.
+
+659
+00:27:50,824 --> 00:27:53,364
+I think if we were to look at the Athena example, you know,
+
+660
+00:27:53,404 --> 00:27:54,094
+they got to, I think,
+
+661
+00:27:54,124 --> 00:27:57,364
+a peak $17 billion on this tokenized basis trades.
+
+662
+00:27:57,724 --> 00:28:00,164
+I see no reason why something like Realfi couldn't achieve
+
+663
+00:28:00,244 --> 00:28:01,904
+that across time.
+
+664
+00:28:02,504 --> 00:28:05,904
+Um, I'm not saying I expect us to get there in,
+
+665
+00:28:05,984 --> 00:28:07,624
+in a couple of months, but you know,
+
+666
+00:28:07,784 --> 00:28:11,474
+I think Athena did hit the $4 billion mark after only a few
+
+667
+00:28:11,504 --> 00:28:12,144
+months.
+
+668
+00:28:12,184 --> 00:28:14,364
+So it is possible, is my point.
+
+669
+00:28:14,484 --> 00:28:17,204
+Um, and then how do we get there?
+
+670
+00:28:17,704 --> 00:28:20,744
+So we've got a kind of, uh, I think a,
+
+671
+00:28:20,944 --> 00:28:22,324
+a robust GTM strategy.
+
+672
+00:28:22,764 --> 00:28:25,304
+So we start, of course, with Cardano, um,
+
+673
+00:28:25,624 --> 00:28:27,884
+then we'll be launching into EVM worlds.
+
+674
+00:28:28,344 --> 00:28:30,784
+We'll be launching across a number of different vault
+
+675
+00:28:30,824 --> 00:28:32,484
+products, which is where you see a,
+
+676
+00:28:32,664 --> 00:28:35,564
+a lot of lo- a lot of the capital move to.
+
+677
+00:28:35,744 --> 00:28:40,824
+Um, in addition, we will, uh, in these vaults,
+
+678
+00:28:41,824 --> 00:28:44,044
+what we think our product's quite interesting for is
+
+679
+00:28:44,064 --> 00:28:46,104
+essentially leverage looping strategies.
+
+680
+00:28:46,584 --> 00:28:48,604
+So if you're getting, not a promise,
+
+681
+00:28:48,844 --> 00:28:50,764
+but hypothetical figure, eight,
+
+682
+00:28:51,004 --> 00:28:53,144
+eight and a half percent with Realfi,
+
+683
+00:28:53,624 --> 00:28:56,184
+and then your borrow cost is, let's say,
+
+684
+00:28:56,484 --> 00:28:57,884
+5% to borrow dollars,
+
+685
+00:28:58,324 --> 00:29:00,924
+you can basically lever up on that position.
+
+686
+00:29:01,024 --> 00:29:05,144
+So you buy $100 worth of USDR, you stake it,
+
+687
+00:29:05,444 --> 00:29:07,154
+then you borrow against that position,
+
+688
+00:29:07,364 --> 00:29:10,024
+you borrow more dollars, and then you go back in.
+
+689
+00:29:10,144 --> 00:29:11,284
+And as long as, of course,
+
+690
+00:29:11,384 --> 00:29:13,734
+the assets are quality assets and, um,
+
+691
+00:29:14,204 --> 00:29:15,984
+don't decrease in value beneath that,
+
+692
+00:29:16,344 --> 00:29:19,584
+it's a way to be able to sort of e- easily increase
+
+693
+00:29:19,964 --> 00:29:20,664
+returns.
+
+694
+00:29:21,084 --> 00:29:22,264
+Though bear in mind, of course,
+
+695
+00:29:22,344 --> 00:29:23,744
+if you do have an issue with the assets,
+
+696
+00:29:23,884 --> 00:29:26,564
+that will multiply the downside risk.
+
+697
+00:29:26,644 --> 00:29:29,524
+But these strategies are very popular in crypto,
+
+698
+00:29:29,824 --> 00:29:32,484
+and it led to huge growth for Athena.
+
+699
+00:29:33,284 --> 00:29:33,754
+So yeah,
+
+700
+00:29:33,904 --> 00:29:36,540
+I believe it's a combination of those There's also,
+
+701
+00:29:36,560 --> 00:29:38,880
+of course, the CEX strategy as well.
+
+702
+00:29:38,940 --> 00:29:39,300
+So,
+
+703
+00:29:39,620 --> 00:29:42,920
+a number of CEXs have earn programs which make it easy for,
+
+704
+00:29:43,000 --> 00:29:43,009
+um,
+
+705
+00:29:43,240 --> 00:29:45,780
+people who are holding stable coins to be able to sort of
+
+706
+00:29:45,800 --> 00:29:48,160
+get attractive numbers, uh, for, for yield.
+
+707
+00:29:48,900 --> 00:29:51,600
+And the CEXs push a lot of distribution like that.
+
+708
+00:29:52,240 --> 00:29:54,910
+Maybe the final thing which I do think is important is if
+
+709
+00:29:54,960 --> 00:29:58,620
+we can get sUSDR accepted as collateral for trading
+
+710
+00:29:58,660 --> 00:30:01,220
+positions, that can also grow huge volume.
+
+711
+00:30:01,280 --> 00:30:05,880
+So if people can post staked USDR as collateral, um,
+
+712
+00:30:05,940 --> 00:30:09,240
+for derivatives positions or perhaps positions, uh,
+
+713
+00:30:09,320 --> 00:30:11,140
+that's also a popular use case in crypto.
+
+714
+00:30:11,620 --> 00:30:13,960
+So it's basically a combination of all of these things,
+
+715
+00:30:14,080 --> 00:30:14,310
+right?
+
+716
+00:30:14,520 --> 00:30:14,760
+Um,
+
+717
+00:30:15,120 --> 00:30:18,020
+the one big one which I'm really hoping will come through
+
+718
+00:30:18,560 --> 00:30:19,220
+is, uh,
+
+719
+00:30:19,360 --> 00:30:23,960
+the work with alpha growth to really increase the robustness
+
+720
+00:30:24,100 --> 00:30:28,980
+of some DeFi primitives in Cardano to basically enable us
+
+721
+00:30:29,040 --> 00:30:31,160
+to do a lot of this cool stuff, uh,
+
+722
+00:30:31,520 --> 00:30:36,060
+in Cardano and also bring the crypto allocators from other
+
+723
+00:30:36,120 --> 00:30:38,560
+networks to come and do these activities that I've
+
+724
+00:30:38,580 --> 00:30:42,340
+described in Cardano to be able to grow TVL there as well,
+
+725
+00:30:42,500 --> 00:30:43,760
+which I think will be really cool.
+
+726
+00:30:44,380 --> 00:30:45,920
+Uh, so yeah, I mean, honestly,
+
+727
+00:30:46,020 --> 00:30:48,240
+between a combination of all of these, you know,
+
+728
+00:30:48,300 --> 00:30:52,940
+we're definitely targeting, um, nine figures plus of TVL.
+
+729
+00:30:53,100 --> 00:30:54,550
+Um, and, you know,
+
+730
+00:30:54,640 --> 00:30:57,530
+maybe maybe with the support of everyone here,
+
+731
+00:30:57,620 --> 00:30:58,520
+maybe we can do it.
+
+732
+00:30:58,640 --> 00:31:01,710
+So, yeah, uh, I, I believe the product market fit is there.
+
+733
+00:31:03,780 --> 00:31:04,380
+Thank you, John.
+
+734
+00:31:05,140 --> 00:31:09,800
+Um, the next question from 参加者B just wants us to touch, uh,
+
+735
+00:31:10,220 --> 00:31:12,520
+again on what happens if redemptions are larger than the
+
+736
+00:31:12,540 --> 00:31:14,410
+amount of liquidity you have available that day,
+
+737
+00:31:14,480 --> 00:31:17,140
+and how often do you test a scenario like that?
+
+738
+00:31:22,560 --> 00:31:26,680
+To anyone that wants to- So, I mean, I, I, I can, I can,
+
+739
+00:31:26,800 --> 00:31:27,240
+uh...
+
+740
+00:31:27,320 --> 00:31:28,920
+So here, as, as, as mentioned, right?
+
+741
+00:31:29,020 --> 00:31:31,220
+So we, we basically, uh,
+
+742
+00:31:31,360 --> 00:31:34,660
+forty-five percent of the book one is in tokenized money
+
+743
+00:31:34,700 --> 00:31:35,160
+market funds.
+
+744
+00:31:35,210 --> 00:31:39,780
+So, uh, in case-- So what would it lead to is that, well,
+
+745
+00:31:39,880 --> 00:31:41,380
+it's a minimum of forty-five percent,
+
+746
+00:31:41,480 --> 00:31:44,740
+so there's also a possibility that it's gonna be fifty-five
+
+747
+00:31:44,799 --> 00:31:46,280
+or fifty or sixty percent.
+
+748
+00:31:46,320 --> 00:31:49,720
+It all actually also depends a little bit on, um, yeah,
+
+749
+00:31:49,800 --> 00:31:52,000
+what kind of yields we want and what the risk is that we
+
+750
+00:31:52,040 --> 00:31:52,820
+wanna take.
+
+751
+00:31:52,860 --> 00:31:56,560
+Um, but that, uh, so what I'm trying to, uh, yeah,
+
+752
+00:31:56,620 --> 00:32:01,600
+get at is that if we see more than fifty percent, um,
+
+753
+00:32:02,000 --> 00:32:05,380
+then we also have the, the, the T plus one and T plus two,
+
+754
+00:32:05,460 --> 00:32:06,990
+which is the CLO ETFs, right?
+
+755
+00:32:07,040 --> 00:32:10,220
+So we, we would actually consider those very,
+
+756
+00:32:10,240 --> 00:32:12,410
+very extreme scenarios that,
+
+757
+00:32:12,589 --> 00:32:16,100
+that are al-almost unlikely to happen that that's gonna be,
+
+758
+00:32:16,340 --> 00:32:19,660
+uh-- we see a fifty percent outflow in, in, in, in a day.
+
+759
+00:32:20,340 --> 00:32:24,510
+Um, and of course, if that does happen, then, then, then,
+
+760
+00:32:24,540 --> 00:32:27,240
+then unfortunately we will be gated.
+
+761
+00:32:27,880 --> 00:32:29,450
+Um, but then of course,
+
+762
+00:32:29,480 --> 00:32:31,920
+the next day we will be able-- immediately be able to make
+
+763
+00:32:32,060 --> 00:32:32,460
+up for that.
+
+764
+00:32:34,240 --> 00:32:34,600
+Yeah.
+
+765
+00:32:34,630 --> 00:32:36,500
+And to maybe just add on that, right?
+
+766
+00:32:36,640 --> 00:32:39,920
+So if you're in the absolute worst scenario, um,
+
+767
+00:32:40,000 --> 00:32:42,700
+then essentially what you do is you, you pause redemptions.
+
+768
+00:32:42,780 --> 00:32:45,120
+This is the standard stable coin playbook.
+
+769
+00:32:45,560 --> 00:32:45,680
+Uh,
+
+770
+00:32:45,780 --> 00:32:48,000
+the reason why you absolutely don't want to do that under
+
+771
+00:32:48,080 --> 00:32:51,420
+any circumstances is it can mean to lead to the loss of
+
+772
+00:32:51,440 --> 00:32:52,080
+your peg.
+
+773
+00:32:52,600 --> 00:32:52,900
+Um,
+
+774
+00:32:54,220 --> 00:32:56,400
+a lot of stable coins have lost their peg and recovered it
+
+775
+00:32:56,460 --> 00:32:56,940
+very quickly.
+
+776
+00:32:57,480 --> 00:33:00,180
+Um, so it's not necessarily a complete death knell.
+
+777
+00:33:00,560 --> 00:33:02,960
+Um, the assets are there and are good,
+
+778
+00:33:03,040 --> 00:33:05,880
+so it's a short term market, a market issue.
+
+779
+00:33:06,200 --> 00:33:08,480
+Um, but it's still a very, very poor scenario.
+
+780
+00:33:08,840 --> 00:33:10,580
+Uh, hence all the work we do to try to,
+
+781
+00:33:10,940 --> 00:33:12,040
+to make sure that doesn't happen.
+
+782
+00:33:16,180 --> 00:33:16,500
+Great.
+
+783
+00:33:16,620 --> 00:33:18,800
+And David and Harry,
+
+784
+00:33:19,540 --> 00:33:23,020
+for people that are explaining RealFi to somebody else
+
+785
+00:33:23,100 --> 00:33:24,280
+after they've got off this call,
+
+786
+00:33:24,880 --> 00:33:28,200
+what would be a key differentiator of the project that you
+
+787
+00:33:28,240 --> 00:33:28,940
+would, um...
+
+788
+00:33:29,720 --> 00:33:32,220
+You've had lots of conversations, so how would you,
+
+789
+00:33:32,980 --> 00:33:34,120
+how would you think about that?
+
+790
+00:33:36,680 --> 00:33:41,760
+Um, a key differentiator than, than other stable coins or?
+
+791
+00:33:43,180 --> 00:33:43,700
+For RealFi,
+
+792
+00:33:43,820 --> 00:33:46,830
+what makes it unique or sp- particularly interesting?
+
+793
+00:33:46,940 --> 00:33:48,720
+So if somebody was listening to this and they were to
+
+794
+00:33:48,740 --> 00:33:52,839
+explain RealFi, having listened to our call today,
+
+795
+00:33:53,320 --> 00:33:55,920
+what would be a key differentiator or talking point that
+
+796
+00:33:56,740 --> 00:34:00,640
+you would articulate or hope was traveling down that
+
+797
+00:34:01,480 --> 00:34:02,120
+conversation?
+
+798
+00:34:02,220 --> 00:34:04,500
+No, yeah, no, here I think, uh, the,
+
+799
+00:34:04,580 --> 00:34:06,340
+the key differentiator is of course, that,
+
+800
+00:34:06,380 --> 00:34:09,340
+that we're-- there, we've like twenty,
+
+801
+00:34:09,440 --> 00:34:11,679
+thirty very smart people that have worked on this, right?
+
+802
+00:34:11,780 --> 00:34:13,900
+So, um, I think the,
+
+803
+00:34:13,980 --> 00:34:18,120
+the differentiator here is that we've created, uh, a book,
+
+804
+00:34:18,219 --> 00:34:19,139
+uh, with...
+
+805
+00:34:19,300 --> 00:34:24,000
+Well, two book system where, uh, the, the entire team is,
+
+806
+00:34:24,139 --> 00:34:25,340
+is running behind that.
+
+807
+00:34:25,500 --> 00:34:27,340
+We've been very conservative, right?
+
+808
+00:34:28,120 --> 00:34:32,010
+Um, and we, we truly believe that, that this is the,
+
+809
+00:34:32,620 --> 00:34:33,699
+the right model, right?
+
+810
+00:34:33,739 --> 00:34:36,199
+And I think you hear both-- Well,
+
+811
+00:34:36,260 --> 00:34:37,989
+everyone from the investment team, we're,
+
+812
+00:34:38,100 --> 00:34:40,360
+we're all coming from a traditional finance background as
+
+813
+00:34:40,420 --> 00:34:43,340
+well, so we, we know what, what, uh,
+
+814
+00:34:43,860 --> 00:34:45,860
+what we can or cannot do, right?
+
+815
+00:34:46,100 --> 00:34:50,429
+And we also have the ability to find quality assets, uh,
+
+816
+00:34:50,500 --> 00:34:52,560
+that, that also make impact, right?
+
+817
+00:34:52,760 --> 00:34:56,500
+Um, across not only in Africa, but in emerging markets.
+
+818
+00:34:56,739 --> 00:34:56,900
+Um,
+
+819
+00:34:57,440 --> 00:35:00,600
+and I think what we're doing is definitely something that
+
+820
+00:35:00,660 --> 00:35:02,340
+hasn't been done before.
+
+821
+00:35:02,460 --> 00:35:04,610
+Um, and, and yeah,
+
+822
+00:35:04,760 --> 00:35:08,250
+I think the-- everybody should be very excited about this.
+
+823
+00:35:10,380 --> 00:35:11,680
+Anything to add to that, Harry, John?
+
+824
+00:35:11,960 --> 00:35:19,120
+No, I think, I think that sums it up pretty accurately.
+
+825
+00:35:19,180 --> 00:35:22,720
+You know, the point is here we're generating sustainable,
+
+826
+00:35:23,140 --> 00:35:27,300
+um-- looking to generate sustainable returns, um,
+
+827
+00:35:27,780 --> 00:35:29,880
+that come from actual real assets.
+
+828
+00:35:30,200 --> 00:35:34,560
+Um, these can be uncorrelated or less correlated with, um,
+
+829
+00:35:34,960 --> 00:35:38,840
+kind of volatile asset returns within the DeFi landscape
+
+830
+00:35:38,880 --> 00:35:42,280
+and also being a real asset generated, um,
+
+831
+00:35:42,380 --> 00:35:46,300
+hopefully generate impact on the ground, um, across,
+
+832
+00:35:46,360 --> 00:35:48,050
+I mean, of course, across the globe,
+
+833
+00:35:48,120 --> 00:35:50,620
+but more specifically in emerging markets.
+
+834
+00:35:55,440 --> 00:35:57,060
+It has been really good.
+
+835
+00:35:57,480 --> 00:36:00,540
+Um, and you've given us so much to think about.
+
+836
+00:36:00,820 --> 00:36:04,180
+Um, so can I ask on behalf of the community or,
+
+837
+00:36:04,240 --> 00:36:07,440
+or people that are talking about VelFire later, um,
+
+838
+00:36:07,760 --> 00:36:10,020
+is there anything the community can do for you,
+
+839
+00:36:10,140 --> 00:36:10,880
+David and Harry?
+
+840
+00:36:10,920 --> 00:36:15,280
+Are there contributions or connections or activity that
+
+841
+00:36:15,300 --> 00:36:17,950
+would be particularly useful for the investment team that
+
+842
+00:36:17,980 --> 00:36:18,880
+you would wanna invite?
+
+843
+00:36:22,440 --> 00:36:22,720
+Yeah.
+
+844
+00:36:22,760 --> 00:36:25,560
+I mean, here we- we're, we're always happy to engage,
+
+845
+00:36:25,740 --> 00:36:25,920
+right?
+
+846
+00:36:26,020 --> 00:36:29,580
+So, like, feel free to, to reach out and, and,
+
+847
+00:36:29,700 --> 00:36:30,700
+and ask questions.
+
+848
+00:36:30,720 --> 00:36:33,740
+And I think, uh, I mean, being on the,
+
+849
+00:36:33,760 --> 00:36:34,480
+on the investment team,
+
+850
+00:36:34,540 --> 00:36:37,160
+we're also always looking for interesting opportunities,
+
+851
+00:36:37,420 --> 00:36:38,560
+uh, or investors, right?
+
+852
+00:36:38,680 --> 00:36:42,329
+So, um, if it comes to opportunities, uh, we, we,
+
+853
+00:36:42,560 --> 00:36:44,840
+we want to be able to invest in, in,
+
+854
+00:36:44,850 --> 00:36:45,800
+in high quality assets.
+
+855
+00:36:45,860 --> 00:36:49,900
+And, uh, if by any chance you guys know any- anyone that,
+
+856
+00:36:50,100 --> 00:36:53,460
+uh, yeah, has a good business and wants to grow,
+
+857
+00:36:53,900 --> 00:36:55,700
+we can help them grow, right?
+
+858
+00:36:55,820 --> 00:36:58,920
+Um, so yeah, I think that that would be, uh,
+
+859
+00:36:58,980 --> 00:37:00,360
+an ask from our, from our side.
+
+860
+00:37:00,580 --> 00:37:01,660
+I mean, Harry, what do you think?
+
+861
+00:37:01,760 --> 00:37:04,170
+Uh, what are some good heuristics?
+
+862
+00:37:04,170 --> 00:37:04,579
+Yeah.
+
+863
+00:37:04,590 --> 00:37:04,590
+Yeah.
+
+864
+00:37:06,880 --> 00:37:08,160
+What are some good heuristics, Harry?
+
+865
+00:37:08,240 --> 00:37:08,270
+Uh, high risk.
+
+866
+00:37:08,270 --> 00:37:08,940
+Uh, sorry, sorry.
+
+867
+00:37:09,420 --> 00:37:09,940
+Or heuristics.
+
+868
+00:37:09,980 --> 00:37:10,760
+High return, no, no risk.
+
+869
+00:37:11,960 --> 00:37:13,060
+W- Oh, high return, no risk.
+
+870
+00:37:14,360 --> 00:37:15,360
+High return, no risk.
+
+871
+00:37:15,540 --> 00:37:17,300
+Um, that's the ask.
+
+872
+00:37:18,480 --> 00:37:20,930
+And would that look like somebody knowing a business and
+
+873
+00:37:21,000 --> 00:37:22,280
+saying to come to you directly?
+
+874
+00:37:22,400 --> 00:37:26,140
+Or would you be facilitating that business, uh,
+
+875
+00:37:26,500 --> 00:37:27,500
+being connected to someone else?
+
+876
+00:37:27,560 --> 00:37:28,980
+How would it work loosely?
+
+877
+00:37:30,380 --> 00:37:31,920
+No, they, they, they can, they can come to us.
+
+878
+00:37:32,060 --> 00:37:34,520
+I think we, we, uh, we, we have our own, uh,
+
+879
+00:37:34,640 --> 00:37:38,580
+investment@VelFire.co, uh, email address.
+
+880
+00:37:38,920 --> 00:37:42,430
+Um, yeah, we, we get, uh, like a lot of requests,
+
+881
+00:37:42,480 --> 00:37:43,600
+of course, and, and ...
+
+882
+00:37:43,610 --> 00:37:44,040
+But we ...
+
+883
+00:37:44,080 --> 00:37:45,560
+I think the,
+
+884
+00:37:45,620 --> 00:37:47,680
+the other thing that makes us different that is that we
+
+885
+00:37:47,720 --> 00:37:50,480
+always reply very quickly, and we'll ...
+
+886
+00:37:50,520 --> 00:37:50,940
+Well, we,
+
+887
+00:37:51,020 --> 00:37:54,100
+we can make a decision quite quickly on whether we want to
+
+888
+00:37:54,220 --> 00:37:55,040
+pursue it or not.
+
+889
+00:37:55,380 --> 00:37:56,280
+Um, yeah.
+
+890
+00:37:57,280 --> 00:37:57,820
+That's amazing.
+
+891
+00:37:57,850 --> 00:38:01,360
+And well, is there any, um, geographical, uh,
+
+892
+00:38:01,480 --> 00:38:02,480
+considerations there?
+
+893
+00:38:02,520 --> 00:38:04,860
+Like, could a J- Japanese business come to us,
+
+894
+00:38:04,980 --> 00:38:07,680
+or are you particularly only looking at certain regions?
+
+895
+00:38:08,800 --> 00:38:09,259
+No, no, no.
+
+896
+00:38:09,380 --> 00:38:11,440
+We're, we're, we're sector agnostic.
+
+897
+00:38:11,680 --> 00:38:13,840
+We're, uh, geographical agnostic.
+
+898
+00:38:13,940 --> 00:38:18,520
+So, um, yeah, we, we, we can do, we can do a lot,
+
+899
+00:38:18,580 --> 00:38:20,940
+and I think that's also what, what makes us different,
+
+900
+00:38:21,020 --> 00:38:21,160
+right?
+
+901
+00:38:21,200 --> 00:38:25,160
+Like that we are able to look for a real diversified
+
+902
+00:38:25,200 --> 00:38:27,110
+portfolio that's,
+
+903
+00:38:27,160 --> 00:38:30,620
+that's not only in one country or one continent or in one
+
+904
+00:38:30,680 --> 00:38:31,100
+sector.
+
+905
+00:38:31,220 --> 00:38:34,520
+I think, uh, that really helps with, uh, yeah,
+
+906
+00:38:34,820 --> 00:38:35,880
+from a risk perspective.
+
+907
+00:38:37,980 --> 00:38:38,480
+Well, I ...
+
+908
+00:38:38,500 --> 00:38:40,380
+You know, thank you so much guys for coming on.
+
+909
+00:38:40,440 --> 00:38:41,380
+I've really enjoyed it.
+
+910
+00:38:41,740 --> 00:38:43,050
+I'm being selfish here as well.
+
+911
+00:38:43,560 --> 00:38:45,340
+Not just about me, but thanks for coming on.
+
+912
+00:38:45,960 --> 00:38:48,120
+Um, John, I'll give you the last word.
+
+913
+00:38:48,220 --> 00:38:49,060
+Uh, how would you ...
+
+914
+00:38:49,100 --> 00:38:51,390
+Anything to sum up or any points to add?
+
+915
+00:38:53,140 --> 00:38:58,140
+Um, maybe just to say we've basically locked down our,
+
+916
+00:38:58,260 --> 00:39:01,130
+our main net features and scope now.
+
+917
+00:39:01,240 --> 00:39:04,320
+Um, you know, so kind of small spoiler,
+
+918
+00:39:04,420 --> 00:39:06,940
+but we had our first large, uh,
+
+919
+00:39:07,000 --> 00:39:09,310
+seven figure mint happen yesterday,
+
+920
+00:39:09,520 --> 00:39:11,740
+so we're starting to buy assets.
+
+921
+00:39:11,840 --> 00:39:13,460
+Um, I don't wanna sort of steal Rob's thunder,
+
+922
+00:39:13,560 --> 00:39:16,740
+but we'll be announcing a main net date very shortly, um,
+
+923
+00:39:16,820 --> 00:39:17,900
+working towards that.
+
+924
+00:39:17,980 --> 00:39:20,860
+So things are go, go, go, go, go at the moment.
+
+925
+00:39:20,980 --> 00:39:23,740
+Um, and yeah, really excited to get this live.
+
+926
+00:39:23,820 --> 00:39:27,200
+So yeah, all of those points that you guys have been, um,
+
+927
+00:39:27,340 --> 00:39:29,660
+bombing, you know, they're, they'll all become something,
+
+928
+00:39:29,860 --> 00:39:32,140
+something, uh, something soon.
+
+929
+00:39:32,220 --> 00:39:32,800
+So yeah.
+
+930
+00:39:34,600 --> 00:39:34,980
+Fantastic.
+
+931
+00:39:35,080 --> 00:39:36,400
+Thank you everybody for joining.
+
+932
+00:39:36,500 --> 00:39:37,319
+Thanks for listening.
+
+933
+00:39:37,440 --> 00:39:38,110
+Tell your friends,
+
+934
+00:39:38,280 --> 00:39:41,340
+and we'll join you next Friday on another VelFire Office
+
+935
+00:39:41,400 --> 00:39:41,740
+Hours.
+
+936
+00:39:42,300 --> 00:39:43,080
+Thanks again, everybody.
+
+937
+00:39:45,200 --> 00:39:45,720
+Thanks guys.
+
+938
+00:39:46,060 --> 00:39:46,820
+Thanks very much guys.

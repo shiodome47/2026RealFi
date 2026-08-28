@@ -70,6 +70,12 @@ NAMES = {
         # 社内・他社で名前が挙がった人物
         "Liam", "Rupert", "Benj",
     ],
+    # partial の回。**残してはいけない名前だけ**を書く。
+    # 発話した 4 名（進行役・投資チーム 2 名・CEO）の実名は残しているので、ここには書かない。
+    "2026-08-28-office-hours-investment-framework": [
+        # 聴衆として名前が挙がった質問者
+        "Shiadome", "Shiodome", "Raja",
+    ],
     "2026-08-11-masumi-ai-forum": [
         # 話者・チャットで発言した参加者
         "Patrick", "Sharan", "Scott", "Kelly", "Sandro",

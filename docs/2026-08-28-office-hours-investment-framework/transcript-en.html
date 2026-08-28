@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #8 — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #8</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-08-28</span>
+  <span>39:46</span>
+  <span>Discord</span>
+  <span>Investment Framework</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> People whose questions were read out appear as <code>Participant A</code> and <code>Participant B</code>. <strong>The four speakers are named.</strong></p>
+<p><strong>The host is never named on this call.</strong> <code>Ben</code> here reflects the judgement that this is the same host as #6 and #7 — <strong>it is not established by the audio of this session</strong>.</p>
+<p><strong>The second member of the investment team is addressed by a different name in the second half.</strong> A list of attendees given elsewhere by the host confirms <code>Howie</code> is the correct one; the Japanese page uses it throughout. <strong>The English page keeps what was heard.</strong></p>
+<p>The source is an SRT: <strong>timestamps but no speaker labels</strong>, one short sentence per block across 938 blocks. Turns are rebuilt at changes of speaker and topic. <strong>Only the brief greetings at the top cannot be attributed by voice</strong>, and those are marked <em>(inferred)</em>. <strong>Apart from the anonymisation above, the wording is unchanged</strong> — mistranscriptions included.</p>
+<p><strong>Slides were shown.</strong> References to them survive in the audio, but <strong>only what was spoken aloud appears here</strong>.</p>
+</div>
+
+<!--content-->
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:16</span></div>
+  <div class="turn-body"><p>Testing, testing. See if I can get to... Hey, David, I can see you're there, so I'm just gonna invite you to the peak. And, uh- Great. Hey, David, how's it going?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David <em>(inferred)</em><span class="turn-time">00:00:37</span></div>
+  <div class="turn-body"><p>Yes, sir.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:39</span></div>
+  <div class="turn-body"><p>Oh, can see a, a, a wild John O'Connor has, uh, joined the chat. Let me see if I can get him up. And then we've got Howie as well. Just- Fantastic ... post in general.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David <em>(inferred)</em><span class="turn-time">00:00:52</span></div>
+  <div class="turn-body"><p>Hi, guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:00:56</span></div>
+  <div class="turn-body"><p>Welcome, everybody. Um, I am just sending out some tweets to say that we're going live. Thanks for joining. If you can invite anybody, uh, if you're in the audience now, and you can invite people to the call, that would be fantastic. And on this, uh, office hours today, we've got the investment team, which is, uh, David and Howie, and we've got John, who's the CEO. Uh, welcome David, and Howie, and John.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David <em>(inferred)</em><span class="turn-time">00:01:22</span></div>
+  <div class="turn-body"><p>Hello.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John <em>(inferred)</em><span class="turn-time">00:01:24</span></div>
+  <div class="turn-body"><p>Hello.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:01:25</span></div>
+  <div class="turn-body"><p>Great. Thanks, guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David <em>(inferred)</em><span class="turn-time">00:01:26</span></div>
+  <div class="turn-body"><p>Good to be here.</p></div>
+</div>
+
+<div class="sec">Introductions — the investment team&#x27;s background</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:01:29</span></div>
+  <div class="turn-body"><p>Great, so can we, uh, the investment-- This is the one I've been looking forward to. Uh, can we do some introductions? Maybe if we start with, uh, David. Can you introduce yourself, maybe give us a little bit of an origin story, and then Howie, so we can learn more about you and the team?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:01:44</span></div>
+  <div class="turn-body"><p>Yeah, no. Uh, hi, guys. So m-my name is David. Um, I'm the CEO at RealFi. Um, basically, my background is in investments, so I've d-done private equity, private credits, well, data-driven private credits in emerging markets. Uh, I've done that for over fifteen years. Um, lived in several different countries, Dubai, Ghana, Peru, and now I'm based in Nairobi. Um, and, uh, yeah, no, the reas- the reason for me to, to join RealFi is that, yeah, I think I'm a big believer in bringing capital to emerging markets and, and, uh, and this is a, an, a different way how, uh, basically traditional, uh, finance has worked. So very excited to, to work on this project and, and also to get ready to launch. So we, we've put a lot of hours and thinking into it, and, and, uh, happy to share that with you guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:02:39</span></div>
+  <div class="turn-body"><p>Thank you. And Howie- Yeah, guys ... uh, investment expert, so- Yeah, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:02:42</span></div>
+  <div class="turn-body"><p>Thank, thanks everyone. Thanks for your time. Um, hope you can hear me. Um, yeah, so, so I'm a senior investment manager at RealFi on the investment team. Um, I'm a CFA charterholder. I've got around, uh, ten, 11 years of, of front office investment experience. I started out in, in public markets, so, um, cross-asset investment strategy, um, trying to construct portfolios, uh, that, uh, that, uh, consist of equity allocations, fixed income allocations, and derivative overlays. Um, before RealFi, I'd spent the previous six years originating and structuring private credit deals in, in sub-Saharan Africa. Um, so credit risk and liquidity are my kind of primary focuses. Um, what drew me to RealFi, well, I think, you know, this is the way the future is going, so if I can play a role in bringing a certain TradFi rigor to, to a DeFi, um, investment vehicle and protocol, then, um, yep, that's, that's kind of what excites me and gets me going every day. But yeah, thanks everyone for your time, and, uh, we look forward to going through the slide deck.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:03:51</span></div>
+  <div class="turn-body"><p>That's great, and just a bit of housekeeping. If you've got any questions, throw them into the chat, and I'm sure David and Howie will get to those after the slides. Um, thanks very much, and o-over to you, David.</p></div>
+</div>
+
+<div class="sec">The two books — instant exit, and the seven-day side</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:04:02</span></div>
+  <div class="turn-body"><p>Yeah, cool. Thanks, guys. And, and I think here we, we have another team, uh, member, uh, Indrafier. He's based in, in Dubai. Uh, and, and we're working a lot with, uh, with the different functions within the teams as well. Just wanted to put that out there as, um... So yeah, no, here, I think, um, from the investment framework,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:04:19</span></div>
+  <div class="turn-body"><p>so when we started thinking about, uh, the stable coin, there, there w- there was, of course, a lot of different aspects that, that came into it. Um, and the, yeah, we, we, we have put a lot of thought into what, what we need to do in order to make this work, right? So, uh, of course, liquidity is key. Bank stability is key. Uh, making sure that we're not taking, uh, re- well, pr- uh, out of proportion risk, right? Um, so, so, so yeah, the investment team, actually with the, the whole team, we've been putting a lot of time and effort into, to checking on in terms of what we needed to do in order to make this work. So, um, I think Howie will talk a little bit more about, like, the, the, the tests that we've done, uh, against this, um, because yeah, one of the, the, the main drivers of this model is that, uh, yeah, liquidity. We, we want to be able to meet li- the liquidity standards, uh, that we have put in place, and from there, we've built it actually out.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:05:26</span></div>
+  <div class="turn-body"><p>So, uh- As we have USD R and, and as USD R, so basically the staking and un-unstaking, uh, side of things, what we've done is we have actually, uh, created a two-book system. So we have book one. Uh, so there's actually one asset pool, but there's, uh, there's book one, which is, uh, reflecting, um, the instant liquidity from a, from a, from an unstaking perspective because, uh, yeah, you, you will be able to go in and out of, uh, USD R whenever you want. Um, and that's why, uh, we have put into our IPS, our investment, uh, process manual that, um, some... the guardrails that we can and cannot do, uh, in order to make sure that we're, we're protecting, um, that liquidity, um, and also, of course, pack stability.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:06:14</span></div>
+  <div class="turn-body"><p>So, so book one is basically, um, uh, well, at least forty-five percent needs to be in, in tokenized money market funds. Um, so yeah, we've screened them. Uh, we're looking into the usual suspects, and I think, um, that will deliver the instant liquidity that, that is required. Um, we're also looking into CLO ETFs, right? So basically, the CLO ETFs that we're now, um, yeah, buying through, uh, more a TradFi platform through StoneX, um, are triple A, uh, very liquid, um, and, and hence you-- the, the volatility on NAV is going to be very minimal there. Um, so what we've said is that, uh, okay, we want to be... that's, that's going to be around twenty-five percent of the allocation or at least of what is the maximum that it can do. Um, and then we also do private credit. So that's for, for book one.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:07:11</span></div>
+  <div class="turn-body"><p>So for book two, the staking, uh, uh, side of things is that there is a seven-day cooldown period, and then hence that allows us to, um, yeah, put some money of a... put at least half of the money into CLO ETFs, uh, because we, we then know that the, yeah, that when we did the back testing that we, we are able to meet the liquidity, uh, requirements that we've, uh, put out there. And then fifty percent will, will go into private credit. Um, so maybe if you go... Let me just... Sorry. Um, yeah, the next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:07:45</span></div>
+  <div class="turn-body"><p>So, so what we actually have... Uh, sorry, yeah, this one. So we have a two books, uh, two-book system. Um, so, uh, uh, yeah, we're, we're actually-- we, we have created an internal product where we can, on a real-time basis, see what the staking rate, uh, rate is.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:08:03</span></div>
+  <div class="turn-body"><p>And then on a daily basis, what, what we will do, we have a treasury function, and then we have a, a, an investment function. So the treasury function will actually then, um, reallocate or rebalance the, um, the portfolio on a daily basis. Um, and, and that then makes, that makes sure that when-- whatever the staking ratio is, that we're always meeting the requirements that we've put out there. Um,</p></div>
+</div>
+
+<div class="sec">The three sleeves</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:08:30</span></div>
+  <div class="turn-body"><p>and then what I just discussed around the different sleeves. So we're actually calling it different, uh, three different sleeves. So one is the liquidity buffer that I-- we just really, um, uh, just explained, right? This is tier one. Uh, super, super, super liquid. Uh, instant liquidity. Um, yeah, the, the, the, the, this is the one that, that is our liquidity buffer.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:08:54</span></div>
+  <div class="turn-body"><p>Then, as mentioned, the B one is the, the CLO ETFs. Um, we are all-- It's, it's floating rates, so no, no, no duration, uh, that's, uh, that comes into play. Um, we're also looking into, once we're bigger, into, uh, corporate notes. However, we, we've, uh, for, for the... you know, you need to be at a, at a, at a substantial size in order for that-- for us to be able to activate that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:09:20</span></div>
+  <div class="turn-body"><p>And then, uh, private credit, and I think this is, let's say, our sweet spot, uh, as you now have heard from myself as well as from Harry and Interfira that, yeah, we have significant, uh, yeah, investment experience. Um, we have done deals in the past. Uh, we've done deals successfully, smaller deals, bigger deals, uh, different kinds of structures. So, um, we believe that we have the right team to be able to execute on that.</p></div>
+</div>
+
+<div class="sec">Where the private credit comes from</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:09:48</span></div>
+  <div class="turn-body"><p>So from the private credit side, we, we actually believe that the, yeah, there are different ways of how, how to actually source them, right? So we, we have our own proprietary deal sourcing capabilities. That's basically our network. Uh, we've been operating for, well, maybe fifteen and twelve years. So, um, we know, we know the players that are out there, that we know that it's basically investing into fintechs or at least data-driven companies, which I think most companies will get to, to that stage anyway. Um, and then so you have to think around, okay, these are, uh, yeah, fintech players that provide finance or to, to, let's say in, in, in emerging markets, um, to, for example, that they, uh, what is it? Um, uh, yeah, if you want to buy a phone, you can buy a phone on, on credit, right? Or if you wanna buy a motorcycle, you wanna-- you can buy a motorcycle on credit. Or if you just need credit, you can also do that. So what you, what you see is that there are a lot of in emerging markets that these, these players are very well capitalized. They've actually been able to, uh, raise a lot of money, um, with equity, which means that there's a, there, there, there's a, yeah, healthy, um, equity position, uh, which we then can finance. Um, and then what...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:11:07</span></div>
+  <div class="turn-body"><p>Uh, so, so in Africa, we ha-- uh, we're, we're basically, we, we know all the players. Uh, for the other countries, we're also working with some of the other, uh, uh, data-driven private credit funds. So, uh, there are about, uh, a dozen of them out there. We, we know who they are. We're actually have started our due diligence on them as well. We're still going to start, uh, investing in them, and that's more of a fund to fund approach. Um, so, so for us, that's a, that's another way how we can get, uh, yeah, very interesting deals in Asia, in Latin America. Um, there's also a possibility to, to, to syndicate something with them. Um, and here,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:11:49</span></div>
+  <div class="turn-body"><p>what we also want to make sure is that from a liquidity perspective, um, yeah, we, we don't want to hold longer than twelve-month notes. So that's basically, um, yeah, most often, uh, people want longer tenures, um, but we want to make sure that we, we can provide the liquidity, of course.</p></div>
+</div>
+
+<div class="sec">Due diligence and structuring</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:12:08</span></div>
+  <div class="turn-body"><p>So how we do due diligence is that, as I mentioned before, we're, we're working a lot with the data team. So we're doing it ourselves, of course, but also with the data team. We look at, uh, the loan tapes of these companies, right? We really go deep into it, um, because we believe if we, like, we have the capability that we can do that due diligence ourselves. And from the loan tape, it's basically trying to match the loan tape with the financial statements of the company and making sure that, um, the, the companies are in a, in a healthy state. Um, and what we also look, looking into is, of course, legal. So we have our own general counsel. Um, there's a bunch of, of very rigorous due diligence that we do, um, which, uh, yeah, which, which will allow us to better structure the deals or don-don't do the deals sometimes as well, right? Like, I mean, sometimes you just have to say no to a deal.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:13:03</span></div>
+  <div class="turn-body"><p>Um, and then the structuring comes in place. So yeah, we prefer senior secured, self-amortizing. Um, yeah, we, we're putting coverage and coll-collateral test at the origination. We-we're putting in covenants. So it's, it's actually quite a bit of work.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:13:19</span></div>
+  <div class="turn-body"><p>And then I think the one other thing because, uh, that we do is the monitoring. So we actually have data integration with, uh, the, the investments that we do. So that allows us to better monitor and act upon, uh, if there are changes or even reinvest, right? So, um, it just allows us to be able to deploy quicker if we also receive more money for, to, to be able to do that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:13:44</span></div>
+  <div class="turn-body"><p>Um, so I think that's it, what we're doing in a nutshell from, uh, let's say, uh, how we've, uh, how we have constructed the portfolio and, and how we're doing the deals and how we will, uh, will have to say how, how we support pack stability. Yeah.</p></div>
+</div>
+
+<div class="sec">The barbell — why nothing sits in the middle</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:14:03</span></div>
+  <div class="turn-body"><p>Um, thanks, David. I think maybe what I'll do is I'll briefly touch on a few points that David has already made here in his outline of the framework, but I'm gonna emphasize our focus on, on liquidity. Um, so when we're considering how we allocate these-- the, the capital across the portfolio sleeves, like how are we thinking about this?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:14:24</span></div>
+  <div class="turn-body"><p>So the portfolio construction right now is delivery-- deliberately built as a, a barbell structure. So on one end, you've got very short, very liquid instruments, obviously with lower yield. At the other end, we're holding these contractual, uh, self-amortizing private credits, so that's sitting in Sleep C. So obviously at, at a higher yield. So we hold kind of very little in between here, um, and that's obviously by choice.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:14:52</span></div>
+  <div class="turn-body"><p>Um, so any mid-duration blend will, will tend to give you the worst of both worlds. You, you'll have an asset that's not liquid enough under stressful redemption episodes, and, and that's kind of what we design for. We want to know under stress, can we meet redemptions? Um, so if, if net redemptions are, are exceeding kind of one, two standard deviations, are we still able to fulfill those? Um, so again, in the mid-range, you're not liquid enough to sell under these more, uh, extreme redemption episodes, and you're also not really yielding much more to justify that illiquidity that you've accepted there. Um, so the barbell kind of separates those two jobs nicely. Uh, so between, again, Sleep A and B1 on the more liquid side, and then Sleep C on the higher yielding il-illiquid side.</p></div>
+</div>
+
+<div class="sec">The order of defence under redemptions</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:15:41</span></div>
+  <div class="turn-body"><p>Um, and, um, yeah, so, okay. So our order of defense under a more severe redemption episode will follow naturally from that barbell structure. So as David's mentioned, again, Sleep A will provide that intraday, um, source of cash that's sitting in tokenized money market funds. So we can convert that, uh, within a day. So we'll say T plus zero, T plus one at full value. We won't have to work through the secondary market to realize that value.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:16:10</span></div>
+  <div class="turn-body"><p>Sleep B1 obviously comes second in that waterfall, um, that is exchange, exchange traded. Um, we've modeled that at T plus one to T plus three. Uh, so we're, we're not assuming kind of best case execution in our modeling. Um, and I think we, we kind of just wanted to take a more prudent approach there when we work through those, uh, those portfolio stress models. Um, but I'll get to some outputs from those shortly.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:16:38</span></div>
+  <div class="turn-body"><p>Again, uh, Sleep C, the private credit will be last, but I, I just wanna be quite precise here. So our coverage calculations that we use to construct the portfolio allocation framework, as well as when we're monitoring the protocol state over time, we, we assume Sleep C is offering zero liquidity. Okay? So like in, you know, in actuality, these, uh, Sleep C private credit instruments do repay on some contractual schedule. So you, you, you can see that they do in practice return cash each month, uh, but we do not include that in our liquidity modeling assumptions. Again, it's to be prudent when building out the portfolio allocation. Um, okay.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:17:22</span></div>
+  <div class="turn-body"><p>So, and behind all three of these layers will sit, um, the, the, the extra support, which is the portfolio over-collateralization. So we want excess assets, so net assets within the portfolio in order to absorb any kind of shocks, um, within the portfolio as these instruments evolve over time. So there are three separate defenses here, um, and, uh, those all go towards, uh, defending the peg in the market. All right. So just a couple more points on-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:17:55</span></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="sec">“It all gets easier as you get bigger”</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:17:58</span></div>
+  <div class="turn-body"><p>And maybe, maybe one other thing is that, like, we ... I think the, the, the whole reason why we've been, uh, very conservative when it comes to the, the, the liquidity framework as well, is that the last thing that we als- of course, also wanna do is, is, is sell private credit at a discount, or sell anything at a discount, right? So I think what ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:18:17</span></div>
+  <div class="turn-body"><p>Like, against, well, one, pro- having the ability to, to meet the liquidities, uh, but also what we're, what we're now very much are working towards is, uh, getting, uh, liquidity, uh, or getting credit against, uh, private credit, which then from a liquidity framework would, would, would, yeah, be just a massive, uh, well, I wouldn't say game changer, but it, that's a, that ... Yeah. It will be it will, will mean a lot for us. Um, so, so we are thinking of- Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:18:46</span></div>
+  <div class="turn-body"><p>Just to, just to maybe, just to may- actually just add on that, because I ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:18:50</span></div>
+  <div class="turn-body"><p>By the way, guys, you're doing a fantastic job here, I think, of explaining this. But one thing which I do think is kind of useful to think about as a mental model is, with a business like this, it all gets easier as you get bigger. So at the beginning when you launch, what you don't have is huge, huge, huge numbers of people where you could model the statistics and go, "Okay, I'm really confident that we're gonna be at these kind of numbers." Um, it gets better as you get bigger. As you've got more people involved in the system, things become more predictable, um, and everything just gets a bit calmer. Um, but for those precise reasons, it also means at the beginning that you have to be very, very careful as, as uh, the, uh, investment team, I think, are showing here.</p></div>
+</div>
+
+<div class="sec">Stress testing — 48 empirical runs</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:19:35</span></div>
+  <div class="turn-body"><p>Yeah, exactly. So, uh, okay. So I'll jump back into that. I mean, I think that's a, that's a decent segue.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:19:40</span></div>
+  <div class="turn-body"><p>So where, where the actual framework that we've got meets our, well, reality, um, what we observe empirically, um, you know, where, when it comes to the, the price action and indeed the, the T- TVL of comparable protocols. So we, we simulate, um, these things with, with daily data as opposed to monthly. Obviously, the monthly average is going to hide a lot under the hood. Um, you know, T- TVL and debt redemptions are extremely volatile, so, so you need to actually look at high-frequency data series for this. Um, and it's, it's calibrated to, to ob- observed, like, empirical, uh, stress events that we've seen in the market rather than just some kind of hypothetical shocks.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:20:22</span></div>
+  <div class="turn-body"><p>Um, so we are testing against redemption intensity that has been observed in the market. Um, and we, we, we then ran those scenarios. There were 48 different severe redemption episode series that we, we ran through our model, um, and used those to, to calibrate how, um, we have allocated between Sleeve A, B, and C, um, during the d- you know, depe- on our base case.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:20:49</span></div>
+  <div class="turn-body"><p>So, so of course, unstaked USDL can leave instantly, uh, this point has been made early on the call, with no notice, and in the state, uh, sUSDL has to clear that seven-day cooldown. So, um, that means day eight is, is, is critical in the model. Um, day eight, i- if you model from T0, is the moment that both of those cohorts are drawing redemption demand at once. Um, and then so in any of these models, that's kind of the binding constraint we find.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:21:19</span></div>
+  <div class="turn-body"><p>Um, so in, in our models, every asset is sold at the stressed price, so not at its current book value. Um, so for Sleeve B1, that could be anything between 10 and 15% below net asset value on the market, so that's our assumption. Um, and we don't assume that anyone is gonna step in at par and, and, and buy those assets. Um,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:21:39</span></div>
+  <div class="turn-body"><p>so the waterfall in the model runs in the fixed order we've described. So protocol cash first, then Sleeve A, then B1. But again, Sleeve B1 is, is continuously popping up Sleeve A in our model forecasts. So our results show that, um, these liquid sleeves have absorbed the entire run for these, uh, redemptions for protocols above our critical size limit. So, so no queue, uh, formed at any point. Um, th- this is just a model output. It's obviously not a guarantee, but act- so I do wanna be careful with the framing here. Um, yeah, so, so at least that is, is the kind of precaution we took when allocating between the liquid sleeves and, and the illiquid yield generation in, in the protocol portfolio.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:22:26</span></div>
+  <div class="turn-body"><p>Um, and I've actually got a ... We've got a chart here. Those runs in the appendix, maybe I can just refer to this quickly. So this is, this is a, an example run. Um, this was kind of in the mid-range. There were some more severe, some less severe, and it kind of shows what happens to the balance sheet day by day given a starting allocation assumption. So you can read that from the bottom. Um, obviously you have the Sleeve C in the dark, um, and none of that gets sold over this redemption profile.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:22:56</span></div>
+  <div class="turn-body"><p>Um, just two mechanics from this that I think are worth drawing out. Okay? So again, those settlemen- uh, settlement assumptions we made are conservative, so those are including haircuts. Um, and then Sleeve A, we've included that converts intraday. Um, but again, we do try and take into account what does that mean. Is it T plus zero hours? Is it T plus one hours? Is it T, is it T plus six hours? Because intraday, that can matter. Um, and Sleeve B1 is modeled at T plus one to T plus three Okay,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:23:26</span></div>
+  <div class="turn-body"><p>so the outcomes are on the right. Again, this is just what from one of the forty-eight empirical runs that we modeled. Um, our peak unfilled queue is zero across zero days of c- of course. Um, and the, the, the amount of sleeve C private credit that had to be sold, um, is zero. So just coming back to a point that, that David, um, mentioned earlier on the call.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:23:48</span></div>
+  <div class="turn-body"><p>Um, so obviously those are, are not kind of an accident. This ... Th-the allocation is an outcome of us modeling against these empirical events, and hence how we think because, because redemption volatility can be so high, a buyable approach and, and allocation is by far optimal, um, you know, given our intention to secure the peg and always enable redemptions when required. Um, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:24:14</span></div>
+  <div class="turn-body"><p>So, I mean, I think any kind of additional comments from the other guys, or we could take some questions.</p></div>
+</div>
+
+<div class="sec">Over-collateralisation</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:24:21</span></div>
+  <div class="turn-body"><p>No, yeah, I think the other ... the one thing that we, uh, yeah, well, forgot to mention is that we also have, uh, within the protocol over-collateralization of the assets, right? So not only us ... uh, do we have overcolla- collateralization in the investments that we do, and probably ... well, and the companies that we invest in, they actually have it with their lenders as well. Uh, they're ... sorry, their borrowers.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:24:43</span></div>
+  <div class="turn-body"><p>Um, so we, we also have, uh, you know, we're making sure that there is overcollateralization within the assets. So, so just to make sure that, that there is enough buffer even in cases that, yeah, there might be a default because we're, we're of course ... that, that needs to be absorbed, um, through that buffer. Um, so just wanted to mention that as well.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — how big does this get?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:25:10</span></div>
+  <div class="turn-body"><p>That was great. Wow. Um, we do have some questions. Uh, and if you're listening, please do ... if you click the top right chat bubble, you'll be able to ask questions and, um, we'll be able to answer them.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:25:22</span></div>
+  <div class="turn-body"><p>Uh, 参加者A from, uh, is one of our key, uh, Japanese community members. He's asking a, a question of kind of scale. Do you have a target for how large Realfi ultimately aims to become, or roughly how much capital a USDR would need to operate effectively or optimally? And what does the roadmap to get there look like as far as you can share at this stage?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:25:45</span></div>
+  <div class="turn-body"><p>Yeah. Maybe, maybe I take that one. Um, so yeah. I mean, look, in my view, um, this becomes a far, far, far easier business in the nine figures. Um, so what kind of nine figures is kind of like, you know, how long's a piece of string? Um, but I do believe that, you know, $100 million plus, uh, it becomes significantly easier from basically an investment portfolio allocation, uh, perspective. Uh, not ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:26:19</span></div>
+  <div class="turn-body"><p>basically 'cause of two key reasons. Um, one, your check sizes can be bigger in terms of the investments that you do, which actually typically means you can negotiate better terms, um, which is great, just Pareto better terms. Uh, two, uh, if you have a large private credit portfolio, then I think David was alluding to this earlier, at a certain scale you can borrow against that portfolio.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:26:47</span></div>
+  <div class="turn-body"><p>So let's say we were in the kind of nightmare situation where, um, something crazy's happened in crypto and everyone wants to redeem, get out all of their exposure. That would mean that we redeem people and basically sell out all of our liquid sleeves. That's our money market funds and our collateralized loan obligation ETFs. And what we could then do, rather than saying, "We're out of liquid cash, everyone needs to wait until our private credit basically amortizes," we could borrow against that position to be able to repay people. So we'd be switching from an individual holding this towards a bank giving us a facility, um, so we could repay with that money. And at that stage, you're very, very, very robust. Um, so that starts to happen, I think, uh, past the upwards of the $100 million TVL mark.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:27:39</span></div>
+  <div class="turn-body"><p>So how ... where would I like us to get? You know, in my view, this could scale to, you know, name a figure, $5 billion, $7 billion, $10 billion. I think if we were to look at the Athena example, you know, they got to, I think, a peak $17 billion on this tokenized basis trades. I see no reason why something like Realfi couldn't achieve that across time. Um, I'm not saying I expect us to get there in, in a couple of months, but you know, I think Athena did hit the $4 billion mark after only a few months. So it is possible, is my point.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:28:14</span></div>
+  <div class="turn-body"><p>Um, and then how do we get there? So we've got a kind of, uh, I think a, a robust GTM strategy. So we start, of course, with Cardano, um, then we'll be launching into EVM worlds. We'll be launching across a number of different vault products, which is where you see a, a lot of lo- a lot of the capital move to.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:28:35</span></div>
+  <div class="turn-body"><p>Um, in addition, we will, uh, in these vaults, what we think our product's quite interesting for is essentially leverage looping strategies. So if you're getting, not a promise, but hypothetical figure, eight, eight and a half percent with Realfi, and then your borrow cost is, let's say, 5% to borrow dollars, you can basically lever up on that position. So you buy $100 worth of USDR, you stake it, then you borrow against that position, you borrow more dollars, and then you go back in. And as long as, of course, the assets are quality assets and, um, don't decrease in value beneath that, it's a way to be able to sort of e- easily increase returns. Though bear in mind, of course, if you do have an issue with the assets, that will multiply the downside risk. But these strategies are very popular in crypto, and it led to huge growth for Athena. So yeah,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:29:33</span></div>
+  <div class="turn-body"><p>I believe it's a combination of those There's also, of course, the CEX strategy as well. So, a number of CEXs have earn programs which make it easy for, um, people who are holding stable coins to be able to sort of get attractive numbers, uh, for, for yield. And the CEXs push a lot of distribution like that. Maybe the final thing which I do think is important is if we can get sUSDR accepted as collateral for trading positions, that can also grow huge volume. So if people can post staked USDR as collateral, um, for derivatives positions or perhaps positions, uh, that's also a popular use case in crypto. So it's basically a combination of all of these things, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:30:14</span></div>
+  <div class="turn-body"><p>Um, the one big one which I'm really hoping will come through is, uh, the work with alpha growth to really increase the robustness of some DeFi primitives in Cardano to basically enable us to do a lot of this cool stuff, uh, in Cardano and also bring the crypto allocators from other networks to come and do these activities that I've described in Cardano to be able to grow TVL there as well, which I think will be really cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:30:44</span></div>
+  <div class="turn-body"><p>Uh, so yeah, I mean, honestly, between a combination of all of these, you know, we're definitely targeting, um, nine figures plus of TVL. Um, and, you know, maybe maybe with the support of everyone here, maybe we can do it. So, yeah, uh, I, I believe the product market fit is there.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — redemptions larger than the day&#x27;s liquidity</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:31:03</span></div>
+  <div class="turn-body"><p>Thank you, John. Um, the next question from 参加者B just wants us to touch, uh, again on what happens if redemptions are larger than the amount of liquidity you have available that day, and how often do you test a scenario like that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:31:22</span></div>
+  <div class="turn-body"><p>To anyone that wants to- So, I mean, I, I, I can, I can, uh... So here, as, as, as mentioned, right? So we, we basically, uh, forty-five percent of the book one is in tokenized money market funds. So, uh, in case-- So what would it lead to is that, well, it's a minimum of forty-five percent, so there's also a possibility that it's gonna be fifty-five or fifty or sixty percent. It all actually also depends a little bit on, um, yeah, what kind of yields we want and what the risk is that we wanna take.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:31:52</span></div>
+  <div class="turn-body"><p>Um, but that, uh, so what I'm trying to, uh, yeah, get at is that if we see more than fifty percent, um, then we also have the, the, the T plus one and T plus two, which is the CLO ETFs, right? So we, we would actually consider those very, very extreme scenarios that, that are al-almost unlikely to happen that that's gonna be, uh-- we see a fifty percent outflow in, in, in, in a day. Um, and of course, if that does happen, then, then, then, then unfortunately we will be gated. Um, but then of course, the next day we will be able-- immediately be able to make up for that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:32:34</span></div>
+  <div class="turn-body"><p>Yeah. And to maybe just add on that, right? So if you're in the absolute worst scenario, um, then essentially what you do is you, you pause redemptions. This is the standard stable coin playbook. Uh, the reason why you absolutely don't want to do that under any circumstances is it can mean to lead to the loss of your peg.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:32:52</span></div>
+  <div class="turn-body"><p>Um, a lot of stable coins have lost their peg and recovered it very quickly. Um, so it's not necessarily a complete death knell. Um, the assets are there and are good, so it's a short term market, a market issue. Um, but it's still a very, very poor scenario. Uh, hence all the work we do to try to, to make sure that doesn't happen.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — the differentiator in one line</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:16</span></div>
+  <div class="turn-body"><p>Great. And David and Harry, for people that are explaining RealFi to somebody else after they've got off this call, what would be a key differentiator of the project that you would, um... You've had lots of conversations, so how would you, how would you think about that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:33:36</span></div>
+  <div class="turn-body"><p>Um, a key differentiator than, than other stable coins or?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:33:43</span></div>
+  <div class="turn-body"><p>For RealFi, what makes it unique or sp- particularly interesting? So if somebody was listening to this and they were to explain RealFi, having listened to our call today, what would be a key differentiator or talking point that you would articulate or hope was traveling down that conversation?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:34:02</span></div>
+  <div class="turn-body"><p>No, yeah, no, here I think, uh, the, the key differentiator is of course, that, that we're-- there, we've like twenty, thirty very smart people that have worked on this, right? So, um, I think the, the differentiator here is that we've created, uh, a book, uh, with... Well, two book system where, uh, the, the entire team is, is running behind that. We've been very conservative, right? Um, and we, we truly believe that, that this is the, the right model, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:34:33</span></div>
+  <div class="turn-body"><p>And I think you hear both-- Well, everyone from the investment team, we're, we're all coming from a traditional finance background as well, so we, we know what, what, uh, what we can or cannot do, right? And we also have the ability to find quality assets, uh, that, that also make impact, right? Um, across not only in Africa, but in emerging markets. Um, and I think what we're doing is definitely something that hasn't been done before. Um, and, and yeah, I think the-- everybody should be very excited about this.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:35:10</span></div>
+  <div class="turn-body"><p>Anything to add to that, Harry, John?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:35:11</span></div>
+  <div class="turn-body"><p>No, I think, I think that sums it up pretty accurately. You know, the point is here we're generating sustainable, um-- looking to generate sustainable returns, um, that come from actual real assets. Um, these can be uncorrelated or less correlated with, um, kind of volatile asset returns within the DeFi landscape and also being a real asset generated, um, hopefully generate impact on the ground, um, across, I mean, of course, across the globe, but more specifically in emerging markets.</p></div>
+</div>
+
+<div class="sec">Q&amp;A — what the community can do</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:35:55</span></div>
+  <div class="turn-body"><p>It has been really good. Um, and you've given us so much to think about. Um, so can I ask on behalf of the community or, or people that are talking about VelFire later, um, is there anything the community can do for you, David and Harry? Are there contributions or connections or activity that would be particularly useful for the investment team that you would wanna invite?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:36:22</span></div>
+  <div class="turn-body"><p>Yeah. I mean, here we- we're, we're always happy to engage, right? So, like, feel free to, to reach out and, and, and ask questions. And I think, uh, I mean, being on the, on the investment team, we're also always looking for interesting opportunities, uh, or investors, right? So, um, if it comes to opportunities, uh, we, we, we want to be able to invest in, in, in high quality assets. And, uh, if by any chance you guys know any- anyone that, uh, yeah, has a good business and wants to grow, we can help them grow, right? Um, so yeah, I think that that would be, uh, an ask from our, from our side.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:37:00</span></div>
+  <div class="turn-body"><p>I mean, Harry, what do you think?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:01</span></div>
+  <div class="turn-body"><p>Uh, what are some good heuristics?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:37:04</span></div>
+  <div class="turn-body"><p>Yeah. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:06</span></div>
+  <div class="turn-body"><p>What are some good heuristics, Harry?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:37:08</span></div>
+  <div class="turn-body"><p>Uh, high risk.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:08</span></div>
+  <div class="turn-body"><p>Uh, sorry, sorry. Or heuristics.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:37:09</span></div>
+  <div class="turn-body"><p>High return, no, no risk.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:11</span></div>
+  <div class="turn-body"><p>W- Oh, high return, no risk.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Howie<span class="turn-time">00:37:14</span></div>
+  <div class="turn-body"><p>High return, no risk.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:37:15</span></div>
+  <div class="turn-body"><p>Um, that's the ask.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:18</span></div>
+  <div class="turn-body"><p>And would that look like somebody knowing a business and saying to come to you directly? Or would you be facilitating that business, uh, being connected to someone else? How would it work loosely?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:37:30</span></div>
+  <div class="turn-body"><p>No, they, they, they can, they can come to us. I think we, we, uh, we, we have our own, uh, investment@VelFire.co, uh, email address. Um, yeah, we, we get, uh, like a lot of requests, of course, and, and ... But we ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:37:44</span></div>
+  <div class="turn-body"><p>I think the, the other thing that makes us different that is that we always reply very quickly, and we'll ... Well, we, we can make a decision quite quickly on whether we want to pursue it or not. Um, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:37:57</span></div>
+  <div class="turn-body"><p>That's amazing. And well, is there any, um, geographical, uh, considerations there? Like, could a J- Japanese business come to us, or are you particularly only looking at certain regions?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:38:08</span></div>
+  <div class="turn-body"><p>No, no, no. We're, we're, we're sector agnostic. We're, uh, geographical agnostic. So, um, yeah, we, we, we can do, we can do a lot, and I think that's also what, what makes us different, right? Like that we are able to look for a real diversified portfolio that's, that's not only in one country or one continent or in one sector. I think, uh, that really helps with, uh, yeah, from a risk perspective.</p></div>
+</div>
+
+<div class="sec">Closing — a mainnet date, and the first large mint</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:38:37</span></div>
+  <div class="turn-body"><p>Well, I ... You know, thank you so much guys for coming on. I've really enjoyed it. I'm being selfish here as well. Not just about me, but thanks for coming on. Um, John, I'll give you the last word. Uh, how would you ... Anything to sum up or any points to add?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:38:53</span></div>
+  <div class="turn-body"><p>Um, maybe just to say we've basically locked down our, our main net features and scope now. Um, you know, so kind of small spoiler, but we had our first large, uh, seven figure mint happen yesterday, so we're starting to buy assets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John<span class="turn-time">00:39:11</span></div>
+  <div class="turn-body"><p>Um, I don't wanna sort of steal Rob's thunder, but we'll be announcing a main net date very shortly, um, working towards that. So things are go, go, go, go, go at the moment. Um, and yeah, really excited to get this live. So yeah, all of those points that you guys have been, um, bombing, you know, they're, they'll all become something, something, uh, something soon. So yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben<span class="turn-time">00:39:34</span></div>
+  <div class="turn-body"><p>Fantastic. Thank you everybody for joining. Thanks for listening. Tell your friends, and we'll join you next Friday on another VelFire Office Hours. Thanks again, everybody.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">David<span class="turn-time">00:39:45</span></div>
+  <div class="turn-body"><p>Thanks guys. Thanks very much guys.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the anonymisation noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All sessions</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+slug: 2026-08-28-office-hours-investment-framework
+title: RealFi Office Hours — Investment Framework
+title_en: RealFi Office Hours — Investment Framework
+date: 2026-08-28
+platform: Discord
+series: realfi-office-hours   # shared/series.yml のキー
+series_no: 8                  # RealFi Office Hours の通し番号（回の実施順）
+
+# 匿名化の判定
+#
+# **partial。**依頼は「匿名化は気にしなくてよい。むしろ出したほうがよい。
+# チームの担当が話しているので」だった。**発話した 4 名は実名のまま扱う。**
+# ただし**聴衆として名前が挙がった質問者 2 名は匿名化**した。
+# 依頼者が許諾できるのはチームの分までで、聴衆の第三者の分ではないため
+# （CLAUDE.md「判断がつかないときは匿名化する側に倒す」）。
+#
+# tools/check.py の NAMES には「残してはいけない名前」だけを入れてある。
+chatham_house_rule: partial
+
+speakers:
+  - Ben                   # 進行。**この回では名前が読み上げられていない**（下の注を読む）
+  - David                 # 投資チームの責任者。フレームワークの説明
+  - Howie                 # シニア・インベストメント・マネージャー。流動性とストレステスト
+  - John                  # CEO（John O'Connor）。規模とロードマップの質問に回答
+
+# 話者の同定について
+#
+# 1. **進行役の名前はこのコールでは一度も呼ばれていない。**Ben としているのは、
+#    #6 / #7 と同じ進行役だと判断したため。根拠は次の 3 つ。
+#      - 開始時に自分でツイートとアナウンスを出している
+#      - 日本のコミュニティメンバーを名指しで紹介できる（#7 で日本向け調査を回した人物）
+#      - CEO が「Rob の見せ場を取りたくない」と**第三者として Rob に触れている**ので、
+#        進行役は Rob ではない
+#
+# 2. **David は自分を「I'm the CEO at RealFi」と名乗っているが、同じコールの冒頭で
+#    進行役が「John が CEO」と紹介している。**役職名の聞き取りとしては CIO
+#    （最高投資責任者）と解するのが自然。**断定はせず、ページでは「投資チームの
+#    責任者」として扱い、食い違い自体を事実として書いている。**
+#
+# 3. **Howie は途中から別の名前で呼ばれている**（紹介では 4 回、後半では 4 回）。
+#    本人は名乗っていない。**進行役が別の場で挙げた出席者の並び
+#    （David, Howie, John O'Connor）で Howie が正しいことが確認できた。**
+#    日本語全文とまとめは Howie に統一し、英語全文は聞こえたまま。
+#
+# 4. **ドバイ拠点の投資チームのもう 1 名**が言及されるが発話していない。
+#    名前は Indrafier / Interfira の 2 通りに聞こえ、**特定できないので触れていない。**
+
+# 聴衆として名前が挙がった質問者。匿名化した。
+questioners:
+  - 参加者A                # 目標とする規模と、そこまでのロードマップ
+  - 参加者B                # その日の流動性を超える償還が来たらどうなるか
+
+# 資料について
+slides:
+  shown: true             # **このシリーズで初めてスライドがある回**
+  received: true
+  note: |
+    スライドを画像で受領（5 枚）。ページには **`スライド` バッジ付きで反映済み**。
+    **音声で語られたことと、スライドにしか書かれていないことを区別**してある。
+
+    受領した 5 枚:
+      1. ASSET MIX — Three sleeves doing three jobs
+      2. INVESTMENT SOURCING — Lending and deal sourcing（4 段階）
+      3. STABILITY — How the allocation supports peg stability（セーフティ・オプション）
+      4. STRESS TEST — We tested it against a severe run
+      5. Example: liquidation waterfall and coverage（**下部に Confidential の表示あり**）
+
+    **5 枚目だけフッターが違う。**1〜4 枚目は「©2026. Proprietary, all rights reserved.」
+    だが、**5 枚目は「RealFi Reserve · Portfolio Construction & Evolution ·
+    Risk Committee · Confidential」**。
+    **このため 5 枚目の固有の数値（残高・カバレッジ比率など）はページに載せていない。**
+    音声でも語られた構造（ウォーターフォールの順序、8 日目、待ち行列ゼロ、
+    スリーブ C の売却ゼロ）だけを、音声を出典として書いてある。
+    **依頼者に確認中。**
+
+# 原本は SRT（字幕）。タイムスタンプは付いているが話者ラベルはない。
+# 1 ブロックが 1 文と短く、938 ブロックある。分割は文脈から判断している。
+source_format: srt
+speaker_labels: inferred
+timestamps: yes
+
+duration: "39:46"
+attendees: null           # 参加人数は語られていない
+
+source:
+  audio: null
+  video: null

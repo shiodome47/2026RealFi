@@ -11,8 +11,8 @@
 realfi-office-hours:
   title_ja: RealFi Office Hours
   title_en: RealFi Office Hours
-  blurb_ja: チャタムハウスルールで運用されているコミュニティコール。発言者の氏名は記載していません。
-  blurb_en: Community calls run under the Chatham House Rule. No speaker is named.
+  blurb_ja: RealFi のコミュニティコール。扱いは回ごとに違います。初期の回はチャタムハウスルールで氏名を記載せず、#6 以降は依頼により登壇者を実名で扱い、聴衆の質問者だけを匿名にしています。
+  blurb_en: RealFi's community calls. Handling differs by session: the early ones are under the Chatham House Rule with no speaker named, while from #6 onward the speakers are named by request and only the audience questioners are anonymised.
   chatham_default: true
 
   # 通し番号を振る。番号は**回の実施順**で、アーカイブにある回数ではない。
