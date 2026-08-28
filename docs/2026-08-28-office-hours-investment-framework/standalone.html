@@ -894,7 +894,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="thesis">
   <span class="label">一言でいうと</span>
   <p>これまでの回で繰り返されてきた<strong>「保守的にやっている」の中身が、初めて開かれた</strong>回。<br>
-  資産を 3 つのスリーブに分け、両端だけを持って真ん中はわざと持たない。そして実際に市場で起きた 48 本の償還の記録にモデルをぶつけ、そこから配分を逆算しています。</p>
+  資産の置き場所を 3 つに分け、「すぐ現金にできるもの」と「利回りは高いが動かせないもの」の両端に寄せて、中間はわざと持たない。そして実際に市場で起きた 48 本の償還の記録にモデルをぶつけ、そこから配分を逆算しています。</p>
 </div>
 
 <div class="tldr">
@@ -903,7 +903,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>2 ブック制。</strong>資産のプールは 1 つで、帳簿を 2 つに分けています。すぐ出られる側（ブック 1）は最低 45% をトークン化されたマネー・マーケット・ファンドに、CLO ETF は上限 25% 程度。7 日待つ側（ブック 2）は少なくとも半分を CLO ETF、50% をプライベートクレジットに。</li>
   <li><strong>バーベル構造。</strong>「短くて流動性が高いもの」と「利回りは高いが流動性が低いもの」を両端に置き、中間は意図的に持ちません。<strong>「中間で混ぜると、たいてい両方の悪いところを取る」</strong>と説明されました。</li>
   <li><strong>プライベートクレジットは、ゼロと数える。</strong>実際には毎月キャッシュが戻ってくるのに、流動性の計算には入れていません。意図的に自分の首を絞める置き方です。</li>
-  <li><strong>ストレステストは 48 本。</strong>仮想のショックではなく、市場で実際に観測された償還に合わせて較正。すべての資産をストレス下の価格で売る前提で、スリーブ B1 は純資産価値より 10〜15% 下。額面で買い手が現れる前提は置いていません。</li>
+  <li><strong>ストレステストは 48 本。</strong>仮想のショックではなく、市場で実際に観測された償還に合わせて較正。すべての資産をストレス下の価格で売る前提で、CLO ETF は純資産価値より 10〜15% 下。額面で買い手が現れる前提は置いていません。</li>
   <li><strong>効いてくるのは 8 日目。</strong>即座に出られる USDR と、7 日のクールダウンを抜けた sUSDR が、同じ日に重なります。</li>
   <li><strong>結果は「待ち行列ゼロ、売却ゼロ」。</strong>ただし本人が<strong>「モデルの出力であって、保証ではない」</strong>と明言しています。</li>
   <li><strong>スライドにだけある「セーフティ・オプション」。</strong>本当のシステミックな事象では、投資委員会がポートフォリオ全体をセーフティ・バッファへ移せます。事前承認済みなので即座に実行でき、同時に新規の貸付を全部止める。<strong>音声では一度も触れられていません。</strong></li>
@@ -917,7 +917,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <ol>
   <li><a href="#team"><span class="n">01</span>話しているのは誰か</a></li>
   <li><a href="#books"><span class="n">02</span>2 つのブック</a></li>
-  <li><a href="#sleeves"><span class="n">03</span>3 つのスリーブと、バーベル構造</a></li>
+  <li><a href="#sleeves"><span class="n">03</span>3 つの置き場所と、バーベル構造</a></li>
   <li><a href="#waterfall"><span class="n">04</span>償還が来たとき、何から売るのか</a></li>
   <li><a href="#stress"><span class="n">05</span>ストレステスト — 48 本の実データ</a></li>
   <li><a href="#credit"><span class="n">06</span>プライベートクレジットの中身</a></li>
@@ -993,10 +993,10 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>この上限・下限は <strong>IPS（投資プロセスの手引き）</strong>に書き込まれていて、コール中では<strong>「何ができて何ができないかというガードレール」</strong>と表現されました。<span class="badge">補足</span>#7 でも「ガードレールは目標値ではなく幅」という言い方が出ています。<strong>越えてはいけない線として先に書いておき、日々の判断で動かさない</strong>、という運用です。</p>
 
 
-<h2 id="sleeves">3. 3 つのスリーブと、バーベル構造</h2>
+<h2 id="sleeves">3. 3 つの置き場所（スリーブ）と、バーベル構造</h2>
 <p class="deck">両端だけを持ち、中間は捨てる。これは選択だと明言された。</p>
 
-<p>資産の側は <strong>3 つのスリーブ</strong>に分かれます。</p>
+<p>資産の側は、置き場所で <strong>3 つ</strong>に分かれます。コール中ではこれを<strong>「スリーブ」</strong>と呼んでいるので、以下もその言葉で書きます。</p>
 
 <ul>
   <li><strong>スリーブ A</strong> —— <strong>流動性バッファ</strong>。トークン化されたマネー・マーケット・ファンド。「ティア 1」「とにかく流動性が高い」</li>
