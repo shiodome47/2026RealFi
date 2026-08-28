@@ -16,6 +16,10 @@ HEAD = (ROOT / "docs/2026-08-24-office-hours-ticker/transcript-ja.html") \
     .read_text().split('<p class="eyebrow">')[0]
 
 NAME = {"host": "Ben", "david": "David", "howie": "Howie", "john": "John"}
+
+# 英語全文は原則として原文のまま。**役職名の聞き取りミスだけ直す。**
+# 進行役が同じコールの冒頭で別の人物を CEO として紹介しており、確認も取れている。
+EN_FIX = [("I'm the CEO at RealFi", "I'm the CIO at RealFi")]
 CLS = {"host": " host", "david": "", "howie": "", "john": ""}
 
 NOTE_JA = """<div class="note">
@@ -30,7 +34,7 @@ NOTE_EN = """<div class="note">
 <p><strong>About this page.</strong> People whose questions were read out appear as <code>Participant A</code> and <code>Participant B</code>. <strong>The four speakers are named.</strong></p>
 <p><strong>The host is never named on this call.</strong> <code>Ben</code> here reflects the judgement that this is the same host as #6 and #7 — <strong>it is not established by the audio of this session</strong>.</p>
 <p><strong>The second member of the investment team is addressed by a different name in the second half.</strong> A list of attendees given elsewhere by the host confirms <code>Howie</code> is the correct one; the Japanese page uses it throughout. <strong>The English page keeps what was heard.</strong></p>
-<p>The source is an SRT: <strong>timestamps but no speaker labels</strong>, one short sentence per block across 938 blocks. Turns are rebuilt at changes of speaker and topic. <strong>Only the brief greetings at the top cannot be attributed by voice</strong>, and those are marked <em>(inferred)</em>. <strong>Apart from the anonymisation above, the wording is unchanged</strong> — mistranscriptions included.</p>
+<p>The source is an SRT: <strong>timestamps but no speaker labels</strong>, one short sentence per block across 938 blocks. Turns are rebuilt at changes of speaker and topic. <strong>Only the brief greetings at the top cannot be attributed by voice</strong>, and those are marked <em>(inferred)</em>. <strong>Apart from the anonymisation above and one corrected job title, the wording is unchanged</strong> — other mistranscriptions included.</p>
 <p><strong>Slides were shown.</strong> References to them survive in the audio, but <strong>only what was spoken aloud appears here</strong>.</p>
 </div>"""
 
@@ -91,6 +95,8 @@ def render(lang):
                 raise SystemExit("turn %d の日本語がない: %s" % (i, t["en"][:70]))
         else:
             text = html.escape(t["en"], quote=False)
+            for old, new in EN_FIX:
+                text = text.replace(old, new)
         mark = ' <em>(%s)</em>' % ("推定" if ja else "inferred") if i in INFERRED else ""
         out.append(
             '<div class="turn">\n'
