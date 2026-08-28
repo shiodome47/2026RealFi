@@ -356,7 +356,26 @@ def main():
             fail(rel, "英語版のまとめがない")
         else:
             ja_block = text.split('<div class="l-ja">')[1].split('<div class="l-en"')[0]
-            en_block = text.split('<div class="l-en" lang="en">')[1]
+            en_block = text.split('<div class="l-en" lang="en">')[1].split("<!--/content-->")[0]
+            # 言語ブロックの取り違え。日英を**同じ文字列で置換すると起きる**
+            # （置換後の文字列に同じ目印が残っていると、2 回目が 1 回目の中に入る）。
+            # 日本語ブロックに**日本語をひとつも含まない段落**があれば、
+            # 英語版が紛れ込んでいる。逆も同じ。
+            #
+            # `.term-name`（用語の見出し）は日本語版でも英語のままなので除く。
+            for block, tag, want in ((ja_block, "日本語", True), (en_block, "英語", False)):
+                for m in re.finditer(r"<p([^>]*)>(.*?)</p>", block, re.S):
+                    if "term-name" in m.group(1):
+                        continue
+                    body = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+                    if len(body) < 12:            # 短い断片は判定しない
+                        continue
+                    has_ja = bool(re.search(r"[ぁ-んァ-ヶ一-龥]", body))
+                    if has_ja is not want:
+                        fail(rel, "%s版のブロックに%sの段落がある（言語ブロックの取り違え）: %s"
+                             % (tag, "英語だけ" if want else "日本語", body[:40]))
+                        break
+
             for cls in ("fig", "qa", "term", "deck"):
                 n_ja = ja_block.count('class="%s"' % cls)
                 n_en = en_block.count('class="%s"' % cls)
