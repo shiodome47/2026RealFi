@@ -41,3 +41,33 @@ masumi:
   # 単発として扱う。コール中では「第 3 回」と呼ばれ隔週の予定だが、
   # 開催間隔が流動的（"bi-weekly or almost bi-weekly"）なので通し番号は振らない。
   numbered: false
+
+# ---- YouTube の回 ----------------------------------------------------------
+#
+# 公開動画なので実名・チャタムハウスルールなし。チャンネルごとにシリーズを切る。
+# 「Leios 関係」のような話題の束はシリーズにしない（複数チャンネルにまたがる）。
+# 話題は glossary.md と open-questions.md で束ね、必要なら meta.yml に `topics:` を足す。
+
+midnight:
+  title_ja: Midnight
+  title_en: Midnight
+  blurb_ja: Midnight の公式 YouTube チャンネルで公開された動画。チャタムハウスルールの対象ではないため、発言者は実名のまま扱います。
+  blurb_en: Videos published on Midnight's official YouTube channel. Not covered by the Chatham House Rule, so speakers are named.
+  chatham_default: false
+  numbered: false
+
+iog:
+  title_ja: IOG
+  title_en: IOG
+  blurb_ja: Input Output（IOG）の公式チャンネルで公開された動画。Leios や Peras などの技術解説はここに入ります。発言者は実名のまま扱います。
+  blurb_en: Videos published on Input Output's official channel, including the technical explainers on Leios and Peras. Speakers are named.
+  chatham_default: false
+  numbered: false
+
+charles-hoskinson:
+  title_ja: Charles Hoskinson
+  title_en: Charles Hoskinson
+  blurb_ja: Charles Hoskinson 本人のチャンネルで公開された動画。個人の見解として語られるものが多く、IOG や Cardano Foundation の公式見解ではありません。発言者は実名のまま扱います。
+  blurb_en: Videos from Charles Hoskinson's own channel. Much of it is personal opinion rather than the official position of IOG or the Cardano Foundation. Speakers are named.
+  chatham_default: false
+  numbered: false
