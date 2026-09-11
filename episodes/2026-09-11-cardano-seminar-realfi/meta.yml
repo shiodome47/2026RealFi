@@ -30,12 +30,12 @@ timestamps: given              # 原本に [m:ss] の時刻がある
 # それ以外の文言は語られたとおり。docs/ 側でも文言は変えていない。
 proper_nouns_corrected_by_requester: true
 
-# スライドが使われている。依頼者から 9 枚のスクリーンショットを受け取り、
+# スライドが使われている。依頼者から 10 枚すべてのスクリーンショットを受け取り、
 # 「スライド」バッジ付きで反映した。フッターは "Proprietary"（Confidential ではない）なので
-# 逐語の引用は避けて要約で書いている。それ以外のスライドは受け取っていないので音声のみ。
+# 逐語の引用は避けて要約で書いている。損失の順序だけはスライドがなく（話者が明言）、音声のみ。
 slides:
   shown: true
-  published: partial
+  published: true
   received:
     - 1 RealFi: yield-bearing dollars, backed by real economy assets（3 つの柱）
     - 2 A multi trillion-dollar market is forming（市場規模のグラフと 4 つの統計）
@@ -46,7 +46,8 @@ slides:
     - 7 Institutional track record（20.25% ブレンド IRR の内訳、未監査の注記）
     - 8 Our scaling path to $1Bn TVL（5 フェーズ）
     - 9 We backed Cardano's smallest pools（SPO プログラム）
-  not_received: go-live（Lace / Sundae / Liqwid）のスライドなど。依頼者から「まだ続きがある」と案内あり
+    - 10 What goes live on Cardano, 1 October（Lace / Sundae / Liqwid とループ）
+  not_on_slides: 損失の順序（話者が「スライドに入れていない」と明言）
 
 source:
   audio: null
