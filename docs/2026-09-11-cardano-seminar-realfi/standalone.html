@@ -1,0 +1,2553 @@
+<title>Cardano Seminar: The Real Story Behind RealFi — まとめ / Summary</title>
+<style>
+/* Cardano セッションのアーカイブ — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.35rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* RealFi Office Hours の通し番号。カードの見出しの上に小さく出す */
+.card-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+
+/* 全文は畳んでおく。開くまでは、このページはまとめだけの長さで開く。 */
+details.part { display: block; }
+details.part > summary.part-head { cursor: pointer; list-style: none; margin: 0; }
+details.part > summary.part-head::-webkit-details-marker { display: none; }
+details.part[open] > summary.part-head { margin-bottom: 2rem; }
+details.part > summary.part-head::after {
+  content: "開く"; margin-left: auto; white-space: nowrap;
+  font-size: .75rem; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .75rem;
+}
+details.part[open] > summary.part-head::after { content: "閉じる"; }
+:root[data-lang="en"] details.part > summary.part-head::after { content: "Open"; }
+:root[data-lang="en"] details.part[open] > summary.part-head::after { content: "Close"; }
+details.part > summary.part-head:hover { background: var(--surface-alt); }
+details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<script>
+// 全文は畳んであるので、リンクや印刷で中に入るときは開いておく。
+(function () {
+  function openTo(el) {
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+  }
+  function openHash() {
+    if (!location.hash) return;
+    try { openTo(document.querySelector(location.hash)); } catch (e) {}
+  }
+  window.addEventListener('hashchange', openHash);
+  window.addEventListener('DOMContentLoaded', openHash);
+  window.addEventListener('beforeprint', function () {
+    var all = document.querySelectorAll('details');
+    for (var i = 0; i < all.length; i++) all[i].open = true;
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Cardano Seminar</p>
+<h1><span class="l-ja">The Real Story Behind RealFi — 「相関しない利回り」という賭けと、10 月 1 日の mainnet</span><span class="l-en">The Real Story Behind RealFi — the bet on uncorrelated yield, and a date for mainnet</span></h1>
+<p class="meta"><span>2026-09-11</span><span><a href="https://www.youtube.com/watch?v=735yJ_erh2A">YouTube</a></span><span>36:49</span><span><span class="l-ja">進行役＋RealFi の CEO＋質問者</span><span class="l-en">host, RealFi's CEO and questioners</span></span>
+</p>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>RealFi を、Cardano の外の聴衆に向けて最初から説明した回。<br>
+  暗号資産の値動きと連動しない利回りを、実体経済への貸付から作る——という一点に賭けている。そして mainnet の日付が、初めて<strong>10 月 1 日</strong>と口にされました。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>相関しない利回り。</strong>Bitcoin の値動きにも、トークンの新規発行にも連動しない利回りの源泉が暗号資産には足りない、というのが出発点です。マネー・マーケット・ファンド、CLO ETF、fintech への貸付で作ります。</li>
+  <li><strong>ステーブルコインの 3 世代目。</strong>Tether（利回りは発行者のもの）→ Ondo（米国債の利回りを渡す）→ Ethena（ベーシス取引）。RealFi はその次で、実物資産の籠をステーブルコインに付ける、という位置づけでした。</li>
+  <li><strong>目標は年 8〜10%。</strong>ただし世界の金利とステーキング比率に左右される、と本人が繰り返しています。約束ではなく、ローンチに向けた目標として語られました。</li>
+  <li><strong>損失の順序。</strong>エクイティ → 安定化ファンド → sUSDrf → USDrf。#6 では「まだ完全には確定と言えない」と留保付きだったものが、公開の場でそのまま語られました。</li>
+  <li><strong>mainnet は 10 月 1 日。</strong>Lace で swap と stake、Sundae のプール、Liqwid で ADA を担保に借りてループ。当日に発表が出る、とのことでした。</li>
+  <li><strong>実績は 1,150 万ドルで IRR 20%。</strong>25 の fintech、40 件、10 か国、年 100 万件の貸付——本人の説明です。</li>
+  <li><strong>米国・EU・英国は対象外。</strong>Ethena と同じ構造・同じ制限で、それでも 170 億ドルまで行った例があるので規模の妨げにはならない、と。</li>
+  <li><strong>日本の SPO の 86% が「ADA を売るより借りたい」。</strong>#7 で出た調査の結果が、初めて数字で語られました。Liqwid の設計はこの答えを受けたものです。</li>
+  <li><strong>大口の機関投資家が 1 社。</strong>「今いる大きな 1 社」には長いロックアップを設けている、と明かされました。</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>この回は RealFi Office Hours ではありません。</strong>Cardano Community の YouTube チャンネルで公開された「Cardano Seminar」の回で、RealFi の CEO がゲストです。<strong><a href="https://www.youtube.com/watch?v=735yJ_erh2A">公開されている録画</a></strong>にもとづく記録なので、チャタムハウスルールの対象ではなく、<strong>発言者は実名のまま</strong>扱っています。公式チャンネルの配信かどうかは確認していないため、番組名・チャンネル名・出演者のみを記載しています。</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#what"><span class="n">01</span>RealFi とは何か — 相関しない利回り</a></li>
+  <li><a href="#gens"><span class="n">02</span>ステーブルコインの 3 つの世代</a></li>
+  <li><a href="#tokens"><span class="n">03</span>3 つのトークンと、ガバナンスが決めること</a></li>
+  <li><a href="#losses"><span class="n">04</span>損失の順序</a></li>
+  <li><a href="#yield"><span class="n">05</span>8〜10% はどこから来て、何に依存するか</a></li>
+  <li><a href="#record"><span class="n">06</span>実績 — 1,150 万ドル、IRR 20%</a></li>
+  <li><a href="#roadmap"><span class="n">07</span>10 月 1 日から 10 億ドルまで</a></li>
+  <li><a href="#cardano"><span class="n">08</span>Cardano での立ち上がり</a></li>
+  <li><a href="#questions"><span class="n">09</span>質疑で出たこと</a></li>
+  <li><a href="#overall"><span class="n">10</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">12</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+<h2 id="what">1. RealFi とは何か — 相関しない利回り</h2>
+<p class="deck">「Bitcoin の値動きと連動しない利回り」を作る。それが設計の出発点だと語られた。</p>
+
+<p>RealFi は一言で<strong>「実体経済の資産に裏付けられた、利回りを生むドル」</strong>だと説明されました。出発点になったのは、暗号資産の中に大きな空白がある、という見立てです。</p>
+
+<p>利回りを生むプロダクトは無数にある。ただそのほとんどは、Bitcoin の価格か、インフレ的なトークノミクス（トークンの新規発行で利回りを作るもの）か、暗号資産の金利サイクルに連動している。<strong>それらと相関しない利回りの源泉</strong>は、ごくわずかしかない——これが「空白」です。</p>
+
+<p>埋め方は、実世界の資産のポートフォリオです。挙げられたのは 3 つ。マネー・マーケット・ファンド、CLO ETF、そして「いちばん心躍る部分」として、キャッシュフローを生む事業に融資している fintech への貸付。</p>
+
+<ul>
+  <li><strong>設計として安定。</strong>完全に資産で裏付け、準備金は透明、ケイマン諸島のファンド構造。「過去にモデル化した暗号資産のストレス・シナリオのすべてで」ペッグを維持できるように作った、と</li>
+  <li><strong>DeFi をまたいでコンポーザブル。</strong>貯蓄商品として、また DeFi での借入の担保として使えるトークンにしたい</li>
+  <li><strong>実世界の人にも。</strong>暗号資産を使ってこなかった人にとっても役立つ「生産的なドル」を目指す</li>
+</ul>
+
+<div class="term">
+<p class="term-name">相関しない利回り <small>コール中の言葉</small></p>
+<p>「uncorrelated yield」。暗号資産が総崩れになると、暗号資産の中で作られた利回りも一緒に消える。fintech への貸付の返済は Bitcoin の価格を見ていないので、そうはならない——という意味で使われています。<span class="badge">補足</span>ただし本人も後で認めているとおり、<strong>代わりに別の相関を引き受けます</strong>。貸付の利回りは世界の金利に連動する。「ひとつの相関を別の相関と交換する」という言い方でした（<a href="#yield">5 節</a>）。</p>
+</div>
+
+<h2 id="gens">2. ステーブルコインの 3 つの世代</h2>
+<p class="deck">Tether、Ondo、Ethena。それぞれ何をして、どこに限界があったのか。RealFi はその次に置かれた。</p>
+
+<p>まず市場の大きさが示されました。ステーブルコインの時価総額は現在 3,500 億ドル前後、2030 年には 1.9〜4 兆ドルという幅の見立て。その中でいちばん速く伸びているのが利回り付きのカテゴリーで、直近 24 か月で 20 億ドルから 270 億ドルへ。「この資料は 4 か月前に作ったもので、今はもっと大きいと思う」とのことです。<span class="badge">補足</span>数字はいずれもコール中で挙げられたもので、出典は示されていません。</p>
+
+<p>そのうえで、利回り付きステーブルコインが 3 つの世代に分けられました。</p>
+
+<ul>
+  <li><strong>第 1 世代 — Tether／USDC。</strong>1 ドルを預かって 1 USDT を渡し、米国債を買って利息は発行者が取る。「Cardano にいる私たちの誰も思いつかなかった中で最良のアイデア」。投資チーム 35 人ほどの Tether が去年 Goldman Sachs より多くの利益を出した、という話が添えられました</li>
+  <li><strong>第 2 世代 — Ondo。</strong>トークン化した米国債を包んで、利回りを持ち手に返す。「Cardano でも昔議論したが手を付けなかった」もののひとつ。無リスク金利に近い実世界資産への需要の大きさが、Ondo の成長で見えた、と</li>
+  <li><strong>第 3 世代 — Ethena。</strong>Bitcoin の現物を買い、同時に無期限先物でショートを持つ「デルタ・ニュートラル」の取引をステーブルコインに付けた。値動きを打ち消して、ロング側がショート側に払うファンディング・レートだけを取る。最初の 4 か月で 40 億ドル、ピークで 160〜170 億ドル。限界は、ファンディング・レートがプラスであり続ける保証がないこと、そして人気が出るほど実入りが減ること</li>
+</ul>
+
+<p>RealFi の位置づけは、Ethena のモデルから<strong>「取引」を「籠」に置き換える</strong>、というものです。暗号資産と相関しない実物資産の籠をステーブルコインに付ける。「米国債をさらに買ってアメリカの借入コストを下げるだけではなく、実際の経済的な生産性を生む」という言い方でした。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="横軸に利回りの源泉（合成型か実物資産か）、縦軸に利回りのプレミアムを取り、4 つの象限に既存のステーブルコインと RealFi の目指す位置を置いた図">
+  <text x="340" y="24" class="d-s" text-anchor="middle">上ほど利回りのプレミアムが高い（リスク・カーブを進む）</text>
+
+  <rect x="70" y="44" width="285" height="112" rx="8" class="d-box"/>
+  <text x="212" y="72" class="d-t" text-anchor="middle">合成型・高い利回り</text>
+  <text x="212" y="98" class="d-s" text-anchor="middle">Ethena のベーシス取引</text>
+  <text x="212" y="120" class="d-s" text-anchor="middle">ファンディング・レートが利回りに見える</text>
+  <text x="212" y="142" class="d-s" text-anchor="middle">「巧妙なことをしようとしている」</text>
+
+  <rect x="370" y="44" width="285" height="112" rx="8" class="d-box-accent"/>
+  <text x="512" y="72" class="d-t" text-anchor="middle">RealFi が目指す象限</text>
+  <text x="512" y="98" class="d-s" text-anchor="middle">実物資産で、利回りのプレミアムを取る</text>
+  <text x="512" y="120" class="d-s" text-anchor="middle">クレジット（信用供与）を効果的にやる</text>
+  <text x="512" y="142" class="d-s" text-anchor="middle">「持続可能な本物の利回りの源泉」</text>
+
+  <rect x="70" y="172" width="285" height="112" rx="8" class="d-box-plain"/>
+  <text x="212" y="200" class="d-t" text-anchor="middle">合成型・低い利回り</text>
+  <text x="212" y="226" class="d-s" text-anchor="middle">「誰も入りたがらない」</text>
+  <text x="212" y="248" class="d-s" text-anchor="middle">ただし少数はある</text>
+
+  <rect x="370" y="172" width="285" height="112" rx="8" class="d-box"/>
+  <text x="512" y="200" class="d-t" text-anchor="middle">米国債を包む</text>
+  <text x="512" y="226" class="d-s" text-anchor="middle">Tether／USDC、Ondo</text>
+  <text x="512" y="248" class="d-s" text-anchor="middle">簡単なので多くの人がここに</text>
+  <text x="512" y="270" class="d-s" text-anchor="middle">「大した革新の余地はない」</text>
+
+  <text x="70" y="312" class="d-s">← 合成型・発行型</text>
+  <text x="655" y="312" class="d-s" text-anchor="end">実物資産の裏付け →</text>
+</svg>
+<p class="figcap">動画ではグラフが画面に映っていました。ここに描いたのは<strong>音声で説明された軸と 4 つの象限</strong>で、画面のグラフを写したものではありません。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+<h4>「ベーシス取引」「デルタ・ニュートラル」とは</h4>
+<p>同じ資産を、片方で買い（現物）、片方で売る（先物のショート）。値上がりすれば片方が儲かり片方が損をし、値下がりすればその逆。<strong>値動きでの損得が打ち消される</strong>状態を「デルタ・ニュートラル」と呼び、その組み合わせを「ベーシス取引」と呼びます。</p>
+<h4>それで、どこから利回りが出るのか</h4>
+<p>暗号資産の無期限先物では、買い手（ロング）が売り手（ショート）に定期的に少額を払う仕組みがあり、これが<strong>ファンディング・レート</strong>です。ショートを持ち続けているだけで受け取れるので、利回りのように見える。Ethena はこれをステーブルコインの利回りにしました。</p>
+<h4>身近なものへのたとえ</h4>
+<p>同じ馬の「勝つ」と「負ける」の両方に賭けておけば、レースの結果では損得が出ません。残るのは、片方の賭けを持ち続けることに対して払われる手数料だけ。<strong>その手数料が逆向きに払われる時期が来る</strong>のが、この方式の弱点です。</p>
+<h4>一言でまとめると</h4>
+<p>Ethena は「値動きを消して手数料だけ取る」。RealFi は「値動きと関係ない貸付の利息を取る」。どちらも Bitcoin の方向には賭けていませんが、<strong>依存している相手が違います</strong>——前者は暗号資産市場の需給、後者は実体経済と金利です。</p>
+</div>
+</details>
+
+<h2 id="tokens">3. 3 つのトークンと、ガバナンスが決めること</h2>
+<p class="deck">USDrf は利回りなし、sUSDrf が利回りを受け、RFG が決める。ただし RFG が何を決めるかは、まだ決まっていない。</p>
+
+<ul>
+  <li><strong>USDrf。</strong>通常のステーブルコイン。利回りは付きません。裏付けポートフォリオの NAV（純資産価値）の積み上がりからは恩恵を受けない。インセンティブは RFG を通じて提供されうる、と</li>
+  <li><strong>sUSDrf。</strong>ステーキングしたドル。ポートフォリオの積み上がりを受ける側です。目標リターンは 8〜10%、アンステークには 7 日の待機期間。想定している持ち手は、暗号資産のトレジャリー、ファミリーオフィス、DeFi の投資家</li>
+  <li><strong>RFG。</strong>ガバナンストークン。テイクレート（手数料率）やプロトコルのパラメータに投票する。プロトコル収入がこのトークンで表されうる。供給量は固定で、新規発行もインフレもなし。ローンチは来年 Q1〜Q2 の予定</li>
+</ul>
+
+<p><span class="badge">補足</span>話者は「取引所の事情で USDR から USDrf に改称した」と説明し、ガバナンストークンは一貫して RFG と呼んでいます。<a href="../2026-08-24-office-hours-ticker/#vote">#7 の投票</a>で確定した名前では、ガバナンストークンは RLFG です。この回の時点の呼び方をそのまま記録しています。対応表は用語集にあります。</p>
+
+<p>RFG が何を決めるのかは、質問を受けて<strong>「正直に言うと、まだ取り組んでいる途中」</strong>と答えています。決まっているのは「何に投票させないか」のほうでした。</p>
+
+<ul>
+  <li><strong>投票させない。</strong>個別の投資判断。「暗号資産で見てきた限り、通常かなり悪い結果に終わる」</li>
+  <li><strong>投票しうる。</strong>どのファンドを含めるか。誰がアセットマネージャーになるか（今は RealFi 自身。将来は他の人が入札して運用し、投資戦略を承認してもらう形もありうる、と）</li>
+  <li><strong>短期で投票すべき。</strong>アセットマネージャーがポートフォリオから取れる手数料と、プロトコルに積み上がる価値の分配。「パイの誰が何を取るか」という経済的な問い</li>
+</ul>
+
+<p>手数料の分配のような価値の取り込みについては「法的な複雑さがいちばん大きい部分」で、ローンチ時は最小限の権限から始めて、相談しながら広げる。「Cardano のガバナンスよりはずっとライトタッチ」なプロセスになる、とのことでした。</p>
+
+<h2 id="losses">4. 損失の順序</h2>
+<p class="deck">エクイティ → 安定化ファンド → sUSDrf → USDrf。ペッグを守るために、USDrf を最後に置く。</p>
+
+<p>「お金を失う可能性はあるのか、あるとしたらどのように」という質問に対して、損失の順序（loss waterfall）が説明されました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="損失が出たときに負担する順序を 4 段の階段で示した図。エクイティ、安定化ファンド、sUSDrf、USDrf の順">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-s" text-anchor="middle">損失が出たとき、誰が先に負担するか</text>
+
+  <rect x="16" y="42" width="150" height="72" rx="8" class="d-box-warn"/>
+  <text x="91" y="68" class="d-t" text-anchor="middle">① エクイティ</text>
+  <text x="91" y="88" class="d-s" text-anchor="middle">リスクを減らす資本</text>
+  <text x="91" y="106" class="d-s" text-anchor="middle">最初に食われる</text>
+
+  <line x1="166" y1="78" x2="182" y2="112" class="d-line" marker-end="url(#m1)"/>
+
+  <rect x="182" y="96" width="150" height="72" rx="8" class="d-box-warn"/>
+  <text x="257" y="122" class="d-t" text-anchor="middle">② 安定化ファンド</text>
+  <text x="257" y="142" class="d-s" text-anchor="middle">残余収入で積み増す</text>
+  <text x="257" y="160" class="d-s" text-anchor="middle">次に食われる</text>
+
+  <line x1="332" y1="132" x2="348" y2="166" class="d-line" marker-end="url(#m1)"/>
+
+  <rect x="348" y="150" width="150" height="72" rx="8" class="d-box"/>
+  <text x="423" y="176" class="d-t" text-anchor="middle">③ sUSDrf</text>
+  <text x="423" y="196" class="d-s" text-anchor="middle">ステーキング側を</text>
+  <text x="423" y="214" class="d-s" text-anchor="middle">下方に調整できる</text>
+
+  <line x1="498" y1="186" x2="514" y2="220" class="d-line" marker-end="url(#m1)"/>
+
+  <rect x="514" y="204" width="150" height="72" rx="8" class="d-box-accent"/>
+  <text x="589" y="230" class="d-t" text-anchor="middle">④ USDrf</text>
+  <text x="589" y="250" class="d-s" text-anchor="middle">いちばん守られる</text>
+  <text x="589" y="268" class="d-s" text-anchor="middle">ペッグの安定のため</text>
+
+  <text x="16" y="292" class="d-s">①と②の厚み（金額）は、この回でも示されていない</text>
+</svg>
+<p class="figcap">「もちろん損失が出ないようにしたい。ただ何かを間違えた場合には、このように落ちていく」。USDrf を最後に置く理由は<strong>「ペッグの安定を生むのもここだから」</strong>と説明されました。</p>
+</div>
+
+<p><span class="badge">補足</span>この順序は <a href="../2026-08-14-ask-the-ceo/#waterfall">#6 Ask the CEO</a> で初めて示されたものと同じです。#6 では「まだ完全には確定と言えないが、近いうちに言えるようになる」という留保が付いていましたが、この回では留保なしに語られています。ただし①と②の厚み（金額）は、この回でも示されていません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — ①のエクイティは、初日にあるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。コール中の発言ではありません。</p>
+<p><strong>疑問はもっともです。</strong>この回の言い方は「リスクを減らす資本、要するにエクイティを<strong>持つことができ</strong>（we can have）、それがいちばん上に置かれる」。「ある」とも「調達した」とも言っていません。#6 でも「調達した」と「これから調達する」が同じ説明の中に混在していました。</p>
+<p><strong>なぜ順序だけでも意味があるのか。</strong>②の安定化ファンドは「時間とともにプロトコルの残余収入で積み増す」ものなので、初日は薄い。だとすると、①がなければ初日の損失は③（sUSDrf の切り下げ）が最初に受け止めます。順序は同じでも、<strong>手前の厚みで保有者に届く量がまったく変わる</strong>。</p>
+<p><strong>外から確かめる方法。</strong>透明性ポータルか、ファンド管理者の NAV に、①の残高が別建てで出るかどうか。出ていれば金額が分かります。</p>
+<p><strong>この回で示されたか。</strong>順序は示されました。①の金額と払込時期は、この回でも示されていません。</p>
+</div>
+</details>
+
+<h2 id="yield">5. 8〜10% はどこから来て、何に依存するか</h2>
+<p class="deck">2 つのブックを混ぜて 8〜10%。世界の金利に連動し、ステーキング比率で上下する——と本人が条件を並べた。</p>
+
+<p>資産は 2 つのブック（帳簿）に分かれる、と説明されました。<a href="../2026-08-28-office-hours-investment-framework/#books">#8 で詳しく語られた 2 ブック制</a>を、外向けに短く言い直したものです。</p>
+
+<ul>
+  <li><strong>ブック 1（USDrf 側）。</strong>高い流動性を保つ。マネー・マーケット・ファンド、米国債、CLO ETF。CLO ETF は「5% 前後の利回りが取れる。資料時点から少し下がった」、AAA の投資適格トランシェだけ。加えて「小さな部分で」直接貸付</li>
+  <li><strong>ブック 2（ステーキング側）。</strong>より多くのプライベートクレジット、fintech への直接貸付</li>
+</ul>
+
+<p>この 2 つを混ぜ合わせると「8〜10% 程度の APY を目標にできる」。そのすぐ後に条件が並びます。<strong>「ステーキング比率、世界の金利、いくつかのことに依存する」</strong>「少なくとも今のところ納得している数字で、ローンチに向けて目標にするもの」。</p>
+
+<p><span class="badge">補足</span>この 8〜10% は、コール中で「目標（target）」として語られた数字です。RealFi が約束した利回りでも、得られる利回りでもありません。同じ数字が #7・#8 でも「目標」として出ています。</p>
+
+<p>米国債の利回りが 5% を大きく下回っても 8〜10% のままか、という質問には、<strong>「ひとつの相関を別の相関と交換する」</strong>と答えています。固定利付きの資産は金利への依存が高い。だから世界の金利と相関することになる。「それで構わない。暗号資産の内側で相関するプロダクトは十分すぎるほどある」。</p>
+
+<p>もうひとつ、利回りを支える仕組みとしてステーキング比率が挙げられました。USDrf は利回りを受け取らないが、ポートフォリオには投資されている。<strong>その利回りはプロトコルに積み上がり、ステーキング比率に応じて sUSDrf の利回りを押し上げるのに使える。</strong>Ethena では 50% しかステーキングしていないので、ポートフォリオの利回りの半分を再分配できる。「世界の金利が下がっていても、ステーキング比率によっては、その水準の利回りを守ることは可能」という説明です。</p>
+
+<p>大口の機関投資家については、より長いロックアップとそのためのインセンティブを設ける。理由は償還リスクへの安心。<strong>「今いる大きな 1 社のような機関投資家には、より長いロックアップを設けている」</strong>と述べられました。</p>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。コール中の発言ではありません。</p>
+<h4>「CLO ETF」「AAA の投資適格トランシェ」とは</h4>
+<p>CLO は企業向けローンをたくさん束ねて、返済の優先順位ごとに切り分けた（トランシェ）証券。<strong>AAA は最初に返してもらえる、いちばん安全な切れ端</strong>です。その CLO を集めた ETF（上場投資信託）なので、取引所で売買でき、流動性が高い。米国債より少し高い利回りになる代わりに、企業ローンの信用リスクを薄く負います。</p>
+<h4>「ステーキング比率で利回りを押し上げる」とは</h4>
+<p>プールに 100 あって、そのうち 50 だけがステーキングされているとします。100 全部が資産に投資されて利回りを生むが、受け取る権利があるのは 50 だけ。<strong>残り 50 の分の利回りは、プロトコルに残る</strong>。それをステーキングしている 50 に回せば、1 単位あたりの利回りは倍になる——という算数です。ステーキングする人が増えるほど、この上乗せは薄くなります。</p>
+<h4>身近なものへのたとえ</h4>
+<p>マンションの共用部の収入（駐車場代など）を、住民のうち「管理組合に参加した人」だけで分けるようなもの。参加者が少ないうちは 1 人あたりが多い。</p>
+<h4>一言でまとめると</h4>
+<p>8〜10% は「貸付の利回り＋ステーキングしていない人の分の上乗せ」でできていて、<strong>金利が下がれば前者が、ステーキングする人が増えれば後者が薄くなる</strong>。本人が挙げた 2 つの依存先は、まさにこの 2 つです。</p>
+</div>
+</details>
+
+<h2 id="record">6. 実績 — 1,150 万ドル、IRR 20%</h2>
+<p class="deck">25 の fintech、40 件、10 か国、年 100 万件の貸付。「トラックレコードは買えない」。</p>
+
+<p>「なぜ私たちを信頼すべきなのか」として、これまでの運用が示されました。fintech 貸付の戦略を数年間、<strong>1,150 万ドルの資本で運用し、IRR（内部収益率）20%</strong>。25 の fintech に 40 件の取引、新興国市場を中心に 10 か国。最終的な事業へのインパクトに分解すると、年に 100 万件の貸付。</p>
+
+<p>審査（アンダーライティング）の方法として「RealFi 360 データモデル」が挙げられました。4 段で照合します——借り手の情報をすべて取り込む → fintech から受け取るローン・テープ（貸付明細）と突き合わせる → 管理会計の帳簿と照合する → 銀行口座の間で実際に動いている現金と照合する。</p>
+
+<p>「銀行口座を持たない人々に金融を（banking the unbanked）」という言い方は、本人は<strong>使わないようにしている</strong>とのことです。貸付の実態は「銀行サービスが十分でないが、非常に堅実な事業に資本を提供すること」で、信用のギャップが大きいから資金への需要が切実にある。「今ここに需要がある領域」だから選んでいる、と。</p>
+
+<p><span class="badge">補足</span>質問者は「1,130 万ドル」と言い、CEO は「1,150 万ドル」と言っています。どちらもそのまま記録しています。IRR 20% を含め、実績の数字はいずれも本人の説明で、第三者の検証には触れられていません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 過去は 20% なのに、目標はなぜ 8〜10% なのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。コール中の発言ではありません。</p>
+<p><strong>当然の疑問です。</strong>同じ回の中で「IRR 20%」と「目標 8〜10%」が並んでいます。</p>
+<p><strong>なぜ両方が成り立つのか。</strong>20% は fintech 貸付だけの数字で、ステーブルコインでいえばブック 2 の中身にあたります。ステーブルコインはそこに、ブック 1 のマネー・マーケット・ファンドや CLO ETF（5% 前後）を混ぜる。さらに、プロトコルのテイクレート（手数料）が差し引かれる。混ぜて、引けば、下がります。</p>
+<p><strong>外から確かめる方法。</strong>透明性ポータルに出る配分の比率と、RFG の投票対象になる手数料率。この 2 つが分かれば、20% と 8〜10% の差がどこで生まれているかが逆算できます。</p>
+<p><strong>この回で示されたか。</strong>20%、5% 前後、8〜10% はそれぞれ示されました。配分の比率と手数料率は、この回では示されていません。</p>
+</div>
+</details>
+
+<h2 id="roadmap">7. 10 月 1 日から 10 億ドルまで</h2>
+<p class="deck">10 月 1 日に Cardano、1 か月後に EVM、年の変わり目に 1 億ドル、来年 Q1〜Q2 に RFG。「10 億ドルで終わる、とても説得力のあるスライド」。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="ロードマップを 6 段階で示した図。機関向け testnet、10 月 1 日の Cardano mainnet、1 か月後の EVM、年の変わり目の TVL 1 億ドル、来年 Q1〜Q2 の RFG、その先の 10 億ドル">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="200" height="72" rx="8" class="d-box"/>
+  <text x="116" y="50" class="d-t" text-anchor="middle">今 — 機関向け testnet</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">「皆さんも参加を」</text>
+
+  <line x1="216" y1="60" x2="238" y2="60" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="240" y="24" width="200" height="72" rx="8" class="d-box-accent"/>
+  <text x="340" y="50" class="d-t" text-anchor="middle">10/1 — Cardano mainnet</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">TVL 5,000 万ドルを目標</text>
+
+  <line x1="440" y1="60" x2="462" y2="60" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="464" y="24" width="200" height="72" rx="8" class="d-box"/>
+  <text x="564" y="50" class="d-t" text-anchor="middle">＋1 か月 — EVM</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">ボールトのキュレーターが作る</text>
+
+  <line x1="564" y1="96" x2="564" y2="118" class="d-line-accent"/>
+  <line x1="564" y1="118" x2="116" y2="118" class="d-line-accent"/>
+  <line x1="116" y1="118" x2="116" y2="140" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="16" y="142" width="200" height="72" rx="8" class="d-box"/>
+  <text x="116" y="168" class="d-t" text-anchor="middle">年の変わり目 — 1 億ドル</text>
+  <text x="116" y="192" class="d-s" text-anchor="middle">「10 の機関に『はい』と」</text>
+
+  <line x1="216" y1="178" x2="238" y2="178" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="240" y="142" width="200" height="72" rx="8" class="d-box"/>
+  <text x="340" y="168" class="d-t" text-anchor="middle">来年 Q1〜Q2 — RFG</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">ガバナンストークンのローンチ</text>
+
+  <line x1="440" y1="178" x2="462" y2="178" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="464" y="142" width="200" height="72" rx="8" class="d-box-plain"/>
+  <text x="564" y="168" class="d-t" text-anchor="middle">その先 — 10 億ドル</text>
+  <text x="564" y="192" class="d-s" text-anchor="middle">「ループが回れば」</text>
+
+  <text x="340" y="240" class="d-s" text-anchor="middle">いずれも目標。「トラックレコードは買えないので、立ち上がりは遅いかもしれない」</text>
+</svg>
+<p class="figcap">TVL の数字はすべて<strong>目標として</strong>語られたものです。進行役が「年末に 10 億ドル？」と聞き返し、「1 億ドルです」と訂正される場面がありました。</p>
+</div>
+
+<p>今は「機関向けの testnet」の段階。10 月 1 日に Cardano の mainnet へ移り、この段階で TVL 5,000 万ドルを目指す。1 か月後に EVM 全体でローンチし、「ボールトのキュレーターが大きな EVM の DeFi の場すべてでボールトを作ってくれる」ので、そこから大きな数字が見え始める。並行して機関向けの営業、CEX、各種プログラム。年の変わり目あたりで 1 億ドル。プロダクト・マーケット・フィットがあれば、その先はもっと大きく。RFG は来年 Q1 か Q2。そして 10 億ドル。</p>
+
+<p>段階ごとの難しさも語られました。<strong>「1 億ドルは、10 の機関に『はい』と言ってもらうこと。難しいが達成可能」</strong>。10 億から 100 億には「そのループを確実に回して、個人にも DeFi のプレイヤーにも役立つようにしないといけない」。鍵は信用リスクで、市場で信頼を築く必要がある。「トラックレコードは買えないので、立ち上がりは遅いかもしれない」。</p>
+
+<p><span class="badge">補足</span>mainnet の時期は、<a href="../2026-08-14-ask-the-ceo/#mainnet">#6（8 月 14 日）</a>では「およそ 9 月中旬」、<a href="../2026-08-28-office-hours-investment-framework/">#8（8 月 28 日）</a>では「日付をごく近いうちに発表」でした。この回で初めて 10 月 1 日という日付が口にされ、#6 の見通しからは 2 週間ほど後ろになっています。</p>
+
+<p>途中で「AlphaGrowth の提案が通る（going through）ことを本当にうれしく思う」とも述べられました。ルーピング戦略のような、RealFi のようなプロダクトを有用にする DeFi の基盤を、AlphaGrowth が Cardano に作るのを手伝ってくれる、と。<span class="badge">補足</span><a href="../2026-07-26-a-dose-of-alpha/">A Dose of Alpha の回</a>で紹介された PRIME 提案のことです。可決は <a href="../2026-08-14-ask-the-ceo/">#6（8 月 14 日）</a>で「Alpha Growth も提案を勝ち取った」と確認されています。実際の引き出しと執行の状況は、この回でも述べられていません。</p>
+
+<h2 id="cardano">8. Cardano での立ち上がり</h2>
+<p class="deck">小さな SPO だけに絞ったプログラム、Lace・Sundae・Liqwid の 3 つの入口、そして日本の SPO の答え。</p>
+
+<p>SPO プログラムは<strong>委任額 100 万〜1,200 万 ADA の小さなプールだけ</strong>に絞った、と説明されました。「ネットワークの中で、十分にサービスされていない側に本気で焦点を当てた」。ポイント制で、ポイントは将来ガバナンストークンと交換できる。SPO は、自分の委任者が testnet で得た報酬の一定割合を受け取れる。</p>
+
+<p>結果として挙げられた数字は 2 つ。参加した SPO の 84% がその期間に委任者を増やした（対照群では 17%）。そして「5,000 人の本物の人間」が 6〜8 週間でテストアプリを通っていった。</p>
+
+<p><span class="badge">補足</span>84% と 17% は <a href="../2026-07-31-data-and-insights/#spo">#4 データ回</a>で示された数字と同じです。#4 では発表者自身が因果関係について留保を付けていました。「本物の人間」をどう判定しているかは、この回でも述べられていません。</p>
+
+<p>10 月 1 日にできることとして、3 つの入口が挙げられました。</p>
+
+<ul>
+  <li><strong>Lace。</strong>ウォレットの中で USDCx から USDrf に swap し、そのまま stake できる。「そこでのユーザー体験を作り込んだ」</li>
+  <li><strong>Sundae。</strong>USDC／USDrf のプールと、sUSDrf／USDrf のプール。「主に DeFi の仕組みを通じて換金できるように」。（「自分のトークンの名前を覚えないと」と、USDR から USDrf に言い直す場面がありました）</li>
+  <li><strong>Liqwid。</strong>「どう動くかいちばん楽しみにしているプロダクト」。ADA を預けて、それを担保に USDCx を固定金利で借り、USDrf にして stake する。さらに sUSDrf を担保に USDC を借りてループする。この 2 つの動作を、隔離されたボールトの中に選り抜いて用意した、と</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="Liqwid で用意される 2 つの DeFi の動作。ADA を預けて USDCx を借り、USDrf に swap して stake する流れと、sUSDrf を担保にさらに借りて繰り返すループ">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="30" width="148" height="76" rx="8" class="d-box"/>
+  <text x="90" y="56" class="d-t" text-anchor="middle">ADA を預ける</text>
+  <text x="90" y="78" class="d-s" text-anchor="middle">Liqwid の隔離ボールト</text>
+  <text x="90" y="96" class="d-s" text-anchor="middle">ADA は売らない</text>
+
+  <line x1="164" y1="68" x2="180" y2="68" class="d-line" marker-end="url(#m3)"/>
+
+  <rect x="182" y="30" width="148" height="76" rx="8" class="d-box"/>
+  <text x="256" y="56" class="d-t" text-anchor="middle">USDCx を借りる</text>
+  <text x="256" y="78" class="d-s" text-anchor="middle">ADA を担保に</text>
+  <text x="256" y="96" class="d-s" text-anchor="middle">固定金利</text>
+
+  <line x1="330" y1="68" x2="346" y2="68" class="d-line" marker-end="url(#m3)"/>
+
+  <rect x="348" y="30" width="148" height="76" rx="8" class="d-box"/>
+  <text x="422" y="56" class="d-t" text-anchor="middle">USDrf に swap</text>
+  <text x="422" y="78" class="d-s" text-anchor="middle">Sundae のプール経由</text>
+
+  <line x1="496" y1="68" x2="512" y2="68" class="d-line" marker-end="url(#m3)"/>
+
+  <rect x="514" y="30" width="148" height="76" rx="8" class="d-box-accent"/>
+  <text x="588" y="56" class="d-t" text-anchor="middle">stake する</text>
+  <text x="588" y="78" class="d-s" text-anchor="middle">sUSDrf を受け取る</text>
+  <text x="588" y="96" class="d-s" text-anchor="middle">7 日の待機期間あり</text>
+
+  <line x1="588" y1="106" x2="588" y2="150" class="d-line"/>
+  <line x1="588" y1="150" x2="256" y2="150" class="d-line"/>
+  <line x1="256" y1="150" x2="256" y2="108" class="d-line" marker-end="url(#m3)"/>
+
+  <text x="422" y="176" class="d-s" text-anchor="middle">ループ：sUSDrf を担保に、さらに USDCx を借りて繰り返す</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">「EVM で非常に人気があるもの」。人々が実際にやるかどうかを見たい、と</text>
+</svg>
+<p class="figcap">動作は音声の説明をもとに描いたもので、画面には出ていません。<span class="badge">補足</span>レバレッジは利益も損失も増幅します。<a href="../2026-08-06-office-hours-gtm/">#5 GTM 回</a>で数値例つきで説明されています。</p>
+</div>
+
+<p>Liqwid の設計の背景として、<strong>「日本の SPO に調査をしたところ、86% が、何かをするなら ADA を売るより借りるほうがいいと答えた」</strong>と明かされました。「いただいたフィードバックの一部をもとに選り抜いたプロダクト」だ、と。<span class="badge">補足</span><a href="../2026-08-24-office-hours-ticker/#japan">#7</a> で「当日出た」と説明された日本向け調査の結果が、初めて数字で語られました。設問の文言と回答数は述べられていません。</p>
+
+<p>「今日、コミュニティと一般に向けてこの発表が出る予定。ネタバレはなしで」とも述べられました。</p>
+
+<h2 id="questions">9. 質疑で出たこと</h2>
+<p class="deck">規制、ブリッジ、オンランプ、透明性、Ethena Pay、取引数。答えの中身はここに。問答の形は Q&amp;A の節に。</p>
+
+<p><strong>米国・EU・英国は対象外。</strong>「Ethena と同じ構造で、Ethena と同じ制限。彼らは 170 億ドルの TVL を達成したので、この構造は規模の妨げにならない」。仕組みはこうです——RealFi 自身は、それらの地域の機関や個人に直接向き合えない。誰かが dApp に来たら、対象外の地域ならジオブロックする。ただし「責任は概ねそこで終わる」。二次市場（DEX で買う人）は制御できない、「それが暗号資産の仕組み」。mint／redeem のパートナーは安心できる地域のものだけ。CEX にも同じで、デュー・ディリジェンスを行い、法的な指針を提供し、配布のしかたは CEX 次第。<strong>「米国が最もリスクの高い地域で、CEX が最もリスクを問うのもそこ」</strong>。</p>
+
+<p><span class="badge">補足</span><a href="../2026-08-14-ask-the-ceo/">#6</a> で「MiCA や GENIUS の基準には対応しない。理由は色々ある」とだけ述べられた件は、理由は今回も語られていませんが、<strong>対象外になる地域が具体化しました</strong>。</p>
+
+<p><strong>ブリッジは CCTP のフォーク。</strong>USDC はそのブリッジを通じて Cardano に入り、出るときは「独自版を内製した」。ただし Ethereum にはネイティブの発行コントラクトとステーキングコントラクトを置く。<strong>「EVM 側の体験はシームレスだが、正となる会計は Cardano で行われる」</strong>。<span class="badge">補足</span>#6 では CCTP のフォークから LayerZero への移行が語られていましたが、この回では LayerZero に触れられていません。質問者は SVM（Solana）も挙げましたが、答えは EVM についてだけです。</p>
+
+<p><strong>オン／オフランプは国ごと。</strong>現地通貨から USDC や USDT へ「比較的安く、あるいはとても安く」行ける国（Binance の P2P 市場など）と、「本当に高い」国がある。<strong>機能させなければならないのは「モバイルマネー ↔ USDrf」のペア</strong>。安く出入りできる国が自然な立ち上げ市場になる。「どの国でも可能。問題はどれだけのコストでか」。</p>
+
+<p><strong>スリーブ C の透明性は 4 層。</strong>「不良債権が出て参加者が知らない、ということはありえるか」という質問に、「知ることができる」と回答。①透明性ポータル（スリーブ C の内訳と評価額）②ファンド管理者の NAV ③独立したクレジット評価者（年 2 回を想定）④ファンドの監査。「ファンド管理者が評価のすべてではない」から③を入れる、と。<span class="badge">補足</span>誰が評価者になるかは述べられていません。「年 2 回」は「考えている（looking at）」段階の言い方です。</p>
+
+<p><strong>Ethena Pay は「率直に言って、とても好き」。</strong>「私がずっと RealFi の次の進化として考えてきたものにとても近い。実際その構想から始めて、プロトコルの部分に集中する方向へ戻った」。ただ Ethena は単一のベーシス取引として作り上げてしまったので、別の戦略に移りにくい。Ethena が長いブログ記事で RealFi 型の戦略へ移ろうとし、その後ベーシス取引が戻りそうだからと引き返しているのは「かなり気になった」。<strong>「どちらかの戦略が優れているのではなく、単に違う戦略」</strong>。将来は新興国向け——「何度も通貨危機を経験してきたアルゼンチンの人」のようなアプリケーションに集中したい、と。</p>
+
+<p><strong>取引数は多くない。</strong>「高頻度のプロダクトではない。買って stake して利回りを得たら、それで何かをたくさんするわけではない」。買って持つか、買ってループするか。将来のネオバンク体験（デビットカードで支払い、貯蓄、現地通貨からドルへ、Amazon で買い物、ネットワーク内はコストゼロの送金）は「輪郭はある」が、出発点は利回りのエンジンだから今はそこから、と。<strong>取引数の見積もりは示されていません。</strong></p>
+
+<h2 id="overall">10. 全体像</h2>
+<p class="deck">利回りの源泉、3 つのトークン、守り、そして Cardano。この回の話は 4 つに束ねられる。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="RealFi の全体像。中央に利回りを生むドル、四隅に利回りの源泉、3 つのトークン、守りの仕組み、Cardano での立ち上がりを置いた図">
+  <rect x="16" y="24" width="300" height="92" rx="8" class="d-box"/>
+  <text x="166" y="50" class="d-t" text-anchor="middle">利回りの源泉</text>
+  <text x="166" y="74" class="d-s" text-anchor="middle">MMF・CLO ETF・fintech への貸付</text>
+  <text x="166" y="96" class="d-s" text-anchor="middle">暗号資産と相関しない。金利とは相関する</text>
+
+  <rect x="364" y="24" width="300" height="92" rx="8" class="d-box"/>
+  <text x="514" y="50" class="d-t" text-anchor="middle">3 つのトークン</text>
+  <text x="514" y="74" class="d-s" text-anchor="middle">USDrf（利回りなし）／ sUSDrf（8〜10% 目標）</text>
+  <text x="514" y="96" class="d-s" text-anchor="middle">RFG（ガバナンス。来年 Q1〜Q2）</text>
+
+  <rect x="190" y="136" width="300" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="162" class="d-t" text-anchor="middle">実体経済の資産に裏付けられた</text>
+  <text x="340" y="184" class="d-t" text-anchor="middle">利回りを生むドル</text>
+
+  <rect x="16" y="216" width="300" height="92" rx="8" class="d-box"/>
+  <text x="166" y="242" class="d-t" text-anchor="middle">守り</text>
+  <text x="166" y="266" class="d-s" text-anchor="middle">損失の順序 ／ 米・EU・英はジオブロック</text>
+  <text x="166" y="288" class="d-s" text-anchor="middle">透明性ポータル・NAV・評価者・監査</text>
+
+  <rect x="364" y="216" width="300" height="92" rx="8" class="d-box"/>
+  <text x="514" y="242" class="d-t" text-anchor="middle">Cardano での立ち上がり</text>
+  <text x="514" y="266" class="d-s" text-anchor="middle">10/1 mainnet ／ Lace・Sundae・Liqwid</text>
+  <text x="514" y="288" class="d-s" text-anchor="middle">小さな SPO のプログラム。日本の調査 86%</text>
+
+  <line x1="166" y1="116" x2="260" y2="136" class="d-line"/>
+  <line x1="514" y1="116" x2="420" y2="136" class="d-line"/>
+  <line x1="166" y1="216" x2="260" y2="196" class="d-line"/>
+  <line x1="514" y1="216" x2="420" y2="196" class="d-line"/>
+</svg>
+<p class="figcap">「相関しない」が中心にあり、それを<strong>誰に売るか</strong>（トークン）、<strong>どう守るか</strong>（順序・地域・透明性）、<strong>どこから始めるか</strong>（Cardano）が周りに並びます。</p>
+</div>
+
+<h2 id="qa">11. Q&amp;A</h2>
+<p class="deck">チャットから 6 件、ステージから 4 件、進行役から 2 件。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matus（チャット）</span>ドル建てで「高利回り」とは何を意味するのか。お金を失う可能性はあるのか、あるとしたらどのように。</p>
+<p class="qa-a" data-by="回答">前半は「sUSDrf の目標リターンは 8〜10%」で、ステーキング比率と世界の金利に依存すると添えられました。後半は損失の順序（<a href="#losses">4 節</a>）——エクイティ → 安定化ファンド → sUSDrf → USDrf。「もちろん損失が出ないようにしたいが、間違えた場合にはこう落ちる」。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">匿名（Q&amp;A）</span>RFG の保有者は実際に何に投票できるのか。プロトコルのパラメータか、トレジャリーの配分か。</p>
+<p class="qa-a" data-by="途中だと明言">「正直に言うと、まだ取り組んでいる途中」。決まっているのは、個別の投資判断には投票させないこと。投票しうるのは、どのファンドを含めるか、誰がアセットマネージャーか、手数料率、プロトコルに積み上がる価値の分配。ローンチ時はライトタッチで始める。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matus（チャット）</span>米国債の利回りが 5% を大きく下回っても、8〜10% のままなのか。</p>
+<p class="qa-a" data-by="条件付きで回答">「ひとつの相関を別の相関と交換する」——世界の金利とは相関する、それで構わない。加えて、ステーキングしていない USDrf の分の利回りをプロトコルから sUSDrf に回せるので、「ステーキング比率によっては守れる」。<strong>「守る」と断言はしていません。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">匿名（Q&amp;A）</span>ガバナンスの先に、RFG が手数料の分配のように直接価値を取り込む計画はあるのか。今は意図的に純粋なガバナンスなのか。</p>
+<p class="qa-a" data-by="方針のみ">「法的な複雑さがいちばん大きく、顧客とコミュニティとの対話も要る部分」。ローンチ時の権限は最小限にして、相談しながら広げる。「Cardano のガバナンスよりずっとライトタッチ」。<strong>やるともやらないとも言っていません。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">進行役</span>フィールドワークや調査にもとづくと、需要の結果はどうだったのか。機関や投資家からの需要はあるのか。</p>
+<p class="qa-a" data-by="信念で回答">「あると信じている」。暗号資産のトレジャリー担当者が気にするのは利回りとリスクで、資本の動きは速いのでインセンティブが要る。1 億ドルは「10 の機関に『はい』と言ってもらうこと」。本当の問いは、その先の 10 億〜100 億ドルに行けるかで、それには個人にも DeFi にも役立つループが要る。<strong>調査の結果そのもの（数字）は示されていません。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matus（チャット）</span>RUSD はどうやって手に入れるのか。DEX 経由だけか、中央集権型取引所でもか。</p>
+<p class="qa-a" data-by="半分だけ回答">CEX については「これから上場する取引所について語らないのが鉄則。何もコメントできない」。DEX の経路は「今のところ Sundae」。<span class="badge">補足</span>質問の「RUSD」は、USDrf のことと読めます。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">進行役</span>ローンチ後の最初の 1 年で、取引数はどれくらいになると見込んでいるか。</p>
+<p class="qa-a" data-by="数字なし">「高頻度のプロダクトではない」。買って持つか、買ってループするか。取引が増えるのは将来のネオバンク的な体験に載せたときで、今の出発点は利回りのエンジン。<strong>見積もりの数字は出ていません。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matthew</span>Ethena Pay の発表についてどう思うか。</p>
+<p class="qa-a" data-by="回答">「率直に言って、とても好き。素晴らしいプロダクト」。自分が RealFi の次の進化として考えてきたものに近い。Ethena は単一のベーシス取引に縛られていて、RealFi 型の戦略へ移ろうとして引き返した。「どちらが優れているかではなく、違う戦略」。RealFi は将来、新興国向けのアプリケーションに集中したい。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Sam</span>米国・欧州・英国が mint／redeem やアプリに参加できないなら、新興国の需要だけで想像している規模に伸びるのか。何が妨げなのか。</p>
+<p class="qa-a" data-by="回答">「Ethena と同じ構造・同じ制限で、彼らは 170 億ドルに達した」。RealFi 自身は対象外の地域に向き合えず、dApp でジオブロックするが、二次市場は制御できない。mint／redeem のパートナーと CEX は安心できる地域のみ。「米国が最もリスクが高い」。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Sam</span>EVM と SVM の統合があるが、クロスチェーンのインフラ、ブリッジは何を使うのか。</p>
+<p class="qa-a" data-by="EVM についてのみ回答">CCTP のフォーク。入りはそのブリッジ、出るときは内製版。Ethereum にはネイティブの発行・ステーキングのコントラクトを置き、「正となる会計は Cardano」。<strong>SVM には答えていません。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Jean（チャット）</span>新興国のオン／オフランプの問題にどう対処するのか。法定通貨と暗号資産の往復でユーザーをどうオンボードするのか。</p>
+<p class="qa-a" data-by="回答">「国によって大きく違う」。安い国と高い国があり、インフラ次第。要るのは「モバイルマネー ↔ USDrf」のペアで、安く出入りできる国が自然な立ち上げ市場になる。「国ごとに取り組むしかない」。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Sam</span>資金の大半が入るスリーブ C について、リスク指標を示す義務はあるのか。不良債権が出て参加者が知らないことはありえるか。</p>
+<p class="qa-a" data-by="回答">「はい、知ることができる」。透明性ポータル、ファンド管理者の NAV、独立したクレジット評価者（年 2 回を想定）、ファンドの監査の 4 層。</p>
+</div>
+
+<h2 id="pending">12. 答えが出なかったこと</h2>
+<p class="deck">順序は語られ、日付は出た。金額と結果は、まだ出ていない。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>①のエクイティは、いくらで、いつ払い込まれるのか。</p>
+<p class="qa-a" data-by="順序のみ">「持つことができる（we can have）」という言い方で、金額も時期も述べられていません。#6 から持ち越しのままです。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未回答</span>需要調査の結果は、実際にどうだったのか。</p>
+<p class="qa-a" data-by="信念で回答">進行役は「調査にもとづく結果はどうだったか」と聞きましたが、答えは「あると信じている」で、<strong>調査の数字は出ていません</strong>。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>ローンチ後 1 年の取引数の見通し。</p>
+<p class="qa-a" data-by="性格のみ">「高頻度のプロダクトではない」とだけ。見積もりは示されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">非開示</span>CEX への上場。</p>
+<p class="qa-a" data-by="鉄則として拒否">「これから上場する CEX について語らないのが鉄則」。<a href="../2026-08-24-office-hours-ticker/">#7</a> で「前向きな話し合いはあった」とされた件は、相手も時期も引き続き非開示です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未言及</span>独立したクレジット評価者は誰か。</p>
+<p class="qa-a" data-by="想定のみ">「年 2 回」は「考えている（looking at）」段階の言い方で、評価者の名前も、最初のレポートの時期も述べられていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未言及</span>「今いる大きな 1 社」の機関投資家。</p>
+<p class="qa-a" data-by="存在のみ">長いロックアップを設けている大口の機関投資家が 1 社いる、とだけ。誰か、いくらか、ロックアップの長さは述べられていません。</p>
+</div>
+
+<div class="note">
+<p><strong>このページについて。</strong>この対談は YouTube で公開されているものにもとづく記録で、<strong>チャタムハウスルールの対象ではありません</strong>。発言者は実名のまま扱っています。もとの動画は <a href="https://www.youtube.com/watch?v=735yJ_erh2A">こちら</a>（Cardano Community チャンネル。公式チャンネルの配信かどうかは確認していません）。</p>
+<p>原本は依頼者が固有名詞を確認したうえで渡してきたもので、話者ラベルと時刻が付いています。進行役の名前は一度呼ばれていますが綴りが確認できないため、ここでは「進行役」としています。</p>
+<p><strong>スライドが使われた回です。</strong>「このグラフ」「次のスライド」という参照が残っていますが、スライドは渡されていないので、<strong>ここに載っているのは音声で語られた内容だけ</strong>です。図はいずれも音声の説明をもとにこちらで描いたもので、画面のグラフを写したものではありません。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、番組中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>RealFi explained from the beginning, to an audience outside RealFi.<br>
+  The whole thing rests on one bet — yield that doesn't move with crypto, built from lending into the real economy. And for the first time, a date for mainnet was said aloud: <strong>1 October</strong>.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Uncorrelated yield.</strong> The starting point: crypto lacks yield sources that don't track the Bitcoin price or token emissions. RealFi builds one from money market funds, CLO ETFs and lending to fintechs.</li>
+  <li><strong>A third generation of stablecoin.</strong> Tether (the issuer keeps the yield) → Ondo (T-bill yield passed through) → Ethena (the basis trade). RealFi is placed next: a basket of real assets attached to a stablecoin.</li>
+  <li><strong>An 8–10% target.</strong> Repeatedly qualified by the speaker as dependent on global interest rates and the staking ratio — a launch target, not a promise.</li>
+  <li><strong>The loss waterfall.</strong> Equity → stability fund → sUSDrf → USDrf. First shown in #6 with a caveat; here it is stated in public without one.</li>
+  <li><strong>Mainnet on 1 October.</strong> Swap and stake inside Lace, pools on Sundae, and borrowing against ADA on Liqwid to loop. The announcement was due the same day.</li>
+  <li><strong>Track record: $11.5m at a 20% IRR.</strong> 25 fintechs, 40 transactions, 10 countries, a million loans a year — as described by the speaker.</li>
+  <li><strong>The US, EU and UK are out of scope.</strong> The same structure and restrictions as Ethena, which reached $17bn — so, he argues, not a limit on scale.</li>
+  <li><strong>86% of Japanese SPOs would rather borrow than sell ADA.</strong> The first number from the survey announced in #7, and the reason the Liqwid product is shaped the way it is.</li>
+  <li><strong>One large institutional investor.</strong> “The one big one that we have at the moment” is on a longer lock-up.</li>
+</ul>
+</div>
+
+<div class="note">
+<p><strong>This is not a RealFi Office Hours session.</strong> It is a “Cardano Seminar” episode published on the Cardano Community YouTube channel, with RealFi's CEO as the guest. As a <strong><a href="https://www.youtube.com/watch?v=735yJ_erh2A">publicly published recording</a></strong> it is not covered by the Chatham House Rule and <strong>the speakers are named</strong>. Whether the channel is official has not been verified, so only the programme, channel and participants are recorded here.</p>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-what"><span class="n">01</span>What RealFi is — uncorrelated yield</a></li>
+  <li><a href="#en-gens"><span class="n">02</span>Three generations of stablecoin</a></li>
+  <li><a href="#en-tokens"><span class="n">03</span>Three tokens, and what governance decides</a></li>
+  <li><a href="#en-losses"><span class="n">04</span>The loss waterfall</a></li>
+  <li><a href="#en-yield"><span class="n">05</span>Where 8–10% comes from, and what it depends on</a></li>
+  <li><a href="#en-record"><span class="n">06</span>Track record — $11.5m, 20% IRR</a></li>
+  <li><a href="#en-roadmap"><span class="n">07</span>From 1 October to a billion dollars</a></li>
+  <li><a href="#en-cardano"><span class="n">08</span>The Cardano launch</a></li>
+  <li><a href="#en-questions"><span class="n">09</span>What came out in the questions</a></li>
+  <li><a href="#en-overall"><span class="n">10</span>The whole picture</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">12</span>Left unanswered</a></li>
+</ol>
+</div>
+
+<h2 id="en-what">1. What RealFi is — uncorrelated yield</h2>
+<p class="deck">Build yield that doesn't move with the Bitcoin price. That, he said, was the starting point of the design.</p>
+
+<p>In a nutshell, RealFi is <strong>“a yield-bearing dollar backed by real economy assets.”</strong> The design was drawn from what the team saw as a massive gap in crypto.</p>
+
+<p>There are, in his phrase, “a gajillion products” that generate yield — but almost all of them are correlated to the price of Bitcoin, to inflationary tokenomics (yield paid out of newly minted tokens), or to crypto rate cycles. <strong>Very few generate yield that is uncorrelated to those.</strong> That is the gap.</p>
+
+<p>It is filled with a portfolio of real-world assets. Three were named: money market funds, CLO ETFs, and — “the part that's most exciting to me” — lending to fintechs that finance cash-flowing businesses.</p>
+
+<ul>
+  <li><strong>Stable by design.</strong> Fully asset-backed, transparently reserved, run through a Cayman Islands fund structure, and “built to hold the peg across all of the crypto stress scenarios that we have modeled historically”</li>
+  <li><strong>Composable across DeFi.</strong> A token that works as a savings product and as collateral to borrow against</li>
+  <li><strong>Useful outside crypto too.</strong> A “productive dollar” for people who haven't used crypto but might have a use for this</li>
+</ul>
+
+<div class="term">
+<p class="term-name">Uncorrelated yield <small>the call's own words</small></p>
+<p>When crypto sells off, yield generated inside crypto disappears with it. Repayments from fintech borrowers don't look at the Bitcoin price, so they don't — that is the sense in which the term is used. <span class="badge">added</span>As he concedes later, <strong>a different correlation is taken on instead</strong>: lending yield moves with global interest rates. “You exchange one correlation for another” (<a href="#en-yield">section 5</a>).</p>
+</div>
+
+<h2 id="en-gens">2. Three generations of stablecoin</h2>
+<p class="deck">Tether, Ondo, Ethena — what each does and where each runs out. RealFi is placed after them.</p>
+
+<p>First the size of the market. Stablecoin market capitalisation is “probably around $350 billion currently,” with a 2030 range of $1.9 to 4 trillion. The fastest-growing slice is the yield-bearing category, which went from $2 billion to $27 billion over the last 24 months — “I actually did this deck probably four months ago, so I think it's actually larger now.” <span class="badge">added</span>All figures are as given on the call; no sources were cited.</p>
+
+<p>Yield-bearing stablecoins were then sorted into three generations.</p>
+
+<ul>
+  <li><strong>Generation one — Tether / USDC.</strong> You give me a dollar, I give you a USDT, I buy T-bills and keep the yield. “Probably the best idea that none of us in Cardano ever thought up.” Tether, with an investment team of around 35, made more profit than Goldman Sachs last year, he noted</li>
+  <li><strong>Generation two — Ondo.</strong> Wrap tokenised T-bills and pass the yield back to holders. “Another one which we discussed back in the day in Cardano but didn't get round to doing.” Ondo's growth showed the scale of demand for something like the risk-free rate</li>
+  <li><strong>Generation three — Ethena.</strong> Buy spot Bitcoin and hold a short on the perpetual: a delta-neutral trade attached to a stablecoin. Price moves cancel out; what remains is the funding rate the longs pay the shorts. About $4 billion in the first four months, 16 or 17 at its peak. The limits: nothing says the funding rate stays positive, and the more popular the trade, the less it pays</li>
+</ul>
+
+<p>RealFi's position is to take Ethena's model and <strong>swap the trade for a basket</strong> — a basket of real assets uncorrelated with crypto, attached to a stablecoin. The framing: a stablecoin “that actually does something in the world … versus just ultimately buying more US gilts and reducing America's borrowing cost.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="Four quadrants: yield source (synthetic versus real-asset-backed) across, yield premium up. Existing stablecoins and RealFi's target quadrant placed on it">
+  <text x="340" y="24" class="d-s" text-anchor="middle">Higher up = higher yield premium (further along the risk curve)</text>
+
+  <rect x="70" y="44" width="285" height="112" rx="8" class="d-box"/>
+  <text x="212" y="72" class="d-t" text-anchor="middle">Synthetic, higher yield</text>
+  <text x="212" y="98" class="d-s" text-anchor="middle">Ethena's basis trade</text>
+  <text x="212" y="120" class="d-s" text-anchor="middle">Funding rate that looks like a yield</text>
+  <text x="212" y="142" class="d-s" text-anchor="middle">“Trying to do clever things”</text>
+
+  <rect x="370" y="44" width="285" height="112" rx="8" class="d-box-accent"/>
+  <text x="512" y="72" class="d-t" text-anchor="middle">Where RealFi aims</text>
+  <text x="512" y="98" class="d-s" text-anchor="middle">Real assets, with a yield premium</text>
+  <text x="512" y="120" class="d-s" text-anchor="middle">By doing credit effectively</text>
+  <text x="512" y="142" class="d-s" text-anchor="middle">“A sustainable real yield source”</text>
+
+  <rect x="70" y="172" width="285" height="112" rx="8" class="d-box-plain"/>
+  <text x="212" y="200" class="d-t" text-anchor="middle">Synthetic, lower yield</text>
+  <text x="212" y="226" class="d-s" text-anchor="middle">“No one really wants to be here”</text>
+  <text x="212" y="248" class="d-s" text-anchor="middle">but a few are</text>
+
+  <rect x="370" y="172" width="285" height="112" rx="8" class="d-box"/>
+  <text x="512" y="200" class="d-t" text-anchor="middle">Wrapping T-bills</text>
+  <text x="512" y="226" class="d-s" text-anchor="middle">Tether / USDC, Ondo</text>
+  <text x="512" y="248" class="d-s" text-anchor="middle">Easy, so crowded</text>
+  <text x="512" y="270" class="d-s" text-anchor="middle">“Not a ton of innovation can be done”</text>
+
+  <text x="70" y="312" class="d-s">← synthetic / emissions-based</text>
+  <text x="655" y="312" class="d-s" text-anchor="end">backed by real assets →</text>
+</svg>
+<p class="figcap">A chart was on screen. What is drawn here is <strong>the axes and four quadrants as described aloud</strong>, not a copy of the slide.</p>
+</div>
+
+<details class="explain">
+<summary>Dense with jargon — open the plain-language version</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>What follows is our explanation, not something said on the call.</p>
+<h4>“Basis trade” and “delta neutral”</h4>
+<p>Hold the same asset both ways — buy it (spot) and sell it (a futures short). If the price rises, one side gains and the other loses; if it falls, the reverse. <strong>Price moves cancel out</strong> — that is “delta neutral” — and the pair is called a basis trade.</p>
+<h4>So where does the yield come from?</h4>
+<p>On crypto perpetual futures, buyers (longs) periodically pay sellers (shorts) a small amount: the <strong>funding rate</strong>. Because you receive it just for holding the short, it looks like a yield. Ethena turned it into a stablecoin's yield.</p>
+<h4>An everyday analogy</h4>
+<p>Bet on the same horse to win and to lose, and the race result can't hurt you. What's left is the fee you're paid for keeping one of the bets open. <strong>The weak point is that the fee sometimes flows the other way.</strong></p>
+<h4>In one line</h4>
+<p>Ethena cancels the price and keeps the fee; RealFi keeps the interest on loans that never cared about the price. Neither bets on Bitcoin's direction — but <strong>they depend on different things</strong>: crypto market positioning in one case, the real economy and interest rates in the other.</p>
+</div>
+</details>
+
+<h2 id="en-tokens">3. Three tokens, and what governance decides</h2>
+<p class="deck">USDrf earns nothing, sUSDrf earns the yield, RFG decides. What RFG decides is not yet decided.</p>
+
+<ul>
+  <li><strong>USDrf.</strong> The plain stablecoin. No yield: holders “don't benefit from the accretion of NAV of the underlying portfolio.” Incentives can be provided through RFG</li>
+  <li><strong>sUSDrf.</strong> The staked dollar, which does receive the accretion. Target returns of 8–10%, with a seven-day unstake cooldown. Pitched at crypto treasuries, family offices and DeFi investors</li>
+  <li><strong>RFG.</strong> The governance token. Votes on the take rate, protocol fees and a bunch of parameters; protocol income “can be represented by this token.” Fixed supply, no emissions, no inflation. Launch planned for Q1 or Q2 next year</li>
+</ul>
+
+<p><span class="badge">added</span>The speaker explains that USDR was “rebranded because of an exchange, to USDrf,” and calls the governance token RFG throughout. In the names settled by <a href="../2026-08-24-office-hours-ticker/#en-vote">the vote covered in #7</a>, the governance token is RLFG. This page records the names as used on the day; the mapping is in the glossary.</p>
+
+<p>Asked what RFG holders actually vote on, the answer opened with <strong>“speaking honestly … this is something that we're still working on.”</strong> What is settled is what they should <em>not</em> vote on.</p>
+
+<ul>
+  <li><strong>Not this.</strong> Specific investment decisions — “what we've seen from crypto is that typically this actually ends up quite badly”</li>
+  <li><strong>Possibly this.</strong> Which funds can be included; who the asset manager is (RealFi today; in future, others could bid to manage the portfolio with the strategy endorsed by vote)</li>
+  <li><strong>Sooner, this.</strong> The fees the asset manager can take, and how value accruing to the protocol is distributed — “who gets what of the pie”</li>
+</ul>
+
+<p>On direct value capture (fee sharing and the like): it is “the part that has got not only the most legal complexity around it, but also requires engagement with your customers and your community.” Launch will come with “a minimal set of launch permissions and rights,” then consultation — “a much lighter touch process than the Cardano governance process.”</p>
+
+<h2 id="en-losses">4. The loss waterfall</h2>
+<p class="deck">Equity → stability fund → sUSDrf → USDrf. The plain stablecoin goes last, because that is what holds the peg.</p>
+
+<p>The chat asked whether it is possible to lose money and, if so, how. The answer was the order in which losses land.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Four descending steps showing who absorbs losses first: equity, then the stability fund, then sUSDrf, then USDrf">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-s" text-anchor="middle">When there are losses, who absorbs them first</text>
+
+  <rect x="16" y="42" width="150" height="72" rx="8" class="d-box-warn"/>
+  <text x="91" y="68" class="d-t" text-anchor="middle">1. Equity</text>
+  <text x="91" y="88" class="d-s" text-anchor="middle">de-risking capital</text>
+  <text x="91" y="106" class="d-s" text-anchor="middle">eaten into first</text>
+
+  <line x1="166" y1="78" x2="182" y2="112" class="d-line" marker-end="url(#e1)"/>
+
+  <rect x="182" y="96" width="150" height="72" rx="8" class="d-box-warn"/>
+  <text x="257" y="122" class="d-t" text-anchor="middle">2. Stability fund</text>
+  <text x="257" y="142" class="d-s" text-anchor="middle">topped up from</text>
+  <text x="257" y="160" class="d-s" text-anchor="middle">residual income</text>
+
+  <line x1="332" y1="132" x2="348" y2="166" class="d-line" marker-end="url(#e1)"/>
+
+  <rect x="348" y="150" width="150" height="72" rx="8" class="d-box"/>
+  <text x="423" y="176" class="d-t" text-anchor="middle">3. sUSDrf</text>
+  <text x="423" y="196" class="d-s" text-anchor="middle">the staked side</text>
+  <text x="423" y="214" class="d-s" text-anchor="middle">can be adjusted down</text>
+
+  <line x1="498" y1="186" x2="514" y2="220" class="d-line" marker-end="url(#e1)"/>
+
+  <rect x="514" y="204" width="150" height="72" rx="8" class="d-box-accent"/>
+  <text x="589" y="230" class="d-t" text-anchor="middle">4. USDrf</text>
+  <text x="589" y="250" class="d-s" text-anchor="middle">the most protected</text>
+  <text x="589" y="268" class="d-s" text-anchor="middle">this is what holds the peg</text>
+
+  <text x="16" y="292" class="d-s">How thick layers 1 and 2 are was not given on this call either</text>
+</svg>
+<p class="figcap">“Obviously, we want to make sure that there aren't any losses. But in the event that we get things wrong, this is how they would fall down.” USDrf goes last because <strong>“this is also what creates peg stability.”</strong></p>
+</div>
+
+<p><span class="badge">added</span>This is the same order first set out in <a href="../2026-08-14-ask-the-ceo/#en-waterfall">#6 Ask the CEO</a>. There it came with “I can't fully confirm this, but shortly I will be able to”; here it is stated without the caveat. How much sits in layers 1 and 2 is still not given.</p>
+
+<details class="explain">
+<summary>A naive question — is the equity actually there on day one?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Our reading, not something said on the call.</p>
+<p><strong>The question is fair.</strong> The phrasing here is “we <strong>can have</strong> de-risking capital, essentially equity, which can sit at the top.” Not “we have,” not “we raised.” In #6, “have raised” and “going to raise” appeared in the same explanation.</p>
+<p><strong>Why the order still matters.</strong> The stability fund is topped up “across time” from residual income, so on day one it is thin. Without equity, day-one losses land first on sUSDrf. Same order — <strong>very different amounts reaching holders</strong>.</p>
+<p><strong>How to check from outside.</strong> Whether the transparency portal or the fund administrator's NAV shows the equity balance as a separate line.</p>
+<p><strong>Was it given here?</strong> The order, yes. The amount and the timing of the equity, no.</p>
+</div>
+</details>
+
+<h2 id="en-yield">5. Where 8–10% comes from, and what it depends on</h2>
+<p class="deck">Two books blended to 8–10%. Correlated to global rates and moved by the staking ratio — conditions the speaker listed himself.</p>
+
+<p>The assets are split into two books — a short, outward-facing restatement of <a href="../2026-08-28-office-hours-investment-framework/#en-books">the two-book system explained in #8</a>.</p>
+
+<ul>
+  <li><strong>Book one (USDrf).</strong> Kept highly liquid: money market funds, T-bills and CLO ETFs. The CLO ETFs get “five-ish percent — I think it's dropped a bit since when I did this deck,” investment-grade tranche only, “the AAA stuff.” Plus “a small portion” still doing direct lending</li>
+  <li><strong>Book two (staked).</strong> More private credit, more direct fintech lending</li>
+</ul>
+
+<p>Blended together, “this is what lets us target sort of 8 to 10% APYs.” The conditions follow immediately: <strong>“dependent on the staking ratio, dependent on global interest rates, dependent on a few things”</strong> — “it's a number that we're comfortable with at least at the moment and it's what we're going to be targeting for launch.”</p>
+
+<p><span class="badge">added</span>The 8–10% is a target as stated on the call — not a yield RealFi has promised, and not a yield anyone will receive. The same figure appears as a target in #7 and #8.</p>
+
+<p>Asked whether it holds if T-bills drop well below 5%: <strong>“you exchange one correlation for another.”</strong> Fixed income is highly interest-rate dependent, so “absolutely we're going to be correlated with global interest rates. We're happy with that — there's more than enough products correlated internally within crypto.”</p>
+
+<p>A second support was described: the staking ratio. USDrf earns no yield but is invested in the portfolio, so <strong>its share of the yield accrues to the protocol and “can basically be used to boost the yield which is offered to sUSDrf holders.”</strong> In Ethena's case only 50% stake, so half the portfolio yield can be redistributed. “It's still possible to defend those kind of yields even if global interest rates were falling, depending on that staking percentage.”</p>
+
+<p>Larger institutional investors are locked up for longer, with incentives around that, so that “we feel more comfortable about redemption risk.” <strong>“With institutional investors like the one big one that we have at the moment, we have a longer lock up for them.”</strong></p>
+
+<details class="explain">
+<summary>Dense with jargon — open the plain-language version</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>What follows is our explanation, not something said on the call.</p>
+<h4>“CLO ETF” and “the AAA tranche”</h4>
+<p>A CLO bundles many corporate loans and slices them by repayment priority (tranches). <strong>AAA is the slice that gets paid first</strong> — the safest piece. An ETF of those CLOs trades on an exchange, so it is liquid. It yields a little more than T-bills in exchange for a thin slice of corporate credit risk.</p>
+<h4>“Boosting yield through the staking ratio”</h4>
+<p>Say the pool holds 100 and only 50 is staked. All 100 is invested and earns, but only the 50 has a claim on the yield. <strong>The other 50's yield stays with the protocol.</strong> Hand it to the staked 50 and yield per unit doubles. The more people stake, the thinner the boost.</p>
+<h4>An everyday analogy</h4>
+<p>A building's shared income — parking fees, say — split only among the residents who joined the owners' association. While few have joined, each gets more.</p>
+<h4>In one line</h4>
+<p>The 8–10% is “lending yield plus a top-up from the unstaked share.” <strong>Falling rates thin the first; rising staking thins the second</strong> — exactly the two dependencies the speaker named.</p>
+</div>
+</details>
+
+<h2 id="en-record">6. Track record — $11.5m, 20% IRR</h2>
+<p class="deck">25 fintechs, 40 transactions, 10 countries, a million loans a year. “Track records is something you can't buy.”</p>
+
+<p>Under “why should you trust us,” the past strategy was laid out: fintech lending run for the last few years with <strong>$11.5 million of capital at a 20% IRR</strong>, across 25 fintechs, 40 transactions and 10 emerging-market countries. Broken down to end impact, “a million loans a year.”</p>
+
+<p>Underwriting runs on what they call the RealFi 360 data model, matching four layers: all borrower information → the loan tapes received from the fintechs → their management accounts → the actual cash movements between bank accounts.</p>
+
+<p>He <strong>avoids the phrase “banking the unbanked.”</strong> The lending is “more about providing capital to underbanked but very solid businesses” — productive, lendable, with dire needs for finance because the credit gaps are big. Chosen because it “has needs right here and right now.”</p>
+
+<p><span class="badge">added</span>A questioner says “11.3 million”; the CEO says “11.5 million.” Both are recorded as spoken. The track-record figures, including the 20% IRR, are the speaker's own; no third-party verification was mentioned.</p>
+
+<details class="explain">
+<summary>A naive question — if the past was 20%, why is the target 8–10%?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Our reading, not something said on the call.</p>
+<p><strong>A fair question.</strong> “20% IRR” and “8–10% target” sit in the same talk.</p>
+<p><strong>Why both hold.</strong> The 20% is fintech lending alone — what book two holds. The stablecoin blends that with book one's money market funds and CLO ETFs at around 5%, and then the protocol's take rate comes off. Blend, then subtract, and it falls.</p>
+<p><strong>How to check from outside.</strong> The allocation shown on the transparency portal, and the fee rate RFG will vote on. With those two, the gap between 20% and 8–10% can be reconstructed.</p>
+<p><strong>Was it given here?</strong> 20%, around 5%, and 8–10% were each stated. The allocation ratio and the fee rate were not.</p>
+</div>
+</details>
+
+<h2 id="en-roadmap">7. From 1 October to a billion dollars</h2>
+<p class="deck">Cardano on 1 October, EVM a month later, $100m around the turn of the year, RFG in Q1–Q2. “A very detailed slide which ends in a billion dollars.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Six-step roadmap: institutional testnet now, Cardano mainnet on 1 October, EVM a month later, $100m TVL around the turn of the year, RFG in Q1 to Q2 next year, then a billion dollars">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="200" height="72" rx="8" class="d-box"/>
+  <text x="116" y="50" class="d-t" text-anchor="middle">Now — testnet</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">institutional phase, live today</text>
+
+  <line x1="216" y1="60" x2="238" y2="60" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="240" y="24" width="200" height="72" rx="8" class="d-box-accent"/>
+  <text x="340" y="50" class="d-t" text-anchor="middle">1 Oct — Cardano mainnet</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">targeting around $50m TVL</text>
+
+  <line x1="440" y1="60" x2="462" y2="60" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="464" y="24" width="200" height="72" rx="8" class="d-box"/>
+  <text x="564" y="50" class="d-t" text-anchor="middle">+1 month — EVM</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">vault curators build vaults</text>
+
+  <line x1="564" y1="96" x2="564" y2="118" class="d-line-accent"/>
+  <line x1="564" y1="118" x2="116" y2="118" class="d-line-accent"/>
+  <line x1="116" y1="118" x2="116" y2="140" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="16" y="142" width="200" height="72" rx="8" class="d-box"/>
+  <text x="116" y="168" class="d-t" text-anchor="middle">Turn of year — $100m</text>
+  <text x="116" y="192" class="d-s" text-anchor="middle">“10 institutions saying yes”</text>
+
+  <line x1="216" y1="178" x2="238" y2="178" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="240" y="142" width="200" height="72" rx="8" class="d-box"/>
+  <text x="340" y="168" class="d-t" text-anchor="middle">Q1–Q2 next year — RFG</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">governance token launch</text>
+
+  <line x1="440" y1="178" x2="462" y2="178" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="464" y="142" width="200" height="72" rx="8" class="d-box-plain"/>
+  <text x="564" y="168" class="d-t" text-anchor="middle">Beyond — $1bn</text>
+  <text x="564" y="192" class="d-s" text-anchor="middle">“if we've got that loop”</text>
+
+  <text x="340" y="240" class="d-s" text-anchor="middle">All targets. “It might be a slower ramp up for us” — track records can't be bought.</text>
+</svg>
+<p class="figcap">Every TVL figure was given <strong>as a target</strong>. The host heard “a billion by the end of the year”; the correction was immediate: “100 million.”</p>
+</div>
+
+<p>The current phase is the “institutional testnet.” Cardano mainnet follows on 1 October, with a target of around $50 million of TVL across that phase. A month later comes the EVM launch, “where we can probably start seeing larger numbers with vault curators creating vaults for us across all of the big EVM DeFi venues.” Alongside: institutional sales, CEXs, programmes. Around $100 million by the turn of the year; “much larger numbers” after that if product-market fit is there; RFG in Q1 or Q2; then a billion.</p>
+
+<p>Each stage was given its own difficulty. <strong>“100 million's getting 10 institutions to say yes — hard but achievable.”</strong> A billion to ten billion needs “that loop” to be useful to retail and DeFi players alike. The gating factor is credit risk: trust and conviction have to be built, and “track records is something you can't buy,” so “it might be a slower ramp up for us.”</p>
+
+<p><span class="badge">added</span>On timing: <a href="../2026-08-14-ask-the-ceo/#en-mainnet">#6 (14 August)</a> said “around mid-September”; <a href="../2026-08-28-office-hours-investment-framework/">#8 (28 August)</a> said a date would be announced very shortly. This is the first time 1 October was said aloud — about two weeks later than the #6 estimate.</p>
+
+<p>He also said he was “really excited about the AlphaGrowth proposal going through,” since looping strategies and similar DeFi plumbing are what make a product like RealFi useful. <span class="badge">added</span>This is the PRIME proposal introduced in <a href="../2026-07-26-a-dose-of-alpha/">the A Dose of Alpha episode</a>; its passing was confirmed in <a href="../2026-08-14-ask-the-ceo/">#6 (14 August)</a> — “Alpha Growth also won their proposal.” Whether funds have actually moved was not covered here either.</p>
+
+<h2 id="en-cardano">8. The Cardano launch</h2>
+<p class="deck">A programme for small pools only, three doors in — Lace, Sundae, Liqwid — and what Japanese SPOs said.</p>
+
+<p>The SPO programme was restricted to <strong>small pools, one to twelve million ADA delegated</strong>: “we're really trying to focus on the sort of underserved end of the network.” A points system, with points redeemable for governance tokens at some future point, and SPOs earning a percentage of the rewards their delegators earn by doing things in the testnet.</p>
+
+<p>Two results were given: 84% of participating SPOs grew their delegator base over the period, against 17% in the control group; and “5,000 real humans” ran through the test app programme over six to eight weeks.</p>
+
+<p><span class="badge">added</span>The 84% and 17% are the same figures shown in <a href="../2026-07-31-data-and-insights/#en-spo">#4 Data &amp; Insights</a>, where the presenter declined to claim causation. How “real humans” are identified was not described here either.</p>
+
+<p>Three doors open on 1 October.</p>
+
+<ul>
+  <li><strong>Lace.</strong> Swap from USDCx into USDrf and stake directly inside the wallet — “we built out user experience there”</li>
+  <li><strong>Sundae.</strong> A USDC/USDrf pool and an sUSDrf/USDrf pool, “mostly so you can liquidate through some of the DeFi stuff that we're doing.” (“I got to remember the names of my own tokens,” he says, correcting USDR to USDrf)</li>
+  <li><strong>Liqwid.</strong> “The product I'm really interested to see how it runs.” Deposit ADA, borrow USDCx against it at a fixed rate, come into USDrf, stake. Then borrow more USDC against the staked USDrf and loop. Both actions curated inside a segregated vault</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-label="The two DeFi actions curated on Liqwid: deposit ADA, borrow USDCx, swap to USDrf and stake; then borrow again against sUSDrf and repeat">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="30" width="148" height="76" rx="8" class="d-box"/>
+  <text x="90" y="56" class="d-t" text-anchor="middle">Deposit ADA</text>
+  <text x="90" y="78" class="d-s" text-anchor="middle">segregated Liqwid vault</text>
+  <text x="90" y="96" class="d-s" text-anchor="middle">the ADA is not sold</text>
+
+  <line x1="164" y1="68" x2="180" y2="68" class="d-line" marker-end="url(#e3)"/>
+
+  <rect x="182" y="30" width="148" height="76" rx="8" class="d-box"/>
+  <text x="256" y="56" class="d-t" text-anchor="middle">Borrow USDCx</text>
+  <text x="256" y="78" class="d-s" text-anchor="middle">against the ADA</text>
+  <text x="256" y="96" class="d-s" text-anchor="middle">at a fixed rate</text>
+
+  <line x1="330" y1="68" x2="346" y2="68" class="d-line" marker-end="url(#e3)"/>
+
+  <rect x="348" y="30" width="148" height="76" rx="8" class="d-box"/>
+  <text x="422" y="56" class="d-t" text-anchor="middle">Swap to USDrf</text>
+  <text x="422" y="78" class="d-s" text-anchor="middle">via the Sundae pool</text>
+
+  <line x1="496" y1="68" x2="512" y2="68" class="d-line" marker-end="url(#e3)"/>
+
+  <rect x="514" y="30" width="148" height="76" rx="8" class="d-box-accent"/>
+  <text x="588" y="56" class="d-t" text-anchor="middle">Stake</text>
+  <text x="588" y="78" class="d-s" text-anchor="middle">receive sUSDrf</text>
+  <text x="588" y="96" class="d-s" text-anchor="middle">seven-day cooldown</text>
+
+  <line x1="588" y1="106" x2="588" y2="150" class="d-line"/>
+  <line x1="588" y1="150" x2="256" y2="150" class="d-line"/>
+  <line x1="256" y1="150" x2="256" y2="108" class="d-line" marker-end="url(#e3)"/>
+
+  <text x="422" y="176" class="d-s" text-anchor="middle">Loop: borrow more USDCx against the sUSDrf and go round again</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">“Super popular on EVM.” Built to see whether people actually do it.</text>
+</svg>
+<p class="figcap">Drawn from the spoken description; nothing like this was on screen. <span class="badge">added</span>Leverage amplifies losses as well as gains — <a href="../2026-08-06-office-hours-gtm/">#5 Go To Market</a> works through a numerical example.</p>
+</div>
+
+<p>The reason the Liqwid product is shaped this way: <strong>“when we surveyed the Japanese SPOs, 86% of them said they'd rather borrow than sell that ADA to do stuff.”</strong> It is “a curated product around some of the feedback that we had.” <span class="badge">added</span>This is the first number from the Japan survey that <a href="../2026-08-24-office-hours-ticker/#en-japan">#7</a> said had gone out that day. The question wording and the number of respondents were not given.</p>
+
+<p>“I think we're going to have an announcement going out today to the community, to the public about this, so no spoilers, please.”</p>
+
+<h2 id="en-questions">9. What came out in the questions</h2>
+<p class="deck">Regulation, the bridge, on-ramps, transparency, Ethena Pay, transaction counts. The substance is here; the exchanges are in the Q&amp;A section.</p>
+
+<p><strong>The US, EU and UK are out of scope.</strong> “We have the same setup as Ethena and the same restrictions as Ethena. And they achieved 17 billion dollars of TVL. So I would say our current structure and setup is non-prohibitive of scale.” The mechanics: RealFi itself cannot face off to institutions or individuals in those regions. Anyone who comes to the dApp from a restricted region is geoblocked — but “our responsibility mostly ends there.” The secondary market can't be controlled: “that's how crypto works.” Mint and redeem partners only from regions they are comfortable with; the same for CEXs, with due diligence and RealFi's own legal guidance, distribution being the CEX's call. <strong>“The US is the highest risk area and is the one that CEXs normally most risk us on.”</strong></p>
+
+<p><span class="badge">added</span>In <a href="../2026-08-14-ask-the-ceo/">#6</a> the line was “no plans to meet MiCA or GENIUS — for a number of reasons,” with the reasons unstated. They are still unstated, but <strong>the excluded regions are now concrete</strong>.</p>
+
+<p><strong>The bridge is a fork of CCTP.</strong> USDC comes into Cardano through it; on the way out “we've basically done our own version which we've internalized.” Ethereum also gets a native issuance contract and a native staking contract: <strong>“the EVM experience is seamless but canonical accounting happens on Cardano.”</strong> <span class="badge">added</span>#6 described a planned move from the CCTP fork to LayerZero; LayerZero was not mentioned here. The questioner also raised SVM (Solana); the answer covers EVM only.</p>
+
+<p><strong>On- and off-ramps vary “hugely on country's country.”</strong> Some countries go from local currency to USDC or USDT cheaply — Binance P2P markets, for instance — and some are “really really expensive.” <strong>The pair that has to work is mobile money into USDrf.</strong> Countries where people can get in and out cheaply become the natural launch markets. “It's possible in every country, it's just at what cost.”</p>
+
+<p><strong>Sleeve C transparency has four layers.</strong> Asked whether bad debt could occur without participants knowing: “the answer is yes, you do know about it.” The transparency portal (how sleeve C is invested, and its valuation); the fund administrator's NAV; an independent credit evaluator, “I think we're looking at twice a year”; and the fund's audit. The evaluator is added because “your fund admin is not the be all and end all evaluation.” <span class="badge">added</span>Who the evaluator is was not said, and “twice a year” is “looking at” language.</p>
+
+<p><strong>Ethena Pay: “I really like it. I'm just going to be honest.”</strong> It is close to what he has long seen as RealFi's next evolution — “I actually started with that concept and then backtracked into focusing more on the protocol part.” But Ethena built itself as a single basis trade, which makes shifting strategy hard; a long blog post moving toward RealFi's strategy and then backing out “I was quite concerned by.” <strong>“It's not necessarily that one strategy is better than another but they're just different strategies.”</strong> If RealFi reaches that stage, the focus would be emerging markets — an application for “someone in Argentina who's had many many currency crises.”</p>
+
+<p><strong>Not many transactions.</strong> “This is not a high frequency product. If you buy USDR, you stake it, you get your yield, you're not necessarily doing a lot then with it.” Buy and hold, or buy and loop. The neo-banking picture — a debit card on the balance, savings, moving out of a fast-depreciating local currency, buying from Amazon, zero-cost transfers across the network — has “the outlines of the product,” but the yield engine comes first. <strong>No transaction estimate was given.</strong></p>
+
+<h2 id="en-overall">10. The whole picture</h2>
+<p class="deck">The yield source, the three tokens, the defences, and Cardano. Everything on this call bundles into four.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="The whole picture: a yield-bearing dollar in the centre, with the yield source, the three tokens, the defences and the Cardano launch in the four corners">
+  <rect x="16" y="24" width="300" height="92" rx="8" class="d-box"/>
+  <text x="166" y="50" class="d-t" text-anchor="middle">The yield source</text>
+  <text x="166" y="74" class="d-s" text-anchor="middle">MMFs, CLO ETFs, lending to fintechs</text>
+  <text x="166" y="96" class="d-s" text-anchor="middle">uncorrelated to crypto; correlated to rates</text>
+
+  <rect x="364" y="24" width="300" height="92" rx="8" class="d-box"/>
+  <text x="514" y="50" class="d-t" text-anchor="middle">Three tokens</text>
+  <text x="514" y="74" class="d-s" text-anchor="middle">USDrf (no yield) / sUSDrf (8–10% target)</text>
+  <text x="514" y="96" class="d-s" text-anchor="middle">RFG (governance, Q1–Q2 next year)</text>
+
+  <rect x="190" y="136" width="300" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="162" class="d-t" text-anchor="middle">A yield-bearing dollar backed</text>
+  <text x="340" y="184" class="d-t" text-anchor="middle">by real economy assets</text>
+
+  <rect x="16" y="216" width="300" height="92" rx="8" class="d-box"/>
+  <text x="166" y="242" class="d-t" text-anchor="middle">Defences</text>
+  <text x="166" y="266" class="d-s" text-anchor="middle">loss waterfall / US, EU, UK geoblocked</text>
+  <text x="166" y="288" class="d-s" text-anchor="middle">portal, NAV, credit evaluator, audit</text>
+
+  <rect x="364" y="216" width="300" height="92" rx="8" class="d-box"/>
+  <text x="514" y="242" class="d-t" text-anchor="middle">The Cardano launch</text>
+  <text x="514" y="266" class="d-s" text-anchor="middle">mainnet 1 Oct / Lace, Sundae, Liqwid</text>
+  <text x="514" y="288" class="d-s" text-anchor="middle">small-pool SPO programme; Japan survey 86%</text>
+
+  <line x1="166" y1="116" x2="260" y2="136" class="d-line"/>
+  <line x1="514" y1="116" x2="420" y2="136" class="d-line"/>
+  <line x1="166" y1="216" x2="260" y2="196" class="d-line"/>
+  <line x1="514" y1="216" x2="420" y2="196" class="d-line"/>
+</svg>
+<p class="figcap">“Uncorrelated” sits in the middle. Around it: <strong>who it is sold to</strong> (the tokens), <strong>how it is defended</strong> (the waterfall, the regions, the transparency), and <strong>where it starts</strong> (Cardano).</p>
+</div>
+
+<h2 id="en-qa">11. Q&amp;A</h2>
+<p class="deck">Six from the chat, four from the stage, two from the host.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matus (chat)</span>What does high yield mean in USD terms? Is it possible to lose money, and if so, how?</p>
+<p class="qa-a" data-by="Answered">The first half: a target of 8–10% on sUSDrf, dependent on the staking ratio and global rates. The second: the loss waterfall (<a href="#en-losses">section 4</a>) — equity, stability fund, sUSDrf, USDrf. “Obviously we want to make sure there aren't any losses, but in the event we get things wrong, this is how they would fall.”</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Anonymous (Q&amp;A)</span>What will RFG holders actually vote on — protocol parameters, treasury allocations, something else?</p>
+<p class="qa-a" data-by="Openly unfinished">“Speaking honestly, this is something that we're still working on.” Settled: not specific investment decisions. Possible: which funds are included, who manages, the fee rate, how protocol value is distributed. Light touch at launch.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matus (chat)</span>Will it stay at 8–10% even if T-bills drop significantly below 5%?</p>
+<p class="qa-a" data-by="Conditionally">“You exchange one correlation for another” — it will be correlated with global rates, and that is accepted. Plus the unstaked share of the yield can be redirected to sUSDrf, so “depending on that staking percentage” the level can be defended. <strong>Not a flat yes.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Anonymous (Q&amp;A)</span>Beyond governance, will RFG capture value directly — fee sharing, treasury participation — or is it kept pure governance for now?</p>
+<p class="qa-a" data-by="Direction only">The part with “the most legal complexity” and the most need for consultation. A minimal set of launch rights, then expand. “A much lighter touch process than the Cardano governance process.” <strong>Neither a yes nor a no.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Host</span>Based on the field work and research, what was the outcome on demand? Is there appetite from institutions and investors?</p>
+<p class="qa-a" data-by="Belief, not data">“I believe so.” Crypto treasurers care about yield and risk, and the capital is flighty, so incentives are needed. $100m is “getting 10 institutions to say yes.” The real question is the next step, a billion to ten billion, which needs the loop to work for retail and DeFi. <strong>No survey result was given.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matus (chat)</span>How can I obtain RUSD — only via DEX, or also via a centralised exchange?</p>
+<p class="qa-a" data-by="Half answered">On CEXs: “the one cardinal rule … is don't talk about centralized exchanges that you're going to be listing on. So I have no comments.” The DEX route “is Sundae at the moment.” <span class="badge">added</span>“RUSD” in the question reads as USDrf.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Host</span>What is your projection for transactions in the first year after launch?</p>
+<p class="qa-a" data-by="No number">“This is not a high frequency product.” Buy and hold, or buy and loop. Transactions come later, with a neo-banking experience on top; the starting point is the yield engine. <strong>No estimate was offered.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Matthew</span>Your thoughts on the announcement of Ethena Pay?</p>
+<p class="qa-a" data-by="Answered">“I really like it. It's a great product.” Close to what he had long seen as RealFi's next step. Ethena is locked into a single basis trade and backed away from a move toward RealFi's strategy. “Not that one strategy is better than another — they're just different.” RealFi would eventually focus on emerging-market applications.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Sam</span>If US, European and UK residents can't mint, redeem or use the app, is emerging-market demand really enough to reach the scale you imagine? What's holding you back?</p>
+<p class="qa-a" data-by="Answered">“The same setup as Ethena and the same restrictions as Ethena — and they achieved 17 billion.” RealFi can't face off to those regions and geoblocks the dApp, but can't control the secondary market. Mint/redeem partners and CEXs only from comfortable regions. “The US is the highest risk area.”</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Sam</span>EVM and SVM are on the roadmap — what bridge infrastructure will this multi-chain asset use?</p>
+<p class="qa-a" data-by="EVM only">A fork of CCTP: in through the bridge, out through an internalised version. Native issuance and staking contracts on Ethereum, with “canonical accounting on Cardano.” <strong>SVM was not addressed.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Jean (chat)</span>How do you deal with on- and off-ramps in emerging markets, and how do you onboard users converting fiat to crypto and back?</p>
+<p class="qa-a" data-by="Answered">“It varies hugely on country's country.” Cheap in some, expensive in others, depending on infrastructure. The pair that has to work is mobile money into USDrf; the cheap countries become the natural launch markets. “Country by country is how you've got to approach it.”</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Sam</span>Most of the funds sit in sleeve C. Is RealFi required to show a risk metric on the underlying debt? Can bad debt occur without participants knowing?</p>
+<p class="qa-a" data-by="Answered">“The answer is yes, you do know about it.” Four layers: the transparency portal, the fund administrator's NAV, an independent credit evaluator (twice a year, they are looking at), and the fund audit.</p>
+</div>
+
+<h2 id="en-pending">12. Left unanswered</h2>
+<p class="deck">The order was given and the date was given. The amounts and the results were not.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No number</span>How much equity sits at the top of the waterfall, and when is it paid in?</p>
+<p class="qa-a" data-by="Order only">“We can have” de-risking capital. Neither the amount nor the timing was given — carried over from #6.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unanswered</span>What did the demand research actually find?</p>
+<p class="qa-a" data-by="Belief given">The host asked for the outcome of the research; the reply was “I believe so.” <strong>No figures from it were given.</strong></p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No number</span>Transactions in the first year.</p>
+<p class="qa-a" data-by="Character only">“Not a high frequency product.” No estimate.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Withheld</span>CEX listings.</p>
+<p class="qa-a" data-by="Refused on principle">“Don't talk about centralized exchanges that you're going to be listing on.” The “positive discussions” mentioned in <a href="../2026-08-24-office-hours-ticker/">#7</a> remain unnamed and undated.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not named</span>Who the independent credit evaluator is.</p>
+<p class="qa-a" data-by="Intent only">“Twice a year” is “looking at” language; no evaluator was named and no first report was dated.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not named</span>“The one big one that we have at the moment.”</p>
+<p class="qa-a" data-by="Existence only">One large institutional investor is on a longer lock-up. Who, how much, and how long were not said.</p>
+</div>
+
+<div class="note">
+<p><strong>About this page.</strong> This conversation is based on a recording published on YouTube and <strong>is not covered by the Chatham House Rule</strong>; the speakers are named. The original video is <a href="https://www.youtube.com/watch?v=735yJ_erh2A">here</a> (Cardano Community channel; whether it is an official channel has not been verified).</p>
+<p>The source transcript, with speaker labels and timestamps, had its proper nouns checked by the requester before delivery. The host is addressed by name once, but the spelling could not be verified, so the host appears as “Host.”</p>
+<p><strong>Slides were shown.</strong> References to “this graph” and “the next slide” survive in the audio, but the slides were not provided, so <strong>only what was spoken aloud appears here</strong>. Every figure was drawn from the spoken description, not copied from the screen.</p>
+<p>Passages marked <span class="badge">added</span> were written by us to help the reader and were not said on the call.</p>
+<p>For the exact wording, see the <a href="#en">English transcript</a>; to read straight through in Japanese, the <a href="#ja">Japanese transcript</a>.</p>
+</div>
+</div>
+</section>
+
+<details class="part" id="ja">
+<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
+<div class="note">
+<p><strong>このページについて。</strong>この対談は <a href="https://www.youtube.com/watch?v=735yJ_erh2A">YouTube で公開されている</a>ため、チャタムハウスルールの対象ではなく、<strong>発言者は実名のまま</strong>です。質問者も、動画の中で呼ばれた名前のままにしています。</p>
+<p>原本は依頼者が<strong>固有名詞の誤変換を直したうえで</strong>渡してきたテキストで、話者ラベルと時刻が付いています。<strong>文言はそれ以外は語られたとおり</strong>で、話者が言い間違えて言い直した箇所（USDR → USDrf）もそのまま訳しています。進行役の名前は一度だけ呼ばれていますが（7:55 ごろ）、綴りは確認できていません。</p>
+<p><strong>スライドが使われた回です。</strong>「このグラフ」「次のスライド」という参照が残っていますが、<strong>ここに載っているのは音声で語られた内容だけ</strong>です。</p>
+</div>
+
+<div class="sec">冒頭</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">0:23</span></div>
+  <div class="turn-body"><p>はい。それでは、Cardano Seminar へようこそ。今日は RealFi の CEO、John O'Connor さんをお迎えして、RealFi の背景にある物語を語っていただきます。何を作っているかという話だけではなく、「銀行口座を持たない人々に金融を届ける（banking the unbanked）」をどうやって実際に実現しようとしているのか、という話です。それが Cardano とどうつながるのか、Cardano のステークプール運営者を使うことも含めて、エコシステムにとって何を意味しうるのかにも踏み込みます。John さん、ご参加ありがとうございます。それでは、お願いします。</p></div>
+</div>
+
+<div class="sec">RealFi とは何か</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">1:04</span></div>
+  <div class="turn-body"><p>ありがとうございます。また Cardano Foundation の場で発表できるのはうれしいです。お招きありがとうございます。さて、今日は RealFi についてお話しします。一言でいうと RealFi とは何か。RealFi は、実体経済の資産に裏付けられた、利回りを生むドルです。設計にあたって出発点にした洞察は、暗号資産の世界に大きな空白がある、ということでした。それは、相関しない利回りの源泉です。つまり、Bitcoin の価格にも、インフレ的なトークノミクスにも、暗号資産の金利サイクルにも連動しない形で利回りを生むもの。そこから利回りを作ろうとするプロダクトは無数にありますが、そうでないものはごくわずかです。私たちがそれをどうやるかというと、結局は資産のポートフォリオ、実世界の資産のポートフォリオを通じてです。マネー・マーケット・ファンド、CLO ETF、そしておそらく私がいちばん心躍る部分ですが、キャッシュフローを生む事業に融資している fintech への貸付。これは最終的にインパクトも生みます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">2:09</span></div>
+  <div class="turn-body"><p>RealFi は設計として安定しています。完全に資産で裏付けられ、準備金は透明に保たれ、ケイマン諸島のファンド構造を通して運用され、私たちが過去にモデル化した暗号資産のストレス・シナリオのすべてにわたってペッグを維持できるように作られています。最後に、DeFi をまたいでコンポーザブルであること。さまざまな暗号資産の DeFi プロトコルやパラダイムで使えるトークンにしたい。最終的には、生産的なドルを作りたいのです。貯蓄商品として使えて、DeFi プロトコルで借入の担保にもなる。今日の暗号資産の中にいる人にとって役立つと同時に、暗号資産をこれまで使ってこなかったけれど、これなら役に立つかもしれないという実世界の人々にとっても、非常に役立つプロダクトになりうるものを作ろうとしています。</p></div>
+</div>
+
+<div class="sec">ステーブルコインの 3 つの世代</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">2:58</span></div>
+  <div class="turn-body"><p>ここには長く時間をかけませんが、ステーブルコインは大きい。それは皆さんご存じでしょう。ただ、どれだけ大きく、どれだけ速く成長しているかを忘れがちだと思います。ステーブルコインの時価総額は、現在おそらく 3,500 億ドル前後です。2030 年までに、上限と下限の見立てがここにありますが、1.9 兆ドルから 4 兆ドルの間になる。つまり、大きな成長が見込まれています。そしてこの全体の中で、いちばん速く伸びているのが利回り付きのカテゴリーです。直近 24 か月で 20 億ドルから 270 億ドルになりました。実はこの資料はたぶん 4 か月前に作ったもので、今はもっと大きいと思います。良い兆候です。肝心なのは、暗号資産市場全体がもたついていた時期に、この利回り付きカテゴリーは本当に伸びた、ということで、それはプロダクト・マーケット・フィットがあるからだと私は考えています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">3:46</span></div>
+  <div class="turn-body"><p>では利回り付きステーブルコインとは何か。どういう種類があるのか。まず、Tether / USDC のモデルは皆さんご存じでしょう。おそらく、Cardano にいる私たちの誰も思いつかなかった中で最良のアイデアです。Tether が作られたとき、私たちは確かに何かをやっていた。それにしても天才的なビジネスモデルです。あなたが私に 1 ドルを渡し、私はあなたに 1 USDT を渡す。私は米国債（T-bill）を買いに行き、その利息は自分のものにできる。去年、投資チーム 35 人ほどの Tether が Goldman Sachs より多くの利益を出したのをご覧になった方もいるでしょう。とても簡単で、とても良い商売です。そこで何かが起きているのは見えています。次に、いわば V2 のステーブルコインです。トークン化した米国債を包んで、利回りを人々に返したらどうか、と。これも素晴らしいプロダクトで、Cardano でも昔議論したけれど手を付けなかったもののひとつです。Ondo とその成長で見えたのは、米国債の無リスク金利のような実世界資産の源泉に、巨大な需要があるということだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">4:53</span></div>
+  <div class="turn-body"><p>そしてステーブルコイン V3。これは私にとって潜在的にいちばん面白いもので、新しいことをやっている唯一の例だったからです。米国債を包むだけではなく、Ethena がやったのは、暗号資産でマーケット・ニュートラル、いわゆるデルタ・ニュートラルの取引をやろう、ということです。要するに Bitcoin の現物を買い、同時に無期限先物（パーペチュアル）でショートを持つ。Bitcoin の価格が上がれば現物で儲かるがショートで損をする。下がればショートで儲かるが現物で損をする。ではなぜそんなことをするのか。暗号資産では通常、ロング側がショート側に払うからです。ファンディング・レートというものを、そのショートを持ち続けることに対して払う。ファンディング・レートは利回りによく似ています。Bitcoin への方向性のエクスポージャーを外しながら、その利回りを取る能力を投資の取引として表現する方法です。素晴らしいアイデアです。ヘッジファンドは普通、こういう取引を 30 か 40 は持っています。Ethena が言ったのは要するに「この取引ひとつを取って、ステーブルコイン、利回り付きステーブルコインにくっつけよう」ということでした。Ethena は最初の 4 か月ほどで 40 億ドルくらいまで伸び、ピークではおそらく 1 年半後に 160 億か 170 億まで行きました。問題は、ファンディング・レートが常にプラスであり続ける理由はないこと、そして実際、この取引が本当に人気になるにつれ、当然ながら実入りが減ることです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">6:14</span></div>
+  <div class="turn-body"><p>そこで私たちの考え方は、暗号資産と相関しない、あるいは相関がずっと低い資産の籠を、ステーブルコインにくっつけるというこのモデルを取れる、ということです。それがまさに私たちのやろうとしていることです。私たちの戦略はスケールすると考えています。実世界の資産は何兆ドル、何十兆ドルとあり、最終的には世界で実際に何かをするステーブルコインを作れる。米国債をさらに買ってアメリカの借入コストを下げるだけではなく、実際の経済的な生産性を生むものです。これが RealFi の背後にある高いレベルの構想です。</p></div>
+</div>
+
+<div class="sec">市場の中での位置</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">6:54</span></div>
+  <div class="turn-body"><p>では、市場と競争の中で私たちはどこにいるのか。ここに、とても複雑ですが、かなり役に立つグラフがあります。横軸は利回りの源泉の種類です。右が実物資産の裏付け、左が合成型・発行（エミッション）型。縦軸は利回りのプレミアム。下が無リスク金利の米国債で、上に行くほどリスク・カーブを進み、同時に高い利回りを得る。見てのとおり、多くの人が米国債まわりで何かをやろうとしていました。簡単だからです。右下ですね。そこには大した革新の余地はないと私たちは広く考えています。それから合成側。Ethena のような人たちがベーシス取引で、利回りを表現するために巧妙なことをしようとしている。そして、合成型で低リターンの領域には誰も入りたがりませんが、いくつかはあります。私たちの見方は、右上の象限に向かえる、ということです。クレジット（信用供与）を効果的にやる方法に本気で取り組むことで。それは持続可能な本物の利回りの源泉になりうる。合成ではないが、それでも魅力的なリスク調整後リターンを提供できる。はい、すみません。Dentio さん、どうぞ。手が挙がっていますね。</p></div>
+</div>
+
+<div class="sec">質問 — 利回りと損失</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">8:08</span></div>
+  <div class="turn-body"><p>はい、John さん、ここまでありがとうございます。チャットで Matus さんから質問があり、2 つあります。1 つ目は、ドル建てで「高利回り」とは何を意味するのか。2 つ目は、お金を失う可能性はあるのか、あるとしたらどのように、というものです。</p></div>
+</div>
+
+<div class="sec">3 つのトークンと、損失の順序</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">8:25</span></div>
+  <div class="turn-body"><p>いいですね。どちらもたぶん次の 2 枚ほどのスライドで扱います。利回りのウォーターフォール、リスクのウォーターフォール、損失のウォーターフォールはスライドに入れていないので、そこで話します。では、3 種類のトークンを順に見ていきます。まず USDR——今は USDrf です。取引所の事情で USDrf に改称しました。次にステーキングしたドル、そして最後に RFG、ガバナンスのドルです。通常のステーブルコインには、実は利回りが付いていません。インセンティブは RFG を通じて提供されえますが、これを持っていても、裏付けポートフォリオの純資産価値（NAV）の積み上がりからは恩恵を受けません。ステーキング版の sUSDrf では受けます。目標リターンは 8〜10% の間で、ポートフォリオの構成は次のスライドで少し話します。これには 7 日間のアンステーク待機期間があります。ステーキングしたあと、お金を戻したくなったらアンステークをクリックし、1 週間の待機期間です。暗号資産のトレジャリー、ファミリーオフィス、DeFi の投資家にとってかなり便利なプロダクトだと考えています。最後に RFG。RFG はガバナンストークンです。テイクレート（手数料率）や、プロトコル手数料が何であるか、多くのプロトコルのパラメータについて投票できます。そして最終的には、プロトコルに積み上がるプロトコル収入が、このトークンで表されうる。供給量は固定、新規発行なし、インフレなしです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">9:46</span></div>
+  <div class="turn-body"><p>少し先に飛んで、損失がどう積み上がるかについてです。私たちにはいくつかの異なる防御があります。1 つ目は、リスクを減らすための資本、要するにエクイティを持つことができ、これがトランシェの——失礼、ウォーターフォールの——いちばん上に置かれて、最初に食われる。次にプロトコルの安定化ファンドです。時間とともに、プロトコルの残余収入がまずここを積み増しに行く。これが次に食われるもの。その次に、損失のウォーターフォールでは sUSDrf が来ます。ステーキングしている場合、損失が出たときにこれを下方に調整できる。そして最後に、通常の USDrf の保有者です。ここをいちばん守られた部分にしたい。ペッグの安定を生むのもここだからです。これが損失のウォーターフォールの順序です。もちろん、損失が出ないようにしたい。ただ、私たちが何かを間違えた場合には、このように落ちていく、ということです。Q&A に新しい質問ですね。</p></div>
+</div>
+
+<div class="sec">ガバナンストークンは何を決めるのか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">10:51</span></div>
+  <div class="turn-body"><p>はい、匿名の質問です。ガバナンストークンだとすると、RFG の保有者は実際にどんな決定に投票できるのか。プロトコルのパラメータなのか、トレジャリーの配分なのか、それ以外なのか、というものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">11:09</span></div>
+  <div class="turn-body"><p>ええ。正直に言うと、これはまだ取り組んでいる途中のものです。何に投票すべきでないと私が考えているかは言えます。個別の投資判断には投票すべきでないと思います。暗号資産で見てきたのは、それは通常かなり悪い結果に終わる、ということです。投票できうるのは、どのファンドを含めてよいかの合意です。たとえば今は、私たちがポートフォリオのファンドマネージャーです。将来的には、これを他の人ができるものに変えられるかもしれない。人々がポートフォリオの運用に入札し、全体の投資戦略を承認してもらう。これは、時間をかけてやりたい分散化の一例です。より短期では、ガバナンストークンが投票すべきなのは重要な経済的な問いだと考えています。たとえば、アセットマネージャーがポートフォリオから取れる手数料。これは本当に重要なものです。2 つ目に、プロトコルに積み上がる価値をどう分配するか。これは Ethena で起きたことの例で、残余価値をどう分配するかを投票しました。そういう種類の問いです。大きくは「パイの誰が何を取るか」という経済的なものに括れると思います。それから、より広いガバナンスの問いもあります。誰がアセットマネージャーになるのか、誰がこれをやり、誰があれをやるのか。RFG をローンチする最初の時点では、いわばライトタッチ版、権限とガバナンスの統制のひと揃いを目指し、時間をかけて広げていきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">13:00</span></div>
+  <div class="turn-body"><p>Matus さんから追加の質問もあります。米国債の利回りが 5% を大きく下回っても、8〜10% のままなのか、と。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">13:10</span></div>
+  <div class="turn-body"><p>ええ。ひとつの相関を別の相関と交換するわけです。結局のところ、固定利付きの資産では金利への依存が非常に高くなる。ですから、当然、世界の金利と相関することになります。私たちはそれで構わないと思っています。暗号資産の内側で相関するプロダクトは十分すぎるほどある。この種の相関を持ち込むほうが理にかなっていると考えています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">13:38</span></div>
+  <div class="turn-body"><p>はい、Matus さん、ありがとうございます。答えになっていれば幸いです。追加の質問があれば、マイクをオンにして、遠慮なくステージに上がってください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">13:47</span></div>
+  <div class="turn-body"><p>先ほど言ったように、ここには 2 つの異なるトークンがあります。USDrf は、利回りを受け取っていなくても資産のポートフォリオに投資されています。その利回りはプロトコルに積み上がる。そしてその利回りは、ステーキング比率に応じて、sUSDrf の保有者に提供される利回りを押し上げるのに使えます。Ethena の例では、ステーキングしているのは 50% だけです。つまりポートフォリオの利回りの 50% を再分配できる。ですから世界の金利が下がっていても、ステーキング比率によっては、その水準の利回りを守ることは可能です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">14:27</span></div>
+  <div class="turn-body"><p>はい、ありがとうございます。ところで、もうひとつ匿名の質問があります。ガバナンスの先に、RFG が手数料の分配やトレジャリーへの参加のように直接的に価値を取り込む計画はあるのか、それとも今のところは意図的に純粋なガバナンスにとどめているのか、というものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">14:46</span></div>
+  <div class="turn-body"><p>ええ、とても良い質問です。先ほど言ったように、ここはおそらく法的な複雑さがいちばん大きいだけでなく、顧客やコミュニティとの対話も必要な部分です。計画しているのは、ローンチ時の権限と権利は最小限のひと揃いにして、そこから相談しながら広げていく、ということです。Cardano のガバナンスのプロセスよりはずっとライトタッチなものになるでしょうが、それがどう育ち、どう変わっていくべきかについて、人々と対話していくつもりです。</p></div>
+</div>
+
+<div class="sec">2 つのブック</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">15:22</span></div>
+  <div class="turn-body"><p>では、皆さんがとても探究心旺盛で質問がたくさんあるので、最後のスライドを駆け足で行きます。資産のブックについて。私たちには 2 つの異なるブックがあります。1 つ目のブックは USDrf のためのもので、これは高い流動性を保たなければならない。投資できるのはマネー・マーケット・ファンド、米国債、そしてローン担保証券（CLO）の ETF です。この CLO ETF は実に良いプロダクトで、5% 前後の利回りが取れる。この資料を作った時点から少し下がったと思いますが。そして投資適格のトランシェだけを取ります。つまり AAA のものです。非常に流動性が高く、市場はとても厚く、売るのがとても簡単。それでいて、もちろん米国債の金利にプレミアムが乗る。それから、ポートフォリオの小さな部分で、直接貸付もまだやっています。2 つ目のブック、ステーキング側のブックでは、より多くのプライベートクレジット、より多くの fintech への直接貸付を扱えます。ポートフォリオ全体で混ぜ合わせると、これが 8〜10% 程度の APY を目標にできる理由です。ステーキング比率、世界の金利、いくつかのことに依存しますが、少なくとも今のところ私たちが納得している数字で、ローンチに向けて目標にするものです。ローンチは間近です。最後にひとつ。大口の機関投資家については、より長い期間ロックアップしてもらい、そのためのインセンティブを作ります。それは結局、償還リスクについてより安心できる、ということです。今いる大きな 1 社のような機関投資家には、より長いロックアップを設けています。</p></div>
+</div>
+
+<div class="sec">実績</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">17:07</span></div>
+  <div class="turn-body"><p>さて、なぜ私たちを信頼すべきなのか。私たちは何者か。私たちはこの fintech 貸付の戦略を、ここ数年間運用してきました。1,150 万ドルの資本で運用し、20% の IRR（内部収益率）を達成し、25 の異なる fintech に、40 の異なる取引で貸し付け、世界の新興国市場を中心に 10 か国にまたがります。これを最終的な事業へのインパクトに分解すると、これらの国々の事業をまたいで、年に 100 万件の貸付を行っていました。非常にインパクトの大きい貸付でもあります。これを、私たちが RealFi 360 データモデルと呼ぶもので行いました。借り手の情報をすべて取り込み、fintech から受け取るローン・テープ（貸付明細）のすべてと突き合わせ、それを管理会計の帳簿と照合し、最後に、さまざまな銀行口座の間で実際に動いている現金の動きと照合する。ここには長く時間をかけませんが、審査（アンダーライティング）はもちろん非常に重要で、これを効果的にやるための技術を数多く作ってきました。これがここ数年やってきたことです。</p></div>
+</div>
+
+<div class="sec">ロードマップ</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">18:07</span></div>
+  <div class="turn-body"><p>では、これは何を意味するのか。どうやって大きくなるのか。10 億ドルで終わる、とても詳細なスライドを作りました。少なくとも私にはとても説得力があります。今は機関向けの testnet の段階にいます。testnet はローンチ済みで、皆さんも参加してくださっていることを願います。今やっているのは、Cardano の mainnet へ移ること。これは 10 月 1 日です。この段階で 5,000 万ドルほどの TVL を達成したい。その 1 か月後に EVM 全体でローンチし、ここでおそらく、より大きな数字が見え始める。ボールトのキュレーターが、大きな EVM の DeFi の場すべてで私たちのためにボールトを作ってくれる。この数字を上げるために、私自身も今、機関向けの営業をたくさんやっています。もちろん CEX（中央集権型取引所）やプログラムなど、そういったものも。GTM（市場投入戦略）についてはあまり長く話しませんが、大まかには、年の変わり目あたりで 1 億ドル程度の TVL を目標にしています。そのあと、プロダクト・マーケット・フィットがあれば、はるかに大きな数字が見えるかもしれない。RFG は来年の Q1 か Q2 にローンチする予定です。そして本当に 10 億ドルの TVL を達成する、などなど。Ethena の例に戻ると、プロダクト・マーケット・フィットがあった彼らは、おそらく 4、5 か月で 40 億をやった。だからこういうプロダクトなら、確かに可能です。私たちにとって鍵になるのは、信用リスクです。市場で信頼と確信を築かなければならない。トラックレコードは買えないものです。ですから私たちの立ち上がりは遅いかもしれない。ただ、私たちの信じるところでは、自分たちの仕事をきちんとやれば、暗号資産の中で、かなりユニークで良い位置にいるプロダクトとして信頼を作れるはずです。</p></div>
+</div>
+
+<div class="sec">需要はあるのか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">19:54</span></div>
+  <div class="turn-body"><p>John さん、ありがとうございます。とても示唆に富んでいます。気になっているのは、今の目標が、年末に向けて 10 億ドルということですよね——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor</div>
+  <div class="turn-body"><p>1 億ドルです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>——1 億でしたか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor</div>
+  <div class="turn-body"><p>ええ、今年の末までに。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>今年の末までに。それでは、フィールドワークや調査はされたと思います。その調査にもとづくと、需要という点での結果は実際どうだったのでしょうか。こういうプロダクトに対して、機関や投資家から大きな需要、食欲はあるのでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">20:25</span></div>
+  <div class="turn-body"><p>あると信じています。結局のところ、暗号資産のトレジャリー担当者に売り込むなら、彼らが気にするのは利回りとリスクで、しかも非常に動きの速い資本です。当然、そのまわりにいくつものインセンティブを用意しなければならない。ただ、これは妥当な数字だと思っています。本当の問いは、1 億ドルに到達するための、いわば初期段階の資本の案件を十分に集めて、コールドスタート問題を抜けたあと、10 億から 100 億ドルに行けるだけの需要があるか、です。これはなかなか答えにくい問いです。先ほど言ったように、Ethena はやりました。ですからある意味で、そちらのほうが難しい部分です。1 億ドルは、10 の機関に「はい」と言ってもらうこと。難しいが達成可能です。10 億ドルには、そのループを確実に回して、個人にも、DeFi のプレイヤーにも、その他すべてにとって役立つようにしないといけない。ここで少し脱線しますが、AlphaGrowth の提案が通ったことを本当にうれしく思っています。私たちのようなプロダクトを有用にする根本的なことの多くは、ルーピング戦略などを回せることで、AlphaGrowth は Cardano に欠けているインフラの一部を、こうした DeFi の動きが機能するように構築するのを手伝ってくれると思います。ですからその観点で、私たちのタイミングはかなり良いと思います。</p></div>
+</div>
+
+<div class="sec">Cardano での立ち上がり</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">21:48</span></div>
+  <div class="turn-body"><p>さて、最後の 2 枚です。これは Cardano について少し話すためのものです。私たちは SPO プログラムを実施し、小さなプールだけに絞りました。委任額が 100 万から 1,200 万 ADA のプールです。ネットワークの中で、いわば十分にサービスされていない側に本気で焦点を当てようとしたのです。ポイント制度を提供しました。ポイントは将来のある時点でガバナンストークンと交換できます。そして、SPO は自分の委任者が testnet で活動して得た報酬すべての一定割合を得られる、としました。かなり面白い統計があります。参加した SPO のうち、84% がその期間に委任者の数を増やした。対照群、つまり受け入れられなかったか、プログラムに枠がなかった人たちでは 17% でした。この 6〜8 週間で、5,000 人の本物の人間が私たちのテストアプリのプログラムを通っていきました。ですから、Cardano 側からの参加はこれまでのところ良好だと言えます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">22:52</span></div>
+  <div class="turn-body"><p>はい。ここで、いわば結論を後回しにしてしまいましたが、10 月 1 日が私たちの本稼働の日になります。今日、コミュニティと一般に向けてこの発表が出る予定です。ネタバレはなしでお願いします。何ができるようになるのか。Lace の中で swap と stake ができます。そこでのユーザー体験を作り込みました。USDCx から USDR に swap し、そのまま Lace ウォレットの中で stake できる。Sundae では、これを動かすプールがあります。USDC と USDR のプール——自分のトークンの名前を覚えないといけませんね——今は USDC と USDrf のプール、そしてステーキングした USDrf と USDrf のプールです。これは主に、私たちがやっている DeFi の仕組みを通じて換金できるようにするためです。そして、どう動くか私がいちばん楽しみにしているプロダクト。Liqwid では、ADA を預けて、それを担保に固定金利で借りられます。失礼、ADA を担保に USDCx を借りて、それを USDR にして、stake できる。これは実際の DeFi のプリミティブです。動かすためにかなりのことをしなければなりませんでしたが、人々が実際にこれをやりに来るかどうかに興味があります。2 つ目にできるのは、ステーキングした USDR を持って、それを担保にさらに USDC を借り、レバレッジをかけてループすることです。これは EVM で非常に人気があるものです。そこで、この 2 つの DeFi の動作を Liqwid の隔離されたボールトの中で選り抜いて用意し、人々が実際にやるかどうかを見ようとしています。日本の SPO に調査をしたところ、86% が、何かをするなら ADA を売るより借りるほうがいいと答えました。ですからこれは、いただいたフィードバックの一部をもとに選り抜いたプロダクトのようなものです。私の話はこれで十分でしょう。ありがとうございます。RealFi が何なのか、いつ何をするのか、どう参加できるのか、皆さんに伝わっていれば幸いです。</p></div>
+</div>
+
+<div class="sec">質疑</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">24:46</span></div>
+  <div class="turn-body"><p>はい、John さん、ありがとうございました。John さん、Matus さんから 4 つ目の質問がありました。RUSD はどうやって手に入れられるのか。DEX 経由だけなのか、中央集権型取引所でもなのか、と。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">24:57</span></div>
+  <div class="turn-body"><p>ええと、Cardano Foundation の皆さんならご存じのとおり、中央集権型取引所についての鉄則は、これから上場する中央集権型取引所について語らないことです。ですのでそのあたりについては何もコメントできません。言えるのは、DEX があること。DEX の経路は、今のところ Sundae です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">25:23</span></div>
+  <div class="turn-body"><p>なるほど、John さん。取引数の面での見通しも気になります。ローンチ後の最初の 1 年で、どれくらいの取引数になると見込んでいるのでしょうか。何らかの見積もりや予測はされていると思うのですが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">25:42</span></div>
+  <div class="turn-body"><p>ええ。結局のところ、これは高頻度のプロダクトではないんです。USDR を買って、stake して、利回りを得る。そのあと、それで何かをたくさんするわけでは必ずしもない。取引数の話をするなら、私にとってより心躍る部分は、この利回りのエンジンをいったん作ったら、それをネオバンク的な体験に載せることです。新興国市場のネオバンクのアプリで、残高に紐づくデビットカードで支払い、貯蓄し、急速に価値を失っているかもしれない現地通貨から米ドルのステーブルコインに移し、信頼できる利回りの源泉を持ち、そこから Amazon で買い物をする。私にとっては、それがより多くの実用性を築く価値提案で、そこで実際の取引がより多く見え始める。そしてそれは見えていますよね。ネットワーク上の全員の間でコストゼロの送金。プロダクトの輪郭はそこにある。ただ、出発点は当然、利回りのエンジン、利回りのプロトコルです。だからここから始めている。ですが、取引が大量にあるとは見ていません。どちらかというと、買って持つか、買ってループするか、DeFi の類ですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">27:07</span></div>
+  <div class="turn-body"><p>なるほど。私自身もあと 2 つほど質問がありますが、ほかの方にもやり取りする機会を差し上げたいと思います。あなたのプレゼンは関心をかき立てただけでなく、きっといくつもの疑問も生んだでしょうから。では、Matthew さん。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Matthew<span class="turn-time">27:31</span></div>
+  <div class="turn-body"><p>こんにちは。Ethena Pay の発表について、お考えを聞かせてもらえますか。どう思われますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">27:38</span></div>
+  <div class="turn-body"><p>それを言われるとは面白いですね。実は、私がずっと RealFi の次の進化として考え、見てきたものにとても近いんです。私は実際、その構想から始めて、そこからプロトコルの部分に集中する方向へ戻った。率直に言って、とても好きです。素晴らしいプロダクトだと思います。ただ Ethena は面白い立場にいると思います。彼らは自分たちを、単一のベーシス取引として作り上げてしまった。ステーブルコインにくっついたトークン化された取引で、それが別の戦略に移ることを難しくしている。彼らは実際、長いブログ記事を書いていて、私はかなり気になったのですが、基本的に私たちの戦略のほうへ移ろうとしていて、そのあとベーシス取引が戻ってきそうだからと少し引き返している。だから難しいんです。どちらかの戦略が優れているというより、単に違う戦略です。根本的に Ethena が見たのは、市場のレジームが変わって自分たちの戦略が効かなくなった、ということでした。それでどう転換するかとなり、今は「いや、戦略が戻ってくるかも」となっている。ですから、私たちの戦略のまわりにプロダクトを本気で作る余地があると思いますし、私たちの戦略はどんな期間でもスケールしながら持続的に回せると考えています。2 つ目に、私たちが Ethena Pay のような時期に来て、そういうことができるようになったら、私は本当に新興国市場の部分に集中したい。たとえばアルゼンチンで何度も何度も通貨危機を経験してきた人に向けたアプリケーションのような、役に立つプロダクトを提供するのが理にかなっていると思います——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">29:23</span></div>
+  <div class="turn-body"><p>ええと、そうですね、「銀行口座を持たない人々に金融を」について質問がいくつか来ています。セミナーの説明文の部分に少し引っ張られていると思いますが、少し話します。私は「banking the unbanked」とは言わないようにしています。私の見方では、私たちの貸付活動は、銀行サービスが十分でないが、非常に堅実な事業に資本を提供することだからです。新興国市場にまたがる、生産的で、貸し付けられる事業で、信用のギャップが本当に大きいために、資金への切実な需要がある。私にとってはこちらのほうがはるかに良い領域です。実際に参加できる領域で、今ここに需要がある。ですから、それが私たちが集中してきたと分かっているセグメントです。先ほど言ったように、この戦略を運用していたとき、年に 100 万件の貸付をしていて、非常に生産的でした。強いリターンを、本当に強いインパクトの裏付けとともに達成しました。それが私の見方です。それが私たちが集中している貸付のセグメントです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">30:29</span></div>
+  <div class="turn-body"><p>Matthew さん、ありがとうございます。それから Sam さんもありがとうございます。チャットに良い質問がありますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">30:35</span></div>
+  <div class="turn-body"><p>John さん、来てくださってうれしいです。コンプライアンスと管轄についての質問です。退屈な部分ですが、TVL 10 億ドルまで本気で伸ばすなら避けて通れない話だと思います。私の記憶が正しければ、米国の居住者や米国の組織、欧州諸国、英国も間違っていなければ、mint や redeem、アプリそのものに参加できませんよね。では、新興国市場の需要は、想像しているような規模に伸びるほど本当に大きいのでしょうか。あるいは、それらの地域に伸びていくのを妨げているものは何でしょうか。何が問題なのでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">31:13</span></div>
+  <div class="turn-body"><p>ええ。2 つ言います。まず、私たちは Ethena と同じ構造で、Ethena と同じ制限を持っています。そして彼らは TVL で 170 億ドルを達成した。ですから、私たちの現在の構造と設定は、規模を妨げるものではないと言えます。2 つ目に、私たちの構造は、私たち自身がそれらの地域の機関や個人に直接向き合うことができない、というものです。例を挙げましょう。マーケットメイカーが私たちのところに来て、私たちと mint する。彼らは USDR を持つ。それを DEX に提供しに行く。私たちの義務は、誰かが USDR を手に入れようとして、私たちの dApp に来た場合、私たちが向き合えない特定の地域に属していれば、ジオブロックすることです。ただ、結局のところ、私たちが構造を見た限りでは、私たちの責任は概ねそこで終わります。二次市場は本当には制御できない。制御できないというか、それが暗号資産の仕組みです。そのように設定してあります。ですから、私たちが安心できる地理的な地域に属さない mint／redeem のパートナーは持ちません。これは CEX にも当てはまります。最終的には彼らと一緒にデュー・ディリジェンスを行い、私たちの法的な指針を提供する。プロダクトをどう配布したいかは彼ら次第です。ただ、大まかに言えば、米国が最もリスクの高い地域で、CEX が私たちについて最もリスクを問うのもそこです。これが設定です。参考になれば幸いです。少し法律用語が混じりましたが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">32:53</span></div>
+  <div class="turn-body"><p>ええ、ええ。大丈夫です。実は Ethena の構造と何か違いがあるのかと思っていたのですが、先にそこから答えてくださいました。まさにそれです。ありがとうございます。それから、ロードマップには EVM と SVM の統合もありますね。クロスチェーンのインフラをどう見ていますか。計画はありますか。このマルチチェーン資産に使われるブリッジのインフラは何ですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">33:17</span></div>
+  <div class="turn-body"><p>基本的には CCTP をフォークしています。そのブリッジを使って、USDC はブリッジを通じて Cardano に入り、出るときは、資産を Ethereum に戻すための独自版を内製しました。ただ、ネイティブ発行もやります。Ethereum 上にネイティブの発行コントラクトとネイティブのステーキングコントラクトを持つ。ですから EVM 側の体験はシームレスですが、正となる会計は Cardano で行われます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">33:50</span></div>
+  <div class="turn-body"><p>Jean さんも来ています。Jean さんの質問です。とても面白いプロジェクトですね、と。ひとつ目、新興国市場でのオンランプ・オフランプの問題にどう対処するのか。ふたつ目、法定通貨から暗号資産へ、またその逆へと変換するユーザーをどうオンボードするのか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">34:11</span></div>
+  <div class="turn-body"><p>国によって大きく違う、というのが答えです。ある国では、現地通貨から USDC や USDT へ比較的安く、あるいはとても安く行ける。Binance の P2P 市場のようなものです。別の国では本当に、本当に高い。答えは、非常にばらつきのあるインフラに依存する、ということです。ある市場では機能するでしょうし、そういう市場が私たちにとって自然な立ち上げ市場になる。人々が安く出入りできるところです。経路はモバイルマネーから USDR へ、ですから。それが機能させなければならないペアです。どの国でも可能ですが、問題はどれだけのコストでか。ですから、国ごとに取り組むしかないと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">35:01</span></div>
+  <div class="turn-body"><p>以前のスライドで、最初の概念実証として 1,130 万ドルを投じたものを見せていましたよね。3 つのスリーブ、A から C まで、異なるリスク構造を示すためにきれいに構成されていた。脚注に、資金の大半はスリーブ C、つまり fintech 向けに貸し出されていたとあったと思います。リスクとモニタリングの観点で、RealFi は裏付けとなる債務のリスク指標を何らかの形で示すことを義務づけられているのでしょうか。不良債権が発生して、エコシステムの参加者がそれを知らない、ということはありえますか。今の設定でこれはどう構成されているのでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">35:46</span></div>
+  <div class="turn-body"><p>ええ。答えは、はい、知ることができます。スリーブ C は主に、透明性がいちばん重要なところです。知る方法は、まず a、透明性ポータルです。スリーブ C がどう投資されているかの内訳と、その評価額を出します。b、ファンド管理者（ファンド・アドミニストレーター）の NAV で、これについて数字を公表します。とはいえ、ファンド管理者が評価のすべてではない。そこで 2 つ目——3 つ目の部分として、独立したクレジット評価者にも入ってもらう。年 2 回、裏付けとなるプライベートクレジット資産の価値についてレポートを出してもらうことを考えています。これがそのまわりで得られる透明性で、もちろん実際の監査もあります。私たちはファンドなので、実際の監査も受けられます。</p></div>
+</div>
+
+<div class="sec">締め</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役<span class="turn-time">36:49</span></div>
+  <div class="turn-body"><p>改めてありがとうございました。それでは、皆さんもご質問と、本日の Cardano Seminar へのご参加をありがとうございました。また次回に。</p></div>
+</div>
+</details>
+
+<details class="part lang-en" id="en">
+<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">固有名詞の誤変換を修正済み</span><span class="l-en">Obvious proper-noun misrecognitions corrected</span></span></summary>
+<div class="note">
+<p><strong>About this page.</strong> This conversation was <a href="https://www.youtube.com/watch?v=735yJ_erh2A">published on YouTube</a>, so it is not covered by the Chatham House Rule and <strong>the speakers are named</strong>. Questioners appear under the names they were addressed by on the call.</p>
+<p>The source is a transcript in which <strong>proper nouns were corrected by the requester before delivery</strong>, with speaker labels and timestamps. <strong>The wording is otherwise as spoken</strong>, including the places where the speaker corrects himself (USDR → USDrf). The host is addressed by name once (around 7:55); the spelling is unverified.</p>
+<p><strong>Slides were shown.</strong> References to them survive in the audio, but <strong>only what was spoken aloud appears here</strong>.</p>
+</div>
+
+<div class="sec">Opening</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">0:23</span></div>
+  <div class="turn-body"><p>Okay. So, welcome to another Cardano Seminar. Today we're joined by John O'Connor, CEO of RealFi, who's here to walk us through the story behind RealFi. Now, this is not just about what they're building. It's about how they're actually trying to make banking the unbanked a reality. We'll also get into how this ties back into Cardano and what it could mean for the ecosystem, including the use of Cardano stake pool operators. So, John, thank you for joining us. We appreciate you — handing it over to you.</p></div>
+</div>
+
+<div class="sec">What RealFi is</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">1:04</span></div>
+  <div class="turn-body"><p>Thank you very much. Um, and yeah, it's uh cool to be presenting again to the Cardano Foundation. So, yeah, thanks very much for having me, guys. Okay, so yes, I'm here to talk about RealFi today. So in a nutshell, what is RealFi? Well, RealFi is a yield-bearing dollar backed by real economy assets. So the sort of key insight that we were drawing from when we were designing this was what we saw as a massive gap within crypto. And this is ultimately about uncorrelated yield sources, i.e. things that generate yield which are not correlated to the price of Bitcoin or towards maybe inflationary tokenomics or crypto rate cycles, all of those kind of things. A gajillion products that all try to generate yield from that, very few that don't. And the way in which we do that is ultimately through a portfolio of assets, real world assets, including money market funds, CLO ETFs, and probably the part that's most exciting to me, lending to fintechs which are financing cash-flowing businesses and ultimately generate impact.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">2:09</span></div>
+  <div class="turn-body"><p>RealFi is stable by design, so we're fully asset-backed, transparently reserved, um, run through a fund structure out to the Cayman Islands and ultimately built to hold the peg across all of the crypto stress scenarios that we have modeled historically. Lastly, we are composable across DeFi. So we want tokens that can be used across different crypto DeFi protocols and paradigms, ultimately to create a productive dollar that can be used um potentially as a savings product, can be used as collateral to borrow against across DeFi protocols, and uh ultimately trying to create something that's both useful for people in crypto today as well as potentially a product that's very useful to people in the real world who haven't necessarily been using crypto um but might have utility for this.</p></div>
+</div>
+
+<div class="sec">Three generations of stablecoin</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">2:58</span></div>
+  <div class="turn-body"><p>So, I won't spend too long on this, but stablecoins are big. I think we all know that. Um, sometimes I think we forget how big they are and how quickly they're growing. Uh, so stablecoin market capitalization probably around $350 billion currently. Um, by 2030, we've got our upper and lower bounds here. That's going to be between $1.9 and 4 trillion. So, massive growth expected. And out of that entire sort of pie, the part that's growing fastest is the yield-bearing category. Uh, which across the last 24 months went between $2 billion to 27. I actually did this deck probably four months ago, so I think it's actually larger now. Uh, which is a good sign. And the key point is when the rest of crypto markets were bumbling, uh, this yield-bearing category has really grown and I believe that that's because it has product market fit.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">3:46</span></div>
+  <div class="turn-body"><p>So what are yield-bearing stablecoins? What are our different categories? Well, I think we all know the Tether / USDC model. Uh, probably the best idea that none of us in Cardano ever thought up. We were definitely doing stuff when Tether was created. Uh, and it's just kind of a genius business model. You know, you give me a dollar, I give you a USDT. I go and buy US T-bills. I could keep the yield of the T-bills. Uh, some of you guys may have seen last year, Tether, with an investment team around 35 people, made more profit than Goldman Sachs. It's a really easy and a really good business. Um, and I can see some stuff happening there. Um, so then we have sort of V2 stablecoins, which is: why don't we go and wrap these tokenized T-bills essentially and actually pass the yield back to people. That's also a great product. And another one which we discussed back in the day in Cardano but didn't get round to doing. And I think that what we've seen with Ondo and their growth is that there's a huge demand for this sort of real world asset source um of something like the risk-free rate of T-bills.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">4:53</span></div>
+  <div class="turn-body"><p>Then sort of stablecoins V3, and this is potentially the most interesting for me because it was the one that's doing something new. Rather than just wrapping T-bills, what Ethena does is say let's go and do a market neutral trade or a delta neutral trade around crypto. So essentially they go and they buy the spot of Bitcoin and then they also hold a short on the perpetual side. So if the Bitcoin price goes up you make money on the spot but you lose money on the short. If it goes down you make money on the short and you lose money on the spot. So why would you do this? The reason why you do this is typically in crypto uh the longs pay the shorts. They pay them a funding rate and this is to hold that short position. Funding rate looks a lot like a yield. Uh, and it's a way of expressing in an investment trade the ability to take that yield whilst losing the directional exposure on Bitcoin. It's a great idea. Hedge funds normally have 30 or 40 of these trades. Uh, Ethena basically said, "We're just going to take this trade and attach it to a stablecoin, a yield stablecoin." So, Ethena grew to uh in the first sort of four months I think about $4 billion and then uh 16 or 17 at its peak, probably after a year and a half. The issue with this is that there's no reason why funding rate should always stay positive, and in fact as this trade got really popular of course it becomes less productive.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">6:14</span></div>
+  <div class="turn-body"><p>Uh, so our sort of take on this is we can take this model of attaching a basket of assets uh uncorrelated or much less correlated with crypto and go and attach this towards a stablecoin. And that's really what we're trying to do. Uh, we believe our strategy is scalable. There's trillions and trillions of dollars of real world assets out there and ultimately we can uh create a stablecoin that actually does something in the world, uh where you're creating real economic productivity versus just um ultimately buying more US gilts and reducing America's borrowing cost. So that's the high level uh concept behind RealFi.</p></div>
+</div>
+
+<div class="sec">Where it sits in the market</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">6:54</span></div>
+  <div class="turn-body"><p>So where do we sit in terms of the market and uh the competition? So we've got this very complicated but quite useful graph here. So across the x-axis we've got the types of yield source. So real asset backed on the right versus synthetic emissions based on the left, and then we've got the yield premium on the y-axis. So on the bottom you've got risk-free rate T-bills and as you go up you're moving um basically along the risk curve but also getting higher yields. So what you can see is a lot of people were trying to do things around T-bills because it's easy, in the bottom right, and we think broadly speaking there's not a ton of innovation that can be done there. Then you've got the synthetic side, people like Ethena with this basis trade trying to do clever things uh to be able to express yield, and then some people — no one really wants to be in the synthetic and lower return, but you do have a few there. Our view is that we can sort of go towards the top right quadrant um by really engaging with how to do credit effectively um and that can provide a sustainable real yield source um which isn't synthetic um but can still provide attractive risk adjusted returns. Okay, sorry. Should I — Dentio, please? You got your hand up.</p></div>
+</div>
+
+<div class="sec">Question — yield and losses</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">8:08</span></div>
+  <div class="turn-body"><p>Yes, John. Thank you so far. There is a question from Matus in the chat and he has two questions. Uh, the first one is, what does high yield mean in USD terms? And his second question is, is it possible to lose money and if yes, how?</p></div>
+</div>
+
+<div class="sec">The three tokens, and the loss waterfall</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">8:25</span></div>
+  <div class="turn-body"><p>Perfect. I will cover both of those probably in the next couple of slides. So, uh, maybe the yield waterfall, the risk waterfall, loss waterfall, I don't have in the slide, so I'll take that. Um, okay. So, just running through the sort of three different tokens. You've got USDR — USDrf now, rebranded because of an exchange, to USDrf. Then you've got the staked dollar and finally RFG, the governance dollar. So, the normal stablecoin um actually has no yield associated with it. Incentives can be provided through RFG. Um, but by holding this um you don't take any of the — you don't benefit from the accretion of NAV of the underlying portfolio. sUSDrf, the staked version, you do, um, and the target returns for this are sort of between 8 and 10% and we'll talk a little bit about the portfolio composition in the next slide. There's a 7-day unstake cooldown on this. So after you've staked, you want to get your money back, you click unstake, a one-week cooldown period. And we think this is quite useful product for crypto treasuries, family offices, DeFi investors. And finally, RFG. RFG is the governance token. Lets you vote on the take rate, what the protocol fees are, a whole bunch of protocol parameters. Um, and ultimately protocol income, which accrues to the protocol, can be represented by this token. Fixed supply, no emissions, no inflation.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">9:46</span></div>
+  <div class="turn-body"><p>So just to jump forward a bit in terms of how the losses uh accumulate, um what we have is a set of different protections. The first is we can have de-risking capital, essentially equity, which can sit at the top of the tranche — sorry, the top of the uh waterfall — which can get eaten into first. Then you've got the protocol um stability fund. So across time protocol residual income goes to top this up first. So this is what gets eaten next. After that in the loss waterfall you have sUSDrf. So if you're staked, what we can do in the event of losses is basically adjust this down. And then finally USD — uh, normal USDrf holders. So we want this to be the most protected part because this is also what creates peg stability. So that's sort of the loss waterfall in order. Obviously, we want to make sure that there aren't any losses. Um, but in the event that um, you know, we get things wrong, um, this is how they would um, they would fall down. New question in Q&amp;A.</p></div>
+</div>
+
+<div class="sec">What the governance token decides</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">10:51</span></div>
+  <div class="turn-body"><p>Okay, so it's an anonymous question. What kind of decisions will RFG holders actually get to vote on, assuming that it's a governance token? So, are we speaking about protocol parameters, treasury allocations, something else?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">11:09</span></div>
+  <div class="turn-body"><p>Yeah. Okay. So speaking honestly, we have um — this is something that we're still working on. I can tell you what I don't think uh it should vote on. I think it should not vote on specific investment decisions. I think that uh what we've seen from crypto is that typically this actually ends up quite badly. What it could vote on is um agreeing on which funds can be included, right? Uh, so for instance, at the moment we're the fund manager for the portfolio. In the future, this could actually be turned into something which other people could do and people could essentially bid to go and manage the portfolio and you could have the overall investment strategy endorsed. This is an example of the kind of decentralization that we want to do potentially over time. In the shorter term, what I believe that the governance token should vote on are key economic questions like uh what fees for instance uh the asset manager can take uh on the portfolio. That's a really important one. Um, secondly, I think they could vote over um how the value that accrues into the protocol could be distributed. And this is an example of, for instance, what's happened in Ethena where they voted on um how that residual value basically gets distributed. So those are those kinds of questions. Broadly speaking I think we can bracket them into like the economic — who gets what of the pie. Um, and then also I think there's like broader governance questions in general. Who gets to be the asset manager? Who gets to do this? Who gets to do that? Uh, what we're going to try for is like a sort of light touch version at the beginning when we launch RFG, a set of permissions and governance controls, and um we'll look to expand that across time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">13:00</span></div>
+  <div class="turn-body"><p>Matus also has a follow-up question. He says, will it continue to be between 8 and 10% even if US T-bills will drop significantly below 5%?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">13:10</span></div>
+  <div class="turn-body"><p>Yeah. So you exchange one correlation for another, right? So ultimately um with fixed income you're going to be highly interest dependent. Uh, so absolutely we're going to be correlated with global interest rates. Um, we're happy with that, right. We feel that there's more than enough products correlated internally within crypto. Um, we think it makes more sense to bring uh this kind of correlation uh in.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">13:38</span></div>
+  <div class="turn-body"><p>Okay. Thank you Matus. Hopefully that answers your question. Uh, if you have any follow-up questions, please open your mic and uh feel free to come up on stage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">13:47</span></div>
+  <div class="turn-body"><p>As I've said, you've got two different tokens here, right? And USDrf um is still invested into a portfolio of assets even though it's not receiving yield from it. So that yield accrues to the protocol. Um, and that yield, depending on your staking percentage, can basically be used to boost the yield which is offered to sUSDrf holders. Uh, within the Ethena example only 50% of people are staking. So that means that 50% of the yield on the portfolio can basically be redistributed. Um, so it's still possible to defend those kind of yields even if global interest rates were falling, depending on that staking percentage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">14:27</span></div>
+  <div class="turn-body"><p>Okay, thank you. There uh there is another anonymous question by the way. Okay. So that is uh, beyond governance, are there plans for RFG to capture value directly, like fee sharing or treasury participation, or is it intentionally kept pure governance for now?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">14:46</span></div>
+  <div class="turn-body"><p>Yeah, it's a very good question. Like as I say, this is probably the part that um has got not only the most legal complexity around it, but also um kind of requires engagement with your customers and your community. Um, so what we're planning on doing is kind of like a minimal set of launch permissions and rights and then we'll look to consult and expand from there. Probably a much lighter touch process than the Cardano governance um process, but um we will be looking to try to engage with people to see how they think it should uh grow and shift.</p></div>
+</div>
+
+<div class="sec">The two books</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">15:22</span></div>
+  <div class="turn-body"><p>Okay, I'm going to race through my last slides because you're all so inquisitive and you've got lots of questions. So, um, talking about the asset book, so we've kind of got two different books. Uh, the first book is for USDrf and what we have to do is to keep this highly liquid. So what we can invest in is uh money market funds, T-bills, as well as collateralized loan obligations ETFs. So these CLO ETFs are actually a really nice product. We'll get sort of five-ish % yield. I think it's dropped a bit um since when I did this deck, and we'll take only the investment grade tranche. So this is the AAA stuff. Highly liquid, very deep markets, very easy to sell. Um, and but yet you get premium of course upon the T-bill rate. Uh, and then we have a small portion of the portfolio which is still doing our direct lending. On the second book, which is the stake book, we can basically handle more private credit or more direct fintech lending, and on a portfolio level once you blend this all together this is what lets us target sort of 8 to 10% APYs, um dependent on the staking ratio, dependent on global interest rates, dependent on a few things, um but it's a number that we're comfortable with at least at the moment and it's what we're going to be targeting for launch, which is imminent. Last thing I'll mention: with larger institutional investors we are looking to lock them up for longer periods of time and we create incentives around that. Ultimately that just means that we feel more comfortable about redemption risk. Um, so with institutional investors uh like the one big one that we have at the moment, you know, we have a longer lock up for them.</p></div>
+</div>
+
+<div class="sec">Track record</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">17:07</span></div>
+  <div class="turn-body"><p>All right. Uh, why should you trust us? Um, who are we? Uh, so we've been running this strategy over fintech lending for the last few years. Uh, we've been running it with 11.5 million of capital. We've achieved a 20% IRR, uh, lending across 25 different fintechs, um 40 different transactions, a global emerging markets focus across 10 different countries. Uh, when you break this down to the end business impact, we were doing a million loans a year um across businesses across all of these countries. So highly impactful lending as well. Um, we did this with what we call the RealFi 360 data model where we ingested all of the borrower information. We matched that with all of the loan tapes which we get from the fintechs. We match that against their management accounts and finally against the actual cash movements we see going on between the various different bank accounts. I won't go into this too long but underwriting is obviously very important and we built a bunch of technology to make us effective at this. Uh, and this is what we've been doing for the last few years.</p></div>
+</div>
+
+<div class="sec">Roadmap</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">18:07</span></div>
+  <div class="turn-body"><p>All right. Um, what does this mean? How do we grow big? Um, well, I put together this very detailed slide which ends in a billion dollars. Uh, and uh at least it's very convincing to me. So we are in the institutional testnet phase at the moment. We all launched our testnet. I hope all of you guys have participated. What we're doing now is about to move to Cardano mainnet, which will be October the 1st. Um, we'd like to achieve around $50 million of TVL across this phase. Uh, we'll be launching a month later across EVM and this is where we can probably start seeing larger numbers with vault uh curators creating vaults for us across all of the big EVM DeFi venues. I'm also doing a lot of institutional sales at the moment to try to get this number up. Um, and of course CEXs, um, programs, all of these kind of things. So, I won't spend too long talking about our GTM, but broadly speaking, I'm trying to target around 100 million dollars of TVL by around the turn of the year. Um, after that, if we've got product market fit, we could see much larger numbers. Um, we look to launch RFG in Q1 or Q2 of next year. And then, and we really achieve a billion dollars of TVL, etc. Going back to the Ethena example, the product market fit, they did four across a number of probably four or five months. So, it's definitely possible with products like these. The key thing for us, there is credit risk. So, we're going to have to build trust and conviction in the market. Track records is uh something you can't buy. Um, so, it might be a slower ramp up for us, but our belief is if we're very good at our jobs, um we should be able to create credibility for ourselves in crypto as quite a unique, well-positioned product in the market.</p></div>
+</div>
+
+<div class="sec">Is the demand there?</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">19:54</span></div>
+  <div class="turn-body"><p>Yeah, John, thank you so much. This is really insightful. Uh, what I'm wondering is um if your target right now is, towards the end of the year, 1 billion, right —</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor</div>
+  <div class="turn-body"><p>100 million.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>— um, was that 100 million?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor</div>
+  <div class="turn-body"><p>Yeah, by the end of this year.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>By the end of this year. So I assume you guys have done field work, you guys have done research. Based on that research that you've done, what was really the outcome in terms of demand? So is there appetite, is there a huge demand from the institutions and investors for such product?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">20:25</span></div>
+  <div class="turn-body"><p>Uh, I believe so. I mean, look, at the end of the day, if you're pitching towards crypto treasurers, they care about yield and they care about risk and it's very flighty capital. Obviously, we have to provide a number of incentives around that. Um, but yeah, I believe that this is a reasonable figure. The real question is like after you've got enough of this, like I would say early stage capital deals to try to get to your 100 million, and you've sort of gone past your cold start problem, is there enough demand to be able to get to a billion to 10 billion? Um, and that's kind of a hard question to answer. As I say Ethena did it. Um, so in some ways that's the harder part than, you know, 100 million's getting 10 institutions to say yes, right, um hard but achievable. Um, a billion, you need to make sure that you've managed to get that loop and it's useful to retail, it's useful to DeFi players, it's useful to all of the rest. I will just segue here, um, I'm really excited about the AlphaGrowth proposal going through. Um, a lot of the fundamental things that make a product like ours useful are being able to run looping strategies and things like that, and I think AlphaGrowth is going to be able to help build out some of the missing infrastructure in Cardano to make these kind of DeFi plays work. Um, so yeah, I think our timing is quite good from that perspective.</p></div>
+</div>
+
+<div class="sec">The Cardano launch</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">21:48</span></div>
+  <div class="turn-body"><p>All right, last two slides guys. Um, this is just to talk about Cardano a bit. We ran a SPO program where we focused on only small pools, million to 12 million ADA delegated. So, we're really trying to focus on the sort of underserved end of the network. We offered up a point system. Points are redeemable for governance tokens at some point in the future. And uh we basically said that the SPOs can um earn a percentage of all of the rewards that their delegators get um by doing stuff in the testnet. Uh, we have quite a fun stat that out of the SPOs that participated, 84% of them grew their delegator base across that time period compared to 17% in our control group of people who weren't accepted or um, you know, there was no room for in the program. Uh, we basically had 5,000 real humans run through our test app um program across the last six, eight weeks. So I would say good engagement from the Cardano side so far.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">22:52</span></div>
+  <div class="turn-body"><p>Um, yeah. Okay. So, I kind of um buried the lede here, but yeah, 1st of October is going to be our go live date. I think we're going to have an announcement going out today to the community, to the public about this, so um, no spoilers, please. What will you be able to do? You'll be able to swap and stake within Lace. So, we built out user experience there. So, you can swap from USDCx into USDR. You can then stake directly within your Lace wallet. Um, on Sundae, this is the pools that are making this work. So we'll have a USDC USDR pool — I got to remember the names of my own tokens — USDC USDrf now pool, and uh staked USDrf pool to USDrf. And that's mostly so you can liquidate through some of the DeFi stuff that we're doing. And then probably the product I'm really interested to see how it runs. But in Liqwid, you'll be able to deposit ADA and borrow against it at a fixed rate. Um, sorry, you're borrowing USDCx against your ADA, you can then come into USDR and then you can stake it. So this is like an actual DeFi primitive. Um, we've had to do quite a lot to make it work but we're interested to see whether people actually go and do this. The second thing you can do is then you can take your staked USDR, you can borrow more USDC against it and go and do leverage and loop it. This is what's super popular on EVM. So we tried to sort of curate these two DeFi actions in a segregated vault on Liqwid uh to see whether, yeah, whether people will actually go and do this. When we surveyed the Japanese SPOs, 86% of them said they'd rather borrow than sell that ADA um to do stuff. So this is kind of like a curated product uh around some of the feedback that we had. And that's enough of me talking. So thank you. Hope you guys all uh understand what RealFi is about, when we're doing stuff, how you can participate.</p></div>
+</div>
+
+<div class="sec">Q&amp;A</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">24:46</span></div>
+  <div class="turn-body"><p>All right, thank you so much there, John. John, Matus did have his fourth question and he's asking here, how can I obtain RUSD? Is it only via DEX or also via a centralized exchange?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">24:57</span></div>
+  <div class="turn-body"><p>Um, well, as people in the Cardano Foundation, you know the one cardinal rule about centralized exchanges is don't talk about centralized exchanges that you're going to be listing on. So I have no comments on anything around that. Um, but what I can say is that there is a DEX — the DEX route is Sundae at the moment.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">25:23</span></div>
+  <div class="turn-body"><p>Right, John. I'm also curious uh what is your projection in terms of transactions? Um, how much transactions did you guys project is going to be, like, let's say within the first year of launch? I mean, I'm pretty sure you guys have made some kind of estimates or projections.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">25:42</span></div>
+  <div class="turn-body"><p>Yeah. I mean, look, ultimately this is not a high frequency product, right? So if you buy USDR, you stake it, you get your yield, um, you're not necessarily doing a lot then with it. Um, for me the more exciting part, if you're talking about transactions, is um I'm really excited by, once you sort of built this yield engine, um putting it into more of like a neo banking experience, um, you know, sort of an emerging market neo banking app where you can uh spend with a debit card that goes into the balance, you can save on it, you can move from your local currency which may be losing value very quickly into the USD stablecoin, have a trustworthy yield source, buy your Amazon stuff from it. Like that for me, um, is probably the value proposition where you're building more utility, where you'd start to see more actual transactions and you can sort of see it, right? Zero-cost transfers across everyone in the network. Like the outlines of the product are there. Um, but the starting part is obviously the yield engine or the yield protocol. So that's why we're starting here. Um, but we don't see there being a ton of transactions. I suppose uh it's more of a kind of like buy and hold or buy and loop, right? DeFi stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">27:07</span></div>
+  <div class="turn-body"><p>Right? I have a couple more questions of my own, but uh I also want to give others the opportunity to interact with you, as I'm pretty sure, you know, your presentation may have raised not only piqued interest but definitely also you raised some questions. So, um, hey Matthew.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Matthew<span class="turn-time">27:31</span></div>
+  <div class="turn-body"><p>Hello. Um, can we have your thoughts on the announcement of Ethena Pay? What do you think?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">27:38</span></div>
+  <div class="turn-body"><p>It's funny you said that. So, I mean, look, it's very close to what I've been, you know, sort of thinking about and seeing as the next evolution for RealFi for a long time. I actually started with that concept and then backtracked into focusing more on the protocol part. Um, look, I really like it. I'm just going to be honest. It's a great product. Um, I think that Ethena's got an interesting position though because they've gone and built themselves as this like single basis trade, right? This tokenized trade attached to the stablecoin, which kind of makes it hard to shift to another strategy. And they actually wrote a long blog post which I was quite concerned by, where uh they were basically shifting towards my strategy and then they're kind of backing out a bit because it looks like the basis trade may return. So it's difficult, right? It's not necessarily that one strategy is better than another but they're just different strategies. Uh, and fundamentally what Ethena saw was there was a market regime change where their strategy was no longer working. So they were like, how do we pivot? Now they're like, oh maybe the strategy's coming back. So uh I think there's a place for us to really build a product around our strategy which I think can run scalably and sustainably really for any period of time. Um, secondly, I think my focus, if we get towards the Ethena Pay um period uh where we can do something like that, then um I would like to uh really focus on the emerging market part, right, so an application for, let's say, someone in Argentina who's had many many currency crises, um, you know, I think it makes sense to sort of provide a product that's useful for —</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">29:23</span></div>
+  <div class="turn-body"><p>Um, um, yeah, we've got some questions over the banking the unbanked. I do think it's slightly on the seminar description part, but I will talk about that a little bit. I try not to say banking the unbanked because the way I see it is that our lending activity is actually more about providing capital to underbanked but very solid businesses. So these are businesses across emerging markets that are productive, that are lendable to, um and have dire needs for finance because the credit gaps are really big. Uh, for me it's a much better vertical in that it's one we can actually participate in um and it has needs right here and right now. Um, so for me that's the segment that we know we focused on. As I say, um, we were doing a million loans a year when we were running this strategy and, um, it was highly productive, right? We achieved strong returns with a really strong impact case associated with it. So, that's kind of how I see it, right? You know, that's kind of the lending segment that we're focused on.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">30:29</span></div>
+  <div class="turn-body"><p>Thank you there, Matthew. And also, thank you, Sam. You have a great question in the chat. Ba—</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">30:35</span></div>
+  <div class="turn-body"><p>John, nice to have you here. Um, I have a question about compliance and jurisdictions, which is the boring part, but I guess it's a tangent you would have to touch on if you really want to grow into $1 billion TVL, right? So if I remember correctly, US residents or organizations under US, European nations, UK if I'm not wrong, cannot participate in minting and redeeming or the app itself. So how is the emerging market demand really that high that it can grow into the scales you're imagining, or what is holding you back from growing into those areas? What's the problem there?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">31:13</span></div>
+  <div class="turn-body"><p>Yeah. Okay. So I'll say two things. I will say first of all we have the same setup as Ethena and the same restrictions as Ethena. Um, and they achieved 17 billion dollars of TVL. So I would say our current structure and setup is non-prohibitive of scale. Secondly, our structure is such that we ourselves cannot face off to institutions or like individuals in those particular regions. Um, let's run through an example here, right? So, a market maker comes to us and they mint with us. They have USDR. They go and then provide it on a DEX. Our obligations are that when someone goes and gets USDR, if they come to our dApp, then we're going to geoblock them if they're part of, you know, particular regions that um we can't face off to. Uh, but ultimately in so far as, you know, we saw the structured things like our responsibility mostly ends there, right? So the secondary market we can't really control. Well, we can't control — that's how crypto works. Uh, so that's how we've set things up. Um, so we won't have any mint or redeem partners that aren't part of geolocation or geographical areas that we're comfortable with. This also applies to CEXs, right. So ultimately we do a diligence uh with them. We provide our own legal guidance. It's up to them over how they want to distribute the product. But I would say broadly speaking the US is the highest risk area and is the one that CEXs normally most risk us on. Um, but that's the setup. Hopefully that's illuminating. There's a little bit of legal speak in there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">32:53</span></div>
+  <div class="turn-body"><p>Yeah. Yeah. All good. I was wondering if there's any um differences compared to Ethena's setup, actually, but you led on with that. Exactly. So, thank you. So, on the roadmap, you also have EVM and SVM um integration for the road ahead. Um, how do you view the cross-chain infrastructure? Is there plans? What's the bridge uh infrastructure that's going to be used for this multi-chain asset?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">33:17</span></div>
+  <div class="turn-body"><p>We basically fork CCTP. So, we're using that bridge, and then, you know, so USDC can go into Cardano through the bridge and then on the way out we've basically done our own version which we've internalized to take the asset back onto uh Ethereum. We are also doing native issuance though. So on Ethereum we'll have like a native issuance contract and a native staking contract. Uh, so the EVM experience is seamless but canonical accounting happens on Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">33:50</span></div>
+  <div class="turn-body"><p>We also have Jean now. Jean asked here, he says super interesting project. One question: how do you deal with the on and off ramp issue in emerging markets? That's the first. Second, how do you onboard users converting fiat to crypto and back and forth?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">34:11</span></div>
+  <div class="turn-body"><p>I'd say it varies hugely on country's country, right? So from some countries you can go from local to um to like USDC or USDT uh relatively cheaply or maybe even very cheaply, like Binance P2P markets and stuff like that. Um, in others it's really really expensive. The answer is uh this depends on infrastructure that is highly variable. So in some markets it will work um and those would be natural kind of launch markets for us, right, where people can go cheaply in and out, um because the route would be mobile money into, you know, USDR — that's the pair that you need to sort of make work. Uh, and it's possible in every country, it's just at what cost. So um yeah, you know, country by country I think is how you've got to approach it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">35:01</span></div>
+  <div class="turn-body"><p>Um, I remember in a previous slide where you showcased the initial proof of concept, let's say with the 11.3 million deployed, that you had nicely structured three sleeves that you used to illustrate the different risk structures, like sleeve A to C, and I saw in the footnote there that most of the funds were lent out in sleeve C, which was for fintechs, right? Um, so from risk and monitoring, is RealFi enforced to showcase, like somehow, a risk metric for the underlying debt? Can bad debt incur and the participants in the ecosystem not know about it? How is this structured with your current setup?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">35:46</span></div>
+  <div class="turn-body"><p>Yeah. So the answer is yes, uh, you do know about it. Um, so sleeve C is where predominantly, right, it's where like the transparency is sort of the most important. Um, so the way in which you know about things are, a, through our transparency portal, right, which gives you a breakdown over how sleeve C is invested and the valuation of it. Um, b, is from our fund administrator NAV, right, who publishes figures about this. That being said, then, you know, your fund admin is not the be all and end all evaluation. And then the second part is having — or the third part is having an independent credit evaluator also um come in. I think we're looking at twice a year to be able to do a report on the value of the underlying private credit assets. Uh, so yeah, that's kind of the transparency that you get around it, and of course the actual audit, right? We're a fund so you'll get the actual audit as well.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">36:49</span></div>
+  <div class="turn-body"><p>Thank you so much once again. All right. And uh thank you also everyone for your questions and for joining us today for this Cardano Seminar. Until next time.</p></div>
+</div>
+</details>
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+  <a href="https://www.youtube.com/watch?v=735yJ_erh2A"><span class="l-ja">元の録画</span><span class="l-en">Original recording</span></a>
+</nav>
+
+<footer>
+<p><span class="l-ja">Cardano セッションのアーカイブ<br>この回は公開されている録画にもとづくため、チャタムハウスルールの対象ではなく、発言者は実名のまま扱っています。</span><span class="l-en">Cardano session archive<br>This session is based on a publicly published recording, so it is not covered by the Chatham House Rule and the speakers are named.</span></p>
+</footer>
+
+</div>

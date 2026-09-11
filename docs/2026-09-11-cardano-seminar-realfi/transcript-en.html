@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardano Seminar: RealFi — Full transcript (English) / 英語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語全文を読む" title="日本語全文を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Cardano Seminar</p>
+<h1>Full transcript — English (original)</h1>
+<p class="meta">
+  <span>2026-09-11</span>
+  <span><a href="https://www.youtube.com/watch?v=735yJ_erh2A">YouTube</a></span>
+  <span>36:49</span>
+  <span>host, RealFi's CEO and three questioners</span>
+</p>
+
+<!--content-->
+
+<div class="note">
+<p><strong>About this page.</strong> This conversation was <a href="https://www.youtube.com/watch?v=735yJ_erh2A">published on YouTube</a>, so it is not covered by the Chatham House Rule and <strong>the speakers are named</strong>. Questioners appear under the names they were addressed by on the call.</p>
+<p>The source is a transcript in which <strong>proper nouns were corrected by the requester before delivery</strong>, with speaker labels and timestamps. <strong>The wording is otherwise as spoken</strong>, including the places where the speaker corrects himself (USDR → USDrf). The host is addressed by name once (around 7:55); the spelling is unverified.</p>
+<p><strong>Slides were shown.</strong> References to them survive in the audio, but <strong>only what was spoken aloud appears here</strong>.</p>
+</div>
+
+<div class="sec">Opening</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">0:23</span></div>
+  <div class="turn-body"><p>Okay. So, welcome to another Cardano Seminar. Today we're joined by John O'Connor, CEO of RealFi, who's here to walk us through the story behind RealFi. Now, this is not just about what they're building. It's about how they're actually trying to make banking the unbanked a reality. We'll also get into how this ties back into Cardano and what it could mean for the ecosystem, including the use of Cardano stake pool operators. So, John, thank you for joining us. We appreciate you — handing it over to you.</p></div>
+</div>
+
+<div class="sec">What RealFi is</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">1:04</span></div>
+  <div class="turn-body"><p>Thank you very much. Um, and yeah, it's uh cool to be presenting again to the Cardano Foundation. So, yeah, thanks very much for having me, guys. Okay, so yes, I'm here to talk about RealFi today. So in a nutshell, what is RealFi? Well, RealFi is a yield-bearing dollar backed by real economy assets. So the sort of key insight that we were drawing from when we were designing this was what we saw as a massive gap within crypto. And this is ultimately about uncorrelated yield sources, i.e. things that generate yield which are not correlated to the price of Bitcoin or towards maybe inflationary tokenomics or crypto rate cycles, all of those kind of things. A gajillion products that all try to generate yield from that, very few that don't. And the way in which we do that is ultimately through a portfolio of assets, real world assets, including money market funds, CLO ETFs, and probably the part that's most exciting to me, lending to fintechs which are financing cash-flowing businesses and ultimately generate impact.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">2:09</span></div>
+  <div class="turn-body"><p>RealFi is stable by design, so we're fully asset-backed, transparently reserved, um, run through a fund structure out to the Cayman Islands and ultimately built to hold the peg across all of the crypto stress scenarios that we have modeled historically. Lastly, we are composable across DeFi. So we want tokens that can be used across different crypto DeFi protocols and paradigms, ultimately to create a productive dollar that can be used um potentially as a savings product, can be used as collateral to borrow against across DeFi protocols, and uh ultimately trying to create something that's both useful for people in crypto today as well as potentially a product that's very useful to people in the real world who haven't necessarily been using crypto um but might have utility for this.</p></div>
+</div>
+
+<div class="sec">Three generations of stablecoin</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">2:58</span></div>
+  <div class="turn-body"><p>So, I won't spend too long on this, but stablecoins are big. I think we all know that. Um, sometimes I think we forget how big they are and how quickly they're growing. Uh, so stablecoin market capitalization probably around $350 billion currently. Um, by 2030, we've got our upper and lower bounds here. That's going to be between $1.9 and 4 trillion. So, massive growth expected. And out of that entire sort of pie, the part that's growing fastest is the yield-bearing category. Uh, which across the last 24 months went between $2 billion to 27. I actually did this deck probably four months ago, so I think it's actually larger now. Uh, which is a good sign. And the key point is when the rest of crypto markets were bumbling, uh, this yield-bearing category has really grown and I believe that that's because it has product market fit.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">3:46</span></div>
+  <div class="turn-body"><p>So what are yield-bearing stablecoins? What are our different categories? Well, I think we all know the Tether / USDC model. Uh, probably the best idea that none of us in Cardano ever thought up. We were definitely doing stuff when Tether was created. Uh, and it's just kind of a genius business model. You know, you give me a dollar, I give you a USDT. I go and buy US T-bills. I could keep the yield of the T-bills. Uh, some of you guys may have seen last year, Tether, with an investment team around 35 people, made more profit than Goldman Sachs. It's a really easy and a really good business. Um, and I can see some stuff happening there. Um, so then we have sort of V2 stablecoins, which is: why don't we go and wrap these tokenized T-bills essentially and actually pass the yield back to people. That's also a great product. And another one which we discussed back in the day in Cardano but didn't get round to doing. And I think that what we've seen with Ondo and their growth is that there's a huge demand for this sort of real world asset source um of something like the risk-free rate of T-bills.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">4:53</span></div>
+  <div class="turn-body"><p>Then sort of stablecoins V3, and this is potentially the most interesting for me because it was the one that's doing something new. Rather than just wrapping T-bills, what Ethena does is say let's go and do a market neutral trade or a delta neutral trade around crypto. So essentially they go and they buy the spot of Bitcoin and then they also hold a short on the perpetual side. So if the Bitcoin price goes up you make money on the spot but you lose money on the short. If it goes down you make money on the short and you lose money on the spot. So why would you do this? The reason why you do this is typically in crypto uh the longs pay the shorts. They pay them a funding rate and this is to hold that short position. Funding rate looks a lot like a yield. Uh, and it's a way of expressing in an investment trade the ability to take that yield whilst losing the directional exposure on Bitcoin. It's a great idea. Hedge funds normally have 30 or 40 of these trades. Uh, Ethena basically said, "We're just going to take this trade and attach it to a stablecoin, a yield stablecoin." So, Ethena grew to uh in the first sort of four months I think about $4 billion and then uh 16 or 17 at its peak, probably after a year and a half. The issue with this is that there's no reason why funding rate should always stay positive, and in fact as this trade got really popular of course it becomes less productive.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">6:14</span></div>
+  <div class="turn-body"><p>Uh, so our sort of take on this is we can take this model of attaching a basket of assets uh uncorrelated or much less correlated with crypto and go and attach this towards a stablecoin. And that's really what we're trying to do. Uh, we believe our strategy is scalable. There's trillions and trillions of dollars of real world assets out there and ultimately we can uh create a stablecoin that actually does something in the world, uh where you're creating real economic productivity versus just um ultimately buying more US gilts and reducing America's borrowing cost. So that's the high level uh concept behind RealFi.</p></div>
+</div>
+
+<div class="sec">Where it sits in the market</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">6:54</span></div>
+  <div class="turn-body"><p>So where do we sit in terms of the market and uh the competition? So we've got this very complicated but quite useful graph here. So across the x-axis we've got the types of yield source. So real asset backed on the right versus synthetic emissions based on the left, and then we've got the yield premium on the y-axis. So on the bottom you've got risk-free rate T-bills and as you go up you're moving um basically along the risk curve but also getting higher yields. So what you can see is a lot of people were trying to do things around T-bills because it's easy, in the bottom right, and we think broadly speaking there's not a ton of innovation that can be done there. Then you've got the synthetic side, people like Ethena with this basis trade trying to do clever things uh to be able to express yield, and then some people — no one really wants to be in the synthetic and lower return, but you do have a few there. Our view is that we can sort of go towards the top right quadrant um by really engaging with how to do credit effectively um and that can provide a sustainable real yield source um which isn't synthetic um but can still provide attractive risk adjusted returns. Okay, sorry. Should I — Dentio, please? You got your hand up.</p></div>
+</div>
+
+<div class="sec">Question — yield and losses</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">8:08</span></div>
+  <div class="turn-body"><p>Yes, John. Thank you so far. There is a question from Matus in the chat and he has two questions. Uh, the first one is, what does high yield mean in USD terms? And his second question is, is it possible to lose money and if yes, how?</p></div>
+</div>
+
+<div class="sec">The three tokens, and the loss waterfall</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">8:25</span></div>
+  <div class="turn-body"><p>Perfect. I will cover both of those probably in the next couple of slides. So, uh, maybe the yield waterfall, the risk waterfall, loss waterfall, I don't have in the slide, so I'll take that. Um, okay. So, just running through the sort of three different tokens. You've got USDR — USDrf now, rebranded because of an exchange, to USDrf. Then you've got the staked dollar and finally RFG, the governance dollar. So, the normal stablecoin um actually has no yield associated with it. Incentives can be provided through RFG. Um, but by holding this um you don't take any of the — you don't benefit from the accretion of NAV of the underlying portfolio. sUSDrf, the staked version, you do, um, and the target returns for this are sort of between 8 and 10% and we'll talk a little bit about the portfolio composition in the next slide. There's a 7-day unstake cooldown on this. So after you've staked, you want to get your money back, you click unstake, a one-week cooldown period. And we think this is quite useful product for crypto treasuries, family offices, DeFi investors. And finally, RFG. RFG is the governance token. Lets you vote on the take rate, what the protocol fees are, a whole bunch of protocol parameters. Um, and ultimately protocol income, which accrues to the protocol, can be represented by this token. Fixed supply, no emissions, no inflation.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">9:46</span></div>
+  <div class="turn-body"><p>So just to jump forward a bit in terms of how the losses uh accumulate, um what we have is a set of different protections. The first is we can have de-risking capital, essentially equity, which can sit at the top of the tranche — sorry, the top of the uh waterfall — which can get eaten into first. Then you've got the protocol um stability fund. So across time protocol residual income goes to top this up first. So this is what gets eaten next. After that in the loss waterfall you have sUSDrf. So if you're staked, what we can do in the event of losses is basically adjust this down. And then finally USD — uh, normal USDrf holders. So we want this to be the most protected part because this is also what creates peg stability. So that's sort of the loss waterfall in order. Obviously, we want to make sure that there aren't any losses. Um, but in the event that um, you know, we get things wrong, um, this is how they would um, they would fall down. New question in Q&amp;A.</p></div>
+</div>
+
+<div class="sec">What the governance token decides</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">10:51</span></div>
+  <div class="turn-body"><p>Okay, so it's an anonymous question. What kind of decisions will RFG holders actually get to vote on, assuming that it's a governance token? So, are we speaking about protocol parameters, treasury allocations, something else?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">11:09</span></div>
+  <div class="turn-body"><p>Yeah. Okay. So speaking honestly, we have um — this is something that we're still working on. I can tell you what I don't think uh it should vote on. I think it should not vote on specific investment decisions. I think that uh what we've seen from crypto is that typically this actually ends up quite badly. What it could vote on is um agreeing on which funds can be included, right? Uh, so for instance, at the moment we're the fund manager for the portfolio. In the future, this could actually be turned into something which other people could do and people could essentially bid to go and manage the portfolio and you could have the overall investment strategy endorsed. This is an example of the kind of decentralization that we want to do potentially over time. In the shorter term, what I believe that the governance token should vote on are key economic questions like uh what fees for instance uh the asset manager can take uh on the portfolio. That's a really important one. Um, secondly, I think they could vote over um how the value that accrues into the protocol could be distributed. And this is an example of, for instance, what's happened in Ethena where they voted on um how that residual value basically gets distributed. So those are those kinds of questions. Broadly speaking I think we can bracket them into like the economic — who gets what of the pie. Um, and then also I think there's like broader governance questions in general. Who gets to be the asset manager? Who gets to do this? Who gets to do that? Uh, what we're going to try for is like a sort of light touch version at the beginning when we launch RFG, a set of permissions and governance controls, and um we'll look to expand that across time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">13:00</span></div>
+  <div class="turn-body"><p>Matus also has a follow-up question. He says, will it continue to be between 8 and 10% even if US T-bills will drop significantly below 5%?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">13:10</span></div>
+  <div class="turn-body"><p>Yeah. So you exchange one correlation for another, right? So ultimately um with fixed income you're going to be highly interest dependent. Uh, so absolutely we're going to be correlated with global interest rates. Um, we're happy with that, right. We feel that there's more than enough products correlated internally within crypto. Um, we think it makes more sense to bring uh this kind of correlation uh in.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">13:38</span></div>
+  <div class="turn-body"><p>Okay. Thank you Matus. Hopefully that answers your question. Uh, if you have any follow-up questions, please open your mic and uh feel free to come up on stage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">13:47</span></div>
+  <div class="turn-body"><p>As I've said, you've got two different tokens here, right? And USDrf um is still invested into a portfolio of assets even though it's not receiving yield from it. So that yield accrues to the protocol. Um, and that yield, depending on your staking percentage, can basically be used to boost the yield which is offered to sUSDrf holders. Uh, within the Ethena example only 50% of people are staking. So that means that 50% of the yield on the portfolio can basically be redistributed. Um, so it's still possible to defend those kind of yields even if global interest rates were falling, depending on that staking percentage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">14:27</span></div>
+  <div class="turn-body"><p>Okay, thank you. There uh there is another anonymous question by the way. Okay. So that is uh, beyond governance, are there plans for RFG to capture value directly, like fee sharing or treasury participation, or is it intentionally kept pure governance for now?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">14:46</span></div>
+  <div class="turn-body"><p>Yeah, it's a very good question. Like as I say, this is probably the part that um has got not only the most legal complexity around it, but also um kind of requires engagement with your customers and your community. Um, so what we're planning on doing is kind of like a minimal set of launch permissions and rights and then we'll look to consult and expand from there. Probably a much lighter touch process than the Cardano governance um process, but um we will be looking to try to engage with people to see how they think it should uh grow and shift.</p></div>
+</div>
+
+<div class="sec">The two books</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">15:22</span></div>
+  <div class="turn-body"><p>Okay, I'm going to race through my last slides because you're all so inquisitive and you've got lots of questions. So, um, talking about the asset book, so we've kind of got two different books. Uh, the first book is for USDrf and what we have to do is to keep this highly liquid. So what we can invest in is uh money market funds, T-bills, as well as collateralized loan obligations ETFs. So these CLO ETFs are actually a really nice product. We'll get sort of five-ish % yield. I think it's dropped a bit um since when I did this deck, and we'll take only the investment grade tranche. So this is the AAA stuff. Highly liquid, very deep markets, very easy to sell. Um, and but yet you get premium of course upon the T-bill rate. Uh, and then we have a small portion of the portfolio which is still doing our direct lending. On the second book, which is the stake book, we can basically handle more private credit or more direct fintech lending, and on a portfolio level once you blend this all together this is what lets us target sort of 8 to 10% APYs, um dependent on the staking ratio, dependent on global interest rates, dependent on a few things, um but it's a number that we're comfortable with at least at the moment and it's what we're going to be targeting for launch, which is imminent. Last thing I'll mention: with larger institutional investors we are looking to lock them up for longer periods of time and we create incentives around that. Ultimately that just means that we feel more comfortable about redemption risk. Um, so with institutional investors uh like the one big one that we have at the moment, you know, we have a longer lock up for them.</p></div>
+</div>
+
+<div class="sec">Track record</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">17:07</span></div>
+  <div class="turn-body"><p>All right. Uh, why should you trust us? Um, who are we? Uh, so we've been running this strategy over fintech lending for the last few years. Uh, we've been running it with 11.5 million of capital. We've achieved a 20% IRR, uh, lending across 25 different fintechs, um 40 different transactions, a global emerging markets focus across 10 different countries. Uh, when you break this down to the end business impact, we were doing a million loans a year um across businesses across all of these countries. So highly impactful lending as well. Um, we did this with what we call the RealFi 360 data model where we ingested all of the borrower information. We matched that with all of the loan tapes which we get from the fintechs. We match that against their management accounts and finally against the actual cash movements we see going on between the various different bank accounts. I won't go into this too long but underwriting is obviously very important and we built a bunch of technology to make us effective at this. Uh, and this is what we've been doing for the last few years.</p></div>
+</div>
+
+<div class="sec">Roadmap</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">18:07</span></div>
+  <div class="turn-body"><p>All right. Um, what does this mean? How do we grow big? Um, well, I put together this very detailed slide which ends in a billion dollars. Uh, and uh at least it's very convincing to me. So we are in the institutional testnet phase at the moment. We all launched our testnet. I hope all of you guys have participated. What we're doing now is about to move to Cardano mainnet, which will be October the 1st. Um, we'd like to achieve around $50 million of TVL across this phase. Uh, we'll be launching a month later across EVM and this is where we can probably start seeing larger numbers with vault uh curators creating vaults for us across all of the big EVM DeFi venues. I'm also doing a lot of institutional sales at the moment to try to get this number up. Um, and of course CEXs, um, programs, all of these kind of things. So, I won't spend too long talking about our GTM, but broadly speaking, I'm trying to target around 100 million dollars of TVL by around the turn of the year. Um, after that, if we've got product market fit, we could see much larger numbers. Um, we look to launch RFG in Q1 or Q2 of next year. And then, and we really achieve a billion dollars of TVL, etc. Going back to the Ethena example, the product market fit, they did four across a number of probably four or five months. So, it's definitely possible with products like these. The key thing for us, there is credit risk. So, we're going to have to build trust and conviction in the market. Track records is uh something you can't buy. Um, so, it might be a slower ramp up for us, but our belief is if we're very good at our jobs, um we should be able to create credibility for ourselves in crypto as quite a unique, well-positioned product in the market.</p></div>
+</div>
+
+<div class="sec">Is the demand there?</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">19:54</span></div>
+  <div class="turn-body"><p>Yeah, John, thank you so much. This is really insightful. Uh, what I'm wondering is um if your target right now is, towards the end of the year, 1 billion, right —</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor</div>
+  <div class="turn-body"><p>100 million.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>— um, was that 100 million?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor</div>
+  <div class="turn-body"><p>Yeah, by the end of this year.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>By the end of this year. So I assume you guys have done field work, you guys have done research. Based on that research that you've done, what was really the outcome in terms of demand? So is there appetite, is there a huge demand from the institutions and investors for such product?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">20:25</span></div>
+  <div class="turn-body"><p>Uh, I believe so. I mean, look, at the end of the day, if you're pitching towards crypto treasurers, they care about yield and they care about risk and it's very flighty capital. Obviously, we have to provide a number of incentives around that. Um, but yeah, I believe that this is a reasonable figure. The real question is like after you've got enough of this, like I would say early stage capital deals to try to get to your 100 million, and you've sort of gone past your cold start problem, is there enough demand to be able to get to a billion to 10 billion? Um, and that's kind of a hard question to answer. As I say Ethena did it. Um, so in some ways that's the harder part than, you know, 100 million's getting 10 institutions to say yes, right, um hard but achievable. Um, a billion, you need to make sure that you've managed to get that loop and it's useful to retail, it's useful to DeFi players, it's useful to all of the rest. I will just segue here, um, I'm really excited about the AlphaGrowth proposal going through. Um, a lot of the fundamental things that make a product like ours useful are being able to run looping strategies and things like that, and I think AlphaGrowth is going to be able to help build out some of the missing infrastructure in Cardano to make these kind of DeFi plays work. Um, so yeah, I think our timing is quite good from that perspective.</p></div>
+</div>
+
+<div class="sec">The Cardano launch</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">21:48</span></div>
+  <div class="turn-body"><p>All right, last two slides guys. Um, this is just to talk about Cardano a bit. We ran a SPO program where we focused on only small pools, million to 12 million ADA delegated. So, we're really trying to focus on the sort of underserved end of the network. We offered up a point system. Points are redeemable for governance tokens at some point in the future. And uh we basically said that the SPOs can um earn a percentage of all of the rewards that their delegators get um by doing stuff in the testnet. Uh, we have quite a fun stat that out of the SPOs that participated, 84% of them grew their delegator base across that time period compared to 17% in our control group of people who weren't accepted or um, you know, there was no room for in the program. Uh, we basically had 5,000 real humans run through our test app um program across the last six, eight weeks. So I would say good engagement from the Cardano side so far.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">22:52</span></div>
+  <div class="turn-body"><p>Um, yeah. Okay. So, I kind of um buried the lede here, but yeah, 1st of October is going to be our go live date. I think we're going to have an announcement going out today to the community, to the public about this, so um, no spoilers, please. What will you be able to do? You'll be able to swap and stake within Lace. So, we built out user experience there. So, you can swap from USDCx into USDR. You can then stake directly within your Lace wallet. Um, on Sundae, this is the pools that are making this work. So we'll have a USDC USDR pool — I got to remember the names of my own tokens — USDC USDrf now pool, and uh staked USDrf pool to USDrf. And that's mostly so you can liquidate through some of the DeFi stuff that we're doing. And then probably the product I'm really interested to see how it runs. But in Liqwid, you'll be able to deposit ADA and borrow against it at a fixed rate. Um, sorry, you're borrowing USDCx against your ADA, you can then come into USDR and then you can stake it. So this is like an actual DeFi primitive. Um, we've had to do quite a lot to make it work but we're interested to see whether people actually go and do this. The second thing you can do is then you can take your staked USDR, you can borrow more USDC against it and go and do leverage and loop it. This is what's super popular on EVM. So we tried to sort of curate these two DeFi actions in a segregated vault on Liqwid uh to see whether, yeah, whether people will actually go and do this. When we surveyed the Japanese SPOs, 86% of them said they'd rather borrow than sell that ADA um to do stuff. So this is kind of like a curated product uh around some of the feedback that we had. And that's enough of me talking. So thank you. Hope you guys all uh understand what RealFi is about, when we're doing stuff, how you can participate.</p></div>
+</div>
+
+<div class="sec">Q&amp;A</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">24:46</span></div>
+  <div class="turn-body"><p>All right, thank you so much there, John. John, Matus did have his fourth question and he's asking here, how can I obtain RUSD? Is it only via DEX or also via a centralized exchange?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">24:57</span></div>
+  <div class="turn-body"><p>Um, well, as people in the Cardano Foundation, you know the one cardinal rule about centralized exchanges is don't talk about centralized exchanges that you're going to be listing on. So I have no comments on anything around that. Um, but what I can say is that there is a DEX — the DEX route is Sundae at the moment.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">25:23</span></div>
+  <div class="turn-body"><p>Right, John. I'm also curious uh what is your projection in terms of transactions? Um, how much transactions did you guys project is going to be, like, let's say within the first year of launch? I mean, I'm pretty sure you guys have made some kind of estimates or projections.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">25:42</span></div>
+  <div class="turn-body"><p>Yeah. I mean, look, ultimately this is not a high frequency product, right? So if you buy USDR, you stake it, you get your yield, um, you're not necessarily doing a lot then with it. Um, for me the more exciting part, if you're talking about transactions, is um I'm really excited by, once you sort of built this yield engine, um putting it into more of like a neo banking experience, um, you know, sort of an emerging market neo banking app where you can uh spend with a debit card that goes into the balance, you can save on it, you can move from your local currency which may be losing value very quickly into the USD stablecoin, have a trustworthy yield source, buy your Amazon stuff from it. Like that for me, um, is probably the value proposition where you're building more utility, where you'd start to see more actual transactions and you can sort of see it, right? Zero-cost transfers across everyone in the network. Like the outlines of the product are there. Um, but the starting part is obviously the yield engine or the yield protocol. So that's why we're starting here. Um, but we don't see there being a ton of transactions. I suppose uh it's more of a kind of like buy and hold or buy and loop, right? DeFi stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">27:07</span></div>
+  <div class="turn-body"><p>Right? I have a couple more questions of my own, but uh I also want to give others the opportunity to interact with you, as I'm pretty sure, you know, your presentation may have raised not only piqued interest but definitely also you raised some questions. So, um, hey Matthew.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Matthew<span class="turn-time">27:31</span></div>
+  <div class="turn-body"><p>Hello. Um, can we have your thoughts on the announcement of Ethena Pay? What do you think?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">27:38</span></div>
+  <div class="turn-body"><p>It's funny you said that. So, I mean, look, it's very close to what I've been, you know, sort of thinking about and seeing as the next evolution for RealFi for a long time. I actually started with that concept and then backtracked into focusing more on the protocol part. Um, look, I really like it. I'm just going to be honest. It's a great product. Um, I think that Ethena's got an interesting position though because they've gone and built themselves as this like single basis trade, right? This tokenized trade attached to the stablecoin, which kind of makes it hard to shift to another strategy. And they actually wrote a long blog post which I was quite concerned by, where uh they were basically shifting towards my strategy and then they're kind of backing out a bit because it looks like the basis trade may return. So it's difficult, right? It's not necessarily that one strategy is better than another but they're just different strategies. Uh, and fundamentally what Ethena saw was there was a market regime change where their strategy was no longer working. So they were like, how do we pivot? Now they're like, oh maybe the strategy's coming back. So uh I think there's a place for us to really build a product around our strategy which I think can run scalably and sustainably really for any period of time. Um, secondly, I think my focus, if we get towards the Ethena Pay um period uh where we can do something like that, then um I would like to uh really focus on the emerging market part, right, so an application for, let's say, someone in Argentina who's had many many currency crises, um, you know, I think it makes sense to sort of provide a product that's useful for —</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">29:23</span></div>
+  <div class="turn-body"><p>Um, um, yeah, we've got some questions over the banking the unbanked. I do think it's slightly on the seminar description part, but I will talk about that a little bit. I try not to say banking the unbanked because the way I see it is that our lending activity is actually more about providing capital to underbanked but very solid businesses. So these are businesses across emerging markets that are productive, that are lendable to, um and have dire needs for finance because the credit gaps are really big. Uh, for me it's a much better vertical in that it's one we can actually participate in um and it has needs right here and right now. Um, so for me that's the segment that we know we focused on. As I say, um, we were doing a million loans a year when we were running this strategy and, um, it was highly productive, right? We achieved strong returns with a really strong impact case associated with it. So, that's kind of how I see it, right? You know, that's kind of the lending segment that we're focused on.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">30:29</span></div>
+  <div class="turn-body"><p>Thank you there, Matthew. And also, thank you, Sam. You have a great question in the chat. Ba—</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">30:35</span></div>
+  <div class="turn-body"><p>John, nice to have you here. Um, I have a question about compliance and jurisdictions, which is the boring part, but I guess it's a tangent you would have to touch on if you really want to grow into $1 billion TVL, right? So if I remember correctly, US residents or organizations under US, European nations, UK if I'm not wrong, cannot participate in minting and redeeming or the app itself. So how is the emerging market demand really that high that it can grow into the scales you're imagining, or what is holding you back from growing into those areas? What's the problem there?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">31:13</span></div>
+  <div class="turn-body"><p>Yeah. Okay. So I'll say two things. I will say first of all we have the same setup as Ethena and the same restrictions as Ethena. Um, and they achieved 17 billion dollars of TVL. So I would say our current structure and setup is non-prohibitive of scale. Secondly, our structure is such that we ourselves cannot face off to institutions or like individuals in those particular regions. Um, let's run through an example here, right? So, a market maker comes to us and they mint with us. They have USDR. They go and then provide it on a DEX. Our obligations are that when someone goes and gets USDR, if they come to our dApp, then we're going to geoblock them if they're part of, you know, particular regions that um we can't face off to. Uh, but ultimately in so far as, you know, we saw the structured things like our responsibility mostly ends there, right? So the secondary market we can't really control. Well, we can't control — that's how crypto works. Uh, so that's how we've set things up. Um, so we won't have any mint or redeem partners that aren't part of geolocation or geographical areas that we're comfortable with. This also applies to CEXs, right. So ultimately we do a diligence uh with them. We provide our own legal guidance. It's up to them over how they want to distribute the product. But I would say broadly speaking the US is the highest risk area and is the one that CEXs normally most risk us on. Um, but that's the setup. Hopefully that's illuminating. There's a little bit of legal speak in there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">32:53</span></div>
+  <div class="turn-body"><p>Yeah. Yeah. All good. I was wondering if there's any um differences compared to Ethena's setup, actually, but you led on with that. Exactly. So, thank you. So, on the roadmap, you also have EVM and SVM um integration for the road ahead. Um, how do you view the cross-chain infrastructure? Is there plans? What's the bridge uh infrastructure that's going to be used for this multi-chain asset?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">33:17</span></div>
+  <div class="turn-body"><p>We basically fork CCTP. So, we're using that bridge, and then, you know, so USDC can go into Cardano through the bridge and then on the way out we've basically done our own version which we've internalized to take the asset back onto uh Ethereum. We are also doing native issuance though. So on Ethereum we'll have like a native issuance contract and a native staking contract. Uh, so the EVM experience is seamless but canonical accounting happens on Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">33:50</span></div>
+  <div class="turn-body"><p>We also have Jean now. Jean asked here, he says super interesting project. One question: how do you deal with the on and off ramp issue in emerging markets? That's the first. Second, how do you onboard users converting fiat to crypto and back and forth?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">34:11</span></div>
+  <div class="turn-body"><p>I'd say it varies hugely on country's country, right? So from some countries you can go from local to um to like USDC or USDT uh relatively cheaply or maybe even very cheaply, like Binance P2P markets and stuff like that. Um, in others it's really really expensive. The answer is uh this depends on infrastructure that is highly variable. So in some markets it will work um and those would be natural kind of launch markets for us, right, where people can go cheaply in and out, um because the route would be mobile money into, you know, USDR — that's the pair that you need to sort of make work. Uh, and it's possible in every country, it's just at what cost. So um yeah, you know, country by country I think is how you've got to approach it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Sam<span class="turn-time">35:01</span></div>
+  <div class="turn-body"><p>Um, I remember in a previous slide where you showcased the initial proof of concept, let's say with the 11.3 million deployed, that you had nicely structured three sleeves that you used to illustrate the different risk structures, like sleeve A to C, and I saw in the footnote there that most of the funds were lent out in sleeve C, which was for fintechs, right? Um, so from risk and monitoring, is RealFi enforced to showcase, like somehow, a risk metric for the underlying debt? Can bad debt incur and the participants in the ecosystem not know about it? How is this structured with your current setup?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">John O'Connor<span class="turn-time">35:46</span></div>
+  <div class="turn-body"><p>Yeah. So the answer is yes, uh, you do know about it. Um, so sleeve C is where predominantly, right, it's where like the transparency is sort of the most important. Um, so the way in which you know about things are, a, through our transparency portal, right, which gives you a breakdown over how sleeve C is invested and the valuation of it. Um, b, is from our fund administrator NAV, right, who publishes figures about this. That being said, then, you know, your fund admin is not the be all and end all evaluation. And then the second part is having — or the third part is having an independent credit evaluator also um come in. I think we're looking at twice a year to be able to do a report on the value of the underlying private credit assets. Uh, so yeah, that's kind of the transparency that you get around it, and of course the actual audit, right? We're a fund so you'll get the actual audit as well.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Host<span class="turn-time">36:49</span></div>
+  <div class="turn-body"><p>Thank you so much once again. All right. And uh thank you also everyone for your questions and for joining us today for this Cardano Seminar. Until next time.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original wording, with proper nouns corrected by the requester.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="https://www.youtube.com/watch?v=735yJ_erh2A">Original recording (YouTube)</a>
+  <a href="../">← All sessions</a>
+</nav>
+
+<footer>
+  <p>Cardano session archive</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -282,6 +282,8 @@ RealFi Office Hours の番号は**回の実施順**で、アーカイブにあ�
 
 **Midnight・IOG・Charles Hoskinson などの公開動画は、姉妹リポジトリ `shiodome47/cardano-note`**（<https://shiodome47.github.io/cardano-note/>）で扱う。成果物の形式は同じで、あちらは公開動画だけ、こちらはクローズドなコールが中心。
 
+**ただし RealFi を扱う公開動画は、ここに置く。**このアーカイブは RealFi の記録なので、Office Hours でなくても RealFi の CEO やチームが出演した公開動画（例: Cardano Seminar）は `cardano` シリーズに入れる。`chatham_house_rule: false`、`.eyebrow` は番組名、通し番号は振らない。**RealFi の過去の回とのつながり**（mainnet の時期の変遷、損失の順序、日本向け調査の結果など）を `補足` で必ずリンクする。
+
 ここに残っている公開録画（A Dose of Alpha の `cardano` シリーズ）は、分ける前に作ったもの。**動かさない**（URL を壊さないため）。
 
 **話題が両方にまたがるときは、リンクでつなぐ。**こちらの回で保留になった問い（`open-questions.md`）に、あちらの動画が答えていたら、こちらのステータスを更新してあちらの回へリンクする。

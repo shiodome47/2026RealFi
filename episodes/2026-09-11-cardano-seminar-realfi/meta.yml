@@ -1,0 +1,41 @@
+slug: 2026-09-11-cardano-seminar-realfi
+title: Cardano Seminar — The Real Story Behind RealFi
+title_en: Cardano Seminar — The Real Story Behind RealFi
+date: 2026-09-11          # 動画の公開日。依頼者の指定（「今日の日付の YouTube 公開」）
+series: cardano           # shared/series.yml のキー。通し番号は振らない
+
+# チャタムハウスルールの対象ではない。
+# YouTube で公開されている録画にもとづく記録であり、発言者は実名のまま扱う。
+# RealFi Office Hours ではないが RealFi の回なので、cardano-note ではなくこちらに置く。
+chatham_house_rule: false
+
+platform: YouTube
+channel: Cardano Community     # 依頼者の指定による表示名。動画内では「Cardano Foundation の場」と言及
+programme: Cardano Seminar
+official_channel: unknown      # Cardano Foundation の公式チャンネルかどうかは確認していない
+duration: "36:49"
+
+speakers:
+  - Host                       # Cardano Foundation 側の進行役。名前は一度呼ばれている（7:55 ごろ）が綴りは未確認
+  - John O'Connor              # RealFi CEO
+  - Matthew                    # 質問者（ステージ）
+  - Sam                        # 質問者（ステージ）
+  - Jean                       # 質問者（チャット。進行役が読み上げ）
+  # チャットの質問者として Matus の名前も読み上げられている
+
+speaker_labels: given          # 原本に話者ラベルがある
+timestamps: given              # 原本に [m:ss] の時刻がある
+
+# 原本は依頼者が固有名詞の誤変換を直したうえで渡してきたテキスト（原本の冒頭にその旨の注記）。
+# それ以外の文言は語られたとおり。docs/ 側でも文言は変えていない。
+proper_nouns_corrected_by_requester: true
+
+# スライドが使われているが、渡されたのは音声の文字起こしだけ。
+slides:
+  shown: true
+  published: false
+  reason: スライドは渡されていない。ページは音声で語られたことだけで作ってある
+
+source:
+  audio: null
+  video: https://www.youtube.com/watch?v=735yJ_erh2A

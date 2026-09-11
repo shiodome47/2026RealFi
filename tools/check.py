@@ -169,11 +169,16 @@ def check_page(path):
             if href[1:] not in ids:
                 fail(rel, "アンカー %s の飛び先がない" % href)
             continue
-        target = (path.parent / href).resolve()
+        # 別の回の節へ飛ぶリンク（../slug/#id）は、ファイルの存在と id の両方を見る
+        base, _, frag = href.partition("#")
+        target = (path.parent / base).resolve()
         if target.is_dir():
             target = target / "index.html"
         if not target.exists():
             fail(rel, "リンク切れ: %s" % href)
+        elif frag and target.suffix == ".html" and \
+                not re.search(r'\sid="%s"' % re.escape(frag), target.read_text()):
+            fail(rel, "リンク先に id がない: %s" % href)
 
     for fig in re.findall(r'<div class="fig">.*?</div>', text, re.S):
         for svg in re.findall(r"<svg\b[^>]*>", fig):
