@@ -19,16 +19,20 @@ HEAD = (ROOT / "docs/2026-07-26-a-dose-of-alpha/transcript-ja.html") \
     .read_text().split('<p class="eyebrow">')[0]
 
 CLS = {"Host": " host"}
+NAME = {"Host": "Denicio MacKenzie Bute"}   # 動画の画面の表示名。依頼者が確認
+
+# 英語全文は原文のまま。**進行役の名前の聞き取りミスだけ直す**（画面の表示名で確認済み）。
+EN_FIX = [("Dentio", "Denicio")]
 
 NOTE_JA = """<div class="note">
 <p><strong>このページについて。</strong>この対談は <a href="%s">YouTube で公開されている</a>ため、チャタムハウスルールの対象ではなく、<strong>発言者は実名のまま</strong>です。質問者も、動画の中で呼ばれた名前のままにしています。</p>
-<p>原本は依頼者が<strong>固有名詞の誤変換を直したうえで</strong>渡してきたテキストで、話者ラベルと時刻が付いています。<strong>文言はそれ以外は語られたとおり</strong>で、話者が言い間違えて言い直した箇所（USDR → USDrf）もそのまま訳しています。進行役の名前は一度だけ呼ばれていますが（7:55 ごろ）、綴りは確認できていません。</p>
+<p>原本は依頼者が<strong>固有名詞の誤変換を直したうえで</strong>渡してきたテキストで、話者ラベルと時刻が付いています。<strong>文言はそれ以外は語られたとおり</strong>で、話者が言い間違えて言い直した箇所（USDR → USDrf）もそのまま訳しています。進行役の名前は一度だけ呼ばれていて（7:55 ごろ）、字幕では "Dentio" でしたが、<strong>動画の画面の表示名で Denicio MacKenzie Bute と確認できた</strong>ので、その箇所だけ直しています。</p>
 <p><strong>スライドが使われた回です。</strong>「このグラフ」「次のスライド」という参照が残っていますが、<strong>ここに載っているのは音声で語られた内容だけ</strong>です。</p>
 </div>""" % VIDEO
 
 NOTE_EN = """<div class="note">
 <p><strong>About this page.</strong> This conversation was <a href="%s">published on YouTube</a>, so it is not covered by the Chatham House Rule and <strong>the speakers are named</strong>. Questioners appear under the names they were addressed by on the call.</p>
-<p>The source is a transcript in which <strong>proper nouns were corrected by the requester before delivery</strong>, with speaker labels and timestamps. <strong>The wording is otherwise as spoken</strong>, including the places where the speaker corrects himself (USDR → USDrf). The host is addressed by name once (around 7:55); the spelling is unverified.</p>
+<p>The source is a transcript in which <strong>proper nouns were corrected by the requester before delivery</strong>, with speaker labels and timestamps. <strong>The wording is otherwise as spoken</strong>, including the places where the speaker corrects himself (USDR → USDrf). The host is addressed by name once (around 7:55) — “Dentio” in the transcript — and <strong>the on-screen caption confirms the spelling as Denicio MacKenzie Bute</strong>, so that one word is corrected.</p>
 <p><strong>Slides were shown.</strong> References to them survive in the audio, but <strong>only what was spoken aloud appears here</strong>.</p>
 </div>""" % VIDEO
 
@@ -53,7 +57,7 @@ def page(lang, body):
             '  <span><a href="%s">YouTube</a></span>\n  <span>36:49</span>\n'
             '  <span>%s</span>\n</p>'
             % ("日本語全文" if ja else "Full transcript — English (original)", VIDEO,
-               "進行役＋RealFi の CEO＋質問者 3 名" if ja else "host, RealFi's CEO and three questioners"))
+               "Denicio MacKenzie Bute（進行役）＋RealFi の CEO＋質問者 3 名" if ja else "Denicio MacKenzie Bute (host), RealFi's CEO and three questioners"))
 
     if ja:
         nav = """<nav class="docnav">
@@ -95,8 +99,10 @@ def render(lang):
                 raise SystemExit("turn %d の日本語がない: %s" % (i, t["en"][:70]))
         else:
             text = html.escape(t["en"], quote=False)
+            for old, new in EN_FIX:
+                text = text.replace(old, new)
         mark = ' <em>(%s)</em>' % ("推定" if ja else "inferred") if i in INFERRED else ""
-        who = "進行役" if (ja and t["who"] == "Host") else t["who"]
+        who = NAME.get(t["who"], t["who"])
         time = '<span class="turn-time">%s</span>' % t["t"] if t["t"] else ""
         out.append(
             '<div class="turn">\n'

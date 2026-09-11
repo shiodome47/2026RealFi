@@ -16,7 +16,7 @@ official_channel: unknown      # Cardano Foundation の公式チャンネルか�
 duration: "36:49"
 
 speakers:
-  - Host                       # Cardano Foundation 側の進行役。名前は一度呼ばれている（7:55 ごろ）が綴りは未確認
+  - Denicio MacKenzie Bute     # 進行役。動画の画面の表示名で確認（字幕では "Dentio"）
   - John O'Connor              # RealFi CEO
   - Matthew                    # 質問者（ステージ）
   - Sam                        # 質問者（ステージ）
@@ -30,11 +30,18 @@ timestamps: given              # 原本に [m:ss] の時刻がある
 # それ以外の文言は語られたとおり。docs/ 側でも文言は変えていない。
 proper_nouns_corrected_by_requester: true
 
-# スライドが使われているが、渡されたのは音声の文字起こしだけ。
+# スライドが使われている。依頼者から 4 枚のスクリーンショットを受け取り、
+# 「スライド」バッジ付きで反映した。フッターは "Proprietary"（Confidential ではない）なので
+# 逐語の引用は避けて要約で書いている。それ以外のスライドは受け取っていないので音声のみ。
 slides:
   shown: true
-  published: false
-  reason: スライドは渡されていない。ページは音声で語られたことだけで作ってある
+  published: partial
+  received:
+    - 1 RealFi: yield-bearing dollars, backed by real economy assets（3 つの柱）
+    - 2 A multi trillion-dollar market is forming（市場規模のグラフと 4 つの統計）
+    - 3 ...but is currently missing a durable yield layer（V1〜V4 の比較）
+    - 4 Real-asset backed yield + higher credit premiums（4 象限の競合図）
+  not_received: トークン、損失の順序、2 ブック、実績、ロードマップ、SPO プログラム、go-live の各スライド
 
 source:
   audio: null
