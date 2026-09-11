@@ -85,7 +85,7 @@
   <li><strong>目標は年 8〜10%。</strong>ただし世界の金利とステーキング比率に左右される、と本人が繰り返しています。約束ではなく、ローンチに向けた目標として語られました。</li>
   <li><strong>損失の順序。</strong>エクイティ → 安定化ファンド → sUSDrf → USDrf。#6 では「まだ完全には確定と言えない」と留保付きだったものが、公開の場でそのまま語られました。</li>
   <li><strong>mainnet は 10 月 1 日。</strong>Lace で swap と stake、Sundae のプール、Liqwid で ADA を担保に借りてループ。当日に発表が出る、とのことでした。</li>
-  <li><strong>実績は 1,150 万ドルで IRR 20%。</strong>25 の fintech、40 件、10 か国、年 100 万件の貸付——本人の説明です。</li>
+  <li><strong>実績は 1,150 万ドルで IRR 20%。</strong>25 の fintech、40 件、10 か国、年 100 万件の貸付——本人の説明です。スライドの脚注では、うち 700 万ドルは投資責任者の前身の運用で、20% は未監査の期待値とされています。</li>
   <li><strong>米国・EU・英国は対象外。</strong>Ethena と同じ構造・同じ制限で、それでも 170 億ドルまで行った例があるので規模の妨げにはならない、と。</li>
   <li><strong>日本の SPO の 86% が「ADA を売るより借りたい」。</strong>#7 で出た調査の結果が、初めて数字で語られました。Liqwid の設計はこの答えを受けたものです。</li>
   <li><strong>大口の機関投資家が 1 社。</strong>「今いる大きな 1 社」には長いロックアップを設けている、と明かされました。</li>
@@ -212,6 +212,8 @@
   <li><strong>RFG。</strong>ガバナンストークン。テイクレート（手数料率）やプロトコルのパラメータに投票する。プロトコル収入がこのトークンで表されうる。供給量は固定で、新規発行もインフレもなし。ローンチは来年 Q1〜Q2 の予定</li>
 </ul>
 
+<p><span class="badge">スライド</span>トークンのスライドは 3 つに副題を付けています。USDrf は「働くドル」——1:1 の米ドル連動、日次の mint／redeem、即時送金、用途は決済・DEX の流動性・トレジャリーの運用。そして「RFG トークンはすべての USDrf 保有者に積み上がる。ポートフォリオの利回りは積み上がらない」という一文。sUSDrf は「生産的なドル」で、想定する持ち手に fintech と機関投資家が加わっています。RFG は「アップサイドの切符」で、投票の対象として「テイクレートと準備金の方針」、さらに<strong>アンカー投資家と戦略的投資家はトークンのワラント（新株予約権にあたるもの）を受け取る</strong>、と書かれています。この最後の 1 点は音声では一度も触れられていません。</p>
+
 <p><span class="badge">補足</span>話者は「取引所の事情で USDR から USDrf に改称した」と説明し、ガバナンストークンは一貫して RFG と呼んでいます。<a href="../2026-08-24-office-hours-ticker/#vote">#7 の投票</a>で確定した名前では、ガバナンストークンは RLFG です。この回の時点の呼び方をそのまま記録しています。対応表は用語集にあります。</p>
 
 <p>RFG が何を決めるのかは、質問を受けて<strong>「正直に言うと、まだ取り組んでいる途中」</strong>と答えています。決まっているのは「何に投票させないか」のほうでした。</p>
@@ -292,6 +294,12 @@
   <li><strong>ブック 2（ステーキング側）。</strong>より多くのプライベートクレジット、fintech への直接貸付</li>
 </ul>
 
+<p><span class="badge">スライド</span>スライドの見出しは「2 つのブック、4 つのスリーブ、1 つの共有クレジット・エンジン」。配分は音声より細かく書かれています。ブック 1（USDrf。「即時アクセスの流動性とペッグのブック」）は、スリーブ A が 45% で MMF・米国債・現金同等物（T+0〜T+1）、スリーブ B1 が 25% で CLO ETF（T+2〜T+7）、スリーブ C が 30% で fintech への直接貸付（期間 1 年）。ブック 2（sUSDrf。「利回り主導で、クールダウンに合わせたブック」）は、スリーブ B1/B2 が 50% で CLO ETF と投資適格の社債（T+2〜T+7）、スリーブ C が 50% で直接貸付。<strong>目標 8〜10% は「プロトコルの取り分を引いたあと」</strong>と明記されています。各スリーブには概算のグロス利回りも添えられています——A が 3.6% 前後、B1 が 6.2% 前後（ブック 2 の B1/B2 は 6.2〜6.5%）、C が 14% 前後。</p>
+
+<p><span class="badge">スライド</span>脚注が 2 つあります。①ステーカーがアンステークを始めると、負債は 7 日のクールダウンの間にブック 2 からブック 1 へ移り、ブック 2 の資産を売った代金がブック 1 のスリーブに再配分される。②<strong>サブスリーブ B2（社債）は事前承認済みだがローンチ時は休眠</strong>で、有効化には投資委員会の正式な決議が要る。</p>
+
+<p><span class="badge">補足</span>音声との食い違いが 1 つ。音声ではブック 1 の直接貸付を「小さな部分」と言っていますが、スライドでは 30% です。また <a href="../2026-08-28-office-hours-investment-framework/#sleeves">#8</a> ではスリーブは A・B1・C の 3 つでしたが、このスライドでは休眠中の B2 を含めて 4 つと数えています。各スリーブのグロス利回りは、スライドに目安として書かれた数字で、RealFi が提示した利回りでも、得られる利回りでもありません。</p>
+
 <p>この 2 つを混ぜ合わせると「8〜10% 程度の APY を目標にできる」。そのすぐ後に条件が並びます。<strong>「ステーキング比率、世界の金利、いくつかのことに依存する」</strong>「少なくとも今のところ納得している数字で、ローンチに向けて目標にするもの」。</p>
 
 <p><span class="badge">補足</span>この 8〜10% は、コール中で「目標（target）」として語られた数字です。RealFi が約束した利回りでも、得られる利回りでもありません。同じ数字が #7・#8 でも「目標」として出ています。</p>
@@ -326,7 +334,9 @@
 
 <p>「銀行口座を持たない人々に金融を（banking the unbanked）」という言い方は、本人は<strong>使わないようにしている</strong>とのことです。貸付の実態は「銀行サービスが十分でないが、非常に堅実な事業に資本を提供すること」で、信用のギャップが大きいから資金への需要が切実にある。「今ここに需要がある領域」だから選んでいる、と。</p>
 
-<p><span class="badge">補足</span>質問者は「1,130 万ドル」と言い、CEO は「1,150 万ドル」と言っています。どちらもそのまま記録しています。IRR 20% を含め、実績の数字はいずれも本人の説明で、第三者の検証には触れられていません。</p>
+<p><span class="badge">スライド</span>実績のスライドは、音声の数字に<strong>重要な但し書き</strong>を付けています。IRR は「20.25%（ブレンド）」で、脚注によると、その内訳は<strong>投資責任者が RealFi に加わる前に率いていた Mobilis の 700 万ドル（23%）と、RealFi 自身の 450 万ドル（15.96%）</strong>。「期待 IRR」であり、「未実現の投資を含み、監査は受けていない」と書かれています。投じた先はスリーブ C 相当の資産。ほかに「25 社超のポートフォリオ企業」「40 件超の実行」「10 か国超」「貿易金融やレベニュー・ベースド・ファイナンスを含みうる直接貸付」、そして RealFi 360 は「日次の借り手データと 12 因子の独自スコアリング。2023 年から新興国の与信を審査・監視し、審査後の損失事象はゼロ」。</p>
+
+<p><span class="badge">補足</span>質問者は「1,130 万ドル」と言い、CEO は「1,150 万ドル」と言っています。スライドは 1,150 万ドルです。音声では「私たちはこの戦略を数年間運用してきた」とだけ語られていますが、スライドの脚注を読むと、<strong>1,150 万ドルのうち 700 万ドルは RealFi ではなく前身の運用</strong>で、20% という数字は未実現分を含む監査前の期待値です。</p>
 
 <details class="explain">
 <summary>素朴な疑問 — 過去は 20% なのに、目標はなぜ 8〜10% なのか？</summary>
@@ -335,7 +345,7 @@
 <p><strong>当然の疑問です。</strong>同じ回の中で「IRR 20%」と「目標 8〜10%」が並んでいます。</p>
 <p><strong>なぜ両方が成り立つのか。</strong>20% は fintech 貸付だけの数字で、ステーブルコインでいえばブック 2 の中身にあたります。ステーブルコインはそこに、ブック 1 のマネー・マーケット・ファンドや CLO ETF（5% 前後）を混ぜる。さらに、プロトコルのテイクレート（手数料）が差し引かれる。混ぜて、引けば、下がります。</p>
 <p><strong>外から確かめる方法。</strong>透明性ポータルに出る配分の比率と、RFG の投票対象になる手数料率。この 2 つが分かれば、20% と 8〜10% の差がどこで生まれているかが逆算できます。</p>
-<p><strong>この回で示されたか。</strong>20%、5% 前後、8〜10% はそれぞれ示されました。配分の比率と手数料率は、この回では示されていません。</p>
+<p><strong>この回で示されたか。</strong>20%、5% 前後、8〜10% は音声で示されました。配分の比率と各スリーブの概算利回りはスライドにあります（<a href="#yield">5 節</a>）。手数料率は「プロトコルの取り分を引いたあと」とだけで、率そのものは音声にもスライドにもありません。</p>
 </div>
 </details>
 
@@ -391,6 +401,8 @@
 <p class="figcap">TVL の数字はすべて<strong>目標として</strong>語られたものです。進行役が「年末に 10 億ドル？」と聞き返し、「1 億ドルです」と訂正される場面がありました。</p>
 </div>
 
+<p><span class="badge">スライド</span>スライドは 5 段階です。フェーズ 1（2026 年 Q3）Cardano の機関向け testnet → フェーズ 2（Q3 26）Cardano mainnet ローンチ、TVL 5,000 万ドル → フェーズ 3（Q4 26）クロスチェーン展開（EVM／SVM）、1 億ドル → フェーズ 4（27 年 Q1／Q2）RFG トークンのローンチ、5 億ドル → フェーズ 5「成熟と最適化」、10 億ドル。<span class="badge">補足</span>音声と違う点が 3 つ。スライドでは mainnet が Q3 26 ですが、音声の 10 月 1 日は Q4 です（「4 か月前に作った資料」なので、時期がずれています）。5 億ドルという中間の目標は音声では出ていません。そして SVM（Solana）はスライドに書かれていて、質問者はそれを見て聞いたと読めますが、答えは EVM についてだけでした。</p>
+
 <p>今は「機関向けの testnet」の段階。10 月 1 日に Cardano の mainnet へ移り、この段階で TVL 5,000 万ドルを目指す。1 か月後に EVM 全体でローンチし、「ボールトのキュレーターが大きな EVM の DeFi の場すべてでボールトを作ってくれる」ので、そこから大きな数字が見え始める。並行して機関向けの営業、CEX、各種プログラム。年の変わり目あたりで 1 億ドル。プロダクト・マーケット・フィットがあれば、その先はもっと大きく。RFG は来年 Q1 か Q2。そして 10 億ドル。</p>
 
 <p>段階ごとの難しさも語られました。<strong>「1 億ドルは、10 の機関に『はい』と言ってもらうこと。難しいが達成可能」</strong>。10 億から 100 億には「そのループを確実に回して、個人にも DeFi のプレイヤーにも役立つようにしないといけない」。鍵は信用リスクで、市場で信頼を築く必要がある。「トラックレコードは買えないので、立ち上がりは遅いかもしれない」。</p>
@@ -406,7 +418,9 @@
 
 <p>結果として挙げられた数字は 2 つ。参加した SPO の 84% がその期間に委任者を増やした（対照群では 17%）。そして「5,000 人の本物の人間」が 6〜8 週間でテストアプリを通っていった。</p>
 
-<p><span class="badge">補足</span>84% と 17% は <a href="../2026-07-31-data-and-insights/#spo">#4 データ回</a>で示された数字と同じです。#4 では発表者自身が因果関係について留保を付けていました。「本物の人間」をどう判定しているかは、この回でも述べられていません。</p>
+<p><span class="badge">スライド</span>SPO のスライドは「Cardano の最小のプールを支えた」という見出しで、3 つの箱に分かれています。提供したもの——「報酬を手放させない」。委任者は参加プールに委任するだけでポイントを得て、SPO はその委任者が得た分の 20% を取り、共同マーケティング・共有素材・プールの掲載が付く。対象——単独プールで 100 万〜1,200 万 ADA。「小さなプールから引き揚げられた委任は二度と戻らないかもしれない」。<strong>応募 102 件のうち 92 の SPO を受け入れた</strong>。結果——84%（対照群 17%）は「最初の 3 週間をオンチェーンで計測」、そして<strong>「7 月 30 日時点で約 4,900 の本物の testnet ウォレット」</strong>。下段には SPO が委任者に教える 5 段——ADA を守る → 独立 SPO で分散する → 実際の活動でネットワークの健全性を支える → ADA を持ち続ける理由 → RealFi に参加する。</p>
+
+<p><span class="badge">補足</span>84% と 17% は <a href="../2026-07-31-data-and-insights/#spo">#4 データ回</a>で示された数字と同じです。#4 では発表者自身が因果関係について留保を付けていました。「本物の人間」をどう判定しているかは、この回でも述べられていません。音声の「5,000 人の本物の人間」は、スライドでは「約 4,900 の本物のウォレット」で、数えているのは人ではなくウォレットです。SPO の取り分 20% と、応募 102 件・受け入れ 92 という数字は音声にはありません。5 段の「教えること」は <a href="../2026-08-24-office-hours-ticker/">#7</a> で語られた「教える人を教える」の考え方と同じものです。</p>
 
 <p>10 月 1 日にできることとして、3 つの入口が挙げられました。</p>
 
@@ -609,6 +623,16 @@
 </div>
 
 <div class="qa pending">
+<p class="qa-q"><span class="qa-who">スライドのみ</span>アンカー投資家・戦略的投資家への「トークンのワラント」。</p>
+<p class="qa-a" data-by="音声では触れず">RFG のスライドに「アンカー投資家と戦略的投資家はトークンのワラントを受け取る」と書かれていますが、音声では一度も触れられていません。誰が、どれだけ、どんな条件かは、スライドにもありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">率は未提示</span>プロトコルの取り分（テイクレート）はいくらか。</p>
+<p class="qa-a" data-by="「引いたあと」とのみ">スライドは目標 8〜10% を「プロトコルの取り分を引いたあと」としていますが、率そのものは音声にもスライドにもありません。RFG の投票対象として挙げられているので、ローンチ時にはどこかで示されるはずです。</p>
+</div>
+
+<div class="qa pending">
 <p class="qa-q"><span class="qa-who">未言及</span>「今いる大きな 1 社」の機関投資家。</p>
 <p class="qa-a" data-by="存在のみ">長いロックアップを設けている大口の機関投資家が 1 社いる、とだけ。誰か、いくらか、ロックアップの長さは述べられていません。</p>
 </div>
@@ -616,7 +640,7 @@
 <div class="note">
 <p><strong>このページについて。</strong>この対談は YouTube で公開されているものにもとづく記録で、<strong>チャタムハウスルールの対象ではありません</strong>。発言者は実名のまま扱っています。もとの動画は <a href="https://www.youtube.com/watch?v=735yJ_erh2A">こちら</a>（Cardano Community チャンネル。公式チャンネルの配信かどうかは確認していません）。</p>
 <p>原本は依頼者が固有名詞を確認したうえで渡してきたもので、話者ラベルと時刻が付いています。進行役の名前は字幕では "Dentio" でしたが、動画の画面の表示名で Denicio MacKenzie Bute と確認できたので、その箇所だけ直しています。</p>
-<p><strong>スライドが使われた回です。</strong>依頼者から 4 枚のスクリーンショット（冒頭の 3 本の柱、市場規模、V1〜V4 の比較、4 象限の競合図）を受け取り、<span class="badge">スライド</span>のマークを付けて反映しました。<strong>マークのない記述は音声で語られたもの</strong>です。スライドのフッターは「Proprietary」（著作権の表示）なので、逐語の引用は避けて要約で書いています。それ以外のスライド（トークン、2 ブック、実績、ロードマップ、SPO プログラム、go-live）は受け取っていないので、その部分は音声だけです。4 象限の図はスライドをもとに描き直したもので、ほかの図は音声の説明をもとにこちらで描いたものです。</p>
+<p><strong>スライドが使われた回です。</strong>依頼者から 9 枚のスクリーンショット（冒頭の 3 本の柱、市場規模、V1〜V4 の比較、4 象限の競合図、3 つのトークン、2 ブック・4 スリーブ、実績、ロードマップ、SPO プログラム）を受け取り、<span class="badge">スライド</span>のマークを付けて反映しました。<strong>マークのない記述は音声で語られたもの</strong>です。スライドのフッターは「Proprietary」（著作権の表示）なので、逐語の引用は避けて要約で書いています。それ以外のスライド（go-live など）は受け取っていないので、その部分は音声だけです。4 象限の図はスライドをもとに描き直したもので、ほかの図は音声の説明をもとにこちらで描いたものです。</p>
 <p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、番組中の発言ではありません。</p>
 <p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
 </div>
@@ -637,7 +661,7 @@
   <li><strong>An 8–10% target.</strong> Repeatedly qualified by the speaker as dependent on global interest rates and the staking ratio — a launch target, not a promise.</li>
   <li><strong>The loss waterfall.</strong> Equity → stability fund → sUSDrf → USDrf. First shown in #6 with a caveat; here it is stated in public without one.</li>
   <li><strong>Mainnet on 1 October.</strong> Swap and stake inside Lace, pools on Sundae, and borrowing against ADA on Liqwid to loop. The announcement was due the same day.</li>
-  <li><strong>Track record: $11.5m at a 20% IRR.</strong> 25 fintechs, 40 transactions, 10 countries, a million loans a year — as described by the speaker.</li>
+  <li><strong>Track record: $11.5m at a 20% IRR.</strong> 25 fintechs, 40 transactions, 10 countries, a million loans a year — as described by the speaker. The slide's footnote adds that $7m of it was deployed by the head of investments' previous firm, and that the 20% is an unaudited expectation.</li>
   <li><strong>The US, EU and UK are out of scope.</strong> The same structure and restrictions as Ethena, which reached $17bn — so, he argues, not a limit on scale.</li>
   <li><strong>86% of Japanese SPOs would rather borrow than sell ADA.</strong> The first number from the survey announced in #7, and the reason the Liqwid product is shaped the way it is.</li>
   <li><strong>One large institutional investor.</strong> “The one big one that we have at the moment” is on a longer lock-up.</li>
@@ -764,6 +788,8 @@
   <li><strong>RFG.</strong> The governance token. Votes on the take rate, protocol fees and a bunch of parameters; protocol income “can be represented by this token.” Fixed supply, no emissions, no inflation. Launch planned for Q1 or Q2 next year</li>
 </ul>
 
+<p><span class="badge">slide</span>The token slide gives each a subtitle. USDrf is “the working dollar” — 1:1 USD-pegged, daily mint and redeem, instant transfer, meant for payments, DEX liquidity and treasury operations — with the line that RFG tokens accrue to every USDrf holder while portfolio yield does not. sUSDrf is “the productive dollar,” and its intended holders add fintechs and institutions to the list given aloud. RFG is “the upside ticket,” voting on take-rate and reserve policy — and <strong>anchor and strategic investors receive token warrants</strong>. That last point is never mentioned aloud.</p>
+
 <p><span class="badge">added</span>The speaker explains that USDR was “rebranded because of an exchange, to USDrf,” and calls the governance token RFG throughout. In the names settled by <a href="../2026-08-24-office-hours-ticker/#en-vote">the vote covered in #7</a>, the governance token is RLFG. This page records the names as used on the day; the mapping is in the glossary.</p>
 
 <p>Asked what RFG holders actually vote on, the answer opened with <strong>“speaking honestly … this is something that we're still working on.”</strong> What is settled is what they should <em>not</em> vote on.</p>
@@ -844,6 +870,12 @@
   <li><strong>Book two (staked).</strong> More private credit, more direct fintech lending</li>
 </ul>
 
+<p><span class="badge">slide</span>The slide is titled “Two books. Four sleeves. One shared credit engine,” and the allocation is more specific than the audio. Book one (USDrf, the “instant access liquidity &amp; peg book”): sleeve A at 45% in MMFs, T-bills and cash equivalents (T+0 to T+1); sleeve B1 at 25% in CLO ETFs (T+2 to T+7); sleeve C at 30% in direct fintech lending (one-year duration). Book two (sUSDrf, the “yield-led, cooldown-matched book”): sleeve B1/B2 at 50% in CLO ETFs and investment-grade corporate credit (T+2 to T+7); sleeve C at 50% in direct lending. <strong>The 8–10% target is stated as “after protocol take.”</strong> Each sleeve also carries an approximate gross yield — around 3.6% for A, around 6.2% for B1 (6.2–6.5% for book two's B1/B2), around 14% for C.</p>
+
+<p><span class="badge">slide</span>Two footnotes. First, when a staker starts unstaking, the liability migrates from book two to book one over the seven-day cooldown, with book two assets sold and the proceeds redeployed into book one sleeves. Second, <strong>sub-sleeve B2 (corporate credit) is pre-approved but dormant at launch</strong>; activating it requires a formal Investment Committee resolution.</p>
+
+<p><span class="badge">added</span>One difference from the audio: the speaker calls book one's direct lending “a small portion,” while the slide puts it at 30%. And where <a href="../2026-08-28-office-hours-investment-framework/#en-sleeves">#8</a> counted three sleeves (A, B1, C), this slide counts four, including the dormant B2. The per-sleeve gross yields are indicative figures printed on the slide — not a yield RealFi has offered, and not a yield anyone will receive.</p>
+
 <p>Blended together, “this is what lets us target sort of 8 to 10% APYs.” The conditions follow immediately: <strong>“dependent on the staking ratio, dependent on global interest rates, dependent on a few things”</strong> — “it's a number that we're comfortable with at least at the moment and it's what we're going to be targeting for launch.”</p>
 
 <p><span class="badge">added</span>The 8–10% is a target as stated on the call — not a yield RealFi has promised, and not a yield anyone will receive. The same figure appears as a target in #7 and #8.</p>
@@ -878,7 +910,9 @@
 
 <p>He <strong>avoids the phrase “banking the unbanked.”</strong> The lending is “more about providing capital to underbanked but very solid businesses” — productive, lendable, with dire needs for finance because the credit gaps are big. Chosen because it “has needs right here and right now.”</p>
 
-<p><span class="badge">added</span>A questioner says “11.3 million”; the CEO says “11.5 million.” Both are recorded as spoken. The track-record figures, including the 20% IRR, are the speaker's own; no third-party verification was mentioned.</p>
+<p><span class="badge">slide</span>The track-record slide attaches <strong>important qualifications</strong> to the spoken numbers. The IRR is “20.25% blended,” and the footnote splits it: <strong>$7m at 23% deployed by Mobilis, led by the head of investments before joining RealFi, and $4.5m at 15.96% deployed by RealFi itself</strong>. It is an expected IRR, “includes unrealised investments and is unaudited.” Capital went to sleeve C-equivalent assets. The slide also lists 25+ portfolio companies, 40+ disbursements, 10+ countries, direct lending that “may include trade finance / revenue-based financing,” and describes RealFi 360 as daily borrower data plus a 12-factor proprietary scoring model, underwriting and monitoring EM credit since 2023 with zero loss events post-underwriting.</p>
+
+<p><span class="badge">added</span>A questioner says “11.3 million”; the CEO says “11.5 million”; the slide says $11.5m. Aloud, the strategy was simply “what we've been doing for the last few years.” The footnote shows that <strong>$7m of the $11.5m was deployed by a predecessor operation, not RealFi</strong>, and that the 20% figure is an unaudited expectation including unrealised positions.</p>
 
 <details class="explain">
 <summary>A naive question — if the past was 20%, why is the target 8–10%?</summary>
@@ -887,7 +921,7 @@
 <p><strong>A fair question.</strong> “20% IRR” and “8–10% target” sit in the same talk.</p>
 <p><strong>Why both hold.</strong> The 20% is fintech lending alone — what book two holds. The stablecoin blends that with book one's money market funds and CLO ETFs at around 5%, and then the protocol's take rate comes off. Blend, then subtract, and it falls.</p>
 <p><strong>How to check from outside.</strong> The allocation shown on the transparency portal, and the fee rate RFG will vote on. With those two, the gap between 20% and 8–10% can be reconstructed.</p>
-<p><strong>Was it given here?</strong> 20%, around 5%, and 8–10% were each stated. The allocation ratio and the fee rate were not.</p>
+<p><strong>Was it given here?</strong> 20%, around 5%, and 8–10% were said aloud. The allocation and the per-sleeve gross yields are on the slide (<a href="#en-yield">section 5</a>). The fee rate appears only as “after protocol take”; the rate itself is neither said nor shown.</p>
 </div>
 </details>
 
@@ -943,6 +977,8 @@
 <p class="figcap">Every TVL figure was given <strong>as a target</strong>. The host heard “a billion by the end of the year”; the correction was immediate: “100 million.”</p>
 </div>
 
+<p><span class="badge">slide</span>The slide has five phases: phase 1 (Q3 2026) Cardano institutional testnet → phase 2 (Q3 26) Cardano mainnet launch, $50m TVL → phase 3 (Q4 26) cross-chain expansion (EVM/SVM), $100m → phase 4 (Q1/Q2 27) RFG token launch, $500m → phase 5, “maturity &amp; optimization,” $1bn. <span class="badge">added</span>Three differences from the audio. The slide puts mainnet in Q3 26; 1 October, as said aloud, is Q4 — the deck is four months old. The $500m milestone is not mentioned aloud. And SVM (Solana) is on the slide, which reads as the source of the questioner's SVM question — the answer covered EVM only.</p>
+
 <p>The current phase is the “institutional testnet.” Cardano mainnet follows on 1 October, with a target of around $50 million of TVL across that phase. A month later comes the EVM launch, “where we can probably start seeing larger numbers with vault curators creating vaults for us across all of the big EVM DeFi venues.” Alongside: institutional sales, CEXs, programmes. Around $100 million by the turn of the year; “much larger numbers” after that if product-market fit is there; RFG in Q1 or Q2; then a billion.</p>
 
 <p>Each stage was given its own difficulty. <strong>“100 million's getting 10 institutions to say yes — hard but achievable.”</strong> A billion to ten billion needs “that loop” to be useful to retail and DeFi players alike. The gating factor is credit risk: trust and conviction have to be built, and “track records is something you can't buy,” so “it might be a slower ramp up for us.”</p>
@@ -958,7 +994,9 @@
 
 <p>Two results were given: 84% of participating SPOs grew their delegator base over the period, against 17% in the control group; and “5,000 real humans” ran through the test app programme over six to eight weeks.</p>
 
-<p><span class="badge">added</span>The 84% and 17% are the same figures shown in <a href="../2026-07-31-data-and-insights/#en-spo">#4 Data &amp; Insights</a>, where the presenter declined to claim causation. How “real humans” are identified was not described here either.</p>
+<p><span class="badge">slide</span>The SPO slide, headed “We backed Cardano's smallest pools,” has three boxes. The offer — “no rewards given up”: delegators earn points just for delegating to a participating pool, the SPO takes a 20% share of what their delegators earn, plus co-marketing, shared materials and pool listings. The target — single pools of 1M–12M ADA, “delegation pulled from a small pool may never come back,” and <strong>92 SPOs onboarded from 102 applications</strong>. The result — 84% against 17%, “measured on-chain across the first three weeks,” and <strong>“~4,900 genuine testnet wallets at 30 July.”</strong> A strip along the bottom lists what SPOs teach their delegators: secure your ADA → decentralise through independent SPOs → support network health with real activity → reasons to stay active with ADA → participate in RealFi.</p>
+
+<p><span class="badge">added</span>The 84% and 17% are the same figures shown in <a href="../2026-07-31-data-and-insights/#en-spo">#4 Data &amp; Insights</a>, where the presenter declined to claim causation. How “real humans” are identified was not described here either. The “5,000 real humans” said aloud appears on the slide as “~4,900 genuine testnet wallets” — the count is of wallets, not people. The SPO's 20% share and the 92-of-102 figure are slide-only. The five-step teaching strip is the “train the trainer” idea from <a href="../2026-08-24-office-hours-ticker/">#7</a>.</p>
 
 <p>Three doors open on 1 October.</p>
 
@@ -1161,6 +1199,16 @@
 </div>
 
 <div class="qa pending">
+<p class="qa-q"><span class="qa-who">Slide only</span>Token warrants for anchor and strategic investors.</p>
+<p class="qa-a" data-by="Not said aloud">The RFG slide says anchor and strategic investors receive token warrants; it is never mentioned aloud. Who, how much, and on what terms is not on the slide either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Rate not given</span>What the protocol take is.</p>
+<p class="qa-a" data-by="“After protocol take” only">The slide states the 8–10% target as “after protocol take,” but the rate itself appears neither aloud nor on the slide. It is listed as something RFG will vote on, so it should surface by launch.</p>
+</div>
+
+<div class="qa pending">
 <p class="qa-q"><span class="qa-who">Not named</span>“The one big one that we have at the moment.”</p>
 <p class="qa-a" data-by="Existence only">One large institutional investor is on a longer lock-up. Who, how much, and how long were not said.</p>
 </div>
@@ -1168,7 +1216,7 @@
 <div class="note">
 <p><strong>About this page.</strong> This conversation is based on a recording published on YouTube and <strong>is not covered by the Chatham House Rule</strong>; the speakers are named. The original video is <a href="https://www.youtube.com/watch?v=735yJ_erh2A">here</a> (Cardano Community channel; whether it is an official channel has not been verified).</p>
 <p>The source transcript, with speaker labels and timestamps, had its proper nouns checked by the requester before delivery. The host appears as “Dentio” in the transcript; the on-screen caption confirms the spelling as Denicio MacKenzie Bute, and that one word is corrected.</p>
-<p><strong>Slides were shown.</strong> Four screenshots were received from the requester (the opening three pillars, market size, the V1–V4 comparison, and the four-quadrant chart) and are reflected here with the <span class="badge">slide</span> mark. <strong>Unmarked passages were spoken aloud.</strong> The deck carries a “Proprietary” footer (a copyright notice), so it is paraphrased rather than quoted. The remaining slides — tokens, the two books, track record, roadmap, the SPO programme, go-live — were not received, so those sections rest on the audio alone. The four-quadrant figure is redrawn from the slide; the other figures are drawn from the spoken description.</p>
+<p><strong>Slides were shown.</strong> Nine screenshots were received from the requester (the opening three pillars, market size, the V1–V4 comparison, the four-quadrant chart, the three tokens, two books and four sleeves, track record, roadmap, and the SPO programme) and are reflected here with the <span class="badge">slide</span> mark. <strong>Unmarked passages were spoken aloud.</strong> The deck carries a “Proprietary” footer (a copyright notice), so it is paraphrased rather than quoted. The remaining slides (go-live and any others) were not received, so those sections rest on the audio alone. The four-quadrant figure is redrawn from the slide; the other figures are drawn from the spoken description.</p>
 <p>Passages marked <span class="badge">added</span> were written by us to help the reader and were not said on the call.</p>
 <p>For the exact wording, see the <a href="./transcript-en.html">English transcript</a>; to read straight through in Japanese, the <a href="./transcript-ja.html">Japanese transcript</a>.</p>
 </div>

@@ -30,7 +30,7 @@ timestamps: given              # 原本に [m:ss] の時刻がある
 # それ以外の文言は語られたとおり。docs/ 側でも文言は変えていない。
 proper_nouns_corrected_by_requester: true
 
-# スライドが使われている。依頼者から 4 枚のスクリーンショットを受け取り、
+# スライドが使われている。依頼者から 9 枚のスクリーンショットを受け取り、
 # 「スライド」バッジ付きで反映した。フッターは "Proprietary"（Confidential ではない）なので
 # 逐語の引用は避けて要約で書いている。それ以外のスライドは受け取っていないので音声のみ。
 slides:
@@ -41,7 +41,12 @@ slides:
     - 2 A multi trillion-dollar market is forming（市場規模のグラフと 4 つの統計）
     - 3 ...but is currently missing a durable yield layer（V1〜V4 の比較）
     - 4 Real-asset backed yield + higher credit premiums（4 象限の競合図）
-  not_received: トークン、損失の順序、2 ブック、実績、ロードマップ、SPO プログラム、go-live の各スライド
+    - 5 RealFi provides three products（USDrf / sUSDrf / RFG）
+    - 6 Where the yield comes from: Two books. Four sleeves.（配分・T+・概算グロス利回り・脚注 2 つ）
+    - 7 Institutional track record（20.25% ブレンド IRR の内訳、未監査の注記）
+    - 8 Our scaling path to $1Bn TVL（5 フェーズ）
+    - 9 We backed Cardano's smallest pools（SPO プログラム）
+  not_received: go-live（Lace / Sundae / Liqwid）のスライドなど。依頼者から「まだ続きがある」と案内あり
 
 source:
   audio: null
