@@ -1,0 +1,3346 @@
+<title>RealFi Office Hours #9 — Ambassador Program — まとめ / Summary</title>
+<style>
+/* Cardano セッションのアーカイブ — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.35rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* RealFi Office Hours の通し番号。カードの見出しの上に小さく出す */
+.card-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+
+/* 全文は畳んでおく。開くまでは、このページはまとめだけの長さで開く。 */
+details.part { display: block; }
+details.part > summary.part-head { cursor: pointer; list-style: none; margin: 0; }
+details.part > summary.part-head::-webkit-details-marker { display: none; }
+details.part[open] > summary.part-head { margin-bottom: 2rem; }
+details.part > summary.part-head::after {
+  content: "開く"; margin-left: auto; white-space: nowrap;
+  font-size: .75rem; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .75rem;
+}
+details.part[open] > summary.part-head::after { content: "閉じる"; }
+:root[data-lang="en"] details.part > summary.part-head::after { content: "Open"; }
+:root[data-lang="en"] details.part[open] > summary.part-head::after { content: "Close"; }
+details.part > summary.part-head:hover { background: var(--surface-alt); }
+details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<script>
+// 全文は畳んであるので、リンクや印刷で中に入るときは開いておく。
+(function () {
+  function openTo(el) {
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+  }
+  function openHash() {
+    if (!location.hash) return;
+    try { openTo(document.querySelector(location.hash)); } catch (e) {}
+  }
+  window.addEventListener('hashchange', openHash);
+  window.addEventListener('DOMContentLoaded', openHash);
+  window.addEventListener('beforeprint', function () {
+    var all = document.querySelectorAll('details');
+    for (var i = 0; i < all.length; i++) all[i].open = true;
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #9</p>
+<h1><span class="l-ja">Ambassador Program — mainnet までの 2 週間で、コミュニティが自分で動けるかを試す</span><span class="l-en">Ambassador Program — two weeks to find out whether the community can organise itself</span></h1>
+<p class="meta"><span>2026-09-21</span><span>Discord</span><span><span class="l-ja">発話 2 名</span><span class="l-en">Two speakers</span></span>
+</p>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p><a href="../2026-08-24-office-hours-ticker/#crews">#7 で「まだ立ち上げていない」と言われた crew</a> が、ようやく最初の 1 つとして動き出す回。<br>
+  ただし制度の発表ではありません。<strong>mainnet までの 2 週間を実験の場にして、コミュニティが自分で組織できると数字で示したい</strong>——それが、この回の頼みごとです。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>まず 1 つの crew から。</strong>最初の district は「ダーク・フォレスト」、最初の crew の課題は testnet の活動を増やすこと。うまく回ったら、そこから広げる。</li>
+  <li><strong>Miro のボードが開いている。</strong>SPO の自己紹介、世界構築の試作、共通善の 4 つの論拠、組織のテンプレート。誰でも入って付箋を残せる、と案内されました。</li>
+  <li><strong>2 週間の成功とは、testnet の活動が大幅に増えること。</strong>それをリーダーシップへの「A/B テスト」として見せ、資源を求める材料にしたい、と説明されました。</li>
+  <li><strong>新しいものは作らない。</strong>ダッシュボードなどの要望はチームに渡したが、mainnet までは技術チームがそこに集中する。「今あるものが、可能にする制約」。</li>
+  <li><strong>貢献が見えやすいのは 2 つ。</strong>SPO なら、委任者が請求したポイントの 20%。個人なら、testnet の紹介リンク。</li>
+  <li><strong>イベント。</strong>Korea Blockchain Week に CEO、TOKEN2049 では Cardano Foundation のブースに採択、11 月頭の Solana Breakpoint（ロンドン）には「その頃には EVM に乗っていれば」。</li>
+  <li><strong>コミュニティ発のコンテンツは、自分のアカウントからなら自由。</strong>RealFi のアカウントから出るものとは扱いが違う、という回答でした。</li>
+  <li><strong>USDrf への改称は「ほぼ全体に反映」。</strong>ただし「毎日新しい見落としが見つかる」。投票の結果は「84%」と述べられましたが、#7 の記録では 68% です。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#recap"><span class="n">01</span>SPO のプログラムから、アンバサダーへ</a></li>
+  <li><a href="#handshake"><span class="n">02</span>「握手」と世界構築</a></li>
+  <li><a href="#darkforest"><span class="n">03</span>最初の district — ダーク・フォレスト</a></li>
+  <li><a href="#commongood"><span class="n">04</span>共通善 — 4 つの論拠</a></li>
+  <li><a href="#sandbox"><span class="n">05</span>mainnet までの 2 週間 — サンドボックスと A/B テスト</a></li>
+  <li><a href="#contribution"><span class="n">06</span>貢献をどう見るか</a></li>
+  <li><a href="#events"><span class="n">07</span>イベント</a></li>
+  <li><a href="#content"><span class="n">08</span>コミュニティ発のコンテンツと、その自由</a></li>
+  <li><a href="#ticker"><span class="n">09</span>USDrf への改称の反映</a></li>
+  <li><a href="#overall"><span class="n">10</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">12</span>持ち帰りになった論点</a></li>
+</ol>
+</div>
+
+<h2 id="recap">1. SPO のプログラムから、アンバサダーへ</h2>
+<p class="deck">アクセラレーターが土台。そこから「アンバサダーにできる」となった、という経緯。</p>
+
+<p>冒頭は振り返りです。Cardano のネットワークの検証者である SPO 向けにアクセラレーター・プログラムを立ち上げたこと。それが今日の話題——<strong>「Alpha アンバサダー・プログラム」</strong>——の前段だった、と。マーケティング側からは「加わってから作ってきたものを見てきて、これはアンバサダー・プログラムにできる、となった。他のチームなら 2 段階かける工程を一本にまとめた」と説明されました。</p>
+
+<p>そのうえで、2 つの前置きがありました。</p>
+
+<ul>
+  <li><strong>見せかけの数字は求めていない。</strong>testnet でもコミュニティでも「本物の活動」を見たかった、と改めて</li>
+  <li><strong>提案はチームに届いている。</strong>RealFi のプロダクトや RFG トークンについて多くの提案が来ているが、金融商品である以上「何を言えて何を言えないかについてとても慎重」なので、Discord 上では反応が見えないことがある。それでも「チームは見ている」</li>
+</ul>
+
+<p>mainnet の日付が「2 週間ほど」延びて 10 月 1 日になったことも触れられました。「今日から 9 日ほど」。<span class="badge">補足</span><a href="../2026-09-11-cardano-seminar-realfi/">Cardano Seminar（9 月 11 日）</a>で CEO が初めて口にした日付と同じです。#6 の「9 月中旬」からの延期を、この回では「時間ができた」と前向きに使っています。</p>
+
+<h2 id="handshake">2. 「握手」と世界構築</h2>
+<p class="deck">チームが KPI で理解する価値と、コミュニティが提供できる活動を、真ん中で結ぶ。</p>
+
+<p><a href="../2026-08-24-office-hours-ticker/#crews">#7 で「握手（handshake）」と呼ばれた接点</a>が、この回では図として示されました。画面共有された Miro のボードには、青がチーム、赤がコミュニティのエコシステム、そのあいだの緑 2 つが「握手」——インパクトの接点、つまり進行役とマーケティング責任者の 2 人、という説明です。</p>
+
+<p>接点で何をするのか。<strong>「社内の各機能が価値として理解するもの（KPI）」と「コミュニティが新しく入ってきた人に提供できる活動や役割」を翻訳し合う</strong>こと。コミュニティの貢献やアイデアを、チームが実際に動けるものに変える。「水面下で進んでいる仕事」だと述べられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="左にコミュニティ、右にチーム、中央に「握手」の接点を置き、接点が両側の言葉を翻訳する構図の図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">画面共有されたボードの構図（音声の説明をもとに描いたもの）</text>
+
+  <rect x="16" y="48" width="196" height="150" rx="8" class="d-box-warn"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">コミュニティ</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">ひとりで参加する</text>
+  <text x="114" y="124" class="d-s" text-anchor="middle">→ パートナーを組む</text>
+  <text x="114" y="146" class="d-s" text-anchor="middle">→ crew を作る</text>
+  <text x="114" y="176" class="d-s" text-anchor="middle">自己組織。上からの統制はない</text>
+
+  <line x1="216" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="238" y1="140" x2="216" y2="140" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="242" y="48" width="196" height="150" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">握手 — インパクトの接点</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">進行役とマーケティング責任者</text>
+  <text x="340" y="128" class="d-s" text-anchor="middle">活動・貢献・アイデアを</text>
+  <text x="340" y="150" class="d-s" text-anchor="middle">チームが動けるものに翻訳する</text>
+  <text x="340" y="176" class="d-s" text-anchor="middle">KPI を、コミュニティの言葉に</text>
+
+  <line x1="442" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="464" y1="140" x2="442" y2="140" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="468" y="48" width="196" height="150" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">チーム</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">価値を KPI で理解する</text>
+  <text x="566" y="124" class="d-s" text-anchor="middle">mainnet までは</text>
+  <text x="566" y="146" class="d-s" text-anchor="middle">新しいものを作らない</text>
+  <text x="566" y="176" class="d-s" text-anchor="middle">提案は届いている</text>
+
+  <text x="340" y="236" class="d-s" text-anchor="middle">「チームが上からやるだけでは勝てない。コミュニティ全体との、拡張された能力が要る」</text>
+</svg>
+<p class="figcap">ボードの中身は受け取っていないので、色分けと配置は音声の説明どおり、文字はこちらで補ったものです。</p>
+</div>
+
+<p>コミュニティ側の見せ方が<strong>世界構築（world building）</strong>です。「地図やストーリー主導の RPG のように、一人ひとりが冒険に出る」。もとは同僚が数か月前に探ったアイデアで、<strong>Decentralized Adventures</strong> と名付けられていた、と紹介されました。進行役がこの角度を気に入った理由は、「コミュニティは本質的に自己組織的で、上からの統制はない。だから人々が自分の冒険を自分で選ぶ」からだ、と。</p>
+
+<div class="term">
+<p class="term-name">world building / Decentralized Adventures <small>コール中の言葉</small></p>
+<p>新しく入ってきた人が、RealFi の内部の言葉（エンジニアリング、プロダクト、CEO がそれぞれ使う言葉）を初日に覚えるのは不可能——だから「ダーク・フォレスト」や「港」のように<strong>すでに人の頭の中にあるもの</strong>を使って方向づける、というのが世界構築の狙いだと説明されました。Decentralized Adventures は、その入口を「冒険を選ぶ」形にした呼び名です。<span class="badge">補足</span>district と crew の二層は <a href="../2026-08-24-office-hours-ticker/#districts">#7 の 6 節</a>で説明されています。この回はその「最初の 1 つ」を動かす話です。</p>
+</div>
+
+<h2 id="darkforest">3. 最初の district — ダーク・フォレスト</h2>
+<p class="deck">最初の district は 1 つ、最初の crew も 1 つ。課題は「testnet の活動を増やす」。</p>
+
+<p>ボードには「地図」があり、貢献できる district（地区）に入っていく——その最初の 1 つが<strong>ダーク・フォレスト</strong>です。理屈は <a href="../2026-08-24-office-hours-ticker/#darkforest">#7 の 7 節</a>と同じで、この回でも同じ数字が繰り返されました。Cloudflare によればインターネットの 50〜80% がボット、DeFiLlama や Dune ではオンチェーンの活動の 90% がボット。だから「AI の時代に、人間の真正さがはるかに価値を持つ」。</p>
+
+<p>そしてダーク・フォレストは「cozy web」でもある。<strong>RealFi のようなチームには届かないが、コミュニティなら届く場所</strong>——Discord、非公開の Telegram、対面のミートアップ。「ちょっとした遊び」で、名前は変えてもいい、とも。</p>
+
+<p>この district の<strong>最初の crew の課題は、testnet の活動をどう増やすか</strong>です。「自己組織できるか、mainnet までに何か面白いことができるか。そして本当に活動していた人たちの中から、アンバサダーやコミュニティの代表を選ぶ」——それが、今の時点でのアンバサダー・プログラムの見方だと述べられました。</p>
+
+<p><span class="badge">補足</span>順番に注意が要ります。<strong>アンバサダーを選んでから活動するのではなく、活動した人の中からアンバサダーを選ぶ</strong>。制度の詳細（役割、ステータス、報酬）は #7 で「作成中」とされ、この回でも示されていません。</p>
+
+<h2 id="commongood">4. 共通善 — 4 つの論拠</h2>
+<p class="deck">RealFi と、コミュニティと、Cardano が「良いことが起きている」と一致できる 4 つ。</p>
+
+<p>ボードのもう一つの柱が<strong>共通善（common good）</strong>です。「もし自分たちがコミュニティの側にいて、誰かに RealFi について語るなら、RealFi と、コミュニティメンバーと、Cardano エコシステムの三者が、価値のあることが起きていると一致して認められるものは何か」。KPI と共通善をつなぐのは「成功を客観的な数字としてどう理解するか」で、<strong>共通善が見つかれば、それが調整の軸になる</strong>という説明です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="ADA を守る、ネットワークを分散する、経済的な健全性、使い道を探る、の 4 つを順に並べ、最後に RealFi への参加の論拠にたどり着く図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">順にたどると「なぜ RealFi に参加するのか」の論拠になる、という組み立て</text>
+
+  <rect x="16" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="91" y="74" class="d-t" text-anchor="middle">① ADA を守る</text>
+  <text x="91" y="100" class="d-s" text-anchor="middle">ハッキングは多い</text>
+  <text x="91" y="122" class="d-s" text-anchor="middle">金融的な主権を</text>
+  <text x="91" y="144" class="d-s" text-anchor="middle">保ったまま</text>
+
+  <line x1="166" y1="107" x2="180" y2="107" class="d-line" marker-end="url(#m2)"/>
+
+  <rect x="182" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="257" y="74" class="d-t" text-anchor="middle">② 分散する</text>
+  <text x="257" y="100" class="d-s" text-anchor="middle">SPO プログラム</text>
+  <text x="257" y="122" class="d-s" text-anchor="middle">RealFi の SPO に委任</text>
+  <text x="257" y="144" class="d-s" text-anchor="middle">→ 受動的にポイント</text>
+
+  <line x1="332" y1="107" x2="346" y2="107" class="d-line" marker-end="url(#m2)"/>
+
+  <rect x="348" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="423" y="74" class="d-t" text-anchor="middle">③ 経済の健全性</text>
+  <text x="423" y="100" class="d-s" text-anchor="middle">成長＝資本の生産性</text>
+  <text x="423" y="122" class="d-s" text-anchor="middle">流動性が要る、と</text>
+  <text x="423" y="144" class="d-s" text-anchor="middle">誰もが認める</text>
+
+  <line x1="498" y1="107" x2="512" y2="107" class="d-line" marker-end="url(#m2)"/>
+
+  <rect x="514" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="589" y="74" class="d-t" text-anchor="middle">④ 使い道を探る</text>
+  <text x="589" y="100" class="d-s" text-anchor="middle">ADA を売らなくても</text>
+  <text x="589" y="122" class="d-s" text-anchor="middle">借りる、など</text>
+  <text x="589" y="144" class="d-s" text-anchor="middle">他の使い方がある</text>
+
+  <rect x="16" y="190" width="648" height="60" rx="7" class="d-box-accent"/>
+  <text x="340" y="215" class="d-t" text-anchor="middle">「ここまでたどると、なぜ RealFi に参加したいのか、かなり強い論拠になる」</text>
+  <text x="340" y="238" class="d-s" text-anchor="middle">Ethereum のような他のエコシステムにも当てはまる。ただし今は Cardano の話</text>
+</svg>
+<p class="figcap">4 つの順番と中身は音声で語られたとおりです。<span class="badge">補足</span><a href="../2026-09-11-cardano-seminar-realfi/#cardano">Cardano Seminar のスライド</a>にあった「SPO が委任者に教える 5 段」（ADA を守る → 独立 SPO で分散 → ネットワークの健全性 → ADA を持ち続ける理由 → RealFi に参加）と、ほぼ同じ骨組みです。</p>
+</div>
+
+<p>そのあとに「どう組織するか」のテンプレートが用意されていて、資産ベースのコミュニティ開発ワークショップに参加した SPO を見て、一緒に働きたい相手を見つけられる、と案内されました。ボードは開いていて、Discord で話しても、付箋を残してもいい。</p>
+
+<h2 id="sandbox">5. mainnet までの 2 週間 — サンドボックスと A/B テスト</h2>
+<p class="deck">新しいものは作らない。今あるもので活動を増やし、それを数字で見せる。</p>
+
+<p>この回の中心にある頼みごとが、ここです。「mainnet までの時間で、本当にサンドボックスを作ろうとしている」。ただし制約があります。</p>
+
+<blockquote>
+<p>この数週間の制約はこうです——今あるものが、あるものです。もらったフィードバックは全部チームに渡しています。でも、<strong>今あるものが「可能にする制約」</strong>なんです。</p>
+</blockquote>
+
+<p>ダッシュボードのような要望はチームに出したが、<strong>この 2 週間で新しいものは作らない</strong>。マーケティング責任者も「そういうものは将来できる。ただ今は、技術チームは mainnet に集中しないといけない」と重ねました。</p>
+
+<div class="term">
+<p class="term-name">enabling constraint（可能にする制約） <small>コール中の言葉</small></p>
+<p>「制約」を、できないことの一覧ではなく、<strong>その範囲の中で何ができるかを決めるもの</strong>として捉える言い方です。ここでは「新機能は来ない。だから今ある testnet とボードで、2 週間で何ができるか」という問いの立て方を指しています。<span class="badge">補足</span>組織論で使われる言葉で、コール中に定義は語られていません。</p>
+</div>
+
+<p>では、2 週間の「成功」とは何か。</p>
+
+<blockquote>
+<p>次の 2 週間で成功とは何かというと、<strong>私たち 2 人が「testnet の活動が大幅に増えた」と示せること</strong>です。世界構築とワークショップが機能することを示したいからです。</p>
+</blockquote>
+
+<p>なぜ数字が要るのか、も率直に語られました。突飛なアイデア（世界構築、crew、district）をリーダーシップに持ち込むとき、「活動のための活動」に見えないように気をつけないといけない。<strong>資源を求め、支援してもらう最良の方法は、A/B テストをやること</strong>——「閉じたループのテストで、これは実際に役に立ったと言えるようにする」。それが「黄金律」だ、と。</p>
+
+<p>測り方は、<strong>オンチェーンとオンラインの指標を組み合わせる</strong>こと。「オンラインの活動は偽装できる。オンチェーンの活動はボットにできる。でも 2 つを組み合わせれば」。KYC や AML の話ではない、身元を明かす必要はない、と念を押したうえで、「その 2 つを組み合わせて活動を検証できないか。チームへの本当に面白い提案だ」と述べられました。<span class="badge">補足</span>#7 で「本物の人間である確度が上がる」とだけ語られていた件（<a href="../2026-08-24-office-hours-ticker/#darkforest">7 節</a>）が、ここで少しだけ方法に近づいています。ただし具体的にどの指標をどう組み合わせるかは、まだ示されていません。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" alt="" aria-label="ボードで組織し、実験し、testnet の活動を増やし、オンチェーンとオンラインを組み合わせて測り、リーダーシップへの論拠にする、という 2 週間のループの図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">mainnet までの 2 週間で回そうとしているループ</text>
+
+  <rect x="16" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">Miro のボードに入る</text>
+  <text x="114" y="100" class="d-s" text-anchor="middle">組織化・ブレスト・実験</text>
+
+  <line x1="212" y1="86" x2="236" y2="86" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="242" y="48" width="196" height="76" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">testnet の活動が増える</text>
+  <text x="340" y="100" class="d-s" text-anchor="middle">ポイント、紹介、委任</text>
+
+  <line x1="438" y1="86" x2="462" y2="86" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="468" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">測る</text>
+  <text x="566" y="100" class="d-s" text-anchor="middle">オンチェーン × オンライン</text>
+
+  <line x1="566" y1="124" x2="566" y2="150" class="d-line-accent"/>
+  <line x1="566" y1="150" x2="114" y2="150" class="d-line-accent"/>
+  <line x1="114" y1="150" x2="114" y2="166" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="16" y="170" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="192" class="d-t" text-anchor="middle">リーダーシップへの論拠 —「世界構築と crew は本当に効いた」</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">それをもって、ポイント・資源・投資をもっと求める。この考え方は #7 で「ブレーキを踏んだ」理由と同じ</text>
+</svg>
+<p class="figcap">「私たちは本当に小さなチーム」（進行役、マーケティング責任者、同僚の 3 人）だから、コミュニティが動いたという証拠が要る、という筋です。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — 「活動が増えた」ことは、「コミュニティが自己組織できた」ことの証拠になるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。コール中の発言ではありません。</p>
+<p><strong>疑問はもっともです。</strong>この 2 週間は、mainnet の日付（10 月 1 日）が公に告知された直後で、Cardano Seminar もあり、TOKEN2049 の告知もある。testnet の活動が増えたとして、それがボードや crew のおかげなのか、mainnet が近いからなのかは、増えた量だけでは分かりません。</p>
+<p><strong>なぜ話者の言い方も成り立つのか。</strong>本人が求めているのは厳密な因果の証明ではなく、「小さなチームがリーダーシップに資源を求めるための材料」です。「閉じたループのテスト」という言い方は、少なくとも<strong>やったこと（実験）と起きたこと（活動）を並べて見せる</strong>ことを指していて、それ自体には意味があります。</p>
+<p><strong>外から見分ける方法。</strong>「A/B」と呼ぶなら、比較対象が要ります。たとえば、ボードから生まれた紹介リンク経由の活動と、それ以外の活動を分けて数える。#4 の SPO プログラムでは「参加プール 84% 対 対照群 17%」という形で対照群が置かれていました（<a href="../2026-07-31-data-and-insights/#spo">#4 の 4 節</a>）。</p>
+<p><strong>この回で示されたか。</strong>「増えた」をどう測るかは「オンチェーン × オンライン」とだけで、<strong>比較対象は示されていません</strong>。</p>
+</div>
+</details>
+
+<h2 id="contribution">6. 貢献をどう見るか</h2>
+<p class="deck">すべて考慮する。ただし見えやすいのは、SPO のポイントと、個人の紹介リンク。</p>
+
+<p>「何をやるかは私たちが決めることではない」。マーケティング責任者は過去のコミュニティの例を挙げました——新しいメンバーを連れてくるのが得意な人、バグを直しアプリを壊そうとするのに集中した人。<strong>「他のコミュニティのように、ミームを作れ、これをやれ、とは言わない。楽しめること、やりたいことをやるべき」</strong>。</p>
+
+<p>そのうえで、成果が見えやすい方法が 2 つ挙げられました。</p>
+
+<ul>
+  <li><strong>SPO なら、委任者が請求したポイントの 20%。</strong>「何人があなたのプールに委任してポイントを請求しているか」が、活動を本物だと確かめる方法になる。KOL（オンチェーンで影響力のある人）としての検証者を見て、オンラインの影響力と組み合わせる、とも</li>
+  <li><strong>個人なら、testnet の紹介リンク。</strong>誰でも取れる。「もっと時間があれば Discord の HypeSquad のようにゲーミフィケーションできたが」</li>
+</ul>
+
+<p><span class="badge">補足</span>「20%」は <a href="../2026-09-11-cardano-seminar-realfi/#cardano">Cardano Seminar のスライド</a>に「SPO は委任者が得た分の 20% を取る」とあったものと同じ数字です。この回では「だったと思う（I think）」という言い方でした。</p>
+
+<p>最後に、初期に加わることの「うまみ」も語られました。<strong>「コミュニティの初期にいると、影響力と発言力がとてつもなく大きく、声が届きやすい」</strong>。Cardano に 7 年いた経験から、ある規模になると全員が互いを知っているわけではなくなり、役割や層のそれぞれが独自のコミュニティになる、と。</p>
+
+<h2 id="events">7. イベント</h2>
+<p class="deck">mainnet までは大々的にはやらない。10 月からは、CEO と GTM 担当が前に出る。</p>
+
+<p>「mainnet に乗るまでは大々的にはやっていない。無駄になるかもしれないお金は使いたくない」。それでも、GTM 担当が先週バルセロナのサイドイベント、European Blockchain Convention、London Fintech Week に出ていて、そこからのコンテンツがこれから出る、とのことです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="10 月 1 日の mainnet から 11 月頭の Solana Breakpoint までのイベントを時系列に並べた図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <line x1="40" y1="60" x2="640" y2="60" class="d-line" marker-end="url(#m4)"/>
+  <text x="40" y="44" class="d-s">9 月</text>
+  <text x="620" y="44" class="d-s" text-anchor="end">11 月</text>
+
+  <rect x="16" y="80" width="150" height="120" rx="8" class="d-box-accent"/>
+  <text x="91" y="106" class="d-t" text-anchor="middle">10/1 mainnet</text>
+  <text x="91" y="130" class="d-s" text-anchor="middle">Cardano</text>
+  <text x="91" y="154" class="d-s" text-anchor="middle">Korea Blockchain Week</text>
+  <text x="91" y="176" class="d-s" text-anchor="middle">と重なる。CEO が出る</text>
+
+  <rect x="182" y="80" width="150" height="120" rx="8" class="d-box"/>
+  <text x="257" y="106" class="d-t" text-anchor="middle">TOKEN2049</text>
+  <text x="257" y="130" class="d-s" text-anchor="middle">シンガポール</text>
+  <text x="257" y="154" class="d-s" text-anchor="middle">Cardano Foundation の</text>
+  <text x="257" y="176" class="d-s" text-anchor="middle">ブースに採択。CEO が出る</text>
+
+  <rect x="348" y="80" width="150" height="120" rx="8" class="d-box"/>
+  <text x="423" y="106" class="d-t" text-anchor="middle">EVM ローンチ</text>
+  <text x="423" y="130" class="d-s" text-anchor="middle">日付は言わず</text>
+  <text x="423" y="154" class="d-s" text-anchor="middle">「ヒントは出した」</text>
+  <text x="423" y="176" class="d-s" text-anchor="middle">Breakpoint より前を想定</text>
+
+  <rect x="514" y="80" width="150" height="120" rx="8" class="d-box"/>
+  <text x="589" y="106" class="d-t" text-anchor="middle">Solana Breakpoint</text>
+  <text x="589" y="130" class="d-s" text-anchor="middle">ロンドン、11 月頭</text>
+  <text x="589" y="154" class="d-s" text-anchor="middle">同僚が南アフリカから</text>
+  <text x="589" y="176" class="d-s" text-anchor="middle">来るかもしれない</text>
+
+  <text x="340" y="222" class="d-s" text-anchor="middle">現地にいて会いたい人は、進行役かマーケティング責任者に連絡を。カスタムのグッズも「アイデアが要るだけ」</text>
+</svg>
+<p class="figcap">TOKEN2049 のブースは「コミュニティの 1 人に勧められて申請し、プレゼンをして、採択された」。「RealFi にとって大きな勝利」と述べられました。</p>
+</div>
+
+<ul>
+  <li><strong>Korea Blockchain Week。</strong>10 月 1 日の mainnet ローンチと重なる。CEO が出る予定。会場を探していて「ストレスで白髪が増えている」</li>
+  <li><strong>TOKEN2049（シンガポール）。</strong>Cardano Foundation のブースに、プロジェクトの 1 つとして採択。CEO が「完全に無料で」委任者に会い、ローンチ直後の RealFi を紹介できる</li>
+  <li><strong>Solana Breakpoint（ロンドン、11 月頭）。</strong>「その頃には、願わくは EVM にも乗っているはず」。マーケティング責任者はイギリス人だが行かず、同僚が南アフリカから来るかもしれない</li>
+  <li><strong>2027 年。</strong>「まだ見ていない。mainnet、EVM、トークン、それから GTA 6 と、年末までに節目が多い」。どこに行くかは GTM 担当に大きな発言権がある</li>
+</ul>
+
+<p>EVM の時期については、マーケティング責任者が「注意深く聞いていた人には、うっかり日付のヒントを出したかもしれない」と述べています。<span class="badge">補足</span>音声にあるのは「Breakpoint（11 月頭）の頃には EVM に乗っていれば」という言い方と、Cardano Seminar での「mainnet の 1 か月後」だけです。日付そのものは述べられていません。</p>
+
+<p>グッズについては、質問を受けて「カスタムのグッズは作れる。高いものではない。RealFi を代表してくれるなら利点がある。詳細は完全に稼働してから」。チャットからは「mainnet ローンチに紐づけた限定グッズを」という提案があり、「mainnet 前にしか手に入らないものなら、何年か後には OG のステータスになる。Discord のロールも同じ」と応じています。</p>
+
+<h2 id="content">8. コミュニティ発のコンテンツと、その自由</h2>
+<p class="deck">自分のアカウントからなら自由。RealFi のアカウントから出るものとは別。</p>
+
+<p>チャットから、この回でいちばん実務的な質問が出ました。コミュニティがクイズのようなコンテンツを作ったとして、金融商品である以上、<strong>共有する前に RealFi のレビューが要るのか</strong>、それとも自由があるのか。</p>
+
+<blockquote>
+<p>自分のアカウントから出すものなら、自由があります。特定の質問があるとか、投稿するものが事実として正しいか確かめたいなら、もちろん私たちに聞くことを勧めます。<strong>RealFi のアカウントから出るものは、当然、話が別です。</strong></p>
+</blockquote>
+
+<p>進行役はこれに、Cardano での経験を重ねました。「私は価格の話は絶対にしなかったが、コミュニティは当然していた。誰かがルールだと言っているからではなく、そこにいれば分かる。<strong>RealFi 自身は原則として言わないけれど、コミュニティなら言えることがある</strong>」。</p>
+
+<p><span class="badge">補足</span>答えは「自由がある」ですが、境界線は「誰のアカウントか」で引かれていて、「何を言ってよいか」の線は示されていません。1 節の「金融商品なので何を言えるか慎重」という前置きと合わせて読むと、<strong>コミュニティ側が事実確認を頼める窓口はあるが、レビューの義務はない</strong>、というのがこの回の答えです。</p>
+
+<h2 id="ticker">9. USDrf への改称の反映</h2>
+<p class="deck">「ほぼ全体に反映した」。ただし「毎日新しい見落としが見つかる」。</p>
+
+<p>裏で進んでいる変更として、新しいウェブサイトが近く出るかもしれないこと、そして<strong>USDrf がもう至るところにある</strong>ことが挙げられました。改めて説明されたのは次のとおりです。</p>
+
+<ul>
+  <li>コミュニティの投票で決めた。「最初の数日は 50 対 50 だったが、最終的に 84% ほどが USDrf と sUSDrf を選んだ」</li>
+  <li>変更は「ほぼ全体に反映」した。ドキュメントなどで一貫性に気づき始めるはず</li>
+  <li>「完璧ではないし、人間なので、毎日新しい見落としが見つかる」。この先さらに変更がある</li>
+</ul>
+
+<p><span class="badge">補足</span>2 点、記録と食い違います。投票の結果は、<a href="../2026-08-24-office-hours-ticker/#vote">#7 のページに載せた告知</a>では全 75 票のうち案 B が 51 票で <strong>68%</strong> です。この回の「84%」がどの数字を指しているのかは述べられていません。また「もともとは USDr と sUSDr」と語られていますが、改称前の表記は USDR / sUSDR です。いずれもコール中の言い方をそのまま記録し、対応表は用語集に置いてあります。</p>
+
+<p>最後に進行役から、「コミュニティのメンバーを RealFi の上級リーダーシップとつないで、アイデアや提案について非公開のコールを持ってもらった」ことが明かされました。「すでにたくさんの活動と貢献があり、本当に感謝している」と。</p>
+
+<h2 id="overall">10. 全体像</h2>
+<p class="deck">#7 で語られた仕組みを、2 週間の実験として動かす。それがこの回。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 322" role="img" aria-label="#7 で示された握手・crew・district の枠組みを上に、この回の 2 週間の実験を中央に、mainnet 後の展開を下に置いた全体像の図">
+  <defs>
+    <marker id="m5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="648" height="84" rx="8" class="d-box-plain"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">#7（8 月 24 日）— 枠組み</text>
+  <text x="340" y="68" class="d-s" text-anchor="middle">握手（コミュニティ ↔ 事業）、crew と district、KPI の L1 / L2、ダーク・フォレスト</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">「crew はまだ立ち上げていない」</text>
+
+  <line x1="340" y1="104" x2="340" y2="126" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="16" y="130" width="648" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">#9（9 月 21 日）— mainnet までの 2 週間の実験</text>
+  <text x="340" y="180" class="d-s" text-anchor="middle">最初の district はダーク・フォレスト、最初の crew の課題は testnet の活動</text>
+  <text x="340" y="202" class="d-s" text-anchor="middle">Miro のボードで自己組織。新機能は作らない。成功＝活動の増加をオンチェーン × オンラインで示す</text>
+  <text x="340" y="222" class="d-s" text-anchor="middle">それをリーダーシップへの「A/B テスト」として、資源を求める</text>
+
+  <line x1="340" y1="230" x2="340" y2="252" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="16" y="256" width="648" height="56" rx="8" class="d-box"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">mainnet（10 月 1 日）のあと</text>
+  <text x="340" y="302" class="d-s" text-anchor="middle">活動した人からアンバサダーを選ぶ。EVM へ。「もっと多くの crew と district ができる」</text>
+</svg>
+<p class="figcap">#7 が「なぜ立ち上げていないか」の説明だったのに対し、この回は「立ち上げるので、入ってほしい」という招待です。</p>
+</div>
+
+<h2 id="qa">11. Q&amp;A</h2>
+<p class="deck">チャットから 4 件。ステージに上がった人はいませんでした。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者B</span>Lace のセクションの報酬タスクが swap と stake だというのが分からない。Lace を RealFi の dApp に接続しているが、ウォレットの中では見えない。Lace のネイティブな何かなのか。</p>
+<p class="qa-a" data-by="持ち帰り">進行役は「自分が使うときはブラウザの中だと思う」、マーケティング責任者は「分からないが、Lace チームとローンチに向けて取り組んでいることに関係している可能性はある」。<strong>コール後にフォローアップする</strong>と 2 度約束されました。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者C</span>（行動の呼びかけの確認）コミュニティのボードに入って、組織し、ブレインストーミングし、実験をやる、ということか。</p>
+<p class="qa-a" data-by="回答">そのとおり。次の 2 週間で testnet の活動が大幅に増えたと示せることが成功。測り方はオンチェーンとオンラインの組み合わせ（<a href="#sandbox">5 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者F</span>mainnet ローンチのイベントに紐づけた限定グッズを検討してみては。ギブアウェイとして魅力的になる。</p>
+<p class="qa-a" data-by="賛同">「mainnet 前にしか手に入らないものなら、何年か後には OG のステータスになる」。Discord のロールも同じで、うまくいけばアンバサダーが得られる類のもの、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者G</span>コミュニティが作ったクイズなどのコンテンツは、金融商品である以上、共有前に RealFi チームのレビューが要るのか。それとも作って共有する自由があるのか。</p>
+<p class="qa-a" data-by="回答">自分のアカウントから出すものなら自由がある。事実として正しいか確かめたければ聞いてほしい。RealFi のアカウントから出るものは別（<a href="#content">8 節</a>）。</p>
+</div>
+
+<h2 id="pending">12. 持ち帰りになった論点</h2>
+<p class="deck">最初の 1 つを動かす回なので、決まっていないことのほうが多い。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">持ち帰り</span>Lace の報酬タスクは、ウォレットの中で何を指しているのか。</p>
+<p class="qa-a" data-by="コール後に">「ブラウザの中だと思う」「Lace チームとの実装に関係しているかもしれない」の 2 つの推測だけで、答えは出ていません。コール後のフォローアップが約束されています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未提示</span>アンバサダーは、誰が、いつ、どう選ぶのか。</p>
+<p class="qa-a" data-by="方向のみ">「本当に活動していた人たちの中から、アンバサダーやコミュニティの代表を選ぶ」とだけ。基準、人数、時期、役割と報酬は述べられていません。#7 で「作成中」とされたロール・ステータス・ポイントの設計も、この回では出ていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未提示</span>「増えた」を何と比べるのか。</p>
+<p class="qa-a" data-by="測り方のみ">「A/B テスト」「閉じたループ」と呼ばれましたが、比較対象は示されていません。測り方も「オンチェーン × オンライン」までで、具体的な指標は未提示です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">ヒントのみ</span>EVM ローンチの日付。</p>
+<p class="qa-a" data-by="日付は言わず">「うっかりヒントを出したかもしれない」と本人が言うとおり、音声にあるのは「11 月頭の Breakpoint の頃には乗っていれば」という言い方だけです。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">食い違い</span>ティッカー投票の「84%」。</p>
+<p class="qa-a" data-by="記録は 68%">#7 のページに載せた告知は 75 票中 51 票で 68%。この回の「84%」が何の数字かは述べられていません。改称前の表記を「USDr / sUSDr」と語っている点も、記録（USDR / sUSDR）と違います。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">予告のみ</span>新しいウェブサイト、グッズの詳細、2027 年のイベント。</p>
+<p class="qa-a" data-by="時期なし">ウェブサイトは「近く見られるかもしれない」、グッズは「完全に稼働してから」、2027 年は「まだ見ていない」。いずれも時期は示されていません。</p>
+</div>
+
+<div class="note">
+<p><strong>このページについて。</strong>この回はチャタムハウスルールの対象として扱い、発言者の氏名は記載していません。話した 2 名は「進行役」と「マーケティング責任者」、チャットで質問した方は <code>参加者A〜G</code>、社内で名前が挙がった人物は役割で書いています。</p>
+<p>原本には話者ラベルも時刻もありません。話者は文脈から割り当てました。<strong>Miro のワークショップボードが画面共有されましたが、中身は受け取っていない</strong>ので、ここに載っているのは音声で語られた内容だけです。図はいずれも音声の説明をもとにこちらで描いたものです。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>The crew that <a href="../2026-08-24-office-hours-ticker/#en-crews">#7 admitted had not been launched</a> finally starts — as a single first crew.<br>
+  This is not a programme announcement. <strong>The ask is to use the two weeks before mainnet as an experiment, and to show in numbers that the community can organise itself.</strong></p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>One crew first.</strong> The first district is the dark forest; the first crew's job is to drive testnet activity. If that runs well, it opens up.</li>
+  <li><strong>The Miro board is open.</strong> SPO introductions, a world-building prototype, four common-good arguments, and templates for organising. Anyone can jump in and leave sticky notes.</li>
+  <li><strong>Success in two weeks means a big rise in testnet activity.</strong> To be presented to leadership as an “A/B test,” and used to argue for resources.</li>
+  <li><strong>Nothing new gets built.</strong> Dashboards and other requests went to the team, but the tech team is on mainnet until 1 October. “What's built is the enabling constraint.”</li>
+  <li><strong>Two ways contributions show.</strong> For an SPO, 20% of the points its delegators claim. For an individual, the testnet referral link.</li>
+  <li><strong>Events.</strong> The CEO at Korea Blockchain Week; accepted onto the Cardano Foundation booth at TOKEN2049; Solana Breakpoint in London in early November, “hopefully on EVM by then.”</li>
+  <li><strong>Community content is free on your own accounts.</strong> What goes out on RealFi's accounts is a different matter.</li>
+  <li><strong>The USDrf rename is “pretty much across.”</strong> But “a new one comes every day.” The vote was described as “84%”; the record from #7 says 68%.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-recap"><span class="n">01</span>From the SPO programme to ambassadors</a></li>
+  <li><a href="#en-handshake"><span class="n">02</span>The handshake, and world building</a></li>
+  <li><a href="#en-darkforest"><span class="n">03</span>The first district — the dark forest</a></li>
+  <li><a href="#en-commongood"><span class="n">04</span>The common good — four arguments</a></li>
+  <li><a href="#en-sandbox"><span class="n">05</span>Two weeks to mainnet — the sandbox and the A/B test</a></li>
+  <li><a href="#en-contribution"><span class="n">06</span>How contributions are seen</a></li>
+  <li><a href="#en-events"><span class="n">07</span>Events</a></li>
+  <li><a href="#en-content"><span class="n">08</span>Community content, and how free it is</a></li>
+  <li><a href="#en-ticker"><span class="n">09</span>Rolling out the USDrf rename</a></li>
+  <li><a href="#en-overall"><span class="n">10</span>The whole picture</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">12</span>Left open</a></li>
+</ol>
+</div>
+
+<h2 id="en-recap">1. From the SPO programme to ambassadors</h2>
+<p class="deck">The accelerator was the foundation. “We can turn this into an ambassador programme” came out of it.</p>
+
+<p>The call opened with a recap: an accelerator programme was launched with stake pool operators, the validators of Cardano's network, and that was the precursor to today's topic, the <strong>“Alpha Ambassador Programme.”</strong> From the marketing side: “we've been watching everything you've built … the more conversations we had, it kind of led to — hold on, we can turn this into an ambassador programme.” They “streamlined a process that other teams would take two long versions to do.”</p>
+
+<p>Two things were said up front.</p>
+
+<ul>
+  <li><strong>No vanity metrics.</strong> The point was “real authentic activity on testnet and within the community,” restated</li>
+  <li><strong>Suggestions are reaching the team.</strong> Lots of input has come in about the product and the RFG token, but “the RealFi team is very careful about what we can and can't say in terms of it being a financial product,” so responses are not always visible in Discord. Still, “the team is looking”</li>
+</ul>
+
+<p>The mainnet date has been extended “a couple of weeks” to 1 October — “about nine days from today.” <span class="badge">added</span>The same date the CEO first said aloud at the <a href="../2026-09-11-cardano-seminar-realfi/">Cardano Seminar on 11 September</a>. The slip from #6's “mid-September” is framed here as time gained.</p>
+
+<h2 id="en-handshake">2. The handshake, and world building</h2>
+<p class="deck">Value as the team understands it in KPIs, and activity the community can offer, joined in the middle.</p>
+
+<p>The <a href="../2026-08-24-office-hours-ticker/#en-crews">“handshake” from #7</a> was shown as a diagram this time. On the screen-shared Miro board, the team is in blue, the community ecosystem in red, and the two green boxes between them are the handshake — “the interface for impact,” meaning the host and the marketing lead.</p>
+
+<p>What the interface does: <strong>translate</strong> between “what internal functions would understand as value — KPIs” and “what kind of activities and roles the community might offer someone entering RealFi.” Turn the community's contributions and ideas “into something the teams can actually act on.” That is “the hidden work that's going on.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="Community on the left, team on the right, and the handshake interface in the centre translating between them">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">The layout of the screen-shared board, drawn from the spoken description</text>
+
+  <rect x="16" y="48" width="196" height="150" rx="8" class="d-box-warn"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">Community</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">join by yourself</text>
+  <text x="114" y="124" class="d-s" text-anchor="middle">→ form partnerships</text>
+  <text x="114" y="146" class="d-s" text-anchor="middle">→ form a crew</text>
+  <text x="114" y="176" class="d-s" text-anchor="middle">self-organising, no top-down</text>
+
+  <line x1="216" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="238" y1="140" x2="216" y2="140" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="242" y="48" width="196" height="150" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">The handshake</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">the host and the marketing lead</text>
+  <text x="340" y="128" class="d-s" text-anchor="middle">turn contributions and ideas</text>
+  <text x="340" y="150" class="d-s" text-anchor="middle">into things the team can act on</text>
+  <text x="340" y="176" class="d-s" text-anchor="middle">and KPIs into community terms</text>
+
+  <line x1="442" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="464" y1="140" x2="442" y2="140" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="468" y="48" width="196" height="150" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">Team</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">understands value as KPIs</text>
+  <text x="566" y="124" class="d-s" text-anchor="middle">builds nothing new</text>
+  <text x="566" y="146" class="d-s" text-anchor="middle">until mainnet</text>
+  <text x="566" y="176" class="d-s" text-anchor="middle">suggestions are getting through</text>
+
+  <text x="340" y="236" class="d-s" text-anchor="middle">“If it's only the team doing stuff top-down, I don't think we can win.”</text>
+</svg>
+<p class="figcap">The board itself was not provided; the colours and layout follow the spoken description, and the wording is ours.</p>
+</div>
+
+<p>On the community side, the framing is <strong>world building</strong>: “like any map or story-driven RPG, the individual is going on an adventure.” It grew out of ideas a colleague explored a couple of months ago under the name <strong>Decentralized Adventures</strong>. The host liked the angle because “communities are inherently self-organizing … there isn't this top-down control. People are going to select their own adventures.”</p>
+
+<div class="term">
+<p class="term-name">World building / Decentralized Adventures <small>the call's own words</small></p>
+<p>Nobody joining on day one can absorb the internal language that engineering, product and the CEO each use — “it's an impossibility” — so world building uses <strong>objects already in people's heads</strong>, like a dark forest or a harbour, to orient them. Decentralized Adventures is the name for the entry point framed as choosing an adventure. <span class="badge">added</span>The two tiers, districts and crews, are explained in <a href="../2026-08-24-office-hours-ticker/#en-districts">section 6 of #7</a>. This session is about starting the first one.</p>
+</div>
+
+<h2 id="en-darkforest">3. The first district — the dark forest</h2>
+<p class="deck">One district, one crew. The task: drive testnet activity.</p>
+
+<p>The board has a map, with districts you can enter to contribute — and the first one being built is the <strong>dark forest</strong>. The reasoning is the same as in <a href="../2026-08-24-office-hours-ticker/#en-darkforest">section 7 of #7</a>, with the same figures repeated: 50–80% of the internet is bots according to Cloudflare; 90% of on-chain activity is bots per DeFiLlama or Dune. So “human authenticity becomes way more valuable in AI.”</p>
+
+<p>And the dark forest is “the cozy web” — <strong>“the places that a team like RealFi couldn't reach, but its community could.”</strong> Discord, private Telegrams, in-person meetups. “Dark forest was just a bit of fun,” and the name can be changed.</p>
+
+<p><strong>The first crew in this district exists to drive testnet activity.</strong> “Can we self-organize and can we do something interesting up until mainnet, and then pick ambassadors and community representatives from those people that are about it” — that is how the ambassador programme is seen right now.</p>
+
+<p><span class="badge">added</span>The order matters. <strong>Ambassadors are not chosen first and then set to work; they are chosen from those who have already been active.</strong> The programme's details — roles, status, rewards — were “being drafted” in #7 and are still not given here.</p>
+
+<h2 id="en-commongood">4. The common good — four arguments</h2>
+<p class="deck">Four things RealFi, the community member and Cardano would all agree are good.</p>
+
+<p>The board's other pillar is the <strong>common good</strong>: “if someone was to talk about RealFi, what would be a common good where RealFi, the community member, and the Cardano ecosystem would agree that something good or valuable was happening?” What links KPIs and the common good is “how the audience or the team or the community understand success in terms of objective numbers” — and <strong>“if you can find a common good, that's gonna help you create an axis around which you can have coordination.”</strong></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="Four steps in a row — secure your ADA, decentralise, economic health, explore utility — leading to the argument for joining RealFi">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">Walk through the four and you arrive at “why someone might wanna participate in RealFi”</text>
+
+  <rect x="16" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="91" y="74" class="d-t" text-anchor="middle">1. Secure your ADA</text>
+  <text x="91" y="100" class="d-s" text-anchor="middle">“all these hacks”</text>
+  <text x="91" y="122" class="d-s" text-anchor="middle">keep financial</text>
+  <text x="91" y="144" class="d-s" text-anchor="middle">sovereignty</text>
+
+  <line x1="166" y1="107" x2="180" y2="107" class="d-line" marker-end="url(#e2)"/>
+
+  <rect x="182" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="257" y="74" class="d-t" text-anchor="middle">2. Decentralise</text>
+  <text x="257" y="100" class="d-s" text-anchor="middle">the SPO programme</text>
+  <text x="257" y="122" class="d-s" text-anchor="middle">delegate to a RealFi SPO</text>
+  <text x="257" y="144" class="d-s" text-anchor="middle">→ passive points</text>
+
+  <line x1="332" y1="107" x2="346" y2="107" class="d-line" marker-end="url(#e2)"/>
+
+  <rect x="348" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="423" y="74" class="d-t" text-anchor="middle">3. Economic health</text>
+  <text x="423" y="100" class="d-s" text-anchor="middle">growth = capital</text>
+  <text x="423" y="122" class="d-s" text-anchor="middle">productivity; everyone</text>
+  <text x="423" y="144" class="d-s" text-anchor="middle">agrees liquidity is needed</text>
+
+  <line x1="498" y1="107" x2="512" y2="107" class="d-line" marker-end="url(#e2)"/>
+
+  <rect x="514" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="589" y="74" class="d-t" text-anchor="middle">4. Explore utility</text>
+  <text x="589" y="100" class="d-s" text-anchor="middle">you don't have to sell</text>
+  <text x="589" y="122" class="d-s" text-anchor="middle">borrow against ADA,</text>
+  <text x="589" y="144" class="d-s" text-anchor="middle">or other uses</text>
+
+  <rect x="16" y="190" width="648" height="60" rx="7" class="d-box-accent"/>
+  <text x="340" y="215" class="d-t" text-anchor="middle">“A really strong argument as to why someone might wanna participate in RealFi”</text>
+  <text x="340" y="238" class="d-s" text-anchor="middle">applies to other ecosystems like Ethereum too — but “we're just talking about Cardano at the minute”</text>
+</svg>
+<p class="figcap">The four, and their order, are as spoken. <span class="badge">added</span>The <a href="../2026-09-11-cardano-seminar-realfi/#en-cardano">Cardano Seminar slide</a> listing what SPOs teach their delegators — secure your ADA → decentralise → network health → reasons to stay active → participate in RealFi — has almost the same skeleton.</p>
+</div>
+
+<p>Below that come templates for how to organise, so that people can look at which SPOs took part in the asset-based community development workshop and find collaborators. The board is open now; talk about it in Discord, leave sticky notes.</p>
+
+<h2 id="en-sandbox">5. Two weeks to mainnet — the sandbox and the A/B test</h2>
+<p class="deck">Nothing new gets built. Grow activity with what exists, and show it in numbers.</p>
+
+<p>Here is the session's central ask. “We're really trying to create a sandbox now in the time up until mainnet.” With a constraint:</p>
+
+<blockquote>
+<p>The constraints over the next few weeks while we try and get to mainnet are such that what's built is built right now. All of the feedback we've had, we've been giving to the team. But <strong>what's built is the enabling constraint</strong>, you know?</p>
+</blockquote>
+
+<p>Requests like dashboards have gone to the team, but <strong>“we're not gonna build anything new in the next two weeks.”</strong> The marketing lead added: “those stuff can obviously happen in the future. It's just right now — as we're going to mainnet, that's got to be the focus for the tech team.”</p>
+
+<div class="term">
+<p class="term-name">Enabling constraint <small>the call's own words</small></p>
+<p>Treating a constraint not as a list of what can't be done but as <strong>the thing that defines what can be done within it</strong>. Here: no new features are coming, so the question becomes what can be done in two weeks with the testnet and the board as they are. <span class="badge">added</span>A term from organisational theory; it was not defined on the call.</p>
+</div>
+
+<p>So what does success look like in two weeks?</p>
+
+<blockquote>
+<p>In the next two weeks, what success looks like is that <strong>the two of us can show there's been a massive increase in testnet activity</strong>, because we want to show that the world building and the workshops work.</p>
+</blockquote>
+
+<p>Why the number is needed was said plainly. When you bring unusual ideas — world building, crews, districts — to leadership, “you've got to be really careful that it doesn't come across as just activity for the sake of it.” <strong>“The best way for us to advocate for those resources and for the team to support us in that is to do an A/B test.”</strong> A closed-loop test that lets you say “this was actually really useful.” That is “the gold standard.”</p>
+
+<p>How to measure it: <strong>combine on-chain and online metrics.</strong> “Online activity can be faked. On-chain activity could be botted. But if you're combining those two —” Not KYC, not AML, “you don't have to dox them,” but “can you combine those two things to verify the activity? That's a really interesting proposition to the team.” <span class="badge">added</span>Where #7 only said that an SPO's activity gives “a high degree of confidence” it is a real human (<a href="../2026-08-24-office-hours-ticker/#en-darkforest">section 7</a>), this is a step closer to a method. Which metrics, combined how, is still not given.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="The two-week loop: organise on the board, grow testnet activity, measure it on-chain and online, and turn that into an argument to leadership">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">The loop they want to run in the two weeks before mainnet</text>
+
+  <rect x="16" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">Get into the Miro board</text>
+  <text x="114" y="100" class="d-s" text-anchor="middle">organise, brainstorm, experiment</text>
+
+  <line x1="212" y1="86" x2="236" y2="86" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="242" y="48" width="196" height="76" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">Testnet activity rises</text>
+  <text x="340" y="100" class="d-s" text-anchor="middle">points, referrals, delegation</text>
+
+  <line x1="438" y1="86" x2="462" y2="86" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="468" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">Measure it</text>
+  <text x="566" y="100" class="d-s" text-anchor="middle">on-chain × online</text>
+
+  <line x1="566" y1="124" x2="566" y2="150" class="d-line-accent"/>
+  <line x1="566" y1="150" x2="114" y2="150" class="d-line-accent"/>
+  <line x1="114" y1="150" x2="114" y2="166" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="16" y="170" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="192" class="d-t" text-anchor="middle">The argument to leadership — “world building and crews actually worked”</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">and on that basis, ask for more points, resources, investment. The same logic as the “pumped the brakes” in #7</text>
+</svg>
+<p class="figcap">“We're such a small team” — the host, the marketing lead and one colleague — so evidence that the community moved is what they need.</p>
+</div>
+
+<details class="explain">
+<summary>A naive question — does “activity went up” prove the community organised itself?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Our reading, not something said on the call.</p>
+<p><strong>The question is fair.</strong> These two weeks come right after the mainnet date (1 October) was announced publicly, after the Cardano Seminar, and alongside the TOKEN2049 news. If testnet activity rises, the amount alone can't tell whether the board and the crew did it or the approach of mainnet did.</p>
+<p><strong>Why the speaker's framing still holds.</strong> What he is after is not a rigorous causal proof but material “for a small team to advocate for resources.” A “closed loop test” at minimum means <strong>putting what was done (the experiments) next to what happened (the activity)</strong>, and that has value in itself.</p>
+<p><strong>How to tell from outside.</strong> If it is called A/B, there needs to be a comparison — for instance, counting activity that came through referral links born on the board separately from the rest. The #4 SPO programme did have a control group: 84% of participating pools against 17% outside (<a href="../2026-07-31-data-and-insights/#en-spo">section 4 of #4</a>).</p>
+<p><strong>Was it given here?</strong> Only “on-chain × online” as the measure. No comparison group was described.</p>
+</div>
+</details>
+
+<h2 id="en-contribution">6. How contributions are seen</h2>
+<p class="deck">All contributions count. The two that show most clearly: SPO points and individual referral links.</p>
+
+<p>“It's not really for us to say” what anyone should do. The marketing lead drew on past communities: some people were gifted at bringing in relevant new members; others focused on fixing bugs and trying to break the app. <strong>“We're not gonna tell you to make memes, do this, do that … you should do what you enjoy and what you wanna do.”</strong></p>
+
+<p>That said, two ways of seeing contributions were named.</p>
+
+<ul>
+  <li><strong>For an SPO, 20% of the points its delegators claim.</strong> “How many people are delegating to your pool and claiming points” becomes a way to authenticate activity — looking at validators as KOLs, influential people on chain, and combining that with their online influence</li>
+  <li><strong>For an individual, the testnet referral link.</strong> Everyone gets one. “If we had more time, I would've loved to have gamified it a bit better,” with Discord HypeSquad as the model</li>
+</ul>
+
+<p><span class="badge">added</span>The 20% is the same figure printed on the <a href="../2026-09-11-cardano-seminar-realfi/#en-cardano">Cardano Seminar slide</a> — “the SPO takes a 20% share of what their delegators earn.” Here it was said as “I think you get 20%.”</p>
+
+<p>And the upside of being early: <strong>“when you're early in a community you have a massively outsized impact and say, and it's easy to be heard.”</strong> From seven years in Cardano: past a certain size, not everybody knows each other, and the roles and layers become almost their own communities.</p>
+
+<h2 id="en-events">7. Events</h2>
+<p class="deck">Nothing big until mainnet. From October, the CEO and the GTM lead are the ones in the room.</p>
+
+<p>“We've not done the big hoo-ha until we're on mainnet. We obviously don't want to spend money that might be wasted.” Still, the GTM lead was at side events in Barcelona last week, at the European Blockchain Convention and at London Fintech Week, and content from those is coming.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Timeline from mainnet on 1 October to Solana Breakpoint in early November">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <line x1="40" y1="60" x2="640" y2="60" class="d-line" marker-end="url(#e4)"/>
+  <text x="40" y="44" class="d-s">September</text>
+  <text x="620" y="44" class="d-s" text-anchor="end">November</text>
+
+  <rect x="16" y="80" width="158" height="140" rx="8" class="d-box-accent"/>
+  <text x="95" y="106" class="d-t" text-anchor="middle">1 Oct — mainnet</text>
+  <text x="95" y="130" class="d-s" text-anchor="middle">Cardano</text>
+  <text x="95" y="154" class="d-s" text-anchor="middle">coincides with Korea</text>
+  <text x="95" y="176" class="d-s" text-anchor="middle">Blockchain Week;</text>
+  <text x="95" y="198" class="d-s" text-anchor="middle">the CEO goes</text>
+
+  <rect x="180" y="80" width="158" height="140" rx="8" class="d-box"/>
+  <text x="259" y="106" class="d-t" text-anchor="middle">TOKEN2049</text>
+  <text x="259" y="130" class="d-s" text-anchor="middle">Singapore</text>
+  <text x="259" y="154" class="d-s" text-anchor="middle">on the Cardano</text>
+  <text x="259" y="176" class="d-s" text-anchor="middle">Foundation booth;</text>
+  <text x="259" y="198" class="d-s" text-anchor="middle">the CEO goes</text>
+
+  <rect x="344" y="80" width="158" height="140" rx="8" class="d-box"/>
+  <text x="423" y="106" class="d-t" text-anchor="middle">EVM launch</text>
+  <text x="423" y="130" class="d-s" text-anchor="middle">no date given</text>
+  <text x="423" y="154" class="d-s" text-anchor="middle">“I probably gave</text>
+  <text x="423" y="176" class="d-s" text-anchor="middle">some hints”; expected</text>
+  <text x="423" y="198" class="d-s" text-anchor="middle">before Breakpoint</text>
+
+  <rect x="508" y="80" width="158" height="140" rx="8" class="d-box"/>
+  <text x="587" y="106" class="d-t" text-anchor="middle">Solana Breakpoint</text>
+  <text x="587" y="130" class="d-s" text-anchor="middle">London, early November</text>
+  <text x="587" y="154" class="d-s" text-anchor="middle">a colleague may come</text>
+  <text x="587" y="176" class="d-s" text-anchor="middle">from South Africa</text>
+
+  <text x="340" y="242" class="d-s" text-anchor="middle">Anyone attending who wants to meet: contact the host or the marketing lead. Custom swag “just needs your ideas”</text>
+</svg>
+<p class="figcap">The TOKEN2049 booth came from a community suggestion: “we put through our application, we did the presentation, and I can confirm we got accepted.” “A big win for RealFi.”</p>
+</div>
+
+<ul>
+  <li><strong>Korea Blockchain Week.</strong> Coincides with the 1 October launch. The CEO plans to be there; a venue is still being found — “going grayer”</li>
+  <li><strong>TOKEN2049 (Singapore).</strong> Accepted as one of the projects on the Cardano Foundation booth. The CEO can meet delegators “for completely free” and show RealFi shortly after launch</li>
+  <li><strong>Solana Breakpoint (London, early November).</strong> “We will have just hopefully, touch wood, have gone on to EVM by that point.” The marketing lead, though British, won't be there; a colleague may come from South Africa</li>
+  <li><strong>2027.</strong> “I've not looked yet” — mainnet, EVM, the token, “and then you've got GTA 6.” The GTM lead “has a big say on where he wants to go”</li>
+</ul>
+
+<p>On EVM timing, the marketing lead said that anyone listening carefully would have caught “some hints as to when EVM will be exactly.” <span class="badge">added</span>What is actually on the audio is “hopefully on EVM by Breakpoint (early November),” plus the Cardano Seminar's “a month after mainnet.” No date was stated.</p>
+
+<p>On swag, in answer to a question: custom swag can be made, “swag isn't an expensive cost,” and “if you're gonna be repping RealFi … for us there's benefits there” — details when fully live. A chat suggestion for limited-edition swag tied to the mainnet launch was welcomed: something only available before mainnet would carry “OG status” in years to come, and Discord roles work the same way.</p>
+
+<h2 id="en-content">8. Community content, and how free it is</h2>
+<p class="deck">Free on your own accounts. Different when it goes out on RealFi's.</p>
+
+<p>The most practical question of the session came from the chat: if the community makes something like a quiz, <strong>does it need RealFi's review before sharing</strong>, given that this is a financial product — or is there freedom to create and share?</p>
+
+<blockquote>
+<p>If it's coming out on your accounts, you're allowed freedom. I'd suggest obviously asking us if you've got certain questions or you want to be sure that what you're posting is correct and factually correct. <strong>Obviously, different if it's things coming out RealFi accounts.</strong></p>
+</blockquote>
+
+<p>The host added his Cardano experience: “I would never talk about price, but obviously the community would talk about price. It's not because anyone says it's the rule … <strong>there are things that the community can say about RealFi that RealFi may not say itself.</strong>”</p>
+
+<p><span class="badge">added</span>The answer is “yes, there is freedom,” but the line is drawn by <em>whose account</em>, not by <em>what may be said</em>. Read alongside the opening caveat about being careful with a financial product, the session's answer is: <strong>there is somewhere to check facts, but no review obligation.</strong></p>
+
+<h2 id="en-ticker">9. Rolling out the USDrf rename</h2>
+<p class="deck">“Pretty much across.” But “a new one comes every day.”</p>
+
+<p>Among the changes happening in the background: a new website “soon,” and <strong>USDrf “is now everywhere.”</strong> The rename was recapped:</p>
+
+<ul>
+  <li>Decided by community vote — “50/50 for the first couple of days,” then “84% went with USDrf and sUSDrf”</li>
+  <li>The changes are “implemented pretty much across”; consistency should now show in documentation</li>
+  <li>“We're not perfect, and we're human and we're finding them, and a new one comes every day.” More changes to come</li>
+</ul>
+
+<p><span class="badge">added</span>Two points differ from the record. The vote result posted in <a href="../2026-08-24-office-hours-ticker/#en-vote">the announcement shown on the #7 page</a> was 51 of 75 votes for option B — <strong>68%</strong>. What the “84%” here refers to is not said. And the previous names are described as “USDr and sUSDr,” where the record has USDR / sUSDR. Both are kept as spoken; the mapping is in the glossary.</p>
+
+<p>Finally, the host said he has “personally connected different members of this community with senior leadership in RealFi to have private calls around different ideas, suggestions, connections, and proposals.” “We are enormously thankful.”</p>
+
+<h2 id="en-overall">10. The whole picture</h2>
+<p class="deck">Take the framework from #7 and run it as a two-week experiment. That is this session.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="The framework from #7 on top, this session's two-week experiment in the middle, and what follows mainnet at the bottom">
+  <defs>
+    <marker id="e5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="648" height="62" rx="8" class="d-box-plain"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">#7 (24 August) — the framework</text>
+  <text x="340" y="68" class="d-s" text-anchor="middle">the handshake, crews and districts, L1/L2 KPIs, the dark forest. “We haven't launched the crews yet”</text>
+
+  <line x1="340" y1="82" x2="340" y2="104" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="16" y="108" width="648" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="134" class="d-t" text-anchor="middle">#9 (21 September) — a two-week experiment before mainnet</text>
+  <text x="340" y="158" class="d-s" text-anchor="middle">first district: the dark forest; first crew: drive testnet activity</text>
+  <text x="340" y="180" class="d-s" text-anchor="middle">self-organise on the Miro board; nothing new built; success = more activity, shown on-chain × online</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">presented to leadership as an “A/B test” to ask for resources</text>
+
+  <line x1="340" y1="208" x2="340" y2="230" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="16" y="234" width="648" height="56" rx="8" class="d-box"/>
+  <text x="340" y="258" class="d-t" text-anchor="middle">After mainnet (1 October)</text>
+  <text x="340" y="280" class="d-s" text-anchor="middle">pick ambassadors from those who were active; go to EVM; “more crews and districts could form”</text>
+</svg>
+<p class="figcap">Where #7 explained why the crews hadn't launched, this session is the invitation: they are launching, please come in.</p>
+</div>
+
+<h2 id="en-qa">11. Q&amp;A</h2>
+<p class="deck">Four from the chat. Nobody came up on stage.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant B</span>The Lace section's rewards task is to swap and stake — I have Lace connected to the dApp but don't see this in the wallet. Is it something native in Lace?</p>
+<p class="qa-a" data-by="Taken away">The host: “when I use it, I think it's in browser.” The marketing lead: “I genuinely don't know,” though it could relate to work with the Lace team ahead of launch. <strong>A follow-up after the call was promised twice.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant C</span>(Confirming the call to action) Get into the community board, organise, brainstorm and conduct experiments?</p>
+<p class="qa-a" data-by="Answered">Exactly. Success in two weeks is a demonstrable rise in testnet activity, measured on-chain and online combined (<a href="#en-sandbox">section 5</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant F</span>Consider limited-edition swag tied to mainnet launch events — more desirable for giveaways.</p>
+<p class="qa-a" data-by="Agreed">Something only available before mainnet would carry “OG status” in years to come; Discord roles are the same kind of thing ambassadors could get if it all works.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant G</span>If the community creates content such as quizzes, does it need review by the RealFi team before sharing, given it's a financial product — or is there freedom to create and share?</p>
+<p class="qa-a" data-by="Answered">Freedom on your own accounts; ask if you want to be sure something is factually correct; RealFi's own accounts are different (<a href="#en-content">section 8</a>).</p>
+</div>
+
+<h2 id="en-pending">12. Left open</h2>
+<p class="deck">A session for starting the first one, so more is undecided than decided.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Taken away</span>What the Lace rewards task refers to inside the wallet.</p>
+<p class="qa-a" data-by="After the call">Two guesses — “in browser,” and “related to the Lace team's implementation” — and no answer. A follow-up was promised.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not given</span>Who picks ambassadors, when, and how.</p>
+<p class="qa-a" data-by="Direction only">“Pick ambassadors and community representatives from those people that are about it.” Criteria, numbers, timing, roles and rewards were not given; the role/status/points design “being drafted” in #7 did not appear here either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not given</span>What “more activity” is compared against.</p>
+<p class="qa-a" data-by="Method only">Called an “A/B test” and a “closed loop,” but no comparison group was described, and the measure stops at “on-chain × online.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Hint only</span>The EVM launch date.</p>
+<p class="qa-a" data-by="No date">“I probably accidentally gave you some dates,” by his own account — but what is on the audio is only “hopefully on EVM by Breakpoint in early November.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Discrepancy</span>The “84%” ticker vote.</p>
+<p class="qa-a" data-by="Record says 68%">The announcement on the #7 page shows 51 of 75 votes, 68%. What the “84%” refers to was not said. The old names were also described as “USDr / sUSDr,” against USDR / sUSDR in the record.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Announced only</span>The new website, swag details, 2027 events.</p>
+<p class="qa-a" data-by="No dates">Website “soon,” swag “when we go fully live,” 2027 “not looked yet.” No timing for any of them.</p>
+</div>
+
+<div class="note">
+<p><strong>About this page.</strong> This session is treated as being under the Chatham House Rule, so no speaker is named. The two people who spoke appear as “the host” and “the marketing lead,” people who asked questions in the chat as <code>Participant A–G</code>, and colleagues mentioned by name by role.</p>
+<p>The source has neither speaker labels nor timestamps; speakers were assigned from context. <strong>A Miro workshop board was screen-shared but its contents were not provided</strong>, so only what was said aloud appears here. Every figure was drawn from the spoken description.</p>
+<p>Passages marked <span class="badge">added</span> were written by us to help the reader and were not said on the call.</p>
+<p>For the exact wording, see the <a href="#en">English transcript</a>; to read straight through in Japanese, the <a href="#ja">Japanese transcript</a>.</p>
+</div>
+</div>
+</section>
+
+<details class="part" id="ja">
+<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
+<div class="sec">冒頭</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者A、こちらへどうぞ。参加者Aさん、こんにちは。皆さん、こんにちは。今日は X のスペースではありませんが、興味を持ちそうな知り合いがいたらステージに招待してもらえるとうれしいです。</p>
+  <p>私たちがやっているこの素晴らしい取り組みの後押しになります。ああ、登壇者A、ステージに上がるリクエストが来ているのが見えました。少々お待ちを。</p>
+  <p>いつものように、右上の吹き出しにチャットがあるので、話している最中でも質問できます。</p>
+  <p>メインステージで、私の声は聞こえていますか。聞こえているか——それが本当の問いですね。よし、聞こえていますね。よかった。今日は Alpha アンバサダー・プログラムについて話します。</p>
+  <p>登壇者Aからはイベントの最新情報もあります。登壇者Aが部屋にいると分かるように、話してくれるのを待っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>はい。聞こえますか？ 聞こえますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ええ、聞こえます。調子はどうですか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私は……さっき何か言ったつもりだったんですが、聞こえていたのか分からなくて。聞こえているものと思い込んでいましたが、明らかに聞こえていなかったんですね。でも、私は元気です。</p>
+  <p>そちらはどうですか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>元気です、元気です。息子から咳をもらったみたいで、だんだんひどくなってきています。帰ったらお礼を言っておきます。でも、とても順調です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者A、この 3 か月あなたと仕事をしてきて、ちょっとした怒涛でしたね。そうですよね？ それが私たちを mainnet まで連れていくものですよね？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ、まったく。それは私と働くストレスのせいですか？</p>
+  <p>怒涛というのは、そういう意味ですか？</p></div>
+</div>
+
+<div class="sec">ここまでの経緯 — SPO のプログラムからアンバサダーへ</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ええ。早めに白髪が増えました。いや、良かったです。良かった。さて、振り返りとして、私たちはどこまで来たのか。</p>
+  <p>Cardano のネットワークの検証者であるステークプール運営者（SPO）向けにアクセラレーター・プログラムを立ち上げました。それが、今日の話題であるアンバサダーの Alpha プログラムの前段のようなものでしたよね、登壇者A。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ、まったくそのとおりです。</p>
+  <p>つまり、あなたが加わってから作ってきたものを、特に SPO まわりをずっと見てきて、私たち 2 人は特に、これをどうやって機能させるか、コミュニティにとっても私たち自身にとっても本当に価値のあるものにするかを、ずっと考えてきました。</p>
+  <p>話を重ねるうちに、「待てよ、これはアンバサダー・プログラムにできる」となった。そこで本当にあなたが前に出て、これを一から作ったんです。</p>
+  <p>他のチームなら 2 段階の長い工程でやるようなことを、私たちは一本にまとめました。</p>
+  <p>そして今日は、そのアンバサダー・プログラムがどういうものかを、あなたからコミュニティに紹介してもらう機会です。</p></div>
+</div>
+
+<div class="sec">本物の活動と、コミュニティからの提案</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そのとおりです。これまでの RealFi Office Hours で、あなたは本物の活動（authentic activity）に重きを置くと明言していました。それは本当です。</p>
+  <p>testnet でも、コミュニティの中でも、本物の、真正な活動を見たかった。見せかけの数字（バニティ・メトリクス）を求めていたわけではありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それからもう一つ。RealFi のプロダクトや RFG トークンなどで何ができるか、たくさんのフィードバックをもらいました。コミュニティからの意見がたくさん入っています。</p>
+  <p>ただ、RealFi のチームは、金融商品である以上、何を言えて何を言えないかについて、とても慎重です。</p>
+  <p>ですから私が伝えているのは、そうしたアイデアをチームに持ち帰っているということだけで、それは Discord では必ずしも見えないかもしれません。</p>
+  <p>でも、ちゃんと届いていて、チームは見ていますし、そういう貢献を本当にありがたく思っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>今日はいない SPO プログラムの 2 つのプールにも、ぜひ感謝を。あとで聞いてくれるといいのですが。</p>
+  <p>アンバサダー・プログラムについて。先ほど言ったように、これまでの提案とワークショップへの貢献に、皆さんに感謝したいと思っていました。mainnet の日付が延びましたね、どれくらいでしたか？</p>
+  <p>2 週間ほど。おかげで少し時間ができました。そうですよね、登壇者A。</p></div>
+</div>
+
+<div class="sec">mainnet の延期と「握手」</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ、mainnet のローンチは 10 月 1 日です。だから——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ええ……今日からだと 9 日ほどですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>これは絶好の機会になりました。というのも、前回のマーケティングの回では、社内の各機能が価値として理解するもの——KPI のようなもの——を翻訳する必要があること、そしてコミュニティとの「インパクトの接点」を持って、いわば世界構築（world building）ができるようにすること、を話しましたよね。</p>
+  <p>つまり、RealFi に入ってきた人に対して、コミュニティはどんな活動や役割を提供できるのか。この 2 つを結び合わせたい。コミュニティで人々がやる仕事、貢献、アイデアと、チームが実際に動けるものとのあいだに、一種の「握手」ができるように。</p>
+  <p>それが、水面下で進んでいる仕事です。さて、今日の時点まで話を進めると、この「世界構築」というアイデアがあります。</p></div>
+</div>
+
+<div class="sec">Decentralized Adventures</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>長くはやりませんが、考え方としては、どんな地図やストーリー主導の RPG でもそうであるように、一人ひとりが冒険に出る、ということです。これはもともと同僚のアイデアでしたよね。ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>Decentralized Adventures（分散型の冒険）。そのとおり。登壇者A、少し話してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>そうですね、これは仕事の多くがそうなんですが、私と同僚は、どうやって成長するか、何を成長させるかをいつも考えていて、いつも TVL という最終目標を考えています。私たちの何人かは Web3 の世界にしばらくいるので、ゲーミフィケーションの要素が好きなんです。</p>
+  <p>それで、同僚が数か月前にいくつかのアイデアを探って、Decentralized Adventures と名付けました。これが土台になっています。</p>
+  <p>いろいろな人が、いろいろな冒険を通じて、RealFi を後押しし、RealFi とは何かを世界に見せる、そのいろいろなやり方です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>私がこの角度を本当に気に入ったのは、コミュニティというのは本質的に自己組織的なものだと、ずっと理解してきたからです。だから、上からの統制はない。</p>
+  <p>つまり私たちが言っているのは、人々が自分の冒険を自分で選ぶ、ということです。自己決定です。だから、一律のやり方ではない。</p>
+  <p>人々が専門化して、自分にとって面白いものを見つけられるようにしないといけない。ところで、自分の手を叩きました。ワークショップのボードを共有すべきでしたね。</p></div>
+</div>
+
+<div class="sec">ワークショップの画面共有</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>今チャットに貼っています。見てみてください。これが私たちが取り組んできたワークショップです。</p>
+  <p>そのワークショップの上のほうにあるのが、最初の SPO による「資産ベースのコミュニティ開発」ワークショップで、そこで彼らは自己紹介をしています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>その下にあるのが、私と登壇者A、それに同僚で取り組んできた、世界構築のプロトタイプのようなものです。画面共有したほうがいいですか。少し危険かな、それとも……少々お待ちを。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>それは大丈夫だと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>タブが山ほどあるのが気になって。誰にも PTSD を起こさせたくないので。よし、画面を共有します。勇気を出して。登壇者A、見えますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>今見えました、ええ。読み込まれました。はい。ちょっと小さいですが——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ああ、なるほど。ええ、私たちの考えがたくさん載っています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>私たちがこれをどう作ろうとしているか、透明にしているんです。さっき RealFi の KPI について、チームが価値をどう理解するかについて、少し話しましたね。</p>
+  <p>ところで、ここに面白いことがあります。このコールの後半で、共通善（common good）、公共善について話すのですが。</p>
+  <p>RealFi の KPI を見ても、共通善を見ても、つながっている考えは同じです。あなたが仕えようとしている聴衆、チーム、コミュニティは、客観的な数字として、成功をどう理解しているのか。</p>
+  <p>共通善を見つけられれば、それが調整の軸になる。</p>
+  <p>つまり、私たちが言ったように、コミュニティの人々は、自分にとって何の得があるかが分かれば自己組織できる。そして、全員にとって何の得があるかを理解しないといけない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>少し引いて見ましょう。説明しすぎているので。これがコミュニティです。ひとりで参加して、パートナーシップを組んで、crew を作る。</p>
+  <p>それが私たちがここでやろうとしていることです。上のほうにあるのが、さっき話した「握手」です。解像度がひどいですが。</p>
+  <p>考え方は、チームが青、コミュニティのエコシステムが赤で、そのあいだに握手がある。それがこの緑の 2 つです。</p>
+  <p>それが中心、インパクトの接点、あるいは私たちのチーム——私と登壇者A——ですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それからこちらでは、「誰かが RealFi に入ったら、どう探索するだろう？」と問うています。何があると期待するでしょうか。</p>
+  <p>地図があって、貢献できるいろいろな district（地区）や場所に入っていく。そして私たちが最初に作っているのが、この「ダーク・フォレスト」です。</p></div>
+</div>
+
+<div class="sec">ダーク・フォレスト</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ご存じの方もいるかもしれませんが、ダーク・フォレスト理論というのは、AI がやって来る、というものです。Cloudflare によれば、インターネットの 50〜80% はボットです。</p>
+  <p>DeFiLlama や Dune か誰かのデータでは、オンチェーンの活動の 90% がボットです。私が言いたいのは、ダーク・フォレスト理論では、AI の時代に人間の真正さがはるかに価値を持つようになる、ということです。</p>
+  <p>そして、ダーク・フォレストは「cozy web」でもある。RealFi のようなチームには届かないが、コミュニティなら届く場所です。コミュニティはあなたが行けない場所に行けるから。</p>
+  <p>それは Discord かもしれないし、非公開の Telegram かもしれないし、対面のミートアップかもしれない。ダーク・フォレストというのは、ちょっとした遊びです。</p></div>
+</div>
+
+<div class="sec">共通善 — 4 つの論拠</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>あとで変えたければ、登壇者Aと合意して変えてもらって構いません。私は脱線しているので、登壇者A、いつでも止めてください。さて、ここが共通善です。</p>
+  <p>私たちが座って考えたのは、もし自分たちがコミュニティの側にいたら——これは Ethereum のような他のエコシステムにも当てはまりますが、今は Cardano の話をしています。</p>
+  <p>誰かが RealFi について語るとき、RealFi と、コミュニティメンバーと、Cardano エコシステムが、何か良いこと、価値のあることが起きていると一致して認められる共通善とは何か。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>1 つ目は、ADA を守ることです。世の中にはハッキングがいくらでもある。金融的な主権を保ったまま、どうやってそれをやるか。</p>
+  <p>2 つ目は、エコシステムの観点からネットワークを分散化すること。</p>
+  <p>それが SPO アクセラレーター・プログラムです。RealFi の SPO を支えてそこに委任すれば、testnet で能動的に参加して得られる分に加えて、受動的により多くのポイントを得られます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>3 つ目は、ADA を守り、ネットワークを分散化した——それらは美徳ですが、長期的な健全性も信じているか、ということです。</p>
+  <p>成長はどういう姿なのか。他の回で話したとおり、成長とは資本の生産性です。特に L1 では。すみません、登壇者A。</p>
+  <p>ピッという音が聞こえて、誰かが話しているのかと。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>いえ、それは私の iPad の通知が 1 つ鳴っただけです。失礼しました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>了解。ベンツでしたか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>サイレントにしてあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>さて、残りは要するに経済的な健全性です。これが必要なものです。これもまた共通善です。</p>
+  <p>Cardano の誰もが、流動性と経済的な健全性が必要だと認めるでしょう。4 つ目は、使い道を探ることです。ADA で何ができるのか。必ずしも売る必要はない。</p>
+  <p>借りることもできるし、他の使い方もあるかもしれない。</p>
+  <p>これらの共通善を順にたどっていくと、なぜ RealFi に参加したいと思うのか、かなり強い論拠にたどり着けます。</p></div>
+</div>
+
+<div class="sec">テンプレートと、mainnet までのサンドボックス</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それから、どう組織するかのテンプレートをいくつか作りました。</p>
+  <p>狙いは、私たちがこれとアイデアをいくつか用意しておけば、皆さんが入ってきて、資産ベースのコミュニティ開発ワークショップに参加した SPO を見て、一緒に働きたい、協力したい相手を見つけられるかもしれない、ということです。</p>
+  <p>以上が、私たちが立ち上げたワークショップの駆け足ツアーです。</p>
+  <p>今すぐ開いていて、誰でも入れます。Discord で話してもいいし、付箋を残してもいいし、協力したい相手を見つけられます。</p>
+  <p>ざっと通す価値はあったと思います。画面を戻しますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ざっと通す価値があったのは、mainnet までの時間で、本当にサンドボックスを作ろうとしているからです。それに、皆がフル稼働ですよね、登壇者A。</p>
+  <p>mainnet にたどり着こうとしているこの数週間の制約はこうです——今あるものが、あるものです。もらったフィードバックは全部チームに渡しています。</p>
+  <p>でも、今あるものが「可能にする制約」なんです。</p>
+  <p>ダッシュボードのような素晴らしいアイデアがありました。私たちも見たいし、チームにも出しています。でも、この 2 週間で新しいものは何も作りません。だから——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>付け加えると、そういうものは当然、将来はできます。ただ、今は——</p>
+  <p>ええ……mainnet に向かっている今は、技術チームはそこに集中しないといけません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>だから、ワークショップは「残りの 2 週間、3 週間で何ができるか」なんです。</p>
+  <p>そこでこのワークショップを組み立てました。要点は、最初の district はダーク・フォレスト、最初の crew は testnet の活動をどう増やすか、です。</p>
+  <p>ですから、アンバサダー・プログラムを今どう見ているかというと、自己組織できるか、mainnet までに何か面白いことができるか。そして、本気の人たち、本当に活動していた人たちの中から、アンバサダーやコミュニティの代表を選ぶ。</p>
+  <p>それが私たちの出発点です。登壇者A、私たちが話したことの妥当な表現になっていますか？ ええ、まったく。よし。ワークショップは公開されています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>今言ったことは要するに、「この testnet の期間を使って、一緒に自己組織しよう」ということです。今チャットを読んでいます。</p></div>
+</div>
+
+<div class="sec">チャットの質問 — Lace の報酬タスク</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者Bさんが言っています。「少し話が逸れますが、Lace のセクションの報酬タスクが swap と stake だというのが、よく分かっていません。</p>
+  <p>Lace を RealFi の dApp に接続していますが、これはウォレットの中では見えない、Lace のネイティブな何かなのでしょうか。」登壇者A、私が使うときは、ブラウザの中だと思うのですが。</p>
+  <p>そうでしたか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>うーん、それは分からないのですが、私たちと Lace のチームが今いくつか取り組んでいることに関係している可能性はあります。ローンチに向けた彼らの実装まわりかもしれません。でも、正直分かりません。</p></div>
+</div>
+
+<div class="sec">ここまでのまとめと、招待</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者Bさん、このコールが終わったらすぐにフォローアップして、一緒に整理します。では振り返りを。ここまでどこにいるかを話しました。コミュニティに感謝しました。</p>
+  <p>SPO のアクセラレーターから Alpha へ、それが検証者たちからなるコミュニティの土台だったことを話しました。</p>
+  <p>今は testnet の期間で、testnet の活動をもっと増やすために組織できないか、と呼びかけています。そこからアンバサダー・プログラムを考えよう、と。</p>
+  <p>そして Miro のボードを共有しました。皆さんに入ってほしいし、RealFi コミュニティの他の人たちにも入るよう勧めてほしい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>もし唯一のことがあるとすれば——RealFi のコミュニティにおけるエコシステム戦略は、コミュニティのものでなければいけない、ということです。</p>
+  <p>チームが上から何かをやるだけでは、勝てないと思います。コミュニティ全体との、いわば拡張された能力が要る。</p>
+  <p>そして、本当に明確なインセンティブは要りますし、人々にとって明確な「身銭を切っている」状態が要る。それはあると思います。今日の時点で RFG トークンがあります。</p>
+  <p>それから USDr と sUSDr があります。ただ、そのまわりには情報がたくさんある。要するに、まだこれから出てくることがたくさんある、ということです。</p>
+  <p>言いすぎたかもしれません、登壇者A。あとで、はみ出していたら教えてください。さて、Miro のボードがあります。今それを振り返りました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>アンバサダー・プログラムについて、今すぐ扱えるチャットの質問や、皆さんのアイデアはありますか？</p>
+  <p>私と登壇者Aは、役割について、長期的なインセンティブになりうるものについて話してきました。これは 1 つの district、ダーク・フォレストと、最初の crew にすぎない、ということも。</p>
+  <p>もちろん、他の district や crew ができるのを見たいです。ただ、まずはシンプルなところから始めないと。</p>
+  <p>今このワークショップにいる人たちで 1 つの crew をうまく回せるか。今うまくいけば、そこから広げられます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それから、当たり前のことですが、私たちは Ethereum に行きます。mainnet の次は EVM です。</p>
+  <p>だから、外に出ていく大きな機会があります。サーバーのサファリとか、Ethereum のコミュニティに会うとか。すでに Ethereum につながりがある人がいたら、素晴らしい。教えてください。</p>
+  <p>ワクワクすることがたくさん控えています。さて、登壇者A、止めてください。私が見落としたことは？ 私のこの長い言葉のサラダから、皆さんに何を持ち帰ってほしいですか？</p></div>
+</div>
+
+<div class="sec">コミュニティは作る人のもの</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>関わりたければ、関わってください、ということだと思います。見落としはないと思います。</p>
+  <p>コミュニティの側で、質問があるとか、答えられていないことがあると思うなら、今が聞くときです。今すぐ聞くのが気が引けるなら、あとで私たちをタグ付けしてください。</p>
+  <p>でも、範囲と計画はほぼ全部カバーしたと思います。ええ。そう——ええ……もし——ええ。すみません。いえ、どうぞ。そちらが続けてください。すみません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>今の一言で整理できました。コミュニティは、あなたが作るものなんです。このコールにいる人たち、RealFi のコミュニティにいる人たちが。</p>
+  <p>RealFi のチームの誰かにできることには限りがあります。こういうプロジェクトは、コミュニティが集まってくれるかどうかで生きも死にもすると思います。</p>
+  <p>だから、これが招待であり、申し出です。私たちはもっとはっきりさせたいし、もっと知見を得たい。</p>
+  <p>ただ、Ethereum の mainnet ローンチまでは——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ。ただ、それは本当に皆さん次第です。進行役がもう何度も言ったことですが、何が良くて、何ができるか次第です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私が過去に関わったコミュニティでは、関係のある新しいメンバーを連れてくることに信じられないほど長けた人がいて、それがその人の専門でした。</p>
+  <p>他の人は、できるだけ多くのバグを直すこと、アプリを壊そうとすることに集中していました。</p>
+  <p>ですから、何をやりたいか、何が自分の専門だと思うか次第です。私たちが決めることではありません。</p>
+  <p>あなたがこのコミュニティに加わったのだから、あなたの才能が使われるようにしたい。ただ指図するのではなく。</p>
+  <p>私たちは他のコミュニティのように、ミームを作れ、これをやれ、あれをやれ、と言うだけの——</p>
+  <p>そうはしません。私たちに言われるのではなく、楽しめること、やりたいことをやるべきだからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>良い点ですね。</p></div>
+</div>
+
+<div class="sec">貢献をどう見るか — SPO と紹介リンク</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>すべての貢献が考慮されますが、成果や貢献が見えやすい方法が、特に 2 つあります。</p>
+  <p>1 つは、SPO であれば、あなたのプールに委任している人たち——請求されたポイントの 20% を受け取れる、だったと思います。</p>
+  <p>だから、KOL、つまりオンチェーンで影響力のある人——検証者や SPO——を見て、そのオンラインでの影響力を考え、その 2 つを組み合わせることで、活動を見たときに本物だと言える。</p>
+  <p>ですから 1 つ目は、SPO なら、何人があなたのプールに委任してポイントを請求しているか。活動を本物だと確かめる、とても面白い方法になります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>2 つ目は、RealFi の testnet に入ると、個人として紹介リンクを持てることです。</p>
+  <p>もっと時間があれば——Discord の HypeSquad をご存じの方がいれば——もっとゲーミフィケーションできたのですが。</p>
+  <p>でも誰でも紹介リンクを取って、それを使って、より多くの人を RealFi のコミュニティに連れてきて、testnet に参加してもらえます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>それから、うまみですが——熱心すぎてうっとうしいかもしれませんが。</p>
+  <p>本当に面白いのは、コミュニティの初期にいると、影響力と発言力がとてつもなく大きく、声が届きやすいことです。</p>
+  <p>Cardano にどれくらいいたか分かりませんが、7 年。ある規模になると、全員が互いを知っているわけではなくなる。分かりますか？</p>
+  <p>そうすると、役割や層のそれぞれが、ほとんど独自のコミュニティになる。それを指す言葉があったと思います。メタセシスか何か。それともラビット？</p>
+  <p>分かりません。ともかく脱線しました、登壇者A、すみません。さて、イベントについて話してもらいます。聴衆の中にも、こうしたイベントに行く人がいるかもしれません。</p></div>
+</div>
+
+<div class="sec">行動の呼びかけ — testnet の活動を増やす</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>あなたの理解の範囲で案内してもらえますか——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>その前に、参加者Cさんの質問に答えたほうがいいと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ああ、すみません。どの質問ですか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>コミュニティのボードに入って、組織して、ブレインストーミングして、実験をやる、という行動の呼びかけについてです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい。明確な行動の呼びかけは、実務的な話です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>次の 2 週間で、成功とは何かというと、登壇者Aと私が「testnet の活動が大幅に増えた」と示せることです。世界構築とワークショップが機能することを示したいからです。</p>
+  <p>最初に大きな伸びがありました。たくさんの活動があった。成功でした。ただ私たちは、世界構築と crew と district が本当に——という論を張ってきました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ところで、参加者Cさん、世界構築がなぜ本当に面白いか分かりますか？</p>
+  <p>初日にコミュニティに入ってくる人は、エンジニアリング、プロダクト、CEO といった RealFi のさまざまなチームが使う内部の言葉を、覚えきれるはずがないんです。</p>
+  <p>不可能です。オンボーディングのときに、チーム内のそういう文化的な知識をコミュニティ全体に広げることはできない。</p>
+  <p>だから世界構築の考え方は、ダーク・フォレストとか港とか、誰もが知っているような、すでに人の頭の中にあるアーティファクトや物を使って、そこを軸に方向づけられないか、ということです。</p></div>
+</div>
+
+<div class="sec">A/B テストという論法</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ただ、こういう突飛なアイデアがあるとき——</p>
+  <p>登壇者Aと話しているときにも、リーダーシップに話すときに、ただ活動のための活動だと受け取られないように、本当に気をつけないといけない。</p>
+  <p>いや、RealFi のリーダーシップは素晴らしいです。批判しているわけではありません。</p>
+  <p>ここでの要点は、「コミュニティをこう作れる本当に面白い方法があると思う」と言うとき、その資源を求め、チームに支援してもらうための最良の方法は、A/B テストをやることだ、ということです。</p>
+  <p>それが黄金律ですよね。</p>
+  <p>閉じたループのテストで、「これは実際に本当に役に立った」と言えるようにする。だから求めているのは、次の 2 週間で testnet の活動をもっと増やすことです。</p>
+  <p>やり方は、あの Miro のボードに入って、組織化し、ブレインストーミングし、実験をやる。おっしゃるとおりです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>そして測り方ですが、最終的にはオンチェーンとオンラインの指標を組み合わせて見られるようにしたい。今はたいていの人がどちらか片方に寄っていると思うからです。</p>
+  <p>オンラインの活動は偽装できる。オンチェーンの活動はボットにできる。でもその 2 つを組み合わせれば——ところで参加者Dさん、ここで KYC の話をしているのではありません。</p>
+  <p>参加者Dさんが入る前にお名前を出しました。KYC、AML、そういう話ではありません。</p>
+  <p>身元を明かさなくていい。ただ、その 2 つを組み合わせて活動を検証できないか、ということです。チームへの、本当に面白い提案ですよね。</p>
+  <p>それに、私と登壇者Aと同僚——本当に小さなチームなんです。ともかく、答えになっていれば。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>だから、testnet の活動をもっと増やそうとしているのは、コミュニティが自己組織できると示したいからです。世界構築のまわりには、できることがいろいろあると思っています。</p>
+  <p>そして、これがとても——何と言えばいいか——とても早い段階で、とてもプロトタイプ的だということは、完全に認めます。</p>
+  <p>参加者Dさんや、別のプール、他のプールが「もっとはっきりさせてほしい」「RealFi でこれやあれができるのでは」ともっともなことを言っていて、そのフィードバックは全部チームに持ち帰っています。</p>
+  <p>参加者Dさんと、少し遅れて入った人のために振り返ると、mainnet のローンチが少し延びたので、次の 2 週間はこうしたアイデアを試す時間になる、ということです。</p>
+  <p>そして mainnet に着いたら、Ethereum について、どう出ていってそこを制するかを話せます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>私は、世界というのは実は、とても小さな集団が本当に大きな影響を持てるものだと思っています。突き詰めれば人だからです。</p>
+  <p>そして特にブロックチェーンでは、それがよく忘れられる。</p>
+  <p>皆がコード、プロトコル、技術に目を向けていて、それは全部大事ですが、道具にすぎない。実際には、突き詰めれば人なんです。登壇者A、また話しすぎています。ええ。</p></div>
+</div>
+
+<div class="sec">イベント</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>教えて——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ。話しますよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい、お願いします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>少しだけ。イベントはやってきましたが、mainnet に乗るまでは大々的にはやっていません。</p>
+  <p>無駄になるかもしれないお金は使いたくないので。それでも、いろいろな場所には行っています。GTM 担当、私たちの GTM リードが、先週バルセロナにいました。</p>
+  <p>先週でした。私はここに住んでいるのに会えませんでした。都合がつかなくて。でも彼はここのサイドイベントに行って、本当に有益でした。</p>
+  <p>European Blockchain Convention にも行きました。London Fintech Week にも。</p>
+  <p>ですから、実際に行ってその機会を活かしたイベントからのコンテンツが、これから出てきます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>この先は、基本的に年末に向けて計画しています。10 月 1 日に mainnet にローンチするタイミングで——CEO が Korea Blockchain Week に行く予定です。ちょうどローンチと重なります。</p>
+  <p>今、その会場を探していて、ストレスで白髪が増えています。でも、本当に良いイベントになるはずです。韓国にいる方は、連絡してください。</p>
+  <p>これはすべてのイベントに言えることですが、その場にいて私たちに会いたければ——「私たち」と言いましたが、私が行くわけではなく、主に CEO や GTM 担当のような人です。</p>
+  <p>その機会を作ります。手配できます。私か進行役に連絡してください。Korea Blockchain Week には、出ます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>それから、コミュニティの 1 人に勧められて、TOKEN2049 の Cardano Foundation のブースに採択されました。</p>
+  <p>最初にこの Discord サーバーの誰かが教えてくれたのだと思います。</p>
+  <p>申請を出して、プレゼンをして、確認できました——全員で確認しました——ブースに出られるプロジェクトの 1 つとして採択されました。</p>
+  <p>RealFi にとって大きな勝利です。CEO がシンガポールに行きます。</p>
+  <p>完全に無料で——面白いことに——イベントで委任者に会って話し、Cardano にローンチした直後に RealFi とは何かを見せ、まだ私たちを知らない人たちに紹介する機会が持てます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>その後、EVM へ、そして EVM の後がどうなるかへと進む中で、Solana Breakpoint にも少し出ます。今年はロンドンだと思います。</p>
+  <p>私はイギリス人なのに、行きません。でも同僚が南アフリカからはるばる来るかもしれません。それはかなり良い。</p>
+  <p>ですから、Solana Breakpoint でロンドンにいる方——11 月の頭だと思いますが——その時点ではうまくいけば、願わくは、EVM にも乗っているはずです。</p>
+  <p>これもとても楽しみなイベントです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>来年のイベント戦略は少し違って見えるかもしれません。願わくは TVL が入ってきて、使えるものが増えて、それを賢く使えるように。</p>
+  <p>これまでどおり、すべてを賢くやるようにします。今のところはそんな状況です。</p>
+  <p>先々に楽しみなことがあって、その場にいる方には機会がたくさんあります。</p></div>
+</div>
+
+<div class="sec">グッズ</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>会場に行って RealFi を代表したい人がいたら——登壇者A、これを私の宿題にしたはずなので、今自分の首を絞めていますが——グッズを作るんでしたよね？</p>
+  <p>シャツは作れますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ、できます。必要次第ですが。もちろん、それが要点ですから。作ります。</p>
+  <p>今はグッズがあまりありません。同僚と私が南アフリカでやったことの一つが、新しいパーカーなどを作ることでした。デザインはあります。</p>
+  <p>とても簡単に作れます。グッズは用意します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役 <em>(推定)</em></div>
+  <div class="turn-body"><p>では、それをあなたに返しますが</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>……詳しい情報は、完全に稼働してから出します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>「必要次第」と言いましたね。つまり、コミュニティ向けにカスタムのグッズを作るということですか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>いや、そうではなく——いや、ええ。</p>
+  <p>私が言ったのは、必要に応じて販売する、ということです。</p>
+  <p>私たちにとって適切だと分かっている必要はありますが、そういうことはできます。グッズは高いものではないので。</p>
+  <p>RealFi を代表してくれるなら、私たちにとっても利点があります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>皆さん、カスタムのグッズです。どんなものにすべきか、アイデアが要るだけです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。TOKEN2049、Korea Blockchain Week、それから Solana の——何でしたっけ。Solana Breakpoint？ ええ。はい。</p>
+  <p>とても良いですね。</p></div>
+</div>
+
+<div class="sec">EVM の時期のヒント</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ。それに、注意深く聞いていた人には、何が起きるか、日付についても少しヒントを出しました。</p>
+  <p>うっかり日付を言ってしまったかもしれないので、技術側の人が聞いていたら謝ります。でも、聞き返せば、EVM が正確にいつになるかのヒントを出したと思います。</p>
+  <p>なぜその時期に行くのかについても、少しヒントを出しました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。参加者Dさんと参加者Eさんは 2 人ともシンガポールに行くんですね。素晴らしい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>私は行きませんが、TOKEN2049 は長年行った中で一番好きなイベントの一つです。暑いのが本当に好きな変わり者だからかもしれません。</p>
+  <p>もちろん、あれだけの人が皆熱心なのは素晴らしい。</p>
+  <p>2 年行っていませんが、行った 3 年は本当に良かった。</p></div>
+</div>
+
+<div class="sec">限定グッズと OG ステータス</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>参加者Fさんが「mainnet ローンチのイベントに紐づけた限定グッズを検討してみては。</p>
+  <p>そのほうがギブアウェイとして魅力的になる」と。ええ、mainnet 前にしか手に入らない Alpha アンバサダー・プログラムのものだけ、というのはいいですね。</p>
+  <p>何年か後には、いわば OG のステータスになる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ……Discord のロールの話をするときにも。</p>
+  <p>そういうものは、すべてがうまくいけば、アンバサダーが得られる類のものです。これで話がつながりました。はい。</p></div>
+</div>
+
+<div class="sec">質問 — コミュニティ発のコンテンツは審査が要るか</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者A、あなたへの質問です。</p>
+  <p>参加者Gさんが言っています。「たとえば、RealFi の理解度を試すクイズのような、人を引きつけるものをコミュニティが考えたとします。特に紹介のループがあれば、もっと多くの人が関わるきっかけになるかもしれません。</p>
+  <p>ただ、コミュニティが作ったものは、公式の RealFi チームのレビューが要るのだろうと思います。</p>
+  <p>RealFi は金融商品に関わるので、善意で作ったものでも、意図せず混乱を招くことがありえます。</p>
+  <p>このようなコミュニティ発の取り組みは、共有する前に RealFi チームのレビューを受けるべき、という理解で合っていますか。それとも、コミュニティにはコンテンツを作って共有する自由がある程度あるのでしょうか。」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>自分のアカウントから出すものなら、自由があります。</p>
+  <p>特定の質問があるとか、投稿するものが正しいか、事実として正しいか確かめたいなら、もちろん私たちに聞くことを勧めます。</p>
+  <p>自分のアカウントから出るものについては、ずっと自由があります。RealFi のアカウントから出るものは、当然、話が別です。</p>
+  <p>不確かなことがあれば、いつでも聞いてください。でも自信があるなら、その自由があります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ええ、私が Cardano にいたときは、価格の話は絶対にしませんでしたが、コミュニティは当然、価格の話をしていました。だから、言わないことはいくつかある。</p>
+  <p>誰かがルールだと言っているからではなく、分かりますよね。そこにいれば。ええ。</p>
+  <p>ですから、RealFi 自身は原則として言わないけれど、コミュニティなら RealFi について言えることがあると思います。誰かが手を挙げて話したいようです。</p>
+  <p>皆さん、手を挙げて話しに来てくれて構いません。怖がらないでください。ここにいるのは皆、極端な外向型です。</p></div>
+</div>
+
+<div class="sec">2027 年のイベント</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>登壇者A、もう一つ聞こうと思っていたのは何だったか。2027 年に入ってのイベントで、まだ確定していなくても、特に関心があるものはありますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>まだ見ていないんです。いろいろな節目がありますから。</p>
+  <p>mainnet のローンチ、EVM のローンチ、トークン、それから GTA 6。</p>
+  <p>年末までに出てくることがたくさんあって、来年に行く前にそれを考えています。</p>
+  <p>GTA 6 が出て、遊び終わったら、集中するイベントが出てくると思います。でも GTM 担当は、真面目な話、どこに行きたいかについて大きな発言権を持っています。</p>
+  <p>彼が GTM リードで、本当に洞察のある人で、関係する人たちと話せる人です。彼は大きな役割を——</p>
+  <p>こういうイベントには彼のほうが向いている人です。だから European Blockchain Convention のように彼が本当に行きたいものには行きます。彼にとって有益なだけでなく、RealFi のプロジェクト全体にとって有益だからです。</p></div>
+</div>
+
+<div class="sec">チームは Discord にいる</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>実は RealFi のことで一つ。お気づきなら、チームのすべての機能が RealFi Office Hours に出てきています。</p>
+  <p>これまでの回に出ていたり、アナウンスを読んでいたりすれば分かりますが、すべてのチームが Discord にいますし、重要なチームメンバーには、望めば誰でも連絡して話せます。</p>
+  <p>私たちが仲介するのも、もちろん喜んでやります。もちろん CEO を勧めます——CEO のことですよね——CEO の……はい。</p></div>
+</div>
+
+<div class="sec">まとめ</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>見落としがないように、いくつか振り返ります。話したのは……ああ、それはあとで探さないと。</p>
+  <p>アクセラレーター・プログラムについて話しました。素晴らしいと思います。RealFi のコミュニティには本当に優れた検証者がいます。</p>
+  <p>testnet の期間について話しました。mainnet までの次の 2 週間です。その後は多くのことが起きます。Ethereum に出ていきたいからです。それを通じて、もっと多くの crew や district ができると思います。</p>
+  <p>そして参加者Cさんが言ったように、Miro のボードについての頼みは、入ってくださいということです。目指す成果は、testnet の活動の増加。それを増やそうとしています。</p>
+  <p>もっと多くの人が testnet に関わり、もっと多くの人がポイントを得ること。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>SPO なら、あなたのプールに委任している人たちが請求するポイントの 20% を受け取れます。</p>
+  <p>あなたに委任する人たちは、受動的に追加のポイントを得られる。これは役に立ちます。それから、公共善、共通善について話しました。</p>
+  <p>なぜ Cardano にとって良いのか、なぜ委任者にとって良いのか、なぜ委任される側にとって良いのか、なぜ RealFi に関わりたいと思うのか、という筋を示しました。</p>
+  <p>それから登壇者Aがイベントとつながりについて話しました。TOKEN2049 シンガポール、Korea Blockchain Week——順不同ですが——Solana Breakpoint。ほかには、登壇者A？</p>
+  <p>何かアルファは？ 何か知見は……</p></div>
+</div>
+
+<div class="sec">USDrf への改称の反映</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>今のところはこれくらいだと思います。いつも何かには取り組んでいます。</p>
+  <p>裏ではたくさんの変更をしています。近く新しいウェブサイトが見られるかもしれません。それも私と同僚の白髪を増やしているものですが。</p>
+  <p>それから、お気づきのはずですが、USDrf がもう至るところにあります。だから——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役 <em>(推定)</em></div>
+  <div class="turn-body"><p>ああ、それについて話してください……これからは USDr と呼んで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>もう一度通してもらえますか。ティッカーのこと、聞き逃した人がいるかもしれないので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>ええ。コミュニティが投票で、ティッカーの名前の変更を手伝ってくれました。</p>
+  <p>もともとは USDr と sUSDr でした。それを皆さんの投票に委ねた。最終的に 84% ほどだったと思います。最初の数日は 50 対 50 でした。</p>
+  <p>でも 84% が USDrf と sUSDrf を選んだ。そして、その変更をほぼ全体に反映しました。</p>
+  <p>まだやることは残っています。完璧ではないし、人間なので、毎日新しい見落としが見つかります。</p>
+  <p>でも始めています。ドキュメントなどで、新しい名前での一貫性に気づき始めるはずです。</p>
+  <p>この先さらに変更がありますが、まだごく初期の段階です。私と同僚が突き進むものが、また一つ。</p></div>
+</div>
+
+<div class="sec">締め</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>さらに一歩、いや、もう少し踏み込みます。</p>
+  <p>私は個人的に、このコミュニティのさまざまなメンバーを RealFi の上級リーダーシップとつないで、それぞれのアイデア、提案、つながり、企画について非公開のコールを持ってもらいました。</p>
+  <p>コールの冒頭で言ったように、すでにたくさんの活動と貢献があり、本当に感謝しています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ほかに質問は？ 今がそのときです。チャットを見ています。なければ、私たちをタグ付けするか、DM をください。フォローアップします。</p>
+  <p>参加者Bさん、このコールのあとに話すと約束したので、すぐに DM するかチャンネルでタグ付けして、Lace の件で何が起きているのかをもっとよく把握できるようにします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>はい。登壇者A、最後の一言をどうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A</div>
+  <div class="turn-body"><p>友達を招待してください。Discord のユーザーを 1,300 人にしましょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>素晴らしい。今 1,200 人です。最後に見たときは 1,266 だったと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>スマホで見てみます。そこに出るので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>ええ、ツイートが要ります。何か——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">登壇者A <em>(推定)</em></div>
+  <div class="turn-body"><p>ツイート。ええ、1,220 です。あと 80、速く欲しい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>いいですね。素晴らしい。では。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">進行役</div>
+  <div class="turn-body"><p>皆さん、聞いてくれてありがとうございました。扱ってほしかったのに扱わなかったことがあれば、教えてください。次の Office Hours の予定に入れます。</p>
+  <p>ありがとうございました。ありがとう、登壇者A。それでは。それでは。</p></div>
+</div>
+</details>
+
+<details class="part lang-en" id="en">
+<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">匿名化以外は未編集</span><span class="l-en">Unedited apart from anonymisation</span></span></summary>
+<div class="sec">Opening</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>[Speaker A] up here. Hey, [Participant A]. Hello, everybody. We're not in an X space, but if you can invite anyone into the stage that you know that you think would be interested, that'd be awesome.</p>
+  <p>It'll support this excellent work that we're doing. Uh, ah, here you go, [Speaker A], I can see that you've, um, requested to come up to the stage. Hang on.</p>
+  <p>As always, guys and ladies, there is the chat in the, um, top right bubble, so you'll be able to, uh, yeah. You'll be able to ask questions while we're talking.</p>
+  <p>Um, can you hear me okay on the main stage? Hear me, that's the real question. Okay, great, you can hear me. Well, that's good. Uh, we're gonna talk about the, um, Alpha Ambassador Programme.</p>
+  <p>Um, and [Speaker A]'s got some updates about events. I'm just waiting for [Speaker A] to talk so that we know he's with us in the room.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah. Can you hear me? Can you hear me?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, can hear you. How you doing?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>I was... I, I thought, um, I thought... I did say something, but I didn't know whether you heard me before, but, um, I assumed you did hear me when you obviously hadn't. But yeah, I'm okay.</p>
+  <p>How are you?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I'm good. I'm good. I think my son's given me a, a cough that's developing, so I'll go home and thank him for that later. But, um, I'm doing really good.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>It's been a bit of a whirlwind, [Speaker A], working with you over the past three months. Is that right? That's what's taking us up to Mainnet?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, absolutely. Is it, is it the stress of working with me?</p>
+  <p>Is that what the whirlwind is?</p></div>
+</div>
+
+<div class="sec">Where we&#x27;ve been — from the SPO programme to ambassadors</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yes. Prematurely grayed. No, it's been good. It's been good. Um, all right, so as a recap, um, you know, where have we been?</p>
+  <p>We've launched an Accelerator Program with stake pool operators who are the validators of Cardano's network, and that was kind of a precursor to today's conversation, [Speaker A], around the ambassador sort of Alpha Programme, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, absolutely.</p>
+  <p>I mean, we've been watching everything that you've built since you've joined, uh, particularly with the SPOs, and we've always been thinking, particularly the two of us, about how we can, you know, make this work and make it be really valuable to the community, but also to ourselves as well.</p>
+  <p>Um, and the more the conversations we had, it kind of led to this, hold on, this is, you know, we can turn this into an Ambassador Programme, and that's really where you've stepped up and created this all from one.</p>
+  <p>We've kind of streamlined a process that other teams would take two, two long versions to do.</p>
+  <p>Um, and yeah, this, this is your opportunity, obviously, to, to, uh, introduce our community to what, what that Ambassador Programme looks like.</p></div>
+</div>
+
+<div class="sec">Authentic activity, and what the community has suggested</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's right, and in previous RealFi Office Hours, you'd had articulated the emphasis on authentic activity, which is, which is true.</p>
+  <p>You know, we really wanted to see real authentic activity on Testnet and within the community, and we weren't looking for vanity metrics.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>So I'm also gonna say we've had a lot of feedback around what we could do with things like the RealFi product or with the RFG token, all these kind of things. We've had a lot of community input into it.</p>
+  <p>Now, the RealFi team is very careful about what we can and can't say in terms of it being a financial product.</p>
+  <p>So what I'm communicating is just that we are taking those ideas into the team, and sometimes that might not always be visible in Discord, you know?</p>
+  <p>But they are there, and the team is looking, and we really do value that kind of contribution.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Uh, definitely shout out to [two stake pools from the SPO programme] who aren't here, but hopefully they will hear us afterwards.</p>
+  <p>Um, so the Ambassador Programme, um, as I said, I wanted to thank everybody for the suggestions and the workshop contributions that we've had so far. The Mainnet date has been extended, uh, what?</p>
+  <p>A couple of weeks, which gave us a little bit more time, [Speaker A], right? So just-</p></div>
+</div>
+
+<div class="sec">The mainnet delay, and the handshake</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, it's the 1st of October that Mainnet launches. So-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah ... about nine, nine days from today, isn't it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Well, uh, it's given us a great opportunity 'cause I think on, on the last call that we did with marketing, we talked about, um, the need to translate what internal functions would understand as value, so sort of KPIs, this kind of thing, and having an interface for impact with the community where we can kind of do world building, right?</p>
+  <p>Which is, you know, what kind of activities and roles might the community offer someone that's entering RealFi, and we wanna marry those two things up so that we have a kind of a handshake between the work that people do or, or the contributions people make, or the ideas that people have in the community and translate that into something the teams can actually act on.</p>
+  <p>That's kind of the, the hidden work that's going on. Um, so bringing us up to date, we've got this idea of world building.</p></div>
+</div>
+
+<div class="sec">Decentralized Adventures</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I won't g- spend too long on it, but the idea is that like any map or, um, story-driven RPG, the individual is going on an adventure. That's how, I think it's [a colleague]'s idea originally, right? Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Decentralized adventures. Absolutely. Tell us a bit about that, [Speaker A].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Well, kind of just a lot of the, it's just more a lot of the work, me and [a colleague] are always thinking about how we can grow and what we can grow, and we're always thinking about that end goal of TVL, and obviously we've been, some of us have been in the Web3 space for a while, so we like the elements of gamification.</p>
+  <p>So what [a colleague] did a couple of months ago was just explore a few ideas, um, which he named Decentralized Adventures, and it's kind of what, what this got built on.</p>
+  <p>Uh, it was different ways for different adventures, for different people to, to help boost RealFi and show the world what RealFi is.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>You see, I actually really loved that that was the angle because I've always understood communities to be inherently self-organizing. And so there isn't this top-down control.</p>
+  <p>So therefore, what we're saying is people are going to select their own adventures. It's self-determining. And so you-- it's not a one-size-fits-all approach.</p>
+  <p>You've, you've gotta be able to allow people to kinda specialize and, and find what's, um, interesting to them. Uh, by the way, I slapped my wrist because I should have shared the workshop board.</p></div>
+</div>
+
+<div class="sec">Sharing the workshop board</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I'm putting it into the chat now, guys and girls, if you have a look in there. This is the workshop we've been working in.</p>
+  <p>Um, at the top of that workshop is the original SPOs, uh, asset-based community development workshop where they've introduced themselves.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And then below that is this kind of, um, prototype, uh, world-building that me and [Speaker A] with [a colleague] have been working on. Um, should I just screen share? Is that a bit risky or let's... One second.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>That would be okay to do.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I'm just thinking of all the tabs. I don't wanna give anyone, uh, PTSD, communities. Um, okay, I'm gonna share my screen. I'm gonna be brave. Can you see that, [Speaker A]?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Now I can, yeah. Now it's loaded. Okay. It's a bit small, but-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Oh, I see. Yeah, there's a lot of our thinking there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Like, we're, we're being transparent about kinda how we're trying to build this out. We just spoke to you briefly about RealFi KPIs and, like, how it-- how the team might, um, uh, understand value.</p>
+  <p>There's something interesting here, by the way, because later on this call, we're gonna talk about the common good or the public good.</p>
+  <p>And when you look at the RealFi KPIs or when you look at the common good, the connecting idea is: How does the audience or the team or the community that you're trying to serve, how do they understand success in terms of, like, objective numbers?</p>
+  <p>Because if you can find a common good, that's gonna help you create an axis around which you can kind of have coordination.</p>
+  <p>You know, people will be able to self-organize, like we said, in a community if they understand, um, what's in it for them, you know? And you need to understand what's in it for everybody, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, so just zooming out 'cause I'm overexplaining that a little bit. This is a community, right? Go from-- You join by yourself, you form partnerships, you form a crew.</p>
+  <p>That's what we're trying to do here. Up here is that handshake I was talking about, though the resolution's awful.</p>
+  <p>The idea is your team's in the blue, and then the community ecosystems in the red, and there's this handshake going on in the middle, which is these two green.</p>
+  <p>Um, that's the, the center, the interface for impact or our team, me and [Speaker A], right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Then over here we are saying, "Hey, if someone joined RealFi, how would they explore it?" Like, what would you expect there to be?</p>
+  <p>So you would have a map, and you would go into different districts or places that you could contribute, and we're creating this first one, which is the, uh, dark forest.</p></div>
+</div>
+
+<div class="sec">The dark forest</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>If anyone's up on that, dark forest theory is that AI is coming. Fifty to 80% of the internet, according to, um, Cloudflare, is bots.</p>
+  <p>Ninety percent of on-chain activity is bots if you go to DeFiLlama or Dune or whoever it was. So my point is that the dark forest theory is that human authenticity becomes way more valuable in AI.</p>
+  <p>And, you know, the dark forest is the cozy web. It's like the places that a team like RealFi couldn't reach, but its community could because the community can go into places that you can't.</p>
+  <p>And they might be Discord or private Telegrams or in re-- in-person meetups, this kind of thing. So dark forest was just a bit of fun.</p></div>
+</div>
+
+<div class="sec">The common good — four arguments</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, you guys can agree with [Speaker A] if you wanna change that later, right? And, um, I'm deviating here, [Speaker A], so stop me at any minute. But here are the common goods.</p>
+  <p>This is what w-we sat down and was like, if we were in the community, we-- And this would apply to other ecosystems like Ethereum, right? But we're just talking about Cardano at the minute.</p>
+  <p>If someone was to talk about RealFi, what would be a common good where RealFi, the community member, and the Cardano ecosystem would agree that something good or valuable was happening?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>So the first thing would be securing your ADA, right? You know, there's all these hacks out there. How can you do that in a way that you keep your financial sovereignty?</p>
+  <p>The second would be to decentralize the network from a ecosystem point of view.</p>
+  <p>That's the SPO Accelerator Program, and supporting a RealFi SPO and delegating to them allows you to earn more points passively above and beyond what you can earn through active participation in the Testnet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>The third thing would be, well, okay, if you've secured your ADA and you've decentralized the network, those are virtues, but do you also believe in the long-term health?</p>
+  <p>You know, what does that look like for growth? So in other calls, we've talked about growth is capital productivity, okay? If you, e-especially in L1s. Um, sorry, [Speaker A].</p>
+  <p>I heard a beep like someone was talking.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>No, that was, that was just one, uh, notification coming off on my iPad. Apologies.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay. Was it the Benz?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>It's on silent.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay, so the other ones were e-economic health, essentially. You know, this is what we need. So that's again a common good.</p>
+  <p>Everybody in Cardano would agree that we do need liquidity and economic health. Fourth would be explore utility. So, like, what could you do with your ADA? You don't necessarily have to sell it.</p>
+  <p>You could, you know, borrow it or there may be other ways that you could use it.</p>
+  <p>And by the time you've gone through those common goods, you can end up with a really strong argument as to why someone might wanna participate in RealFi.</p></div>
+</div>
+
+<div class="sec">Templates, and the sandbox until mainnet</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Then we created some, um, templates, how you might organize.</p>
+  <p>And so the intention was if we create this for you and some ideas, you can then come in, look at which SPOs participated in the asset-based community development workshop, and you might be able to find people that you wanna work with and collaborate with.</p>
+  <p>That's my whirlwind tour of the, um- Workshop that we've got up.</p>
+  <p>That it's open right now, everyone can jump in, you can talk about it in Discord, you can leave sticky notes, you can find people that you want to collaborate with.</p>
+  <p>Um, and it was worth me, I hope-- Let me come back to my screen.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>It was worth me going through that briefly because we're really trying to create a sandbox now in the time up until Mainnet where we can s- Uh, and, and by the way, everybody's at the pumps here, right, [Speaker A]?</p>
+  <p>Like, the constraints over the next few weeks while we try and get to Mainnet are such that what's built is built right now. The-- all of the feedback we've had, we've been giving to the team.</p>
+  <p>But what's built is the enabling constraint, you know?</p>
+  <p>I think there were some great ideas like dashboards, which we wanna see, and we've put to the team, but we're not gonna build anything new in the next two weeks, so-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>To, to, to add what there, those stuff can obviously happen in the future.</p>
+  <p>It's just right now- Yeah ... obviously as we're even going to Mainnet, that's got to be the focus for the tech team at the moment.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>So yeah, so the workshop is like, what can we do in the two weeks, three weeks we've got left?</p>
+  <p>And so we've built this workshop up and the key thing, the first district would be on the Dark Forest and the first crew, is how to drive Testnet activity.</p>
+  <p>And so that's how we're seeing the Ambassador Programme right now is like, can we self-organize and can we do something interesting up until Mainnet and then pick ambassadors and community representatives from those people that are about it, you know?</p>
+  <p>The people that have been really active. So that's kind of where we're coming from. Is that a fair representation of what we talked about, [Speaker A]? Yeah, absolutely. Okay, great. So the workshop's up.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, everything I've just said now was essentially like, "Hey, let's use this Testnet window to self-organize together." So I'm just reading chat now.</p></div>
+</div>
+
+<div class="sec">Question from chat — the Lace rewards task</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>[Participant B], uh, [Participant B] says, "Slightly unrelated, but I'm not fully understanding the Lace section rewards tasks that are to swap and stake.</p>
+  <p>I have Lace connected to the RealFi dApp, but I'm questioning if this is something native in Lace that I don't actually see in the wallet." Do you know, [Speaker A], by-- when I use it, I think it's in browser.</p>
+  <p>I, I- Was it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Hmm I don't, I don't know this, but I do think it could be the, the-- uh, us and the Lace team are working on some stuff at the moment, so it could be, it could be related to just some of their implementation as we head up to the launch, but I don't, I genuinely don't know.</p></div>
+</div>
+
+<div class="sec">Recap, and the invitation</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I'll follow up with you afterward, [Participant B], and try and sort that out with you as soon as this call has ended. Okay. So just to recap, we've talked about where we are. We've thanked the community.</p>
+  <p>We talked about the SPO Accelerator to Alpha that's been the, the sort of foundation of the community to kind of validators.</p>
+  <p>And we're currently in this Testnet window, so we're encouraging like can we organize to drive more Testnet activity? And from that, let's think about the, uh, Ambassador Programme.</p>
+  <p>And we've just shared the Miro board, which we're inviting you to jump into and to encourage everybody else in the RealFi community to jump into.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I think that if, if, if the only thing-- Um, the thing about ecosystem strategy in the community in RealFi is it has to be of the community.</p>
+  <p>If it's only the team doing stuff top-down, I don't think we can win. I think you need those kind of extended commun- uh, capabilities, uh, with the, with the community broadly.</p>
+  <p>And yes, you do need really clear incentives and they do-- there does need to be, um, clear, uh, skin in the game for people. Um, and I think there is. There's RFG token as it stands today.</p>
+  <p>Um, and then there's USDr and sUSDr. But there's a lot of information around that. Um, there's a l- there's a lot more to come, is essentially what I'm saying there.</p>
+  <p>Um, maybe I said too much there, [Speaker A]. You have to tell me when I'm off afterwards. Okay, so we've got the Miro board. Um, I just recap- recapped that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Are there any questions in chat we could go through now about the Ambassador Programme or ideas that people have?</p>
+  <p>'Cause me and [Speaker A], we've talked about the roles, we've talked about what could be like longer term incentives. We've talked about this is just one district, Dark Forest and the first crew.</p>
+  <p>But obviously, I'm really interested in seeing other districts form and other crews form. But I feel like we've got to start off somewhere simple first, right?</p>
+  <p>Can we get one crew, which is the people in this worksh- uh, um, workshop now running well? And then if it does work well now, we can then open it up.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And the obvious thing here, just to state the absolute obvious, we're going to Ethereum, right? We-- uh, Mainnet, we're going EVM.</p>
+  <p>So there's gonna be huge opportunity to go out and like, you know, server safaris, um, meeting the Ethereum community. If people have already got connections in Ethereum, brilliant. Let us know.</p>
+  <p>You know? So a lot of exciting stuff coming up. Anyway, [Speaker A], stop me now. Uh, what did I miss, and what do you hope people took away from that long word salad that I just engaged in?</p></div>
+</div>
+
+<div class="sec">The community is what you make it</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>I think just to, if you, if you wanna get involved, get involved. I don't think you've actually missed anything.</p>
+  <p>Um, I guess it's for the community, if they've got any questions or they think there's something that's been unanswered, uh, definitely now's the time to ask, but also tag us in the future if you don't feel comfortable asking in a second.</p>
+  <p>Um, but I think you've pretty much covered, covered the scope and what the plan is. Um, yeah. It should- Yeah ... how- If it's, uh- Yeah. Sorry. No, go on. You go on. Sorry.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>You just helped me clarify it. It's like the community is what you make it, the people that are on this call and the people that are in the RealFi community.</p>
+  <p>There's only so much that, you know, um, anyone on the RealFi team's gonna do. These projects live and die, I think, by whether or not the community gets around them.</p>
+  <p>So yeah, that's the invitation and that's the offer and we do wanna get lots more clarity and lots more insights.</p>
+  <p>Um, but I think that until the Ethereum Mainnet launch--</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah But it's really based on what you, you know, it's what [the host]'s already said multiple times, but it's really based on what, what's good and what you're able to do.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>With community stuff I've worked on in the past, some are incredibly p- gifted at bringing new community members in that were relevant, um, and that was their specialty.</p>
+  <p>Others were more focused on trying to fix as many bugs as possible and trying to break the app as, uh, uh, to do that.</p>
+  <p>So it really depends on what you wanna do and what you, you know, you feel your specialize is. It's not really for us to say that.</p>
+  <p>We just wanna be-- You know, you've joined this community, so we wanna make sure that your, your talents are what is used. We're not just gonna tell you...</p>
+  <p>We're like other communities, we'll just tell you to make memes, do this, do that.</p>
+  <p>We're not gonna tell you to do that because, you know, you should, uh, you should do what you enjoy and what you wanna do rather than, uh, have us tell you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That's a good point.</p></div>
+</div>
+
+<div class="sec">How contributions are seen — SPOs and referral links</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I mean, all, all contributions are gonna be considered, but there are two especially good ways that we're gonna be able to see, um, performance or contributions.</p>
+  <p>And that is if you are an SPO, one of the ways is, um, people that are delegating to your pool, um, you're gonna be able to claim up to, uh, I think you get 20% of all the points claimed.</p>
+  <p>So we wanna look at like KOLs, you know, influential people on chain, that's a validator or an SPO, and consider their influence online and bring those two things together so that when we look at activity it can be authentic.</p>
+  <p>So the first thing is if you're an SPO, how many people are delegating to your pool and claiming points? That'd be one really interesting way for us to authenticate activity.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And the second way is when you go into, uh, the RealFi Testnet, you'll have a referral link as an individual.</p>
+  <p>I- If we had more time, I would've loved to have, if anybody knows Discord HypeSquad, and you could have gamified it a bit better.</p>
+  <p>But everybody can get a referral link and use that and bring more people into the RealFi, um, community and engage in Testnet.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And I, I think the upside is, but, you know, I'm so enthusiastic that I'm bordering on irritating, I don't know.</p>
+  <p>But, like, I think the really interesting thing is when you're early in a community you have a massively outsized impact and say, and it's easy to be heard.</p>
+  <p>And I don't know how long I was in Cardano for, but seven years in Cardano and, you know, I think it-- when it gets to a certain size, um, not everybody knows each other. Do you know what I mean?</p>
+  <p>And so like all of the wo- the roles and the layers become almost, uh, their own communities. Um, I think there's a word for it, metathesis or something like that. Um, or is it rabbits?</p>
+  <p>I'm not sure. Anyway, I digress, [Speaker A], sorry. Um, so you're gonna talk to us about some events. I know there are some people in the audience that may be going to some of these events.</p></div>
+</div>
+
+<div class="sec">The call to action — more testnet activity</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Would you walk us through your best understanding-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>I, I, I think it's, uh, I'd be good for you to answer [Participant C]'s question.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Oh, sorry. Who, whose question am I?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>It's the call to action to get into the community board, organize, brainstorm, and conduct some experiments.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah. So the clear call to action is, uh, and this is, um, nuts and bolts.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>In the next two weeks, what success looks like is that [Speaker A] and I can show there's been a massive increase in Testnet activity because we want to show that the world building and the workshops work.</p>
+  <p>So basically we had a great uptick at the start. We've had loads of activity. It's been a success. But we've been making an argument that world building and crews and districts can be really, uh...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Do you know why world building is really interesting, by the way, [Participant C]?</p>
+  <p>Is that it's like nobody coming into the community on day one is going to be able to scale their knowledge of the internal language that different teams, like engineering, product, CEOs, all of this, in RealFi are gonna use.</p>
+  <p>It's an impossibility. You can't scale that kind of cultural knowledge within a team across a community when you're onboarding.</p>
+  <p>So the world building idea is can we use artifacts or, you know, um, objects that are already in somebody's head, like a dark forest or a harbor or, you know, things that everyone would be familiar with, to kind of orientate them around it, right?</p></div>
+</div>
+
+<div class="sec">The A/B-test argument</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>But if you have crazy ideas like this, right?</p>
+  <p>Like when I'm talking to [Speaker A], you've got to be really careful that it doesn't come across as just activity for the sake of it when you're talking to leadership, right?</p>
+  <p>Not-- RealFi leadership's amazing. I'm not, I'm not casting any judgment, right?</p>
+  <p>So the point of this is like, hey, we think there's a really interesting way that we could build this community out, but the best way for us to advocate for those resources and for the team to support us in that is to do an AB test.</p>
+  <p>It's like the gold standard, right?</p>
+  <p>It's, it's to show some kind of a closed loop test where we can say, "Hey, this was actually really useful." So therefore the ask is we wanna drive more Testnet activity over the next two weeks.</p>
+  <p>The way that we do it is we get into that Miro board and we can do organization brainstorming and conducting experiments, as you rightly say, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And then the way that we wanna, uh, measure it is we ultimately would love to be able to see on-chain and online kind of metrics combined because I think most people at the moment lean one way or the other.</p>
+  <p>Like online activity can be faked. On chain activity could be botted, right? But if you're combining those two-- And I, I'm not talking about KYC here, [Participant D], by the way.</p>
+  <p>I just, uh, shouted you out before you joined. But, um, I'm not talking about KYC, AML and all of that.</p>
+  <p>I'm talking about you don't have to dox them, but can you combine those two things to verify the activity? That's a really interesting proposition to the team, right?</p>
+  <p>And, like me, it's me and [Speaker A] and [a colleague]. We're such a small team. So anyway, I hope that, I hope that answers it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>So we're trying to drive more Testnet activity because we wanna show the community can self-organize. We think there's some cool stuff here around world building that we could do.</p>
+  <p>And we completely acknowledge that this is very, um- What's the word? It's very early. It's very prototypey.</p>
+  <p>There's lots of questions that [Participant D] and [another stake pool] and other pools have rightly said, "Hey, we'd like more clarity here," or, "We think that you could do this or that with RealFi." And we take all that feedback into the teams.</p>
+  <p>And just to recap for [Participant D] and people that came and joined a little bit later, um, what we're saying is the next two weeks because the Mainnet launch was extended a little bit, gives us time to try these ideas out.</p>
+  <p>And then when we get to Mainnet we can talk about Ethereum and how we could go out and, and dominate there, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, and I, I just think the whole world actually is a very small group of people can have a really outsized impact because it's people all the way down.</p>
+  <p>And I think especially in blockchain that's often forgotten.</p>
+  <p>Everyone's for the code, the protocol, the tech, and it's all important, but they're just tools, whereas actually it's people all the way down. Um, [Speaker A], I'm talking too much again. Yeah.</p></div>
+</div>
+
+<div class="sec">Events</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Tell me-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah. I, I'll tell you about them.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yes, good.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>So yeah, just a little, we, you know, we, we've been, we've been doing some events, uh, but we've not done the big, the big hoo-ha until we're on Mainnet.</p>
+  <p>We obviously don't want to spend money that might be wasted. So we've been... But we've been, we've still been going to places. Um, [the GTM lead], our GTM lead, has been in Barcelona last, last week.</p>
+  <p>It was last week. I didn't see him even though I live here, uh 'cause I couldn't. Uh, but he, he went to some side events here that were really valuable.</p>
+  <p>He also went to the European Blockchain Convention. He's also been at London Fintech Week.</p>
+  <p>And so there's gonna be some content that you'll see from events that we've actually been to, um, and taken advantage of those opportunities.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>And coming up, we're planning basically for the end of the year, um, ones v- as we are launching onto Mainnet on the 1st of October, um, we, uh, are planning on being, well, [the CEO] is planning on being at Korea Blockchain Week, uh, which, like, coincides with when we're launching.</p>
+  <p>I'm currently stressing out and going grayer as I try and find a venue for that. Uh, that would be a really cool event though. If any of you are in Korea, you know, reach out to us.</p>
+  <p>And that, this goes for all events, if any of you are there and you wanna meet us, I mean, I say us, like, I'm gonna be there. It will mainly be people like [the CEO] and [the GTM lead].</p>
+  <p>We'll give you that opportunity, and we can arrange that. Just contact me or [the host]. Um, but we, we wi- we will have a presence at Korea Blockchain Week.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>We have also, it got suggested by one of the guys in the community, we got accepted onto the Cardano Foundation booth for TOKEN2049.</p>
+  <p>Um, I think it first got brought to our attention from someone in this, uh, um, Discord server.</p>
+  <p>We put through our application, we did the presentation, and I can confirm, uh, 'cause we've all confirmed that we got accepted as one of those projects that can be on their booth.</p>
+  <p>Uh, so that's a big win for RealFi. And [the CEO] will be there in, uh, at, in Singapore.</p>
+  <p>Uh, he will have opportunities now for completely free, which is fun, uh, to talk and meet the delegators at the event and be able to show RealFi very shortly after we've launched on Cardano what RealFi is and, and introduce it to new people that haven't yet discovered us.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Um, following that, we plan on, as we move on to different EVM and then what it looks like after EVM, we will also have a bit of a presence at Solana Breakpoint, which this year I think is in London.</p>
+  <p>Um, even though again, I'm British, I won't be there. Uh, but [a colleague] might be coming all the way from South Africa, which would be pretty cool.</p>
+  <p>So again, if any of you are in London for Solana Breakpoint, I think it's the beginning of November, um, we will have just hopefully, touch wood, have gone on to EVM by that point as well.</p>
+  <p>So that's, um, another really exciting event.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>And then obviously next year our event strategy might look a bit differently because hopefully we will have more to play around with as hopefully TVL jumps in and we can use it all wisely.</p>
+  <p>Um, so we can, well, use, we can make sure we do everything wisely like we have been doing. Um, but yeah, that's, that's where we're at at the moment.</p>
+  <p>We've got some exciting things going forward, um, and plenty of opportunities if you happen, any of you happen to be there.</p></div>
+</div>
+
+<div class="sec">Swag</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And if people are gonna be there and they wanna rep RealFi, um, I'm sure you gave me a task to do this, [Speaker A], so I'm probably now getting myself in trouble but were we gonna get some swag done for people?</p>
+  <p>Can we get some shirts?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah, I mean, I can do, I, I can do that. Uh, that will all depend on, on the need. But yeah, absolutely. Uh, if y- that's the whole point. We will.</p>
+  <p>We, um, we don't have a lot of swag at the moment. We, I mean, it's one of the things, uh, [a colleague] and I did in South Africa was, uh, create some new hoodies and stuff. So we have the designs.</p>
+  <p>They're very easy to make. Um, so swag will be available. Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host <em>(inferred)</em></div>
+  <div class="turn-body"><p>So let me, let me pin that back at you</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>... but more info will come out when we go fully live.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>You said depend on the need, so you're saying you're gonna make custom-made swag for the community?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Well, no. That sounds- No, yeah.</p>
+  <p>Well, I was, what I was saying is we would sell it depending on the need.</p>
+  <p>Obviously we've got to know that it's gonna be right for us to, you know, we will, we can, we can do stuff like that, you know, because it's not, swag isn't an expensive cost.</p>
+  <p>Um, and you know, if you're gonna be repping RealFi and you wanna do that, then for us there's benefits there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Custom-made swag, guys. We just need your ideas as to what it should be.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>That sounds good. Um, so we've got TOKEN2049, we've got Korea Blockchain Week, we've got, uh, the Solana thing. I've forgotten what that's called. What's it called? Solana Breakpoint? Yeah. Okay.</p>
+  <p>Um- That sounds very good.</p></div>
+</div>
+
+<div class="sec">A hint about EVM timing</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah. And to be fair, I gave you a bit of insights that if you were listening carefully, I kinda gave some hints as to what's happening and some dates there.</p>
+  <p>Um, so I, I probably accidentally gave you some dates, so if anyone's in the tech scene who's listening, I do apologize, but I probably gave, uh- If you listen back, I probably gave some hints as to when EVM will be exactly.</p>
+  <p>Um, and I gave a little, a few couple of hints into why we're going at certain times</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Oh, that's cool. Look, [Participant D] and [Participant E] are both gonna be in Singapore. That's awesome.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Um- I actually, I'm not going, but I, I really love s- uh, TOKEN2049 is one of my favorite events that I've been to over the years. Uh, but it could be because I'm a weirdo that really likes the heat.</p>
+  <p>So, I, I do think that c- I have a fa- 'cause obviously it's a very... Uh, but and obviously it's amazing to have all those people all so keen.</p>
+  <p>I haven't been for two years, um, but the three years I went, I, I loved it.</p></div>
+</div>
+
+<div class="sec">Limited-edition swag and OG status</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>[Participant F] says, "Consider limited edition swag tied to Mainnet launch events.</p>
+  <p>This makes it more desirable for giveaways." I, yeah, c- yeah, if we only had Alpha, uh, Ambassador Programmes that you could only get before Mainnet would be cool.</p>
+  <p>You know, in years to come you'd have, like, that OG status. Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah ... when we talk about Discord roles as well.</p>
+  <p>And that's wh- and that, and that's the type of thing that the ambassadors can get if everything becomes successful as well. You know, like... And now I'm linking it back. Okay.</p></div>
+</div>
+
+<div class="sec">Question — does community content need review?</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Question for you here, uh, [Speaker A].</p>
+  <p>Uh, [Participant G] says, "For example, suppose the community comes up with something engaging such as quizzes to test people's understanding of RealFi, it could encourage more people to get involved maybe, especially if there's, like, a referral loop in there, right?</p>
+  <p>However, I assume that anything created by the community would need to be reviewed by the official RealFi team.</p>
+  <p>Since RealFi involves financial products, even something created with the best of intentions could unintentionally cause confusion.</p>
+  <p>Am I right in thinking that community initiatives like this should be reviewed by the RealFi team before they're shared, or does the community have some freedom to create and share this content?"</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>If it's coming, if it's coming out on your accounts, you're allowed freedom.</p>
+  <p>Um, if, I'd suggest obviously asking us if you've got certain questions or you want to be sure that what you're posting- Yeah ... is correct and factually correct.</p>
+  <p>Um, we obviously don't w- but you have a lot more freedom when it's j- stuff that's coming from your own account. Obviously, different if it's things that we do, uh, coming out RealFi accounts.</p>
+  <p>Um, but anything you're uncertain of, you can always just ask. But if you feel confident with it, then, um, you know, it, you've got that freedom.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, when I was in Cardano, like, I would never talk about price, but obviously the community would talk about price. You know? So there are some things that you don't, um...</p>
+  <p>It's not because anyone says it's the rule, it's just you know what I mean? Y- you're there. Yeah.</p>
+  <p>So yeah, there were, I think there are things that the community can say about RealFi that RealFi may not say itself generally, you know, as a principle. Um, someone stuck their hand up to speak.</p>
+  <p>Guys, you're welcome, and girls, you're welcome to put your hand up and come and talk to us if you want to. Um, so don't be afraid. Uh, we're all extreme extroverts here.</p></div>
+</div>
+
+<div class="sec">Events in 2027</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, what was the other thing I was gonna, uh, ask you about, [Speaker A]? Um, uh, any events going into 2027 that you're particularly interested in, even if it's not committed yet?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>I mean, I've not lo- I've not looked yet, you know? That's, that's, you've got, we've got different milestones.</p>
+  <p>You've got your Mainnet launch, your EVM launch, um, your, your token, and then you've got GTA 6.</p>
+  <p>So there's a lot of things before the end of this year that are coming out and that we're thinking about before we go on to next year.</p>
+  <p>Uh, when, when, when GTA 6 comes out and I've played it, then I think there'll be events that I'll, uh, focus on. But [the GTM lead], in all seriousness, [the GTM lead] has a big say on where he wants to go.</p>
+  <p>He's the, he's the GTM lead, he's the guy who's gonna be able to really be insightful and speak to the relevant people and be, uh, you know, b- he, he, he's, he's, he's a big part of, um...</p>
+  <p>He's a b- he's a better person to have at these events, and so anything that he really wants to go to, like the European Blockchain Convention, he's gonna go to because, uh, it's not just useful for him, it's gonna be useful for the whole RealFi project.</p></div>
+</div>
+
+<div class="sec">The team is in Discord</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>I mean, actually that's one thing RealFi, if you noticed, all of the different team functions have come onto RealFi Office Hours.</p>
+  <p>Um, if you've been, you know, attending some of these or reading announcements, all of the teams are in Discord, all of the important team members you can reach out and talk to if you want to.</p>
+  <p>They're, obviously I'm happy to do. We're happy to be intermediaries, you know? Um, of course I'd recommend [the CEO]—perhaps you mean [the CEO]—so between [the CEO]'s, uh, [inaudible]. Okay.</p></div>
+</div>
+
+<div class="sec">Recap</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>So let's recap a couple of things so I didn't miss anything. Um, we've talked about... Ah, I'll have to go and find that afterwards.</p>
+  <p>So we've talked about the Accelerator Program, which I think is brilliant. We've got some really great validators in RealFi's, um, community.</p>
+  <p>We've talked about the Testnet window, that's the next couple of weeks, uh, until Mainnet, and then a lot's gonna happen 'cause we wanna go out and get into Ethereum, and I think that more crews and districts could form through that.</p>
+  <p>And then as, um, as [Participant C] said, you know, the ask here with the Miro board is to jump in. The, the outcome is more Testnet activity. That's what we're trying to drive.</p>
+  <p>Getting more people involved in Testnet, getting more people earning the points.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>If you're an SPO, you know, all of the points that are claimed if people are delegating to your pool are gonna get 20% of that.</p>
+  <p>And the people that delegate to you are gonna get additional points that they're earning passively, so that's useful. Then after that, we talked about the public good or the common good.</p>
+  <p>So we gave narratives for, I think, why it's good for Cardano, why it's good for delegators, why it's good for people who are delegating to them, and why they would want to get involved with RealFi.</p>
+  <p>Then [Speaker A]'s talked about events and connections. So he's talked about, uh, TOKEN2049 Singapore is coming up, Korea Blockchain Week, not in any order, and Solana Breakpoint. Um, what else, [Speaker A]?</p>
+  <p>We got any alpha for us? Got any insights that we can, um...</p></div>
+</div>
+
+<div class="sec">Rolling out the USDrf rename</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>I think that's probably it for now I think, I think we've given... Um, there's always stuff we're working on.</p>
+  <p>Um, we're doing a lot of changes in the background. Uh, you might see a new website soon, but that's another thing that's making me and [a colleague] go gray.</p>
+  <p>Um, but you should have noticed as well that, uh, USDrf is now everywhere. So if you-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh, tell us about that ... call it USDr from now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Go through that again, 'cause people might have missed that, about the ticker.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Yeah. So the community, community helped vote, uh, change the name of ticker.</p>
+  <p>Uh, we, so it was originally USDr and sUSDr. Uh, we gave it to you guys to vote. I think it was, like, 84% in the end. It was 50/50 for the first couple of days.</p>
+  <p>Uh, but 84% went with, uh, USDrf and sUSDrf. Uh, and we've now implemented those changes pretty much across.</p>
+  <p>I mean, there's still work to be done, 'cause we're not perfect, and we're human and we're finding them, and a new one comes every day.</p>
+  <p>Uh, but we've start-- You should start notice the consistency, um, across on documentation and things like that now, uh, with the new title.</p>
+  <p>And there'll be further changes going forward, but we're still very much at the early stages of, uh, that. And then, uh, another thing for me and [a colleague] to storm through.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>And I'll, and I'll g- I'll go even one step further, maybe a bit more.</p>
+  <p>But I would say, you know, I've personally connected different members of this community with senior leadership in RealFi to have private calls around different ideas, suggestions, connections, and proposals that different community members have made.</p>
+  <p>Um, so you know, as I said at that beginning of the call, there's been a lot of activity and a lot of contributions already, and we d- we are enormously thankful for that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Um, so any other questions? Now is, now's your time. We're watching chat. But if not, tag us or DM us privately and we'll follow up.</p>
+  <p>And, uh, [Participant B], I promised you I'd talk to you after this call, so I'm gonna DM you shortly or tag you in channels, um, uh, to, just for, try and find out a better understand what's happening with that Lace, uh, question that you had.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Okay. Uh, you get the last word, [Speaker A].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A</div>
+  <div class="turn-body"><p>Um, so in, invite your friends, let's get to 1,300 Discord users.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Excellent. We're at 1,200 now. I think 1,266 when I last looked.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>Let me, let me go on my phone and that tells me. Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Yeah, we need some tweets. We need some, um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Speaker A <em>(inferred)</em></div>
+  <div class="turn-body"><p>Tweets. Yeah, we're at 1,220. Yeah, 80, I want 80 more, like, fast.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Fine. Brilliant. All right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Host</div>
+  <div class="turn-body"><p>Thank you everyone for listening. It, yeah- That's all it is If we didn't cover anything that you would have liked us to have covered, let me know and we'll schedule it for the next office hours.</p>
+  <p>Thanks everybody. Thanks, [Speaker A]. Cheers. Cheers.</p></div>
+</div>
+</details>
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+</nav>
+
+<footer>
+<p><span class="l-ja">RealFi Office Hours アーカイブ<br>このコールはチャタムハウスルールで運用されています。発言者の氏名は記載していません。</span><span class="l-en">RealFi Office Hours archive<br>These calls run under the Chatham House Rule, so no speaker is named.</span></p>
+</footer>
+
+</div>

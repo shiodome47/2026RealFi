@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #9 — Ambassador Program — まとめ / Summary</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #9</p>
+<h1><span class="l-ja">Ambassador Program — mainnet までの 2 週間で、コミュニティが自分で動けるかを試す</span><span class="l-en">Ambassador Program — two weeks to find out whether the community can organise itself</span></h1>
+<p class="meta">
+  <span>2026-09-21</span>
+  <span>Discord</span>
+  <span><span class="l-ja">発話 2 名</span><span class="l-en">Two speakers</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p><a href="../2026-08-24-office-hours-ticker/#crews">#7 で「まだ立ち上げていない」と言われた crew</a> が、ようやく最初の 1 つとして動き出す回。<br>
+  ただし制度の発表ではありません。<strong>mainnet までの 2 週間を実験の場にして、コミュニティが自分で組織できると数字で示したい</strong>——それが、この回の頼みごとです。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>まず 1 つの crew から。</strong>最初の district は「ダーク・フォレスト」、最初の crew の課題は testnet の活動を増やすこと。うまく回ったら、そこから広げる。</li>
+  <li><strong>Miro のボードが開いている。</strong>SPO の自己紹介、世界構築の試作、共通善の 4 つの論拠、組織のテンプレート。誰でも入って付箋を残せる、と案内されました。</li>
+  <li><strong>2 週間の成功とは、testnet の活動が大幅に増えること。</strong>それをリーダーシップへの「A/B テスト」として見せ、資源を求める材料にしたい、と説明されました。</li>
+  <li><strong>新しいものは作らない。</strong>ダッシュボードなどの要望はチームに渡したが、mainnet までは技術チームがそこに集中する。「今あるものが、可能にする制約」。</li>
+  <li><strong>貢献が見えやすいのは 2 つ。</strong>SPO なら、委任者が請求したポイントの 20%。個人なら、testnet の紹介リンク。</li>
+  <li><strong>イベント。</strong>Korea Blockchain Week に CEO、TOKEN2049 では Cardano Foundation のブースに採択、11 月頭の Solana Breakpoint（ロンドン）には「その頃には EVM に乗っていれば」。</li>
+  <li><strong>コミュニティ発のコンテンツは、自分のアカウントからなら自由。</strong>RealFi のアカウントから出るものとは扱いが違う、という回答でした。</li>
+  <li><strong>USDrf への改称は「ほぼ全体に反映」。</strong>ただし「毎日新しい見落としが見つかる」。投票の結果は「84%」と述べられましたが、#7 の記録では 68% です。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#recap"><span class="n">01</span>SPO のプログラムから、アンバサダーへ</a></li>
+  <li><a href="#handshake"><span class="n">02</span>「握手」と世界構築</a></li>
+  <li><a href="#darkforest"><span class="n">03</span>最初の district — ダーク・フォレスト</a></li>
+  <li><a href="#commongood"><span class="n">04</span>共通善 — 4 つの論拠</a></li>
+  <li><a href="#sandbox"><span class="n">05</span>mainnet までの 2 週間 — サンドボックスと A/B テスト</a></li>
+  <li><a href="#contribution"><span class="n">06</span>貢献をどう見るか</a></li>
+  <li><a href="#events"><span class="n">07</span>イベント</a></li>
+  <li><a href="#content"><span class="n">08</span>コミュニティ発のコンテンツと、その自由</a></li>
+  <li><a href="#ticker"><span class="n">09</span>USDrf への改称の反映</a></li>
+  <li><a href="#overall"><span class="n">10</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">12</span>持ち帰りになった論点</a></li>
+</ol>
+</div>
+
+<h2 id="recap">1. SPO のプログラムから、アンバサダーへ</h2>
+<p class="deck">アクセラレーターが土台。そこから「アンバサダーにできる」となった、という経緯。</p>
+
+<p>冒頭は振り返りです。Cardano のネットワークの検証者である SPO 向けにアクセラレーター・プログラムを立ち上げたこと。それが今日の話題——<strong>「Alpha アンバサダー・プログラム」</strong>——の前段だった、と。マーケティング側からは「加わってから作ってきたものを見てきて、これはアンバサダー・プログラムにできる、となった。他のチームなら 2 段階かける工程を一本にまとめた」と説明されました。</p>
+
+<p>そのうえで、2 つの前置きがありました。</p>
+
+<ul>
+  <li><strong>見せかけの数字は求めていない。</strong>testnet でもコミュニティでも「本物の活動」を見たかった、と改めて</li>
+  <li><strong>提案はチームに届いている。</strong>RealFi のプロダクトや RFG トークンについて多くの提案が来ているが、金融商品である以上「何を言えて何を言えないかについてとても慎重」なので、Discord 上では反応が見えないことがある。それでも「チームは見ている」</li>
+</ul>
+
+<p>mainnet の日付が「2 週間ほど」延びて 10 月 1 日になったことも触れられました。「今日から 9 日ほど」。<span class="badge">補足</span><a href="../2026-09-11-cardano-seminar-realfi/">Cardano Seminar（9 月 11 日）</a>で CEO が初めて口にした日付と同じです。#6 の「9 月中旬」からの延期を、この回では「時間ができた」と前向きに使っています。</p>
+
+<h2 id="handshake">2. 「握手」と世界構築</h2>
+<p class="deck">チームが KPI で理解する価値と、コミュニティが提供できる活動を、真ん中で結ぶ。</p>
+
+<p><a href="../2026-08-24-office-hours-ticker/#crews">#7 で「握手（handshake）」と呼ばれた接点</a>が、この回では図として示されました。画面共有された Miro のボードには、青がチーム、赤がコミュニティのエコシステム、そのあいだの緑 2 つが「握手」——インパクトの接点、つまり進行役とマーケティング責任者の 2 人、という説明です。</p>
+
+<p>接点で何をするのか。<strong>「社内の各機能が価値として理解するもの（KPI）」と「コミュニティが新しく入ってきた人に提供できる活動や役割」を翻訳し合う</strong>こと。コミュニティの貢献やアイデアを、チームが実際に動けるものに変える。「水面下で進んでいる仕事」だと述べられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="左にコミュニティ、右にチーム、中央に「握手」の接点を置き、接点が両側の言葉を翻訳する構図の図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">画面共有されたボードの構図（音声の説明をもとに描いたもの）</text>
+
+  <rect x="16" y="48" width="196" height="150" rx="8" class="d-box-warn"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">コミュニティ</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">ひとりで参加する</text>
+  <text x="114" y="124" class="d-s" text-anchor="middle">→ パートナーを組む</text>
+  <text x="114" y="146" class="d-s" text-anchor="middle">→ crew を作る</text>
+  <text x="114" y="176" class="d-s" text-anchor="middle">自己組織。上からの統制はない</text>
+
+  <line x1="216" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="238" y1="140" x2="216" y2="140" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="242" y="48" width="196" height="150" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">握手 — インパクトの接点</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">進行役とマーケティング責任者</text>
+  <text x="340" y="128" class="d-s" text-anchor="middle">活動・貢献・アイデアを</text>
+  <text x="340" y="150" class="d-s" text-anchor="middle">チームが動けるものに翻訳する</text>
+  <text x="340" y="176" class="d-s" text-anchor="middle">KPI を、コミュニティの言葉に</text>
+
+  <line x1="442" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="464" y1="140" x2="442" y2="140" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="468" y="48" width="196" height="150" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">チーム</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">価値を KPI で理解する</text>
+  <text x="566" y="124" class="d-s" text-anchor="middle">mainnet までは</text>
+  <text x="566" y="146" class="d-s" text-anchor="middle">新しいものを作らない</text>
+  <text x="566" y="176" class="d-s" text-anchor="middle">提案は届いている</text>
+
+  <text x="340" y="236" class="d-s" text-anchor="middle">「チームが上からやるだけでは勝てない。コミュニティ全体との、拡張された能力が要る」</text>
+</svg>
+<p class="figcap">ボードの中身は受け取っていないので、色分けと配置は音声の説明どおり、文字はこちらで補ったものです。</p>
+</div>
+
+<p>コミュニティ側の見せ方が<strong>世界構築（world building）</strong>です。「地図やストーリー主導の RPG のように、一人ひとりが冒険に出る」。もとは同僚が数か月前に探ったアイデアで、<strong>Decentralized Adventures</strong> と名付けられていた、と紹介されました。進行役がこの角度を気に入った理由は、「コミュニティは本質的に自己組織的で、上からの統制はない。だから人々が自分の冒険を自分で選ぶ」からだ、と。</p>
+
+<div class="term">
+<p class="term-name">world building / Decentralized Adventures <small>コール中の言葉</small></p>
+<p>新しく入ってきた人が、RealFi の内部の言葉（エンジニアリング、プロダクト、CEO がそれぞれ使う言葉）を初日に覚えるのは不可能——だから「ダーク・フォレスト」や「港」のように<strong>すでに人の頭の中にあるもの</strong>を使って方向づける、というのが世界構築の狙いだと説明されました。Decentralized Adventures は、その入口を「冒険を選ぶ」形にした呼び名です。<span class="badge">補足</span>district と crew の二層は <a href="../2026-08-24-office-hours-ticker/#districts">#7 の 6 節</a>で説明されています。この回はその「最初の 1 つ」を動かす話です。</p>
+</div>
+
+<h2 id="darkforest">3. 最初の district — ダーク・フォレスト</h2>
+<p class="deck">最初の district は 1 つ、最初の crew も 1 つ。課題は「testnet の活動を増やす」。</p>
+
+<p>ボードには「地図」があり、貢献できる district（地区）に入っていく——その最初の 1 つが<strong>ダーク・フォレスト</strong>です。理屈は <a href="../2026-08-24-office-hours-ticker/#darkforest">#7 の 7 節</a>と同じで、この回でも同じ数字が繰り返されました。Cloudflare によればインターネットの 50〜80% がボット、DeFiLlama や Dune ではオンチェーンの活動の 90% がボット。だから「AI の時代に、人間の真正さがはるかに価値を持つ」。</p>
+
+<p>そしてダーク・フォレストは「cozy web」でもある。<strong>RealFi のようなチームには届かないが、コミュニティなら届く場所</strong>——Discord、非公開の Telegram、対面のミートアップ。「ちょっとした遊び」で、名前は変えてもいい、とも。</p>
+
+<p>この district の<strong>最初の crew の課題は、testnet の活動をどう増やすか</strong>です。「自己組織できるか、mainnet までに何か面白いことができるか。そして本当に活動していた人たちの中から、アンバサダーやコミュニティの代表を選ぶ」——それが、今の時点でのアンバサダー・プログラムの見方だと述べられました。</p>
+
+<p><span class="badge">補足</span>順番に注意が要ります。<strong>アンバサダーを選んでから活動するのではなく、活動した人の中からアンバサダーを選ぶ</strong>。制度の詳細（役割、ステータス、報酬）は #7 で「作成中」とされ、この回でも示されていません。</p>
+
+<h2 id="commongood">4. 共通善 — 4 つの論拠</h2>
+<p class="deck">RealFi と、コミュニティと、Cardano が「良いことが起きている」と一致できる 4 つ。</p>
+
+<p>ボードのもう一つの柱が<strong>共通善（common good）</strong>です。「もし自分たちがコミュニティの側にいて、誰かに RealFi について語るなら、RealFi と、コミュニティメンバーと、Cardano エコシステムの三者が、価値のあることが起きていると一致して認められるものは何か」。KPI と共通善をつなぐのは「成功を客観的な数字としてどう理解するか」で、<strong>共通善が見つかれば、それが調整の軸になる</strong>という説明です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="ADA を守る、ネットワークを分散する、経済的な健全性、使い道を探る、の 4 つを順に並べ、最後に RealFi への参加の論拠にたどり着く図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">順にたどると「なぜ RealFi に参加するのか」の論拠になる、という組み立て</text>
+
+  <rect x="16" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="91" y="74" class="d-t" text-anchor="middle">① ADA を守る</text>
+  <text x="91" y="100" class="d-s" text-anchor="middle">ハッキングは多い</text>
+  <text x="91" y="122" class="d-s" text-anchor="middle">金融的な主権を</text>
+  <text x="91" y="144" class="d-s" text-anchor="middle">保ったまま</text>
+
+  <line x1="166" y1="107" x2="180" y2="107" class="d-line" marker-end="url(#m2)"/>
+
+  <rect x="182" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="257" y="74" class="d-t" text-anchor="middle">② 分散する</text>
+  <text x="257" y="100" class="d-s" text-anchor="middle">SPO プログラム</text>
+  <text x="257" y="122" class="d-s" text-anchor="middle">RealFi の SPO に委任</text>
+  <text x="257" y="144" class="d-s" text-anchor="middle">→ 受動的にポイント</text>
+
+  <line x1="332" y1="107" x2="346" y2="107" class="d-line" marker-end="url(#m2)"/>
+
+  <rect x="348" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="423" y="74" class="d-t" text-anchor="middle">③ 経済の健全性</text>
+  <text x="423" y="100" class="d-s" text-anchor="middle">成長＝資本の生産性</text>
+  <text x="423" y="122" class="d-s" text-anchor="middle">流動性が要る、と</text>
+  <text x="423" y="144" class="d-s" text-anchor="middle">誰もが認める</text>
+
+  <line x1="498" y1="107" x2="512" y2="107" class="d-line" marker-end="url(#m2)"/>
+
+  <rect x="514" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="589" y="74" class="d-t" text-anchor="middle">④ 使い道を探る</text>
+  <text x="589" y="100" class="d-s" text-anchor="middle">ADA を売らなくても</text>
+  <text x="589" y="122" class="d-s" text-anchor="middle">借りる、など</text>
+  <text x="589" y="144" class="d-s" text-anchor="middle">他の使い方がある</text>
+
+  <rect x="16" y="190" width="648" height="60" rx="7" class="d-box-accent"/>
+  <text x="340" y="215" class="d-t" text-anchor="middle">「ここまでたどると、なぜ RealFi に参加したいのか、かなり強い論拠になる」</text>
+  <text x="340" y="238" class="d-s" text-anchor="middle">Ethereum のような他のエコシステムにも当てはまる。ただし今は Cardano の話</text>
+</svg>
+<p class="figcap">4 つの順番と中身は音声で語られたとおりです。<span class="badge">補足</span><a href="../2026-09-11-cardano-seminar-realfi/#cardano">Cardano Seminar のスライド</a>にあった「SPO が委任者に教える 5 段」（ADA を守る → 独立 SPO で分散 → ネットワークの健全性 → ADA を持ち続ける理由 → RealFi に参加）と、ほぼ同じ骨組みです。</p>
+</div>
+
+<p>そのあとに「どう組織するか」のテンプレートが用意されていて、資産ベースのコミュニティ開発ワークショップに参加した SPO を見て、一緒に働きたい相手を見つけられる、と案内されました。ボードは開いていて、Discord で話しても、付箋を残してもいい。</p>
+
+<h2 id="sandbox">5. mainnet までの 2 週間 — サンドボックスと A/B テスト</h2>
+<p class="deck">新しいものは作らない。今あるもので活動を増やし、それを数字で見せる。</p>
+
+<p>この回の中心にある頼みごとが、ここです。「mainnet までの時間で、本当にサンドボックスを作ろうとしている」。ただし制約があります。</p>
+
+<blockquote>
+<p>この数週間の制約はこうです——今あるものが、あるものです。もらったフィードバックは全部チームに渡しています。でも、<strong>今あるものが「可能にする制約」</strong>なんです。</p>
+</blockquote>
+
+<p>ダッシュボードのような要望はチームに出したが、<strong>この 2 週間で新しいものは作らない</strong>。マーケティング責任者も「そういうものは将来できる。ただ今は、技術チームは mainnet に集中しないといけない」と重ねました。</p>
+
+<div class="term">
+<p class="term-name">enabling constraint（可能にする制約） <small>コール中の言葉</small></p>
+<p>「制約」を、できないことの一覧ではなく、<strong>その範囲の中で何ができるかを決めるもの</strong>として捉える言い方です。ここでは「新機能は来ない。だから今ある testnet とボードで、2 週間で何ができるか」という問いの立て方を指しています。<span class="badge">補足</span>組織論で使われる言葉で、コール中に定義は語られていません。</p>
+</div>
+
+<p>では、2 週間の「成功」とは何か。</p>
+
+<blockquote>
+<p>次の 2 週間で成功とは何かというと、<strong>私たち 2 人が「testnet の活動が大幅に増えた」と示せること</strong>です。世界構築とワークショップが機能することを示したいからです。</p>
+</blockquote>
+
+<p>なぜ数字が要るのか、も率直に語られました。突飛なアイデア（世界構築、crew、district）をリーダーシップに持ち込むとき、「活動のための活動」に見えないように気をつけないといけない。<strong>資源を求め、支援してもらう最良の方法は、A/B テストをやること</strong>——「閉じたループのテストで、これは実際に役に立ったと言えるようにする」。それが「黄金律」だ、と。</p>
+
+<p>測り方は、<strong>オンチェーンとオンラインの指標を組み合わせる</strong>こと。「オンラインの活動は偽装できる。オンチェーンの活動はボットにできる。でも 2 つを組み合わせれば」。KYC や AML の話ではない、身元を明かす必要はない、と念を押したうえで、「その 2 つを組み合わせて活動を検証できないか。チームへの本当に面白い提案だ」と述べられました。<span class="badge">補足</span>#7 で「本物の人間である確度が上がる」とだけ語られていた件（<a href="../2026-08-24-office-hours-ticker/#darkforest">7 節</a>）が、ここで少しだけ方法に近づいています。ただし具体的にどの指標をどう組み合わせるかは、まだ示されていません。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" alt="" aria-label="ボードで組織し、実験し、testnet の活動を増やし、オンチェーンとオンラインを組み合わせて測り、リーダーシップへの論拠にする、という 2 週間のループの図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">mainnet までの 2 週間で回そうとしているループ</text>
+
+  <rect x="16" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">Miro のボードに入る</text>
+  <text x="114" y="100" class="d-s" text-anchor="middle">組織化・ブレスト・実験</text>
+
+  <line x1="212" y1="86" x2="236" y2="86" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="242" y="48" width="196" height="76" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">testnet の活動が増える</text>
+  <text x="340" y="100" class="d-s" text-anchor="middle">ポイント、紹介、委任</text>
+
+  <line x1="438" y1="86" x2="462" y2="86" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="468" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">測る</text>
+  <text x="566" y="100" class="d-s" text-anchor="middle">オンチェーン × オンライン</text>
+
+  <line x1="566" y1="124" x2="566" y2="150" class="d-line-accent"/>
+  <line x1="566" y1="150" x2="114" y2="150" class="d-line-accent"/>
+  <line x1="114" y1="150" x2="114" y2="166" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="16" y="170" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="192" class="d-t" text-anchor="middle">リーダーシップへの論拠 —「世界構築と crew は本当に効いた」</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">それをもって、ポイント・資源・投資をもっと求める。この考え方は #7 で「ブレーキを踏んだ」理由と同じ</text>
+</svg>
+<p class="figcap">「私たちは本当に小さなチーム」（進行役、マーケティング責任者、同僚の 3 人）だから、コミュニティが動いたという証拠が要る、という筋です。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — 「活動が増えた」ことは、「コミュニティが自己組織できた」ことの証拠になるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。コール中の発言ではありません。</p>
+<p><strong>疑問はもっともです。</strong>この 2 週間は、mainnet の日付（10 月 1 日）が公に告知された直後で、Cardano Seminar もあり、TOKEN2049 の告知もある。testnet の活動が増えたとして、それがボードや crew のおかげなのか、mainnet が近いからなのかは、増えた量だけでは分かりません。</p>
+<p><strong>なぜ話者の言い方も成り立つのか。</strong>本人が求めているのは厳密な因果の証明ではなく、「小さなチームがリーダーシップに資源を求めるための材料」です。「閉じたループのテスト」という言い方は、少なくとも<strong>やったこと（実験）と起きたこと（活動）を並べて見せる</strong>ことを指していて、それ自体には意味があります。</p>
+<p><strong>外から見分ける方法。</strong>「A/B」と呼ぶなら、比較対象が要ります。たとえば、ボードから生まれた紹介リンク経由の活動と、それ以外の活動を分けて数える。#4 の SPO プログラムでは「参加プール 84% 対 対照群 17%」という形で対照群が置かれていました（<a href="../2026-07-31-data-and-insights/#spo">#4 の 4 節</a>）。</p>
+<p><strong>この回で示されたか。</strong>「増えた」をどう測るかは「オンチェーン × オンライン」とだけで、<strong>比較対象は示されていません</strong>。</p>
+</div>
+</details>
+
+<h2 id="contribution">6. 貢献をどう見るか</h2>
+<p class="deck">すべて考慮する。ただし見えやすいのは、SPO のポイントと、個人の紹介リンク。</p>
+
+<p>「何をやるかは私たちが決めることではない」。マーケティング責任者は過去のコミュニティの例を挙げました——新しいメンバーを連れてくるのが得意な人、バグを直しアプリを壊そうとするのに集中した人。<strong>「他のコミュニティのように、ミームを作れ、これをやれ、とは言わない。楽しめること、やりたいことをやるべき」</strong>。</p>
+
+<p>そのうえで、成果が見えやすい方法が 2 つ挙げられました。</p>
+
+<ul>
+  <li><strong>SPO なら、委任者が請求したポイントの 20%。</strong>「何人があなたのプールに委任してポイントを請求しているか」が、活動を本物だと確かめる方法になる。KOL（オンチェーンで影響力のある人）としての検証者を見て、オンラインの影響力と組み合わせる、とも</li>
+  <li><strong>個人なら、testnet の紹介リンク。</strong>誰でも取れる。「もっと時間があれば Discord の HypeSquad のようにゲーミフィケーションできたが」</li>
+</ul>
+
+<p><span class="badge">補足</span>「20%」は <a href="../2026-09-11-cardano-seminar-realfi/#cardano">Cardano Seminar のスライド</a>に「SPO は委任者が得た分の 20% を取る」とあったものと同じ数字です。この回では「だったと思う（I think）」という言い方でした。</p>
+
+<p>最後に、初期に加わることの「うまみ」も語られました。<strong>「コミュニティの初期にいると、影響力と発言力がとてつもなく大きく、声が届きやすい」</strong>。Cardano に 7 年いた経験から、ある規模になると全員が互いを知っているわけではなくなり、役割や層のそれぞれが独自のコミュニティになる、と。</p>
+
+<h2 id="events">7. イベント</h2>
+<p class="deck">mainnet までは大々的にはやらない。10 月からは、CEO と GTM 担当が前に出る。</p>
+
+<p>「mainnet に乗るまでは大々的にはやっていない。無駄になるかもしれないお金は使いたくない」。それでも、GTM 担当が先週バルセロナのサイドイベント、European Blockchain Convention、London Fintech Week に出ていて、そこからのコンテンツがこれから出る、とのことです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="10 月 1 日の mainnet から 11 月頭の Solana Breakpoint までのイベントを時系列に並べた図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <line x1="40" y1="60" x2="640" y2="60" class="d-line" marker-end="url(#m4)"/>
+  <text x="40" y="44" class="d-s">9 月</text>
+  <text x="620" y="44" class="d-s" text-anchor="end">11 月</text>
+
+  <rect x="16" y="80" width="150" height="120" rx="8" class="d-box-accent"/>
+  <text x="91" y="106" class="d-t" text-anchor="middle">10/1 mainnet</text>
+  <text x="91" y="130" class="d-s" text-anchor="middle">Cardano</text>
+  <text x="91" y="154" class="d-s" text-anchor="middle">Korea Blockchain Week</text>
+  <text x="91" y="176" class="d-s" text-anchor="middle">と重なる。CEO が出る</text>
+
+  <rect x="182" y="80" width="150" height="120" rx="8" class="d-box"/>
+  <text x="257" y="106" class="d-t" text-anchor="middle">TOKEN2049</text>
+  <text x="257" y="130" class="d-s" text-anchor="middle">シンガポール</text>
+  <text x="257" y="154" class="d-s" text-anchor="middle">Cardano Foundation の</text>
+  <text x="257" y="176" class="d-s" text-anchor="middle">ブースに採択。CEO が出る</text>
+
+  <rect x="348" y="80" width="150" height="120" rx="8" class="d-box"/>
+  <text x="423" y="106" class="d-t" text-anchor="middle">EVM ローンチ</text>
+  <text x="423" y="130" class="d-s" text-anchor="middle">日付は言わず</text>
+  <text x="423" y="154" class="d-s" text-anchor="middle">「ヒントは出した」</text>
+  <text x="423" y="176" class="d-s" text-anchor="middle">Breakpoint より前を想定</text>
+
+  <rect x="514" y="80" width="150" height="120" rx="8" class="d-box"/>
+  <text x="589" y="106" class="d-t" text-anchor="middle">Solana Breakpoint</text>
+  <text x="589" y="130" class="d-s" text-anchor="middle">ロンドン、11 月頭</text>
+  <text x="589" y="154" class="d-s" text-anchor="middle">同僚が南アフリカから</text>
+  <text x="589" y="176" class="d-s" text-anchor="middle">来るかもしれない</text>
+
+  <text x="340" y="222" class="d-s" text-anchor="middle">現地にいて会いたい人は、進行役かマーケティング責任者に連絡を。カスタムのグッズも「アイデアが要るだけ」</text>
+</svg>
+<p class="figcap">TOKEN2049 のブースは「コミュニティの 1 人に勧められて申請し、プレゼンをして、採択された」。「RealFi にとって大きな勝利」と述べられました。</p>
+</div>
+
+<ul>
+  <li><strong>Korea Blockchain Week。</strong>10 月 1 日の mainnet ローンチと重なる。CEO が出る予定。会場を探していて「ストレスで白髪が増えている」</li>
+  <li><strong>TOKEN2049（シンガポール）。</strong>Cardano Foundation のブースに、プロジェクトの 1 つとして採択。CEO が「完全に無料で」委任者に会い、ローンチ直後の RealFi を紹介できる</li>
+  <li><strong>Solana Breakpoint（ロンドン、11 月頭）。</strong>「その頃には、願わくは EVM にも乗っているはず」。マーケティング責任者はイギリス人だが行かず、同僚が南アフリカから来るかもしれない</li>
+  <li><strong>2027 年。</strong>「まだ見ていない。mainnet、EVM、トークン、それから GTA 6 と、年末までに節目が多い」。どこに行くかは GTM 担当に大きな発言権がある</li>
+</ul>
+
+<p>EVM の時期については、マーケティング責任者が「注意深く聞いていた人には、うっかり日付のヒントを出したかもしれない」と述べています。<span class="badge">補足</span>音声にあるのは「Breakpoint（11 月頭）の頃には EVM に乗っていれば」という言い方と、Cardano Seminar での「mainnet の 1 か月後」だけです。日付そのものは述べられていません。</p>
+
+<p>グッズについては、質問を受けて「カスタムのグッズは作れる。高いものではない。RealFi を代表してくれるなら利点がある。詳細は完全に稼働してから」。チャットからは「mainnet ローンチに紐づけた限定グッズを」という提案があり、「mainnet 前にしか手に入らないものなら、何年か後には OG のステータスになる。Discord のロールも同じ」と応じています。</p>
+
+<h2 id="content">8. コミュニティ発のコンテンツと、その自由</h2>
+<p class="deck">自分のアカウントからなら自由。RealFi のアカウントから出るものとは別。</p>
+
+<p>チャットから、この回でいちばん実務的な質問が出ました。コミュニティがクイズのようなコンテンツを作ったとして、金融商品である以上、<strong>共有する前に RealFi のレビューが要るのか</strong>、それとも自由があるのか。</p>
+
+<blockquote>
+<p>自分のアカウントから出すものなら、自由があります。特定の質問があるとか、投稿するものが事実として正しいか確かめたいなら、もちろん私たちに聞くことを勧めます。<strong>RealFi のアカウントから出るものは、当然、話が別です。</strong></p>
+</blockquote>
+
+<p>進行役はこれに、Cardano での経験を重ねました。「私は価格の話は絶対にしなかったが、コミュニティは当然していた。誰かがルールだと言っているからではなく、そこにいれば分かる。<strong>RealFi 自身は原則として言わないけれど、コミュニティなら言えることがある</strong>」。</p>
+
+<p><span class="badge">補足</span>答えは「自由がある」ですが、境界線は「誰のアカウントか」で引かれていて、「何を言ってよいか」の線は示されていません。1 節の「金融商品なので何を言えるか慎重」という前置きと合わせて読むと、<strong>コミュニティ側が事実確認を頼める窓口はあるが、レビューの義務はない</strong>、というのがこの回の答えです。</p>
+
+<h2 id="ticker">9. USDrf への改称の反映</h2>
+<p class="deck">「ほぼ全体に反映した」。ただし「毎日新しい見落としが見つかる」。</p>
+
+<p>裏で進んでいる変更として、新しいウェブサイトが近く出るかもしれないこと、そして<strong>USDrf がもう至るところにある</strong>ことが挙げられました。改めて説明されたのは次のとおりです。</p>
+
+<ul>
+  <li>コミュニティの投票で決めた。「最初の数日は 50 対 50 だったが、最終的に 84% ほどが USDrf と sUSDrf を選んだ」</li>
+  <li>変更は「ほぼ全体に反映」した。ドキュメントなどで一貫性に気づき始めるはず</li>
+  <li>「完璧ではないし、人間なので、毎日新しい見落としが見つかる」。この先さらに変更がある</li>
+</ul>
+
+<p><span class="badge">補足</span>2 点、記録と食い違います。投票の結果は、<a href="../2026-08-24-office-hours-ticker/#vote">#7 のページに載せた告知</a>では全 75 票のうち案 B が 51 票で <strong>68%</strong> です。この回の「84%」がどの数字を指しているのかは述べられていません。また「もともとは USDr と sUSDr」と語られていますが、改称前の表記は USDR / sUSDR です。いずれもコール中の言い方をそのまま記録し、対応表は用語集に置いてあります。</p>
+
+<p>最後に進行役から、「コミュニティのメンバーを RealFi の上級リーダーシップとつないで、アイデアや提案について非公開のコールを持ってもらった」ことが明かされました。「すでにたくさんの活動と貢献があり、本当に感謝している」と。</p>
+
+<h2 id="overall">10. 全体像</h2>
+<p class="deck">#7 で語られた仕組みを、2 週間の実験として動かす。それがこの回。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 322" role="img" aria-label="#7 で示された握手・crew・district の枠組みを上に、この回の 2 週間の実験を中央に、mainnet 後の展開を下に置いた全体像の図">
+  <defs>
+    <marker id="m5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="648" height="84" rx="8" class="d-box-plain"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">#7（8 月 24 日）— 枠組み</text>
+  <text x="340" y="68" class="d-s" text-anchor="middle">握手（コミュニティ ↔ 事業）、crew と district、KPI の L1 / L2、ダーク・フォレスト</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">「crew はまだ立ち上げていない」</text>
+
+  <line x1="340" y1="104" x2="340" y2="126" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="16" y="130" width="648" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">#9（9 月 21 日）— mainnet までの 2 週間の実験</text>
+  <text x="340" y="180" class="d-s" text-anchor="middle">最初の district はダーク・フォレスト、最初の crew の課題は testnet の活動</text>
+  <text x="340" y="202" class="d-s" text-anchor="middle">Miro のボードで自己組織。新機能は作らない。成功＝活動の増加をオンチェーン × オンラインで示す</text>
+  <text x="340" y="222" class="d-s" text-anchor="middle">それをリーダーシップへの「A/B テスト」として、資源を求める</text>
+
+  <line x1="340" y1="230" x2="340" y2="252" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="16" y="256" width="648" height="56" rx="8" class="d-box"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">mainnet（10 月 1 日）のあと</text>
+  <text x="340" y="302" class="d-s" text-anchor="middle">活動した人からアンバサダーを選ぶ。EVM へ。「もっと多くの crew と district ができる」</text>
+</svg>
+<p class="figcap">#7 が「なぜ立ち上げていないか」の説明だったのに対し、この回は「立ち上げるので、入ってほしい」という招待です。</p>
+</div>
+
+<h2 id="qa">11. Q&amp;A</h2>
+<p class="deck">チャットから 4 件。ステージに上がった人はいませんでした。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者B</span>Lace のセクションの報酬タスクが swap と stake だというのが分からない。Lace を RealFi の dApp に接続しているが、ウォレットの中では見えない。Lace のネイティブな何かなのか。</p>
+<p class="qa-a" data-by="持ち帰り">進行役は「自分が使うときはブラウザの中だと思う」、マーケティング責任者は「分からないが、Lace チームとローンチに向けて取り組んでいることに関係している可能性はある」。<strong>コール後にフォローアップする</strong>と 2 度約束されました。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者C</span>（行動の呼びかけの確認）コミュニティのボードに入って、組織し、ブレインストーミングし、実験をやる、ということか。</p>
+<p class="qa-a" data-by="回答">そのとおり。次の 2 週間で testnet の活動が大幅に増えたと示せることが成功。測り方はオンチェーンとオンラインの組み合わせ（<a href="#sandbox">5 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者F</span>mainnet ローンチのイベントに紐づけた限定グッズを検討してみては。ギブアウェイとして魅力的になる。</p>
+<p class="qa-a" data-by="賛同">「mainnet 前にしか手に入らないものなら、何年か後には OG のステータスになる」。Discord のロールも同じで、うまくいけばアンバサダーが得られる類のもの、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者G</span>コミュニティが作ったクイズなどのコンテンツは、金融商品である以上、共有前に RealFi チームのレビューが要るのか。それとも作って共有する自由があるのか。</p>
+<p class="qa-a" data-by="回答">自分のアカウントから出すものなら自由がある。事実として正しいか確かめたければ聞いてほしい。RealFi のアカウントから出るものは別（<a href="#content">8 節</a>）。</p>
+</div>
+
+<h2 id="pending">12. 持ち帰りになった論点</h2>
+<p class="deck">最初の 1 つを動かす回なので、決まっていないことのほうが多い。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">持ち帰り</span>Lace の報酬タスクは、ウォレットの中で何を指しているのか。</p>
+<p class="qa-a" data-by="コール後に">「ブラウザの中だと思う」「Lace チームとの実装に関係しているかもしれない」の 2 つの推測だけで、答えは出ていません。コール後のフォローアップが約束されています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未提示</span>アンバサダーは、誰が、いつ、どう選ぶのか。</p>
+<p class="qa-a" data-by="方向のみ">「本当に活動していた人たちの中から、アンバサダーやコミュニティの代表を選ぶ」とだけ。基準、人数、時期、役割と報酬は述べられていません。#7 で「作成中」とされたロール・ステータス・ポイントの設計も、この回では出ていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未提示</span>「増えた」を何と比べるのか。</p>
+<p class="qa-a" data-by="測り方のみ">「A/B テスト」「閉じたループ」と呼ばれましたが、比較対象は示されていません。測り方も「オンチェーン × オンライン」までで、具体的な指標は未提示です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">ヒントのみ</span>EVM ローンチの日付。</p>
+<p class="qa-a" data-by="日付は言わず">「うっかりヒントを出したかもしれない」と本人が言うとおり、音声にあるのは「11 月頭の Breakpoint の頃には乗っていれば」という言い方だけです。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">食い違い</span>ティッカー投票の「84%」。</p>
+<p class="qa-a" data-by="記録は 68%">#7 のページに載せた告知は 75 票中 51 票で 68%。この回の「84%」が何の数字かは述べられていません。改称前の表記を「USDr / sUSDr」と語っている点も、記録（USDR / sUSDR）と違います。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">予告のみ</span>新しいウェブサイト、グッズの詳細、2027 年のイベント。</p>
+<p class="qa-a" data-by="時期なし">ウェブサイトは「近く見られるかもしれない」、グッズは「完全に稼働してから」、2027 年は「まだ見ていない」。いずれも時期は示されていません。</p>
+</div>
+
+<div class="note">
+<p><strong>このページについて。</strong>この回はチャタムハウスルールの対象として扱い、発言者の氏名は記載していません。話した 2 名は「進行役」と「マーケティング責任者」、チャットで質問した方は <code>参加者A〜G</code>、社内で名前が挙がった人物は役割で書いています。</p>
+<p>原本には話者ラベルも時刻もありません。話者は文脈から割り当てました。<strong>Miro のワークショップボードが画面共有されましたが、中身は受け取っていない</strong>ので、ここに載っているのは音声で語られた内容だけです。図はいずれも音声の説明をもとにこちらで描いたものです。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、コール中の発言ではありません。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>The crew that <a href="../2026-08-24-office-hours-ticker/#en-crews">#7 admitted had not been launched</a> finally starts — as a single first crew.<br>
+  This is not a programme announcement. <strong>The ask is to use the two weeks before mainnet as an experiment, and to show in numbers that the community can organise itself.</strong></p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>One crew first.</strong> The first district is the dark forest; the first crew's job is to drive testnet activity. If that runs well, it opens up.</li>
+  <li><strong>The Miro board is open.</strong> SPO introductions, a world-building prototype, four common-good arguments, and templates for organising. Anyone can jump in and leave sticky notes.</li>
+  <li><strong>Success in two weeks means a big rise in testnet activity.</strong> To be presented to leadership as an “A/B test,” and used to argue for resources.</li>
+  <li><strong>Nothing new gets built.</strong> Dashboards and other requests went to the team, but the tech team is on mainnet until 1 October. “What's built is the enabling constraint.”</li>
+  <li><strong>Two ways contributions show.</strong> For an SPO, 20% of the points its delegators claim. For an individual, the testnet referral link.</li>
+  <li><strong>Events.</strong> The CEO at Korea Blockchain Week; accepted onto the Cardano Foundation booth at TOKEN2049; Solana Breakpoint in London in early November, “hopefully on EVM by then.”</li>
+  <li><strong>Community content is free on your own accounts.</strong> What goes out on RealFi's accounts is a different matter.</li>
+  <li><strong>The USDrf rename is “pretty much across.”</strong> But “a new one comes every day.” The vote was described as “84%”; the record from #7 says 68%.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-recap"><span class="n">01</span>From the SPO programme to ambassadors</a></li>
+  <li><a href="#en-handshake"><span class="n">02</span>The handshake, and world building</a></li>
+  <li><a href="#en-darkforest"><span class="n">03</span>The first district — the dark forest</a></li>
+  <li><a href="#en-commongood"><span class="n">04</span>The common good — four arguments</a></li>
+  <li><a href="#en-sandbox"><span class="n">05</span>Two weeks to mainnet — the sandbox and the A/B test</a></li>
+  <li><a href="#en-contribution"><span class="n">06</span>How contributions are seen</a></li>
+  <li><a href="#en-events"><span class="n">07</span>Events</a></li>
+  <li><a href="#en-content"><span class="n">08</span>Community content, and how free it is</a></li>
+  <li><a href="#en-ticker"><span class="n">09</span>Rolling out the USDrf rename</a></li>
+  <li><a href="#en-overall"><span class="n">10</span>The whole picture</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">12</span>Left open</a></li>
+</ol>
+</div>
+
+<h2 id="en-recap">1. From the SPO programme to ambassadors</h2>
+<p class="deck">The accelerator was the foundation. “We can turn this into an ambassador programme” came out of it.</p>
+
+<p>The call opened with a recap: an accelerator programme was launched with stake pool operators, the validators of Cardano's network, and that was the precursor to today's topic, the <strong>“Alpha Ambassador Programme.”</strong> From the marketing side: “we've been watching everything you've built … the more conversations we had, it kind of led to — hold on, we can turn this into an ambassador programme.” They “streamlined a process that other teams would take two long versions to do.”</p>
+
+<p>Two things were said up front.</p>
+
+<ul>
+  <li><strong>No vanity metrics.</strong> The point was “real authentic activity on testnet and within the community,” restated</li>
+  <li><strong>Suggestions are reaching the team.</strong> Lots of input has come in about the product and the RFG token, but “the RealFi team is very careful about what we can and can't say in terms of it being a financial product,” so responses are not always visible in Discord. Still, “the team is looking”</li>
+</ul>
+
+<p>The mainnet date has been extended “a couple of weeks” to 1 October — “about nine days from today.” <span class="badge">added</span>The same date the CEO first said aloud at the <a href="../2026-09-11-cardano-seminar-realfi/">Cardano Seminar on 11 September</a>. The slip from #6's “mid-September” is framed here as time gained.</p>
+
+<h2 id="en-handshake">2. The handshake, and world building</h2>
+<p class="deck">Value as the team understands it in KPIs, and activity the community can offer, joined in the middle.</p>
+
+<p>The <a href="../2026-08-24-office-hours-ticker/#en-crews">“handshake” from #7</a> was shown as a diagram this time. On the screen-shared Miro board, the team is in blue, the community ecosystem in red, and the two green boxes between them are the handshake — “the interface for impact,” meaning the host and the marketing lead.</p>
+
+<p>What the interface does: <strong>translate</strong> between “what internal functions would understand as value — KPIs” and “what kind of activities and roles the community might offer someone entering RealFi.” Turn the community's contributions and ideas “into something the teams can actually act on.” That is “the hidden work that's going on.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-label="Community on the left, team on the right, and the handshake interface in the centre translating between them">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">The layout of the screen-shared board, drawn from the spoken description</text>
+
+  <rect x="16" y="48" width="196" height="150" rx="8" class="d-box-warn"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">Community</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">join by yourself</text>
+  <text x="114" y="124" class="d-s" text-anchor="middle">→ form partnerships</text>
+  <text x="114" y="146" class="d-s" text-anchor="middle">→ form a crew</text>
+  <text x="114" y="176" class="d-s" text-anchor="middle">self-organising, no top-down</text>
+
+  <line x1="216" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="238" y1="140" x2="216" y2="140" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="242" y="48" width="196" height="150" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">The handshake</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">the host and the marketing lead</text>
+  <text x="340" y="128" class="d-s" text-anchor="middle">turn contributions and ideas</text>
+  <text x="340" y="150" class="d-s" text-anchor="middle">into things the team can act on</text>
+  <text x="340" y="176" class="d-s" text-anchor="middle">and KPIs into community terms</text>
+
+  <line x1="442" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="464" y1="140" x2="442" y2="140" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="468" y="48" width="196" height="150" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">Team</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">understands value as KPIs</text>
+  <text x="566" y="124" class="d-s" text-anchor="middle">builds nothing new</text>
+  <text x="566" y="146" class="d-s" text-anchor="middle">until mainnet</text>
+  <text x="566" y="176" class="d-s" text-anchor="middle">suggestions are getting through</text>
+
+  <text x="340" y="236" class="d-s" text-anchor="middle">“If it's only the team doing stuff top-down, I don't think we can win.”</text>
+</svg>
+<p class="figcap">The board itself was not provided; the colours and layout follow the spoken description, and the wording is ours.</p>
+</div>
+
+<p>On the community side, the framing is <strong>world building</strong>: “like any map or story-driven RPG, the individual is going on an adventure.” It grew out of ideas a colleague explored a couple of months ago under the name <strong>Decentralized Adventures</strong>. The host liked the angle because “communities are inherently self-organizing … there isn't this top-down control. People are going to select their own adventures.”</p>
+
+<div class="term">
+<p class="term-name">World building / Decentralized Adventures <small>the call's own words</small></p>
+<p>Nobody joining on day one can absorb the internal language that engineering, product and the CEO each use — “it's an impossibility” — so world building uses <strong>objects already in people's heads</strong>, like a dark forest or a harbour, to orient them. Decentralized Adventures is the name for the entry point framed as choosing an adventure. <span class="badge">added</span>The two tiers, districts and crews, are explained in <a href="../2026-08-24-office-hours-ticker/#en-districts">section 6 of #7</a>. This session is about starting the first one.</p>
+</div>
+
+<h2 id="en-darkforest">3. The first district — the dark forest</h2>
+<p class="deck">One district, one crew. The task: drive testnet activity.</p>
+
+<p>The board has a map, with districts you can enter to contribute — and the first one being built is the <strong>dark forest</strong>. The reasoning is the same as in <a href="../2026-08-24-office-hours-ticker/#en-darkforest">section 7 of #7</a>, with the same figures repeated: 50–80% of the internet is bots according to Cloudflare; 90% of on-chain activity is bots per DeFiLlama or Dune. So “human authenticity becomes way more valuable in AI.”</p>
+
+<p>And the dark forest is “the cozy web” — <strong>“the places that a team like RealFi couldn't reach, but its community could.”</strong> Discord, private Telegrams, in-person meetups. “Dark forest was just a bit of fun,” and the name can be changed.</p>
+
+<p><strong>The first crew in this district exists to drive testnet activity.</strong> “Can we self-organize and can we do something interesting up until mainnet, and then pick ambassadors and community representatives from those people that are about it” — that is how the ambassador programme is seen right now.</p>
+
+<p><span class="badge">added</span>The order matters. <strong>Ambassadors are not chosen first and then set to work; they are chosen from those who have already been active.</strong> The programme's details — roles, status, rewards — were “being drafted” in #7 and are still not given here.</p>
+
+<h2 id="en-commongood">4. The common good — four arguments</h2>
+<p class="deck">Four things RealFi, the community member and Cardano would all agree are good.</p>
+
+<p>The board's other pillar is the <strong>common good</strong>: “if someone was to talk about RealFi, what would be a common good where RealFi, the community member, and the Cardano ecosystem would agree that something good or valuable was happening?” What links KPIs and the common good is “how the audience or the team or the community understand success in terms of objective numbers” — and <strong>“if you can find a common good, that's gonna help you create an axis around which you can have coordination.”</strong></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="Four steps in a row — secure your ADA, decentralise, economic health, explore utility — leading to the argument for joining RealFi">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">Walk through the four and you arrive at “why someone might wanna participate in RealFi”</text>
+
+  <rect x="16" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="91" y="74" class="d-t" text-anchor="middle">1. Secure your ADA</text>
+  <text x="91" y="100" class="d-s" text-anchor="middle">“all these hacks”</text>
+  <text x="91" y="122" class="d-s" text-anchor="middle">keep financial</text>
+  <text x="91" y="144" class="d-s" text-anchor="middle">sovereignty</text>
+
+  <line x1="166" y1="107" x2="180" y2="107" class="d-line" marker-end="url(#e2)"/>
+
+  <rect x="182" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="257" y="74" class="d-t" text-anchor="middle">2. Decentralise</text>
+  <text x="257" y="100" class="d-s" text-anchor="middle">the SPO programme</text>
+  <text x="257" y="122" class="d-s" text-anchor="middle">delegate to a RealFi SPO</text>
+  <text x="257" y="144" class="d-s" text-anchor="middle">→ passive points</text>
+
+  <line x1="332" y1="107" x2="346" y2="107" class="d-line" marker-end="url(#e2)"/>
+
+  <rect x="348" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="423" y="74" class="d-t" text-anchor="middle">3. Economic health</text>
+  <text x="423" y="100" class="d-s" text-anchor="middle">growth = capital</text>
+  <text x="423" y="122" class="d-s" text-anchor="middle">productivity; everyone</text>
+  <text x="423" y="144" class="d-s" text-anchor="middle">agrees liquidity is needed</text>
+
+  <line x1="498" y1="107" x2="512" y2="107" class="d-line" marker-end="url(#e2)"/>
+
+  <rect x="514" y="48" width="150" height="118" rx="8" class="d-box"/>
+  <text x="589" y="74" class="d-t" text-anchor="middle">4. Explore utility</text>
+  <text x="589" y="100" class="d-s" text-anchor="middle">you don't have to sell</text>
+  <text x="589" y="122" class="d-s" text-anchor="middle">borrow against ADA,</text>
+  <text x="589" y="144" class="d-s" text-anchor="middle">or other uses</text>
+
+  <rect x="16" y="190" width="648" height="60" rx="7" class="d-box-accent"/>
+  <text x="340" y="215" class="d-t" text-anchor="middle">“A really strong argument as to why someone might wanna participate in RealFi”</text>
+  <text x="340" y="238" class="d-s" text-anchor="middle">applies to other ecosystems like Ethereum too — but “we're just talking about Cardano at the minute”</text>
+</svg>
+<p class="figcap">The four, and their order, are as spoken. <span class="badge">added</span>The <a href="../2026-09-11-cardano-seminar-realfi/#en-cardano">Cardano Seminar slide</a> listing what SPOs teach their delegators — secure your ADA → decentralise → network health → reasons to stay active → participate in RealFi — has almost the same skeleton.</p>
+</div>
+
+<p>Below that come templates for how to organise, so that people can look at which SPOs took part in the asset-based community development workshop and find collaborators. The board is open now; talk about it in Discord, leave sticky notes.</p>
+
+<h2 id="en-sandbox">5. Two weeks to mainnet — the sandbox and the A/B test</h2>
+<p class="deck">Nothing new gets built. Grow activity with what exists, and show it in numbers.</p>
+
+<p>Here is the session's central ask. “We're really trying to create a sandbox now in the time up until mainnet.” With a constraint:</p>
+
+<blockquote>
+<p>The constraints over the next few weeks while we try and get to mainnet are such that what's built is built right now. All of the feedback we've had, we've been giving to the team. But <strong>what's built is the enabling constraint</strong>, you know?</p>
+</blockquote>
+
+<p>Requests like dashboards have gone to the team, but <strong>“we're not gonna build anything new in the next two weeks.”</strong> The marketing lead added: “those stuff can obviously happen in the future. It's just right now — as we're going to mainnet, that's got to be the focus for the tech team.”</p>
+
+<div class="term">
+<p class="term-name">Enabling constraint <small>the call's own words</small></p>
+<p>Treating a constraint not as a list of what can't be done but as <strong>the thing that defines what can be done within it</strong>. Here: no new features are coming, so the question becomes what can be done in two weeks with the testnet and the board as they are. <span class="badge">added</span>A term from organisational theory; it was not defined on the call.</p>
+</div>
+
+<p>So what does success look like in two weeks?</p>
+
+<blockquote>
+<p>In the next two weeks, what success looks like is that <strong>the two of us can show there's been a massive increase in testnet activity</strong>, because we want to show that the world building and the workshops work.</p>
+</blockquote>
+
+<p>Why the number is needed was said plainly. When you bring unusual ideas — world building, crews, districts — to leadership, “you've got to be really careful that it doesn't come across as just activity for the sake of it.” <strong>“The best way for us to advocate for those resources and for the team to support us in that is to do an A/B test.”</strong> A closed-loop test that lets you say “this was actually really useful.” That is “the gold standard.”</p>
+
+<p>How to measure it: <strong>combine on-chain and online metrics.</strong> “Online activity can be faked. On-chain activity could be botted. But if you're combining those two —” Not KYC, not AML, “you don't have to dox them,” but “can you combine those two things to verify the activity? That's a really interesting proposition to the team.” <span class="badge">added</span>Where #7 only said that an SPO's activity gives “a high degree of confidence” it is a real human (<a href="../2026-08-24-office-hours-ticker/#en-darkforest">section 7</a>), this is a step closer to a method. Which metrics, combined how, is still not given.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="The two-week loop: organise on the board, grow testnet activity, measure it on-chain and online, and turn that into an argument to leadership">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-s" text-anchor="middle">The loop they want to run in the two weeks before mainnet</text>
+
+  <rect x="16" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="114" y="76" class="d-t" text-anchor="middle">Get into the Miro board</text>
+  <text x="114" y="100" class="d-s" text-anchor="middle">organise, brainstorm, experiment</text>
+
+  <line x1="212" y1="86" x2="236" y2="86" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="242" y="48" width="196" height="76" rx="8" class="d-box-accent"/>
+  <text x="340" y="76" class="d-t" text-anchor="middle">Testnet activity rises</text>
+  <text x="340" y="100" class="d-s" text-anchor="middle">points, referrals, delegation</text>
+
+  <line x1="438" y1="86" x2="462" y2="86" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="468" y="48" width="196" height="76" rx="8" class="d-box"/>
+  <text x="566" y="76" class="d-t" text-anchor="middle">Measure it</text>
+  <text x="566" y="100" class="d-s" text-anchor="middle">on-chain × online</text>
+
+  <line x1="566" y1="124" x2="566" y2="150" class="d-line-accent"/>
+  <line x1="566" y1="150" x2="114" y2="150" class="d-line-accent"/>
+  <line x1="114" y1="150" x2="114" y2="166" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="16" y="170" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="192" class="d-t" text-anchor="middle">The argument to leadership — “world building and crews actually worked”</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">and on that basis, ask for more points, resources, investment. The same logic as the “pumped the brakes” in #7</text>
+</svg>
+<p class="figcap">“We're such a small team” — the host, the marketing lead and one colleague — so evidence that the community moved is what they need.</p>
+</div>
+
+<details class="explain">
+<summary>A naive question — does “activity went up” prove the community organised itself?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span>Our reading, not something said on the call.</p>
+<p><strong>The question is fair.</strong> These two weeks come right after the mainnet date (1 October) was announced publicly, after the Cardano Seminar, and alongside the TOKEN2049 news. If testnet activity rises, the amount alone can't tell whether the board and the crew did it or the approach of mainnet did.</p>
+<p><strong>Why the speaker's framing still holds.</strong> What he is after is not a rigorous causal proof but material “for a small team to advocate for resources.” A “closed loop test” at minimum means <strong>putting what was done (the experiments) next to what happened (the activity)</strong>, and that has value in itself.</p>
+<p><strong>How to tell from outside.</strong> If it is called A/B, there needs to be a comparison — for instance, counting activity that came through referral links born on the board separately from the rest. The #4 SPO programme did have a control group: 84% of participating pools against 17% outside (<a href="../2026-07-31-data-and-insights/#en-spo">section 4 of #4</a>).</p>
+<p><strong>Was it given here?</strong> Only “on-chain × online” as the measure. No comparison group was described.</p>
+</div>
+</details>
+
+<h2 id="en-contribution">6. How contributions are seen</h2>
+<p class="deck">All contributions count. The two that show most clearly: SPO points and individual referral links.</p>
+
+<p>“It's not really for us to say” what anyone should do. The marketing lead drew on past communities: some people were gifted at bringing in relevant new members; others focused on fixing bugs and trying to break the app. <strong>“We're not gonna tell you to make memes, do this, do that … you should do what you enjoy and what you wanna do.”</strong></p>
+
+<p>That said, two ways of seeing contributions were named.</p>
+
+<ul>
+  <li><strong>For an SPO, 20% of the points its delegators claim.</strong> “How many people are delegating to your pool and claiming points” becomes a way to authenticate activity — looking at validators as KOLs, influential people on chain, and combining that with their online influence</li>
+  <li><strong>For an individual, the testnet referral link.</strong> Everyone gets one. “If we had more time, I would've loved to have gamified it a bit better,” with Discord HypeSquad as the model</li>
+</ul>
+
+<p><span class="badge">added</span>The 20% is the same figure printed on the <a href="../2026-09-11-cardano-seminar-realfi/#en-cardano">Cardano Seminar slide</a> — “the SPO takes a 20% share of what their delegators earn.” Here it was said as “I think you get 20%.”</p>
+
+<p>And the upside of being early: <strong>“when you're early in a community you have a massively outsized impact and say, and it's easy to be heard.”</strong> From seven years in Cardano: past a certain size, not everybody knows each other, and the roles and layers become almost their own communities.</p>
+
+<h2 id="en-events">7. Events</h2>
+<p class="deck">Nothing big until mainnet. From October, the CEO and the GTM lead are the ones in the room.</p>
+
+<p>“We've not done the big hoo-ha until we're on mainnet. We obviously don't want to spend money that might be wasted.” Still, the GTM lead was at side events in Barcelona last week, at the European Blockchain Convention and at London Fintech Week, and content from those is coming.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Timeline from mainnet on 1 October to Solana Breakpoint in early November">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <line x1="40" y1="60" x2="640" y2="60" class="d-line" marker-end="url(#e4)"/>
+  <text x="40" y="44" class="d-s">September</text>
+  <text x="620" y="44" class="d-s" text-anchor="end">November</text>
+
+  <rect x="16" y="80" width="158" height="140" rx="8" class="d-box-accent"/>
+  <text x="95" y="106" class="d-t" text-anchor="middle">1 Oct — mainnet</text>
+  <text x="95" y="130" class="d-s" text-anchor="middle">Cardano</text>
+  <text x="95" y="154" class="d-s" text-anchor="middle">coincides with Korea</text>
+  <text x="95" y="176" class="d-s" text-anchor="middle">Blockchain Week;</text>
+  <text x="95" y="198" class="d-s" text-anchor="middle">the CEO goes</text>
+
+  <rect x="180" y="80" width="158" height="140" rx="8" class="d-box"/>
+  <text x="259" y="106" class="d-t" text-anchor="middle">TOKEN2049</text>
+  <text x="259" y="130" class="d-s" text-anchor="middle">Singapore</text>
+  <text x="259" y="154" class="d-s" text-anchor="middle">on the Cardano</text>
+  <text x="259" y="176" class="d-s" text-anchor="middle">Foundation booth;</text>
+  <text x="259" y="198" class="d-s" text-anchor="middle">the CEO goes</text>
+
+  <rect x="344" y="80" width="158" height="140" rx="8" class="d-box"/>
+  <text x="423" y="106" class="d-t" text-anchor="middle">EVM launch</text>
+  <text x="423" y="130" class="d-s" text-anchor="middle">no date given</text>
+  <text x="423" y="154" class="d-s" text-anchor="middle">“I probably gave</text>
+  <text x="423" y="176" class="d-s" text-anchor="middle">some hints”; expected</text>
+  <text x="423" y="198" class="d-s" text-anchor="middle">before Breakpoint</text>
+
+  <rect x="508" y="80" width="158" height="140" rx="8" class="d-box"/>
+  <text x="587" y="106" class="d-t" text-anchor="middle">Solana Breakpoint</text>
+  <text x="587" y="130" class="d-s" text-anchor="middle">London, early November</text>
+  <text x="587" y="154" class="d-s" text-anchor="middle">a colleague may come</text>
+  <text x="587" y="176" class="d-s" text-anchor="middle">from South Africa</text>
+
+  <text x="340" y="242" class="d-s" text-anchor="middle">Anyone attending who wants to meet: contact the host or the marketing lead. Custom swag “just needs your ideas”</text>
+</svg>
+<p class="figcap">The TOKEN2049 booth came from a community suggestion: “we put through our application, we did the presentation, and I can confirm we got accepted.” “A big win for RealFi.”</p>
+</div>
+
+<ul>
+  <li><strong>Korea Blockchain Week.</strong> Coincides with the 1 October launch. The CEO plans to be there; a venue is still being found — “going grayer”</li>
+  <li><strong>TOKEN2049 (Singapore).</strong> Accepted as one of the projects on the Cardano Foundation booth. The CEO can meet delegators “for completely free” and show RealFi shortly after launch</li>
+  <li><strong>Solana Breakpoint (London, early November).</strong> “We will have just hopefully, touch wood, have gone on to EVM by that point.” The marketing lead, though British, won't be there; a colleague may come from South Africa</li>
+  <li><strong>2027.</strong> “I've not looked yet” — mainnet, EVM, the token, “and then you've got GTA 6.” The GTM lead “has a big say on where he wants to go”</li>
+</ul>
+
+<p>On EVM timing, the marketing lead said that anyone listening carefully would have caught “some hints as to when EVM will be exactly.” <span class="badge">added</span>What is actually on the audio is “hopefully on EVM by Breakpoint (early November),” plus the Cardano Seminar's “a month after mainnet.” No date was stated.</p>
+
+<p>On swag, in answer to a question: custom swag can be made, “swag isn't an expensive cost,” and “if you're gonna be repping RealFi … for us there's benefits there” — details when fully live. A chat suggestion for limited-edition swag tied to the mainnet launch was welcomed: something only available before mainnet would carry “OG status” in years to come, and Discord roles work the same way.</p>
+
+<h2 id="en-content">8. Community content, and how free it is</h2>
+<p class="deck">Free on your own accounts. Different when it goes out on RealFi's.</p>
+
+<p>The most practical question of the session came from the chat: if the community makes something like a quiz, <strong>does it need RealFi's review before sharing</strong>, given that this is a financial product — or is there freedom to create and share?</p>
+
+<blockquote>
+<p>If it's coming out on your accounts, you're allowed freedom. I'd suggest obviously asking us if you've got certain questions or you want to be sure that what you're posting is correct and factually correct. <strong>Obviously, different if it's things coming out RealFi accounts.</strong></p>
+</blockquote>
+
+<p>The host added his Cardano experience: “I would never talk about price, but obviously the community would talk about price. It's not because anyone says it's the rule … <strong>there are things that the community can say about RealFi that RealFi may not say itself.</strong>”</p>
+
+<p><span class="badge">added</span>The answer is “yes, there is freedom,” but the line is drawn by <em>whose account</em>, not by <em>what may be said</em>. Read alongside the opening caveat about being careful with a financial product, the session's answer is: <strong>there is somewhere to check facts, but no review obligation.</strong></p>
+
+<h2 id="en-ticker">9. Rolling out the USDrf rename</h2>
+<p class="deck">“Pretty much across.” But “a new one comes every day.”</p>
+
+<p>Among the changes happening in the background: a new website “soon,” and <strong>USDrf “is now everywhere.”</strong> The rename was recapped:</p>
+
+<ul>
+  <li>Decided by community vote — “50/50 for the first couple of days,” then “84% went with USDrf and sUSDrf”</li>
+  <li>The changes are “implemented pretty much across”; consistency should now show in documentation</li>
+  <li>“We're not perfect, and we're human and we're finding them, and a new one comes every day.” More changes to come</li>
+</ul>
+
+<p><span class="badge">added</span>Two points differ from the record. The vote result posted in <a href="../2026-08-24-office-hours-ticker/#en-vote">the announcement shown on the #7 page</a> was 51 of 75 votes for option B — <strong>68%</strong>. What the “84%” here refers to is not said. And the previous names are described as “USDr and sUSDr,” where the record has USDR / sUSDR. Both are kept as spoken; the mapping is in the glossary.</p>
+
+<p>Finally, the host said he has “personally connected different members of this community with senior leadership in RealFi to have private calls around different ideas, suggestions, connections, and proposals.” “We are enormously thankful.”</p>
+
+<h2 id="en-overall">10. The whole picture</h2>
+<p class="deck">Take the framework from #7 and run it as a two-week experiment. That is this session.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="The framework from #7 on top, this session's two-week experiment in the middle, and what follows mainnet at the bottom">
+  <defs>
+    <marker id="e5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="648" height="62" rx="8" class="d-box-plain"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">#7 (24 August) — the framework</text>
+  <text x="340" y="68" class="d-s" text-anchor="middle">the handshake, crews and districts, L1/L2 KPIs, the dark forest. “We haven't launched the crews yet”</text>
+
+  <line x1="340" y1="82" x2="340" y2="104" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="16" y="108" width="648" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="134" class="d-t" text-anchor="middle">#9 (21 September) — a two-week experiment before mainnet</text>
+  <text x="340" y="158" class="d-s" text-anchor="middle">first district: the dark forest; first crew: drive testnet activity</text>
+  <text x="340" y="180" class="d-s" text-anchor="middle">self-organise on the Miro board; nothing new built; success = more activity, shown on-chain × online</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">presented to leadership as an “A/B test” to ask for resources</text>
+
+  <line x1="340" y1="208" x2="340" y2="230" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="16" y="234" width="648" height="56" rx="8" class="d-box"/>
+  <text x="340" y="258" class="d-t" text-anchor="middle">After mainnet (1 October)</text>
+  <text x="340" y="280" class="d-s" text-anchor="middle">pick ambassadors from those who were active; go to EVM; “more crews and districts could form”</text>
+</svg>
+<p class="figcap">Where #7 explained why the crews hadn't launched, this session is the invitation: they are launching, please come in.</p>
+</div>
+
+<h2 id="en-qa">11. Q&amp;A</h2>
+<p class="deck">Four from the chat. Nobody came up on stage.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant B</span>The Lace section's rewards task is to swap and stake — I have Lace connected to the dApp but don't see this in the wallet. Is it something native in Lace?</p>
+<p class="qa-a" data-by="Taken away">The host: “when I use it, I think it's in browser.” The marketing lead: “I genuinely don't know,” though it could relate to work with the Lace team ahead of launch. <strong>A follow-up after the call was promised twice.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant C</span>(Confirming the call to action) Get into the community board, organise, brainstorm and conduct experiments?</p>
+<p class="qa-a" data-by="Answered">Exactly. Success in two weeks is a demonstrable rise in testnet activity, measured on-chain and online combined (<a href="#en-sandbox">section 5</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant F</span>Consider limited-edition swag tied to mainnet launch events — more desirable for giveaways.</p>
+<p class="qa-a" data-by="Agreed">Something only available before mainnet would carry “OG status” in years to come; Discord roles are the same kind of thing ambassadors could get if it all works.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant G</span>If the community creates content such as quizzes, does it need review by the RealFi team before sharing, given it's a financial product — or is there freedom to create and share?</p>
+<p class="qa-a" data-by="Answered">Freedom on your own accounts; ask if you want to be sure something is factually correct; RealFi's own accounts are different (<a href="#en-content">section 8</a>).</p>
+</div>
+
+<h2 id="en-pending">12. Left open</h2>
+<p class="deck">A session for starting the first one, so more is undecided than decided.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Taken away</span>What the Lace rewards task refers to inside the wallet.</p>
+<p class="qa-a" data-by="After the call">Two guesses — “in browser,” and “related to the Lace team's implementation” — and no answer. A follow-up was promised.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not given</span>Who picks ambassadors, when, and how.</p>
+<p class="qa-a" data-by="Direction only">“Pick ambassadors and community representatives from those people that are about it.” Criteria, numbers, timing, roles and rewards were not given; the role/status/points design “being drafted” in #7 did not appear here either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not given</span>What “more activity” is compared against.</p>
+<p class="qa-a" data-by="Method only">Called an “A/B test” and a “closed loop,” but no comparison group was described, and the measure stops at “on-chain × online.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Hint only</span>The EVM launch date.</p>
+<p class="qa-a" data-by="No date">“I probably accidentally gave you some dates,” by his own account — but what is on the audio is only “hopefully on EVM by Breakpoint in early November.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Discrepancy</span>The “84%” ticker vote.</p>
+<p class="qa-a" data-by="Record says 68%">The announcement on the #7 page shows 51 of 75 votes, 68%. What the “84%” refers to was not said. The old names were also described as “USDr / sUSDr,” against USDR / sUSDR in the record.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Announced only</span>The new website, swag details, 2027 events.</p>
+<p class="qa-a" data-by="No dates">Website “soon,” swag “when we go fully live,” 2027 “not looked yet.” No timing for any of them.</p>
+</div>
+
+<div class="note">
+<p><strong>About this page.</strong> This session is treated as being under the Chatham House Rule, so no speaker is named. The two people who spoke appear as “the host” and “the marketing lead,” people who asked questions in the chat as <code>Participant A–G</code>, and colleagues mentioned by name by role.</p>
+<p>The source has neither speaker labels nor timestamps; speakers were assigned from context. <strong>A Miro workshop board was screen-shared but its contents were not provided</strong>, so only what was said aloud appears here. Every figure was drawn from the spoken description.</p>
+<p>Passages marked <span class="badge">added</span> were written by us to help the reader and were not said on the call.</p>
+<p>For the exact wording, see the <a href="./transcript-en.html">English transcript</a>; to read straight through in Japanese, the <a href="./transcript-ja.html">Japanese transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All sessions</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">RealFi Office Hours アーカイブ</span><span class="l-en">RealFi Office Hours archive</span></p>
+</footer>
+
+</div>
+</body>
+</html>

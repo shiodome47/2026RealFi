@@ -1,0 +1,494 @@
+RealFi Office Hours — Ambassador Program
+2026-09-21
+話者ラベルなし。依頼者が固有名詞を確認したテキストを、匿名化してから保存したもの。
+進行役 = ホスト、[Speaker A] = マーケティング責任者。氏名・ハンドル名・ステークプール名は [ ] で役割に置き換えた。
+
+[Speaker A] up here. Hey, [Participant A]. Hello, everybody. We're not in an X space, but if you can invite anyone into the stage that you know that you think would be interested, that'd be awesome. 
+
+It'll support this excellent work that we're doing. Uh, ah, here you go, [Speaker A], I can see that you've, um, requested to come up to the stage. Hang on. 
+
+As always, guys and ladies, there is the chat in the, um, top right bubble, so you'll be able to, uh, yeah. You'll be able to ask questions while we're talking. 
+
+Um, can you hear me okay on the main stage? Hear me, that's the real question. Okay, great, you can hear me. Well, that's good. Uh, we're gonna talk about the, um, Alpha Ambassador Programme. 
+
+Um, and [Speaker A]'s got some updates about events. I'm just waiting for [Speaker A] to talk so that we know he's with us in the room. Yeah. Can you hear me? Can you hear me? Yeah, can hear you. How you doing? 
+
+I was... I, I thought, um, I thought... I did say something, but I didn't know whether you heard me before, but, um, I assumed you did hear me when you obviously hadn't. But yeah, I'm okay. 
+
+How are you? I'm good. I'm good. I think my son's given me a, a cough that's developing, so I'll go home and thank him for that later. But, um, I'm doing really good. 
+
+It's been a bit of a whirlwind, [Speaker A], working with you over the past three months. Is that right? That's what's taking us up to Mainnet? Yeah, absolutely. Is it, is it the stress of working with me? 
+
+Is that what the whirlwind is? Yes. Prematurely grayed. No, it's been good. It's been good. Um, all right, so as a recap, um, you know, where have we been? 
+
+We've launched an Accelerator Program with stake pool operators who are the validators of Cardano's network, and that was kind of a precursor to today's conversation, [Speaker A], around the ambassador sort of Alpha Programme, right? 
+
+Yeah, absolutely. 
+
+I mean, we've been watching everything that you've built since you've joined, uh, particularly with the SPOs, and we've always been thinking, particularly the two of us, about how we can, you know, make this work and make it be really valuable to the community, but also to ourselves as well. 
+
+Um, and the more the conversations we had, it kind of led to this, hold on, this is, you know, we can turn this into an Ambassador Programme, and that's really where you've stepped up and created this all from one. 
+
+We've kind of streamlined a process that other teams would take two, two long versions to do. 
+
+Um, and yeah, this, this is your opportunity, obviously, to, to, uh, introduce our community to what, what that Ambassador Programme looks like. 
+
+That's right, and in previous RealFi Office Hours, you'd had articulated the emphasis on authentic activity, which is, which is true. 
+
+You know, we really wanted to see real authentic activity on Testnet and within the community, and we weren't looking for vanity metrics. 
+
+So I'm also gonna say we've had a lot of feedback around what we could do with things like the RealFi product or with the RFG token, all these kind of things. We've had a lot of community input into it. 
+
+Now, the RealFi team is very careful about what we can and can't say in terms of it being a financial product. 
+
+So what I'm communicating is just that we are taking those ideas into the team, and sometimes that might not always be visible in Discord, you know? 
+
+But they are there, and the team is looking, and we really do value that kind of contribution. 
+
+Uh, definitely shout out to [two stake pools from the SPO programme] who aren't here, but hopefully they will hear us afterwards. 
+
+Um, so the Ambassador Programme, um, as I said, I wanted to thank everybody for the suggestions and the workshop contributions that we've had so far. The Mainnet date has been extended, uh, what? 
+
+A couple of weeks, which gave us a little bit more time, [Speaker A], right? So just- Yeah, it's the 1st of October that Mainnet launches. So- Yeah ... about nine, nine days from today, isn't it? 
+
+Well, uh, it's given us a great opportunity 'cause I think on, on the last call that we did with marketing, we talked about, um, the need to translate what internal functions would understand as value, so sort of KPIs, this kind of thing, and having an interface for impact with the community where we can kind of do world building, right? 
+
+Which is, you know, what kind of activities and roles might the community offer someone that's entering RealFi, and we wanna marry those two things up so that we have a kind of a handshake between the work that people do or, or the contributions people make, or the ideas that people have in the community and translate that into something the teams can actually act on. 
+
+That's kind of the, the hidden work that's going on. Um, so bringing us up to date, we've got this idea of world building. 
+
+I won't g- spend too long on it, but the idea is that like any map or, um, story-driven RPG, the individual is going on an adventure. That's how, I think it's [a colleague]'s idea originally, right? Yeah. 
+
+Decentralized adventures. Absolutely. Tell us a bit about that, [Speaker A]. 
+
+Well, kind of just a lot of the, it's just more a lot of the work, me and [a colleague] are always thinking about how we can grow and what we can grow, and we're always thinking about that end goal of TVL, and obviously we've been, some of us have been in the Web3 space for a while, so we like the elements of gamification. 
+
+So what [a colleague] did a couple of months ago was just explore a few ideas, um, which he named Decentralized Adventures, and it's kind of what, what this got built on. 
+
+Uh, it was different ways for different adventures, for different people to, to help boost RealFi and show the world what RealFi is. 
+
+You see, I actually really loved that that was the angle because I've always understood communities to be inherently self-organizing. And so there isn't this top-down control. 
+
+So therefore, what we're saying is people are going to select their own adventures. It's self-determining. And so you-- it's not a one-size-fits-all approach. 
+
+You've, you've gotta be able to allow people to kinda specialize and, and find what's, um, interesting to them. Uh, by the way, I slapped my wrist because I should have shared the workshop board. 
+
+I'm putting it into the chat now, guys and girls, if you have a look in there. This is the workshop we've been working in. 
+
+Um, at the top of that workshop is the original SPOs, uh, asset-based community development workshop where they've introduced themselves. 
+
+And then below that is this kind of, um, prototype, uh, world-building that me and [Speaker A] with [a colleague] have been working on. Um, should I just screen share? Is that a bit risky or let's... One second. 
+
+That would be okay to do. I'm just thinking of all the tabs. I don't wanna give anyone, uh, PTSD, communities. Um, okay, I'm gonna share my screen. I'm gonna be brave. Can you see that, [Speaker A]? 
+
+Now I can, yeah. Now it's loaded. Okay. It's a bit small, but- Oh, I see. Yeah, there's a lot of our thinking there. 
+
+Like, we're, we're being transparent about kinda how we're trying to build this out. We just spoke to you briefly about RealFi KPIs and, like, how it-- how the team might, um, uh, understand value. 
+
+There's something interesting here, by the way, because later on this call, we're gonna talk about the common good or the public good. 
+
+And when you look at the RealFi KPIs or when you look at the common good, the connecting idea is: How does the audience or the team or the community that you're trying to serve, how do they understand success in terms of, like, objective numbers? 
+
+Because if you can find a common good, that's gonna help you create an axis around which you can kind of have coordination. 
+
+You know, people will be able to self-organize, like we said, in a community if they understand, um, what's in it for them, you know? And you need to understand what's in it for everybody, right? 
+
+Um, so just zooming out 'cause I'm overexplaining that a little bit. This is a community, right? Go from-- You join by yourself, you form partnerships, you form a crew. 
+
+That's what we're trying to do here. Up here is that handshake I was talking about, though the resolution's awful. 
+
+The idea is your team's in the blue, and then the community ecosystems in the red, and there's this handshake going on in the middle, which is these two green. 
+
+Um, that's the, the center, the interface for impact or our team, me and [Speaker A], right? 
+
+Then over here we are saying, "Hey, if someone joined RealFi, how would they explore it?" Like, what would you expect there to be? 
+
+So you would have a map, and you would go into different districts or places that you could contribute, and we're creating this first one, which is the, uh, dark forest. 
+
+If anyone's up on that, dark forest theory is that AI is coming. Fifty to 80% of the internet, according to, um, Cloudflare, is bots. 
+
+Ninety percent of on-chain activity is bots if you go to DeFiLlama or Dune or whoever it was. So my point is that the dark forest theory is that human authenticity becomes way more valuable in AI. 
+
+And, you know, the dark forest is the cozy web. It's like the places that a team like RealFi couldn't reach, but its community could because the community can go into places that you can't. 
+
+And they might be Discord or private Telegrams or in re-- in-person meetups, this kind of thing. So dark forest was just a bit of fun. 
+
+Um, you guys can agree with [Speaker A] if you wanna change that later, right? And, um, I'm deviating here, [Speaker A], so stop me at any minute. But here are the common goods. 
+
+This is what w-we sat down and was like, if we were in the community, we-- And this would apply to other ecosystems like Ethereum, right? But we're just talking about Cardano at the minute. 
+
+If someone was to talk about RealFi, what would be a common good where RealFi, the community member, and the Cardano ecosystem would agree that something good or valuable was happening? 
+
+So the first thing would be securing your ADA, right? You know, there's all these hacks out there. How can you do that in a way that you keep your financial sovereignty? 
+
+The second would be to decentralize the network from a ecosystem point of view. 
+
+That's the SPO Accelerator Program, and supporting a RealFi SPO and delegating to them allows you to earn more points passively above and beyond what you can earn through active participation in the Testnet. 
+
+The third thing would be, well, okay, if you've secured your ADA and you've decentralized the network, those are virtues, but do you also believe in the long-term health? 
+
+You know, what does that look like for growth? So in other calls, we've talked about growth is capital productivity, okay? If you, e-especially in L1s. Um, sorry, [Speaker A]. 
+
+I heard a beep like someone was talking. No, that was, that was just one, uh, notification coming off on my iPad. Apologies. Okay. Was it the Benz? It's on silent. Right. 
+
+Okay, so the other ones were e-economic health, essentially. You know, this is what we need. So that's again a common good. 
+
+Everybody in Cardano would agree that we do need liquidity and economic health. Fourth would be explore utility. So, like, what could you do with your ADA? You don't necessarily have to sell it. 
+
+You could, you know, borrow it or there may be other ways that you could use it. 
+
+And by the time you've gone through those common goods, you can end up with a really strong argument as to why someone might wanna participate in RealFi. 
+
+Then we created some, um, templates, how you might organize. 
+
+And so the intention was if we create this for you and some ideas, you can then come in, look at which SPOs participated in the asset-based community development workshop, and you might be able to find people that you wanna work with and collaborate with. 
+
+That's my whirlwind tour of the, um- Workshop that we've got up. 
+
+That it's open right now, everyone can jump in, you can talk about it in Discord, you can leave sticky notes, you can find people that you want to collaborate with. 
+
+Um, and it was worth me, I hope-- Let me come back to my screen. 
+
+It was worth me going through that briefly because we're really trying to create a sandbox now in the time up until Mainnet where we can s- Uh, and, and by the way, everybody's at the pumps here, right, [Speaker A]? 
+
+Like, the constraints over the next few weeks while we try and get to Mainnet are such that what's built is built right now. The-- all of the feedback we've had, we've been giving to the team. 
+
+But what's built is the enabling constraint, you know? 
+
+I think there were some great ideas like dashboards, which we wanna see, and we've put to the team, but we're not gonna build anything new in the next two weeks, so- To, to, to add what there, those stuff can obviously happen in the future. 
+
+It's just right now- Yeah ... obviously as we're even going to Mainnet, that's got to be the focus for the tech team at the moment. 
+
+So yeah, so the workshop is like, what can we do in the two weeks, three weeks we've got left? 
+
+And so we've built this workshop up and the key thing, the first district would be on the Dark Forest and the first crew, is how to drive Testnet activity. 
+
+And so that's how we're seeing the Ambassador Programme right now is like, can we self-organize and can we do something interesting up until Mainnet and then pick ambassadors and community representatives from those people that are about it, you know? 
+
+The people that have been really active. So that's kind of where we're coming from. Is that a fair representation of what we talked about, [Speaker A]? Yeah, absolutely. Okay, great. So the workshop's up. 
+
+Um, everything I've just said now was essentially like, "Hey, let's use this Testnet window to self-organize together." So I'm just reading chat now. 
+
+[Participant B], uh, [Participant B] says, "Slightly unrelated, but I'm not fully understanding the Lace section rewards tasks that are to swap and stake. 
+
+I have Lace connected to the RealFi dApp, but I'm questioning if this is something native in Lace that I don't actually see in the wallet." Do you know, [Speaker A], by-- when I use it, I think it's in browser. 
+
+I, I- Was it? 
+
+Hmm I don't, I don't know this, but I do think it could be the, the-- uh, us and the Lace team are working on some stuff at the moment, so it could be, it could be related to just some of their implementation as we head up to the launch, but I don't, I genuinely don't know. 
+
+I'll follow up with you afterward, [Participant B], and try and sort that out with you as soon as this call has ended. Okay. So just to recap, we've talked about where we are. We've thanked the community. 
+
+We talked about the SPO Accelerator to Alpha that's been the, the sort of foundation of the community to kind of validators. 
+
+And we're currently in this Testnet window, so we're encouraging like can we organize to drive more Testnet activity? And from that, let's think about the, uh, Ambassador Programme. 
+
+And we've just shared the Miro board, which we're inviting you to jump into and to encourage everybody else in the RealFi community to jump into. 
+
+I think that if, if, if the only thing-- Um, the thing about ecosystem strategy in the community in RealFi is it has to be of the community. 
+
+If it's only the team doing stuff top-down, I don't think we can win. I think you need those kind of extended commun- uh, capabilities, uh, with the, with the community broadly. 
+
+And yes, you do need really clear incentives and they do-- there does need to be, um, clear, uh, skin in the game for people. Um, and I think there is. There's RFG token as it stands today. 
+
+Um, and then there's USDr and sUSDr. But there's a lot of information around that. Um, there's a l- there's a lot more to come, is essentially what I'm saying there. 
+
+Um, maybe I said too much there, [Speaker A]. You have to tell me when I'm off afterwards. Okay, so we've got the Miro board. Um, I just recap- recapped that. 
+
+Are there any questions in chat we could go through now about the Ambassador Programme or ideas that people have? 
+
+'Cause me and [Speaker A], we've talked about the roles, we've talked about what could be like longer term incentives. We've talked about this is just one district, Dark Forest and the first crew. 
+
+But obviously, I'm really interested in seeing other districts form and other crews form. But I feel like we've got to start off somewhere simple first, right? 
+
+Can we get one crew, which is the people in this worksh- uh, um, workshop now running well? And then if it does work well now, we can then open it up. 
+
+And the obvious thing here, just to state the absolute obvious, we're going to Ethereum, right? We-- uh, Mainnet, we're going EVM. 
+
+So there's gonna be huge opportunity to go out and like, you know, server safaris, um, meeting the Ethereum community. If people have already got connections in Ethereum, brilliant. Let us know. 
+
+You know? So a lot of exciting stuff coming up. Anyway, [Speaker A], stop me now. Uh, what did I miss, and what do you hope people took away from that long word salad that I just engaged in? 
+
+I think just to, if you, if you wanna get involved, get involved. I don't think you've actually missed anything. 
+
+Um, I guess it's for the community, if they've got any questions or they think there's something that's been unanswered, uh, definitely now's the time to ask, but also tag us in the future if you don't feel comfortable asking in a second. 
+
+Um, but I think you've pretty much covered, covered the scope and what the plan is. Um, yeah. It should- Yeah ... how- If it's, uh- Yeah. Sorry. No, go on. You go on. Sorry. 
+
+You just helped me clarify it. It's like the community is what you make it, the people that are on this call and the people that are in the RealFi community. 
+
+There's only so much that, you know, um, anyone on the RealFi team's gonna do. These projects live and die, I think, by whether or not the community gets around them. 
+
+So yeah, that's the invitation and that's the offer and we do wanna get lots more clarity and lots more insights. 
+
+Um, but I think that until the Ethereum Mainnet launch-- Yeah But it's really based on what you, you know, it's what [the host]'s already said multiple times, but it's really based on what, what's good and what you're able to do. 
+
+With community stuff I've worked on in the past, some are incredibly p- gifted at bringing new community members in that were relevant, um, and that was their specialty. 
+
+Others were more focused on trying to fix as many bugs as possible and trying to break the app as, uh, uh, to do that. 
+
+So it really depends on what you wanna do and what you, you know, you feel your specialize is. It's not really for us to say that. 
+
+We just wanna be-- You know, you've joined this community, so we wanna make sure that your, your talents are what is used. We're not just gonna tell you... 
+
+We're like other communities, we'll just tell you to make memes, do this, do that. 
+
+We're not gonna tell you to do that because, you know, you should, uh, you should do what you enjoy and what you wanna do rather than, uh, have us tell you. That's a good point. 
+
+I mean, all, all contributions are gonna be considered, but there are two especially good ways that we're gonna be able to see, um, performance or contributions. 
+
+And that is if you are an SPO, one of the ways is, um, people that are delegating to your pool, um, you're gonna be able to claim up to, uh, I think you get 20% of all the points claimed. 
+
+So we wanna look at like KOLs, you know, influential people on chain, that's a validator or an SPO, and consider their influence online and bring those two things together so that when we look at activity it can be authentic. 
+
+So the first thing is if you're an SPO, how many people are delegating to your pool and claiming points? That'd be one really interesting way for us to authenticate activity. 
+
+And the second way is when you go into, uh, the RealFi Testnet, you'll have a referral link as an individual. 
+
+I- If we had more time, I would've loved to have, if anybody knows Discord HypeSquad, and you could have gamified it a bit better. 
+
+But everybody can get a referral link and use that and bring more people into the RealFi, um, community and engage in Testnet. 
+
+And I, I think the upside is, but, you know, I'm so enthusiastic that I'm bordering on irritating, I don't know. 
+
+But, like, I think the really interesting thing is when you're early in a community you have a massively outsized impact and say, and it's easy to be heard. 
+
+And I don't know how long I was in Cardano for, but seven years in Cardano and, you know, I think it-- when it gets to a certain size, um, not everybody knows each other. Do you know what I mean? 
+
+And so like all of the wo- the roles and the layers become almost, uh, their own communities. Um, I think there's a word for it, metathesis or something like that. Um, or is it rabbits? 
+
+I'm not sure. Anyway, I digress, [Speaker A], sorry. Um, so you're gonna talk to us about some events. I know there are some people in the audience that may be going to some of these events. 
+
+Would you walk us through your best understanding- I, I, I think it's, uh, I'd be good for you to answer [Participant C]'s question. Oh, sorry. Who, whose question am I? 
+
+It's the call to action to get into the community board, organize, brainstorm, and conduct some experiments. Yeah. So the clear call to action is, uh, and this is, um, nuts and bolts. 
+
+In the next two weeks, what success looks like is that [Speaker A] and I can show there's been a massive increase in Testnet activity because we want to show that the world building and the workshops work. 
+
+So basically we had a great uptick at the start. We've had loads of activity. It's been a success. But we've been making an argument that world building and crews and districts can be really, uh... 
+
+Do you know why world building is really interesting, by the way, [Participant C]? 
+
+Is that it's like nobody coming into the community on day one is going to be able to scale their knowledge of the internal language that different teams, like engineering, product, CEOs, all of this, in RealFi are gonna use. 
+
+It's an impossibility. You can't scale that kind of cultural knowledge within a team across a community when you're onboarding. 
+
+So the world building idea is can we use artifacts or, you know, um, objects that are already in somebody's head, like a dark forest or a harbor or, you know, things that everyone would be familiar with, to kind of orientate them around it, right? 
+
+But if you have crazy ideas like this, right? 
+
+Like when I'm talking to [Speaker A], you've got to be really careful that it doesn't come across as just activity for the sake of it when you're talking to leadership, right? 
+
+Not-- RealFi leadership's amazing. I'm not, I'm not casting any judgment, right? 
+
+So the point of this is like, hey, we think there's a really interesting way that we could build this community out, but the best way for us to advocate for those resources and for the team to support us in that is to do an AB test. 
+
+It's like the gold standard, right? 
+
+It's, it's to show some kind of a closed loop test where we can say, "Hey, this was actually really useful." So therefore the ask is we wanna drive more Testnet activity over the next two weeks. 
+
+The way that we do it is we get into that Miro board and we can do organization brainstorming and conducting experiments, as you rightly say, right? 
+
+And then the way that we wanna, uh, measure it is we ultimately would love to be able to see on-chain and online kind of metrics combined because I think most people at the moment lean one way or the other. 
+
+Like online activity can be faked. On chain activity could be botted, right? But if you're combining those two-- And I, I'm not talking about KYC here, [Participant D], by the way. 
+
+I just, uh, shouted you out before you joined. But, um, I'm not talking about KYC, AML and all of that. 
+
+I'm talking about you don't have to dox them, but can you combine those two things to verify the activity? That's a really interesting proposition to the team, right? 
+
+And, like me, it's me and [Speaker A] and [a colleague]. We're such a small team. So anyway, I hope that, I hope that answers it. 
+
+So we're trying to drive more Testnet activity because we wanna show the community can self-organize. We think there's some cool stuff here around world building that we could do. 
+
+And we completely acknowledge that this is very, um- What's the word? It's very early. It's very prototypey. 
+
+There's lots of questions that [Participant D] and [another stake pool] and other pools have rightly said, "Hey, we'd like more clarity here," or, "We think that you could do this or that with RealFi." And we take all that feedback into the teams. 
+
+And just to recap for [Participant D] and people that came and joined a little bit later, um, what we're saying is the next two weeks because the Mainnet launch was extended a little bit, gives us time to try these ideas out. 
+
+And then when we get to Mainnet we can talk about Ethereum and how we could go out and, and dominate there, you know? 
+
+Um, and I, I just think the whole world actually is a very small group of people can have a really outsized impact because it's people all the way down. 
+
+And I think especially in blockchain that's often forgotten. 
+
+Everyone's for the code, the protocol, the tech, and it's all important, but they're just tools, whereas actually it's people all the way down. Um, [Speaker A], I'm talking too much again. Yeah. 
+
+Tell me- Yeah. I, I'll tell you about them. Yes, good. 
+
+So yeah, just a little, we, you know, we, we've been, we've been doing some events, uh, but we've not done the big, the big hoo-ha until we're on Mainnet. 
+
+We obviously don't want to spend money that might be wasted. So we've been... But we've been, we've still been going to places. Um, [the GTM lead], our GTM lead, has been in Barcelona last, last week. 
+
+It was last week. I didn't see him even though I live here, uh 'cause I couldn't. Uh, but he, he went to some side events here that were really valuable. 
+
+He also went to the European Blockchain Convention. He's also been at London Fintech Week. 
+
+And so there's gonna be some content that you'll see from events that we've actually been to, um, and taken advantage of those opportunities. 
+
+And coming up, we're planning basically for the end of the year, um, ones v- as we are launching onto Mainnet on the 1st of October, um, we, uh, are planning on being, well, [the CEO] is planning on being at Korea Blockchain Week, uh, which, like, coincides with when we're launching. 
+
+I'm currently stressing out and going grayer as I try and find a venue for that. Uh, that would be a really cool event though. If any of you are in Korea, you know, reach out to us. 
+
+And that, this goes for all events, if any of you are there and you wanna meet us, I mean, I say us, like, I'm gonna be there. It will mainly be people like [the CEO] and [the GTM lead]. 
+
+We'll give you that opportunity, and we can arrange that. Just contact me or [the host]. Um, but we, we wi- we will have a presence at Korea Blockchain Week. 
+
+We have also, it got suggested by one of the guys in the community, we got accepted onto the Cardano Foundation booth for TOKEN2049. 
+
+Um, I think it first got brought to our attention from someone in this, uh, um, Discord server. 
+
+We put through our application, we did the presentation, and I can confirm, uh, 'cause we've all confirmed that we got accepted as one of those projects that can be on their booth. 
+
+Uh, so that's a big win for RealFi. And [the CEO] will be there in, uh, at, in Singapore. 
+
+Uh, he will have opportunities now for completely free, which is fun, uh, to talk and meet the delegators at the event and be able to show RealFi very shortly after we've launched on Cardano what RealFi is and, and introduce it to new people that haven't yet discovered us. 
+
+Um, following that, we plan on, as we move on to different EVM and then what it looks like after EVM, we will also have a bit of a presence at Solana Breakpoint, which this year I think is in London. 
+
+Um, even though again, I'm British, I won't be there. Uh, but [a colleague] might be coming all the way from South Africa, which would be pretty cool. 
+
+So again, if any of you are in London for Solana Breakpoint, I think it's the beginning of November, um, we will have just hopefully, touch wood, have gone on to EVM by that point as well. 
+
+So that's, um, another really exciting event. 
+
+And then obviously next year our event strategy might look a bit differently because hopefully we will have more to play around with as hopefully TVL jumps in and we can use it all wisely. 
+
+Um, so we can, well, use, we can make sure we do everything wisely like we have been doing. Um, but yeah, that's, that's where we're at at the moment. 
+
+We've got some exciting things going forward, um, and plenty of opportunities if you happen, any of you happen to be there. 
+
+And if people are gonna be there and they wanna rep RealFi, um, I'm sure you gave me a task to do this, [Speaker A], so I'm probably now getting myself in trouble but were we gonna get some swag done for people? 
+
+Can we get some shirts? Yeah, I mean, I can do, I, I can do that. Uh, that will all depend on, on the need. But yeah, absolutely. Uh, if y- that's the whole point. We will. 
+
+We, um, we don't have a lot of swag at the moment. We, I mean, it's one of the things, uh, [a colleague] and I did in South Africa was, uh, create some new hoodies and stuff. So we have the designs. 
+
+They're very easy to make. Um, so swag will be available. Um- So let me, let me pin that back at you ... but more info will come out when we go fully live. 
+
+You said depend on the need, so you're saying you're gonna make custom-made swag for the community? Well, no. That sounds- No, yeah. 
+
+Well, I was, what I was saying is we would sell it depending on the need. 
+
+Obviously we've got to know that it's gonna be right for us to, you know, we will, we can, we can do stuff like that, you know, because it's not, swag isn't an expensive cost. 
+
+Um, and you know, if you're gonna be repping RealFi and you wanna do that, then for us there's benefits there. Custom-made swag, guys. We just need your ideas as to what it should be. 
+
+That sounds good. Um, so we've got TOKEN2049, we've got Korea Blockchain Week, we've got, uh, the Solana thing. I've forgotten what that's called. What's it called? Solana Breakpoint? Yeah. Okay. 
+
+Um- That sounds very good. Yeah. And to be fair, I gave you a bit of insights that if you were listening carefully, I kinda gave some hints as to what's happening and some dates there. 
+
+Um, so I, I probably accidentally gave you some dates, so if anyone's in the tech scene who's listening, I do apologize, but I probably gave, uh- If you listen back, I probably gave some hints as to when EVM will be exactly. 
+
+Um, and I gave a little, a few couple of hints into why we're going at certain times Oh, that's cool. Look, [Participant D] and [Participant E] are both gonna be in Singapore. That's awesome. 
+
+Um- I actually, I'm not going, but I, I really love s- uh, TOKEN2049 is one of my favorite events that I've been to over the years. Uh, but it could be because I'm a weirdo that really likes the heat. 
+
+So, I, I do think that c- I have a fa- 'cause obviously it's a very... Uh, but and obviously it's amazing to have all those people all so keen. 
+
+I haven't been for two years, um, but the three years I went, I, I loved it. [Participant F] says, "Consider limited edition swag tied to Mainnet launch events. 
+
+This makes it more desirable for giveaways." I, yeah, c- yeah, if we only had Alpha, uh, Ambassador Programmes that you could only get before Mainnet would be cool. 
+
+You know, in years to come you'd have, like, that OG status. Um- Yeah ... when we talk about Discord roles as well. 
+
+And that's wh- and that, and that's the type of thing that the ambassadors can get if everything becomes successful as well. You know, like... And now I'm linking it back. Okay. 
+
+Question for you here, uh, [Speaker A]. 
+
+Uh, [Participant G] says, "For example, suppose the community comes up with something engaging such as quizzes to test people's understanding of RealFi, it could encourage more people to get involved maybe, especially if there's, like, a referral loop in there, right? 
+
+However, I assume that anything created by the community would need to be reviewed by the official RealFi team. 
+
+Since RealFi involves financial products, even something created with the best of intentions could unintentionally cause confusion. 
+
+Am I right in thinking that community initiatives like this should be reviewed by the RealFi team before they're shared, or does the community have some freedom to create and share this content?" If it's coming, if it's coming out on your accounts, you're allowed freedom. 
+
+Um, if, I'd suggest obviously asking us if you've got certain questions or you want to be sure that what you're posting- Yeah ... is correct and factually correct. 
+
+Um, we obviously don't w- but you have a lot more freedom when it's j- stuff that's coming from your own account. Obviously, different if it's things that we do, uh, coming out RealFi accounts. 
+
+Um, but anything you're uncertain of, you can always just ask. But if you feel confident with it, then, um, you know, it, you've got that freedom. 
+
+Yeah, when I was in Cardano, like, I would never talk about price, but obviously the community would talk about price. You know? So there are some things that you don't, um... 
+
+It's not because anyone says it's the rule, it's just you know what I mean? Y- you're there. Yeah. 
+
+So yeah, there were, I think there are things that the community can say about RealFi that RealFi may not say itself generally, you know, as a principle. Um, someone stuck their hand up to speak. 
+
+Guys, you're welcome, and girls, you're welcome to put your hand up and come and talk to us if you want to. Um, so don't be afraid. Uh, we're all extreme extroverts here. 
+
+Um, what was the other thing I was gonna, uh, ask you about, [Speaker A]? Um, uh, any events going into 2027 that you're particularly interested in, even if it's not committed yet? 
+
+I mean, I've not lo- I've not looked yet, you know? That's, that's, you've got, we've got different milestones. 
+
+You've got your Mainnet launch, your EVM launch, um, your, your token, and then you've got GTA 6. 
+
+So there's a lot of things before the end of this year that are coming out and that we're thinking about before we go on to next year. 
+
+Uh, when, when, when GTA 6 comes out and I've played it, then I think there'll be events that I'll, uh, focus on. But [the GTM lead], in all seriousness, [the GTM lead] has a big say on where he wants to go. 
+
+He's the, he's the GTM lead, he's the guy who's gonna be able to really be insightful and speak to the relevant people and be, uh, you know, b- he, he, he's, he's, he's a big part of, um... 
+
+He's a b- he's a better person to have at these events, and so anything that he really wants to go to, like the European Blockchain Convention, he's gonna go to because, uh, it's not just useful for him, it's gonna be useful for the whole RealFi project. 
+
+I mean, actually that's one thing RealFi, if you noticed, all of the different team functions have come onto RealFi Office Hours. 
+
+Um, if you've been, you know, attending some of these or reading announcements, all of the teams are in Discord, all of the important team members you can reach out and talk to if you want to. 
+
+They're, obviously I'm happy to do. We're happy to be intermediaries, you know? Um, of course I'd recommend [the CEO]—perhaps you mean [the CEO]—so between [the CEO]'s, uh, [inaudible]. Okay. 
+
+So let's recap a couple of things so I didn't miss anything. Um, we've talked about... Ah, I'll have to go and find that afterwards. 
+
+So we've talked about the Accelerator Program, which I think is brilliant. We've got some really great validators in RealFi's, um, community. 
+
+We've talked about the Testnet window, that's the next couple of weeks, uh, until Mainnet, and then a lot's gonna happen 'cause we wanna go out and get into Ethereum, and I think that more crews and districts could form through that. 
+
+And then as, um, as [Participant C] said, you know, the ask here with the Miro board is to jump in. The, the outcome is more Testnet activity. That's what we're trying to drive. 
+
+Getting more people involved in Testnet, getting more people earning the points. 
+
+If you're an SPO, you know, all of the points that are claimed if people are delegating to your pool are gonna get 20% of that. 
+
+And the people that delegate to you are gonna get additional points that they're earning passively, so that's useful. Then after that, we talked about the public good or the common good. 
+
+So we gave narratives for, I think, why it's good for Cardano, why it's good for delegators, why it's good for people who are delegating to them, and why they would want to get involved with RealFi. 
+
+Then [Speaker A]'s talked about events and connections. So he's talked about, uh, TOKEN2049 Singapore is coming up, Korea Blockchain Week, not in any order, and Solana Breakpoint. Um, what else, [Speaker A]? 
+
+We got any alpha for us? Got any insights that we can, um... I think that's probably it for now I think, I think we've given... Um, there's always stuff we're working on. 
+
+Um, we're doing a lot of changes in the background. Uh, you might see a new website soon, but that's another thing that's making me and [a colleague] go gray. 
+
+Um, but you should have noticed as well that, uh, USDrf is now everywhere. So if you- Oh, tell us about that ... call it USDr from now. 
+
+Go through that again, 'cause people might have missed that, about the ticker. Yeah. So the community, community helped vote, uh, change the name of ticker. 
+
+Uh, we, so it was originally USDr and sUSDr. Uh, we gave it to you guys to vote. I think it was, like, 84% in the end. It was 50/50 for the first couple of days. 
+
+Uh, but 84% went with, uh, USDrf and sUSDrf. Uh, and we've now implemented those changes pretty much across. 
+
+I mean, there's still work to be done, 'cause we're not perfect, and we're human and we're finding them, and a new one comes every day. 
+
+Uh, but we've start-- You should start notice the consistency, um, across on documentation and things like that now, uh, with the new title. 
+
+And there'll be further changes going forward, but we're still very much at the early stages of, uh, that. And then, uh, another thing for me and [a colleague] to storm through. 
+
+And I'll, and I'll g- I'll go even one step further, maybe a bit more. 
+
+But I would say, you know, I've personally connected different members of this community with senior leadership in RealFi to have private calls around different ideas, suggestions, connections, and proposals that different community members have made. 
+
+Um, so you know, as I said at that beginning of the call, there's been a lot of activity and a lot of contributions already, and we d- we are enormously thankful for that. 
+
+Um, so any other questions? Now is, now's your time. We're watching chat. But if not, tag us or DM us privately and we'll follow up. 
+
+And, uh, [Participant B], I promised you I'd talk to you after this call, so I'm gonna DM you shortly or tag you in channels, um, uh, to, just for, try and find out a better understand what's happening with that Lace, uh, question that you had. 
+
+Okay. Uh, you get the last word, [Speaker A]. Um, so in, invite your friends, let's get to 1,300 Discord users. Excellent. We're at 1,200 now. I think 1,266 when I last looked. 
+
+Let me, let me go on my phone and that tells me. Um- Yeah, we need some tweets. We need some, um- Tweets. Yeah, we're at 1,220. Yeah, 80, I want 80 more, like, fast. Fine. Brilliant. All right. 
+
+Thank you everyone for listening. It, yeah- That's all it is If we didn't cover anything that you would have liked us to have covered, let me know and we'll schedule it for the next office hours. 
+
+Thanks everybody. Thanks, [Speaker A]. Cheers. Cheers.

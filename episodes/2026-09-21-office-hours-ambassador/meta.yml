@@ -1,0 +1,39 @@
+slug: 2026-09-21-office-hours-ambassador
+title: RealFi Office Hours — Ambassador Program
+title_en: RealFi Office Hours — Ambassador Program
+date: 2026-09-21
+series: realfi-office-hours   # shared/series.yml のキー
+series_no: 9                  # RealFi Office Hours の通し番号（回の実施順）。
+                              # 告知には番号が付いていなかった（依頼者による）。#8 の次の回なので 9 とした
+
+# チャタムハウスルール。依頼者から実名の扱いについて指定がなかったので、
+# 最優先のルール（判断がつかないときは匿名化する側に倒す）に従って全員を匿名化した。
+# #6〜#8 と同じ partial（発話した 2 名だけ実名）に戻すのは、依頼があれば小さな変更で済む。
+chatham_house_rule: true
+
+platform: Discord（ステージ）
+duration: unknown             # 原本に時刻がない
+attendees: unknown
+
+speakers:
+  - 進行役                      # コミュニティ／エコシステム担当。#7・#8 と同じ人物と読める
+  - 登壇者A                     # マーケティング責任者。#7 でも登壇
+# チャットで質問した参加者は 参加者A〜G（登場順）。社内の人物（GTM 担当、同僚、CEO）は役割で書いた。
+
+speaker_labels: inferred      # 原本に話者ラベルがない。文脈から割り当てた
+timestamps: none              # 原本に時刻がない
+
+# 原本は依頼者が固有名詞を確認したテキスト。段落（空行）で区切られているが話者の区切りではない。
+# docs/ 側の分割は tools/_amb_turns.py にある。
+proper_nouns_corrected_by_requester: true
+
+# Miro のワークショップボードが画面共有された。中身は受け取っていない。
+# ページは音声で語られたことだけで作ってある。
+slides:
+  shown: true                 # Miro ボードの画面共有
+  published: false
+  reason: ボードの中身は受け取っていない。音声で説明された範囲だけを書いた
+
+source:
+  audio: null
+  video: null

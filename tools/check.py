@@ -76,6 +76,19 @@ NAMES = {
         # 聴衆として名前が挙がった質問者
         "Shiadome", "Shiodome", "Raja",
     ],
+    # 全員を匿名化した回。話した 2 名も、チャットの質問者も、社内の人物も。
+    "2026-09-21-office-hours-ambassador": [
+        # 話した 2 名。進行役の名前は 2 通りで呼ばれている（片方は聞き取りミスと思われる）
+        "Rob", "Ben", "Grant",
+        # チャットの質問者・呼びかけられたハンドル名
+        "Freeholan", "Ryan", "Chris", "Christopher", "Doc", "Shiodome",
+        # "John" は質問者と CEO の両方を指すので、どちらも置換した
+        "John",
+        # 社内で名前が挙がった人物
+        "Patrick", "Sunny",
+        # 名前が挙がったステークプール
+        "Straight", "Oyster",
+    ],
     "2026-08-11-masumi-ai-forum": [
         # 話者・チャットで発言した参加者
         "Patrick", "Sharan", "Scott", "Kelly", "Sandro",
