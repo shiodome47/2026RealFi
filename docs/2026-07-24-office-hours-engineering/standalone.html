@@ -1123,50 +1123,36 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 680 330" role="img" aria-label="交換レートが 1.00 の時点で 100 USDR を預けた人は 100 sUSDR を受け取り、レートが 1.05 になった時点で 105 USDR に戻せる。同じ 1.05 の時点で 100 USDR を預けた人は約 95.2 sUSDR しか受け取らない、という 2 人の比較図">
-  <defs>
-    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
-      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
-    </marker>
-  </defs>
-  <text x="340" y="24" text-anchor="middle" class="d-s">レートは全員共通。受け取る枚数は、預けた時点のレートで決まる</text>
+<svg viewBox="0 0 680 256" role="img" aria-label="先に預けた人と後から預けた人を横に並べ、預けた時のレート・100 USDR で受け取る枚数・後日戻したときの USDR を比較した表">
+  <text x="340" y="26" text-anchor="middle" class="d-t">同じ 100 USDR を預けても、受け取る sUSDR の枚数は時期で変わる</text>
 
-  <text x="170" y="52" text-anchor="middle" class="d-s">時点 ① — 1 sUSDR = 1.00 USDR</text>
-  <text x="510" y="52" text-anchor="middle" class="d-s">時点 ② — 1 sUSDR = 1.05 USDR</text>
-  <path d="M340,60 L340,296" class="d-box-plain"/>
+  <text x="308" y="62" text-anchor="middle" class="d-t">先に預けた人</text>
+  <text x="550" y="62" text-anchor="middle" class="d-t">後から預けた人</text>
 
-  <text x="16" y="80" class="d-s">先に預けた人</text>
-  <rect x="16" y="90" width="120" height="44" rx="7" class="d-box"/>
-  <text x="76" y="118" text-anchor="middle" class="d-t">100 USDR</text>
-  <text x="168" y="84" text-anchor="middle" class="d-s">ステーク</text>
-  <path d="M140,112 L196,112" class="d-line" marker-end="url(#m4)"/>
-  <rect x="200" y="90" width="120" height="44" rx="7" class="d-box"/>
-  <text x="260" y="118" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <text x="16" y="102" class="d-s">預けた時のレート</text>
+  <rect x="196" y="78" width="224" height="40" rx="7" class="d-box-plain"/>
+  <text x="308" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.00 USDR</text>
+  <rect x="436" y="78" width="228" height="40" rx="7" class="d-box-plain"/>
+  <text x="550" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.05 USDR</text>
 
-  <text x="338" y="150" text-anchor="middle" class="d-s">そのまま持つ</text>
-  <path d="M324,112 L352,112" class="d-line" marker-end="url(#m4)"/>
-  <rect x="356" y="90" width="120" height="44" rx="7" class="d-box"/>
-  <text x="416" y="118" text-anchor="middle" class="d-t">100 sUSDR</text>
-  <text x="508" y="84" text-anchor="middle" class="d-s">アンステーク</text>
-  <path d="M480,112 L536,112" class="d-line" marker-end="url(#m4)"/>
-  <rect x="540" y="90" width="124" height="44" rx="7" class="d-box-accent"/>
-  <text x="602" y="118" text-anchor="middle" class="d-t d-a">105 USDR</text>
+  <text x="16" y="152" class="d-s">100 USDR で受け取る枚数</text>
+  <rect x="196" y="128" width="224" height="40" rx="7" class="d-box"/>
+  <text x="308" y="153" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <rect x="436" y="128" width="228" height="40" rx="7" class="d-box"/>
+  <text x="550" y="153" text-anchor="middle" class="d-t">約 95.2 sUSDR</text>
 
-  <text x="356" y="190" class="d-s">後から預けた人</text>
-  <rect x="356" y="200" width="120" height="44" rx="7" class="d-box"/>
-  <text x="416" y="228" text-anchor="middle" class="d-t">100 USDR</text>
-  <text x="508" y="194" text-anchor="middle" class="d-s">ステーク</text>
-  <path d="M480,222 L536,222" class="d-line" marker-end="url(#m4)"/>
-  <rect x="540" y="200" width="124" height="44" rx="7" class="d-box"/>
-  <text x="602" y="228" text-anchor="middle" class="d-t">約 95.2 sUSDR</text>
-  <text x="602" y="266" text-anchor="middle" class="d-s">この時点で戻せば 100 USDR</text>
+  <text x="16" y="202" class="d-s">後日 1.05 のレートで戻すと</text>
+  <rect x="196" y="178" width="224" height="40" rx="7" class="d-box-accent"/>
+  <text x="308" y="203" text-anchor="middle" class="d-t d-a">105 USDR</text>
+  <rect x="436" y="178" width="228" height="40" rx="7" class="d-box"/>
+  <text x="550" y="203" text-anchor="middle" class="d-t">100 USDR</text>
 
-  <text x="340" y="316" text-anchor="middle" class="d-s">同じ 100 sUSDR でも、預けた時点のレートが違えば、払った USDR は違う。だからトークンに日付は要らない</text>
+  <text x="340" y="244" text-anchor="middle" class="d-s">レートは全員共通。先に預けた人の利回りは、持っている sUSDR をあとで戻すときに表れる</text>
 </svg>
-<p class="figcap"><span class="badge">補足</span>数値は仕組みを説明するための例で、コール中に挙げられたものではありません。実際の交換レートは異なります。「100 USDR → 100 sUSDR」になるのは<strong>預けた時点のレートが 1.00 の場合だけ</strong>で、レートが 1.05 のときに預ければ受け取るのは約 95.2 sUSDR です。コール中で「ステーク時にはその時点の交換レートで sUSDR を受け取り、アンステーク時にはその時点のレートで USDR を受け取る」と説明されたとおりで、利回りは<strong>持っているあいだのレートの変化</strong>によって実現されます。</p>
+<p class="figcap"><span class="badge">補足</span>数値は仕組みを説明するための仮の例で、コール中に挙げられたものではありません。「後から預けた人」は、預けてすぐ同じレートで戻した場合です。コール中の説明——ステーク時はその時点のレートで sUSDR を受け取り、アンステーク時はその時点のレートで USDR を受け取る——を、2 人で並べたものです。</p>
 </div>
 
-<p><span class="badge">補足</span><strong>コール後の testnet の実際の値。</strong>2026 年 9 月 23 日時点の testnet のステーク画面では、交換レートが「1 USDrf = 0.967447 sUSDrf」と表示されていました。向きを逆にすると 1 sUSDrf ≈ 1.034 USDrf で、<strong>100 USDrf を預けると受け取るのは約 96.7 sUSDrf</strong>です。上の図の「後から預けた人」の状況が、testnet ではすでに起きています。なお画面の表記は改称後の USDrf / sUSDrf で、この回の時点では USDR / sUSDR でした（対応表は用語集にあります）。swap 画面では 1 USDCx = 0.999 USDrf と表示されていました。</p>
+<p><span class="badge">補足</span><strong>コール後の testnet の値。</strong>2026 年 9 月 23 日の testnet の画面では「1 USDrf = 0.967447 sUSDrf」と表示されていました。このレートなら、100 USDrf を預けて受け取るのは約 96.7 sUSDrf です。画面の表記は改称後のもので、この回の時点では USDR / sUSDR でした。</p>
 
 <p>Q&amp;A で明確にされた sUSDR の性質：</p>
 
@@ -1649,50 +1635,36 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 680 330" role="img" aria-label="Two stakers compared: one stakes 100 USDR at a rate of 1.00 and gets 100 sUSDR, worth 105 USDR once the rate is 1.05; another stakes 100 USDR at 1.05 and gets only about 95.2 sUSDR">
-  <defs>
-    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
-      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
-    </marker>
-  </defs>
-  <text x="340" y="24" text-anchor="middle" class="d-s">One rate for everyone. How many sUSDR you get depends on the rate when you stake</text>
+<svg viewBox="0 0 680 256" role="img" aria-label="Two stakers side by side: the rate when they staked, how many sUSDR 100 USDR bought, and what it converts back to later">
+  <text x="340" y="26" text-anchor="middle" class="d-t">The same 100 USDR buys a different number of sUSDR depending on when</text>
 
-  <text x="170" y="52" text-anchor="middle" class="d-s">Time ① — 1 sUSDR = 1.00 USDR</text>
-  <text x="510" y="52" text-anchor="middle" class="d-s">Time ② — 1 sUSDR = 1.05 USDR</text>
-  <path d="M340,60 L340,296" class="d-box-plain"/>
+  <text x="308" y="62" text-anchor="middle" class="d-t">Staked earlier</text>
+  <text x="550" y="62" text-anchor="middle" class="d-t">Staked later</text>
 
-  <text x="16" y="80" class="d-s">Staked earlier</text>
-  <rect x="16" y="90" width="120" height="44" rx="7" class="d-box"/>
-  <text x="76" y="118" text-anchor="middle" class="d-t">100 USDR</text>
-  <text x="168" y="84" text-anchor="middle" class="d-s">stake</text>
-  <path d="M140,112 L196,112" class="d-line" marker-end="url(#e4)"/>
-  <rect x="200" y="90" width="120" height="44" rx="7" class="d-box"/>
-  <text x="260" y="118" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <text x="16" y="102" class="d-s">rate when staking</text>
+  <rect x="196" y="78" width="224" height="40" rx="7" class="d-box-plain"/>
+  <text x="308" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.00 USDR</text>
+  <rect x="436" y="78" width="228" height="40" rx="7" class="d-box-plain"/>
+  <text x="550" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.05 USDR</text>
 
-  <text x="338" y="150" text-anchor="middle" class="d-s">keeps holding</text>
-  <path d="M324,112 L352,112" class="d-line" marker-end="url(#e4)"/>
-  <rect x="356" y="90" width="120" height="44" rx="7" class="d-box"/>
-  <text x="416" y="118" text-anchor="middle" class="d-t">100 sUSDR</text>
-  <text x="508" y="84" text-anchor="middle" class="d-s">unstake</text>
-  <path d="M480,112 L536,112" class="d-line" marker-end="url(#e4)"/>
-  <rect x="540" y="90" width="124" height="44" rx="7" class="d-box-accent"/>
-  <text x="602" y="118" text-anchor="middle" class="d-t d-a">105 USDR</text>
+  <text x="16" y="152" class="d-s">100 USDR buys</text>
+  <rect x="196" y="128" width="224" height="40" rx="7" class="d-box"/>
+  <text x="308" y="153" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <rect x="436" y="128" width="228" height="40" rx="7" class="d-box"/>
+  <text x="550" y="153" text-anchor="middle" class="d-t">~95.2 sUSDR</text>
 
-  <text x="356" y="190" class="d-s">Staked later</text>
-  <rect x="356" y="200" width="120" height="44" rx="7" class="d-box"/>
-  <text x="416" y="228" text-anchor="middle" class="d-t">100 USDR</text>
-  <text x="508" y="194" text-anchor="middle" class="d-s">stake</text>
-  <path d="M480,222 L536,222" class="d-line" marker-end="url(#e4)"/>
-  <rect x="540" y="200" width="124" height="44" rx="7" class="d-box"/>
-  <text x="602" y="228" text-anchor="middle" class="d-t">~95.2 sUSDR</text>
-  <text x="602" y="266" text-anchor="middle" class="d-s">unstaked now: 100 USDR</text>
+  <text x="16" y="202" class="d-s">back to USDR at 1.05</text>
+  <rect x="196" y="178" width="224" height="40" rx="7" class="d-box-accent"/>
+  <text x="308" y="203" text-anchor="middle" class="d-t d-a">105 USDR</text>
+  <rect x="436" y="178" width="228" height="40" rx="7" class="d-box"/>
+  <text x="550" y="203" text-anchor="middle" class="d-t">100 USDR</text>
 
-  <text x="340" y="316" text-anchor="middle" class="d-s">Same 100 sUSDR, different USDR paid in, depending on the rate at entry — so the token needs no date</text>
+  <text x="340" y="244" text-anchor="middle" class="d-s">One rate for everyone. The early staker’s yield shows up when the sUSDR is converted back later</text>
 </svg>
-<p class="figcap"><span class="badge">added</span>These figures illustrate the mechanism; they were not given on the call, and real rates differ. “100 USDR → 100 sUSDR” holds <strong>only if the rate at the time of staking is 1.00</strong>; staking when the rate is 1.05 yields about 95.2 sUSDR. That is what the call described — “when you stake, you get an amount of sUSDR according to the exchange rate, and when you unstake, you get back USDR according to the current exchange rate” — and the yield is <strong>the change in the rate while you hold</strong>.</p>
+<p class="figcap"><span class="badge">added</span>The figures are a made-up example of the mechanism, not numbers given on the call. “Staked later” shows converting straight back at the same rate. It puts side by side what the call described: you get sUSDR at the rate when you stake, and USDR at the rate when you unstake.</p>
 </div>
 
-<p><span class="badge">added</span><strong>A real testnet value, after the call.</strong> On 23 September 2026 the testnet staking screen showed an exchange rate of “1 USDrf = 0.967447 sUSDrf”. Inverted, that is 1 sUSDrf ≈ 1.034 USDrf, so <strong>staking 100 USDrf returns about 96.7 sUSDrf</strong> — the “staked later” row in the figure above, already happening on testnet. The screen uses the renamed tickers USDrf / sUSDrf; at the time of this session they were USDR / sUSDR (the mapping is in the glossary). The swap screen showed 1 USDCx = 0.999 USDrf.</p>
+<p><span class="badge">added</span><strong>A real testnet value, after the call.</strong> On 23 September 2026 the testnet screen showed “1 USDrf = 0.967447 sUSDrf”. At that rate, staking 100 USDrf returns about 96.7 sUSDrf. The screen uses the renamed tickers; at the time of this session they were USDR / sUSDR.</p>
 
 <p>What the Q&amp;A established about sUSDR:</p>
 
