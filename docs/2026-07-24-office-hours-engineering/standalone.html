@@ -1160,33 +1160,34 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 680 256" role="img" aria-label="先に預けた人と後から預けた人を横に並べ、預けた時のレート・100 USDR で受け取る枚数・後日戻したときの USDR を比較した表">
+<svg viewBox="0 0 680 296" role="img" aria-label="先に預けた人と後から預けた人を横に並べ、いつ預けたか・100 USDR で受け取った枚数・いま（レート 1.05）の価値を比較した表。2 人の sUSDR の 1 枚の価値は同じで、違うのは枚数">
   <text x="340" y="26" text-anchor="middle" class="d-t">同じ 100 USDR を預けても、受け取る sUSDR の枚数は時期で変わる</text>
 
   <text x="308" y="62" text-anchor="middle" class="d-t">先に預けた人</text>
   <text x="550" y="62" text-anchor="middle" class="d-t">後から預けた人</text>
 
-  <text x="16" y="102" class="d-s">預けた時のレート</text>
+  <text x="16" y="102" class="d-s">いつ預けたか</text>
   <rect x="196" y="78" width="224" height="40" rx="7" class="d-box-plain"/>
-  <text x="308" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.00 USDR</text>
+  <text x="308" y="103" text-anchor="middle" class="d-s">レートが 1.00 のとき</text>
   <rect x="436" y="78" width="228" height="40" rx="7" class="d-box-plain"/>
-  <text x="550" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.05 USDR</text>
+  <text x="550" y="103" text-anchor="middle" class="d-s">レートが 1.05 に上がったあと</text>
 
-  <text x="16" y="152" class="d-s">100 USDR で受け取る枚数</text>
+  <text x="16" y="152" class="d-s">100 USDR で受け取った枚数</text>
   <rect x="196" y="128" width="224" height="40" rx="7" class="d-box"/>
   <text x="308" y="153" text-anchor="middle" class="d-t">100 sUSDR</text>
   <rect x="436" y="128" width="228" height="40" rx="7" class="d-box"/>
   <text x="550" y="153" text-anchor="middle" class="d-t">約 95.2 sUSDR</text>
 
-  <text x="16" y="202" class="d-s">後日 1.05 のレートで戻すと</text>
+  <text x="16" y="202" class="d-s">いま（レート 1.05）の価値</text>
   <rect x="196" y="178" width="224" height="40" rx="7" class="d-box-accent"/>
   <text x="308" y="203" text-anchor="middle" class="d-t d-a">105 USDR</text>
   <rect x="436" y="178" width="228" height="40" rx="7" class="d-box"/>
   <text x="550" y="203" text-anchor="middle" class="d-t">100 USDR</text>
 
-  <text x="340" y="244" text-anchor="middle" class="d-s">レートは全員共通。先に預けた人の利回りは、持っている sUSDR をあとで戻すときに表れる</text>
+  <text x="340" y="250" text-anchor="middle" class="d-s">2 人の sUSDR は同じもので、1 枚の価値はどちらも 1.05 USDR。違うのは何枚持っているか</text>
+  <text x="340" y="274" text-anchor="middle" class="d-s">先に預けた人が得なのは、レートが低いうちに多く受け取っていたから</text>
 </svg>
-<p class="figcap"><span class="badge">補足</span>数値は仕組みを説明するための仮の例で、コール中に挙げられたものではありません。「後から預けた人」は、預けてすぐ同じレートで戻した場合です。コール中の説明——ステーク時はその時点のレートで sUSDR を受け取り、アンステーク時はその時点のレートで USDR を受け取る——を、2 人で並べたものです。</p>
+<p class="figcap"><span class="badge">補足</span>数値は仕組みを説明するための仮の例で、コール中に挙げられたものではありません。投資信託でいえば、レートが「基準価額」、sUSDR の枚数が「口数」にあたります。基準価額は全員共通で、安いときに買った人ほど口数が多い——それと同じです。コール中の説明——ステーク時はその時点のレートで sUSDR を受け取り、アンステーク時はその時点のレートで USDR を受け取る——を、2 人で並べたものです。</p>
 </div>
 
 <p><span class="badge">補足</span><strong>コール後の testnet の値。</strong>2026 年 9 月 23 日の testnet の画面では「1 USDrf = 0.967447 sUSDrf」と表示されていました。このレートなら、100 USDrf を預けて受け取るのは約 96.7 sUSDrf です。画面の表記は改称後のもので、この回の時点では USDR / sUSDR でした。</p>
@@ -1709,33 +1710,34 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 680 256" role="img" aria-label="Two stakers side by side: the rate when they staked, how many sUSDR 100 USDR bought, and what it converts back to later">
+<svg viewBox="0 0 680 296" role="img" aria-label="Two stakers side by side: when they staked, how many sUSDR 100 USDR bought, and what it is worth now at 1.05. Each sUSDR is worth the same for both; only the count differs">
   <text x="340" y="26" text-anchor="middle" class="d-t">The same 100 USDR buys a different number of sUSDR depending on when</text>
 
   <text x="308" y="62" text-anchor="middle" class="d-t">Staked earlier</text>
   <text x="550" y="62" text-anchor="middle" class="d-t">Staked later</text>
 
-  <text x="16" y="102" class="d-s">rate when staking</text>
+  <text x="16" y="102" class="d-s">when they staked</text>
   <rect x="196" y="78" width="224" height="40" rx="7" class="d-box-plain"/>
-  <text x="308" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.00 USDR</text>
+  <text x="308" y="103" text-anchor="middle" class="d-s">while the rate was 1.00</text>
   <rect x="436" y="78" width="228" height="40" rx="7" class="d-box-plain"/>
-  <text x="550" y="103" text-anchor="middle" class="d-s">1 sUSDR = 1.05 USDR</text>
+  <text x="550" y="103" text-anchor="middle" class="d-s">after it had risen to 1.05</text>
 
-  <text x="16" y="152" class="d-s">100 USDR buys</text>
+  <text x="16" y="152" class="d-s">100 USDR bought</text>
   <rect x="196" y="128" width="224" height="40" rx="7" class="d-box"/>
   <text x="308" y="153" text-anchor="middle" class="d-t">100 sUSDR</text>
   <rect x="436" y="128" width="228" height="40" rx="7" class="d-box"/>
   <text x="550" y="153" text-anchor="middle" class="d-t">~95.2 sUSDR</text>
 
-  <text x="16" y="202" class="d-s">back to USDR at 1.05</text>
+  <text x="16" y="202" class="d-s">worth now, at 1.05</text>
   <rect x="196" y="178" width="224" height="40" rx="7" class="d-box-accent"/>
   <text x="308" y="203" text-anchor="middle" class="d-t d-a">105 USDR</text>
   <rect x="436" y="178" width="228" height="40" rx="7" class="d-box"/>
   <text x="550" y="203" text-anchor="middle" class="d-t">100 USDR</text>
 
-  <text x="340" y="244" text-anchor="middle" class="d-s">One rate for everyone. The early staker’s yield shows up when the sUSDR is converted back later</text>
+  <text x="340" y="250" text-anchor="middle" class="d-s">Both hold the same sUSDR, each worth 1.05 USDR. What differs is how many they hold</text>
+  <text x="340" y="274" text-anchor="middle" class="d-s">The early staker comes out ahead because they got more of it while the rate was low</text>
 </svg>
-<p class="figcap"><span class="badge">added</span>The figures are a made-up example of the mechanism, not numbers given on the call. “Staked later” shows converting straight back at the same rate. It puts side by side what the call described: you get sUSDR at the rate when you stake, and USDR at the rate when you unstake.</p>
+<p class="figcap"><span class="badge">added</span>The figures are a made-up example of the mechanism, not numbers given on the call. Think of a mutual fund: the rate is the unit price and sUSDR is the number of units. The unit price is the same for everyone, and whoever bought while it was cheap holds more units. It puts side by side what the call described: you get sUSDR at the rate when you stake, and USDR at the rate when you unstake.</p>
 </div>
 
 <p><span class="badge">added</span><strong>A real testnet value, after the call.</strong> On 23 September 2026 the testnet screen showed “1 USDrf = 0.967447 sUSDrf”. At that rate, staking 100 USDrf returns about 96.7 sUSDrf. The screen uses the renamed tickers; at the time of this session they were USDR / sUSDR.</p>
