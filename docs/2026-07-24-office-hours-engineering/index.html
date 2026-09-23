@@ -303,6 +303,43 @@
 </div>
 
 <div class="fig">
+<svg viewBox="0 0 680 216" role="img" aria-label="100 USDR をレート 1.00 でステークして 100 sUSDR を受け取り、持っているあいだにレートが 1.05 に上がり、アンステークで 105 USDR に戻る流れの図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" text-anchor="middle" class="d-s">ステークからアンステークまで（預けた時のレートを 1.00 と仮定）</text>
+
+  <text x="168" y="64" text-anchor="middle" class="d-s">① ステーク</text>
+  <text x="332" y="64" text-anchor="middle" class="d-s">② 持っているあいだにレートが上がる</text>
+  <text x="496" y="64" text-anchor="middle" class="d-s">③ アンステーク</text>
+
+  <rect x="16" y="76" width="140" height="48" rx="7" class="d-box"/>
+  <text x="86" y="106" text-anchor="middle" class="d-t">100 USDR</text>
+  <path d="M156,100 L178,100" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="180" y="76" width="140" height="48" rx="7" class="d-box"/>
+  <text x="250" y="106" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <path d="M320,100 L342,100" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="344" y="76" width="140" height="48" rx="7" class="d-box"/>
+  <text x="414" y="106" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <path d="M484,100 L506,100" class="d-line" marker-end="url(#m4)"/>
+
+  <rect x="508" y="76" width="156" height="48" rx="7" class="d-box-accent"/>
+  <text x="586" y="106" text-anchor="middle" class="d-t d-a">105 USDR</text>
+
+  <text x="250" y="148" text-anchor="middle" class="d-s">レート 1.00 で受け取る</text>
+  <text x="414" y="148" text-anchor="middle" class="d-s">レートは 1.05 に</text>
+  <text x="586" y="148" text-anchor="middle" class="d-s">レート 1.05 で戻す</text>
+
+  <text x="340" y="196" text-anchor="middle" class="d-s">アンステークは、sUSDR をプロトコルに売り戻すこと。買ったときより高いレートで売れる分が利回り</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>数値は仕組みを説明するための仮の例です。コール中では「あとでアンステークするときは、sUSDR をプロトコルに売り戻す形になるが、そのとき買ったときより良い価格が付く。それが利回りが実現される仕組み」と説明されました。アンステークの待機期間はこの回では触れられていません。後の回で 7 日間と説明されています（<a href="../2026-09-11-cardano-seminar-realfi/#tokens">Cardano Seminar の 3 節</a>）。</p>
+</div>
+
+<div class="fig">
 <svg viewBox="0 0 680 256" role="img" aria-label="先に預けた人と後から預けた人を横に並べ、預けた時のレート・100 USDR で受け取る枚数・後日戻したときの USDR を比較した表">
   <text x="340" y="26" text-anchor="middle" class="d-t">同じ 100 USDR を預けても、受け取る sUSDR の枚数は時期で変わる</text>
 
@@ -463,7 +500,7 @@
   <text x="506" y="118" text-anchor="middle" class="d-t">外部開発者向け SDK</text>
   <text x="506" y="137" text-anchor="middle" class="d-s">RealFi を部品として使えるようにする</text>
 
-  <path d="M174,154 L174,196" class="d-line" marker-end="url(#m6)"/>
+  <path d="M174,154 L174,196" class="d-line" marker-end="url(#m4)"/>
   <path d="M506,154 L506,196" class="d-line" marker-end="url(#m6)"/>
 
   <rect x="16" y="202" width="648" height="62" rx="9" class="d-box-accent"/>
@@ -815,6 +852,43 @@
 </div>
 
 <div class="fig">
+<svg viewBox="0 0 680 216" role="img" aria-label="Staking 100 USDR at a rate of 1.00 gives 100 sUSDR; the rate rises to 1.05 while holding; unstaking returns 105 USDR">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" text-anchor="middle" class="d-s">From stake to unstake (assuming a rate of 1.00 when staking)</text>
+
+  <text x="168" y="64" text-anchor="middle" class="d-s">1. stake</text>
+  <text x="332" y="64" text-anchor="middle" class="d-s">2. the rate rises while you hold</text>
+  <text x="496" y="64" text-anchor="middle" class="d-s">3. unstake</text>
+
+  <rect x="16" y="76" width="140" height="48" rx="7" class="d-box"/>
+  <text x="86" y="106" text-anchor="middle" class="d-t">100 USDR</text>
+  <path d="M156,100 L178,100" class="d-line" marker-end="url(#e4)"/>
+
+  <rect x="180" y="76" width="140" height="48" rx="7" class="d-box"/>
+  <text x="250" y="106" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <path d="M320,100 L342,100" class="d-line" marker-end="url(#e4)"/>
+
+  <rect x="344" y="76" width="140" height="48" rx="7" class="d-box"/>
+  <text x="414" y="106" text-anchor="middle" class="d-t">100 sUSDR</text>
+  <path d="M484,100 L506,100" class="d-line" marker-end="url(#e4)"/>
+
+  <rect x="508" y="76" width="156" height="48" rx="7" class="d-box-accent"/>
+  <text x="586" y="106" text-anchor="middle" class="d-t d-a">105 USDR</text>
+
+  <text x="250" y="148" text-anchor="middle" class="d-s">received at 1.00</text>
+  <text x="414" y="148" text-anchor="middle" class="d-s">rate now 1.05</text>
+  <text x="586" y="148" text-anchor="middle" class="d-s">converted at 1.05</text>
+
+  <text x="340" y="196" text-anchor="middle" class="d-s">Unstaking sells the sUSDR back to the protocol; the better rate than you bought at is the yield</text>
+</svg>
+<p class="figcap"><span class="badge">added</span>The figures are a made-up example of the mechanism. The call put it this way: “when you unstake later, you sell this sUSDR basically back to the protocol, but you get a better price … and that’s how this yield is realized.” An unstake cooldown was not mentioned on this call; later sessions describe it as seven days (<a href="../2026-09-11-cardano-seminar-realfi/#en-tokens">Cardano Seminar, section 3</a>).</p>
+</div>
+
+<div class="fig">
 <svg viewBox="0 0 680 256" role="img" aria-label="Two stakers side by side: the rate when they staked, how many sUSDR 100 USDR bought, and what it converts back to later">
   <text x="340" y="26" text-anchor="middle" class="d-t">The same 100 USDR buys a different number of sUSDR depending on when</text>
 
@@ -975,7 +1049,7 @@
   <text x="506" y="118" text-anchor="middle" class="d-t">SDK for outside developers</text>
   <text x="506" y="137" text-anchor="middle" class="d-s">Makes RealFi usable as a component</text>
 
-  <path d="M174,154 L174,196" class="d-line" marker-end="url(#e6)"/>
+  <path d="M174,154 L174,196" class="d-line" marker-end="url(#e4)"/>
   <path d="M506,154 L506,196" class="d-line" marker-end="url(#e6)"/>
 
   <rect x="16" y="202" width="648" height="62" rx="9" class="d-box-accent"/>
