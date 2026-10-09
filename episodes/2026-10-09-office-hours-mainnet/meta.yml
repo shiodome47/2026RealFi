@@ -1,0 +1,71 @@
+slug: 2026-10-09-office-hours-mainnet
+title: RealFi Office Hours — Mainnet & what comes next
+title_en: RealFi Office Hours — Mainnet & what comes next
+date: 2026-10-09
+series: realfi-office-hours   # shared/series.yml のキー
+series_no: 10                 # RealFi Office Hours の通し番号（回の実施順）。
+                              # 告知には番号が付いていなかった（依頼者による）。#9 の次の回なので 10 とした
+
+# 匿名化の判定
+#
+# **partial。**依頼は「Head of Product の Clay と Ben が話すと告知しているので、
+# 登壇者は実名で OK」。**発話した 2 名は実名のまま扱う。**
+# チャットで質問した参加者、ステージに上がった参加者、社内で名前が挙がった人物、
+# 名前が挙がったステークプールは匿名化した。依頼者が許諾できるのはチームの分までで、
+# 聴衆の第三者の分ではないため（CLAUDE.md「判断がつかないときは匿名化する側に倒す」）。
+#
+# tools/check.py の NAMES には「残してはいけない名前」だけを入れてある。
+#
+# **回をまたぐ影響**: Ben は #6〜#8 ですでに実名。Clay は #3（2026-07-24）で匿名化
+# しており、あの回で「プロダクト担当に回す」とされた質問の宛先が Head of Product だと
+# 結びつく。役職名は公開されているものなので実害は小さいと判断し、依頼者に伝えたうえで
+# 実名にした。実名はこの回のページの中だけにとどめ、docs/index.html と shared/ では
+# 役割（進行役 / Head of Product）で書いている。
+chatham_house_rule: partial
+
+platform: Discord（ステージ）
+duration: unknown             # 原本に時刻がない
+attendees: unknown
+
+speakers:
+  - Ben                       # 進行役。コミュニティ担当。#6〜#9 と同じ人物
+  - Clay                      # Head of Product。#3 以来の登壇（#3 では匿名）
+
+# 聴衆。登場順に A〜G。
+questioners:
+  - 参加者A                    # チャット。ADA 建てのプロダクトはあるか（ステークプール名も挙がった → 匿名化）
+  - 参加者B                    # チャット。Latam / Argentina（対応地域）、cross-chain is the future
+  - 参加者C                    # チャット。MiCA 圏でも rPoints を得られるか
+  - 参加者D                    # チャット。利回りを得ながら rPoints も得る方法はあるか
+  - 参加者E                    # ステージに呼ばれたが上がらなかった
+  - 参加者F                    # ステージに上がった。米国拠点。複数の法人構成について compliance チームと話せるか
+  - 参加者G                    # 退出時に挨拶されただけ
+# 社内で名前が挙がった人物 2 名（進行役をサービス・サファリに送った同僚、法人構成の相談先）は
+# [a colleague] に置き換えた。GIF の題材になった人物名も落とした。
+
+speaker_labels: inferred      # 原本に話者ラベルがない。文脈から割り当てた
+timestamps: none              # 原本に時刻がない
+
+# 固有名詞の誤変換は、依頼者の指示で**保存の前に**直した（CLAUDE.md の既定とは違う）。
+# 直したものの一覧。英語全文もこの表記になっている。
+proper_nouns_corrected: by_generator
+corrections:
+  - "sUSDRf / USDRf / USDRF / SUSDRF / USD RF / sUSD RF / USDR / sUSDR → USDrf / sUSDrf（改称後の表記に統一）"
+  - "USDCX / USD CX → USDCx"
+  - "Sunday Swap / Sunday → SundaeSwap（1 か所「Sundae」はそのまま）"
+  - "Liquid / liquid（プロトコルを指す箇所）/ Liquid Live / liquid finance → Liqwid / Liqwid live / Liqwid Finance（形容詞の liquid は触っていない）"
+  - "Huskinson Family Office → Hoskinson Family Office"
+  - "DeFi Llama → DefiLlama"
+  - "ELO, CLO ETFs → CLO, CLO ETFs"
+  - "質問者の名前の言い直し（2 通り）→ [Participant B]（言い直しごと置換）"
+# 直していないもの: 「electronically traded funds」（話者の言い間違い。ETF は exchange-traded fund）、
+# 「Voyager Season」（何を指すか確認できない。docs 側で聞こえたまま記録）、
+# 「staking centers」（Lace の画面の呼び方と読めるが確認できない）、「rPoints」（表記は推定）。
+
+# 画面共有はなかった（音声からは読み取れない。スライドへの言及もない）。
+slides:
+  shown: false
+
+source:
+  audio: null
+  video: null

@@ -1,0 +1,412 @@
+RealFi Office Hours — Mainnet & what comes next
+2026-10-09
+話者ラベルなし。依頼者の文字起こしを、固有名詞の誤変換を直し、聴衆・第三者の名前を [ ] で役割に置き換えてから保存したもの（partial）。
+発話した 2 名（Ben = 進行役、Clay = Head of Product）は実名のまま。直した固有名詞は meta.yml と shared/glossary.md に一覧がある。
+
+Oh, there you are, Clay. Let me see if I can invite you up or you can request. Give me two seconds. Good to be back. Hello. Okay, let's get Clay up here. Brilliant. All right. Hey, Ben. Ah.
+
+Hey, everybody. Oh, it's so good to have you back, Clay. Good to be back. So let's do a little bit of housekeeping.
+
+Um, you know, uh, firstly, share this, uh, stage with everybody you know, um, on your socials if you'd do us that honor.
+
+And in the top right you should have the chat, uh, box, so you can open up the chat and ask Clay questions as we're kicking off this office hours, and Clay at his discretion will respond, uh, either during or, uh, towards the end.
+
+Um, I think it's gonna be a really interesting office hours because we are now in main net, right, Clay? That's right. God, it's exciting.
+
+Um, so, uh, we did a little bit of prep and I know you're super busy, um, which is why I am grateful that you've made the time. Thank you.
+
+Um, I think we're gonna talk about main net, um, and what changes and what's possible now. Uh, we're gonna talk about, um, the utility and, and what people can actually do.
+
+And, um, actually you and [a colleague] sent me on a bit of a service safari 'cause I was doing some demos, so I've been out in the wild testing it. It's been great.
+
+And, um, you know, there's the points, there's the people that are part of test net, we can do a little bit of that and, um, then maybe towards the end you can tell us, like, uh, what you're looking forward to, um, what's coming next.
+
+But, um, can you... Can we kick off with something maybe a little bit juicy about the, uh, how you've been working on the yield engine.
+
+I mean, could you, uh, maybe lead us in with that, and then we'll go through some of those pillars? Yeah.
+
+Um, yes, we've, you know, we've done, I think as anybody, as those following the protocol have, have noticed, you know, we've done our first couple of yield distributions here.
+
+Uh, so that's exciting to see, uh, you know, the pass back from the underlying assets move to the staking vault, and users that stake can see their, um, you know, asset value increase through the, you know, the, the exchange rate between sUSDrf and USDrf.
+
+Um, and you know, I know the team has been doing a lot over the last few weeks to get some of these private credit investments out, uh, as well, you know, which is really where a lot of that alpha comes from.
+
+So I mean, that's something that obviously comes live when main net comes live.
+
+Uh, but it's just been really nice to see, to actually operationalize that, uh, yeah, so that we can start passing this, you know, passing this back to our, to our users finally. That- that's right.
+
+And I've been... There are relationships and partnerships coming online, I hope.
+
+Uh, I won't name any names, but, um, that's gonna be a big part of the next couple of, um, weeks and months that I'm looking forward to. Uh, but sorry to add that in there, Clay.
+
+Um, tell me about main net. Yeah. Right? Like, uh, test net was great. I actually really, um, enjoyed it. I felt like... Did we learn anything from test net or am I jumping ahead? Do you wanna do...
+
+Tell us what's live on main net now and then we'll get to test net later. Well, I, I could talk, I can say, you know- Yeah ... a bit about test net.
+
+I mean, yeah, so I mean, you know, thanks a lot to the, to the community and all of our test net participants, you know, especially the SPOs and the push that they did to get their delegators engaged with the test net.
+
+You know, I think our, our test net was a, was a, was a real success in terms of the level of engagement we saw from the community, uh, as well as, uh, you know, some of the feedback we got in terms of, uh, some bugs that were, that were caught by people.
+
+Um, you know, I know we did have an incentive for bug reports.
+
+Uh, I know for those of you that have maybe submitted those bug rep- those bugs, uh, we just had a review meeting earlier this week to kind of finalize, uh, the different buckets or categorizations of bugs and, and what kind of allocations we'll be giving.
+
+So you should see some, uh, more info from us, uh, shortly on that. So, you know, I think that was really the biggest success of test net was the engagement we had from everybody.
+
+Uh, and it was really just nice to see the, the level of support from the community.
+
+Um, you know, moving to main net, uh, you know, the launch went really smoothly, uh, from a technical perspective. No major bugs, uh, no major downtimes.
+
+You know, the protocol is, is stable and secure.
+
+Um, I mean, of course there was, you know, a little bit of kinks as we, as we launched, but, but overall I think it went really smoothly and, and on schedule, uh, which was nice.
+
+And I mean, I think that's again, you know, a, a product of the, the engagement that we had during test net.
+
+So thanks again to the community for that test net engagement because that is what enabled, you know, such a smooth main net launch. Um, yeah. And so we're at main net now.
+
+Now I'm, I know some of the answers to these 'cause I did go and do that service safari and I've been, I've been trying it out, but, but walk me through at a high level, like, what does main net mean?
+
+What, what's live now? And, um- Yeah ... I'm pre- yeah. Yeah.
+
+So what's live now, you know, what's different I guess from test net to main net, I mean, the difference is really that it's, it's real money flowing through the system.
+
+Uh, and so what is live now, um, we, uh, you know, pre-issued approximately $5 million worth of USDrf and sUSDrf, uh, through- You know, our partnership with, uh, the Hoskinson Family Office and Wave, uh, to supply this, you know, to, to, to prime the protocol, let's say, and to put this liquidity into the market so that retail users can, can interact with the protocol.
+
+Um, you know, there's swapping into USDrf and sUSDrf through SundaeSwap, the DEX. Uh, you can swap into USDrf from USDCx.
+
+And then once you've swapped into USDrf, you can swap again into sUSDrf. Uh, both of these are live on SundaeSwap. Both of these pools are live on SundaeSwap.
+
+Um, of course, within the protocol, um, you know, if you're not from a geo-restricted region, you'll be able to bring your USDrf and stake it directly to the protocol.
+
+Uh, and just as a reminder, uh, I guess I've made some assumptions here. You know, USDrf is the one dollar pegged, uh, stablecoin, non-yield bearing, but it holds a dollar peg.
+
+sUSDrf, the stake token, is how you earn yield. And you can access that either by staking USDrf in the protocol to receive sUSDrf or by swapping USDrf to sUSDrf on SundaeSwap.
+
+And when you hold the sUSDrf token, it accrues yield through an exchange rate mechanism, uh, relative to USDrf.
+
+We deposit USDrf into the staking vault, which causes the value of sUSDrf to increase relative to USDrf.
+
+Um, and so whether you swap into sUSDrf or obtain it through staking, either way, you'll get it at a certain price, and over time, that price will increase as we distribute yield to the staking vault.
+
+Um, so, you know, both of these tokens are live on mainnet, and there's a couple of different ways that, that folks can, can access them, especially the staking token.
+
+Um, you know, we also have integrations with Liqwid live, uh, to enable DeFi use of both of these tokens. So USDrf can be accepted as collateral on Liqwid.
+
+You can also borrow it, and this is something we did see, uh, shortly after launch, you know, folks borrowing the USDrf from Liqwid and then swapping out of it and supplying USDCx.
+
+You know, there was, there was an arbitrage opportunity based on the lend-borrow rates. You know, that's, that's DeFi.
+
+That's exactly the type of utility that we want to enable in the market so that folks can, can find those yield opportunities.
+
+Um, you know, sUSDrf as well is enabled as collateral in Liqwid in an isolated market so that users can borrow against it and borrow a USDCx against it either to, you know, take on leverage and loop through the protocol.
+
+Um, and I can explain more about looping if, if that's interesting to folks or- Well, I was literally, literally I was desperate to ask you about that because, uh, when I went and, um, did a little bit of that service safari, so I was in Lace, I was looking at staking centers and Liqwid Finance, and I got as far as staking and unstaking and providing, uh, liquidity to the, the pool.
+
+But can you walk us through looping? I'd be really interested, yeah. Yeah. So the way that it works, right, if I have, uh, I'm gonna just use some sample numbers here.
+
+If I have $1,000 and I want to earn yield from RealFi's portfolio, I can take that $1,000 of USDCx, swap it to USDrf, stake it into sUSDrf, and then I can just sit on that and I'll earn the, you know, roughly eight and a half percent that the portfolio is delivering.
+
+So by the end of the year, I'll have $1,085. Um, however, you know, looping is a way of taking on leverage on the same position.
+
+Now, there are some risks involved, and we'll talk about what those risks are. But the way that I would set up this loop, um, I would...
+
+I have my 1,000 sUSDrf that's earning eight and a half percent. But because sUSDrf is enabled as collateral in Liqwid, I can borrow against it.
+
+So I can deposit that yield-bearing position into Liqwid as collateral, and then let's say I'm gonna borrow USDCx against it at a 50% loan to value.
+
+So I can borrow $500 against my $1,000 position, and the risk is that if the value of my collateral falls below my loan-- b- below the loan to value amount where my value of my collateral is less than the value of my loan, I face liquidation risk.
+
+So if the value of sUSDrf were to fall by 50%, I would be looking at a liquidation. You know, this is why I'm using a relatively conservative loan to value on this scenario.
+
+Um, you know, that would be quite a big drop to see in sUSDrf.
+
+So I can then borrow this $500 of USDCx, stake it again, and now I've essentially got a $1,500 position of sUSDrf earning eight and a half percent off of only $1,000 of true risk, uh, uh, of my original capital.
+
+And I can just do this again, you know, over numerous loops, uh, where if I use the same 50%, I can borrow another two fifty, I can borrow one twenty-five, I can borrow, what is it, sixty-two and a half, et cetera.
+
+Um, and, you know, my risk is... The, the risk of my position is based on the value of my underlying collateral relative to that LTV that I'm taking on the loan. Um, did that make sense?
+
+Is this different to like It did make sense, um, and, and thankfully because I'm, um, not a pro trader I'm gonna ask some dumb questions, but maybe it'll help.
+
+Um, so like when you're playing with leverage, uh, there's this idea of pyramiding, right? Like you're making some profit, then you can put the profit back in. Is that similar to looping?
+
+We're talking about the same thing, or I've mixed ideas up? Um, yeah, I guess it's, it's, I mean, it- it's, it's a different strategy, I guess. I mean, you could, you could do that, right?
+
+You could definitely trim and take profits as, as yield accrues. I mean, I think that probably a strategy makes more sense with more of a volatile asset.
+
+Uh, what you're able to achieve with, with looping is you're increasing the APY, uh, that you're earning on your base position. So my base position in that scenario I did was $1,000.
+
+That's the amount of actual capital I have at risk. Uh, but the yield that I'm earning, I mean, I don't... I can't do this, this math off the top of my head.
+
+But if I'm earning eight and a half percent on 1,000 plus 500 plus 250 plus 125, et cetera, it'll be a higher APY on $1,000 than eight and a half percent, because I'm able to, to, to take on this additional leverage against the position.
+
+Um, so it's, it's a way to amplify the leverage, uh, to take on like higher liquid- li- but w- to, to, but in accepting some, some liquidation risk if the value of my collateral asset falls.
+
+Loop- looping is a strategy that's also possible with something like ADA, right? I can have $100 worth of ADA or $1,000 worth of ADA. I can borrow $500 against it in LTV.
+
+If the price of ADA goes up, then my LTV has just gone down, essentially. If ADA doubles in price, then I've got a $2,000 position and a $500 loan.
+
+Similarly, if the price of ADA goes down, you know, the value of my, my collateral goes down, I need to then either adjust my loan or add additional collateral to, to balance that position.
+
+Um, so it's, it's a strategy that's often used with volatile assets to, you know, amplify the gains by, you know, yeah, thr- you know.
+
+I mean, it's, I guess it depends on the position and what LTVs you're taking. But, you know, I've seen people get like 10X returns on some of these loops.
+
+You know, it's a similar concept, but with, uh, but with the yield-bearing asset where you're essentially just increasing the APY.
+
+And just for the people that, um, that are joining, and also for my records, I can write it up later in the blog. But, um, walk me back through what you observed, uh, at the beginning of mainnet.
+
+'Cause you were saying like there was some arbitrage. Can you just walk us through the steps there of what happened? Yeah. So folks would open...
+
+And this is like, this is, this is fully a use case that we support, right? So I mean, like the, the, folks would obtain USDrf, uh, so they would borrow USDrf from Liqwid.
+
+Now they would have to deposit some kind of collateral asset and able to do that in order to do that. That could be ADA, that could be USDCx.
+
+I suspect they were probably doing it with ADA, but I'm not sure.
+
+Um, you know, they would borrow USDrf at a certain rate, and then they would swap that USDrf that they've borrowed for USDCx, and then they would be able to supply that USDCx back to Liqwid at a higher rate.
+
+And so they're essentially, you know, there's an ar- there's an arbitrage there where if they're borrowing at 3% and supplying it at 6%, they're sort of earning a free 3%.
+
+And this is what we saw some folks do when, uh, you know, at, at launch, just based on the way that, that those rates looked like based on utilization.
+
+Of course, these rates change as the market dyna- as, you know, the market changes.
+
+Um, but yeah, this was an arbitrage opportunity where, you know, folks found a, a spread between, uh, supply and borrow, which was quite, you know...
+
+It, it's, it's a common thing that, that folks do in DeFi indeed.
+
+And, uh, from the chat, [Participant A], um, I think from [a stake pool], had said, um, he saw some information in the What is the Voyager Season docs, which said ADA is valued using an hourly market price.
+
+So his question is, would we have any ADA based product? How would you answer that? Um, the, the challenge with our treasury holding ADA, uh, is that we need-- we can't make investments in ADA.
+
+And so it's just our, our, you know, our... If we were to take in ADA as a collateral asset, you know, our treasury then just has to absorb the volatility of ADA, and we can't really invest the ADA.
+
+So in order for us to invest that ADA, we would have to swap out of it for a, a dollar denominated stable coin, then off-ramp that and invest those dollars.
+
+So, you know, it's unlikely that ADA ever becomes an asset, at least for the foreseeable future, that our treasury would hold.
+
+But however, you know, if you have ADA and you're trying to find ways to leverage that, not, not leverage in the sense of looping, to utilize that, um, you know, to gain exposure to RealFi, then you could supply that ADA as collateral on Liqwid and then borrow USDrf or borrow USDCx and use that as the route into sUSDrf.
+
+So I mean, this is obviously, this type of position is, is highly dependent upon the price of ADA.
+
+Um, you know, I, I think I walked through how LTVs work, but I just, you know, I, just to sort of say it again quickly, right?
+
+If I'm, if I have $1,000 worth of ADA right now, I supply that as collateral and I borrow $500 of USDrf- I could then stake that $500 of USDrf to earn 8.5%.
+
+Uh, that 8.5%, I'll need to make sure that the yield that I'm earning on that is greater than my borrow rate so that I'm, I'm not negative, I'm not underwater on this position.
+
+And I'll need to monitor the price of ADA, because if the price of ADA falls 50%, I then start to look at liquidation risk, and I'll need to manage the position by either repaying it or adding more collateral.
+
+But this is a way that ADA holders can gain exposure to RealFi is by using their ADA as collateral in Liqwid and borrowing against it. Um, yeah, and as I mentioned- And just- ...
+
+earlier, it's unlikely that ADA would be used to buy our treasury. Go ahead, Ben. Just, just call, call out the obvious for me.
+
+Um, uh, basically what that would mean is somebody doesn't have to sell their ADA, right? So would there be some benefit to somebody borrowing it rather than just buying it directly?
+
+Like, walk me through why collateralization is- Yeah ... a useful use case. If you're long, if you're long on ADA, if you're bullish on ADA, then you don't wanna sell it.
+
+Uh, but if you, you know, wanna try to find other uses for it beyond just holding it, you know, then, then, then using it as collateral to get acce- to, to get exposure to, uh, you know, a yield-bearing token is a nice way to diversify that position.
+
+Yeah. That's nice.
+
+And, and we did talk about risk a little bit, so, um, I think it's a good idea or it'd be great if we could just touch on that transparency portal, um, and maybe the portfolio ramp-up.
+
+Uh, can you touch on those two things? Yeah. Uh, the transparency portal, um, shows, you know, some, some metrics about the protocol.
+
+So it gives you some metrics on the, like, price stability, staking yields, collateralization ratio, TVL circulating supply, things like this.
+
+Uh, and then it shows sort of what's happening on the reserves or the sort of underlying backing of the protocol, what investments we've made into different types of assets.
+
+Um, you know, it, it, it, it gives some visibility into, uh, the yield and it also gives some visibility into the sort of distribution of the token across different protocols.
+
+So it'll, you know, it sort of shows what's held in indexes, what's held by institutions and retail users, et cetera.
+
+The transparency portal is something that, you know, we'll, we'll continue to flesh out and add new features as we, as we get more data. Um- Mm ... you know, we, we launched...
+
+You know, at launch there's not a whole lot of historical data and it's just, uh, there's no point having a lot of charts there that, that, that have, like, one day's or one week's worth of data.
+
+So, you know, you'll see some more features come in there as the, the, the portfolio and yield engine get more established. And then what was the second thing? Great. So you...
+
+Oh, the transparency portal was just really interesting to me because, um, I thought it was a bit of a differentiator, you know? Um- Yeah ... the, the other thing was about the portfolio ramp-up.
+
+Um, this is, uh, you know, like, is the yield always the same with RealFi? Is it, is it gonna vary? Can you walk me through those- Yeah ... kind of, um ... Uh, that's, that's a good question.
+
+Yeah, I mean, so the, the yield will vary over time, uh, based on a few things, right? It'll be d- it's based on, uh, our underlying asset mix. So we have a few different sleeves in our portfolio.
+
+Sleeve A is a liquid sleeve, primarily tokenized money market funds.
+
+Sleeve B is a semi-liquid sleeve, primarily through CLO ETFs, collateralized loan obligation ETFs, uh, electri- el- electronically traded funds.
+
+Um, they're sort of aggregate baskets of private credit, is how you can think about CLO, CLO ETFs.
+
+Um, and finally, we do direct lending, um, you know, which is less liquid, but, but does generate quite a high return.
+
+So at any point in time, the size and allocations across those different sleeves, you know, will, will vary. It will vary over time. That's one thing that will determine what the yield looks like.
+
+Higher concentration liquid assets means a lower yield. Uh, a higher concentration in illiquid, you know, private credit assets means a higher yield. Um, and then also the staking ratio.
+
+Uh, you know, th- there's, there's, there's a symbiotic relationship between portfolio composition and staking ratio, although they are two independent factors.
+
+It's not strictly deterministic between the two of them. But, you know, a, a, a, a, a, a, a lower staking ratio, you know, essentially will, will mean a, um, a higher yield to individual stakers.
+
+Um, but, you know, these things are fluid over time, and it's sort of based on the, the snapshot of the portfolio at any given point in time. Okay, that makes sense.
+
+Um, so we've talked about, um, mainnet and what's here and what's live, and we've talked a little bit about the utility and about what users can do.
+
+Um, just, just looking back, uh, Clay, walk me through, like, so all the points in the testnet and the testers that took part, um, you know, what's gonna happen with their points now?
+
+What can they expect? How are they gonna redeem them? Yeah. So we are finalizing the pioneer season, uh, internally now.
+
+Um, we're still monitoring for, uh, sort of farming patterns and other, um- There are things that sort of breach the points policy.
+
+Um, but we've largely finalized the pioneer season points allocations. As I mentioned, the, the bug report stuff is something we just aligned on internally this week.
+
+Um, you know, so we'll, we'll aim to publish a pioneer season points to RFG conversion rate in the next few weeks. Um, we've got...
+
+One, one of our team members who helps with that is, uh, is on his honeymoon, so we're waiting for him to get back before we actually finalize that. Um, so thanks for your patience on that.
+
+Um, yeah, that's the next... But that's, that's what the next steps are with the pioneer season.
+
+You know, once we p- once we publish the points to RFG exchange rate, you know, it is still somewhat subject to change if new farming patterns emerge, but, you know, I think that's pretty unlikely, uh, given where we are, given how things are looking now.
+
+Uh, and then you'll receive the actual RFG when we do our TGE, uh, token generation event, which should be happening right now or targeting Q1.
+
+Uh, but there's some other dominoes that need to fall in place first before that gets too committed, so yeah.
+
+And you can smack my hand here 'cause I should probably know the answer, but have we got a published list of, um, geographical locations that are kind of supported?
+
+I don't know if it's published or not. Uh, do you? I don't know either. I don't know either. Uh, we should talk- I'm sure looking into it. Yeah ... we should talk with the marketing team about that.
+
+Yeah. Well, I will add that to my, uh, to-do list. That, that's one for me. Yeah. Um, [Participant B] is asking about, um... Sorry, I'm just going through the chat here. Uh, Latam, Argentina. Yep.
+
+Okay, guys, I will follow up on geolocation and get you an answer. Yeah, a country list would be good, you're right. Uh, by the way, you can ask Clay any questions as we're going along.
+
+Um, just if this is your first Discord stage, there's a, a little icon that looks like a chat image in the top right, I think.
+
+Um, if you click it, the chat window will open, and any questions you ask in there, I will put to Clay. Um, right. So Clay, we talked about testnet briefly.
+
+Um, we're coming towards the end, uh, uh, save any other questions. If we have more questions, we can stay longer. But let's look ahead a little bit.
+
+Like, what are you thinking about towards the end of the year? What are you hoping for in 2027? Can you give us, um- Yeah. I'm looking forward to our- ... the state of your roadmap?
+
+Yeah, I mean, I'm, I'm focused a lot on our EVM launch, our Ethereum Mainnet launch.
+
+Um, you know, it's, we, we, we've, we've developed, we've developed a cross-chain strategy that, you know, we're, we're talking with DefiLlama about some details about how TVL is gonna accrue.
+
+We're trying to navigate those now, but, you know, we've got a cross-chain strategy that involves, uh, native minting and staking on EVM as well. Um- Mm ...
+
+and, and I'm really excited about, uh, bringing RealFi to, to those capital markets. Um, that's where...
+
+I mean, as I, as I mentioned earlier, you know, the, the, the Cardano launch went, went relatively smoothly thanks to all the investments from our team and, and the community here in, in, in testing and engaging with that during testnet, that I'm able to spend a lot of my bandwidth, um, you know, focusing on bringing us into EVM.
+
+Uh, I'm very excited about that 'cause I think it'll really help the protocol grow, and it'll help us really, um, solidify the yield engine.
+
+I think, feel like I can find a better word than solidify, but that's the best I've got right now. Um, and so that's one. And then second is, I mean TGE and bringing RFG to the market.
+
+Um, there are some tier one exchanges that we've talked to that we're gonna have RFG listed on.
+
+Um, you know, we need to land EVM before we really focus ex- focus too hard on, uh, TGE, but that sh- that will be... Once we launch into EVM, that's what then I'll be, I'll be thinking about.
+
+Those are the two things that I'm looking forward to for the next, you know, six months or so.
+
+Yeah, I mean, you, you know me well enough to know, like, my background is, like, very much based in Cardano over the past five, six years, you know?
+
+But I'm really excited about going to Ethereum and going cross-chain. I mean, that's like where the liquidity is.
+
+I think, like [Participant B] is saying in chat, cross-chain is the future, you know?
+
+And, um, I think that all I hope really, it's about, like, everybody on this call and in this Discord, we're the RealFi community, you know? It's not only about Cardano really.
+
+I think we have to look forward to Ethereum and I'm not, uh, setting any expectations here. But we need to get...
+
+Once we're ready, Clay, right, we need to be getting in to the Ethereum community and representing RealFi, right?
+
+And I think sometimes you're thinking about the people in Ethereum that are gonna be hearing about RealFi. Uh, my wife actually taught me we need to develop a theory of mind, right?
+
+Like, how will they perceive RealFi? What's the best way for them to take an interest? And my personal opinion, I'm not speaking on behalf of RealFi here, is that is not a Cardano first story.
+
+That is a RealFi first story. That's a, a returns first story, you know? And I'm hyped, man.
+
+I mean, like, one of the things I love working about with you and the team is, like, it feels a bit punk rock, right? I don't wanna gush too much, so stop me at any point. But it's, it's punk rock.
+
+Like, we're building cool shit and, you know, we're also, uh, applying, like, what the real product market fit is in, um, Web3, which is going back to some conversations we've had in other spaces.
+
+At the end of the day, growth in these ecosystems is about capital productivity, right? And you can like it or you, you might not like it, but you need to name it, I think anyway.
+
+Th- that's my personal opinion, Clay. Like, you can challenge and disagree with me. My ego's huge. I can, I can tolerate it, you know? Um- Would you agree with me on that?
+
+Like, uh, that is a RealFi first, um, community that we need to be taking to Ethereum? I, I, I mean, I, I mean for... Yeah, absolutely. Right. I think, you know, the w- the way I...
+
+I, I think RealFi's mission of trying to bring real world assets on chain and, and to bring this yield profile to DeFi users, uh, is much bigger than just the Cardano ecosystem.
+
+And so accessing capital on Ethereum, whether it's main net or L2s, uh, you know, being able to capture a lot of the high frequency retail activity that happens on a chain like Solana- Mm-hmm ...
+
+um, you know, it positions RealFi, uh, as a, as a chain agnostic RWA yield protocol. Uh, and that is, I mean, that's...
+
+I think that's what's best for RealFi surely, uh, and that's what's best for RFG holders.
+
+Um, and I think everybody on this call, you know, is, is, is, is going to be some degree of an RFG holder, uh, through their...
+
+I'm assuming everybody on this call has, has s- has already earned some rPoints. Yeah. If, if you haven't, now's the time to get started, guys. DM me and I'll, uh ... Yes ...
+
+I'll, I'll get you on board with- Yeah ... yeah. Yeah. We, you know, we offer rPoints, just to recap for folks that might not know, right?
+
+We offer rPoints for people that, that, that use, uh, their liquidity, not necessarily to seek yield from the protocol, but to support the stability of the protocol.
+
+And this is in things like providing liquidity to a looping market, uh, or providing liquidity to SundaeSwap so that swaps happen, uh, and swaps can happen smoothly and pr- prices remain stable there.
+
+You know, it's generally about providing liquidity, but not seeking yield is how folks get access to points, and these points will convert into RFG, which is the RealFi governance token at TGE.
+
+That's great. Clay, this has been a really good call. Um, if anybody's got questions, like now is the time. We've got about five, 10 minutes Clay, I think, uh, with your schedule.
+
+Um, W- [Participant C]'s asking, uh, questions about rPoints. Can we obtain them even though we are in a MiCA regulated region? Yeah, rPoints and RFG will be open to globally. Nice. Um, and [Participant E], uh...
+
+We can't hear you. You're not on the stage, but if you wanna come up, um, as long as Clay's cool with it, I don't mind rolling the dice- Sure ... and inviting you to stage, you know? Yeah.
+
+See what we get. Um, uh, sorry Clay, I've got a bit of PTSD from X spaces back in the day. No, it's, it's easy. Come on up. Yeah, come up and talk to us, guys.
+
+Any way to earn rPoints while also earning yield, [Participant D] asks. Yeah.
+
+So there is a little, but there is one rule, uh, when I say rule, uh, like a points rule, uh, that if you're supplying your sUSDrf to the sUSDrf pool on Sundae, then you do earn some points for that.
+
+Uh, [Participant E], I can't see you in the, the group, by the way on, on my screen, so you're gonna need to request to become a speaker.
+
+I think you should have an option down on your screen if you still wanna come up. Uh- Yeah. It looks like a hand ... comments are saying... Oh, we got a hand up? Let me have a look.
+
+No, it looks like a hand. The request to speak- Yeah ... button looks like a hand. Any questions, uh, Clay, I haven't asked you that you wish I had? Ah, [Participant F] is just requesting to speak.
+
+Let's bring him up. Hey, [Participant F]. Welcome to the stage. Hi, you guys hear me all right? Yep. Yes. Hey, [Participant F]. Wonderful. So I'm just taking a shot at, at speaking here.
+
+Um, I'm a, I'm US-based, and it's not to go down the whole MiCA road, but does your organization...
+
+I looked at your docs and how you've structured your organization with multiple entities, and for other organizations who are looking to also navigate that, do you guys, I wouldn't say offer a service, but would it be any chance that we could talk to maybe someone in your compliance team to figure out how that was done?
+
+Because we'd love to put more money into to you guys. Hmm. Um, we should maybe take that one offline to [a colleague], Ben, and see- Yeah ... and see what he thinks. Yeah. Well, [Participant F]- I- ...
+
+why don't you just DM me my email? The two of us... Yeah.
+
+The, the, that, that's outside of the two of ours remits, so I'm sorry, I'm reluctant to, to say much more than that, but I think we c- we, we can definitely talk to some folks internally.
+
+Ben, sorry, go ahead. Yeah, yeah. W- [Participant F], we will, we will definitely ask the question and, um, I'm happy to facilitate that.
+
+I'm gonna DM you my email, and if you drop, if you summarize, um, what you'd like me to find out, like the gives, the gets, I'm happy to facilitate that introduction. Does that sound good?
+
+I was just looking to be the squeaky wheel to, to get the grease, so thank you very much. Oh, you're welcome. Uh, any, any other questions?
+
+What do you think of the, what we've been talking about so far? Well, for me, I think this is great. I mean, I can't, I can't wait to be involved. Awesome. Uh, bye [Participant F], thank you very much.
+
+Um, [Participant C] raised your hand next to the exit call. That's all right. Hey, [Participant G]. Um, anyone else wanna come up and talk to us? Okay. Uh, Clay, you're a legend.
+
+Um, I hope you liked the GIF that I put up of you in the, in the announcements. Yeah. The [person in the GIF]. That's great. So look, uh, yeah, I'll write this up.
+
+Um, I, you know, and I'll put it up on the blog. Uh, I think there's been some great, uh, conversations here.
+
+I'm also gonna try and talk to the data team and see if we can get some nice metrics around sort of main net, um, and the success we've had so far. And, uh, yeah, any other questions, guys?
+
+Otherwise, I'm gonna wrap it up and let Clay get back to the, uh, coal face where he's busily mining for that yield optimization. I'm just, I'm improvising this, Clay, as we go. You're doing great.
+
+Oh, great. All right, [Participant F], thank you very much. I'll DM you now. And everybody else, if you have any questions, um, or you think of something later, tag me or DM me.
+
+Always happy to help, and I'll go and find those answers for you. Thank you everyone. Have a great weekend. Thanks a lot. And we'll see you next time. Thanks everybody. Bye bye. Bye bye bye

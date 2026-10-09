@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #10 — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #10</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-10-09</span>
+  <span>Discord</span>
+  <span>Mainnet &amp; what comes next</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> The two people who spoke — <code>Ben</code>, the host, and <code>Clay</code>, Head of Product — <strong>are named</strong>. People who asked questions in the chat or came up on stage appear as <code>Participant A–G</code> in order of appearance; colleagues mentioned by name appear as <code>[a colleague]</code>, and a stake pool that was named as <code>[a stake pool]</code>.</p>
+<p>The source has <strong>neither speaker labels nor timestamps</strong>. Its paragraphs are separated by blank lines, but those are not speaker breaks — the speaker often changes mid-paragraph. <strong>Speakers are assigned from context</strong>, and short exchanges where the attribution is less certain are marked <em>(inferred)</em>.</p>
+<p><strong>Mistranscribed proper nouns were corrected at the requester's instruction</strong> (USDrf / sUSDrf / USDCx / SundaeSwap / Liqwid / Hoskinson Family Office / DefiLlama). Apart from that and the anonymisation, the wording is unchanged.</p>
+</div>
+
+<!--content-->
+
+<div class="sec">Opening</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, there you are, Clay. Let me see if I can invite you up or you can request. Give me two seconds.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Good to be back. Hello.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, let's get Clay up here. Brilliant. All right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Hey, Ben. Ah.</p>
+  <p>Hey, everybody.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, it's so good to have you back, Clay.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Good to be back.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>So let's do a little bit of housekeeping.</p>
+  <p>Um, you know, uh, firstly, share this, uh, stage with everybody you know, um, on your socials if you'd do us that honor.</p>
+  <p>And in the top right you should have the chat, uh, box, so you can open up the chat and ask Clay questions as we're kicking off this office hours, and Clay at his discretion will respond, uh, either during or, uh, towards the end.</p>
+  <p>Um, I think it's gonna be a really interesting office hours because we are now in main net, right, Clay?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>That's right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>God, it's exciting.</p>
+  <p>Um, so, uh, we did a little bit of prep and I know you're super busy, um, which is why I am grateful that you've made the time. Thank you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, I think we're gonna talk about main net, um, and what changes and what's possible now. Uh, we're gonna talk about, um, the utility and, and what people can actually do.</p>
+  <p>And, um, actually you and [a colleague] sent me on a bit of a service safari 'cause I was doing some demos, so I've been out in the wild testing it. It's been great.</p>
+  <p>And, um, you know, there's the points, there's the people that are part of test net, we can do a little bit of that and, um, then maybe towards the end you can tell us, like, uh, what you're looking forward to, um, what's coming next.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>But, um, can you... Can we kick off with something maybe a little bit juicy about the, uh, how you've been working on the yield engine.</p>
+  <p>I mean, could you, uh, maybe lead us in with that, and then we'll go through some of those pillars?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="sec">The first yield distributions</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, yes, we've, you know, we've done, I think as anybody, as those following the protocol have, have noticed, you know, we've done our first couple of yield distributions here.</p>
+  <p>Uh, so that's exciting to see, uh, you know, the pass back from the underlying assets move to the staking vault, and users that stake can see their, um, you know, asset value increase through the, you know, the, the exchange rate between sUSDrf and USDrf.</p>
+  <p>Um, and you know, I know the team has been doing a lot over the last few weeks to get some of these private credit investments out, uh, as well, you know, which is really where a lot of that alpha comes from.</p>
+  <p>So I mean, that's something that obviously comes live when main net comes live.</p>
+  <p>Uh, but it's just been really nice to see, to actually operationalize that, uh, yeah, so that we can start passing this, you know, passing this back to our, to our users finally.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>That- that's right.</p>
+  <p>And I've been... There are relationships and partnerships coming online, I hope.</p>
+  <p>Uh, I won't name any names, but, um, that's gonna be a big part of the next couple of, um, weeks and months that I'm looking forward to. Uh, but sorry to add that in there, Clay.</p></div>
+</div>
+
+<div class="sec">Looking back at testnet, and the bug bounty</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, tell me about main net. Yeah. Right? Like, uh, test net was great. I actually really, um, enjoyed it. I felt like... Did we learn anything from test net or am I jumping ahead? Do you wanna do...</p>
+  <p>Tell us what's live on main net now and then we'll get to test net later.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Well, I, I could talk, I can say, you know- Yeah ... a bit about test net.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>I mean, yeah, so I mean, you know, thanks a lot to the, to the community and all of our test net participants, you know, especially the SPOs and the push that they did to get their delegators engaged with the test net.</p>
+  <p>You know, I think our, our test net was a, was a, was a real success in terms of the level of engagement we saw from the community, uh, as well as, uh, you know, some of the feedback we got in terms of, uh, some bugs that were, that were caught by people.</p>
+  <p>Um, you know, I know we did have an incentive for bug reports.</p>
+  <p>Uh, I know for those of you that have maybe submitted those bug rep- those bugs, uh, we just had a review meeting earlier this week to kind of finalize, uh, the different buckets or categorizations of bugs and, and what kind of allocations we'll be giving.</p>
+  <p>So you should see some, uh, more info from us, uh, shortly on that. So, you know, I think that was really the biggest success of test net was the engagement we had from everybody.</p>
+  <p>Uh, and it was really just nice to see the, the level of support from the community.</p></div>
+</div>
+
+<div class="sec">The mainnet launch</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, you know, moving to main net, uh, you know, the launch went really smoothly, uh, from a technical perspective. No major bugs, uh, no major downtimes.</p>
+  <p>You know, the protocol is, is stable and secure.</p>
+  <p>Um, I mean, of course there was, you know, a little bit of kinks as we, as we launched, but, but overall I think it went really smoothly and, and on schedule, uh, which was nice.</p>
+  <p>And I mean, I think that's again, you know, a, a product of the, the engagement that we had during test net.</p>
+  <p>So thanks again to the community for that test net engagement because that is what enabled, you know, such a smooth main net launch. Um, yeah. And so we're at main net now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Now I'm, I know some of the answers to these 'cause I did go and do that service safari and I've been, I've been trying it out, but, but walk me through at a high level, like, what does main net mean?</p>
+  <p>What, what's live now? And, um- Yeah ... I'm pre- yeah. Yeah.</p></div>
+</div>
+
+<div class="sec">What is live on mainnet</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>So what's live now, you know, what's different I guess from test net to main net, I mean, the difference is really that it's, it's real money flowing through the system.</p>
+  <p>Uh, and so what is live now, um, we, uh, you know, pre-issued approximately $5 million worth of USDrf and sUSDrf, uh, through- You know, our partnership with, uh, the Hoskinson Family Office and Wave, uh, to supply this, you know, to, to, to prime the protocol, let's say, and to put this liquidity into the market so that retail users can, can interact with the protocol.</p>
+  <p>Um, you know, there's swapping into USDrf and sUSDrf through SundaeSwap, the DEX. Uh, you can swap into USDrf from USDCx.</p>
+  <p>And then once you've swapped into USDrf, you can swap again into sUSDrf. Uh, both of these are live on SundaeSwap. Both of these pools are live on SundaeSwap.</p>
+  <p>Um, of course, within the protocol, um, you know, if you're not from a geo-restricted region, you'll be able to bring your USDrf and stake it directly to the protocol.</p></div>
+</div>
+
+<div class="sec">USDrf and sUSDrf, recapped</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Uh, and just as a reminder, uh, I guess I've made some assumptions here. You know, USDrf is the one dollar pegged, uh, stablecoin, non-yield bearing, but it holds a dollar peg.</p>
+  <p>sUSDrf, the stake token, is how you earn yield. And you can access that either by staking USDrf in the protocol to receive sUSDrf or by swapping USDrf to sUSDrf on SundaeSwap.</p>
+  <p>And when you hold the sUSDrf token, it accrues yield through an exchange rate mechanism, uh, relative to USDrf.</p>
+  <p>We deposit USDrf into the staking vault, which causes the value of sUSDrf to increase relative to USDrf.</p>
+  <p>Um, and so whether you swap into sUSDrf or obtain it through staking, either way, you'll get it at a certain price, and over time, that price will increase as we distribute yield to the staking vault.</p>
+  <p>Um, so, you know, both of these tokens are live on mainnet, and there's a couple of different ways that, that folks can, can access them, especially the staking token.</p></div>
+</div>
+
+<div class="sec">Liqwid, and the arbitrage right after launch</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, you know, we also have integrations with Liqwid live, uh, to enable DeFi use of both of these tokens. So USDrf can be accepted as collateral on Liqwid.</p>
+  <p>You can also borrow it, and this is something we did see, uh, shortly after launch, you know, folks borrowing the USDrf from Liqwid and then swapping out of it and supplying USDCx.</p>
+  <p>You know, there was, there was an arbitrage opportunity based on the lend-borrow rates. You know, that's, that's DeFi.</p>
+  <p>That's exactly the type of utility that we want to enable in the market so that folks can, can find those yield opportunities.</p>
+  <p>Um, you know, sUSDrf as well is enabled as collateral in Liqwid in an isolated market so that users can borrow against it and borrow a USDCx against it either to, you know, take on leverage and loop through the protocol.</p>
+  <p>Um, and I can explain more about looping if, if that's interesting to folks or-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Well, I was literally, literally I was desperate to ask you about that because, uh, when I went and, um, did a little bit of that service safari, so I was in Lace, I was looking at staking centers and Liqwid Finance, and I got as far as staking and unstaking and providing, uh, liquidity to the, the pool.</p>
+  <p>But can you walk us through looping? I'd be really interested, yeah.</p></div>
+</div>
+
+<div class="sec">How looping works</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. So the way that it works, right, if I have, uh, I'm gonna just use some sample numbers here.</p>
+  <p>If I have $1,000 and I want to earn yield from RealFi's portfolio, I can take that $1,000 of USDCx, swap it to USDrf, stake it into sUSDrf, and then I can just sit on that and I'll earn the, you know, roughly eight and a half percent that the portfolio is delivering.</p>
+  <p>So by the end of the year, I'll have $1,085. Um, however, you know, looping is a way of taking on leverage on the same position.</p>
+  <p>Now, there are some risks involved, and we'll talk about what those risks are. But the way that I would set up this loop, um, I would...</p>
+  <p>I have my 1,000 sUSDrf that's earning eight and a half percent. But because sUSDrf is enabled as collateral in Liqwid, I can borrow against it.</p>
+  <p>So I can deposit that yield-bearing position into Liqwid as collateral, and then let's say I'm gonna borrow USDCx against it at a 50% loan to value.</p>
+  <p>So I can borrow $500 against my $1,000 position, and the risk is that if the value of my collateral falls below my loan-- b- below the loan to value amount where my value of my collateral is less than the value of my loan, I face liquidation risk.</p>
+  <p>So if the value of sUSDrf were to fall by 50%, I would be looking at a liquidation. You know, this is why I'm using a relatively conservative loan to value on this scenario.</p>
+  <p>Um, you know, that would be quite a big drop to see in sUSDrf.</p>
+  <p>So I can then borrow this $500 of USDCx, stake it again, and now I've essentially got a $1,500 position of sUSDrf earning eight and a half percent off of only $1,000 of true risk, uh, uh, of my original capital.</p>
+  <p>And I can just do this again, you know, over numerous loops, uh, where if I use the same 50%, I can borrow another two fifty, I can borrow one twenty-five, I can borrow, what is it, sixty-two and a half, et cetera.</p>
+  <p>Um, and, you know, my risk is... The, the risk of my position is based on the value of my underlying collateral relative to that LTV that I'm taking on the loan. Um, did that make sense?</p>
+  <p>Is this different to like</p></div>
+</div>
+
+<div class="sec">Pyramiding versus looping, and looping with ADA</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>It did make sense, um, and, and thankfully because I'm, um, not a pro trader I'm gonna ask some dumb questions, but maybe it'll help.</p>
+  <p>Um, so like when you're playing with leverage, uh, there's this idea of pyramiding, right? Like you're making some profit, then you can put the profit back in. Is that similar to looping?</p>
+  <p>We're talking about the same thing, or I've mixed ideas up?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, yeah, I guess it's, it's, I mean, it- it's, it's a different strategy, I guess. I mean, you could, you could do that, right?</p>
+  <p>You could definitely trim and take profits as, as yield accrues. I mean, I think that probably a strategy makes more sense with more of a volatile asset.</p>
+  <p>Uh, what you're able to achieve with, with looping is you're increasing the APY, uh, that you're earning on your base position. So my base position in that scenario I did was $1,000.</p>
+  <p>That's the amount of actual capital I have at risk. Uh, but the yield that I'm earning, I mean, I don't... I can't do this, this math off the top of my head.</p>
+  <p>But if I'm earning eight and a half percent on 1,000 plus 500 plus 250 plus 125, et cetera, it'll be a higher APY on $1,000 than eight and a half percent, because I'm able to, to, to take on this additional leverage against the position.</p>
+  <p>Um, so it's, it's a way to amplify the leverage, uh, to take on like higher liquid- li- but w- to, to, but in accepting some, some liquidation risk if the value of my collateral asset falls.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Loop- looping is a strategy that's also possible with something like ADA, right? I can have $100 worth of ADA or $1,000 worth of ADA. I can borrow $500 against it in LTV.</p>
+  <p>If the price of ADA goes up, then my LTV has just gone down, essentially. If ADA doubles in price, then I've got a $2,000 position and a $500 loan.</p>
+  <p>Similarly, if the price of ADA goes down, you know, the value of my, my collateral goes down, I need to then either adjust my loan or add additional collateral to, to balance that position.</p>
+  <p>Um, so it's, it's a strategy that's often used with volatile assets to, you know, amplify the gains by, you know, yeah, thr- you know.</p>
+  <p>I mean, it's, I guess it depends on the position and what LTVs you're taking. But, you know, I've seen people get like 10X returns on some of these loops.</p>
+  <p>You know, it's a similar concept, but with, uh, but with the yield-bearing asset where you're essentially just increasing the APY.</p></div>
+</div>
+
+<div class="sec">The arbitrage at launch, step by step</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And just for the people that, um, that are joining, and also for my records, I can write it up later in the blog. But, um, walk me back through what you observed, uh, at the beginning of mainnet.</p>
+  <p>'Cause you were saying like there was some arbitrage. Can you just walk us through the steps there of what happened?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. So folks would open...</p>
+  <p>And this is like, this is, this is fully a use case that we support, right? So I mean, like the, the, folks would obtain USDrf, uh, so they would borrow USDrf from Liqwid.</p>
+  <p>Now they would have to deposit some kind of collateral asset and able to do that in order to do that. That could be ADA, that could be USDCx.</p>
+  <p>I suspect they were probably doing it with ADA, but I'm not sure.</p>
+  <p>Um, you know, they would borrow USDrf at a certain rate, and then they would swap that USDrf that they've borrowed for USDCx, and then they would be able to supply that USDCx back to Liqwid at a higher rate.</p>
+  <p>And so they're essentially, you know, there's an ar- there's an arbitrage there where if they're borrowing at 3% and supplying it at 6%, they're sort of earning a free 3%.</p>
+  <p>And this is what we saw some folks do when, uh, you know, at, at launch, just based on the way that, that those rates looked like based on utilization.</p>
+  <p>Of course, these rates change as the market dyna- as, you know, the market changes.</p>
+  <p>Um, but yeah, this was an arbitrage opportunity where, you know, folks found a, a spread between, uh, supply and borrow, which was quite, you know...</p>
+  <p>It, it's, it's a common thing that, that folks do in DeFi indeed.</p></div>
+</div>
+
+<div class="sec">Will there be an ADA-based product?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And, uh, from the chat, [Participant A], um, I think from [a stake pool], had said, um, he saw some information in the What is the Voyager Season docs, which said ADA is valued using an hourly market price.</p>
+  <p>So his question is, would we have any ADA based product? How would you answer that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, the, the challenge with our treasury holding ADA, uh, is that we need-- we can't make investments in ADA.</p>
+  <p>And so it's just our, our, you know, our... If we were to take in ADA as a collateral asset, you know, our treasury then just has to absorb the volatility of ADA, and we can't really invest the ADA.</p>
+  <p>So in order for us to invest that ADA, we would have to swap out of it for a, a dollar denominated stable coin, then off-ramp that and invest those dollars.</p>
+  <p>So, you know, it's unlikely that ADA ever becomes an asset, at least for the foreseeable future, that our treasury would hold.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>But however, you know, if you have ADA and you're trying to find ways to leverage that, not, not leverage in the sense of looping, to utilize that, um, you know, to gain exposure to RealFi, then you could supply that ADA as collateral on Liqwid and then borrow USDrf or borrow USDCx and use that as the route into sUSDrf.</p>
+  <p>So I mean, this is obviously, this type of position is, is highly dependent upon the price of ADA.</p>
+  <p>Um, you know, I, I think I walked through how LTVs work, but I just, you know, I, just to sort of say it again quickly, right?</p>
+  <p>If I'm, if I have $1,000 worth of ADA right now, I supply that as collateral and I borrow $500 of USDrf- I could then stake that $500 of USDrf to earn 8.5%.</p>
+  <p>Uh, that 8.5%, I'll need to make sure that the yield that I'm earning on that is greater than my borrow rate so that I'm, I'm not negative, I'm not underwater on this position.</p>
+  <p>And I'll need to monitor the price of ADA, because if the price of ADA falls 50%, I then start to look at liquidation risk, and I'll need to manage the position by either repaying it or adding more collateral.</p>
+  <p>But this is a way that ADA holders can gain exposure to RealFi is by using their ADA as collateral in Liqwid and borrowing against it. Um, yeah, and as I mentioned- And just- ...</p>
+  <p>earlier, it's unlikely that ADA would be used to buy our treasury. Go ahead, Ben.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Just, just call, call out the obvious for me.</p>
+  <p>Um, uh, basically what that would mean is somebody doesn't have to sell their ADA, right? So would there be some benefit to somebody borrowing it rather than just buying it directly?</p>
+  <p>Like, walk me through why collateralization is- Yeah ... a useful use case.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>If you're long, if you're long on ADA, if you're bullish on ADA, then you don't wanna sell it.</p>
+  <p>Uh, but if you, you know, wanna try to find other uses for it beyond just holding it, you know, then, then, then using it as collateral to get acce- to, to get exposure to, uh, you know, a yield-bearing token is a nice way to diversify that position.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. That's nice.</p>
+  <p>And, and we did talk about risk a little bit, so, um, I think it's a good idea or it'd be great if we could just touch on that transparency portal, um, and maybe the portfolio ramp-up.</p>
+  <p>Uh, can you touch on those two things?</p></div>
+</div>
+
+<div class="sec">The transparency portal</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. Uh, the transparency portal, um, shows, you know, some, some metrics about the protocol.</p>
+  <p>So it gives you some metrics on the, like, price stability, staking yields, collateralization ratio, TVL circulating supply, things like this.</p>
+  <p>Uh, and then it shows sort of what's happening on the reserves or the sort of underlying backing of the protocol, what investments we've made into different types of assets.</p>
+  <p>Um, you know, it, it, it, it gives some visibility into, uh, the yield and it also gives some visibility into the sort of distribution of the token across different protocols.</p>
+  <p>So it'll, you know, it sort of shows what's held in indexes, what's held by institutions and retail users, et cetera.</p>
+  <p>The transparency portal is something that, you know, we'll, we'll continue to flesh out and add new features as we, as we get more data. Um- Mm ... you know, we, we launched...</p>
+  <p>You know, at launch there's not a whole lot of historical data and it's just, uh, there's no point having a lot of charts there that, that, that have, like, one day's or one week's worth of data.</p>
+  <p>So, you know, you'll see some more features come in there as the, the, the portfolio and yield engine get more established. And then what was the second thing?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Great. So you...</p>
+  <p>Oh, the transparency portal was just really interesting to me because, um, I thought it was a bit of a differentiator, you know? Um- Yeah ... the, the other thing was about the portfolio ramp-up.</p>
+  <p>Um, this is, uh, you know, like, is the yield always the same with RealFi? Is it, is it gonna vary? Can you walk me through those- Yeah ... kind of, um ...</p></div>
+</div>
+
+<div class="sec">Does the yield vary? Sleeves and the staking ratio</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Uh, that's, that's a good question.</p>
+  <p>Yeah, I mean, so the, the yield will vary over time, uh, based on a few things, right? It'll be d- it's based on, uh, our underlying asset mix. So we have a few different sleeves in our portfolio.</p>
+  <p>Sleeve A is a liquid sleeve, primarily tokenized money market funds.</p>
+  <p>Sleeve B is a semi-liquid sleeve, primarily through CLO ETFs, collateralized loan obligation ETFs, uh, electri- el- electronically traded funds.</p>
+  <p>Um, they're sort of aggregate baskets of private credit, is how you can think about CLO, CLO ETFs.</p>
+  <p>Um, and finally, we do direct lending, um, you know, which is less liquid, but, but does generate quite a high return.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>So at any point in time, the size and allocations across those different sleeves, you know, will, will vary. It will vary over time. That's one thing that will determine what the yield looks like.</p>
+  <p>Higher concentration liquid assets means a lower yield. Uh, a higher concentration in illiquid, you know, private credit assets means a higher yield. Um, and then also the staking ratio.</p>
+  <p>Uh, you know, th- there's, there's, there's a symbiotic relationship between portfolio composition and staking ratio, although they are two independent factors.</p>
+  <p>It's not strictly deterministic between the two of them. But, you know, a, a, a, a, a, a, a lower staking ratio, you know, essentially will, will mean a, um, a higher yield to individual stakers.</p>
+  <p>Um, but, you know, these things are fluid over time, and it's sort of based on the, the snapshot of the portfolio at any given point in time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, that makes sense.</p>
+  <p>Um, so we've talked about, um, mainnet and what's here and what's live, and we've talked a little bit about the utility and about what users can do.</p>
+  <p>Um, just, just looking back, uh, Clay, walk me through, like, so all the points in the testnet and the testers that took part, um, you know, what's gonna happen with their points now?</p>
+  <p>What can they expect? How are they gonna redeem them?</p></div>
+</div>
+
+<div class="sec">Testnet points and the pioneer season</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. So we are finalizing the pioneer season, uh, internally now.</p>
+  <p>Um, we're still monitoring for, uh, sort of farming patterns and other, um- There are things that sort of breach the points policy.</p>
+  <p>Um, but we've largely finalized the pioneer season points allocations. As I mentioned, the, the bug report stuff is something we just aligned on internally this week.</p>
+  <p>Um, you know, so we'll, we'll aim to publish a pioneer season points to RFG conversion rate in the next few weeks. Um, we've got...</p>
+  <p>One, one of our team members who helps with that is, uh, is on his honeymoon, so we're waiting for him to get back before we actually finalize that. Um, so thanks for your patience on that.</p>
+  <p>Um, yeah, that's the next... But that's, that's what the next steps are with the pioneer season.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>You know, once we p- once we publish the points to RFG exchange rate, you know, it is still somewhat subject to change if new farming patterns emerge, but, you know, I think that's pretty unlikely, uh, given where we are, given how things are looking now.</p>
+  <p>Uh, and then you'll receive the actual RFG when we do our TGE, uh, token generation event, which should be happening right now or targeting Q1.</p>
+  <p>Uh, but there's some other dominoes that need to fall in place first before that gets too committed, so yeah.</p></div>
+</div>
+
+<div class="sec">The list of supported regions</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And you can smack my hand here 'cause I should probably know the answer, but have we got a published list of, um, geographical locations that are kind of supported?</p>
+  <p>I don't know if it's published or not. Uh, do you?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>I don't know either.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>I don't know either.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>Uh, we should talk- I'm sure looking into it. Yeah ... we should talk with the marketing team about that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. Well, I will add that to my, uh, to-do list. That, that's one for me. Yeah. Um, [Participant B] is asking about, um... Sorry, I'm just going through the chat here. Uh, Latam, Argentina. Yep.</p>
+  <p>Okay, guys, I will follow up on geolocation and get you an answer. Yeah, a country list would be good, you're right. Uh, by the way, you can ask Clay any questions as we're going along.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, just if this is your first Discord stage, there's a, a little icon that looks like a chat image in the top right, I think.</p>
+  <p>Um, if you click it, the chat window will open, and any questions you ask in there, I will put to Clay. Um, right. So Clay, we talked about testnet briefly.</p></div>
+</div>
+
+<div class="sec">Looking ahead: EVM and TGE</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, we're coming towards the end, uh, uh, save any other questions. If we have more questions, we can stay longer. But let's look ahead a little bit.</p>
+  <p>Like, what are you thinking about towards the end of the year? What are you hoping for in 2027? Can you give us, um- Yeah. I'm looking forward to our- ... the state of your roadmap?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah, I mean, I'm, I'm focused a lot on our EVM launch, our Ethereum Mainnet launch.</p>
+  <p>Um, you know, it's, we, we, we've, we've developed, we've developed a cross-chain strategy that, you know, we're, we're talking with DefiLlama about some details about how TVL is gonna accrue.</p>
+  <p>We're trying to navigate those now, but, you know, we've got a cross-chain strategy that involves, uh, native minting and staking on EVM as well. Um- Mm ...</p>
+  <p>and, and I'm really excited about, uh, bringing RealFi to, to those capital markets. Um, that's where...</p>
+  <p>I mean, as I, as I mentioned earlier, you know, the, the, the Cardano launch went, went relatively smoothly thanks to all the investments from our team and, and the community here in, in, in testing and engaging with that during testnet, that I'm able to spend a lot of my bandwidth, um, you know, focusing on bringing us into EVM.</p>
+  <p>Uh, I'm very excited about that 'cause I think it'll really help the protocol grow, and it'll help us really, um, solidify the yield engine.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>I think, feel like I can find a better word than solidify, but that's the best I've got right now. Um, and so that's one. And then second is, I mean TGE and bringing RFG to the market.</p>
+  <p>Um, there are some tier one exchanges that we've talked to that we're gonna have RFG listed on.</p>
+  <p>Um, you know, we need to land EVM before we really focus ex- focus too hard on, uh, TGE, but that sh- that will be... Once we launch into EVM, that's what then I'll be, I'll be thinking about.</p>
+  <p>Those are the two things that I'm looking forward to for the next, you know, six months or so.</p></div>
+</div>
+
+<div class="sec">Taking RealFi, not Cardano, to Ethereum</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, I mean, you, you know me well enough to know, like, my background is, like, very much based in Cardano over the past five, six years, you know?</p>
+  <p>But I'm really excited about going to Ethereum and going cross-chain. I mean, that's like where the liquidity is.</p>
+  <p>I think, like [Participant B] is saying in chat, cross-chain is the future, you know?</p>
+  <p>And, um, I think that all I hope really, it's about, like, everybody on this call and in this Discord, we're the RealFi community, you know? It's not only about Cardano really.</p>
+  <p>I think we have to look forward to Ethereum and I'm not, uh, setting any expectations here. But we need to get...</p>
+  <p>Once we're ready, Clay, right, we need to be getting in to the Ethereum community and representing RealFi, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And I think sometimes you're thinking about the people in Ethereum that are gonna be hearing about RealFi. Uh, my wife actually taught me we need to develop a theory of mind, right?</p>
+  <p>Like, how will they perceive RealFi? What's the best way for them to take an interest? And my personal opinion, I'm not speaking on behalf of RealFi here, is that is not a Cardano first story.</p>
+  <p>That is a RealFi first story. That's a, a returns first story, you know? And I'm hyped, man.</p>
+  <p>I mean, like, one of the things I love working about with you and the team is, like, it feels a bit punk rock, right? I don't wanna gush too much, so stop me at any point. But it's, it's punk rock.</p>
+  <p>Like, we're building cool shit and, you know, we're also, uh, applying, like, what the real product market fit is in, um, Web3, which is going back to some conversations we've had in other spaces.</p>
+  <p>At the end of the day, growth in these ecosystems is about capital productivity, right? And you can like it or you, you might not like it, but you need to name it, I think anyway.</p>
+  <p>Th- that's my personal opinion, Clay. Like, you can challenge and disagree with me. My ego's huge. I can, I can tolerate it, you know? Um- Would you agree with me on that?</p>
+  <p>Like, uh, that is a RealFi first, um, community that we need to be taking to Ethereum?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>I, I, I mean, I, I mean for... Yeah, absolutely. Right. I think, you know, the w- the way I...</p>
+  <p>I, I think RealFi's mission of trying to bring real world assets on chain and, and to bring this yield profile to DeFi users, uh, is much bigger than just the Cardano ecosystem.</p>
+  <p>And so accessing capital on Ethereum, whether it's main net or L2s, uh, you know, being able to capture a lot of the high frequency retail activity that happens on a chain like Solana- Mm-hmm ...</p>
+  <p>um, you know, it positions RealFi, uh, as a, as a chain agnostic RWA yield protocol. Uh, and that is, I mean, that's...</p>
+  <p>I think that's what's best for RealFi surely, uh, and that's what's best for RFG holders.</p>
+  <p>Um, and I think everybody on this call, you know, is, is, is, is going to be some degree of an RFG holder, uh, through their...</p>
+  <p>I'm assuming everybody on this call has, has s- has already earned some rPoints.</p></div>
+</div>
+
+<div class="sec">rPoints, recapped</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. If, if you haven't, now's the time to get started, guys. DM me and I'll, uh ... Yes ...</p>
+  <p>I'll, I'll get you on board with-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah ... yeah. Yeah. We, you know, we offer rPoints, just to recap for folks that might not know, right?</p>
+  <p>We offer rPoints for people that, that, that use, uh, their liquidity, not necessarily to seek yield from the protocol, but to support the stability of the protocol.</p>
+  <p>And this is in things like providing liquidity to a looping market, uh, or providing liquidity to SundaeSwap so that swaps happen, uh, and swaps can happen smoothly and pr- prices remain stable there.</p>
+  <p>You know, it's generally about providing liquidity, but not seeking yield is how folks get access to points, and these points will convert into RFG, which is the RealFi governance token at TGE.</p></div>
+</div>
+
+<div class="sec">Q&amp;A: MiCA regions, yield and rPoints</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>That's great. Clay, this has been a really good call. Um, if anybody's got questions, like now is the time. We've got about five, 10 minutes Clay, I think, uh, with your schedule.</p>
+  <p>Um, W- [Participant C]'s asking, uh, questions about rPoints. Can we obtain them even though we are in a MiCA regulated region?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah, rPoints and RFG will be open to globally.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Nice. Um, and [Participant E], uh...</p>
+  <p>We can't hear you. You're not on the stage, but if you wanna come up, um, as long as Clay's cool with it, I don't mind rolling the dice- Sure ... and inviting you to stage, you know? Yeah.</p>
+  <p>See what we get. Um, uh, sorry Clay, I've got a bit of PTSD from X spaces back in the day.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>No, it's, it's easy. Come on up.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, come up and talk to us, guys.</p>
+  <p>Any way to earn rPoints while also earning yield, [Participant D] asks.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah.</p>
+  <p>So there is a little, but there is one rule, uh, when I say rule, uh, like a points rule, uh, that if you're supplying your sUSDrf to the sUSDrf pool on Sundae, then you do earn some points for that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, [Participant E], I can't see you in the, the group, by the way on, on my screen, so you're gonna need to request to become a speaker.</p>
+  <p>I think you should have an option down on your screen if you still wanna come up. Uh- Yeah. It looks like a hand ... comments are saying... Oh, we got a hand up? Let me have a look.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>No, it looks like a hand. The request to speak- Yeah ... button looks like a hand.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Any questions, uh, Clay, I haven't asked you that you wish I had? Ah, [Participant F] is just requesting to speak.</p>
+  <p>Let's bring him up. Hey, [Participant F]. Welcome to the stage.</p></div>
+</div>
+
+<div class="sec">A question from the stage: the multi-entity structure</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>Hi, you guys hear me all right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yep. Yes. Hey, [Participant F].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>Wonderful. So I'm just taking a shot at, at speaking here.</p>
+  <p>Um, I'm a, I'm US-based, and it's not to go down the whole MiCA road, but does your organization...</p>
+  <p>I looked at your docs and how you've structured your organization with multiple entities, and for other organizations who are looking to also navigate that, do you guys, I wouldn't say offer a service, but would it be any chance that we could talk to maybe someone in your compliance team to figure out how that was done?</p>
+  <p>Because we'd love to put more money into to you guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Hmm. Um, we should maybe take that one offline to [a colleague], Ben, and see- Yeah ... and see what he thinks.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. Well, [Participant F]- I- ...</p>
+  <p>why don't you just DM me my email? The two of us... Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>The, the, that, that's outside of the two of ours remits, so I'm sorry, I'm reluctant to, to say much more than that, but I think we c- we, we can definitely talk to some folks internally.</p>
+  <p>Ben, sorry, go ahead.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, yeah. W- [Participant F], we will, we will definitely ask the question and, um, I'm happy to facilitate that.</p>
+  <p>I'm gonna DM you my email, and if you drop, if you summarize, um, what you'd like me to find out, like the gives, the gets, I'm happy to facilitate that introduction. Does that sound good?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>I was just looking to be the squeaky wheel to, to get the grease, so thank you very much.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, you're welcome. Uh, any, any other questions?</p>
+  <p>What do you think of the, what we've been talking about so far?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>Well, for me, I think this is great. I mean, I can't, I can't wait to be involved.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Awesome. Uh, bye [Participant F], thank you very much.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, [Participant C] raised your hand next to the exit call. That's all right. Hey, [Participant G]. Um, anyone else wanna come up and talk to us? Okay. Uh, Clay, you're a legend.</p>
+  <p>Um, I hope you liked the GIF that I put up of you in the, in the announcements.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. The [person in the GIF]. That's great.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>So look, uh, yeah, I'll write this up.</p>
+  <p>Um, I, you know, and I'll put it up on the blog. Uh, I think there's been some great, uh, conversations here.</p>
+  <p>I'm also gonna try and talk to the data team and see if we can get some nice metrics around sort of main net, um, and the success we've had so far. And, uh, yeah, any other questions, guys?</p>
+  <p>Otherwise, I'm gonna wrap it up and let Clay get back to the, uh, coal face where he's busily mining for that yield optimization. I'm just, I'm improvising this, Clay, as we go.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>You're doing great.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, great. All right, [Participant F], thank you very much. I'll DM you now. And everybody else, if you have any questions, um, or you think of something later, tag me or DM me.</p>
+  <p>Always happy to help, and I'll go and find those answers for you. Thank you everyone. Have a great weekend.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Thanks a lot.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And we'll see you next time. Thanks everybody. Bye bye.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>Bye bye bye</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the anonymisation and the corrected proper nouns noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All sessions</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>

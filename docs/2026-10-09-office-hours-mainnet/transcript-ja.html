@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #10 — 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #10</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-10-09</span>
+  <span>Discord</span>
+  <span>Mainnet &amp; what comes next</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>発話した 2 名（進行役の <code>Ben</code> と Head of Product の <code>Clay</code>）は<strong>実名のまま</strong>です。チャットで質問した方とステージに上がった方は <code>参加者A〜G</code>（登場順）、社内で名前が挙がった人物は <code>[a colleague]</code>、名前が挙がったステークプールは <code>[a stake pool]</code> に置き換えています。</p>
+<p>原本には<strong>話者ラベルも時刻もありません</strong>。段落は空行で区切られていますが、それは話者の区切りではなく、1 段落の中で話者が入れ替わる箇所も多くあります。<strong>話者は文脈から割り当て</strong>、短い掛け合いで確度の低い箇所には <em>(推定)</em> を付けています。</p>
+<p><strong>固有名詞の誤変換は依頼者の指示で直してあります</strong>（USDrf / sUSDrf / USDCx / SundaeSwap / Liqwid / Hoskinson Family Office / DefiLlama）。それ以外の文言は語られたとおりです。</p>
+</div>
+
+<!--content-->
+
+<div class="sec">冒頭</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ああ、いたね、Clay。招待できるか見てみる。それともリクエストしてもらうか。2 秒待って。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>戻ってこられてうれしいです。こんにちは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>よし、Clay をステージに上げよう。いいね。さて。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>やあ、Ben。</p>
+  <p>皆さん、こんにちは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Clay、戻ってきてくれて本当にうれしいよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>戻ってこられてうれしいです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>では、少しだけ事務連絡を。</p>
+  <p>まず、このステージを知り合いに SNS で共有してもらえるとありがたい。</p>
+  <p>右上にチャットのボックスがあるので、それを開いて、この Office Hours を進めながら Clay に質問してほしい。Clay の判断で、途中か終わりのほうで答えてくれる。</p>
+  <p>今日は本当に面白い回になると思う。というのも、私たちはもう mainnet にいるんだよね、Clay？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>そのとおりです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いやあ、わくわくする。</p>
+  <p>少し準備をしてきた。あなたがとても忙しいのは分かっているから、時間を作ってくれたことに感謝している。ありがとう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>今日は mainnet の話——何が変わり、何ができるようになったか——をする。それから実用面、つまり人々が実際に何をできるのか。</p>
+  <p>そして実は、あなたと同僚が私を「サービス・サファリ」に送り出したんだ。デモをやる必要があったから、外に出て実際に試してきた。すごく良かった。</p>
+  <p>それから、ポイントのこと、testnet に参加した人たちのことも少し。最後のほうでは、何を楽しみにしているか、次に何が来るかを話してもらえれば。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>でもまず、ちょっと面白い話から始められないかな。イールド・エンジンにどう取り組んできたか。</p>
+  <p>そこから入ってもらって、そのあとでいくつかの柱を順に見ていく、というのはどう？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="sec">最初の利回り分配</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>そうですね。プロトコルを追っている方なら気づいているとおり、最初の数回の利回り分配を行いました。</p>
+  <p>裏付け資産からの還流がステーキング・ボールトに移り、ステークしているユーザーは sUSDrf と USDrf の交換レートを通じて資産価値が増えるのを見られる。わくわくする光景です。</p>
+  <p>チームはこの数週間、プライベートクレジットの投資をいくつか実行するためにも多くの作業をしてきました。アルファの多くは本当にそこから来るものです。</p>
+  <p>それは当然、mainnet が稼働して初めて動き出すものです。</p>
+  <p>それを実際に運用に乗せられたのは、本当にうれしいことでした。ようやくユーザーに還元を始められる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そのとおり。</p>
+  <p>それから——関係やパートナーシップがこれから動き出す、と期待している。</p>
+  <p>名前は挙げないけれど、この先の数週間から数か月の大きな部分になるはずで、楽しみにしている。横から付け足してごめん、Clay。</p></div>
+</div>
+
+<div class="sec">testnet の振り返りとバグ報奨</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>mainnet のことを聞かせて。そうだね、testnet は良かった。本当に楽しかった。……testnet から学んだことはあった？ それとも先走りすぎ？</p>
+  <p>まず、いま mainnet で動いているものを話してもらって、testnet はあとにしようか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>いや、testnet について少し話せますよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>まず、コミュニティと testnet の参加者全員、とくに SPO の皆さんに感謝します。委任者を testnet に引き込むために、ずいぶん後押ししてくれました。</p>
+  <p>私たちの testnet は、コミュニティのエンゲージメントの水準という点で本当に成功だったと思います。人々が見つけてくれたバグという形でのフィードバックもそうです。</p>
+  <p>バグ報告にはインセンティブを用意していました。</p>
+  <p>バグを提出してくれた方へ。今週はじめにレビュー会議を持ち、バグの区分と、それぞれにどのくらいの配分をするかを固めました。</p>
+  <p>まもなく、そのあたりの続報を出せるはずです。testnet の最大の成果は、皆さんからのエンゲージメントだったと思います。</p>
+  <p>コミュニティの支えの大きさを見られたのは、本当にうれしいことでした。</p></div>
+</div>
+
+<div class="sec">mainnet のローンチ</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>mainnet への移行ですが、技術的な観点では、ローンチはとてもスムーズでした。大きなバグも、大きなダウンタイムもなし。</p>
+  <p>プロトコルは安定していて、セキュアです。</p>
+  <p>もちろん、ローンチの際には多少の引っかかりはありましたが、全体としてはとてもスムーズに、しかも予定どおりに進みました。これは良かった。</p>
+  <p>そしてこれもまた、testnet でのエンゲージメントの産物だと思っています。</p>
+  <p>改めて、testnet への参加に感謝します。これほどスムーズな mainnet ローンチができたのは、そのおかげです。というわけで、私たちは今 mainnet にいます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いくつかの答えは知っているんだ。サービス・サファリに出て、実際に試してきたから。でも、高いレベルで説明してほしい。mainnet とは何を意味するのか。</p>
+  <p>今、何が動いているのか。</p></div>
+</div>
+
+<div class="sec">いま mainnet で動いているもの</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>いま何が動いているか、testnet と mainnet で何が違うか。違いは、本物のお金がシステムの中を流れている、ということに尽きます。</p>
+  <p>いま動いているものとしては、まず、およそ 500 万ドル相当の USDrf と sUSDrf を事前に発行しました。Hoskinson Family Office と Wave とのパートナーシップを通じてです。プロトコルに呼び水を入れ、この流動性を市場に置くことで、個人ユーザーがプロトコルとやり取りできるようにするためです。</p>
+  <p>DEX の SundaeSwap を通じて USDrf と sUSDrf にスワップできます。USDCx から USDrf にスワップできる。</p>
+  <p>USDrf にスワップしたら、そこからさらに sUSDrf にスワップできます。どちらも SundaeSwap で稼働中です。両方のプールが SundaeSwap で稼働しています。</p>
+  <p>もちろんプロトコルの中でも、地理的な制限のある地域の方でなければ、USDrf を持ち込んでプロトコルに直接ステークできます。</p></div>
+</div>
+
+<div class="sec">USDrf と sUSDrf のおさらい</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>改めて確認しておきます。前提を置いて話してしまっていたので。USDrf は 1 ドルにペッグされたステーブルコインで、利回りは付きませんが、ドルのペッグを保ちます。</p>
+  <p>sUSDrf、つまりステーク・トークンが、利回りを得る手段です。プロトコルで USDrf をステークして sUSDrf を受け取るか、SundaeSwap で USDrf を sUSDrf にスワップするか、どちらかで手に入ります。</p>
+  <p>sUSDrf を保有していると、USDrf に対する交換レートの仕組みを通じて利回りが積み上がります。</p>
+  <p>私たちが USDrf をステーキング・ボールトに入れると、sUSDrf の価値が USDrf に対して上がる。</p>
+  <p>ですから、スワップで sUSDrf を手に入れても、ステーキングで手に入れても、どちらにせよある価格で手に入れることになり、その価格は、私たちがステーキング・ボールトに利回りを分配するにつれて、時間とともに上がっていきます。</p>
+  <p>この 2 つのトークンはどちらも mainnet で稼働していて、手に入れる方法がいくつかあります。とくにステーク・トークンのほうは。</p></div>
+</div>
+
+<div class="sec">Liqwid との統合と、ローンチ直後の裁定</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Liqwid との統合も稼働していて、両方のトークンを DeFi で使えます。USDrf は Liqwid で担保として受け入れられます。</p>
+  <p>借りることもできます。これはローンチ直後に実際に見た動きですが、Liqwid で USDrf を借り、それをスワップで手放して、USDCx を供給する人たちがいました。</p>
+  <p>貸し借りの金利にもとづく裁定の機会があったんです。それが DeFi というものです。</p>
+  <p>まさにそういう実用性を市場で可能にしたかった。人々がああいう利回りの機会を見つけられるように。</p>
+  <p>sUSDrf も Liqwid の分離市場（isolated market）で担保として使えるようになっていて、それを担保に USDCx を借りて、レバレッジをかけてプロトコルをループすることができます。</p>
+  <p>もし興味があれば、ループについてもう少し説明できますが——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>まさにそれを聞きたくてうずうずしていた。サービス・サファリで、Lace の中でステーキングのセクションや Liqwid Finance を見ていて、ステークとアンステーク、プールへの流動性の提供まではやったんだ。</p>
+  <p>でも、ループを順に説明してもらえる？ とても興味がある。</p></div>
+</div>
+
+<div class="sec">ループの仕組み</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。仕組みはこうです。サンプルの数字を使います。</p>
+  <p>1,000 ドルあって、RealFi のポートフォリオから利回りを得たいとします。その 1,000 ドル分の USDCx を USDrf にスワップし、sUSDrf にステークして、そのまま持っていれば、ポートフォリオが出しているおよそ 8.5% を得られます。</p>
+  <p>年末には 1,085 ドルになる。ところが、ループというのは、同じポジションにレバレッジをかける方法です。</p>
+  <p>リスクはあります。どんなリスクかはあとで話します。でも、このループを組むなら、こうします。</p>
+  <p>8.5% を稼いでいる 1,000 sUSDrf がある。sUSDrf は Liqwid で担保にできるので、それを担保に借りられます。</p>
+  <p>つまり、この利回りの付くポジションを Liqwid に担保として預けて、たとえば LTV（担保価値に対する借入の比率）50% で USDCx を借りる。</p>
+  <p>1,000 ドルのポジションに対して 500 ドル借りられるわけです。リスクは、担保の価値が下がって、担保の価値が借入の価値を下回る LTV の水準を割り込むと、清算のリスクに直面すること。</p>
+  <p>sUSDrf の価値が 50% 下がれば、清算を見据えることになる。だからこのシナリオでは、比較的保守的な LTV を使っているんです。</p>
+  <p>sUSDrf でそれだけの下落を見るのは、相当なことですから。</p>
+  <p>そして、借りた 500 ドルの USDCx をもう一度ステークする。すると、もとの元手 1,000 ドルだけを本当のリスクにさらして、8.5% を稼ぐ 1,500 ドル分の sUSDrf のポジションを持っていることになります。</p>
+  <p>これを何度でも繰り返せます。同じ 50% を使えば、次は 250、その次は 125、さらに 62.5、といった具合に。</p>
+  <p>ポジションのリスクは、借入に対して取っている LTV に対する、担保資産の価値で決まります。伝わりましたか？</p>
+  <p>これは、たとえば——</p></div>
+</div>
+
+<div class="sec">ピラミッディングとの違い、ADA でのループ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>伝わった。私はプロのトレーダーではないから、ありがたいことに初歩的な質問ができる。たぶん役に立つはず。</p>
+  <p>レバレッジを使うとき、「ピラミッディング」という考え方があるよね。利益が出たら、その利益をまた入れる。ループはそれに似ている？</p>
+  <p>同じことを言っている？ それとも私が混同している？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>それは別の戦略だと思います。もちろん、それをやることもできる。</p>
+  <p>利回りが積み上がるにつれて、一部を売って利益を確定することは当然できます。ただ、その戦略はもっとボラティリティの高い資産のほうが向いていると思います。</p>
+  <p>ループで実現できるのは、ベースのポジションで得る APY を引き上げることです。さっきのシナリオでのベースのポジションは 1,000 ドルでした。</p>
+  <p>それが、実際にリスクにさらしている資本の額です。でも得ている利回りは——暗算ではできませんが——</p>
+  <p>1,000 に 500、250、125……を足した額に対して 8.5% を得ているなら、1,000 ドルに対する APY は 8.5% より高くなります。ポジションに対して追加のレバレッジを取れるからです。</p>
+  <p>つまりレバレッジを増幅する方法で、担保資産の価値が下がったときの清算リスクを引き受ける代わりに、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ループは、ADA のようなものでもできる戦略です。100 ドル分でも 1,000 ドル分でも ADA があるとして、LTV で 500 ドル借りる。</p>
+  <p>ADA の価格が上がれば、LTV は実質的に下がります。ADA が 2 倍になれば、2,000 ドルのポジションに 500 ドルの借入です。</p>
+  <p>逆に ADA の価格が下がれば担保の価値が下がるので、借入を調整するか担保を追加して、ポジションを均衡させる必要がある。</p>
+  <p>ボラティリティの高い資産で、利益を増幅するためによく使われる戦略です。</p>
+  <p>ポジションと、取る LTV しだいですが、こういうループで 10 倍のリターンを出す人も見てきました。</p>
+  <p>似た考え方で、ただし利回りの付く資産を使い、要するに APY を引き上げる、というものです。</p></div>
+</div>
+
+<div class="sec">ローンチ時の裁定の手順</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いま参加した人のために、それと私の記録のためにも——あとでブログに書くので——mainnet の冒頭で観察したことを、もう一度順に説明して。</p>
+  <p>裁定があった、と言っていたよね。何が起きたのか、手順を追って説明してもらえる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。</p>
+  <p>これは私たちが完全にサポートしているユースケースです。人々は USDrf を手に入れる——Liqwid で USDrf を借りるわけです。</p>
+  <p>そのためには何らかの担保資産を預ける必要があります。ADA でも USDCx でもいい。</p>
+  <p>たぶん ADA でやっていたのだと思いますが、確かではありません。</p>
+  <p>ある金利で USDrf を借り、借りた USDrf を USDCx にスワップして、その USDCx を Liqwid に、より高い金利で供給する。</p>
+  <p>つまり裁定があるわけです。3% で借りて 6% で供給すれば、差し引き 3% をただで稼いでいることになる。</p>
+  <p>ローンチ時に、利用率にもとづく金利がそういう形になっていたので、こうした動きをする人がいました。</p>
+  <p>もちろん、こうした金利は市場が変われば変わります。</p>
+  <p>ともあれ、供給と借入の金利差を見つけた人がいた、という裁定の機会でした。</p>
+  <p>DeFi ではよくあることです。</p></div>
+</div>
+
+<div class="sec">ADA 建てのプロダクトはあるか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>チャットから、参加者A——たしか、あるステークプールの方——が、「What is the Voyager Season」のドキュメントに「ADA は 1 時間ごとの市場価格で評価する」とあるのを見た、と。</p>
+  <p>そこで質問は、ADA 建てのプロダクトは出るのか、というもの。どう答える？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>トレジャリーが ADA を保有することの難しさは、ADA で投資ができない、という点です。</p>
+  <p>ADA を担保資産として受け入れると、トレジャリーは ADA のボラティリティをただ吸収するだけになり、ADA そのものを運用することはできない。</p>
+  <p>その ADA を運用するには、ドル建てのステーブルコインにスワップし、オフランプして、そのドルを投資することになります。</p>
+  <p>ですから、少なくとも当面は、ADA がトレジャリーの保有資産になることはまずありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ただ、ADA を持っていて、それを活かす——ループの意味でのレバレッジではなく、活用するという意味で——RealFi へのエクスポージャーを得る方法を探しているなら、その ADA を Liqwid に担保として供給し、USDrf か USDCx を借りて、それを sUSDrf への入口にすることはできます。</p>
+  <p>当然ながら、この種のポジションは ADA の価格に大きく依存します。</p>
+  <p>LTV の仕組みはさっき説明しましたが、もう一度手短に。</p>
+  <p>今 1,000 ドル分の ADA を持っていて、それを担保に 500 ドルの USDrf を借りたとします。その 500 ドルの USDrf をステークして 8.5% を得られる。</p>
+  <p>その 8.5% が借入金利より高いことを確かめておく必要があります。マイナスにならないように、ポジションが水面下に沈まないように。</p>
+  <p>そして ADA の価格を見張る必要がある。ADA が 50% 下がれば清算リスクが見えてくるので、返済するか担保を足すかしてポジションを管理しないといけない。</p>
+  <p>ともあれ、ADA 保有者が RealFi へのエクスポージャーを得る方法のひとつが、Liqwid で ADA を担保にして借りることです。</p>
+  <p>さっき言ったとおり、ADA がトレジャリーの買い付けに使われることはまずありません。どうぞ、Ben。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>当たり前のことを確認させて。</p>
+  <p>要するに、ADA を売らなくていい、ということだよね。では、直接買うのではなく借りることに、何か利点があるの？</p>
+  <p>担保化がなぜ有用なユースケースなのか、説明して。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ADA をロングしている、ADA に強気なら、売りたくないでしょう。</p>
+  <p>でも、ただ持っている以外の使い道を探したいなら、担保にして利回りの付くトークンへのエクスポージャーを得るのは、そのポジションを分散させる良い方法です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>なるほど。いいね。</p>
+  <p>リスクの話は少ししたので、透明性ポータルと、ポートフォリオの立ち上げについて触れてもらえるといい。</p>
+  <p>その 2 つを話してもらえる？</p></div>
+</div>
+
+<div class="sec">透明性ポータル</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。透明性ポータルは、プロトコルに関する指標を示すものです。</p>
+  <p>価格の安定性、ステーキングの利回り、担保比率、TVL、流通供給量といった指標が見られます。</p>
+  <p>それから、準備資産——プロトコルの裏付け——で何が起きているか、どんな種類の資産にどう投資したか。</p>
+  <p>利回りについての可視性もあるし、トークンがさまざまなプロトコルにどう分布しているかの可視性もあります。</p>
+  <p>インデックスに保有されている分、機関と個人ユーザーが保有している分、などが見られる。</p>
+  <p>透明性ポータルは、データが集まるにつれて機能を足し、肉付けしていくものです。</p>
+  <p>ローンチの時点では過去データがあまりなく、1 日や 1 週間分のデータしかないチャートをたくさん置いても意味がありません。</p>
+  <p>ですから、ポートフォリオとイールド・エンジンが落ち着いてくるにつれて、機能が増えていくのを見られるはずです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いいね。</p>
+  <p>透明性ポータルは本当に興味深かった。差別化の要素だと思ったから。</p>
+  <p>もう一つはポートフォリオの立ち上げについて。RealFi の利回りはいつも同じなのか。変わるのか。そのあたりを説明してもらえる？</p></div>
+</div>
+
+<div class="sec">利回りは変わるのか — スリーブとステーキング比率</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>良い質問です。</p>
+  <p>利回りは、いくつかの要因で時間とともに変わります。まず、裏付け資産の構成です。ポートフォリオには、いくつかのスリーブ（sleeve、資産の置き場所）があります。</p>
+  <p>スリーブ A は流動性の高いスリーブで、主にトークン化されたマネー・マーケット・ファンド。</p>
+  <p>スリーブ B は中程度の流動性のスリーブで、主に CLO ETF——ローン担保証券（CLO）の ETF——を通じたもの。</p>
+  <p>CLO ETF は、プライベートクレジットをまとめたバスケットのようなもの、と考えてください。</p>
+  <p>最後に、直接貸付（ダイレクト・レンディング）をやっています。流動性は低いけれど、かなり高いリターンを生みます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>どの時点でも、こうしたスリーブの規模と配分は変わります。時間とともに変わる。それが利回りを決める要因のひとつです。</p>
+  <p>流動性の高い資産の比率が高ければ利回りは低く、流動性の低いプライベートクレジット資産の比率が高ければ利回りは高い。それから、ステーキング比率もあります。</p>
+  <p>ポートフォリオの構成とステーキング比率のあいだには共生的な関係がありますが、2 つは独立した要因です。</p>
+  <p>2 つのあいだは厳密に決定論的ではない。ただ、ステーキング比率が低ければ、個々のステーカーへの利回りは実質的に高くなります。</p>
+  <p>これらは時間とともに流動的で、その時点のポートフォリオのスナップショットによります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>なるほど、分かった。</p>
+  <p>mainnet で何があって何が動いているか、実用面でユーザーが何をできるかを話してきた。</p>
+  <p>少し振り返って、Clay。testnet のポイントと、参加したテスターの皆さん。そのポイントはこれからどうなる？</p>
+  <p>何を期待できる？ どうやって引き換える？</p></div>
+</div>
+
+<div class="sec">testnet のポイントと pioneer season</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。pioneer season（パイオニア・シーズン）を社内で最終化しているところです。</p>
+  <p>ファーミングのパターンなど、ポイント・ポリシーに反するものがないか、まだ監視しています。</p>
+  <p>ただ、pioneer season のポイント配分はおおむね固まりました。さっき言ったとおり、バグ報告の分は今週、社内で合意したところです。</p>
+  <p>ですから、pioneer season のポイントから RFG への換算レートを、数週間のうちに公表することを目指します。</p>
+  <p>それを担当しているメンバーの一人が新婚旅行中なので、戻ってくるのを待ってから最終化します。お待たせしてすみません。</p>
+  <p>それが pioneer season の次のステップです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ポイントから RFG への交換レートを公表したあとも、新しいファーミングのパターンが出てくれば多少変わりうる、という点は残ります。ただ、今の状況を見るかぎり、その可能性はかなり低いと思います。</p>
+  <p>実際の RFG を受け取るのは、TGE（トークン生成イベント）のときです。これは——今やっている、というか、Q1 を目標にしています。</p>
+  <p>ただ、確約する前に、先に片づかないといけない他のドミノがいくつかあります。</p></div>
+</div>
+
+<div class="sec">対応地域の一覧</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>手を叩いてくれていい。私が答えを知っているべきことだから。対応している地域の一覧は公表されている？</p>
+  <p>公表されているかどうか分からない。知ってる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>私も分かりません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>私も分からない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>マーケティング・チームと話したほうがいいですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そうだね。それは私の to-do リストに入れておく。私の宿題だ。参加者B が聞いているのは……ごめん、チャットを追っているところ。ラテンアメリカ、アルゼンチン。はい。</p>
+  <p>では皆さん、ジオロケーションについてはフォローアップして答えを持ってくる。そう、国の一覧があるといいね、そのとおり。ところで、進めながら Clay にどんな質問でもしてほしい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Discord のステージが初めてなら、右上にチャットの吹き出しのようなアイコンがあるはず。</p>
+  <p>それをクリックするとチャットの窓が開く。そこで質問してくれれば、私が Clay に投げる。さて、Clay、testnet の話は手短にしたね。</p></div>
+</div>
+
+<div class="sec">この先 — EVM と TGE</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そろそろ終わりに近づいている。ほかに質問があれば、長くいることもできる。でも少し先を見よう。</p>
+  <p>年末に向けて何を考えている？ 2027 年には何を期待している？ ロードマップの状況を教えてもらえる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>私は EVM ローンチ、つまり Ethereum mainnet でのローンチに多くの力を注いでいます。</p>
+  <p>クロスチェーンの戦略を作っていて、TVL をどう計上するかの細部について DefiLlama と話しています。</p>
+  <p>今まさにそこを調整しているところですが、EVM 上でもネイティブに mint とステーキングを行う、というクロスチェーン戦略です。</p>
+  <p>そして、RealFi をそうした資本市場に持ち込むことに、本当にわくわくしています。</p>
+  <p>さっき言ったように、Cardano でのローンチは、チームの投資と、ここのコミュニティが testnet でテストし関わってくれたおかげで比較的スムーズに進みました。だから私は自分の時間の多くを、EVM への展開に集中して使えています。</p>
+  <p>とても楽しみにしています。プロトコルの成長に本当に役立つし、イールド・エンジンを固める（solidify）のにも役立つと思うからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>solidify よりいい言葉がありそうですが、今はそれが精一杯です。それが一つ目。二つ目は、TGE と RFG を市場に出すこと。</p>
+  <p>話をしているティア 1 の取引所がいくつかあり、RFG を上場させる予定です。</p>
+  <p>TGE に本腰を入れる前に EVM を着地させる必要がありますが、EVM にローンチしたら、次に考えるのはそれです。</p>
+  <p>この 2 つが、この先 6 か月ほどで楽しみにしていることです。</p></div>
+</div>
+
+<div class="sec">Cardano ではなく RealFi の話として Ethereum へ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>私のことはよく知っているとおり、私のバックグラウンドはこの 5、6 年、Cardano にどっぷりだ。</p>
+  <p>でも、Ethereum に行くこと、クロスチェーンに行くことには本当にわくわくしている。流動性があるのはそこだから。</p>
+  <p>参加者B がチャットで言っているように、クロスチェーンが未来だ。</p>
+  <p>私が本当に願っているのは、このコールにいる皆、この Discord にいる皆、私たちは RealFi のコミュニティだ、ということ。Cardano だけの話ではない。</p>
+  <p>Ethereum に目を向けるべきだと思う。期待値を設定しているわけではないけれど。</p>
+  <p>準備ができたら、Clay、Ethereum のコミュニティに入っていって RealFi を代表しないといけない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Ethereum にいて、RealFi のことを聞くことになる人たちのことを考えることがある。妻が教えてくれたんだが、「心の理論（theory of mind）」を持つ必要がある。</p>
+  <p>彼らは RealFi をどう受け取るか。興味を持ってもらうのに一番いい方法は何か。私個人の意見としては——RealFi を代表して言うのではなく——それは Cardano ファーストの物語ではない。</p>
+  <p>RealFi ファーストの物語で、リターン・ファーストの物語だ。私は興奮している。</p>
+  <p>あなたやチームと働いていて好きなことのひとつは、ちょっとパンクロックな感じがすること。褒めすぎたらいつでも止めてほしい。でも、パンクロックだ。</p>
+  <p>かっこいいものを作っている。それに、Web3 で本当のプロダクト・マーケット・フィットが何なのかを実践している。ほかの場所で何度か話したことに戻るけれど。</p>
+  <p>結局のところ、こうしたエコシステムの成長は資本の生産性の話だ。好きでも嫌いでも、名指ししないといけないと思う。</p>
+  <p>これは私個人の意見だよ、Clay。反論してくれていい。私のエゴは巨大だから、耐えられる。同意してくれる？</p>
+  <p>つまり、Ethereum に持っていくべきなのは RealFi ファーストのコミュニティだ、と。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ、まったくそのとおりです。</p>
+  <p>RealFi のミッション——実世界の資産をオンチェーンに持ち込み、この利回りのプロファイルを DeFi のユーザーに届けること——は、Cardano のエコシステムよりずっと大きいものだと思っています。</p>
+  <p>Ethereum の資本にアクセスすること——mainnet でも L2 でも——そして Solana のようなチェーンで起きている高頻度の個人の活動の多くを取り込めること。</p>
+  <p>それによって RealFi は、チェーンに依存しない RWA 利回りプロトコルとして位置づけられる。</p>
+  <p>それが RealFi にとって最善であり、RFG 保有者にとって最善だと思います。</p>
+  <p>そして、このコールにいる皆さんは、程度の差はあれ RFG 保有者になるはずです。</p>
+  <p>このコールにいる皆さんは、もう何らかの rPoints を得ているものと思っています。</p></div>
+</div>
+
+<div class="sec">rPoints のおさらい</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そうだね。まだなら、今が始めどきだよ。DM をくれれば——</p>
+  <p>私が乗せてあげる——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ。知らない方のために rPoints をおさらいしておくと。</p>
+  <p>rPoints は、プロトコルから利回りを求めるためではなく、プロトコルの安定を支えるために自分の流動性を使ってくれる人に提供しています。</p>
+  <p>たとえば、ループ市場に流動性を供給すること、あるいは SundaeSwap に流動性を供給して、スワップがスムーズに行われ、価格が安定するようにすること。</p>
+  <p>要するに、利回りを求めるのではなく流動性を提供することが、ポイントを得る方法です。そしてこのポイントは、TGE のときに RealFi のガバナンストークンである RFG に変換されます。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — MiCA 圏、利回りと rPoints</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>素晴らしい。Clay、本当にいいコールだった。質問がある人は、今がそのときだ。Clay のスケジュールだと、あと 5 分か 10 分くらいだと思う。</p>
+  <p>参加者C が rPoints について聞いている。MiCA の規制地域にいても得られるか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ、rPoints と RFG は世界中に開かれます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いいね。それから参加者E……</p>
+  <p>声が聞こえない。ステージにいないから。上がってきたいなら、Clay が構わなければ、賭けに出て招待してもいい。</p>
+  <p>どうなるか見てみよう。ごめん、Clay、昔の X のスペースのトラウマが少しあって。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>いえ、簡単です。上がってきてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そう、上がってきて話してくれ。</p>
+  <p>利回りを得ながら rPoints も得る方法はあるか、と参加者D。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ。</p>
+  <p>少しあります。ルールが一つ——ポイントのルールですが——sUSDrf を Sundae の sUSDrf プールに供給していれば、それに対してポイントを得られます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者E、私の画面ではグループの中にあなたが見えない。スピーカーになるリクエストをしてもらう必要がある。</p>
+  <p>まだ上がりたいなら、画面の下にそのオプションがあるはず。……手の形みたい、とコメントが言っている。手が挙がった？ ちょっと見てみる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>いえ、手の形に見えます。発言リクエストのボタンが手の形です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Clay、私が聞かなかったけれど聞いてほしかった質問はある？ ああ、参加者F が発言をリクエストしている。</p>
+  <p>上げよう。やあ、参加者F。ステージへようこそ。</p></div>
+</div>
+
+<div class="sec">ステージからの質問 — 複数法人の構成</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>こんにちは。聞こえていますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>うん。聞こえる。やあ、参加者F。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>よかった。思い切って話してみようと思いまして。</p>
+  <p>私は米国拠点で、MiCA の話に入るつもりはないのですが、御社は……</p>
+  <p>ドキュメントを見て、複数の法人で組織をどう構成しているかを知りました。同じことを乗り越えようとしている他の組織のために——サービスを提供してほしいとは言いませんが——コンプライアンス・チームの誰かと話して、どうやったのかを聞ける機会はありますか？</p>
+  <p>もっと資金を入れたいので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ふむ。それは同僚に持ち帰って、Ben、どう思うか聞いてみましょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そうだね。参加者F——</p>
+  <p>私にメールアドレスを DM してもらえるかな。2 人で……</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>それは私たち 2 人の担当範囲の外なので、申し訳ないけれど、これ以上は言いにくいです。でも社内の誰かと話すことは、間違いなくできます。</p>
+  <p>Ben、ごめん、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者F、質問は必ず持ち帰る。喜んで取り次ぐよ。</p>
+  <p>私のメールアドレスを DM する。何を聞いてほしいか——出せるもの、得たいもの——をまとめて送ってくれれば、紹介を取り次ぐ。それでいい？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>きしむ車輪に油が差されるかと思って、言ってみただけです。ありがとうございます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>どういたしまして。ほかに質問は？</p>
+  <p>ここまで話してきたことについて、どう思う？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>私としては、素晴らしいと思います。関わるのが待ちきれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>最高。じゃあ参加者F、ありがとう。</p></div>
+</div>
+
+<div class="sec">締め</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者C、退出のところで手を挙げてくれたね。大丈夫。やあ、参加者G。ほかに上がって話したい人は？ よし。Clay、あなたは伝説だ。</p>
+  <p>アナウンスに貼った、あなたの GIF を気に入ってくれたならいいんだけど。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ。あの GIF の人物ですね。最高です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>さて、これは書き起こす。</p>
+  <p>ブログに載せる。良い会話がたくさんあったと思う。</p>
+  <p>データチームにも話して、mainnet とこれまでの成果について、いい指標を出せないか聞いてみる。ほかに質問は？</p>
+  <p>なければ締めて、Clay を採掘現場に帰そう。利回りの最適化を掘り出すのに忙しいから。即興で言っているよ、Clay。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>うまいですよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>よかった。では参加者F、ありがとう。今 DM する。ほかの皆も、質問があれば、あとで思いついたことがあれば、タグ付けするか DM して。</p>
+  <p>いつでも喜んで手伝うし、答えを探してくる。皆さんありがとう。良い週末を。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ありがとうございました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>また次回。皆さんありがとう。それでは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>それでは。</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語の原文を訳したもの。固有名詞の誤変換は直してある。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 全セッション</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>

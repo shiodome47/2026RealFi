@@ -89,6 +89,20 @@ NAMES = {
         # 名前が挙がったステークプール
         "Straight", "Oyster",
     ],
+    # partial の回。**残してはいけない名前だけ**を書く。
+    # 発話した 2 名（進行役と Head of Product）の実名は残しているので、ここには書かない。
+    "2026-10-09-office-hours-mainnet": [
+        # チャットの質問者・ステージに上がった人・呼びかけられたハンドル名
+        "Pegasus", "Thomas", "Wolfden", "CVDM", "Chris", "Louie",
+        # 質問者の所属として挙がったステークプール
+        "Mumpu",
+        # 社内で名前が挙がった人物（法人構成の相談先、サービス・サファリに送った同僚）
+        "Sahil", "Rob",
+        # GIF の題材として挙がった人物名
+        "Galleska",
+        # ハンドル名 "Has" も置換したが、**一覧に入れられない**。
+        # 英語の文頭の "Has" と衝突するため。置換は手作業で行い、shared/speakers.md に記録してある。
+    ],
     "2026-08-11-masumi-ai-forum": [
         # 話者・チャットで発言した参加者
         "Patrick", "Sharan", "Scott", "Kelly", "Sandro",

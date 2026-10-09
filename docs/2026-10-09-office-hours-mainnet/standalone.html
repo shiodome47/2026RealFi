@@ -1,0 +1,3078 @@
+<title>RealFi Office Hours #10 — Mainnet &amp; what comes next — まとめ / Summary</title>
+<style>
+/* Cardano セッションのアーカイブ — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.35rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* RealFi Office Hours の通し番号。カードの見出しの上に小さく出す */
+.card-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+
+/* 全文は畳んでおく。開くまでは、このページはまとめだけの長さで開く。 */
+details.part { display: block; }
+details.part > summary.part-head { cursor: pointer; list-style: none; margin: 0; }
+details.part > summary.part-head::-webkit-details-marker { display: none; }
+details.part[open] > summary.part-head { margin-bottom: 2rem; }
+details.part > summary.part-head::after {
+  content: "開く"; margin-left: auto; white-space: nowrap;
+  font-size: .75rem; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .75rem;
+}
+details.part[open] > summary.part-head::after { content: "閉じる"; }
+:root[data-lang="en"] details.part > summary.part-head::after { content: "Open"; }
+:root[data-lang="en"] details.part[open] > summary.part-head::after { content: "Close"; }
+details.part > summary.part-head:hover { background: var(--surface-alt); }
+details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<script>
+// 全文は畳んであるので、リンクや印刷で中に入るときは開いておく。
+(function () {
+  function openTo(el) {
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+  }
+  function openHash() {
+    if (!location.hash) return;
+    try { openTo(document.querySelector(location.hash)); } catch (e) {}
+  }
+  window.addEventListener('hashchange', openHash);
+  window.addEventListener('DOMContentLoaded', openHash);
+  window.addEventListener('beforeprint', function () {
+    var all = document.querySelectorAll('details');
+    for (var i = 0; i < all.length; i++) all[i].open = true;
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #10</p>
+<h1><span class="l-ja">Mainnet &amp; what comes next — 予定どおり動き出した mainnet で、いま何ができるか</span><span class="l-en">Mainnet &amp; what comes next — what you can do now that mainnet is live, on schedule</span></h1>
+<p class="meta"><span>2026-10-09</span><span>Discord</span><span><span class="l-ja">登壇 2 名（ステージから 1 名）</span><span class="l-en">Two speakers (one question from the stage)</span></span>
+</p>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>mainnet は予定どおり動き出し、最初の利回り分配も済んだ——そう報告された回です。<br>
+  中身は<strong>「いま何ができるか」の案内</strong>（swap、stake、Liqwid でのループ）と、<strong>次の 2 つ、EVM と TGE の予告</strong>。新しい決定の発表はありません。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>mainnet は予定どおり。</strong>技術面では「大きなバグも、大きなダウンタイムもなかった」。最初の数回の利回り分配が行われ、ステークしている人は交換レートの上昇として受け取っている、と説明されました。</li>
+  <li><strong>呼び水は約 500 万ドル。</strong>Hoskinson Family Office と Wave とのパートナーシップで USDrf と sUSDrf を事前に発行し、個人が取引できる流動性を市場に置いた、と。</li>
+  <li><strong>入口は 2 つ。</strong>SundaeSwap で USDCx → USDrf → sUSDrf とスワップするか、地域制限の対象外なら USDrf をプロトコルに直接ステークするか。</li>
+  <li><strong>Liqwid で担保になる。</strong>USDrf も sUSDrf も担保として使え、借りた分をまたステークする「ループ」でレバレッジをかけられる。ローンチ直後には、借入と供給の金利差をとる裁定も観測された、と。</li>
+  <li><strong>利回りは固定ではない。</strong>資産の置き場所 3 つの配分と、ステーキング比率で変わる。説明の中で「ポートフォリオが出しているおよそ 8.5%」という数字が挙げられましたが、サンプルの数値例であって約束ではありません。</li>
+  <li><strong>testnet のポイントは pioneer season として確定へ。</strong>RFG への換算レートは数週間のうちに公表予定、実物の RFG は TGE（Q1 目標）で配られる、と。</li>
+  <li><strong>次は EVM、その次に TGE。</strong>ティア 1 の取引所と上場の話をしている。rPoints と RFG は MiCA 圏を含め「世界に開く」。</li>
+  <li><strong>対応地域の一覧は持ち帰り。</strong>公表されているかどうかを 2 人とも把握しておらず、進行役の宿題になりました。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#launch"><span class="n">01</span>mainnet のローンチと、最初の利回り分配</a></li>
+  <li><a href="#live"><span class="n">02</span>いま動いているもの — 呼び水、入口、2 つのトークン</a></li>
+  <li><a href="#liqwid"><span class="n">03</span>Liqwid — 担保、借入、ローンチ直後の裁定</a></li>
+  <li><a href="#loop"><span class="n">04</span>ループの仕組みと、そのリスク</a></li>
+  <li><a href="#ada"><span class="n">05</span>ADA はどう関わるか</a></li>
+  <li><a href="#portal"><span class="n">06</span>透明性ポータル</a></li>
+  <li><a href="#yield"><span class="n">07</span>利回りは変わる — スリーブとステーキング比率</a></li>
+  <li><a href="#points"><span class="n">08</span>testnet のポイント — pioneer season と TGE</a></li>
+  <li><a href="#next"><span class="n">09</span>この先 — EVM、TGE、「RealFi ファースト」</a></li>
+  <li><a href="#rpoints"><span class="n">10</span>rPoints のおさらい</a></li>
+  <li><a href="#overall"><span class="n">11</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">12</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">13</span>持ち帰りになった論点</a></li>
+</ol>
+</div>
+
+<h2 id="launch">1. mainnet のローンチと、最初の利回り分配</h2>
+<p class="deck">「予定どおり」「スムーズ」。testnet の参加者への感謝から始まった。</p>
+
+<p>冒頭で、プロトコルを追っている人なら気づいているとおり<strong>最初の数回の利回り分配を行った</strong>、と報告されました。裏付け資産からの還流がステーキング・ボールトに移り、ステークしているユーザーは sUSDrf と USDrf の交換レートを通じて資産価値が増えるのを見られる、という説明です。チームはこの数週間、プライベートクレジットの投資を実行するためにも作業してきたとのことで、「アルファの多くは本当にそこから来る」と述べられました。</p>
+
+<p>mainnet への移行そのものは、技術的な観点では「とてもスムーズ」だったと。大きなバグも大きなダウンタイムもなく、「多少の引っかかり」はあったが、予定どおりに進んだ、と説明されました。<span class="badge">補足</span>日付は <a href="../2026-09-11-cardano-seminar-realfi/#roadmap">Cardano Seminar（9 月 11 日）</a>で「10 月 1 日」と明言されていたもので、<a href="../2026-08-14-ask-the-ceo/#mainnet">#6 の「9 月中旬」</a>から 2 週間ほど後ろにずれたあと、その日付どおりに実施されたことになります。</p>
+
+<p>testnet については、コミュニティと参加者、とくに委任者を引き込んだ SPO への感謝が述べられました。成功の中身は「エンゲージメントの水準」と「人々が見つけたバグ」の 2 つ。バグ報告にはインセンティブがあり、<strong>今週はじめのレビュー会議でバグの区分と配分を固めた</strong>ので、まもなく続報が出る、と。</p>
+
+<h2 id="live">2. いま動いているもの — 呼び水、入口、2 つのトークン</h2>
+<p class="deck">testnet との違いは「本物のお金が流れていること」。入口は SundaeSwap とプロトコルの 2 つ。</p>
+
+<p>testnet と mainnet の違いは「本物のお金がシステムの中を流れている」ことに尽きる、と。そのうえで、いま動いているものが順に挙げられました。</p>
+
+<ul>
+  <li><strong>呼び水。</strong>およそ 500 万ドル相当の USDrf と sUSDrf を、Hoskinson Family Office と Wave とのパートナーシップを通じて事前に発行した。「プロトコルに呼び水を入れ、個人ユーザーがやり取りできる流動性を市場に置くため」</li>
+  <li><strong>SundaeSwap のプール。</strong>USDCx から USDrf へ、USDrf から sUSDrf へ。両方のプールが稼働している</li>
+  <li><strong>プロトコルでの直接ステーク。</strong>地理的な制限のある地域の人でなければ、USDrf を持ち込んで直接ステークできる</li>
+  <li><strong>Liqwid との統合。</strong>両方のトークンを DeFi で使える（次節）</li>
+</ul>
+
+<p>2 つのトークンの関係も改めて説明されました。USDrf は 1 ドルにペッグされた、利回りの付かないステーブルコイン。sUSDrf は利回りを得るためのステーク・トークンで、プロトコルで USDrf をステークして受け取るか、SundaeSwap でスワップして手に入れる。<strong>どちらの経路でも「ある価格で手に入れ、その価格がステーキング・ボールトへの分配とともに上がっていく」</strong>という点は同じ、と。<span class="badge">補足</span>この交換レートの仕組みは <a href="../2026-07-24-office-hours-engineering/#tokens">#3</a> で設計として説明されていたもので、この回ではそれが実際に動いている、という位置づけです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="USDCx から USDrf、USDrf から sUSDrf への 2 つの経路（SundaeSwap でのスワップと、プロトコルでの直接ステーク）を示す図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">mainnet で USDrf / sUSDrf に至る経路（コール中の説明をもとに整理）</text>
+
+  <rect x="16" y="78" width="150" height="56" rx="8" class="d-box-plain"/>
+  <text x="91" y="102" class="d-t" text-anchor="middle">USDCx</text>
+  <text x="91" y="122" class="d-s" text-anchor="middle">手持ちのドル建て資産</text>
+
+  <line x1="166" y1="106" x2="262" y2="106" class="d-line-accent" marker-end="url(#m1)"/>
+  <text x="214" y="96" class="d-s" text-anchor="middle">SundaeSwap</text>
+
+  <rect x="266" y="78" width="150" height="56" rx="8" class="d-box"/>
+  <text x="341" y="102" class="d-t" text-anchor="middle">USDrf</text>
+  <text x="341" y="122" class="d-s" text-anchor="middle">1 ドルのペッグ。利回りなし</text>
+
+  <line x1="416" y1="92" x2="512" y2="92" class="d-line-accent" marker-end="url(#m1)"/>
+  <text x="464" y="82" class="d-s" text-anchor="middle">SundaeSwap</text>
+  <line x1="416" y1="120" x2="512" y2="120" class="d-line-accent" marker-end="url(#m1)"/>
+  <text x="464" y="140" class="d-s" text-anchor="middle">プロトコルで直接ステーク</text>
+  <text x="464" y="156" class="d-s" text-anchor="middle">（地域制限の対象外のみ）</text>
+
+  <rect x="516" y="78" width="148" height="56" rx="8" class="d-box-accent"/>
+  <text x="590" y="102" class="d-t d-a" text-anchor="middle">sUSDrf</text>
+  <text x="590" y="122" class="d-s" text-anchor="middle">交換レートで利回り</text>
+
+  <text x="340" y="196" class="d-s" text-anchor="middle">呼び水：約 500 万ドル相当の USDrf / sUSDrf を事前発行（Hoskinson Family Office と Wave）</text>
+  <text x="340" y="218" class="d-s" text-anchor="middle">どちらの経路でも「ある価格で手に入れ、その価格が分配とともに上がる」</text>
+</svg>
+<p class="figcap">コール中で挙げられた経路をそのまま並べたものです。SundaeSwap のプールは USDCx/USDrf と USDrf/sUSDrf の 2 つ。</p>
+</div>
+
+<h2 id="liqwid">3. Liqwid — 担保、借入、ローンチ直後の裁定</h2>
+<p class="deck">USDrf も sUSDrf も担保になる。ローンチ直後には金利差をとる動きがあった、と。</p>
+
+<p>Liqwid との統合は稼働していて、USDrf は担保として受け入れられ、借りることもできる。sUSDrf も<strong>分離市場（isolated market）</strong>で担保として使え、それを担保に USDCx を借りて、レバレッジをかけてプロトコルを「ループ」できる、と説明されました。<span class="badge">補足</span>分離市場とは、ある担保資産の貸し借りを他の市場から切り離した区画のことで、その資産に問題が起きても他の市場に波及しにくくする仕組みです。</p>
+
+<p>ローンチ直後に実際に見られた動きとして、<strong>借入と供給の金利差をとる裁定</strong>が紹介されました。「それが DeFi。まさにそういう実用性を市場で可能にしたかった」と、肯定的に語られています。手順は進行役の求めに応じて次のように説明されました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 212" role="img" aria-label="ローンチ直後に観測された裁定の 3 手順。Liqwid で担保を預けて USDrf を借り、USDCx にスワップし、Liqwid に供給して金利差を得る">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">ローンチ直後に観測された裁定（金利はコール中の仮の数字）</text>
+
+  <rect x="16" y="56" width="196" height="84" rx="8" class="d-box"/>
+  <text x="114" y="80" class="d-t" text-anchor="middle">① Liqwid で借りる</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">担保（ADA か USDCx）を預け</text>
+  <text x="114" y="120" class="d-s" text-anchor="middle">USDrf を借りる（仮に 3%）</text>
+
+  <line x1="212" y1="98" x2="238" y2="98" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="242" y="56" width="196" height="84" rx="8" class="d-box"/>
+  <text x="340" y="80" class="d-t" text-anchor="middle">② スワップ</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">借りた USDrf を</text>
+  <text x="340" y="120" class="d-s" text-anchor="middle">USDCx に替える</text>
+
+  <line x1="438" y1="98" x2="464" y2="98" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="468" y="56" width="196" height="84" rx="8" class="d-box-accent"/>
+  <text x="566" y="80" class="d-t d-a" text-anchor="middle">③ Liqwid に供給</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">USDCx を供給して</text>
+  <text x="566" y="120" class="d-s" text-anchor="middle">金利を受け取る（仮に 6%）</text>
+
+  <text x="340" y="172" class="d-s" text-anchor="middle">差額の 3% が利益。「利用率にもとづく金利がそういう形になっていた」ローンチ時だけの状況</text>
+  <text x="340" y="194" class="d-s" text-anchor="middle">「こうした金利は市場が変われば変わる」</text>
+</svg>
+<p class="figcap">担保は「たぶん ADA だったと思うが、確かではない」とのこと。3% と 6% はコール中で例として挙げられた数字で、実際の金利ではありません。</p>
+</div>
+
+<p><span class="badge">補足</span><a href="../2026-07-24-office-hours-engineering/#qa">#3</a> で保留になった「sUSDR の裁定が成立してしまわないか」という問いとは別の裁定です。あちらは交換レートの仕組みそのものに関する懸念で、こちらは Liqwid の貸し借りの金利差です。この回でも、交換レートに関する裁定の問いには触れられていません。</p>
+
+<h2 id="loop">4. ループの仕組みと、そのリスク</h2>
+<p class="deck">担保にして借り、借りた分をまたステークする。レバレッジが増え、清算リスクも増える。</p>
+
+<p>進行役の求めで、<strong>「サンプルの数字」</strong>を使ったループの説明がありました。コール中ではこれを「ループ（looping）」と呼んでいるので、以下もその言葉で書きます。</p>
+
+<ol>
+  <li>1,000 ドル分の USDCx を USDrf にスワップし、sUSDrf にステークする。そのまま持てば「ポートフォリオが出しているおよそ 8.5%」を得て、年末には 1,085 ドル</li>
+  <li>その sUSDrf を Liqwid に担保として預け、<strong>LTV 50%</strong> で USDCx を 500 ドル借りる</li>
+  <li>借りた 500 ドルをまたステークする。これで「元手 1,000 ドルだけをリスクにさらして、1,500 ドル分の sUSDrf が 8.5% を稼ぐ」</li>
+  <li>同じ 50% で繰り返せば、次は 250、125、62.5……と続く</li>
+</ol>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="コール中のサンプルの数字によるループの図。1,000 ドルをステークし、LTV 50% で 500 を借りてまたステークし、250、125 と続く">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">ループの仮の数値例（コール中の「サンプルの数字」。LTV 50% で繰り返す）</text>
+
+  <rect x="16" y="60" width="140" height="64" rx="8" class="d-box-accent"/>
+  <text x="86" y="84" class="d-t d-a" text-anchor="middle">元手 1,000</text>
+  <text x="86" y="106" class="d-s" text-anchor="middle">sUSDrf にステーク</text>
+
+  <line x1="156" y1="92" x2="184" y2="92" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="188" y="60" width="140" height="64" rx="8" class="d-box"/>
+  <text x="258" y="84" class="d-t" text-anchor="middle">借入 500</text>
+  <text x="258" y="106" class="d-s" text-anchor="middle">またステーク</text>
+
+  <line x1="328" y1="92" x2="356" y2="92" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="360" y="60" width="140" height="64" rx="8" class="d-box"/>
+  <text x="430" y="84" class="d-t" text-anchor="middle">借入 250</text>
+  <text x="430" y="106" class="d-s" text-anchor="middle">またステーク</text>
+
+  <line x1="500" y1="92" x2="528" y2="92" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="532" y="60" width="132" height="64" rx="8" class="d-box-plain"/>
+  <text x="598" y="84" class="d-t" text-anchor="middle">125、62.5 …</text>
+  <text x="598" y="106" class="d-s" text-anchor="middle">繰り返し</text>
+
+  <text x="340" y="160" class="d-s" text-anchor="middle">1 回目のループで「元手 1,000 のリスクで 1,500 分の sUSDrf が利回りを稼ぐ」状態になる</text>
+  <text x="340" y="182" class="d-s" text-anchor="middle">繰り返すほど元手あたりの APY は上がるが、借入の金利と清算リスクも増える</text>
+
+  <rect x="16" y="200" width="648" height="48" rx="8" class="d-box-warn"/>
+  <text x="340" y="220" class="d-s d-w" text-anchor="middle">清算リスク：担保の価値が、借入に対する LTV の水準を割ると清算される</text>
+  <text x="340" y="240" class="d-s d-w" text-anchor="middle">この例では sUSDrf の価値が 50% 下がった場合。「比較的保守的な LTV」として 50% を選んでいる、と</text>
+</svg>
+<p class="figcap">コール中では「暗算ではできない」として、ループ後の APY の数字は示されていません。数字はいずれも説明のためのもので、実際の金利でも、得られる利回りの約束でもありません。</p>
+</div>
+
+<p>リスクについては、<strong>「担保の価値が借入の価値を下回る LTV の水準を割り込むと清算リスクに直面する」</strong>と明言されました。この例で LTV 50% を選んだのは「比較的保守的」だからで、sUSDrf がそれだけ下がるのは「相当なこと」だ、と。ループ後の APY は「元手 1,000 ドルに対して 8.5% より高くなる」とだけで、具体的な数字は出ていません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — ループを繰り返すと、結局いくらになるのか？</summary>
+<div class="explain-body">
+  <p><span class="badge">補足</span>以下はこちらで足した計算です。コール中の発言ではありません。</p>
+  <h4>上限は元手の 2 倍</h4>
+  <p>LTV 50% で無限に繰り返すと、ポジションの合計は 1,000 + 500 + 250 + … で <strong>2,000 に近づきます</strong>（それ以上にはなりません）。借入の合計は 1,000。つまり「元手 1,000 で、最大 2,000 分の sUSDrf が利回りを稼ぎ、1,000 を借りている」状態です。</p>
+  <h4>借入の金利を引く必要がある</h4>
+  <p>コール中の数値例では、ステークの利回りだけが語られ、借入の金利は（ADA の担保の話で「借入金利より高いことを確かめる必要がある」と触れられた以外は）計算に入っていません。利回りが 8.5%、借入金利が仮に 5% なら、無限ループでの元手あたりの純利回りは 2,000 × 8.5% − 1,000 × 5% = 170 − 50 = <strong>120 ドル、つまり 12%</strong>。借入金利が利回りを上回れば、ループはむしろ損になります。</p>
+  <h4>何が sUSDrf を 50% 下げうるのか</h4>
+  <p>これはコールでは語られていません。sUSDrf は交換レートで価値が上がるトークンなので、設計上はペッグ資産に近い動きをします。下がるとすれば、裏付け資産の損失（<a href="../2026-08-14-ask-the-ceo/#waterfall">#6 の損失の順序</a>）か、二次市場での流動性の枯渇が考えられますが、<strong>この回では清算が連鎖したときに何が起きるかも含めて触れられていません</strong>。</p>
+  <p>一言でいうと：ループは「借りた金利より高い利回りが続くかぎり」効く仕組みで、その前提が崩れたときの話はこの回にはありません。</p>
+</div>
+</details>
+
+<p>進行役からの「ピラミッディング（利益を再投資すること）と同じか」という問いには、「別の戦略」との答え。利益確定を繰り返す戦略はボラティリティの高い資産に向いていて、ループは「ベースのポジションで得る APY を引き上げる」ものだ、と。ループは ADA のような資産でもでき、価格が上がれば LTV は下がり、下がれば借入の調整か担保の追加が要る。「ポジションと LTV しだいだが、こういうループで 10 倍のリターンを出す人も見てきた」とも述べられました。<span class="badge">補足</span>この「10 倍」はボラティリティの高い資産でのレバレッジ一般の話として語られたもので、sUSDrf の話ではありません。</p>
+
+<p><span class="badge">補足</span>ループは <a href="../2026-08-06-office-hours-gtm/#loop">#5</a> で「成長の主な仕組み」として数値例つきで説明されていました。あのときの保留（清算の水準）には、この回で「LTV の水準を割ったとき」という原則の答えが出ています。清算が連鎖したときのペッグへの影響は、引き続き語られていません。</p>
+
+<h2 id="ada">5. ADA はどう関わるか</h2>
+<p class="deck">トレジャリーが ADA を持つことはまずない。ただし担保としてなら入口になる。</p>
+
+<p>チャットから「ADA 建てのプロダクトは出るのか」という質問がありました（質問者はドキュメントに「ADA は 1 時間ごとの市場価格で評価する」とあるのを見た、とのこと）。答えは、<strong>トレジャリーが ADA を保有することは「少なくとも当面は」まずない</strong>、というものでした。理由は「ADA で投資ができない」から。ADA を担保資産として受け入れると、トレジャリーはそのボラティリティを吸収するだけで、運用するにはドル建てのステーブルコインにスワップしてオフランプする必要がある、と。</p>
+
+<p>その一方で、<strong>ADA を売らずに RealFi へのエクスポージャーを得る方法</strong>として、Liqwid で ADA を担保にして USDrf か USDCx を借り、それを sUSDrf への入口にする経路が示されました。「1,000 ドル分の ADA を担保に 500 ドルの USDrf を借りてステークすれば 8.5% を得られる。ただし、その利回りが借入金利より高いことを確かめ、ADA の価格を見張る必要がある。ADA が 50% 下がれば清算リスクが見えてくる」と。進行役の「なぜ直接買うのではなく借りるのか」には、<strong>「ADA に強気なら売りたくない。担保にして利回りの付くトークンへのエクスポージャーを得るのは、ポジションを分散させる良い方法」</strong>という答えでした。</p>
+
+<p><span class="badge">補足</span>「1 時間ごとの市場価格で評価する」という記述が何を指すのかは、コール中では扱われませんでした。質問者が挙げた「Voyager Season」というドキュメントの名前も、この一言だけで、説明はありません。</p>
+
+<h2 id="portal">6. 透明性ポータル</h2>
+<p class="deck">指標と準備資産を見せる場所。ローンチ直後はデータが少ないので、これから肉付けする。</p>
+
+<p>進行役が「差別化の要素だと思った」と挙げた透明性ポータルについて、見られるものが列挙されました。</p>
+
+<ul>
+  <li>プロトコルの指標 — 価格の安定性、ステーキングの利回り、担保比率、TVL、流通供給量</li>
+  <li>準備資産（プロトコルの裏付け）で何が起きているか — どんな種類の資産にどう投資したか</li>
+  <li>利回りの可視性、トークンの分布 — インデックスに保有されている分、機関と個人が保有している分</li>
+</ul>
+
+<p>ローンチ時点では過去データがほとんどないので、「1 日や 1 週間分のデータしかないチャートをたくさん置いても意味がない」。ポートフォリオとイールド・エンジンが落ち着くにつれて機能を足していく、と述べられました。</p>
+
+<h2 id="yield">7. 利回りは変わる — スリーブとステーキング比率</h2>
+<p class="deck">資産の置き場所の配分と、ステークしている人の割合。2 つは独立した要因。</p>
+
+<p>「RealFi の利回りはいつも同じなのか」という進行役の問いに、<strong>利回りは時間とともに変わる</strong>、と。要因は 2 つ挙げられました。1 つ目は裏付け資産の構成で、コール中ではこれを「スリーブ（sleeve）」と呼んでいるので、以下もその言葉で書きます。</p>
+
+<ul>
+  <li><strong>スリーブ A</strong> — 流動性の高いスリーブ。主にトークン化されたマネー・マーケット・ファンド</li>
+  <li><strong>スリーブ B</strong> — 中程度の流動性。主に CLO ETF（ローン担保証券の ETF）。「プライベートクレジットをまとめたバスケット」</li>
+  <li><strong>直接貸付</strong> — 流動性は低いが「かなり高いリターン」</li>
+</ul>
+
+<p>流動性の高い資産の比率が高ければ利回りは低く、流動性の低いプライベートクレジットの比率が高ければ高い。2 つ目は<strong>ステーキング比率</strong>で、「ポートフォリオの構成とステーキング比率には共生的な関係があるが、2 つは独立した要因で、厳密に決定論的ではない」。ステーキング比率が低ければ、個々のステーカーへの利回りは実質的に高くなる、と。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 232" role="img" aria-label="利回りを動かす 2 つの要因の図。上段は 3 つのスリーブを流動性の高い順に並べ、右ほど利回りが高いことを示す。下段はステーキング比率が低いほど個々のステーカーへの利回りが高いことを示す">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">利回りを動かす 2 つの要因（コール中の説明）</text>
+
+  <text x="16" y="60" class="d-s">① 資産の置き場所の配分</text>
+  <rect x="16" y="70" width="200" height="52" rx="8" class="d-box-plain"/>
+  <text x="116" y="92" class="d-t" text-anchor="middle">スリーブ A</text>
+  <text x="116" y="110" class="d-s" text-anchor="middle">流動性高・MMF</text>
+  <rect x="240" y="70" width="200" height="52" rx="8" class="d-box"/>
+  <text x="340" y="92" class="d-t" text-anchor="middle">スリーブ B</text>
+  <text x="340" y="110" class="d-s" text-anchor="middle">中程度・CLO ETF</text>
+  <rect x="464" y="70" width="200" height="52" rx="8" class="d-box-accent"/>
+  <text x="564" y="92" class="d-t d-a" text-anchor="middle">直接貸付</text>
+  <text x="564" y="110" class="d-s" text-anchor="middle">流動性低・高いリターン</text>
+  <line x1="16" y1="138" x2="656" y2="138" class="d-line-accent" marker-end="url(#m4)"/>
+  <text x="340" y="156" class="d-s" text-anchor="middle">右に寄るほど利回りは高く、流動性は低い。配分は時間とともに変わる</text>
+
+  <text x="16" y="190" class="d-s">② ステーキング比率</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">USDrf のうちステークされている割合が低いほど、個々のステーカーへの利回りは高い（①とは独立した要因）</text>
+</svg>
+<p class="figcap">スリーブの中身は <a href="../2026-08-28-office-hours-investment-framework/#sleeves">#8</a> で投資チームが詳しく説明したものと同じ構成です。ステーキング比率が効く理由は <a href="../2026-09-11-cardano-seminar-realfi/#yield">Cardano Seminar</a> で CEO が説明しています。</p>
+</div>
+
+<p><span class="badge">補足</span>ループの説明で挙がった「およそ 8.5%」は、この節の説明どおり固定ではなく、その時点のポートフォリオのスナップショットによる値です。コール中では「ポートフォリオが出している」値として語られましたが、<strong>どの期間の、どの定義の利回りかは示されていません</strong>。<a href="../2026-09-11-cardano-seminar-realfi/#yield">Cardano Seminar</a> で CEO が「8〜10%」と語った範囲の中に収まる数字ではあります。</p>
+
+<h2 id="points">8. testnet のポイント — pioneer season と TGE</h2>
+<p class="deck">配分はおおむね確定。換算レートは数週間内に公表、実物は TGE で。</p>
+
+<p>testnet の参加者のポイントがどうなるか。コール中ではこの期間を <strong>「pioneer season（パイオニア・シーズン）」</strong>と呼んでいます。</p>
+
+<ul>
+  <li><strong>配分は「おおむね確定」。</strong>ファーミングのパターンなど、ポイント・ポリシーに反するものがないかはまだ監視している</li>
+  <li><strong>バグ報告の分。</strong>今週、社内で合意したので、まもなく続報が出る</li>
+  <li><strong>換算レートは数週間内に公表予定。</strong>pioneer season のポイントから RFG への換算レートで、担当メンバーの一人が新婚旅行中のため、戻るのを待って最終化する</li>
+  <li>公表後も、新しいファーミングのパターンが出れば多少変わりうるが、「今の状況を見るかぎり、その可能性はかなり低い」</li>
+  <li><strong>実物の RFG は TGE（トークン生成イベント）で受け取る。</strong>「Q1 を目標にしている」。ただし「確約する前に、先に片づかないといけない他のドミノがいくつかある」</li>
+</ul>
+
+<p><span class="badge">補足</span>TGE の時期は「今やっている、というか、Q1 を目標」という言い直しの形で語られており、確定した日付ではありません。9 節のとおり、EVM を先に着地させる、という順序も同時に示されています。ガバナンストークンは、<a href="../2026-09-21-office-hours-ambassador/#ticker">改称</a>後の名前が RLFG と決まっていますが、この回の話者は一貫して RFG と呼んでいます。本文もそのままにしています。</p>
+
+<h2 id="next">9. この先 — EVM、TGE、「RealFi ファースト」</h2>
+<p class="deck">次の 6 か月の焦点は 2 つ。EVM を先に、TGE はそのあと。</p>
+
+<p>年末と 2027 年に向けて何を考えているか。Head of Product が挙げたのは 2 つです。</p>
+
+<ol>
+  <li><strong>EVM ローンチ（Ethereum mainnet）。</strong>クロスチェーンの戦略を作っていて、<strong>TVL をどう計上するかの細部について DefiLlama と話している</strong>。EVM 上でもネイティブに mint とステーキングを行う。「Cardano のローンチがスムーズに進んだおかげで、自分の時間の多くを EVM への展開に使えている」</li>
+  <li><strong>TGE と、RFG を市場に出すこと。</strong>「話をしているティア 1 の取引所がいくつかあり、RFG を上場させる予定」。ただし「TGE に本腰を入れる前に EVM を着地させる必要がある」ので、順序は EVM が先</li>
+</ol>
+
+<p>EVM の日付は、この回でも述べられていません。<span class="badge">補足</span><a href="../2026-09-21-office-hours-ambassador/#events">#9</a> では「11 月頭の Solana Breakpoint の頃には EVM に乗っていれば」、Cardano Seminar では「mainnet の 1 か月後」という言い方でした。この回の「次の 6 か月ほど」は、それより幅のある言い方です。取引所の名前も、<a href="../2026-08-24-office-hours-ticker/#ticker">#7</a> 以来一貫して挙げられていません。</p>
+
+<p>そのあと進行役から、長めの意見表明がありました。「私のバックグラウンドは Cardano にどっぷりだが、Ethereum に行くことには本当にわくわくしている。流動性があるのはそこだから」。そして、Ethereum の人たちに RealFi がどう受け取られるかを考えると、<strong>「Cardano ファーストの物語ではなく、RealFi ファースト、リターン・ファーストの物語」</strong>だ、と。「RealFi を代表して言うのではなく、個人の意見」と何度も断りを入れたうえでの発言です。Head of Product は「まったくそのとおり」と応じ、「RealFi のミッションは Cardano のエコシステムよりずっと大きい。Ethereum の mainnet でも L2 でも資本にアクセスし、Solana のようなチェーンの高頻度の個人の活動を取り込めれば、RealFi はチェーンに依存しない RWA 利回りプロトコルとして位置づけられる。それが RealFi にとっても RFG 保有者にとっても最善」と述べました。</p>
+
+<h2 id="rpoints">10. rPoints のおさらい</h2>
+<p class="deck">利回りを求めるのではなく、安定を支えるために流動性を使う人に。TGE で RFG に変わる。</p>
+
+<p>mainnet での新しいポイント、コール中の呼び方では <strong>rPoints</strong> について、改めて説明がありました。</p>
+
+<ul>
+  <li>対象は「プロトコルから利回りを求めるためではなく、<strong>プロトコルの安定を支えるために</strong>自分の流動性を使ってくれる人」</li>
+  <li>たとえば、ループ市場への流動性の供給、SundaeSwap への流動性の供給（スワップがスムーズに行われ、価格が安定するように）</li>
+  <li>「利回りを求めるのではなく流動性を提供することが、ポイントを得る方法」。ポイントは TGE で RFG に変換される</li>
+  <li>Q&amp;A で、<strong>MiCA の規制地域にいても rPoints と RFG は「世界中に開かれる」</strong>と明言。また、sUSDrf を Sundae の sUSDrf プールに供給していれば、利回りを得ながらポイントも得られる、と</li>
+</ul>
+
+<p><span class="badge">補足</span>testnet 期間の pioneer season のポイント（8 節）と、mainnet での rPoints は、どちらも TGE で RFG に変わる点は同じですが、別の仕組みとして語られています。換算レートが同じかどうかは述べられていません。</p>
+
+<h2 id="overall">11. 全体像</h2>
+<p class="deck">testnet → mainnet（10 月 1 日）→ EVM → TGE。この回は真ん中の「いま」の案内。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="testnet から mainnet、EVM、TGE へと続く順序の図。mainnet は 10 月 1 日に実施済み、EVM は日付なし、TGE は Q1 目標で EVM のあと">
+  <defs>
+    <marker id="m5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">この回の時点での順序（コール中の説明をもとに整理）</text>
+
+  <rect x="16" y="52" width="148" height="96" rx="8" class="d-box-plain"/>
+  <text x="90" y="76" class="d-t" text-anchor="middle">testnet</text>
+  <text x="90" y="98" class="d-s" text-anchor="middle">pioneer season</text>
+  <text x="90" y="116" class="d-s" text-anchor="middle">ポイント配分は</text>
+  <text x="90" y="134" class="d-s" text-anchor="middle">おおむね確定</text>
+
+  <line x1="164" y1="100" x2="188" y2="100" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="192" y="52" width="148" height="96" rx="8" class="d-box-accent"/>
+  <text x="266" y="76" class="d-t d-a" text-anchor="middle">mainnet</text>
+  <text x="266" y="98" class="d-s" text-anchor="middle">10 月 1 日に実施</text>
+  <text x="266" y="116" class="d-s" text-anchor="middle">swap・stake・Liqwid</text>
+  <text x="266" y="134" class="d-s" text-anchor="middle">最初の利回り分配済み</text>
+
+  <line x1="340" y1="100" x2="364" y2="100" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="368" y="52" width="148" height="96" rx="8" class="d-box"/>
+  <text x="442" y="76" class="d-t" text-anchor="middle">EVM</text>
+  <text x="442" y="98" class="d-s" text-anchor="middle">Ethereum mainnet</text>
+  <text x="442" y="116" class="d-s" text-anchor="middle">ネイティブの mint と stake</text>
+  <text x="442" y="134" class="d-s" text-anchor="middle">日付は未提示</text>
+
+  <line x1="516" y1="100" x2="540" y2="100" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="544" y="52" width="120" height="96" rx="8" class="d-box"/>
+  <text x="604" y="76" class="d-t" text-anchor="middle">TGE</text>
+  <text x="604" y="98" class="d-s" text-anchor="middle">RFG を配布</text>
+  <text x="604" y="116" class="d-s" text-anchor="middle">Q1 を目標</text>
+  <text x="604" y="134" class="d-s" text-anchor="middle">EVM のあと</text>
+
+  <text x="340" y="186" class="d-s" text-anchor="middle">この回 = mainnet の「いま」の案内。入口（SundaeSwap / 直接ステーク）、Liqwid でのループ、rPoints</text>
+  <text x="340" y="208" class="d-s" text-anchor="middle">「次の 6 か月ほど」で楽しみにしているのは EVM と TGE の 2 つ</text>
+  <text x="340" y="240" class="d-s" text-anchor="middle">持ち帰り：対応地域の一覧、ポイントの換算レート、compliance への取り次ぎ</text>
+</svg>
+<p class="figcap">#9 が mainnet 前の 2 週間の「実験」の回だったのに対し、この回は mainnet 後の最初の報告です。</p>
+</div>
+
+<h2 id="qa">12. Q&amp;A</h2>
+<p class="deck">チャットから 4 件、ステージから 1 件。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者A</span>ドキュメントに「ADA は 1 時間ごとの市場価格で評価する」とある。ADA 建てのプロダクトは出るのか。</p>
+<p class="qa-a" data-by="回答">トレジャリーが ADA を持つことは「少なくとも当面は」まずない。ADA で投資ができないから。ただし、Liqwid で ADA を担保にして USDrf か USDCx を借り、sUSDrf への入口にすることはできる（<a href="#ada">5 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者B</span>（対応地域について）ラテンアメリカ、アルゼンチンは。</p>
+<p class="qa-a" data-by="持ち帰り">対応地域の一覧が公表されているかどうかを 2 人とも把握しておらず、進行役が「ジオロケーションについてはフォローアップして答えを持ってくる」と約束。「国の一覧があるといい、そのとおり」と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者C</span>MiCA の規制地域にいても rPoints を得られるか。</p>
+<p class="qa-a" data-by="回答">「rPoints と RFG は世界中に開かれる」。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者D</span>利回りを得ながら rPoints も得る方法はあるか。</p>
+<p class="qa-a" data-by="回答">少しある。sUSDrf を Sundae の sUSDrf プールに供給していれば、それに対してポイントを得られる、というルールがある。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者F（ステージ）</span>米国拠点。ドキュメントで複数の法人による組織の構成を見た。同じことを乗り越えようとしている他の組織のために、compliance チームの誰かと話して、どうやったのかを聞ける機会はあるか。もっと資金を入れたい。</p>
+<p class="qa-a" data-by="取り次ぎ">Head of Product は「私たち 2 人の担当範囲の外なので、これ以上は言いにくい。社内の誰かと話すことはできる」。進行役がメールアドレスを DM し、聞きたいことをまとめて送ってもらえれば紹介を取り次ぐ、と約束。</p>
+</div>
+
+<h2 id="pending">13. 持ち帰りになった論点</h2>
+<p class="deck">報告の回なので、決まったことより「これから出る」ことのほうが多い。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">持ち帰り</span>対応している地域（国）の一覧は公表されているのか。</p>
+<p class="qa-a" data-by="コール後に">公表されているかどうかを 2 人とも把握しておらず、「マーケティング・チームと話す」「私の to-do リストに入れる」と。<span class="badge">補足</span>Cardano Seminar では CEO が「米国・EU・英国が対象外」と述べています。国単位の一覧は、この回でも示されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">予告のみ</span>pioneer season のポイントから RFG への換算レート。</p>
+<p class="qa-a" data-by="数週間内">「数週間のうちに公表することを目指す」。公表後も、ファーミングのパターンしだいで多少変わりうる、と。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期のみ</span>TGE はいつか。</p>
+<p class="qa-a" data-by="Q1 目標">「Q1 を目標」。ただし「先に片づかないといけない他のドミノがある」。EVM を先に着地させる、という順序も示されました。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未提示</span>EVM ローンチの日付と、上場する取引所の名前。</p>
+<p class="qa-a" data-by="日付なし">「次の 6 か月ほど」の焦点として語られただけで、日付はありません。取引所は「ティア 1 のいくつか」とだけ。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>ループ後の APY と、「およそ 8.5%」の中身。</p>
+<p class="qa-a" data-by="出所のみ">ループ後の APY は「暗算ではできない」として示されず、8.5% は「ポートフォリオが出している」値としてだけ語られました。期間と定義は未提示です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未言及</span>sUSDrf の価値が大きく下がる状況と、清算が連鎖したときの影響。</p>
+<p class="qa-a" data-by="原則のみ">清算の原則（LTV の水準を割ったとき）は語られましたが、sUSDrf が 50% 下がるのはどういう場合か、連鎖したら何が起きるかは、この回でも触れられていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">取り次ぎ</span>複数の法人による組織構成について、compliance チームに聞けるか。</p>
+<p class="qa-a" data-by="個別対応">「2 人の担当範囲の外」。進行役が紹介を取り次ぐ、と。公開の場での説明は予定されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">予告のみ</span>mainnet の成果の指標、バグ報奨の詳細。</p>
+<p class="qa-a" data-by="時期なし">進行役が「データチームと話して指標を出せないか聞く」、Head of Product が「バグの区分と配分を固めたので、まもなく続報を出す」と。いずれも時期は示されていません。</p>
+</div>
+
+<div class="note">
+<p><strong>このページについて。</strong>チャットで質問した方とステージに上がった方は <code>参加者A〜G</code> に、社内で名前が挙がった人物は役割に置き換えています。原本には話者ラベルも時刻もなく、話者は文脈から割り当てました。固有名詞の誤変換は依頼者の指示で直してあります。図はいずれも音声の説明をもとにこちらで描いたものです。</p>
+<p><span class="badge">補足</span>のマークが付いた記述は、理解を助けるためにこちらで足したもので、コール中の発言ではありません。利回りに関する数字は、いずれもコール中で説明のために挙げられたもので、約束でも勧誘でもありません。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Mainnet went live on schedule and the first yield distributions have been made — that is the report.<br>
+  The rest is <strong>a guide to what you can do now</strong> (swap, stake, loop on Liqwid) and <strong>a preview of the next two things: EVM and TGE</strong>. No new decisions were announced.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Mainnet on schedule.</strong> Technically, “no major bugs, no major downtimes.” The first few yield distributions have been made, and stakers see them as a rising exchange rate.</li>
+  <li><strong>About $5 million to prime the pump.</strong> USDrf and sUSDrf were pre-issued through a partnership with the Hoskinson Family Office and Wave, putting liquidity in the market for retail users.</li>
+  <li><strong>Two ways in.</strong> Swap USDCx → USDrf → sUSDrf on SundaeSwap, or, if you are not in a geo-restricted region, stake USDrf directly in the protocol.</li>
+  <li><strong>Collateral on Liqwid.</strong> Both USDrf and sUSDrf can be used as collateral, and re-staking what you borrow (“looping”) adds leverage. Right after launch, people also arbitraged the gap between borrow and supply rates.</li>
+  <li><strong>The yield is not fixed.</strong> It moves with the allocation across three places the money sits and with the staking ratio. “Roughly eight and a half percent that the portfolio is delivering” was a sample number in a worked example, not a promise.</li>
+  <li><strong>Testnet points become the pioneer season.</strong> A points-to-RFG conversion rate is due in the next few weeks; the RFG itself arrives at the TGE, targeted for Q1.</li>
+  <li><strong>EVM next, then TGE.</strong> Talks with some tier-one exchanges about listing. rPoints and RFG will be “open globally,” MiCA regions included.</li>
+  <li><strong>The list of supported regions is a follow-up.</strong> Neither speaker knew whether one is published; the host took it as homework.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-launch"><span class="n">01</span>The mainnet launch and the first yield distributions</a></li>
+  <li><a href="#en-live"><span class="n">02</span>What is live — the priming, the entry points, the two tokens</a></li>
+  <li><a href="#en-liqwid"><span class="n">03</span>Liqwid — collateral, borrowing, and the arbitrage at launch</a></li>
+  <li><a href="#en-loop"><span class="n">04</span>How looping works, and its risk</a></li>
+  <li><a href="#en-ada"><span class="n">05</span>Where ADA fits</a></li>
+  <li><a href="#en-portal"><span class="n">06</span>The transparency portal</a></li>
+  <li><a href="#en-yield"><span class="n">07</span>The yield varies — sleeves and the staking ratio</a></li>
+  <li><a href="#en-points"><span class="n">08</span>Testnet points — the pioneer season and the TGE</a></li>
+  <li><a href="#en-next"><span class="n">09</span>What comes next — EVM, TGE, “RealFi first”</a></li>
+  <li><a href="#en-rpoints"><span class="n">10</span>rPoints, recapped</a></li>
+  <li><a href="#en-overall"><span class="n">11</span>The big picture</a></li>
+  <li><a href="#en-qa"><span class="n">12</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">13</span>Left open</a></li>
+</ol>
+</div>
+
+<h2 id="en-launch">1. The mainnet launch and the first yield distributions</h2>
+<p class="deck">“On schedule,” “really smoothly.” It opened with thanks to the testnet participants.</p>
+
+<p>The opening report: as anyone following the protocol will have noticed, <strong>the first couple of yield distributions have been done</strong>. The pass-back from the underlying assets moves to the staking vault, and users who stake see their asset value increase through the exchange rate between sUSDrf and USDrf. The team has also spent the last few weeks getting some of the private credit investments out, “which is really where a lot of that alpha comes from.”</p>
+
+<p>The move to mainnet itself “went really smoothly from a technical perspective”: no major bugs, no major downtimes, “a little bit of kinks,” but on schedule. <span class="badge">added</span> The date had been stated as 1 October at the <a href="../2026-09-11-cardano-seminar-realfi/#en-roadmap">Cardano Seminar on 11 September</a>, about two weeks later than <a href="../2026-08-14-ask-the-ceo/#en-mainnet">#6’s “mid-September”</a>, and the launch happened on that date.</p>
+
+<p>On testnet, thanks went to the community and the participants, especially the SPOs who pushed their delegators to engage. The success was described as two things: the level of engagement, and the bugs people caught. Bug reports carried an incentive, and <strong>a review meeting earlier this week settled the categories of bugs and the allocations</strong>, so more information is coming shortly.</p>
+
+<h2 id="en-live">2. What is live — the priming, the entry points, the two tokens</h2>
+<p class="deck">The difference from testnet is “real money flowing through the system.” Two ways in: SundaeSwap and the protocol.</p>
+
+<p>The difference between testnet and mainnet “is really that it’s real money flowing through the system.” What is live was then listed in order.</p>
+
+<ul>
+  <li><strong>The priming.</strong> Approximately $5 million worth of USDrf and sUSDrf were pre-issued through the partnership with the Hoskinson Family Office and Wave, “to prime the protocol and put this liquidity into the market so that retail users can interact with the protocol”</li>
+  <li><strong>SundaeSwap pools.</strong> USDCx into USDrf, and USDrf into sUSDrf. Both pools are live</li>
+  <li><strong>Direct staking in the protocol.</strong> If you are not from a geo-restricted region, bring your USDrf and stake it directly</li>
+  <li><strong>The Liqwid integration.</strong> DeFi use of both tokens (next section)</li>
+</ul>
+
+<p>The two tokens were recapped. USDrf is the dollar-pegged, non-yield-bearing stablecoin. sUSDrf is the stake token and the way you earn yield: stake USDrf in the protocol to receive it, or swap into it on SundaeSwap. <strong>Either way, “you’ll get it at a certain price, and over time that price will increase as we distribute yield to the staking vault.”</strong> <span class="badge">added</span> This is the exchange-rate mechanism described as a design in <a href="../2026-07-24-office-hours-engineering/#en-tokens">#3</a>; on this call it is running.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="The two routes from USDCx to USDrf and from USDrf to sUSDrf: swapping on SundaeSwap, or staking directly in the protocol">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">Routes into USDrf / sUSDrf on mainnet (arranged from the call)</text>
+
+  <rect x="16" y="78" width="150" height="56" rx="8" class="d-box-plain"/>
+  <text x="91" y="102" class="d-t" text-anchor="middle">USDCx</text>
+  <text x="91" y="122" class="d-s" text-anchor="middle">dollar asset you hold</text>
+
+  <line x1="166" y1="106" x2="262" y2="106" class="d-line-accent" marker-end="url(#e1)"/>
+  <text x="214" y="96" class="d-s" text-anchor="middle">SundaeSwap</text>
+
+  <rect x="266" y="78" width="150" height="56" rx="8" class="d-box"/>
+  <text x="341" y="102" class="d-t" text-anchor="middle">USDrf</text>
+  <text x="341" y="122" class="d-s" text-anchor="middle">$1 peg, no yield</text>
+
+  <line x1="416" y1="92" x2="512" y2="92" class="d-line-accent" marker-end="url(#e1)"/>
+  <text x="464" y="82" class="d-s" text-anchor="middle">SundaeSwap</text>
+  <line x1="416" y1="120" x2="512" y2="120" class="d-line-accent" marker-end="url(#e1)"/>
+  <text x="464" y="140" class="d-s" text-anchor="middle">stake in the protocol</text>
+  <text x="464" y="156" class="d-s" text-anchor="middle">(non-restricted regions)</text>
+
+  <rect x="516" y="78" width="148" height="56" rx="8" class="d-box-accent"/>
+  <text x="590" y="102" class="d-t d-a" text-anchor="middle">sUSDrf</text>
+  <text x="590" y="122" class="d-s" text-anchor="middle">yield via exchange rate</text>
+
+  <text x="340" y="196" class="d-s" text-anchor="middle">Priming: ~$5M of USDrf / sUSDrf pre-issued (Hoskinson Family Office and Wave)</text>
+  <text x="340" y="218" class="d-s" text-anchor="middle">Either route: “you get it at a certain price, and that price increases as yield is distributed”</text>
+</svg>
+<p class="figcap">The routes exactly as listed on the call. The SundaeSwap pools are USDCx/USDrf and USDrf/sUSDrf.</p>
+</div>
+
+<h2 id="en-liqwid">3. Liqwid — collateral, borrowing, and the arbitrage at launch</h2>
+<p class="deck">Both tokens are collateral. Right after launch, people traded the rate gap.</p>
+
+<p>The Liqwid integration is live: USDrf is accepted as collateral and can be borrowed. sUSDrf is also enabled as collateral <strong>in an isolated market</strong>, so users can borrow USDCx against it to take on leverage and “loop through the protocol.” <span class="badge">added</span> An isolated market is a lending compartment for one collateral asset, kept separate so that trouble in that asset is less likely to spill into the other markets.</p>
+
+<p>As something actually observed shortly after launch, <strong>an arbitrage between the borrow and supply rates</strong> was described — approvingly: “that’s DeFi. That’s exactly the type of utility that we want to enable in the market.” At the host’s request, the steps were laid out.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 212" role="img" aria-label="The three steps of the arbitrage seen right after launch: borrow USDrf on Liqwid against collateral, swap it to USDCx, supply the USDCx to Liqwid and keep the rate difference">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">The arbitrage seen right after launch (rates are the call’s sample numbers)</text>
+
+  <rect x="16" y="56" width="196" height="84" rx="8" class="d-box"/>
+  <text x="114" y="80" class="d-t" text-anchor="middle">① Borrow on Liqwid</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">deposit collateral (ADA or USDCx)</text>
+  <text x="114" y="120" class="d-s" text-anchor="middle">borrow USDrf (say 3%)</text>
+
+  <line x1="212" y1="98" x2="238" y2="98" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="242" y="56" width="196" height="84" rx="8" class="d-box"/>
+  <text x="340" y="80" class="d-t" text-anchor="middle">② Swap</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">the borrowed USDrf</text>
+  <text x="340" y="120" class="d-s" text-anchor="middle">into USDCx</text>
+
+  <line x1="438" y1="98" x2="464" y2="98" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="468" y="56" width="196" height="84" rx="8" class="d-box-accent"/>
+  <text x="566" y="80" class="d-t d-a" text-anchor="middle">③ Supply to Liqwid</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">supply the USDCx and</text>
+  <text x="566" y="120" class="d-s" text-anchor="middle">earn the rate (say 6%)</text>
+
+  <text x="340" y="172" class="d-s" text-anchor="middle">The 3% spread is the gain — a launch-time situation “based on the way those rates looked based on utilization”</text>
+  <text x="340" y="194" class="d-s" text-anchor="middle">“Of course, these rates change as the market changes”</text>
+</svg>
+<p class="figcap">The collateral was “probably ADA, but I’m not sure.” 3% and 6% are illustrative numbers from the call, not actual rates.</p>
+</div>
+
+<p><span class="badge">added</span> This is a different arbitrage from the one left open in <a href="../2026-07-24-office-hours-engineering/#en-qa">#3</a> — whether sUSDR’s fungible, one-rate-for-all design invites arbitrage. That concern is about the exchange-rate mechanism itself; this one is about Liqwid’s lending rates. The exchange-rate question was not raised on this call either.</p>
+
+<h2 id="en-loop">4. How looping works, and its risk</h2>
+<p class="deck">Post as collateral, borrow, stake the borrowed amount again. More leverage, more liquidation risk.</p>
+
+<p>At the host’s request, looping was explained with <strong>“some sample numbers.”</strong> The call uses the word “looping,” so this page does too.</p>
+
+<ol>
+  <li>Swap $1,000 of USDCx into USDrf and stake it into sUSDrf. Sit on it and you earn “roughly eight and a half percent that the portfolio is delivering” — $1,085 by year end</li>
+  <li>Deposit that sUSDrf into Liqwid as collateral and borrow $500 of USDCx at <strong>50% loan-to-value</strong></li>
+  <li>Stake the $500 again. Now “I’ve essentially got a $1,500 position of sUSDrf earning eight and a half percent off of only $1,000 of true risk”</li>
+  <li>Repeat at the same 50%: another 250, then 125, then 62.5, and so on</li>
+</ol>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="The loop with the call’s sample numbers: stake $1,000, borrow 500 at 50% LTV and stake it again, then 250, then 125">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">A worked loop (the call’s “sample numbers,” repeating at 50% LTV)</text>
+
+  <rect x="16" y="60" width="140" height="64" rx="8" class="d-box-accent"/>
+  <text x="86" y="84" class="d-t d-a" text-anchor="middle">Capital 1,000</text>
+  <text x="86" y="106" class="d-s" text-anchor="middle">staked into sUSDrf</text>
+
+  <line x1="156" y1="92" x2="184" y2="92" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="188" y="60" width="140" height="64" rx="8" class="d-box"/>
+  <text x="258" y="84" class="d-t" text-anchor="middle">Borrow 500</text>
+  <text x="258" y="106" class="d-s" text-anchor="middle">stake it again</text>
+
+  <line x1="328" y1="92" x2="356" y2="92" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="360" y="60" width="140" height="64" rx="8" class="d-box"/>
+  <text x="430" y="84" class="d-t" text-anchor="middle">Borrow 250</text>
+  <text x="430" y="106" class="d-s" text-anchor="middle">stake it again</text>
+
+  <line x1="500" y1="92" x2="528" y2="92" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="532" y="60" width="132" height="64" rx="8" class="d-box-plain"/>
+  <text x="598" y="84" class="d-t" text-anchor="middle">125, 62.5 …</text>
+  <text x="598" y="106" class="d-s" text-anchor="middle">and repeat</text>
+
+  <text x="340" y="160" class="d-s" text-anchor="middle">After one loop: “a $1,500 position of sUSDrf earning yield off only $1,000 of true risk”</text>
+  <text x="340" y="182" class="d-s" text-anchor="middle">Each repeat raises the APY on the capital — and the borrow cost and liquidation risk</text>
+
+  <rect x="16" y="200" width="648" height="48" rx="8" class="d-box-warn"/>
+  <text x="340" y="220" class="d-s d-w" text-anchor="middle">Liquidation risk: if the collateral’s value falls below the loan-to-value threshold, you are liquidated</text>
+  <text x="340" y="240" class="d-s d-w" text-anchor="middle">In this example, a 50% fall in sUSDrf. 50% was chosen as a “relatively conservative” LTV</text>
+</svg>
+<p class="figcap">No post-loop APY figure was given on the call (“I can’t do this math off the top of my head”). Every number here is illustrative — not an actual rate, and not a promise of yield.</p>
+</div>
+
+<p>On risk, the statement was explicit: <strong>“if the value of my collateral falls below the loan-to-value amount, I face liquidation risk.”</strong> The 50% LTV in the example was chosen as “relatively conservative,” and a fall of that size in sUSDrf “would be quite a big drop.” The post-loop APY was described only as “higher than eight and a half percent on $1,000”; no figure was given.</p>
+
+<details class="explain">
+<summary>A naive question — if you keep looping, where does it end up?</summary>
+<div class="explain-body">
+  <p><span class="badge">added</span> The arithmetic below is ours, not from the call.</p>
+  <h4>The ceiling is twice the capital</h4>
+  <p>Repeating at 50% LTV without limit, the position totals 1,000 + 500 + 250 + … and <strong>approaches 2,000</strong>, never more. Total borrowing approaches 1,000. So the end state is “1,000 of capital, up to 2,000 of sUSDrf earning yield, and 1,000 borrowed.”</p>
+  <h4>The borrow rate has to come off</h4>
+  <p>The call’s example counted only the staking yield; the borrow rate entered only in the ADA discussion (“make sure the yield I’m earning is greater than my borrow rate”). With 8.5% yield and, say, a 5% borrow rate, the net on the capital at the limit is 2,000 × 8.5% − 1,000 × 5% = 170 − 50 = <strong>$120, or 12%</strong>. If the borrow rate exceeds the yield, looping loses money.</p>
+  <h4>What could make sUSDrf fall 50%</h4>
+  <p>Not discussed. sUSDrf rises through an exchange rate, so by design it behaves close to a pegged asset. A fall would need losses in the backing (see <a href="../2026-08-14-ask-the-ceo/#en-waterfall">#6 on the order of losses</a>) or a dry secondary market — and <strong>what happens if liquidations cascade was not addressed on this call either</strong>.</p>
+  <p>In one line: looping works as long as the yield stays above the borrow rate; what happens when that stops holding is not in this session.</p>
+</div>
+</details>
+
+<p>Asked whether this is the same as “pyramiding” (reinvesting profits), the answer was “a different strategy”: taking profits as yield accrues suits a more volatile asset, whereas looping “is increasing the APY that you’re earning on your base position.” Looping also works with an asset like ADA — if the price rises your LTV falls, if it drops you adjust the loan or add collateral — and “I’ve seen people get like 10X returns on some of these loops.” <span class="badge">added</span> That “10X” was said about leverage on volatile assets in general, not about sUSDrf.</p>
+
+<p><span class="badge">added</span> Looping was presented in <a href="../2026-08-06-office-hours-gtm/#en-loop">#5</a> as the main growth mechanism, with a worked example. The open item from then — at what level liquidation happens — gets a principle here: when the collateral falls through the LTV threshold. What a cascade of liquidations would do to the peg remains unaddressed.</p>
+
+<h2 id="en-ada">5. Where ADA fits</h2>
+<p class="deck">The treasury is unlikely ever to hold ADA. As collateral, though, it is a way in.</p>
+
+<p>A chat question asked whether there would be any ADA-based product (the questioner had seen a docs page say ADA is valued using an hourly market price). The answer: <strong>it is unlikely, “at least for the foreseeable future,” that the treasury would hold ADA</strong>, because “we can’t make investments in ADA.” Taking ADA as a collateral asset would leave the treasury absorbing ADA’s volatility; to invest it, they would have to swap into a dollar stablecoin, off-ramp, and invest the dollars.</p>
+
+<p>On the other hand, <strong>a way to get RealFi exposure without selling ADA</strong> was laid out: supply ADA as collateral on Liqwid, borrow USDrf or USDCx, and use that as the route into sUSDrf. “If I have $1,000 of ADA, supply it as collateral and borrow $500 of USDrf, I can stake that to earn 8.5%. I need to make sure that yield is greater than my borrow rate, and I need to monitor the price of ADA — if it falls 50%, I start to look at liquidation risk.” To the host’s “why borrow rather than just buy,” the answer was: <strong>“If you’re bullish on ADA, you don’t want to sell it. Using it as collateral to get exposure to a yield-bearing token is a nice way to diversify that position.”</strong></p>
+
+<p><span class="badge">added</span> What the “hourly market price” line refers to was not taken up on the call. The document name the questioner gave, “Voyager Season,” appears only in that one mention and was not explained.</p>
+
+<h2 id="en-portal">6. The transparency portal</h2>
+<p class="deck">Metrics and reserves. Thin on data right after launch; to be fleshed out.</p>
+
+<p>The host singled out the transparency portal as “a bit of a differentiator.” What it shows was listed.</p>
+
+<ul>
+  <li>Protocol metrics — price stability, staking yields, collateralization ratio, TVL, circulating supply</li>
+  <li>What is happening on the reserves, the underlying backing — what investments were made into which types of assets</li>
+  <li>Visibility into the yield, and into the token’s distribution — what is held in indexes, by institutions, by retail users</li>
+</ul>
+
+<p>At launch there is not much historical data, and “there’s no point having a lot of charts that have one day’s or one week’s worth of data.” Features will be added as the portfolio and the yield engine get more established.</p>
+
+<h2 id="en-yield">7. The yield varies — sleeves and the staking ratio</h2>
+<p class="deck">The allocation across where the money sits, and the share of holders who stake. Two independent factors.</p>
+
+<p>Asked whether the yield is always the same, the answer was that <strong>it will vary over time</strong>, for two reasons. The first is the underlying asset mix; the call uses the word “sleeve,” so this page does too.</p>
+
+<ul>
+  <li><strong>Sleeve A</strong> — the liquid sleeve, primarily tokenized money market funds</li>
+  <li><strong>Sleeve B</strong> — semi-liquid, primarily CLO ETFs, “aggregate baskets of private credit”</li>
+  <li><strong>Direct lending</strong> — less liquid, “but does generate quite a high return”</li>
+</ul>
+
+<p>A higher concentration in liquid assets means a lower yield; a higher concentration in illiquid private credit means a higher one. The second factor is the <strong>staking ratio</strong>: “there’s a symbiotic relationship between portfolio composition and staking ratio, although they are two independent factors — it’s not strictly deterministic.” A lower staking ratio essentially means a higher yield to individual stakers.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 232" role="img" aria-label="The two drivers of the yield: on top, the three sleeves ordered from most liquid to least, with yield rising to the right; below, the staking ratio, where a lower ratio means a higher yield per staker">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">The two drivers of the yield (as explained on the call)</text>
+
+  <text x="16" y="60" class="d-s">① Allocation across the sleeves</text>
+  <rect x="16" y="70" width="200" height="52" rx="8" class="d-box-plain"/>
+  <text x="116" y="92" class="d-t" text-anchor="middle">Sleeve A</text>
+  <text x="116" y="110" class="d-s" text-anchor="middle">liquid · money market funds</text>
+  <rect x="240" y="70" width="200" height="52" rx="8" class="d-box"/>
+  <text x="340" y="92" class="d-t" text-anchor="middle">Sleeve B</text>
+  <text x="340" y="110" class="d-s" text-anchor="middle">semi-liquid · CLO ETFs</text>
+  <rect x="464" y="70" width="200" height="52" rx="8" class="d-box-accent"/>
+  <text x="564" y="92" class="d-t d-a" text-anchor="middle">Direct lending</text>
+  <text x="564" y="110" class="d-s" text-anchor="middle">less liquid · higher return</text>
+  <line x1="16" y1="138" x2="656" y2="138" class="d-line-accent" marker-end="url(#e4)"/>
+  <text x="340" y="156" class="d-s" text-anchor="middle">Further right: higher yield, lower liquidity. The allocation changes over time</text>
+
+  <text x="16" y="190" class="d-s">② Staking ratio</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">The lower the share of USDrf that is staked, the higher the yield per staker (independent of ①)</text>
+</svg>
+<p class="figcap">The sleeves are the same structure the investment team walked through in <a href="../2026-08-28-office-hours-investment-framework/#en-sleeves">#8</a>. Why the staking ratio matters was explained by the CEO at the <a href="../2026-09-11-cardano-seminar-realfi/#en-yield">Cardano Seminar</a>.</p>
+</div>
+
+<p><span class="badge">added</span> The “roughly eight and a half percent” in the looping example is, by this section’s own logic, a snapshot rather than a fixed rate. It was described as what “the portfolio is delivering,” but <strong>neither the period nor the definition of that yield was given</strong>. It sits inside the “8–10%” range the CEO gave at the <a href="../2026-09-11-cardano-seminar-realfi/#en-yield">Cardano Seminar</a>.</p>
+
+<h2 id="en-points">8. Testnet points — the pioneer season and the TGE</h2>
+<p class="deck">Allocations largely final. A conversion rate within weeks; the tokens at the TGE.</p>
+
+<p>What happens to testnet participants’ points. The call refers to that period as the <strong>“pioneer season.”</strong></p>
+
+<ul>
+  <li><strong>Allocations are “largely finalized.”</strong> They are still monitoring for farming patterns and other breaches of the points policy</li>
+  <li><strong>Bug reports.</strong> Those allocations were aligned internally this week, so more information is coming shortly</li>
+  <li><strong>A pioneer-season points-to-RFG conversion rate will be published “in the next few weeks.”</strong> One of the team members who helps with it is on honeymoon, and they are waiting for him to return</li>
+  <li>After publication it is “still somewhat subject to change if new farming patterns emerge,” though “that’s pretty unlikely given where we are”</li>
+  <li><strong>The actual RFG arrives at the TGE, the token generation event</strong> — “targeting Q1.” But “there’s some other dominoes that need to fall in place first before that gets too committed”</li>
+</ul>
+
+<p><span class="badge">added</span> The TGE timing came out as a self-correction — “which should be happening right now, or targeting Q1” — and is not a fixed date. As section 9 shows, EVM is to land first. The governance token’s <a href="../2026-09-21-office-hours-ambassador/#en-ticker">renamed</a> ticker is RLFG, but the speaker says RFG throughout, and this page keeps his word.</p>
+
+<h2 id="en-next">9. What comes next — EVM, TGE, “RealFi first”</h2>
+<p class="deck">Two things for the next six months. EVM first, TGE after.</p>
+
+<p>Asked what he is thinking about for the end of the year and 2027, the Head of Product named two things.</p>
+
+<ol>
+  <li><strong>The EVM launch — Ethereum mainnet.</strong> A cross-chain strategy is in place, and <strong>“we’re talking with DefiLlama about some details about how TVL is gonna accrue.”</strong> It involves native minting and staking on EVM. “The Cardano launch went relatively smoothly … so I’m able to spend a lot of my bandwidth focusing on bringing us into EVM”</li>
+  <li><strong>The TGE, bringing RFG to market.</strong> “There are some tier one exchanges that we’ve talked to that we’re gonna have RFG listed on.” But <strong>“we need to land EVM before we really focus too hard on TGE”</strong></li>
+</ol>
+
+<p>No EVM date was given on this call either. <span class="badge">added</span> <a href="../2026-09-21-office-hours-ambassador/#en-events">#9</a> had “hopefully on EVM by Breakpoint in early November,” and the Cardano Seminar “a month after mainnet.” This call’s “the next six months or so” is a wider window than either. No exchange has been named since <a href="../2026-08-24-office-hours-ticker/#en-ticker">#7</a>.</p>
+
+<p>The host then gave a longer personal view. His background is “very much based in Cardano over the past five, six years,” but “I’m really excited about going to Ethereum and going cross-chain — that’s where the liquidity is.” Thinking about how people on Ethereum will perceive RealFi, <strong>“that is not a Cardano-first story. That is a RealFi-first story. That’s a returns-first story.”</strong> He flagged repeatedly that this was his personal opinion, not RealFi’s. The Head of Product agreed “absolutely”: RealFi’s mission “is much bigger than just the Cardano ecosystem,” and accessing capital on Ethereum, mainnet or L2s, and the high-frequency retail activity on a chain like Solana, “positions RealFi as a chain-agnostic RWA yield protocol — that’s what’s best for RealFi, and that’s what’s best for RFG holders.”</p>
+
+<h2 id="en-rpoints">10. rPoints, recapped</h2>
+<p class="deck">For people who use liquidity to support stability rather than to seek yield. Converts to RFG at the TGE.</p>
+
+<p>The mainnet points, called <strong>rPoints</strong> on the call, were recapped.</p>
+
+<ul>
+  <li>They go to people who use their liquidity “not necessarily to seek yield from the protocol, but <strong>to support the stability of the protocol</strong>”</li>
+  <li>For example, providing liquidity to a looping market, or to SundaeSwap so that swaps happen smoothly and prices remain stable</li>
+  <li>“Providing liquidity, but not seeking yield, is how folks get access to points.” The points convert into RFG at the TGE</li>
+  <li>In the Q&amp;A: <strong>rPoints and RFG “will be open globally,”</strong> MiCA-regulated regions included. And supplying sUSDrf to the sUSDrf pool on Sundae earns some points while also earning yield</li>
+</ul>
+
+<p><span class="badge">added</span> The pioneer-season points from testnet (section 8) and the mainnet rPoints both convert to RFG at the TGE, but they were described as separate schemes. Whether the conversion rate is the same was not said.</p>
+
+<h2 id="en-overall">11. The big picture</h2>
+<p class="deck">testnet → mainnet (1 October) → EVM → TGE. This session is the guide to the middle, “now.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="The sequence from testnet to mainnet, EVM and TGE: mainnet done on 1 October, EVM with no date, TGE targeted for Q1 after EVM">
+  <defs>
+    <marker id="e5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">The sequence as of this session (arranged from the call)</text>
+
+  <rect x="16" y="52" width="148" height="96" rx="8" class="d-box-plain"/>
+  <text x="90" y="76" class="d-t" text-anchor="middle">testnet</text>
+  <text x="90" y="98" class="d-s" text-anchor="middle">pioneer season</text>
+  <text x="90" y="116" class="d-s" text-anchor="middle">points allocations</text>
+  <text x="90" y="134" class="d-s" text-anchor="middle">largely final</text>
+
+  <line x1="164" y1="100" x2="188" y2="100" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="192" y="52" width="148" height="96" rx="8" class="d-box-accent"/>
+  <text x="266" y="76" class="d-t d-a" text-anchor="middle">mainnet</text>
+  <text x="266" y="98" class="d-s" text-anchor="middle">live since 1 October</text>
+  <text x="266" y="116" class="d-s" text-anchor="middle">swap · stake · Liqwid</text>
+  <text x="266" y="134" class="d-s" text-anchor="middle">first yield distributed</text>
+
+  <line x1="340" y1="100" x2="364" y2="100" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="368" y="52" width="148" height="96" rx="8" class="d-box"/>
+  <text x="442" y="76" class="d-t" text-anchor="middle">EVM</text>
+  <text x="442" y="98" class="d-s" text-anchor="middle">Ethereum mainnet</text>
+  <text x="442" y="116" class="d-s" text-anchor="middle">native mint and stake</text>
+  <text x="442" y="134" class="d-s" text-anchor="middle">no date given</text>
+
+  <line x1="516" y1="100" x2="540" y2="100" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="544" y="52" width="120" height="96" rx="8" class="d-box"/>
+  <text x="604" y="76" class="d-t" text-anchor="middle">TGE</text>
+  <text x="604" y="98" class="d-s" text-anchor="middle">RFG distributed</text>
+  <text x="604" y="116" class="d-s" text-anchor="middle">targeting Q1</text>
+  <text x="604" y="134" class="d-s" text-anchor="middle">after EVM</text>
+
+  <text x="340" y="186" class="d-s" text-anchor="middle">This session = the guide to “now”: entry points (SundaeSwap / direct stake), looping on Liqwid, rPoints</text>
+  <text x="340" y="208" class="d-s" text-anchor="middle">The two things to look forward to “for the next six months or so”: EVM and TGE</text>
+  <text x="340" y="240" class="d-s" text-anchor="middle">Follow-ups: the list of supported regions, the points conversion rate, a compliance introduction</text>
+</svg>
+<p class="figcap">#9 was the “experiment” in the two weeks before mainnet; this is the first report after it.</p>
+</div>
+
+<h2 id="en-qa">12. Q&amp;A</h2>
+<p class="deck">Four from the chat, one from the stage.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant A</span>The docs say ADA is valued using an hourly market price. Will there be any ADA-based product?</p>
+<p class="qa-a" data-by="Answered">It is unlikely, “at least for the foreseeable future,” that the treasury would hold ADA — it cannot make investments in ADA. But you can supply ADA as collateral on Liqwid, borrow USDrf or USDCx, and use that as the route into sUSDrf (<a href="#en-ada">section 5</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant B</span>(On supported regions) Latam, Argentina?</p>
+<p class="qa-a" data-by="Follow-up">Neither speaker knew whether a list of supported regions is published. The host promised to “follow up on geolocation and get you an answer — a country list would be good, you’re right.”</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant C</span>Can we obtain rPoints even in a MiCA-regulated region?</p>
+<p class="qa-a" data-by="Answered">“rPoints and RFG will be open globally.”</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant D</span>Any way to earn rPoints while also earning yield?</p>
+<p class="qa-a" data-by="Answered">A little. There is a points rule that supplying your sUSDrf to the sUSDrf pool on Sundae earns some points.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant F (on stage)</span>US-based. Saw in the docs how the organisation is structured with multiple entities. For other organisations navigating the same thing, any chance of talking to someone on the compliance team about how it was done? “We’d love to put more money into you guys.”</p>
+<p class="qa-a" data-by="Introduction">The Head of Product: “that’s outside of the two of ours remits, so I’m reluctant to say much more — but we can definitely talk to some folks internally.” The host offered to DM his email and facilitate an introduction if the participant summarises what he wants to find out.</p>
+</div>
+
+<h2 id="en-pending">13. Left open</h2>
+<p class="deck">A report session, so more “coming” than “decided.”</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Follow-up</span>Is a list of supported regions (countries) published?</p>
+<p class="qa-a" data-by="After the call">Neither speaker knew; “we should talk with the marketing team,” “that’s one for me.” <span class="badge">added</span> At the Cardano Seminar the CEO said the US, EU and UK are excluded. A country-level list was not given on this call either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Announced only</span>The pioneer-season points-to-RFG conversion rate.</p>
+<p class="qa-a" data-by="Within weeks">“We’ll aim to publish in the next few weeks.” Still somewhat subject to change if new farming patterns emerge.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Timing only</span>When is the TGE?</p>
+<p class="qa-a" data-by="Targeting Q1">“Targeting Q1,” but “some other dominoes need to fall in place first.” EVM is to land before it.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not given</span>The EVM launch date, and the names of the exchanges.</p>
+<p class="qa-a" data-by="No date">EVM was described as the focus of “the next six months or so,” with no date. The exchanges are “some tier one” ones, unnamed.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No figure</span>The post-loop APY, and what “roughly eight and a half percent” is.</p>
+<p class="qa-a" data-by="Source only">The post-loop APY was not computed (“I can’t do this math off the top of my head”); 8.5% was given only as what “the portfolio is delivering.” Period and definition not stated.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not addressed</span>What would make sUSDrf fall sharply, and what a cascade of liquidations would do.</p>
+<p class="qa-a" data-by="Principle only">The liquidation principle (falling through the LTV threshold) was stated. When sUSDrf could fall 50%, and what a cascade would do, were not discussed on this call either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Introduction</span>Talking to the compliance team about the multi-entity structure.</p>
+<p class="qa-a" data-by="One-to-one">“Outside of the two of ours remits.” The host will facilitate an introduction. No public explanation is planned.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Announced only</span>Mainnet success metrics, and the bug-bounty details.</p>
+<p class="qa-a" data-by="No timing">The host will “talk to the data team and see if we can get some nice metrics”; the Head of Product said the bug categories and allocations are settled and “more info” is coming shortly. No timing for either.</p>
+</div>
+
+<div class="note">
+<p><strong>About this page.</strong> People who asked questions in the chat or came up on stage appear as <code>Participant A–G</code>; colleagues mentioned by name appear by role. The source has neither speaker labels nor timestamps, so speakers were assigned from context. Mistranscribed proper nouns were corrected at the requester’s instruction. Every figure was drawn from the spoken description.</p>
+<p>Passages marked <span class="badge">added</span> were written by us to help the reader and were not said on the call. Every yield figure on this page was given on the call for illustration; none is a promise or a solicitation.</p>
+<p>For the exact wording, see the <a href="#en">English transcript</a>; to read straight through in Japanese, the <a href="#ja">Japanese transcript</a>.</p>
+</div>
+</div>
+</section>
+
+<details class="part" id="ja">
+<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
+<div class="sec">冒頭</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ああ、いたね、Clay。招待できるか見てみる。それともリクエストしてもらうか。2 秒待って。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>戻ってこられてうれしいです。こんにちは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>よし、Clay をステージに上げよう。いいね。さて。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>やあ、Ben。</p>
+  <p>皆さん、こんにちは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Clay、戻ってきてくれて本当にうれしいよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>戻ってこられてうれしいです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>では、少しだけ事務連絡を。</p>
+  <p>まず、このステージを知り合いに SNS で共有してもらえるとありがたい。</p>
+  <p>右上にチャットのボックスがあるので、それを開いて、この Office Hours を進めながら Clay に質問してほしい。Clay の判断で、途中か終わりのほうで答えてくれる。</p>
+  <p>今日は本当に面白い回になると思う。というのも、私たちはもう mainnet にいるんだよね、Clay？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>そのとおりです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いやあ、わくわくする。</p>
+  <p>少し準備をしてきた。あなたがとても忙しいのは分かっているから、時間を作ってくれたことに感謝している。ありがとう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>今日は mainnet の話——何が変わり、何ができるようになったか——をする。それから実用面、つまり人々が実際に何をできるのか。</p>
+  <p>そして実は、あなたと同僚が私を「サービス・サファリ」に送り出したんだ。デモをやる必要があったから、外に出て実際に試してきた。すごく良かった。</p>
+  <p>それから、ポイントのこと、testnet に参加した人たちのことも少し。最後のほうでは、何を楽しみにしているか、次に何が来るかを話してもらえれば。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>でもまず、ちょっと面白い話から始められないかな。イールド・エンジンにどう取り組んできたか。</p>
+  <p>そこから入ってもらって、そのあとでいくつかの柱を順に見ていく、というのはどう？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="sec">最初の利回り分配</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>そうですね。プロトコルを追っている方なら気づいているとおり、最初の数回の利回り分配を行いました。</p>
+  <p>裏付け資産からの還流がステーキング・ボールトに移り、ステークしているユーザーは sUSDrf と USDrf の交換レートを通じて資産価値が増えるのを見られる。わくわくする光景です。</p>
+  <p>チームはこの数週間、プライベートクレジットの投資をいくつか実行するためにも多くの作業をしてきました。アルファの多くは本当にそこから来るものです。</p>
+  <p>それは当然、mainnet が稼働して初めて動き出すものです。</p>
+  <p>それを実際に運用に乗せられたのは、本当にうれしいことでした。ようやくユーザーに還元を始められる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そのとおり。</p>
+  <p>それから——関係やパートナーシップがこれから動き出す、と期待している。</p>
+  <p>名前は挙げないけれど、この先の数週間から数か月の大きな部分になるはずで、楽しみにしている。横から付け足してごめん、Clay。</p></div>
+</div>
+
+<div class="sec">testnet の振り返りとバグ報奨</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>mainnet のことを聞かせて。そうだね、testnet は良かった。本当に楽しかった。……testnet から学んだことはあった？ それとも先走りすぎ？</p>
+  <p>まず、いま mainnet で動いているものを話してもらって、testnet はあとにしようか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>いや、testnet について少し話せますよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>まず、コミュニティと testnet の参加者全員、とくに SPO の皆さんに感謝します。委任者を testnet に引き込むために、ずいぶん後押ししてくれました。</p>
+  <p>私たちの testnet は、コミュニティのエンゲージメントの水準という点で本当に成功だったと思います。人々が見つけてくれたバグという形でのフィードバックもそうです。</p>
+  <p>バグ報告にはインセンティブを用意していました。</p>
+  <p>バグを提出してくれた方へ。今週はじめにレビュー会議を持ち、バグの区分と、それぞれにどのくらいの配分をするかを固めました。</p>
+  <p>まもなく、そのあたりの続報を出せるはずです。testnet の最大の成果は、皆さんからのエンゲージメントだったと思います。</p>
+  <p>コミュニティの支えの大きさを見られたのは、本当にうれしいことでした。</p></div>
+</div>
+
+<div class="sec">mainnet のローンチ</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>mainnet への移行ですが、技術的な観点では、ローンチはとてもスムーズでした。大きなバグも、大きなダウンタイムもなし。</p>
+  <p>プロトコルは安定していて、セキュアです。</p>
+  <p>もちろん、ローンチの際には多少の引っかかりはありましたが、全体としてはとてもスムーズに、しかも予定どおりに進みました。これは良かった。</p>
+  <p>そしてこれもまた、testnet でのエンゲージメントの産物だと思っています。</p>
+  <p>改めて、testnet への参加に感謝します。これほどスムーズな mainnet ローンチができたのは、そのおかげです。というわけで、私たちは今 mainnet にいます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いくつかの答えは知っているんだ。サービス・サファリに出て、実際に試してきたから。でも、高いレベルで説明してほしい。mainnet とは何を意味するのか。</p>
+  <p>今、何が動いているのか。</p></div>
+</div>
+
+<div class="sec">いま mainnet で動いているもの</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>いま何が動いているか、testnet と mainnet で何が違うか。違いは、本物のお金がシステムの中を流れている、ということに尽きます。</p>
+  <p>いま動いているものとしては、まず、およそ 500 万ドル相当の USDrf と sUSDrf を事前に発行しました。Hoskinson Family Office と Wave とのパートナーシップを通じてです。プロトコルに呼び水を入れ、この流動性を市場に置くことで、個人ユーザーがプロトコルとやり取りできるようにするためです。</p>
+  <p>DEX の SundaeSwap を通じて USDrf と sUSDrf にスワップできます。USDCx から USDrf にスワップできる。</p>
+  <p>USDrf にスワップしたら、そこからさらに sUSDrf にスワップできます。どちらも SundaeSwap で稼働中です。両方のプールが SundaeSwap で稼働しています。</p>
+  <p>もちろんプロトコルの中でも、地理的な制限のある地域の方でなければ、USDrf を持ち込んでプロトコルに直接ステークできます。</p></div>
+</div>
+
+<div class="sec">USDrf と sUSDrf のおさらい</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>改めて確認しておきます。前提を置いて話してしまっていたので。USDrf は 1 ドルにペッグされたステーブルコインで、利回りは付きませんが、ドルのペッグを保ちます。</p>
+  <p>sUSDrf、つまりステーク・トークンが、利回りを得る手段です。プロトコルで USDrf をステークして sUSDrf を受け取るか、SundaeSwap で USDrf を sUSDrf にスワップするか、どちらかで手に入ります。</p>
+  <p>sUSDrf を保有していると、USDrf に対する交換レートの仕組みを通じて利回りが積み上がります。</p>
+  <p>私たちが USDrf をステーキング・ボールトに入れると、sUSDrf の価値が USDrf に対して上がる。</p>
+  <p>ですから、スワップで sUSDrf を手に入れても、ステーキングで手に入れても、どちらにせよある価格で手に入れることになり、その価格は、私たちがステーキング・ボールトに利回りを分配するにつれて、時間とともに上がっていきます。</p>
+  <p>この 2 つのトークンはどちらも mainnet で稼働していて、手に入れる方法がいくつかあります。とくにステーク・トークンのほうは。</p></div>
+</div>
+
+<div class="sec">Liqwid との統合と、ローンチ直後の裁定</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Liqwid との統合も稼働していて、両方のトークンを DeFi で使えます。USDrf は Liqwid で担保として受け入れられます。</p>
+  <p>借りることもできます。これはローンチ直後に実際に見た動きですが、Liqwid で USDrf を借り、それをスワップで手放して、USDCx を供給する人たちがいました。</p>
+  <p>貸し借りの金利にもとづく裁定の機会があったんです。それが DeFi というものです。</p>
+  <p>まさにそういう実用性を市場で可能にしたかった。人々がああいう利回りの機会を見つけられるように。</p>
+  <p>sUSDrf も Liqwid の分離市場（isolated market）で担保として使えるようになっていて、それを担保に USDCx を借りて、レバレッジをかけてプロトコルをループすることができます。</p>
+  <p>もし興味があれば、ループについてもう少し説明できますが——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>まさにそれを聞きたくてうずうずしていた。サービス・サファリで、Lace の中でステーキングのセクションや Liqwid Finance を見ていて、ステークとアンステーク、プールへの流動性の提供まではやったんだ。</p>
+  <p>でも、ループを順に説明してもらえる？ とても興味がある。</p></div>
+</div>
+
+<div class="sec">ループの仕組み</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。仕組みはこうです。サンプルの数字を使います。</p>
+  <p>1,000 ドルあって、RealFi のポートフォリオから利回りを得たいとします。その 1,000 ドル分の USDCx を USDrf にスワップし、sUSDrf にステークして、そのまま持っていれば、ポートフォリオが出しているおよそ 8.5% を得られます。</p>
+  <p>年末には 1,085 ドルになる。ところが、ループというのは、同じポジションにレバレッジをかける方法です。</p>
+  <p>リスクはあります。どんなリスクかはあとで話します。でも、このループを組むなら、こうします。</p>
+  <p>8.5% を稼いでいる 1,000 sUSDrf がある。sUSDrf は Liqwid で担保にできるので、それを担保に借りられます。</p>
+  <p>つまり、この利回りの付くポジションを Liqwid に担保として預けて、たとえば LTV（担保価値に対する借入の比率）50% で USDCx を借りる。</p>
+  <p>1,000 ドルのポジションに対して 500 ドル借りられるわけです。リスクは、担保の価値が下がって、担保の価値が借入の価値を下回る LTV の水準を割り込むと、清算のリスクに直面すること。</p>
+  <p>sUSDrf の価値が 50% 下がれば、清算を見据えることになる。だからこのシナリオでは、比較的保守的な LTV を使っているんです。</p>
+  <p>sUSDrf でそれだけの下落を見るのは、相当なことですから。</p>
+  <p>そして、借りた 500 ドルの USDCx をもう一度ステークする。すると、もとの元手 1,000 ドルだけを本当のリスクにさらして、8.5% を稼ぐ 1,500 ドル分の sUSDrf のポジションを持っていることになります。</p>
+  <p>これを何度でも繰り返せます。同じ 50% を使えば、次は 250、その次は 125、さらに 62.5、といった具合に。</p>
+  <p>ポジションのリスクは、借入に対して取っている LTV に対する、担保資産の価値で決まります。伝わりましたか？</p>
+  <p>これは、たとえば——</p></div>
+</div>
+
+<div class="sec">ピラミッディングとの違い、ADA でのループ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>伝わった。私はプロのトレーダーではないから、ありがたいことに初歩的な質問ができる。たぶん役に立つはず。</p>
+  <p>レバレッジを使うとき、「ピラミッディング」という考え方があるよね。利益が出たら、その利益をまた入れる。ループはそれに似ている？</p>
+  <p>同じことを言っている？ それとも私が混同している？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>それは別の戦略だと思います。もちろん、それをやることもできる。</p>
+  <p>利回りが積み上がるにつれて、一部を売って利益を確定することは当然できます。ただ、その戦略はもっとボラティリティの高い資産のほうが向いていると思います。</p>
+  <p>ループで実現できるのは、ベースのポジションで得る APY を引き上げることです。さっきのシナリオでのベースのポジションは 1,000 ドルでした。</p>
+  <p>それが、実際にリスクにさらしている資本の額です。でも得ている利回りは——暗算ではできませんが——</p>
+  <p>1,000 に 500、250、125……を足した額に対して 8.5% を得ているなら、1,000 ドルに対する APY は 8.5% より高くなります。ポジションに対して追加のレバレッジを取れるからです。</p>
+  <p>つまりレバレッジを増幅する方法で、担保資産の価値が下がったときの清算リスクを引き受ける代わりに、ということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ループは、ADA のようなものでもできる戦略です。100 ドル分でも 1,000 ドル分でも ADA があるとして、LTV で 500 ドル借りる。</p>
+  <p>ADA の価格が上がれば、LTV は実質的に下がります。ADA が 2 倍になれば、2,000 ドルのポジションに 500 ドルの借入です。</p>
+  <p>逆に ADA の価格が下がれば担保の価値が下がるので、借入を調整するか担保を追加して、ポジションを均衡させる必要がある。</p>
+  <p>ボラティリティの高い資産で、利益を増幅するためによく使われる戦略です。</p>
+  <p>ポジションと、取る LTV しだいですが、こういうループで 10 倍のリターンを出す人も見てきました。</p>
+  <p>似た考え方で、ただし利回りの付く資産を使い、要するに APY を引き上げる、というものです。</p></div>
+</div>
+
+<div class="sec">ローンチ時の裁定の手順</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いま参加した人のために、それと私の記録のためにも——あとでブログに書くので——mainnet の冒頭で観察したことを、もう一度順に説明して。</p>
+  <p>裁定があった、と言っていたよね。何が起きたのか、手順を追って説明してもらえる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。</p>
+  <p>これは私たちが完全にサポートしているユースケースです。人々は USDrf を手に入れる——Liqwid で USDrf を借りるわけです。</p>
+  <p>そのためには何らかの担保資産を預ける必要があります。ADA でも USDCx でもいい。</p>
+  <p>たぶん ADA でやっていたのだと思いますが、確かではありません。</p>
+  <p>ある金利で USDrf を借り、借りた USDrf を USDCx にスワップして、その USDCx を Liqwid に、より高い金利で供給する。</p>
+  <p>つまり裁定があるわけです。3% で借りて 6% で供給すれば、差し引き 3% をただで稼いでいることになる。</p>
+  <p>ローンチ時に、利用率にもとづく金利がそういう形になっていたので、こうした動きをする人がいました。</p>
+  <p>もちろん、こうした金利は市場が変われば変わります。</p>
+  <p>ともあれ、供給と借入の金利差を見つけた人がいた、という裁定の機会でした。</p>
+  <p>DeFi ではよくあることです。</p></div>
+</div>
+
+<div class="sec">ADA 建てのプロダクトはあるか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>チャットから、参加者A——たしか、あるステークプールの方——が、「What is the Voyager Season」のドキュメントに「ADA は 1 時間ごとの市場価格で評価する」とあるのを見た、と。</p>
+  <p>そこで質問は、ADA 建てのプロダクトは出るのか、というもの。どう答える？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>トレジャリーが ADA を保有することの難しさは、ADA で投資ができない、という点です。</p>
+  <p>ADA を担保資産として受け入れると、トレジャリーは ADA のボラティリティをただ吸収するだけになり、ADA そのものを運用することはできない。</p>
+  <p>その ADA を運用するには、ドル建てのステーブルコインにスワップし、オフランプして、そのドルを投資することになります。</p>
+  <p>ですから、少なくとも当面は、ADA がトレジャリーの保有資産になることはまずありません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ただ、ADA を持っていて、それを活かす——ループの意味でのレバレッジではなく、活用するという意味で——RealFi へのエクスポージャーを得る方法を探しているなら、その ADA を Liqwid に担保として供給し、USDrf か USDCx を借りて、それを sUSDrf への入口にすることはできます。</p>
+  <p>当然ながら、この種のポジションは ADA の価格に大きく依存します。</p>
+  <p>LTV の仕組みはさっき説明しましたが、もう一度手短に。</p>
+  <p>今 1,000 ドル分の ADA を持っていて、それを担保に 500 ドルの USDrf を借りたとします。その 500 ドルの USDrf をステークして 8.5% を得られる。</p>
+  <p>その 8.5% が借入金利より高いことを確かめておく必要があります。マイナスにならないように、ポジションが水面下に沈まないように。</p>
+  <p>そして ADA の価格を見張る必要がある。ADA が 50% 下がれば清算リスクが見えてくるので、返済するか担保を足すかしてポジションを管理しないといけない。</p>
+  <p>ともあれ、ADA 保有者が RealFi へのエクスポージャーを得る方法のひとつが、Liqwid で ADA を担保にして借りることです。</p>
+  <p>さっき言ったとおり、ADA がトレジャリーの買い付けに使われることはまずありません。どうぞ、Ben。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>当たり前のことを確認させて。</p>
+  <p>要するに、ADA を売らなくていい、ということだよね。では、直接買うのではなく借りることに、何か利点があるの？</p>
+  <p>担保化がなぜ有用なユースケースなのか、説明して。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ADA をロングしている、ADA に強気なら、売りたくないでしょう。</p>
+  <p>でも、ただ持っている以外の使い道を探したいなら、担保にして利回りの付くトークンへのエクスポージャーを得るのは、そのポジションを分散させる良い方法です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>なるほど。いいね。</p>
+  <p>リスクの話は少ししたので、透明性ポータルと、ポートフォリオの立ち上げについて触れてもらえるといい。</p>
+  <p>その 2 つを話してもらえる？</p></div>
+</div>
+
+<div class="sec">透明性ポータル</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。透明性ポータルは、プロトコルに関する指標を示すものです。</p>
+  <p>価格の安定性、ステーキングの利回り、担保比率、TVL、流通供給量といった指標が見られます。</p>
+  <p>それから、準備資産——プロトコルの裏付け——で何が起きているか、どんな種類の資産にどう投資したか。</p>
+  <p>利回りについての可視性もあるし、トークンがさまざまなプロトコルにどう分布しているかの可視性もあります。</p>
+  <p>インデックスに保有されている分、機関と個人ユーザーが保有している分、などが見られる。</p>
+  <p>透明性ポータルは、データが集まるにつれて機能を足し、肉付けしていくものです。</p>
+  <p>ローンチの時点では過去データがあまりなく、1 日や 1 週間分のデータしかないチャートをたくさん置いても意味がありません。</p>
+  <p>ですから、ポートフォリオとイールド・エンジンが落ち着いてくるにつれて、機能が増えていくのを見られるはずです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いいね。</p>
+  <p>透明性ポータルは本当に興味深かった。差別化の要素だと思ったから。</p>
+  <p>もう一つはポートフォリオの立ち上げについて。RealFi の利回りはいつも同じなのか。変わるのか。そのあたりを説明してもらえる？</p></div>
+</div>
+
+<div class="sec">利回りは変わるのか — スリーブとステーキング比率</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>良い質問です。</p>
+  <p>利回りは、いくつかの要因で時間とともに変わります。まず、裏付け資産の構成です。ポートフォリオには、いくつかのスリーブ（sleeve、資産の置き場所）があります。</p>
+  <p>スリーブ A は流動性の高いスリーブで、主にトークン化されたマネー・マーケット・ファンド。</p>
+  <p>スリーブ B は中程度の流動性のスリーブで、主に CLO ETF——ローン担保証券（CLO）の ETF——を通じたもの。</p>
+  <p>CLO ETF は、プライベートクレジットをまとめたバスケットのようなもの、と考えてください。</p>
+  <p>最後に、直接貸付（ダイレクト・レンディング）をやっています。流動性は低いけれど、かなり高いリターンを生みます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>どの時点でも、こうしたスリーブの規模と配分は変わります。時間とともに変わる。それが利回りを決める要因のひとつです。</p>
+  <p>流動性の高い資産の比率が高ければ利回りは低く、流動性の低いプライベートクレジット資産の比率が高ければ利回りは高い。それから、ステーキング比率もあります。</p>
+  <p>ポートフォリオの構成とステーキング比率のあいだには共生的な関係がありますが、2 つは独立した要因です。</p>
+  <p>2 つのあいだは厳密に決定論的ではない。ただ、ステーキング比率が低ければ、個々のステーカーへの利回りは実質的に高くなります。</p>
+  <p>これらは時間とともに流動的で、その時点のポートフォリオのスナップショットによります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>なるほど、分かった。</p>
+  <p>mainnet で何があって何が動いているか、実用面でユーザーが何をできるかを話してきた。</p>
+  <p>少し振り返って、Clay。testnet のポイントと、参加したテスターの皆さん。そのポイントはこれからどうなる？</p>
+  <p>何を期待できる？ どうやって引き換える？</p></div>
+</div>
+
+<div class="sec">testnet のポイントと pioneer season</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>はい。pioneer season（パイオニア・シーズン）を社内で最終化しているところです。</p>
+  <p>ファーミングのパターンなど、ポイント・ポリシーに反するものがないか、まだ監視しています。</p>
+  <p>ただ、pioneer season のポイント配分はおおむね固まりました。さっき言ったとおり、バグ報告の分は今週、社内で合意したところです。</p>
+  <p>ですから、pioneer season のポイントから RFG への換算レートを、数週間のうちに公表することを目指します。</p>
+  <p>それを担当しているメンバーの一人が新婚旅行中なので、戻ってくるのを待ってから最終化します。お待たせしてすみません。</p>
+  <p>それが pioneer season の次のステップです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ポイントから RFG への交換レートを公表したあとも、新しいファーミングのパターンが出てくれば多少変わりうる、という点は残ります。ただ、今の状況を見るかぎり、その可能性はかなり低いと思います。</p>
+  <p>実際の RFG を受け取るのは、TGE（トークン生成イベント）のときです。これは——今やっている、というか、Q1 を目標にしています。</p>
+  <p>ただ、確約する前に、先に片づかないといけない他のドミノがいくつかあります。</p></div>
+</div>
+
+<div class="sec">対応地域の一覧</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>手を叩いてくれていい。私が答えを知っているべきことだから。対応している地域の一覧は公表されている？</p>
+  <p>公表されているかどうか分からない。知ってる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>私も分かりません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>私も分からない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>マーケティング・チームと話したほうがいいですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そうだね。それは私の to-do リストに入れておく。私の宿題だ。参加者B が聞いているのは……ごめん、チャットを追っているところ。ラテンアメリカ、アルゼンチン。はい。</p>
+  <p>では皆さん、ジオロケーションについてはフォローアップして答えを持ってくる。そう、国の一覧があるといいね、そのとおり。ところで、進めながら Clay にどんな質問でもしてほしい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Discord のステージが初めてなら、右上にチャットの吹き出しのようなアイコンがあるはず。</p>
+  <p>それをクリックするとチャットの窓が開く。そこで質問してくれれば、私が Clay に投げる。さて、Clay、testnet の話は手短にしたね。</p></div>
+</div>
+
+<div class="sec">この先 — EVM と TGE</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そろそろ終わりに近づいている。ほかに質問があれば、長くいることもできる。でも少し先を見よう。</p>
+  <p>年末に向けて何を考えている？ 2027 年には何を期待している？ ロードマップの状況を教えてもらえる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>私は EVM ローンチ、つまり Ethereum mainnet でのローンチに多くの力を注いでいます。</p>
+  <p>クロスチェーンの戦略を作っていて、TVL をどう計上するかの細部について DefiLlama と話しています。</p>
+  <p>今まさにそこを調整しているところですが、EVM 上でもネイティブに mint とステーキングを行う、というクロスチェーン戦略です。</p>
+  <p>そして、RealFi をそうした資本市場に持ち込むことに、本当にわくわくしています。</p>
+  <p>さっき言ったように、Cardano でのローンチは、チームの投資と、ここのコミュニティが testnet でテストし関わってくれたおかげで比較的スムーズに進みました。だから私は自分の時間の多くを、EVM への展開に集中して使えています。</p>
+  <p>とても楽しみにしています。プロトコルの成長に本当に役立つし、イールド・エンジンを固める（solidify）のにも役立つと思うからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>solidify よりいい言葉がありそうですが、今はそれが精一杯です。それが一つ目。二つ目は、TGE と RFG を市場に出すこと。</p>
+  <p>話をしているティア 1 の取引所がいくつかあり、RFG を上場させる予定です。</p>
+  <p>TGE に本腰を入れる前に EVM を着地させる必要がありますが、EVM にローンチしたら、次に考えるのはそれです。</p>
+  <p>この 2 つが、この先 6 か月ほどで楽しみにしていることです。</p></div>
+</div>
+
+<div class="sec">Cardano ではなく RealFi の話として Ethereum へ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>私のことはよく知っているとおり、私のバックグラウンドはこの 5、6 年、Cardano にどっぷりだ。</p>
+  <p>でも、Ethereum に行くこと、クロスチェーンに行くことには本当にわくわくしている。流動性があるのはそこだから。</p>
+  <p>参加者B がチャットで言っているように、クロスチェーンが未来だ。</p>
+  <p>私が本当に願っているのは、このコールにいる皆、この Discord にいる皆、私たちは RealFi のコミュニティだ、ということ。Cardano だけの話ではない。</p>
+  <p>Ethereum に目を向けるべきだと思う。期待値を設定しているわけではないけれど。</p>
+  <p>準備ができたら、Clay、Ethereum のコミュニティに入っていって RealFi を代表しないといけない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Ethereum にいて、RealFi のことを聞くことになる人たちのことを考えることがある。妻が教えてくれたんだが、「心の理論（theory of mind）」を持つ必要がある。</p>
+  <p>彼らは RealFi をどう受け取るか。興味を持ってもらうのに一番いい方法は何か。私個人の意見としては——RealFi を代表して言うのではなく——それは Cardano ファーストの物語ではない。</p>
+  <p>RealFi ファーストの物語で、リターン・ファーストの物語だ。私は興奮している。</p>
+  <p>あなたやチームと働いていて好きなことのひとつは、ちょっとパンクロックな感じがすること。褒めすぎたらいつでも止めてほしい。でも、パンクロックだ。</p>
+  <p>かっこいいものを作っている。それに、Web3 で本当のプロダクト・マーケット・フィットが何なのかを実践している。ほかの場所で何度か話したことに戻るけれど。</p>
+  <p>結局のところ、こうしたエコシステムの成長は資本の生産性の話だ。好きでも嫌いでも、名指ししないといけないと思う。</p>
+  <p>これは私個人の意見だよ、Clay。反論してくれていい。私のエゴは巨大だから、耐えられる。同意してくれる？</p>
+  <p>つまり、Ethereum に持っていくべきなのは RealFi ファーストのコミュニティだ、と。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ、まったくそのとおりです。</p>
+  <p>RealFi のミッション——実世界の資産をオンチェーンに持ち込み、この利回りのプロファイルを DeFi のユーザーに届けること——は、Cardano のエコシステムよりずっと大きいものだと思っています。</p>
+  <p>Ethereum の資本にアクセスすること——mainnet でも L2 でも——そして Solana のようなチェーンで起きている高頻度の個人の活動の多くを取り込めること。</p>
+  <p>それによって RealFi は、チェーンに依存しない RWA 利回りプロトコルとして位置づけられる。</p>
+  <p>それが RealFi にとって最善であり、RFG 保有者にとって最善だと思います。</p>
+  <p>そして、このコールにいる皆さんは、程度の差はあれ RFG 保有者になるはずです。</p>
+  <p>このコールにいる皆さんは、もう何らかの rPoints を得ているものと思っています。</p></div>
+</div>
+
+<div class="sec">rPoints のおさらい</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そうだね。まだなら、今が始めどきだよ。DM をくれれば——</p>
+  <p>私が乗せてあげる——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ。知らない方のために rPoints をおさらいしておくと。</p>
+  <p>rPoints は、プロトコルから利回りを求めるためではなく、プロトコルの安定を支えるために自分の流動性を使ってくれる人に提供しています。</p>
+  <p>たとえば、ループ市場に流動性を供給すること、あるいは SundaeSwap に流動性を供給して、スワップがスムーズに行われ、価格が安定するようにすること。</p>
+  <p>要するに、利回りを求めるのではなく流動性を提供することが、ポイントを得る方法です。そしてこのポイントは、TGE のときに RealFi のガバナンストークンである RFG に変換されます。</p></div>
+</div>
+
+<div class="sec">Q&amp;A — MiCA 圏、利回りと rPoints</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>素晴らしい。Clay、本当にいいコールだった。質問がある人は、今がそのときだ。Clay のスケジュールだと、あと 5 分か 10 分くらいだと思う。</p>
+  <p>参加者C が rPoints について聞いている。MiCA の規制地域にいても得られるか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ、rPoints と RFG は世界中に開かれます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いいね。それから参加者E……</p>
+  <p>声が聞こえない。ステージにいないから。上がってきたいなら、Clay が構わなければ、賭けに出て招待してもいい。</p>
+  <p>どうなるか見てみよう。ごめん、Clay、昔の X のスペースのトラウマが少しあって。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>いえ、簡単です。上がってきてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そう、上がってきて話してくれ。</p>
+  <p>利回りを得ながら rPoints も得る方法はあるか、と参加者D。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ。</p>
+  <p>少しあります。ルールが一つ——ポイントのルールですが——sUSDrf を Sundae の sUSDrf プールに供給していれば、それに対してポイントを得られます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者E、私の画面ではグループの中にあなたが見えない。スピーカーになるリクエストをしてもらう必要がある。</p>
+  <p>まだ上がりたいなら、画面の下にそのオプションがあるはず。……手の形みたい、とコメントが言っている。手が挙がった？ ちょっと見てみる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>いえ、手の形に見えます。発言リクエストのボタンが手の形です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Clay、私が聞かなかったけれど聞いてほしかった質問はある？ ああ、参加者F が発言をリクエストしている。</p>
+  <p>上げよう。やあ、参加者F。ステージへようこそ。</p></div>
+</div>
+
+<div class="sec">ステージからの質問 — 複数法人の構成</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>こんにちは。聞こえていますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>うん。聞こえる。やあ、参加者F。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>よかった。思い切って話してみようと思いまして。</p>
+  <p>私は米国拠点で、MiCA の話に入るつもりはないのですが、御社は……</p>
+  <p>ドキュメントを見て、複数の法人で組織をどう構成しているかを知りました。同じことを乗り越えようとしている他の組織のために——サービスを提供してほしいとは言いませんが——コンプライアンス・チームの誰かと話して、どうやったのかを聞ける機会はありますか？</p>
+  <p>もっと資金を入れたいので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ふむ。それは同僚に持ち帰って、Ben、どう思うか聞いてみましょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そうだね。参加者F——</p>
+  <p>私にメールアドレスを DM してもらえるかな。2 人で……</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>それは私たち 2 人の担当範囲の外なので、申し訳ないけれど、これ以上は言いにくいです。でも社内の誰かと話すことは、間違いなくできます。</p>
+  <p>Ben、ごめん、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者F、質問は必ず持ち帰る。喜んで取り次ぐよ。</p>
+  <p>私のメールアドレスを DM する。何を聞いてほしいか——出せるもの、得たいもの——をまとめて送ってくれれば、紹介を取り次ぐ。それでいい？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>きしむ車輪に油が差されるかと思って、言ってみただけです。ありがとうございます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>どういたしまして。ほかに質問は？</p>
+  <p>ここまで話してきたことについて、どう思う？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者F</div>
+  <div class="turn-body"><p>私としては、素晴らしいと思います。関わるのが待ちきれません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>最高。じゃあ参加者F、ありがとう。</p></div>
+</div>
+
+<div class="sec">締め</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者C、退出のところで手を挙げてくれたね。大丈夫。やあ、参加者G。ほかに上がって話したい人は？ よし。Clay、あなたは伝説だ。</p>
+  <p>アナウンスに貼った、あなたの GIF を気に入ってくれたならいいんだけど。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ええ。あの GIF の人物ですね。最高です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>さて、これは書き起こす。</p>
+  <p>ブログに載せる。良い会話がたくさんあったと思う。</p>
+  <p>データチームにも話して、mainnet とこれまでの成果について、いい指標を出せないか聞いてみる。ほかに質問は？</p>
+  <p>なければ締めて、Clay を採掘現場に帰そう。利回りの最適化を掘り出すのに忙しいから。即興で言っているよ、Clay。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>うまいですよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>よかった。では参加者F、ありがとう。今 DM する。ほかの皆も、質問があれば、あとで思いついたことがあれば、タグ付けするか DM して。</p>
+  <p>いつでも喜んで手伝うし、答えを探してくる。皆さんありがとう。良い週末を。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>ありがとうございました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>また次回。皆さんありがとう。それでは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(推定)</em></div>
+  <div class="turn-body"><p>それでは。</p></div>
+</div>
+</details>
+
+<details class="part lang-en" id="en">
+<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">固有名詞の誤変換を修正済み</span><span class="l-en">Obvious proper-noun misrecognitions corrected</span></span></summary>
+<div class="sec">Opening</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, there you are, Clay. Let me see if I can invite you up or you can request. Give me two seconds.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Good to be back. Hello.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, let's get Clay up here. Brilliant. All right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Hey, Ben. Ah.</p>
+  <p>Hey, everybody.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, it's so good to have you back, Clay.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Good to be back.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>So let's do a little bit of housekeeping.</p>
+  <p>Um, you know, uh, firstly, share this, uh, stage with everybody you know, um, on your socials if you'd do us that honor.</p>
+  <p>And in the top right you should have the chat, uh, box, so you can open up the chat and ask Clay questions as we're kicking off this office hours, and Clay at his discretion will respond, uh, either during or, uh, towards the end.</p>
+  <p>Um, I think it's gonna be a really interesting office hours because we are now in main net, right, Clay?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>That's right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>God, it's exciting.</p>
+  <p>Um, so, uh, we did a little bit of prep and I know you're super busy, um, which is why I am grateful that you've made the time. Thank you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, I think we're gonna talk about main net, um, and what changes and what's possible now. Uh, we're gonna talk about, um, the utility and, and what people can actually do.</p>
+  <p>And, um, actually you and [a colleague] sent me on a bit of a service safari 'cause I was doing some demos, so I've been out in the wild testing it. It's been great.</p>
+  <p>And, um, you know, there's the points, there's the people that are part of test net, we can do a little bit of that and, um, then maybe towards the end you can tell us, like, uh, what you're looking forward to, um, what's coming next.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>But, um, can you... Can we kick off with something maybe a little bit juicy about the, uh, how you've been working on the yield engine.</p>
+  <p>I mean, could you, uh, maybe lead us in with that, and then we'll go through some of those pillars?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="sec">The first yield distributions</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, yes, we've, you know, we've done, I think as anybody, as those following the protocol have, have noticed, you know, we've done our first couple of yield distributions here.</p>
+  <p>Uh, so that's exciting to see, uh, you know, the pass back from the underlying assets move to the staking vault, and users that stake can see their, um, you know, asset value increase through the, you know, the, the exchange rate between sUSDrf and USDrf.</p>
+  <p>Um, and you know, I know the team has been doing a lot over the last few weeks to get some of these private credit investments out, uh, as well, you know, which is really where a lot of that alpha comes from.</p>
+  <p>So I mean, that's something that obviously comes live when main net comes live.</p>
+  <p>Uh, but it's just been really nice to see, to actually operationalize that, uh, yeah, so that we can start passing this, you know, passing this back to our, to our users finally.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>That- that's right.</p>
+  <p>And I've been... There are relationships and partnerships coming online, I hope.</p>
+  <p>Uh, I won't name any names, but, um, that's gonna be a big part of the next couple of, um, weeks and months that I'm looking forward to. Uh, but sorry to add that in there, Clay.</p></div>
+</div>
+
+<div class="sec">Looking back at testnet, and the bug bounty</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, tell me about main net. Yeah. Right? Like, uh, test net was great. I actually really, um, enjoyed it. I felt like... Did we learn anything from test net or am I jumping ahead? Do you wanna do...</p>
+  <p>Tell us what's live on main net now and then we'll get to test net later.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Well, I, I could talk, I can say, you know- Yeah ... a bit about test net.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>I mean, yeah, so I mean, you know, thanks a lot to the, to the community and all of our test net participants, you know, especially the SPOs and the push that they did to get their delegators engaged with the test net.</p>
+  <p>You know, I think our, our test net was a, was a, was a real success in terms of the level of engagement we saw from the community, uh, as well as, uh, you know, some of the feedback we got in terms of, uh, some bugs that were, that were caught by people.</p>
+  <p>Um, you know, I know we did have an incentive for bug reports.</p>
+  <p>Uh, I know for those of you that have maybe submitted those bug rep- those bugs, uh, we just had a review meeting earlier this week to kind of finalize, uh, the different buckets or categorizations of bugs and, and what kind of allocations we'll be giving.</p>
+  <p>So you should see some, uh, more info from us, uh, shortly on that. So, you know, I think that was really the biggest success of test net was the engagement we had from everybody.</p>
+  <p>Uh, and it was really just nice to see the, the level of support from the community.</p></div>
+</div>
+
+<div class="sec">The mainnet launch</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, you know, moving to main net, uh, you know, the launch went really smoothly, uh, from a technical perspective. No major bugs, uh, no major downtimes.</p>
+  <p>You know, the protocol is, is stable and secure.</p>
+  <p>Um, I mean, of course there was, you know, a little bit of kinks as we, as we launched, but, but overall I think it went really smoothly and, and on schedule, uh, which was nice.</p>
+  <p>And I mean, I think that's again, you know, a, a product of the, the engagement that we had during test net.</p>
+  <p>So thanks again to the community for that test net engagement because that is what enabled, you know, such a smooth main net launch. Um, yeah. And so we're at main net now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Now I'm, I know some of the answers to these 'cause I did go and do that service safari and I've been, I've been trying it out, but, but walk me through at a high level, like, what does main net mean?</p>
+  <p>What, what's live now? And, um- Yeah ... I'm pre- yeah. Yeah.</p></div>
+</div>
+
+<div class="sec">What is live on mainnet</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>So what's live now, you know, what's different I guess from test net to main net, I mean, the difference is really that it's, it's real money flowing through the system.</p>
+  <p>Uh, and so what is live now, um, we, uh, you know, pre-issued approximately $5 million worth of USDrf and sUSDrf, uh, through- You know, our partnership with, uh, the Hoskinson Family Office and Wave, uh, to supply this, you know, to, to, to prime the protocol, let's say, and to put this liquidity into the market so that retail users can, can interact with the protocol.</p>
+  <p>Um, you know, there's swapping into USDrf and sUSDrf through SundaeSwap, the DEX. Uh, you can swap into USDrf from USDCx.</p>
+  <p>And then once you've swapped into USDrf, you can swap again into sUSDrf. Uh, both of these are live on SundaeSwap. Both of these pools are live on SundaeSwap.</p>
+  <p>Um, of course, within the protocol, um, you know, if you're not from a geo-restricted region, you'll be able to bring your USDrf and stake it directly to the protocol.</p></div>
+</div>
+
+<div class="sec">USDrf and sUSDrf, recapped</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Uh, and just as a reminder, uh, I guess I've made some assumptions here. You know, USDrf is the one dollar pegged, uh, stablecoin, non-yield bearing, but it holds a dollar peg.</p>
+  <p>sUSDrf, the stake token, is how you earn yield. And you can access that either by staking USDrf in the protocol to receive sUSDrf or by swapping USDrf to sUSDrf on SundaeSwap.</p>
+  <p>And when you hold the sUSDrf token, it accrues yield through an exchange rate mechanism, uh, relative to USDrf.</p>
+  <p>We deposit USDrf into the staking vault, which causes the value of sUSDrf to increase relative to USDrf.</p>
+  <p>Um, and so whether you swap into sUSDrf or obtain it through staking, either way, you'll get it at a certain price, and over time, that price will increase as we distribute yield to the staking vault.</p>
+  <p>Um, so, you know, both of these tokens are live on mainnet, and there's a couple of different ways that, that folks can, can access them, especially the staking token.</p></div>
+</div>
+
+<div class="sec">Liqwid, and the arbitrage right after launch</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, you know, we also have integrations with Liqwid live, uh, to enable DeFi use of both of these tokens. So USDrf can be accepted as collateral on Liqwid.</p>
+  <p>You can also borrow it, and this is something we did see, uh, shortly after launch, you know, folks borrowing the USDrf from Liqwid and then swapping out of it and supplying USDCx.</p>
+  <p>You know, there was, there was an arbitrage opportunity based on the lend-borrow rates. You know, that's, that's DeFi.</p>
+  <p>That's exactly the type of utility that we want to enable in the market so that folks can, can find those yield opportunities.</p>
+  <p>Um, you know, sUSDrf as well is enabled as collateral in Liqwid in an isolated market so that users can borrow against it and borrow a USDCx against it either to, you know, take on leverage and loop through the protocol.</p>
+  <p>Um, and I can explain more about looping if, if that's interesting to folks or-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Well, I was literally, literally I was desperate to ask you about that because, uh, when I went and, um, did a little bit of that service safari, so I was in Lace, I was looking at staking centers and Liqwid Finance, and I got as far as staking and unstaking and providing, uh, liquidity to the, the pool.</p>
+  <p>But can you walk us through looping? I'd be really interested, yeah.</p></div>
+</div>
+
+<div class="sec">How looping works</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. So the way that it works, right, if I have, uh, I'm gonna just use some sample numbers here.</p>
+  <p>If I have $1,000 and I want to earn yield from RealFi's portfolio, I can take that $1,000 of USDCx, swap it to USDrf, stake it into sUSDrf, and then I can just sit on that and I'll earn the, you know, roughly eight and a half percent that the portfolio is delivering.</p>
+  <p>So by the end of the year, I'll have $1,085. Um, however, you know, looping is a way of taking on leverage on the same position.</p>
+  <p>Now, there are some risks involved, and we'll talk about what those risks are. But the way that I would set up this loop, um, I would...</p>
+  <p>I have my 1,000 sUSDrf that's earning eight and a half percent. But because sUSDrf is enabled as collateral in Liqwid, I can borrow against it.</p>
+  <p>So I can deposit that yield-bearing position into Liqwid as collateral, and then let's say I'm gonna borrow USDCx against it at a 50% loan to value.</p>
+  <p>So I can borrow $500 against my $1,000 position, and the risk is that if the value of my collateral falls below my loan-- b- below the loan to value amount where my value of my collateral is less than the value of my loan, I face liquidation risk.</p>
+  <p>So if the value of sUSDrf were to fall by 50%, I would be looking at a liquidation. You know, this is why I'm using a relatively conservative loan to value on this scenario.</p>
+  <p>Um, you know, that would be quite a big drop to see in sUSDrf.</p>
+  <p>So I can then borrow this $500 of USDCx, stake it again, and now I've essentially got a $1,500 position of sUSDrf earning eight and a half percent off of only $1,000 of true risk, uh, uh, of my original capital.</p>
+  <p>And I can just do this again, you know, over numerous loops, uh, where if I use the same 50%, I can borrow another two fifty, I can borrow one twenty-five, I can borrow, what is it, sixty-two and a half, et cetera.</p>
+  <p>Um, and, you know, my risk is... The, the risk of my position is based on the value of my underlying collateral relative to that LTV that I'm taking on the loan. Um, did that make sense?</p>
+  <p>Is this different to like</p></div>
+</div>
+
+<div class="sec">Pyramiding versus looping, and looping with ADA</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>It did make sense, um, and, and thankfully because I'm, um, not a pro trader I'm gonna ask some dumb questions, but maybe it'll help.</p>
+  <p>Um, so like when you're playing with leverage, uh, there's this idea of pyramiding, right? Like you're making some profit, then you can put the profit back in. Is that similar to looping?</p>
+  <p>We're talking about the same thing, or I've mixed ideas up?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, yeah, I guess it's, it's, I mean, it- it's, it's a different strategy, I guess. I mean, you could, you could do that, right?</p>
+  <p>You could definitely trim and take profits as, as yield accrues. I mean, I think that probably a strategy makes more sense with more of a volatile asset.</p>
+  <p>Uh, what you're able to achieve with, with looping is you're increasing the APY, uh, that you're earning on your base position. So my base position in that scenario I did was $1,000.</p>
+  <p>That's the amount of actual capital I have at risk. Uh, but the yield that I'm earning, I mean, I don't... I can't do this, this math off the top of my head.</p>
+  <p>But if I'm earning eight and a half percent on 1,000 plus 500 plus 250 plus 125, et cetera, it'll be a higher APY on $1,000 than eight and a half percent, because I'm able to, to, to take on this additional leverage against the position.</p>
+  <p>Um, so it's, it's a way to amplify the leverage, uh, to take on like higher liquid- li- but w- to, to, but in accepting some, some liquidation risk if the value of my collateral asset falls.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Loop- looping is a strategy that's also possible with something like ADA, right? I can have $100 worth of ADA or $1,000 worth of ADA. I can borrow $500 against it in LTV.</p>
+  <p>If the price of ADA goes up, then my LTV has just gone down, essentially. If ADA doubles in price, then I've got a $2,000 position and a $500 loan.</p>
+  <p>Similarly, if the price of ADA goes down, you know, the value of my, my collateral goes down, I need to then either adjust my loan or add additional collateral to, to balance that position.</p>
+  <p>Um, so it's, it's a strategy that's often used with volatile assets to, you know, amplify the gains by, you know, yeah, thr- you know.</p>
+  <p>I mean, it's, I guess it depends on the position and what LTVs you're taking. But, you know, I've seen people get like 10X returns on some of these loops.</p>
+  <p>You know, it's a similar concept, but with, uh, but with the yield-bearing asset where you're essentially just increasing the APY.</p></div>
+</div>
+
+<div class="sec">The arbitrage at launch, step by step</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And just for the people that, um, that are joining, and also for my records, I can write it up later in the blog. But, um, walk me back through what you observed, uh, at the beginning of mainnet.</p>
+  <p>'Cause you were saying like there was some arbitrage. Can you just walk us through the steps there of what happened?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. So folks would open...</p>
+  <p>And this is like, this is, this is fully a use case that we support, right? So I mean, like the, the, folks would obtain USDrf, uh, so they would borrow USDrf from Liqwid.</p>
+  <p>Now they would have to deposit some kind of collateral asset and able to do that in order to do that. That could be ADA, that could be USDCx.</p>
+  <p>I suspect they were probably doing it with ADA, but I'm not sure.</p>
+  <p>Um, you know, they would borrow USDrf at a certain rate, and then they would swap that USDrf that they've borrowed for USDCx, and then they would be able to supply that USDCx back to Liqwid at a higher rate.</p>
+  <p>And so they're essentially, you know, there's an ar- there's an arbitrage there where if they're borrowing at 3% and supplying it at 6%, they're sort of earning a free 3%.</p>
+  <p>And this is what we saw some folks do when, uh, you know, at, at launch, just based on the way that, that those rates looked like based on utilization.</p>
+  <p>Of course, these rates change as the market dyna- as, you know, the market changes.</p>
+  <p>Um, but yeah, this was an arbitrage opportunity where, you know, folks found a, a spread between, uh, supply and borrow, which was quite, you know...</p>
+  <p>It, it's, it's a common thing that, that folks do in DeFi indeed.</p></div>
+</div>
+
+<div class="sec">Will there be an ADA-based product?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And, uh, from the chat, [Participant A], um, I think from [a stake pool], had said, um, he saw some information in the What is the Voyager Season docs, which said ADA is valued using an hourly market price.</p>
+  <p>So his question is, would we have any ADA based product? How would you answer that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Um, the, the challenge with our treasury holding ADA, uh, is that we need-- we can't make investments in ADA.</p>
+  <p>And so it's just our, our, you know, our... If we were to take in ADA as a collateral asset, you know, our treasury then just has to absorb the volatility of ADA, and we can't really invest the ADA.</p>
+  <p>So in order for us to invest that ADA, we would have to swap out of it for a, a dollar denominated stable coin, then off-ramp that and invest those dollars.</p>
+  <p>So, you know, it's unlikely that ADA ever becomes an asset, at least for the foreseeable future, that our treasury would hold.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>But however, you know, if you have ADA and you're trying to find ways to leverage that, not, not leverage in the sense of looping, to utilize that, um, you know, to gain exposure to RealFi, then you could supply that ADA as collateral on Liqwid and then borrow USDrf or borrow USDCx and use that as the route into sUSDrf.</p>
+  <p>So I mean, this is obviously, this type of position is, is highly dependent upon the price of ADA.</p>
+  <p>Um, you know, I, I think I walked through how LTVs work, but I just, you know, I, just to sort of say it again quickly, right?</p>
+  <p>If I'm, if I have $1,000 worth of ADA right now, I supply that as collateral and I borrow $500 of USDrf- I could then stake that $500 of USDrf to earn 8.5%.</p>
+  <p>Uh, that 8.5%, I'll need to make sure that the yield that I'm earning on that is greater than my borrow rate so that I'm, I'm not negative, I'm not underwater on this position.</p>
+  <p>And I'll need to monitor the price of ADA, because if the price of ADA falls 50%, I then start to look at liquidation risk, and I'll need to manage the position by either repaying it or adding more collateral.</p>
+  <p>But this is a way that ADA holders can gain exposure to RealFi is by using their ADA as collateral in Liqwid and borrowing against it. Um, yeah, and as I mentioned- And just- ...</p>
+  <p>earlier, it's unlikely that ADA would be used to buy our treasury. Go ahead, Ben.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Just, just call, call out the obvious for me.</p>
+  <p>Um, uh, basically what that would mean is somebody doesn't have to sell their ADA, right? So would there be some benefit to somebody borrowing it rather than just buying it directly?</p>
+  <p>Like, walk me through why collateralization is- Yeah ... a useful use case.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>If you're long, if you're long on ADA, if you're bullish on ADA, then you don't wanna sell it.</p>
+  <p>Uh, but if you, you know, wanna try to find other uses for it beyond just holding it, you know, then, then, then using it as collateral to get acce- to, to get exposure to, uh, you know, a yield-bearing token is a nice way to diversify that position.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. That's nice.</p>
+  <p>And, and we did talk about risk a little bit, so, um, I think it's a good idea or it'd be great if we could just touch on that transparency portal, um, and maybe the portfolio ramp-up.</p>
+  <p>Uh, can you touch on those two things?</p></div>
+</div>
+
+<div class="sec">The transparency portal</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. Uh, the transparency portal, um, shows, you know, some, some metrics about the protocol.</p>
+  <p>So it gives you some metrics on the, like, price stability, staking yields, collateralization ratio, TVL circulating supply, things like this.</p>
+  <p>Uh, and then it shows sort of what's happening on the reserves or the sort of underlying backing of the protocol, what investments we've made into different types of assets.</p>
+  <p>Um, you know, it, it, it, it gives some visibility into, uh, the yield and it also gives some visibility into the sort of distribution of the token across different protocols.</p>
+  <p>So it'll, you know, it sort of shows what's held in indexes, what's held by institutions and retail users, et cetera.</p>
+  <p>The transparency portal is something that, you know, we'll, we'll continue to flesh out and add new features as we, as we get more data. Um- Mm ... you know, we, we launched...</p>
+  <p>You know, at launch there's not a whole lot of historical data and it's just, uh, there's no point having a lot of charts there that, that, that have, like, one day's or one week's worth of data.</p>
+  <p>So, you know, you'll see some more features come in there as the, the, the portfolio and yield engine get more established. And then what was the second thing?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Great. So you...</p>
+  <p>Oh, the transparency portal was just really interesting to me because, um, I thought it was a bit of a differentiator, you know? Um- Yeah ... the, the other thing was about the portfolio ramp-up.</p>
+  <p>Um, this is, uh, you know, like, is the yield always the same with RealFi? Is it, is it gonna vary? Can you walk me through those- Yeah ... kind of, um ...</p></div>
+</div>
+
+<div class="sec">Does the yield vary? Sleeves and the staking ratio</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Uh, that's, that's a good question.</p>
+  <p>Yeah, I mean, so the, the yield will vary over time, uh, based on a few things, right? It'll be d- it's based on, uh, our underlying asset mix. So we have a few different sleeves in our portfolio.</p>
+  <p>Sleeve A is a liquid sleeve, primarily tokenized money market funds.</p>
+  <p>Sleeve B is a semi-liquid sleeve, primarily through CLO ETFs, collateralized loan obligation ETFs, uh, electri- el- electronically traded funds.</p>
+  <p>Um, they're sort of aggregate baskets of private credit, is how you can think about CLO, CLO ETFs.</p>
+  <p>Um, and finally, we do direct lending, um, you know, which is less liquid, but, but does generate quite a high return.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>So at any point in time, the size and allocations across those different sleeves, you know, will, will vary. It will vary over time. That's one thing that will determine what the yield looks like.</p>
+  <p>Higher concentration liquid assets means a lower yield. Uh, a higher concentration in illiquid, you know, private credit assets means a higher yield. Um, and then also the staking ratio.</p>
+  <p>Uh, you know, th- there's, there's, there's a symbiotic relationship between portfolio composition and staking ratio, although they are two independent factors.</p>
+  <p>It's not strictly deterministic between the two of them. But, you know, a, a, a, a, a, a, a lower staking ratio, you know, essentially will, will mean a, um, a higher yield to individual stakers.</p>
+  <p>Um, but, you know, these things are fluid over time, and it's sort of based on the, the snapshot of the portfolio at any given point in time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, that makes sense.</p>
+  <p>Um, so we've talked about, um, mainnet and what's here and what's live, and we've talked a little bit about the utility and about what users can do.</p>
+  <p>Um, just, just looking back, uh, Clay, walk me through, like, so all the points in the testnet and the testers that took part, um, you know, what's gonna happen with their points now?</p>
+  <p>What can they expect? How are they gonna redeem them?</p></div>
+</div>
+
+<div class="sec">Testnet points and the pioneer season</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. So we are finalizing the pioneer season, uh, internally now.</p>
+  <p>Um, we're still monitoring for, uh, sort of farming patterns and other, um- There are things that sort of breach the points policy.</p>
+  <p>Um, but we've largely finalized the pioneer season points allocations. As I mentioned, the, the bug report stuff is something we just aligned on internally this week.</p>
+  <p>Um, you know, so we'll, we'll aim to publish a pioneer season points to RFG conversion rate in the next few weeks. Um, we've got...</p>
+  <p>One, one of our team members who helps with that is, uh, is on his honeymoon, so we're waiting for him to get back before we actually finalize that. Um, so thanks for your patience on that.</p>
+  <p>Um, yeah, that's the next... But that's, that's what the next steps are with the pioneer season.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>You know, once we p- once we publish the points to RFG exchange rate, you know, it is still somewhat subject to change if new farming patterns emerge, but, you know, I think that's pretty unlikely, uh, given where we are, given how things are looking now.</p>
+  <p>Uh, and then you'll receive the actual RFG when we do our TGE, uh, token generation event, which should be happening right now or targeting Q1.</p>
+  <p>Uh, but there's some other dominoes that need to fall in place first before that gets too committed, so yeah.</p></div>
+</div>
+
+<div class="sec">The list of supported regions</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And you can smack my hand here 'cause I should probably know the answer, but have we got a published list of, um, geographical locations that are kind of supported?</p>
+  <p>I don't know if it's published or not. Uh, do you?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>I don't know either.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>I don't know either.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>Uh, we should talk- I'm sure looking into it. Yeah ... we should talk with the marketing team about that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. Well, I will add that to my, uh, to-do list. That, that's one for me. Yeah. Um, [Participant B] is asking about, um... Sorry, I'm just going through the chat here. Uh, Latam, Argentina. Yep.</p>
+  <p>Okay, guys, I will follow up on geolocation and get you an answer. Yeah, a country list would be good, you're right. Uh, by the way, you can ask Clay any questions as we're going along.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, just if this is your first Discord stage, there's a, a little icon that looks like a chat image in the top right, I think.</p>
+  <p>Um, if you click it, the chat window will open, and any questions you ask in there, I will put to Clay. Um, right. So Clay, we talked about testnet briefly.</p></div>
+</div>
+
+<div class="sec">Looking ahead: EVM and TGE</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, we're coming towards the end, uh, uh, save any other questions. If we have more questions, we can stay longer. But let's look ahead a little bit.</p>
+  <p>Like, what are you thinking about towards the end of the year? What are you hoping for in 2027? Can you give us, um- Yeah. I'm looking forward to our- ... the state of your roadmap?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah, I mean, I'm, I'm focused a lot on our EVM launch, our Ethereum Mainnet launch.</p>
+  <p>Um, you know, it's, we, we, we've, we've developed, we've developed a cross-chain strategy that, you know, we're, we're talking with DefiLlama about some details about how TVL is gonna accrue.</p>
+  <p>We're trying to navigate those now, but, you know, we've got a cross-chain strategy that involves, uh, native minting and staking on EVM as well. Um- Mm ...</p>
+  <p>and, and I'm really excited about, uh, bringing RealFi to, to those capital markets. Um, that's where...</p>
+  <p>I mean, as I, as I mentioned earlier, you know, the, the, the Cardano launch went, went relatively smoothly thanks to all the investments from our team and, and the community here in, in, in testing and engaging with that during testnet, that I'm able to spend a lot of my bandwidth, um, you know, focusing on bringing us into EVM.</p>
+  <p>Uh, I'm very excited about that 'cause I think it'll really help the protocol grow, and it'll help us really, um, solidify the yield engine.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>I think, feel like I can find a better word than solidify, but that's the best I've got right now. Um, and so that's one. And then second is, I mean TGE and bringing RFG to the market.</p>
+  <p>Um, there are some tier one exchanges that we've talked to that we're gonna have RFG listed on.</p>
+  <p>Um, you know, we need to land EVM before we really focus ex- focus too hard on, uh, TGE, but that sh- that will be... Once we launch into EVM, that's what then I'll be, I'll be thinking about.</p>
+  <p>Those are the two things that I'm looking forward to for the next, you know, six months or so.</p></div>
+</div>
+
+<div class="sec">Taking RealFi, not Cardano, to Ethereum</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, I mean, you, you know me well enough to know, like, my background is, like, very much based in Cardano over the past five, six years, you know?</p>
+  <p>But I'm really excited about going to Ethereum and going cross-chain. I mean, that's like where the liquidity is.</p>
+  <p>I think, like [Participant B] is saying in chat, cross-chain is the future, you know?</p>
+  <p>And, um, I think that all I hope really, it's about, like, everybody on this call and in this Discord, we're the RealFi community, you know? It's not only about Cardano really.</p>
+  <p>I think we have to look forward to Ethereum and I'm not, uh, setting any expectations here. But we need to get...</p>
+  <p>Once we're ready, Clay, right, we need to be getting in to the Ethereum community and representing RealFi, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And I think sometimes you're thinking about the people in Ethereum that are gonna be hearing about RealFi. Uh, my wife actually taught me we need to develop a theory of mind, right?</p>
+  <p>Like, how will they perceive RealFi? What's the best way for them to take an interest? And my personal opinion, I'm not speaking on behalf of RealFi here, is that is not a Cardano first story.</p>
+  <p>That is a RealFi first story. That's a, a returns first story, you know? And I'm hyped, man.</p>
+  <p>I mean, like, one of the things I love working about with you and the team is, like, it feels a bit punk rock, right? I don't wanna gush too much, so stop me at any point. But it's, it's punk rock.</p>
+  <p>Like, we're building cool shit and, you know, we're also, uh, applying, like, what the real product market fit is in, um, Web3, which is going back to some conversations we've had in other spaces.</p>
+  <p>At the end of the day, growth in these ecosystems is about capital productivity, right? And you can like it or you, you might not like it, but you need to name it, I think anyway.</p>
+  <p>Th- that's my personal opinion, Clay. Like, you can challenge and disagree with me. My ego's huge. I can, I can tolerate it, you know? Um- Would you agree with me on that?</p>
+  <p>Like, uh, that is a RealFi first, um, community that we need to be taking to Ethereum?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>I, I, I mean, I, I mean for... Yeah, absolutely. Right. I think, you know, the w- the way I...</p>
+  <p>I, I think RealFi's mission of trying to bring real world assets on chain and, and to bring this yield profile to DeFi users, uh, is much bigger than just the Cardano ecosystem.</p>
+  <p>And so accessing capital on Ethereum, whether it's main net or L2s, uh, you know, being able to capture a lot of the high frequency retail activity that happens on a chain like Solana- Mm-hmm ...</p>
+  <p>um, you know, it positions RealFi, uh, as a, as a chain agnostic RWA yield protocol. Uh, and that is, I mean, that's...</p>
+  <p>I think that's what's best for RealFi surely, uh, and that's what's best for RFG holders.</p>
+  <p>Um, and I think everybody on this call, you know, is, is, is, is going to be some degree of an RFG holder, uh, through their...</p>
+  <p>I'm assuming everybody on this call has, has s- has already earned some rPoints.</p></div>
+</div>
+
+<div class="sec">rPoints, recapped</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. If, if you haven't, now's the time to get started, guys. DM me and I'll, uh ... Yes ...</p>
+  <p>I'll, I'll get you on board with-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah ... yeah. Yeah. We, you know, we offer rPoints, just to recap for folks that might not know, right?</p>
+  <p>We offer rPoints for people that, that, that use, uh, their liquidity, not necessarily to seek yield from the protocol, but to support the stability of the protocol.</p>
+  <p>And this is in things like providing liquidity to a looping market, uh, or providing liquidity to SundaeSwap so that swaps happen, uh, and swaps can happen smoothly and pr- prices remain stable there.</p>
+  <p>You know, it's generally about providing liquidity, but not seeking yield is how folks get access to points, and these points will convert into RFG, which is the RealFi governance token at TGE.</p></div>
+</div>
+
+<div class="sec">Q&amp;A: MiCA regions, yield and rPoints</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>That's great. Clay, this has been a really good call. Um, if anybody's got questions, like now is the time. We've got about five, 10 minutes Clay, I think, uh, with your schedule.</p>
+  <p>Um, W- [Participant C]'s asking, uh, questions about rPoints. Can we obtain them even though we are in a MiCA regulated region?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah, rPoints and RFG will be open to globally.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Nice. Um, and [Participant E], uh...</p>
+  <p>We can't hear you. You're not on the stage, but if you wanna come up, um, as long as Clay's cool with it, I don't mind rolling the dice- Sure ... and inviting you to stage, you know? Yeah.</p>
+  <p>See what we get. Um, uh, sorry Clay, I've got a bit of PTSD from X spaces back in the day.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>No, it's, it's easy. Come on up.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, come up and talk to us, guys.</p>
+  <p>Any way to earn rPoints while also earning yield, [Participant D] asks.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah.</p>
+  <p>So there is a little, but there is one rule, uh, when I say rule, uh, like a points rule, uh, that if you're supplying your sUSDrf to the sUSDrf pool on Sundae, then you do earn some points for that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, [Participant E], I can't see you in the, the group, by the way on, on my screen, so you're gonna need to request to become a speaker.</p>
+  <p>I think you should have an option down on your screen if you still wanna come up. Uh- Yeah. It looks like a hand ... comments are saying... Oh, we got a hand up? Let me have a look.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>No, it looks like a hand. The request to speak- Yeah ... button looks like a hand.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Any questions, uh, Clay, I haven't asked you that you wish I had? Ah, [Participant F] is just requesting to speak.</p>
+  <p>Let's bring him up. Hey, [Participant F]. Welcome to the stage.</p></div>
+</div>
+
+<div class="sec">A question from the stage: the multi-entity structure</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>Hi, you guys hear me all right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yep. Yes. Hey, [Participant F].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>Wonderful. So I'm just taking a shot at, at speaking here.</p>
+  <p>Um, I'm a, I'm US-based, and it's not to go down the whole MiCA road, but does your organization...</p>
+  <p>I looked at your docs and how you've structured your organization with multiple entities, and for other organizations who are looking to also navigate that, do you guys, I wouldn't say offer a service, but would it be any chance that we could talk to maybe someone in your compliance team to figure out how that was done?</p>
+  <p>Because we'd love to put more money into to you guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Hmm. Um, we should maybe take that one offline to [a colleague], Ben, and see- Yeah ... and see what he thinks.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. Well, [Participant F]- I- ...</p>
+  <p>why don't you just DM me my email? The two of us... Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>The, the, that, that's outside of the two of ours remits, so I'm sorry, I'm reluctant to, to say much more than that, but I think we c- we, we can definitely talk to some folks internally.</p>
+  <p>Ben, sorry, go ahead.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, yeah. W- [Participant F], we will, we will definitely ask the question and, um, I'm happy to facilitate that.</p>
+  <p>I'm gonna DM you my email, and if you drop, if you summarize, um, what you'd like me to find out, like the gives, the gets, I'm happy to facilitate that introduction. Does that sound good?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>I was just looking to be the squeaky wheel to, to get the grease, so thank you very much.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, you're welcome. Uh, any, any other questions?</p>
+  <p>What do you think of the, what we've been talking about so far?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant F</div>
+  <div class="turn-body"><p>Well, for me, I think this is great. I mean, I can't, I can't wait to be involved.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Awesome. Uh, bye [Participant F], thank you very much.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, [Participant C] raised your hand next to the exit call. That's all right. Hey, [Participant G]. Um, anyone else wanna come up and talk to us? Okay. Uh, Clay, you're a legend.</p>
+  <p>Um, I hope you liked the GIF that I put up of you in the, in the announcements.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Yeah. The [person in the GIF]. That's great.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>So look, uh, yeah, I'll write this up.</p>
+  <p>Um, I, you know, and I'll put it up on the blog. Uh, I think there's been some great, uh, conversations here.</p>
+  <p>I'm also gonna try and talk to the data team and see if we can get some nice metrics around sort of main net, um, and the success we've had so far. And, uh, yeah, any other questions, guys?</p>
+  <p>Otherwise, I'm gonna wrap it up and let Clay get back to the, uh, coal face where he's busily mining for that yield optimization. I'm just, I'm improvising this, Clay, as we go.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>You're doing great.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, great. All right, [Participant F], thank you very much. I'll DM you now. And everybody else, if you have any questions, um, or you think of something later, tag me or DM me.</p>
+  <p>Always happy to help, and I'll go and find those answers for you. Thank you everyone. Have a great weekend.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay</div>
+  <div class="turn-body"><p>Thanks a lot.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And we'll see you next time. Thanks everybody. Bye bye.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Clay <em>(inferred)</em></div>
+  <div class="turn-body"><p>Bye bye bye</p></div>
+</div>
+</details>
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+</nav>
+
+<footer>
+<p><span class="l-ja">RealFi Office Hours アーカイブ<br>この回は公開されている録画にもとづくため、チャタムハウスルールの対象ではなく、発言者は実名のまま扱っています。</span><span class="l-en">RealFi Office Hours archive<br>This session is based on a publicly published recording, so it is not covered by the Chatham House Rule and the speakers are named.</span></p>
+</footer>
+
+</div>
