@@ -894,7 +894,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="thesis">
   <span class="label">一言でいうと</span>
   <p>mainnet は予定どおり動き出し、最初の利回り分配も済んだ——そう報告された回です。<br>
-  中身は<strong>「いま何ができるか」の案内</strong>（swap、stake、Liqwid でのループ）と、<strong>次の 2 つ、EVM と TGE の予告</strong>。新しい決定の発表はありません。</p>
+  中身は<strong>「いま何ができるか」の案内</strong>（swap、stake、Liqwid でのループ）と、<strong>次の 2 つ、Ethereum への展開（EVM）と RFG トークンの発行（TGE）の予告</strong>。新しい決定の発表はありません。</p>
 </div>
 
 <div class="tldr">
@@ -905,8 +905,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>入口は 2 つ。</strong>SundaeSwap で USDCx → USDrf → sUSDrf とスワップするか、地域制限の対象外なら USDrf をプロトコルに直接ステークするか。</li>
   <li><strong>Liqwid で担保になる。</strong>USDrf も sUSDrf も担保として使え、借りた分をまたステークする「ループ」でレバレッジをかけられる。ローンチ直後には、借入と供給の金利差をとる裁定も観測された、と。</li>
   <li><strong>利回りは固定ではない。</strong>資産の置き場所 3 つの配分と、ステーキング比率で変わる。説明の中で「ポートフォリオが出しているおよそ 8.5%」という数字が挙げられましたが、サンプルの数値例であって約束ではありません。</li>
-  <li><strong>testnet のポイントは pioneer season として確定へ。</strong>RFG への換算レートは数週間のうちに公表予定、実物の RFG は TGE（Q1 目標）で配られる、と。</li>
-  <li><strong>次は EVM、その次に TGE。</strong>ティア 1 の取引所と上場の話をしている。R-Points と RFG は MiCA 圏を含め「世界に開く」。</li>
+  <li><strong>testnet のポイントは pioneer season として確定へ。</strong>RFG への換算レートは数週間のうちに公表予定、実物の RFG はトークンを実際に発行するイベント（TGE、Q1 目標）で配られる、と。</li>
+  <li><strong>次は Ethereum、その次にトークンの発行。</strong>ティア 1 の取引所と RFG の上場の話をしている。R-Points と RFG は MiCA 圏を含め「世界に開く」。</li>
   <li><strong>対応地域の一覧は持ち帰り。</strong>公表されているかどうかを 2 人とも把握しておらず、進行役の宿題になりました。</li>
 </ul>
 </div>
@@ -1188,6 +1188,11 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>実物の RFG は TGE（トークン生成イベント）で受け取る。</strong>「Q1 を目標にしている」。ただし「確約する前に、先に片づかないといけない他のドミノがいくつかある」</li>
 </ul>
 
+<div class="term">
+<p class="term-name">TGE <small>token generation event — トークン生成イベント</small></p>
+<p><span class="badge">補足</span>トークンを実際にブロックチェーン上で発行し、配り始めるイベントのことです。コール中で「TGE、つまりトークン生成イベント」と言い換えられています。それまでの R-Points や pioneer season のポイントは、RFG を受け取る「権利の記録」にすぎず、トークンそのものはまだ存在しません。TGE で初めて RFG が発行され、ポイントが換算レートに従って RFG に変わり、取引所での売買も可能になります。株式でいえば、上場前に配られた「株を受け取れる約束」が、上場日に実際の株になるようなものです。公式ドキュメントも「RFG はまだ発行されておらず、販売も配布もされていない」と明記しています（2026 年 10 月 9 日時点）。一言でいうと、TGE の前は点数、TGE のあとはトークンです。</p>
+</div>
+
 <p><span class="badge">補足</span>TGE の時期は「今やっている、というか、Q1 を目標」という言い直しの形で語られており、確定した日付ではありません。9 節のとおり、EVM を先に着地させる、という順序も同時に示されています。ガバナンストークンは、<a href="../2026-08-24-office-hours-ticker/#vote">#7 の投票</a>では RLFG に改称される案が選ばれていましたが、この回の話者は一貫して RFG と呼んでいます。コール後に公式ドキュメント（docs.realfi.co）で確認したところ、ガバナンストークンの名前は RFG のままで、USDrf / sUSDrf と並んで記載されています（2026 年 10 月 9 日時点）。同じページには、ポイントは「指定されたシーズンごとの配布窓口で、チームが定める換算レートで RFG に変換される」「正確な換算レートとベスティングのスケジュールは、各配布イベントの前に公表する」「RFG はまだ発行されておらず、販売も配布もされていない」とあります。</p>
 
 <h2 id="next">9. この先 — EVM、TGE、「RealFi ファースト」</h2>
@@ -1349,7 +1354,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <div class="thesis">
   <span class="label">In one line</span>
   <p>Mainnet went live on schedule and the first yield distributions have been made — that is the report.<br>
-  The rest is <strong>a guide to what you can do now</strong> (swap, stake, loop on Liqwid) and <strong>a preview of the next two things: EVM and TGE</strong>. No new decisions were announced.</p>
+  The rest is <strong>a guide to what you can do now</strong> (swap, stake, loop on Liqwid) and <strong>a preview of the next two things: the move to Ethereum (EVM) and the issuance of the RFG token (TGE)</strong>. No new decisions were announced.</p>
 </div>
 
 <div class="tldr">
@@ -1360,8 +1365,8 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>Two ways in.</strong> Swap USDCx → USDrf → sUSDrf on SundaeSwap, or, if you are not in a geo-restricted region, stake USDrf directly in the protocol.</li>
   <li><strong>Collateral on Liqwid.</strong> Both USDrf and sUSDrf can be used as collateral, and re-staking what you borrow (“looping”) adds leverage. Right after launch, people also arbitraged the gap between borrow and supply rates.</li>
   <li><strong>The yield is not fixed.</strong> It moves with the allocation across three places the money sits and with the staking ratio. “Roughly eight and a half percent that the portfolio is delivering” was a sample number in a worked example, not a promise.</li>
-  <li><strong>Testnet points become the pioneer season.</strong> A points-to-RFG conversion rate is due in the next few weeks; the RFG itself arrives at the TGE, targeted for Q1.</li>
-  <li><strong>EVM next, then TGE.</strong> Talks with some tier-one exchanges about listing. R-Points and RFG will be “open globally,” MiCA regions included.</li>
+  <li><strong>Testnet points become the pioneer season.</strong> A points-to-RFG conversion rate is due in the next few weeks; the RFG itself arrives when the token is actually issued (the TGE), targeted for Q1.</li>
+  <li><strong>Ethereum next, then the token issuance.</strong> Talks with some tier-one exchanges about listing RFG. R-Points and RFG will be “open globally,” MiCA regions included.</li>
   <li><strong>The list of supported regions is a follow-up.</strong> Neither speaker knew whether one is published; the host took it as homework.</li>
 </ul>
 </div>
@@ -1642,6 +1647,11 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li>After publication it is “still somewhat subject to change if new farming patterns emerge,” though “that’s pretty unlikely given where we are”</li>
   <li><strong>The actual RFG arrives at the TGE, the token generation event</strong> — “targeting Q1.” But “there’s some other dominoes that need to fall in place first before that gets too committed”</li>
 </ul>
+
+<div class="term">
+<p class="term-name">TGE <small>token generation event</small></p>
+<p><span class="badge">added</span> The event at which a token is actually created on the blockchain and distribution begins; the call glosses it as “TGE, token generation event.” Until then, R-Points and pioneer-season points are only a record of a claim on RFG — the token itself does not exist yet. At the TGE, RFG is issued for the first time, points convert to RFG at the published rate, and exchange trading becomes possible. Think of a promise of shares handed out before an IPO becoming actual shares on listing day. The official docs state that “RFG has not yet been issued, is not currently offered for sale, and is not currently available for distribution” (as of 9 October 2026). In one line: before the TGE, points; after it, tokens.</p>
+</div>
 
 <p><span class="badge">added</span> The TGE timing came out as a self-correction — “which should be happening right now, or targeting Q1” — and is not a fixed date. As section 9 shows, EVM is to land first. The <a href="../2026-08-24-office-hours-ticker/#en-vote">#7 vote</a> had chosen to rename the governance token RLFG, but the speaker says RFG throughout. Checked after the call against the official docs (docs.realfi.co): the governance token is still RFG, listed alongside USDrf / sUSDrf (as of 9 October 2026). The same page says points “are converted into RFG governance tokens at a team-defined conversion rate” during “designated seasonal distribution windows,” that “the exact conversion rates and vesting schedules will be published by the protocol before each distribution event,” and that “RFG has not yet been issued, is not currently offered for sale, and is not currently available for distribution.”</p>
 
