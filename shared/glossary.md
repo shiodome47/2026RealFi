@@ -391,7 +391,7 @@ Cardano の用語は上の表と共通。ここはエージェント × ブロ�
 | 語られたとおり | 意味 |
 | --- | --- |
 | electronically traded funds | 話者の言い間違い。ETF は **exchange-traded fund**（上場投資信託）。日本語全文では「ETF」とだけ訳した |
-| Voyager Season | チャットの質問者が挙げたドキュメントの名前。**何を指すか確認できない**ので聞こえたまま。話者側は testnet の期間を **pioneer season** と呼んでいる |
+| Voyager Season | 公式ドキュメント（docs.realfi.co）の「Mainnet Participation」にある「What is the Voyager Season」のページ（2026-10-09 確認）。**mainnet 期間のシーズン名と読める。**testnet 期間は **pioneer season**。ページの中身は受け取っていない |
 | staking centers | 進行役が Lace の中で見た画面の呼び方。確認できないのでそのまま |
 | R-Points | mainnet でのポイントの呼び名。**公式ドキュメント（docs.realfi.co）の表記に合わせた**（2026-10-09 確認）。文字起こしは rPoints |
 | RFG | ガバナンストークン。改称後は RLFG だが、**この回の話者は一貫して RFG**。ページもそのまま |

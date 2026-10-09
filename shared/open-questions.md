@@ -660,9 +660,9 @@ RealFi 側は「メッセージングの層を差し替えやすいように設�
 
 ---
 
-### 66. 「Voyager Season」のドキュメントと、ADA の「1 時間ごとの市場価格」 — `未説明`
+### 66. 「Voyager Season」のドキュメントと、ADA の「1 時間ごとの市場価格」 — `ページは確認、中身は未説明`
 **質問者**: 参加者A（チャット）
-**内容**: 「What is the Voyager Season」というドキュメントに「ADA は 1 時間ごとの市場価格で評価する」とある、と質問者が挙げた。**Head of Product はこのドキュメントにも評価方法にも触れず、「トレジャリーが ADA を持つことはない」という答えに進んだ。**「Voyager Season」が何を指すのかは確認できない（話者側は testnet を pioneer season と呼んでいる）。
+**内容**: 「What is the Voyager Season」というドキュメントに「ADA は 1 時間ごとの市場価格で評価する」とある、と質問者が挙げた。**Head of Product はこのドキュメントにも評価方法にも触れず、「トレジャリーが ADA を持つことはない」という答えに進んだ。****「Voyager Season」は公式ドキュメントの実在ページ**（docs.realfi.co の「Mainnet Participation」→「What is the Voyager Season」。隣に「How R-Points work」。依頼者提供のスクリーンショットで 2026-10-09 に確認）。**mainnet 期間のシーズン名と読める**（testnet 期間は pioneer season）。ページの中身は受け取っていない。
 
 **回収先**: RealFi のドキュメント。
 

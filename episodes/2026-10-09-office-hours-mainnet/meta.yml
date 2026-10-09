@@ -35,8 +35,8 @@ speakers:
 questioners:
   - 参加者A                    # チャット。ADA 建てのプロダクトはあるか（ステークプール名も挙がった → 匿名化）
   - 参加者B                    # チャット。Latam / Argentina（対応地域）、cross-chain is the future
-  - 参加者C                    # チャット。MiCA 圏でも rPoints を得られるか
-  - 参加者D                    # チャット。利回りを得ながら rPoints も得る方法はあるか
+  - 参加者C                    # チャット。MiCA 圏でも R-Points を得られるか
+  - 参加者D                    # チャット。利回りを得ながら R-Points も得る方法はあるか
   - 参加者E                    # ステージに呼ばれたが上がらなかった
   - 参加者F                    # ステージに上がった。米国拠点。複数の法人構成について compliance チームと話せるか
   - 参加者G                    # 退出時に挨拶されただけ
@@ -60,7 +60,7 @@ corrections:
   - "質問者の名前の言い直し（2 通り）→ [Participant B]（言い直しごと置換）"
   - "rPoints → R-Points（公式ドキュメント docs.realfi.co の表記。依頼者提供のスクリーンショットで 2026-10-09 に確認）"
 # 直していないもの: 「electronically traded funds」（話者の言い間違い。ETF は exchange-traded fund）、
-# 「Voyager Season」（何を指すか確認できない。docs 側で聞こえたまま記録）、
+# 「Voyager Season」（公式ドキュメントの実在ページ名と確認済み。表記はそのまま）、
 # 「staking centers」（Lace の画面の呼び方と読めるが確認できない）。
 
 # 画面共有はなかった（依頼者確認済み。音声にもスライドへの言及はない）。
