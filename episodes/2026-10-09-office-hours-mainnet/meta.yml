@@ -23,7 +23,7 @@ series_no: 10                 # RealFi Office Hours の通し番号（回の実�
 # 役割（進行役 / Head of Product）で書いている。
 chatham_house_rule: partial
 
-platform: Discord（ステージ）
+platform: Discord（ステージ）   # 依頼者確認済み
 duration: unknown             # 原本に時刻がない
 attendees: unknown
 
@@ -58,11 +58,12 @@ corrections:
   - "DeFi Llama → DefiLlama"
   - "ELO, CLO ETFs → CLO, CLO ETFs"
   - "質問者の名前の言い直し（2 通り）→ [Participant B]（言い直しごと置換）"
+  - "rPoints → R-Points（公式ドキュメント docs.realfi.co の表記。依頼者提供のスクリーンショットで 2026-10-09 に確認）"
 # 直していないもの: 「electronically traded funds」（話者の言い間違い。ETF は exchange-traded fund）、
 # 「Voyager Season」（何を指すか確認できない。docs 側で聞こえたまま記録）、
-# 「staking centers」（Lace の画面の呼び方と読めるが確認できない）、「rPoints」（表記は推定）。
+# 「staking centers」（Lace の画面の呼び方と読めるが確認できない）。
 
-# 画面共有はなかった（音声からは読み取れない。スライドへの言及もない）。
+# 画面共有はなかった（依頼者確認済み。音声にもスライドへの言及はない）。
 slides:
   shown: false
 
