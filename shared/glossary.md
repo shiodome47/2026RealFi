@@ -215,6 +215,7 @@ HTML を生成するときは必ずこのファイルを参照して、全回で
 | **Sundae / SundaeSwap** | Cardano の DEX。2025年8月から Web3 ワークストリームのパートナー。<https://sundae.fi> |
 | **TxPipe** | Cardano の開発企業。監査で協力 |
 | **Liqwid** | Cardano のレンディングプロトコル。ワンクリックフローの連携先として言及。<https://liqwid.finance> |
+| **Wave（Wave Financial）** | #10 で mainnet の呼び水（約 500 万ドル相当の USDrf / sUSDrf の事前発行）の相手として「Wave」とだけ挙がった。Cardano との関係から、ロサンゼルス拠点の SEC 登録投資顧問 Wave Financial と読める。2020-07 に IOHK が出資しCardano の創業者がアドバイザーに、2022-03 に Cardano の DeFi に流動性を供給する Wave ADA Yield Fund（当初 1 億ドル）を発表。**コール中の「Wave」が同社を指すことは未確認**（2026-10-09 時点）。出典: iog.io のニュース（2022-03-31）、CoinDesk（2020-07-06） |
 | **Midnight** | Cardano 系のプライバシー特化チェーン。**未着手だが今後やりたい領域**。コミュニティに知見を求めている |
 | **Rosen Bridge** | Cardano のクロスチェーンブリッジ。USDR/sUSDR の対応はメインネット後 |
 | **IO / Input Output** | Cardano の中核開発企業 |
