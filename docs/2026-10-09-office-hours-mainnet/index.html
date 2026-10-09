@@ -218,10 +218,15 @@
 
 <ol>
   <li>1,000 ドル分の USDCx を USDrf にスワップし、sUSDrf にステークする。そのまま持てば「ポートフォリオが出しているおよそ 8.5%」を得て、年末には 1,085 ドル</li>
-  <li>その sUSDrf を Liqwid に担保として預け、<strong>LTV 50%</strong> で USDCx を 500 ドル借りる</li>
+  <li>その sUSDrf を Liqwid に担保として預け、<strong>LTV 50%</strong>（担保価値の半分まで借りる。下の用語カード）で USDCx を 500 ドル借りる</li>
   <li>借りた 500 ドルをまたステークする。これで「元手 1,000 ドルだけをリスクにさらして、1,500 ドル分の sUSDrf が 8.5% を稼ぐ」</li>
   <li>同じ 50% で繰り返せば、次は 250、125、62.5……と続く</li>
 </ol>
+
+<div class="term">
+<p class="term-name">LTV <small>loan-to-value — 担保価値に対する借入の比率</small></p>
+<p><span class="badge">補足</span>「担保の価値のうち、何割まで借りているか」を表す数字です。1,000 ドル分の sUSDrf を担保に 500 ドル借りれば LTV は 50%。貸す側（ここでは Liqwid）は「この担保なら何 % まで」という上限を決めていて、<strong>担保の価値が下がって LTV がその上限を超えると、担保が強制的に売られます</strong>。これが「清算」です。住宅ローンでいえば、3,000 万円の家を担保に 1,500 万円借りるのが LTV 50% で、家の値段が 1,500 万円まで下がると借金と同じ価値になってしまう、という関係です。コール中で「LTV 50% は比較的保守的」と言われているのは、上限までの余裕を大きく取っている、という意味です。一言でいうと、LTV が低いほど借りられる額は減るが、清算までの余裕は大きい。</p>
+</div>
 
 <div class="fig">
 <svg viewBox="0 0 680 262" role="img" aria-label="コール中のサンプルの数字によるループの図。1,000 ドルをステークし、LTV 50% で 500 を借りてまたステークし、250、125 と続く">
@@ -672,6 +677,11 @@
   <li>Stake the $500 again. Now “I’ve essentially got a $1,500 position of sUSDrf earning eight and a half percent off of only $1,000 of true risk”</li>
   <li>Repeat at the same 50%: another 250, then 125, then 62.5, and so on</li>
 </ol>
+
+<div class="term">
+<p class="term-name">LTV <small>loan-to-value — the loan as a share of the collateral’s value</small></p>
+<p><span class="badge">added</span> The number says how much of the collateral’s value you have borrowed against. Borrow $500 against $1,000 of sUSDrf and the LTV is 50%. The lender (Liqwid here) sets a ceiling for each collateral asset, and <strong>if the collateral’s value falls so that the LTV rises above that ceiling, the collateral is sold off</strong> — that is a liquidation. In mortgage terms: borrowing $150k against a $300k house is 50% LTV, and if the house falls to $150k the loan is worth as much as the house. “Relatively conservative” on the call means leaving a wide margin below the ceiling. In one line: a lower LTV means borrowing less, but more room before liquidation.</p>
+</div>
 
 <div class="fig">
 <svg viewBox="0 0 680 262" role="img" aria-label="The loop with the call’s sample numbers: stake $1,000, borrow 500 at 50% LTV and stake it again, then 250, then 125">
