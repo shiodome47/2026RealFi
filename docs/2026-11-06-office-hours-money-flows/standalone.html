@@ -1021,7 +1021,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap">コール中の説明をそのまま 3 段に並べたものです。<span class="badge">スライド</span>プールの両側の推移を示すチャートでは、USDrf 側が 10 月 18 日にかけて細り、19 日に戻っていました。</p>
 </div>
 
-<p>チャットからの<strong>「市場メーカーは誰か」</strong>という問いには、「何を言ってよいか分からないので機関の名前は出さない」と断ったうえで、仕組みだけが答えられました。リニア・スワップが不均衡になると、市場メーカーがそこから USDCx を買い、RealFi に持ち込んで「余った USDCx を全部 USDrf に mint してくれ」と言い、それをスワップに戻してリバランスする、と。<span class="badge">補足</span>コール中ではこのプールを「リニア・プール」「リニア・スワップ」と呼んでいます。SundaeSwap の USDrf/USDCx のプールのことで、名前は聞こえたまま残しています。</p>
+<p>チャットからの<strong>「市場メーカーは誰か」</strong>という問いには、「何を言ってよいか分からないので機関の名前は出さない」と断ったうえで、仕組みだけが答えられました。リニア・スワップが不均衡になると、市場メーカーがそこから USDCx を買い、RealFi に持ち込んで「余った USDCx を全部 USDrf に mint してくれ」と言い、それをスワップに戻してリバランスする、と。<span class="badge">補足</span>コール中ではこのプールを「リニア・プール」「リニア・スワップ」と呼んでいます。SundaeSwap V4 の「Linear Swaps」のことで、ステーブルコイン同士をほぼスリッページなしで 1:1 に交換する固定手数料のプール形式です。V4 は 2026 年 7 月 30 日に発表され、10 月 1 日に mainnet で段階的に稼働を始めました。現時点のプールは USDCx/USDrf など RealFi 関連のステーブルコインが中心です（公式サイト sundae.fi、2026 年 11 月 6 日時点。依頼者の確認による）。</p>
 
 <p>続く<strong>「プールが受け取った USDCx はどうなるのか」</strong>には、「プールにそのまま置かれていて、LP を入れている市場メーカーがその一部に請求権を持つ。小口も LP できるので請求権はあるが、大半は市場メーカー」。さらに<strong>「その USDCx は最終的に焼却されて裏付けの USDC になり、オフチェーンの準備資産に行くのか」</strong>という問いには、「使われる。トレジャリーと投資チームの管轄で、余った USDCx は最終的に投資される。ただ、どう流れるかの技術的な細部は分からない」と答え、進行役がフォローアップを約束しました。</p>
 
@@ -1218,7 +1218,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>答えは率直でした。<strong>「補助されているかどうかは分からない。GTM かプロダクトの人のほうが答えられる」</strong>。他のステーブルの金利が下がることについては「害になるとは思えない。30% は極端に高い。ステーブルコインが増えるのは皆にとって良い」としつつ、「RealFi への影響はもう少し考える必要がある。本当に解くには、もう何個かプールが要るかもしれない」と。</p>
 
-<p>参加者は「Linear V4 は始まったばかりで、AlphaGrowth のチームもボールトや再担保化のために使うはず。次の一歩は、RealFi を支えるプールをあと 2 つ 3 つ作ること」と続けました。<span class="badge">補足</span>「Linear V4」が何を指すかは、コール中で説明されていません。USDM については、進行役が「Cardano で最初のネイティブなステーブルコインだったと思う。とても愛されているプロジェクト」と紹介し、チャットにあった「USDM の総供給量が、USDrf への大きな流入に耐えられるか」という論点は「あなたと私で話そうと言っていた件。まだそこまで行けていない」と持ち越しになりました。</p>
+<p>参加者は「Linear V4 は始まったばかりで、AlphaGrowth のチームもボールトや再担保化のために使うはず。次の一歩は、RealFi を支えるプールをあと 2 つ 3 つ作ること」と続けました。<span class="badge">補足</span>「Linear V4」は、SundaeSwap V4 の Linear Swaps のことと読めます（<a href="#mint">3 節</a>）。V4 には集中流動性、部分約定、Vaults、複数資産プールなども順次展開される予定とされていて、参加者が挙げた「ボールト・運用型ボールト・再担保化」はそこに重なります。USDM については、進行役が「Cardano で最初のネイティブなステーブルコインだったと思う。とても愛されているプロジェクト」と紹介し、チャットにあった「USDM の総供給量が、USDrf への大きな流入に耐えられるか」という論点は「あなたと私で話そうと言っていた件。まだそこまで行けていない」と持ち越しになりました。</p>
 
 <h2 id="overall">10. 全体像</h2>
 <p class="deck">需要 → mint → TVL、そして USDrf は DeFi へ。足りないのは供給側。</p>
@@ -1328,7 +1328,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">チャットのみ</span>EVM ローンチの日付。</p>
-<p class="qa-a" data-by="読み上げられず">コール終了後のチャットに「RealFi は 12 月 1 日に AlphaGrowth のボールト経由で Ethereum mainnet にローンチする」という告知を引用して「最新情報は？ 予定どおりか？」という質問がありましたが、<strong>コール中では読み上げられておらず、誰も答えていません</strong>。<span class="badge">補足</span>この日付は、このアーカイブでは初出です。出典は告知の引用で、こちらでは確認していません（2026 年 11 月 6 日時点）。</p>
+<p class="qa-a" data-by="読み上げられず">コール終了後のチャットに「RealFi は 12 月 1 日に AlphaGrowth のボールト経由で Ethereum mainnet にローンチする」という告知を引用して「最新情報は？ 予定どおりか？」という質問がありましたが、<strong>コール中では読み上げられておらず、誰も答えていません</strong>。<span class="badge">補足</span>この日付は、このアーカイブでは初出です。コール後に確認したところ、出典は二次情報です。DailyCoin が 2026 年 11 月 6 日の記事で、Cardano 寄りの配信「The Angry Crypto Show」が CEO の発言として「12 月 1 日に Ethereum mainnet にローンチ」と伝えた、と報じています。RealFi の公式サイトや公式アカウントからの正式な告知は確認できていません。10 月 1 日のプレスリリースでは「mainnet から約 1 か月後に EVM 対応ネットワークへ」という言い方でした（2026 年 11 月 6 日時点）。</p>
 </div>
 
 <div class="qa pending">
@@ -1480,7 +1480,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap">The call’s explanation laid out in three steps. <span class="badge">slide</span> The chart of both sides of the pool showed the USDrf side thinning toward 18 October and restored on the 19th.</p>
 </div>
 
-<p>To the chat’s <strong>“who is the market maker”</strong>, the answer declined names — “I don’t know what I’m allowed to say, so I don’t want to name an institution” — and gave only the mechanics: when the linear swap becomes imbalanced, the market maker buys the USDCx off it, brings it to RealFi and says “mint all of this excess USDCx into USDrf,” then puts it back to rebalance. <span class="badge">added</span> The call refers to the pool as “the linear pool” or “the linear swap”; it is the SundaeSwap USDrf/USDCx pool, and the name is kept as heard.</p>
+<p>To the chat’s <strong>“who is the market maker”</strong>, the answer declined names — “I don’t know what I’m allowed to say, so I don’t want to name an institution” — and gave only the mechanics: when the linear swap becomes imbalanced, the market maker buys the USDCx off it, brings it to RealFi and says “mint all of this excess USDCx into USDrf,” then puts it back to rebalance. <span class="badge">added</span> The call refers to the pool as “the linear pool” or “the linear swap.” That is SundaeSwap V4’s “Linear Swaps,” a fixed-fee pool type that exchanges stablecoins 1:1 with almost no slippage. V4 was announced on 30 July 2026 and began a phased mainnet rollout on 1 October; its pools so far are mainly RealFi-related stablecoin pairs such as USDCx/USDrf (per sundae.fi, as of 6 November 2026; confirmed by the requester).</p>
 
 <p>To <strong>“what happens to the USDCx the pool receives”</strong>: it sits in the pool, and the market maker, having LP’d into it, has a claim on it; retail LPs have a claim too, but “the bulk of it right now is the market maker.” To the follow-up — <strong>is that USDCx burned to release USDC and moved into the off-chain reserve vehicles</strong> — the answer was “it is used; that’s the purview of the treasury and investment team, and ultimately that extra USDCx is invested. I’m not sure of the exact technical details of how that flows.” The host promised to follow up.</p>
 
@@ -1677,7 +1677,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <p>The answer was candid: <strong>“Honestly, I don’t know if it’s subsidised. That would probably be better answered by GTM or someone from product.”</strong> On lower borrow rates for the other stablecoins: “I definitely don’t see how it could hurt — 30% is incredibly prohibitive; more stablecoins in circulation is good for everyone,” though “I’d have to think a little bit more about what the impact would be on RealFi. We maybe would need a few more pools of some sort to really unlock that.”</p>
 
-<p>The participant added that “Linear V4 is just getting started” and that the AlphaGrowth team will use it for vaults, managed vaults and rehypothecation, so the next step would be “a couple other pools” to help what RealFi is doing. <span class="badge">added</span> What “Linear V4” refers to is not explained on the call. On USDM, the host described it as “I think the first native stablecoin on Cardano — a much-loved project,” and the chat’s point about whether USDM’s total supply can handle large inflows into USDrf was deferred: “that’s the USDM question you and me were gonna catch up on. We just haven’t got to it yet.”</p>
+<p>The participant added that “Linear V4 is just getting started” and that the AlphaGrowth team will use it for vaults, managed vaults and rehypothecation, so the next step would be “a couple other pools” to help what RealFi is doing. <span class="badge">added</span> “Linear V4” reads as SundaeSwap V4’s Linear Swaps (<a href="#en-mint">section 3</a>). V4 is also slated to add concentrated liquidity, partial fills, Vaults and multi-asset pools, which is where the participant’s “vaults, managed vaults, rehypothecation” fits. On USDM, the host described it as “I think the first native stablecoin on Cardano — a much-loved project,” and the chat’s point about whether USDM’s total supply can handle large inflows into USDrf was deferred: “that’s the USDM question you and me were gonna catch up on. We just haven’t got to it yet.”</p>
 
 <h2 id="en-overall">10. The big picture</h2>
 <p class="deck">Demand → mint → TVL, and USDrf into DeFi. What is short is supply.</p>
@@ -1787,7 +1787,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Chat only</span>The EVM launch date.</p>
-<p class="qa-a" data-by="Not read out">After the call ended, a chat message quoted an announcement — “RealFi launches on Ethereum Mainnet via AlphaGrowth vaults on December 1st” — and asked for the latest update and whether it will be on time. <strong>It was not read out on the call and nobody answered it.</strong> <span class="badge">added</span> This is the first time the date appears in this archive. The source is the quoted announcement, not checked by us (as of 6 November 2026).</p>
+<p class="qa-a" data-by="Not read out">After the call ended, a chat message quoted an announcement — “RealFi launches on Ethereum Mainnet via AlphaGrowth vaults on December 1st” — and asked for the latest update and whether it will be on time. <strong>It was not read out on the call and nobody answered it.</strong> <span class="badge">added</span> This is the first time the date appears in this archive. Checked after the call, the source is second-hand: a DailyCoin article of 6 November 2026 reports that The Angry Crypto Show, a Cardano-focused host, relayed the CEO as saying RealFi would launch on Ethereum mainnet on 1 December. No official announcement from RealFi’s site or accounts has been found. The 1 October press release said only “about a month after mainnet” for EVM-compatible networks (as of 6 November 2026).</p>
 </div>
 
 <div class="qa pending">
