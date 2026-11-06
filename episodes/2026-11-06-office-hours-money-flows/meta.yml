@@ -1,0 +1,81 @@
+slug: 2026-11-06-office-hours-money-flows
+title: RealFi Office Hours — Money Flows & DeFi Strategies
+title_en: RealFi Office Hours — Money Flows & DeFi Strategies — How the community is using RealFi
+date: 2026-11-06
+series: realfi-office-hours   # shared/series.yml のキー
+series_no: 11                 # RealFi Office Hours の通し番号。告知に「OFFICE HOURS #11」と明記あり
+
+# 匿名化の判定
+#
+# **partial。**依頼は「Liam と Ben がメイン。実名化は問題ない」。RealFi の公式アカウントが
+# 告知でフルネームと役職（Data）を出している 2 名なので、実名のまま扱う。
+# チャットで名前が挙がった聴衆、呼びかけられた聴衆、終盤にステージに上がった聴衆、
+# 社内で名前が挙がった人物は匿名化した。依頼者が許諾できるのはチームの分までで、
+# 聴衆の第三者の分ではないため（CLAUDE.md「判断がつかないときは匿名化する側に倒す」）。
+# ステージに上がった参加者は名乗っているが、同じ理由で匿名化した。
+#
+# tools/check.py の NAMES には「残してはいけない名前」だけを入れてある。
+#
+# **回をまたぐ影響**: 進行役は #6〜#8・#10 ですでに実名。データ責任者は #4（2026-07-31）で
+# 登壇者A、#7 で社内の人物として匿名化しており、この回で実名にすると #4 の登壇者A が誰かは
+# 実質的に分かる。依頼者に伝え、「問題ない」との回答を得た。実名はこの回のページの中だけに
+# とどめ、docs/index.html と shared/ では役割（進行役 / データ責任者）で書いている。
+# #10 の Head of Product への言及（進行役のサービス・サファリの文脈）は、#10 と同じく実名のまま。
+chatham_house_rule: partial
+
+platform: Discord（メインステージ）   # 告知に "Discord Main Stage"
+duration: "約 55 分"                 # 告知は 14:30–15:25 GMT。原本に時刻はない
+attendees: unknown
+
+speakers:
+  - Ben                       # 進行役。コミュニティ担当
+  - Liam                      # データ機能のリード（告知では "Data"）。#4 以来の登壇（#4 では匿名）
+  - 参加者K                    # 終盤にステージに上がった聴衆。USDM の支持者と名乗る
+
+# 聴衆。登場順に A〜N。ほとんどは冒頭の点呼で名前が挙がっただけ。
+questioners:
+  - 参加者A                    # 点呼
+  - 参加者B                    # 点呼。チャットで「great info」
+  - 参加者C                    # 点呼。チャットのラベルについての冗談の相手。チャットで EVM の 12 月 1 日について質問（コール中では読み上げられていない）
+  - 参加者D                    # 点呼。進行役と Decentralized Adventures に取り組んでいる
+  - 参加者E                    # 点呼
+  - 参加者F                    # 点呼
+  - 参加者G                    # 点呼
+  - 参加者H                    # 点呼。「日本から。VLOG の 1 人」
+  - 参加者I                    # 点呼。チャットで参加者K の質問を進行役に振った。名前の綴りについての一言は落とした
+  - 参加者J                    # 「楽観的だね」と呼びかけられた
+  - 参加者K                    # チャットで質問 4 件（Strike、市場メーカー、USDCx の行き先、USDM）、終盤にステージで発言
+  - 参加者L                    # 「洗練された人もいる」の例として名前が挙がった
+  - 参加者M                    # チャットで「Liqwid でループして 45% APR」（スクリーンショット付き）
+  - 参加者N                    # チャットで「自分の使い方は R-Points に左右される」
+# 社内で名前が挙がった人物 2 名（データ責任者が「公平な言い方か」と意見を求めた相手、
+# 「GTM かプロダクトの人」の例として挙げた相手）は [a colleague] に置き換えた。
+
+speaker_labels: inferred      # 原本に話者ラベルがない。文脈から割り当てた
+timestamps: none              # 原本に時刻がない
+
+# 固有名詞は依頼者が確認したテキスト（ファイル名 *_corrected.txt）。残っていた 2 か所だけ直した。
+proper_nouns_corrected: by_requester_then_generator
+corrections:
+  - "進行役が 1 か所だけ別の名前で呼んでいる箇所 → Liam（聞き取りの誤りと読める。もとの綴りは tools/check.py の NAMES にある）"
+  - "Alpha Grove → AlphaGrowth（ステージの参加者の発言。チャットの引用と A Dose of Alpha の回で確認できる組織名）"
+  - "参加者K の 2 つの呼び名（ハンドル名と、聞き取り違いの別表記）→ [Participant K] に統一"
+# 直していないもの: 「linear pool / linear swap」（SundaeSwap のプールの呼び方。確認できないのでそのまま）、
+# 「Linear V4」（ステージの参加者の発言。何を指すか確認できない）、「Benj」（進行役の独り言）。
+
+# スライド（12 枚）が画面共有された。依頼者から 10 枚分のスクリーンショットを受領。
+# 依頼者の判断（2026-11-06）: スライドそのものは再現せず、**こちらで描き直した図だけを載せる**。
+# 画面に映っていて口に出されなかった数字には `スライド` のマークを付ける。数値はすべて 2026-10-27 時点。
+slides:
+  shown: true
+  received: 10                # 1 枚目（表紙）と TVL チャートの枚は受け取っていない
+  published: redrawn_only
+  note: |
+    受け取った枚: 2 前提 / 3 Part 1 扉 / 5 累積の小口流入 / 6 プールの両側 / 7 Part 2 扉 /
+    8 venue 別の積み上げ / 9 出どころ別の流れ（サンキー）/ 10 戦略のランキング / 11 まとめ。
+    「Confidential」「Proprietary」の表示はどの枚にもない。話者も「独占的なものは何もない」
+    「ツイートしても問題ない」と述べている。
+
+source:
+  audio: null
+  video: null

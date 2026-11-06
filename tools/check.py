@@ -103,6 +103,19 @@ NAMES = {
         # ハンドル名 "Has" も置換したが、**一覧に入れられない**。
         # 英語の文頭の "Has" と衝突するため。置換は手作業で行い、shared/speakers.md に記録してある。
     ],
+    # partial の回。**残してはいけない名前だけ**を書く。
+    # 発話した 2 名（進行役とデータ責任者）の実名は残しているので、ここには書かない。
+    # #10 の Head of Product への言及も実名のままなので書かない。
+    "2026-11-06-office-hours-money-flows": [
+        # 冒頭の点呼・チャット・ステージで名前が挙がった聴衆（ハンドル名を含む）
+        "Wangris", "Christopher", "Pegasus", "Cipher", "Ryan", "Sandy", "RTTM",
+        "Shadamay", "Louis", "Luis", "Sebastian", "Grim", "James", "Meidinger",
+        "Blockjock", "Jock", "Jack", "Nuff", "nufnuf", "Panda", "Rosa", "Dotare",
+        # 社内で名前が挙がった人物
+        "Cindy", "Sunny",
+        # 進行役が 1 か所だけ別の名前で呼んだ聞き取り（Liam に直した）
+        "William",
+    ],
     "2026-08-11-masumi-ai-forum": [
         # 話者・チャットで発言した参加者
         "Patrick", "Sharan", "Scott", "Kelly", "Sandro",

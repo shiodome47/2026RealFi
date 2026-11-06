@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #11 — Money Flows &amp; DeFi Strategies — まとめ / Summary</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #11</p>
+<h1><span class="l-ja">Money Flows &amp; DeFi Strategies — 小口の需要が TVL を動かし、その USDrf の 77% は DeFi で働いている</span><span class="l-en">Money Flows &amp; DeFi Strategies — retail demand moves TVL, and 77% of that USDrf is at work in DeFi</span></h1>
+<p class="meta">
+  <span>2026-11-06</span>
+  <span>Discord</span>
+  <span><span class="l-ja">登壇 2 名（ステージから 1 名）</span><span class="l-en">Two speakers (one from the stage)</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>ローンチからの 4 週間、オンチェーンのデータで「お金がどこに流れたか」を追った回です。<br>
+  <strong>TVL は平坦に見えるが、小口の需要は毎週増えていて、それが市場メーカーの mint を通じて TVL になる</strong>。そして小口の USDrf の 77% は、Strike・Liqwid・SundaeSwap で働いている。数字はすべて 10 月 27 日時点です。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>小口の需要が先、TVL は後。</strong>透明性ポータルの TVL は 10 月 19 日に跳ねただけに見えるが、小口がプールで買ったり Liqwid で借りたりした USDrf の累計は、ローンチからその日までに着実に増えていた、と説明されました。累計は 63 万ドル。</li>
+  <li><strong>需要が TVL に変わる仕組み。</strong>小口がプールで USDrf を買うと USDCx が余る。市場メーカーがその USDCx で新しい USDrf を mint してプールに戻す。その時点で初めて TVL が増える。</li>
+  <li><strong>小口が USDrf を手に入れる経路は 2 つだけ。</strong>SundaeSwap のプールで買うか、Liqwid で借りるか。小口は mint できない。</li>
+  <li><strong>77% は DeFi で働いている。</strong>Strike に 30%、Liqwid に 4 つの戦略で 30%、ウォレットで持つだけが 13%。「ほとんどが DeFi にある」と。</li>
+  <li><strong>足りないのは供給側。</strong>Liqwid で借りる人が増えて利用率が上がると、金利が急に上がる点（キンク）に近づく。USDrf と USDCx を Liqwid に供給する人にインセンティブを出している、と。</li>
+  <li><strong>利回りの数字は、どれも留保つき。</strong>チャットの「45% APR」は未確認、「12.2%」は特定の日の sUSDrf の利回り。データ責任者は「包括的な調査はしていない」と明言しています。</li>
+  <li><strong>持ち帰りが 4 つ。</strong>市場メーカーの名前（言わない）、プールの USDCx が準備資産に行く経路（トレジャリーの管轄）、USDrf の借入金利が補助されているか（分からない）、R-Points の請求時期（近いが日付は言えない）。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#ground"><span class="n">01</span>前提 — すべてオンチェーン、10 月 27 日時点</a></li>
+  <li><a href="#demand"><span class="n">02</span>小口の需要は先行指標、TVL は遅行指標</a></li>
+  <li><a href="#mint"><span class="n">03</span>市場メーカーが需要を mint に変える</a></li>
+  <li><a href="#venues"><span class="n">04</span>小口の USDrf はどこにあるか — 77% は DeFi</a></li>
+  <li><a href="#strategies"><span class="n">05</span>10 の戦略</a></li>
+  <li><a href="#supply"><span class="n">06</span>供給側 — 利用率、キンク、インセンティブ</a></li>
+  <li><a href="#returns"><span class="n">07</span>利回りは「いくら」なのか</a></li>
+  <li><a href="#campaign"><span class="n">08</span>教育キャンペーンと R-Points</a></li>
+  <li><a href="#usdm"><span class="n">09</span>ステージから — USDM と他のステーブルの借入金利</a></li>
+  <li><a href="#overall"><span class="n">10</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">12</span>持ち帰りになった論点</a></li>
+</ol>
+</div>
+
+<h2 id="ground">1. 前提 — すべてオンチェーン、10 月 27 日時点</h2>
+<p class="deck">「何をすべきか」ではなく「人々が何をしたか」。検証できるデータだけ。</p>
+
+<p>話し手は RealFi のデータ機能を率いる立場で、担当は 2 つと説明されました。透明性ポータルやパートナーに出すデータを届ける「データ基盤」と、チームのためのインサイト・分析・モニタリング。今回はその社内で見てきたものを、そのまま共有する、と。</p>
+
+<p>前提が 2 つ置かれました。<strong>データはすべてブロックチェーンから引いたもの</strong>で、「検証できるし、私の前提を疑ってもらって構わない。独占的なものは何もない」。もう 1 つは、<strong>これは記述であって指示ではない</strong>こと。後半で「ツイートしていいか、チャタムハウスルールか」と聞かれたときも、「すべてオンチェーンのデータ。お金の追い方は私の手法だが、取引は誰でも見られる」と答えています。<span class="badge">スライド</span>数字はすべて 2026 年 10 月 27 日時点のスナップショットで、venue ごとの API も一部使っている、と。</p>
+
+<p><span class="badge">補足</span>コール中ではこの回を <strong>#11</strong> と呼んでいませんが、公式の告知に「OFFICE HOURS #11」とあります。前回 <a href="../2026-10-09-office-hours-mainnet/">#10（10 月 9 日）</a>は mainnet 直後の「いま何ができるか」の案内で、この回はその 4 週間後に「実際に何が起きたか」を数字で見る回です。</p>
+
+<h2 id="demand">2. 小口の需要は先行指標、TVL は遅行指標</h2>
+<p class="deck">TVL は 10 月 19 日に跳ねただけ。小口の純流入は、その前から着実に増えていた。</p>
+
+<p>最初の論点は、<strong>小口の需要と TVL は関係はあるが同じものではない</strong>、ということでした。透明性ポータルの TVL は「10 月 19 日の跳ね上がりを除けばかなり平坦」に見え、「たいしたことが起きていないように見える」。しかしそれは流通している USDrf の量にすぎず、<strong>TVL は需要の遅行指標</strong>だ、と。</p>
+
+<p>代わりに社内で KPI として監視しているのが<strong>「小口の需要（retail demand）」</strong>です。定義は「小口が機関の手から取り出すことのできた USDrf のすべて」。小口は mint できないので、手に入れる経路は SundaeSwap のプールで買うか、Liqwid のプールから借りるかの 2 つしかない。この純流入をローンチから累計すると、TVL とは「まったく違う絵」になり、<strong>10 月 19 日よりかなり前から急な伸び</strong>がある、と説明されました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="ローンチから 10 月 27 日までの小口の純流入の累計を折れ線で、TVL の見え方を段差で示した図。小口の流入は 10 月 15 日ごろから伸び、TVL は 10 月 19 日に 1 段上がるだけ">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">小口の純流入の累計（10 月 1 日〜27 日）と、TVL の見え方</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">スライドのチャートをこちらで簡略に描き直したもの。数値は 2026 年 10 月 27 日時点</text>
+
+  <line x1="60" y1="240" x2="640" y2="240" class="d-line"/>
+  <line x1="60" y1="70" x2="60" y2="240" class="d-line"/>
+  <text x="54" y="244" class="d-s" text-anchor="end">0</text>
+  <text x="54" y="162" class="d-s" text-anchor="end">30 万</text>
+  <text x="54" y="80" class="d-s" text-anchor="end">60 万</text>
+  <text x="60" y="258" class="d-s" text-anchor="middle">10/1</text>
+  <text x="206" y="258" class="d-s" text-anchor="middle">10/9</text>
+  <text x="335" y="258" class="d-s" text-anchor="middle">10/15</text>
+  <text x="460" y="258" class="d-s" text-anchor="middle">10/19</text>
+  <text x="640" y="258" class="d-s" text-anchor="middle">10/27</text>
+
+  <line x1="460" y1="70" x2="460" y2="240" class="d-line" stroke-dasharray="4 4"/>
+
+  <polyline points="60,233 150,222 206,200 310,198 335,189 357,167 380,153 420,131 460,123 482,101 520,95 545,84 585,86 610,72 640,69" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <text x="600" y="60" class="d-s d-a" text-anchor="middle">小口の純流入 累計 63 万ドル</text>
+
+  <polyline points="60,228 460,228 460,142 640,142" fill="none" class="d-line" stroke-width="2.5"/>
+  <text x="560" y="134" class="d-s" text-anchor="middle">TVL の見え方（模式図）</text>
+  <text x="560" y="150" class="d-s" text-anchor="middle">10/19 に 1 段上がるだけ</text>
+
+  <text x="340" y="284" class="d-s" text-anchor="middle">「10 月 15 日ごろ」から小口の流入が伸び、19 日に市場メーカーが mint して TVL が追いつく（3 節）</text>
+</svg>
+<p class="figcap"><span class="badge">スライド</span>折れ線の形と「63 万ドル」はスライドのチャートから読み取ったもので、コール中では「着実に増え、19 日よりかなり前に急な伸びがある」とだけ語られています。TVL の線は縦軸を共有しない模式図で、「平坦で、19 日に跳ねる」という説明を形にしただけです。</p>
+</div>
+
+<h2 id="mint">3. 市場メーカーが需要を mint に変える</h2>
+<p class="deck">プールが傾くと USDCx が余る。市場メーカーがそれで USDrf を mint して戻す。その時点で TVL が増える。</p>
+
+<p>なぜ遅れが出るのか、仕組みが説明されました。「皆が知っていることかもしれないが」と前置きしたうえで。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="小口の需要が TVL になるまでの 3 段階の流れ。小口がプールで USDrf を買って USDCx が余る、市場メーカーが USDCx で USDrf を mint する、新しい USDrf がプールに戻って TVL が増える">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">需要が TVL に変わるまで（コール中の説明をもとに整理）</text>
+
+  <rect x="16" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="114" y="80" class="d-t" text-anchor="middle">① 小口が買う</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">SundaeSwap のプールで</text>
+  <text x="114" y="120" class="d-s" text-anchor="middle">USDCx を渡して USDrf を得る</text>
+  <text x="114" y="138" class="d-s" text-anchor="middle">USDrf が減り、USDCx が余る</text>
+
+  <line x1="212" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="242" y="56" width="196" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="80" class="d-t d-a" text-anchor="middle">② 市場メーカーが mint</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">余った USDCx を取り出し</text>
+  <text x="340" y="120" class="d-s" text-anchor="middle">RealFi に持ち込んで</text>
+  <text x="340" y="138" class="d-s" text-anchor="middle">新しい USDrf を mint する</text>
+
+  <line x1="438" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="468" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="566" y="80" class="d-t" text-anchor="middle">③ プールに戻す</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">新しい USDrf がプールに入り</text>
+  <text x="566" y="120" class="d-s" text-anchor="middle">バランスが戻る</text>
+  <text x="566" y="138" class="d-s" text-anchor="middle">ここで TVL が 1 段上がる</text>
+
+  <text x="340" y="190" class="d-s" text-anchor="middle">10 月 19 日の跳ね上がり＝「不均衡が十分に大きくなり、市場メーカーに『そろそろ mint しよう』と言った時点」</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">小口は mint できない。小口が USDrf を手に入れる経路は、このプールか Liqwid での借入だけ</text>
+</svg>
+<p class="figcap">コール中の説明をそのまま 3 段に並べたものです。<span class="badge">スライド</span>プールの両側の推移を示すチャートでは、USDrf 側が 10 月 18 日にかけて細り、19 日に戻っていました。</p>
+</div>
+
+<p>チャットからの<strong>「市場メーカーは誰か」</strong>という問いには、「何を言ってよいか分からないので機関の名前は出さない」と断ったうえで、仕組みだけが答えられました。リニア・スワップが不均衡になると、市場メーカーがそこから USDCx を買い、RealFi に持ち込んで「余った USDCx を全部 USDrf に mint してくれ」と言い、それをスワップに戻してリバランスする、と。<span class="badge">補足</span>コール中ではこのプールを「リニア・プール」「リニア・スワップ」と呼んでいます。SundaeSwap の USDrf/USDCx のプールのことで、名前は聞こえたまま残しています。</p>
+
+<p>続く<strong>「プールが受け取った USDCx はどうなるのか」</strong>には、「プールにそのまま置かれていて、LP を入れている市場メーカーがその一部に請求権を持つ。小口も LP できるので請求権はあるが、大半は市場メーカー」。さらに<strong>「その USDCx は最終的に焼却されて裏付けの USDC になり、オフチェーンの準備資産に行くのか」</strong>という問いには、「使われる。トレジャリーと投資チームの管轄で、余った USDCx は最終的に投資される。ただ、どう流れるかの技術的な細部は分からない」と答え、進行役がフォローアップを約束しました。</p>
+
+<h2 id="venues">4. 小口の USDrf はどこにあるか — 77% は DeFi</h2>
+<p class="deck">Strike と Liqwid で「ほぼ 80%」。ウォレットに置くだけの人は 5 分の 1。</p>
+
+<p>Part 2 は「人々は USDrf で何をしているか」。コール中ではこれを「venue（場所）」ごとに見ているので、以下もその言葉で書きます。有望だと述べられたのは、人々が USDrf を買ってウォレットに置いているだけではなく、<strong>Strike や Liqwid といった Cardano の DeFi に参加している</strong>こと。「RealFi が得ている TVL が、エコシステム全体の DeFi の TVL にも貢献している」と。</p>
+
+<p>venue 別の推移では、<strong>黄色がかった大きな塊が Strike</strong>で、10 月 13 日ごろに大きく立ち上がり、「これが小口の流入の多くを生んだ」。緑が Liqwid で、USDrf をステークして担保として預けたもの。いちばん上の層が、ステーク済みの USDrf をウォレットに持って基本の利回りだけを得ている人たち。「Strike と Liqwid で小口の USDrf のほぼ 80%。大半が DeFi にある」とまとめられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 286" role="img" aria-label="2026 年 10 月 27 日時点で小口の USDrf がどの venue にあるかの内訳。Strike 約 28.5 万ドル、Liqwid 約 15 万ドル、ウォレット約 13 万ドル、SundaeSwap のプール約 3 万ドル。合計約 60 万ドルのうち 77% が DeFi">
+  <text x="340" y="24" class="d-t" text-anchor="middle">小口の USDrf はどこにあるか（2026 年 10 月 27 日時点、約 60 万ドル）</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">スライドの積み上げグラフの最終日をこちらで読み取ったもの。概数</text>
+
+  <text x="16" y="86" class="d-s">Strike（sUSDrf を担保に）</text>
+  <rect x="200" y="70" width="326" height="26" rx="4" class="d-box-accent"/>
+  <text x="536" y="88" class="d-s">約 28.5 万ドル</text>
+
+  <text x="16" y="128" class="d-s">Liqwid（担保・供給）</text>
+  <rect x="200" y="112" width="172" height="26" rx="4" class="d-box"/>
+  <text x="382" y="130" class="d-s">約 15 万ドル</text>
+
+  <text x="16" y="170" class="d-s">ウォレットに置くだけ</text>
+  <rect x="200" y="154" width="149" height="26" rx="4" class="d-box-plain"/>
+  <text x="359" y="172" class="d-s">約 13 万ドル（この 5 分の 1 が「働いていない」分）</text>
+
+  <text x="16" y="212" class="d-s">SundaeSwap のプール</text>
+  <rect x="200" y="196" width="34" height="26" rx="4" class="d-box"/>
+  <text x="244" y="214" class="d-s">約 3 万ドル</text>
+
+  <text x="340" y="256" class="d-s" text-anchor="middle">Strike + Liqwid + プール ＝ 77% が DeFi で働いている。Strike の層は 10 月 13 日ごろに現れ、2 週間で最大に</text>
+  <text x="340" y="276" class="d-s" text-anchor="middle">内訳はスライドの凡例どおり（保留中の cooldown・注文は小さいので省略）</text>
+</svg>
+<p class="figcap"><span class="badge">スライド</span>金額はチャートの最終日の高さからこちらが読み取った概数で、コール中で口に出されたのは「Strike と Liqwid でほぼ 80%」だけです。スライドの見出しは「77% は DeFi で働き、残りの 5 分の 1 はウォレットにある」でした。</p>
+</div>
+
+<p><span class="badge">補足</span>venue の名前は、コール中で説明なしに使われています。Strike は Cardano の無期限先物（perp）取引所で、コール中で「Strike の perp 取引所からの利回り」と触れられています。Liqwid はレンディング。Indigo は合成資産のプロトコルで、戦略の一覧に「USDrf を iUSD にスワップ」として出てきます。USDM・USDA・Djed は Cardano 上の他のステーブルコインです。</p>
+
+<h2 id="strategies">5. 10 の戦略</h2>
+<p class="deck">お金を追いかけて、使い方を「戦略」にまとめた。Strike が 1 つで 30%、Liqwid が 4 つで 30%。</p>
+
+<p>小口が USDrf を手に入れた 2 つの経路——プールで買う、Liqwid で借りる——から<strong>「お金を追いかけて」</strong>、行き着いた先を使い方ごとにまとめたのが「戦略」です。コール中でそう呼んでいるので、以下もその言葉で書きます。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 392" role="img" aria-label="小口の資金が向かった 10 の戦略を金額順に並べた横棒グラフ。Strike に預ける 28.2 万ドル 30% が最大、以下ウォレットで持つ 12.1 万ドル、Liqwid の 4 戦略、SundaeSwap のプール、Indigo、EVM へのブリッジ、その他">
+  <text x="340" y="24" class="d-t" text-anchor="middle">10 の戦略（グロス、ローンチ〜10 月 27 日。合計 94.4 万ドル）</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">スライドのランキングをこちらで描き直したもの。金額は千ドル単位</text>
+
+  <text x="16" y="78" class="d-s">Strike · sUSDrf を預ける</text>
+  <rect x="300" y="62" width="300" height="22" rx="4" class="d-box-accent"/>
+  <text x="608" y="78" class="d-s">282 · 30%</text>
+
+  <text x="16" y="108" class="d-s">ウォレット · sUSDrf を持つ</text>
+  <rect x="300" y="92" width="129" height="22" rx="4" class="d-box-plain"/>
+  <text x="437" y="108" class="d-s">121 · 13%</text>
+
+  <text x="16" y="138" class="d-s">Liqwid · USDCx を借りて EVM へ</text>
+  <rect x="300" y="122" width="109" height="22" rx="4" class="d-box"/>
+  <text x="417" y="138" class="d-s">102 · 11%</text>
+
+  <text x="16" y="168" class="d-s">Liqwid · ループ</text>
+  <rect x="300" y="152" width="77" height="22" rx="4" class="d-box"/>
+  <text x="385" y="168" class="d-s">72 · 8%</text>
+
+  <text x="16" y="198" class="d-s">Liqwid · キャリー（他のステーブルを供給）</text>
+  <rect x="300" y="182" width="64" height="22" rx="4" class="d-box"/>
+  <text x="372" y="198" class="d-s">60 · 6%</text>
+
+  <text x="16" y="228" class="d-s">SundaeSwap · プールに流動性</text>
+  <rect x="300" y="212" width="61" height="22" rx="4" class="d-box-plain"/>
+  <text x="369" y="228" class="d-s">57 · 6%</text>
+
+  <text x="16" y="258" class="d-s">Indigo · iUSD にスワップ</text>
+  <rect x="300" y="242" width="54" height="22" rx="4" class="d-box-plain"/>
+  <text x="362" y="258" class="d-s">51 · 5%</text>
+
+  <text x="16" y="288" class="d-s">Liqwid · USDrf を借りて USDCx 借入を返済</text>
+  <rect x="300" y="272" width="48" height="22" rx="4" class="d-box"/>
+  <text x="356" y="288" class="d-s">45 · 5%</text>
+
+  <text x="16" y="318" class="d-s">EVM へ · Liqwid で借りて売り、USDC を送る</text>
+  <rect x="300" y="302" width="43" height="22" rx="4" class="d-box-plain"/>
+  <text x="351" y="318" class="d-s">40 · 4%</text>
+
+  <text x="16" y="348" class="d-s">その他</text>
+  <rect x="300" y="332" width="121" height="22" rx="4" class="d-box-plain"/>
+  <text x="429" y="348" class="d-s">114 · 12%</text>
+
+  <text x="340" y="380" class="d-s" text-anchor="middle">出どころ：プールで買った 59.8 万ドル ＋ Liqwid で借りた 34.6 万ドル。グロスなので、担保と借入は二重に数えている</text>
+</svg>
+<p class="figcap"><span class="badge">スライド</span>金額と割合はスライドのランキングのもので、コール中で口に出されたのは「Strike に 30%」「ループが 8%」と各戦略の説明だけです。合計が純流入の 63 万ドルではなく 94.4 万ドルなのは、sUSDrf を Liqwid に預けて借りると担保と借入の両方を数えるから、とスライドの注記にありました。「ブリッジ」は、ブリッジが USDCx を焼却してお金が Cardano から EVM に出た、という意味です。</p>
+</div>
+
+<p>各戦略の中身は、コール中で次のように説明されました。</p>
+
+<ul>
+  <li><strong>Strike に預ける（30%）。</strong>USDrf をステークし、sUSDrf を Strike に預ける。「RealFi の利回りに加えて、Strike の perp 取引所からの利回りを得る」。10 月 27 日時点で「圧倒的に主要な戦略」</li>
+  <li><strong>ウォレットで持つ（13%）。</strong>ステーク済みの USDrf を持って、RealFi のステーキング利回りだけを得る</li>
+  <li><strong>Liqwid で借りて EVM へ（11%）。</strong>sUSDrf を担保に USDCx を借り、EVM にブリッジして EVM の DeFi に参加する</li>
+  <li><strong>ループ（8%）。</strong>sUSDrf を担保に USDCx を借り、USDrf に替えてまたステークし、繰り返す。<a href="../2026-10-09-office-hours-mainnet/#loop">#10 で Head of Product が説明した</a>のと同じ動き</li>
+  <li><strong>キャリー取引（6%）。</strong>Liqwid で USDrf を借り、USDM・USDA・Djed に替えて Liqwid に供給し直す。「当時、USDrf を借りる金利が、ステーブルコインを供給して得る金利より低かったから」。つまりステーブルコインの金利差の裁定</li>
+  <li><strong>プールに流動性（6%）。</strong>SundaeSwap のプールに USDrf を供給する。「RealFi にとって常にありがたい」</li>
+  <li><strong>借り換え（5%）。</strong>USDrf の借入金利が低かったので、USDrf を借りて USDCx に売り、USDCx の借入を返す。「USDrf の低い金利で USDCx の借入を借り換えていた」</li>
+</ul>
+
+<p><span class="badge">補足</span>キャリー取引と借り換えは、どちらも「USDrf の借入金利が他より低い」ことを前提にした動きです。6 節のとおり、借りる人が増えれば USDrf の金利は上がるので、この 2 つは<strong>金利の状況しだいで消える戦略</strong>です。データ責任者自身も「当時は」と時点を限定して語っています。</p>
+
+<h2 id="supply">6. 供給側 — 利用率、キンク、インセンティブ</h2>
+<p class="deck">借りる人が増えると金利が急に上がる。だから供給する人にポイントを出している。</p>
+
+<p>進行役が「RealFi がプロトコルとして見たいのは供給する人だ、という場面がある」という先週の話を持ち出し、もう一度説明を求めました。コール中ではこの話で「利用率（utilization rate）」「キンク」という言葉を使っているので、以下もその言葉で書きます。</p>
+
+<p>Liqwid で借りる人が増えると、借りられた USDrf が供給された USDrf に近づき、<strong>利用率が非常に高くなる</strong>。供給が尽きかけると金利が上がり、「キンクに当たると、その時点でおそらく取引として成り立たなくなる」。だから<strong>USDrf を Liqwid に供給すること</strong>がエコシステムを刺激する、と。理由は 2 つ。供給するとインセンティブとポイントがもらえること、そして小口が妥当な金利で借りられる供給が増えること。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="利用率と借入金利の関係を示す模式図。利用率が低いうちは金利がゆるやかに上がり、キンクを超えると急に上がる。供給が増えると利用率が下がりキンクから遠ざかる">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">「キンク」— 利用率と借入金利の関係（コール中の説明を模式図にしたもの）</text>
+
+  <line x1="80" y1="210" x2="620" y2="210" class="d-line" marker-end="url(#m3)"/>
+  <line x1="80" y1="210" x2="80" y2="50" class="d-line" marker-end="url(#m3)"/>
+  <text x="620" y="232" class="d-s" text-anchor="end">利用率（借りられた USDrf ÷ 供給された USDrf）</text>
+  <text x="74" y="46" class="d-s" text-anchor="end">金利</text>
+
+  <polyline points="80,200 440,170 560,60" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <circle cx="440" cy="170" r="5" class="d-box-accent"/>
+  <text x="440" y="192" class="d-s d-a" text-anchor="middle">キンク</text>
+  <text x="520" y="112" class="d-s" text-anchor="end">ここから金利が急に上がり</text>
+  <text x="520" y="128" class="d-s" text-anchor="end">「取引として成り立たなくなる」</text>
+
+  <line x1="400" y1="100" x2="250" y2="100" class="d-line-accent" marker-end="url(#m3)"/>
+  <text x="325" y="90" class="d-s" text-anchor="middle">供給が増えると利用率が下がる</text>
+
+  <text x="340" y="254" class="d-s" text-anchor="middle">「まだそこまでは行っていないが、遠くもない」。供給する側に RealFi からインセンティブとポイント</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>曲線の形は、変動金利型のレンディングで一般的な「ある利用率を境に金利の傾きが変わる」設計をこちらで描いたもので、Liqwid の実際のパラメータではありません。コール中で語られたのは「供給が尽きかけると金利が上がり、キンクに当たる」という説明だけです。</p>
+</div>
+
+<p>もう 1 つの供給は<strong>ステーブルコイン</strong>です。多くの人が sUSDrf を担保に USDM・Djed・USDCx などを借りたがっているので、その供給が足りなければ「金利はすぐに法外になる。まだそこまでは行っていないが、遠くもない」。だから RealFi は、<strong>Liqwid の RealFi 向けプールに USDCx を供給する人にもインセンティブを出している</strong>、と。供給すれば利回りに加えて RealFi からのインセンティブも付く、という説明でした。</p>
+
+<div class="term">
+<p class="term-name">利用率とキンク <small>utilization rate / kink</small></p>
+<p><span class="badge">補足</span>利用率は、プールに供給された資産のうち借りられている割合です。レンディングのプロトコルでは、利用率が上がるほど借入金利を上げて、借りすぎを抑え、供給を呼び込みます。多くの設計では、ある利用率（たとえば 80〜90%）を境に金利の上がり方が急になり、その折れ目を「キンク」と呼びます。駐車場の料金にたとえると、空きが多いうちは安く、満車に近づくと急に高くなる仕組みです。一言でいうと、キンクに近づくほど借りる側は不利になり、供給する側は有利になります。</p>
+</div>
+
+<p><span class="badge">補足</span><a href="../2026-08-06-office-hours-gtm/#liquidity">#5</a> では流動性が「死活問題」として語られ、<a href="../2026-07-31-data-and-insights/#liquidity">#4</a> では流動性を 3 つの視点で整理していました。この回はその「供給側」を、Liqwid の金利という具体的な場所で見たものです。</p>
+
+<h2 id="returns">7. 利回りは「いくら」なのか</h2>
+<p class="deck">語られた数字は 3 つ。どれも留保つきで、包括的な調査はされていない。</p>
+
+<p>進行役が「今、人々が見つけられるリターンはどのくらいか」と聞いた場面があります。答えは慎重でした。<strong>「包括的な調査はしていない。さまざまな戦略のリターンが実際いくらかは言えない」</strong>。この回で出た数字は、次の 3 つだけです。</p>
+
+<ul>
+  <li><strong>「45% APR」。</strong>チャットの参加者が「Liqwid でループしているユーザー」の例として挙げたもので、スクリーンショット付き。データ責任者は「あとで調べる」、進行役は「確認していない」と、どちらも<strong>未確認のまま</strong>にしています</li>
+  <li><strong>「12.2% くらい」。</strong>最近 X に投稿した sUSDrf の利回り。「でも特定の日の話で、日ごとに変わる」</li>
+  <li><strong>「27%」「30%」。</strong>ステージに上がった参加者が挙げた、Liqwid での USDM・Djed・USDA の<strong>借入</strong>金利。利回りではなくコストの数字です（9 節）</li>
+</ul>
+
+<p>「ループや Strike でこれだけ稼げる、とは自信を持って言えない。日ごとに変わるので」という言葉が、この回の利回りについての結論です。<span class="badge">補足</span><a href="../2026-10-09-office-hours-mainnet/#yield">#10</a> の「およそ 8.5%」も同じく時点つきの数字でした。このアーカイブでは、いずれも「コール中で挙げられた数字」として記録しており、約束でも勧誘でもありません。スライドの末尾にも「投資助言ではない。チェーンが示す、人々がしたこと。どの戦略にもリスクがある」とあります。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「ループで 45%」は、本当にあり得る数字なのか？</summary>
+<div class="explain-body">
+  <p><span class="badge">補足</span>以下はこちらで足した考え方です。コール中の発言ではありません。</p>
+  <h4>数字そのものは、条件しだいであり得る</h4>
+  <p>チャットのスクリーンショットは Liqwid の画面で、「Net APR 45.28%（推定）」「30 日」と表示されていました。ループでは、元手に対して何倍ものポジションを持つので、sUSDrf の利回りに Liqwid の供給インセンティブや R-Points 相当の報酬が重なれば、元手あたりの推定 APR が大きくなること自体は不自然ではありません。</p>
+  <h4>ただし「推定」であり、持続しない</h4>
+  <p>画面の「est.」は、その時点の金利と報酬が続いたと仮定した年率換算です。6 節のとおり、借りる人が増えれば USDrf や USDCx の借入金利は上がり、ループの純利回りは縮みます。また <a href="../2026-10-09-office-hours-mainnet/#loop">#10</a> で説明された清算リスクは、APR の数字には出てきません。</p>
+  <h4>外から見分けるには</h4>
+  <p>同じ画面の「7 days / 30 days / 90 days」を切り替えて、期間を変えても数字が安定しているかを見るのが一つの方法です。コール中では、この数字は誰も検証していません。</p>
+</div>
+</details>
+
+<h2 id="campaign">8. 教育キャンペーンと R-Points</h2>
+<p class="deck">「何ができるか」を見せて、小口の需要が増えるのを見たい。R-Points の請求は「近いが日付は言えない」。</p>
+
+<p>進行役は、<a href="../2026-09-21-office-hours-ambassador/#handshake">#9 で紹介された Decentralized Adventures</a> のキャンペーンを Cardano の KOL と準備中だと明かしました（「ネタバレしたくないので高いレベルの話にとどめる」）。狙いは「Cardano の人々に、こういうリターンがあることを知ってもらう」こと。そのうえで、データの観点から良い教育キャンペーンとは何か、を聞きました。</p>
+
+<p>答えは、<strong>「こうした取引や戦略は、不慣れなユーザーにはかなり複雑」</strong>なので、プロダクトで何ができるか、どれだけ多用途か、そしてリスクとリターンを見せるもの。その結果として「小口の需要が増え、戦略への参加が増え、最終的に Cardano の DeFi が刺激される」のが見られたらいい、と。</p>
+
+<p>進行役が「いちばんリスクが低いのは供給側では」と誘導しかけた場面では、データ責任者は<strong>「それを言うのは気が引ける。ケースバイケースで見ないといけない」</strong>と答え、進行役が「不公平だった。撤回する」と引き取りました。<span class="badge">補足</span>供給側のリスクが低いという主張は、この回では成立していません。</p>
+
+<p>R-Points については、進行役の理解として「人々が請求できるところまで持っていこうとしていて、時期はチームしだい。近いはずだが日付は言えない」。チームが GO を出したら SPO に知らせ、委任者とコミュニティに換算の仕方を理解してもらう、と。チャットの「自分の使い方は R-Points の配分に左右される」という声には、データ責任者が<strong>「それが 100% 設計意図」</strong>と応じています。「エコシステムを刺激するために必要なことが、初日からユーザーにとって理にかなうとは限らない。だから上にさくらんぼを載せている」。</p>
+
+<h2 id="usdm">9. ステージから — USDM と他のステーブルの借入金利</h2>
+<p class="deck">USDrf だけ借入金利が低い。補助されているのか。他のステーブルも補助できないか。</p>
+
+<p>終盤にステージに上がった参加者（「USDM の人間」と自己紹介）から、具体的な指摘がありました。Liqwid で USDM・Djed・USDA の借入金利が 27〜30% と「極端に高い」一方、USDrf だけは低く、供給の APY と借入の APR の差も小さい。<strong>「これは人為的に補助されているのか。もしそうなら、他のステーブルも補助すれば参加を促せるのでは」</strong>。</p>
+
+<p>答えは率直でした。<strong>「補助されているかどうかは分からない。GTM かプロダクトの人のほうが答えられる」</strong>。他のステーブルの金利が下がることについては「害になるとは思えない。30% は極端に高い。ステーブルコインが増えるのは皆にとって良い」としつつ、「RealFi への影響はもう少し考える必要がある。本当に解くには、もう何個かプールが要るかもしれない」と。</p>
+
+<p>参加者は「Linear V4 は始まったばかりで、AlphaGrowth のチームもボールトや再担保化のために使うはず。次の一歩は、RealFi を支えるプールをあと 2 つ 3 つ作ること」と続けました。<span class="badge">補足</span>「Linear V4」が何を指すかは、コール中で説明されていません。USDM については、進行役が「Cardano で最初のネイティブなステーブルコインだったと思う。とても愛されているプロジェクト」と紹介し、チャットにあった「USDM の総供給量が、USDrf への大きな流入に耐えられるか」という論点は「あなたと私で話そうと言っていた件。まだそこまで行けていない」と持ち越しになりました。</p>
+
+<h2 id="overall">10. 全体像</h2>
+<p class="deck">需要 → mint → TVL、そして USDrf は DeFi へ。足りないのは供給側。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="この回の全体像。上段は小口の需要が市場メーカーの mint を通じて TVL になる流れ、中段は小口の USDrf の行き先（Strike 30%、Liqwid 30%、ウォレット 13%、その他）、下段は供給側の不足と持ち帰りの論点">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">この回の全体像（数値は 2026 年 10 月 27 日時点）</text>
+
+  <rect x="16" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="116" y="68" class="d-t" text-anchor="middle">小口の需要</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">純流入 63 万ドル・毎週増加</text>
+  <line x1="216" y1="74" x2="236" y2="74" class="d-line-accent" marker-end="url(#m4)"/>
+  <rect x="240" y="44" width="200" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="68" class="d-t d-a" text-anchor="middle">市場メーカーが mint</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">プールが傾いたとき（10/19）</text>
+  <line x1="440" y1="74" x2="460" y2="74" class="d-line-accent" marker-end="url(#m4)"/>
+  <rect x="464" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="564" y="68" class="d-t" text-anchor="middle">TVL</text>
+  <text x="564" y="90" class="d-s" text-anchor="middle">遅れて 1 段上がる</text>
+
+  <line x1="116" y1="104" x2="116" y2="128" class="d-line-accent" marker-end="url(#m4)"/>
+  <rect x="16" y="132" width="648" height="76" rx="8" class="d-box-plain"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">小口の USDrf の行き先 — 77% が DeFi</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">Strike 30% ／ Liqwid（EVM へ・ループ・キャリー・借り換え）30% ／ ウォレットで持つ 13% ／ プール・Indigo・その他</text>
+  <text x="340" y="198" class="d-s" text-anchor="middle">「RealFi の TVL が、Cardano の DeFi の TVL にもなっている」</text>
+
+  <rect x="16" y="224" width="316" height="64" rx="8" class="d-box-warn"/>
+  <text x="174" y="248" class="d-t d-w" text-anchor="middle">足りないのは供給側</text>
+  <text x="174" y="270" class="d-s d-w" text-anchor="middle">USDrf とステーブルの供給にインセンティブ</text>
+  <rect x="348" y="224" width="316" height="64" rx="8" class="d-box-plain"/>
+  <text x="506" y="248" class="d-t" text-anchor="middle">持ち帰り</text>
+  <text x="506" y="270" class="d-s" text-anchor="middle">市場メーカー／USDCx の行き先／金利の補助／R-Points</text>
+</svg>
+<p class="figcap">#10 が「何ができるか」の案内だったのに対し、この回は「実際に何が起きたか」の最初の記録です。</p>
+</div>
+
+<h2 id="qa">11. Q&amp;A</h2>
+<p class="deck">チャットから 6 件、ステージから 1 件。同じ参加者からの質問が多かった。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>Strike のプロダクトはどうやって需要を生むのか。この図に含まれているのか。</p>
+<p class="qa-a" data-by="回答">含まれている。小口が Strike の利回りを見て参加したくなり、プールで USDrf を買って Strike に持っていく。10 月 15 日ごろからの動きは Strike が伸び始めた時期。ただし「Strike に行ったから」ではなく「プールで買った」として数えている（<a href="#demand">2 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>市場メーカーは誰か。市場の中で USDCx を買っているのか、新しく mint してリバランスしているのか。</p>
+<p class="qa-a" data-by="仕組みのみ">名前は出さない。仕組みは、不均衡になったプールから USDCx を買い、RealFi に持ち込んで USDrf に mint し、プールに戻す（<a href="#mint">3 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者M</span>Liqwid でループしているユーザーで 45% APR（スクリーンショット付き）。</p>
+<p class="qa-a" data-by="未確認">データ責任者「あとで調べる」、進行役「確認していない」。この回では検証されていません（<a href="#returns">7 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>DEX で USDCx を USDrf にスワップしたとき、プールや市場メーカーが受け取った USDCx はどうなるのか。最終的に焼却されて裏付けの USDC になり、オフチェーンの準備資産に行くのか。それともオンチェーンに残るのか。</p>
+<p class="qa-a" data-by="一部回答・持ち帰り">プールに置かれ、LP を入れている市場メーカーが請求権を持つ。余った USDCx は最終的に投資される（「投資はしている」）が、どう流れるかの技術的な細部はトレジャリーと投資チームの管轄で分からない。進行役がフォローアップを約束。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>USDM の総供給量が、USDrf への大きな流入に耐えられるか。Liqwid のキャリー取引は USDM の流動性を守れるか。</p>
+<p class="qa-a" data-by="持ち越し">「あなたと私で話そうと言っていた件。まだそこまで行けていない」。この回では答えられていません。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者N</span>自分の RealFi の使い方は R-Points に左右されていて、配分が変われば戦略も変わる。</p>
+<p class="qa-a" data-by="回答">「まったく妥当。それが 100% 設計意図」。エコシステムを始動させるための「上に載せたさくらんぼ」だと（<a href="#campaign">8 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K（ステージ）</span>USDM・Djed・USDA の借入金利は 27〜30% と極端に高いのに、USDrf だけ低い。人為的に補助されているのか。他のステーブルも補助すれば参加を促せるのでは。</p>
+<p class="qa-a" data-by="回答できず">「補助されているかは分からない。GTM かプロダクトの人のほうが答えられる」。他のステーブルの金利が下がるのは「害になるとは思えない」が、RealFi への影響は要検討（<a href="#usdm">9 節</a>）。</p>
+</div>
+
+<h2 id="pending">12. 持ち帰りになった論点</h2>
+<p class="deck">データの回なので、答えられなかったのは「データの外側」のこと。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">意図的に非開示</span>市場メーカーは誰か。</p>
+<p class="qa-a" data-by="名前なし">「何を言ってよいか分からないので、機関の名前は出さない」。仕組みだけが説明されました。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">持ち帰り</span>プールの USDCx は、どの経路で準備資産に行き、いつ「完全に裏付けられた」ことになるのか。</p>
+<p class="qa-a" data-by="コール後に">「投資はしている」までで、焼却の有無、管理者、資本が運用先に届くまでの時間は「トレジャリーと投資チームの管轄で分からない」。進行役がスクリーンショットを撮ってフォローアップすると約束。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">回答できず</span>USDrf の借入金利は補助されているのか。</p>
+<p class="qa-a" data-by="担当外">「分からない。GTM かプロダクトの人のほうが答えられる」。他のステーブルへの補助の是非も、「害はないと思うが、RealFi への影響は要検討」まで。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期のみ</span>R-Points はいつ請求できるのか。</p>
+<p class="qa-a" data-by="日付なし">「近いはずだが、日付は言えない。こういうことは変わる」。<a href="../2026-10-09-office-hours-mainnet/#points">#10</a> で「数週間のうちに換算レートを公表」とされていた件は、この回では触れられていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未確認</span>「45% APR」と、各戦略の実際のリターン。</p>
+<p class="qa-a" data-by="調査なし">「包括的な調査はしていない」。X に投稿した sUSDrf の利回り「12.2% くらい」も「特定の日の話」。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">チャットのみ</span>EVM ローンチの日付。</p>
+<p class="qa-a" data-by="読み上げられず">コール終了後のチャットに「RealFi は 12 月 1 日に AlphaGrowth のボールト経由で Ethereum mainnet にローンチする」という告知を引用して「最新情報は？ 予定どおりか？」という質問がありましたが、<strong>コール中では読み上げられておらず、誰も答えていません</strong>。<span class="badge">補足</span>この日付は、このアーカイブでは初出です。出典は告知の引用で、こちらでは確認していません（2026 年 11 月 6 日時点）。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">持ち越し</span>USDM の総供給量と、USDrf への流入への耐性。</p>
+<p class="qa-a" data-by="個別に">「あなたと私で話そうと言っていた件」。公開の場での説明は予定されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">予告のみ</span>Decentralized Adventures のキャンペーン、ブログ記事、データの公開。</p>
+<p class="qa-a" data-by="時期なし">KOL と準備中で「ネタバレしたくない」。進行役は「書き起こしてブログにする」「この辺のものが公開できたら例を見せられる」と。いずれも時期は示されていません。</p>
+</div>
+
+<div class="note">
+<p><strong>このページについて。</strong>チャットで名前が挙がった方、呼びかけられた方、ステージに上がった方は <code>参加者A〜N</code> に、社内で名前が挙がった人物は役割に置き換えています。原本には話者ラベルも時刻もなく、話者は文脈から割り当てました。</p>
+<p><strong>スライド（12 枚）が画面共有されました。</strong>スライドそのものは再現せず、こちらで描き直した図としてだけ載せています。マークの意味は 3 つです。マークなしはコール中に音声で語られたこと、<span class="badge">スライド</span>は画面に映っていたが口には出されなかったこと（数値はすべて 2026 年 10 月 27 日時点）、<span class="badge">補足</span>はこちらで足したものでコール中の発言ではありません。</p>
+<p>利回りに関する数字は、いずれもコール中やチャットで挙げられたものを、出所とともに記録したものです。約束でも勧誘でもありません。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Four weeks after launch, this session follows the money on-chain.<br>
+  <strong>TVL looks flat, but retail demand grew every week, and it becomes TVL only when the market maker mints</strong>. And 77% of retail’s USDrf is at work on Strike, Liqwid and SundaeSwap. Every figure is as of 27 October.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Retail demand leads, TVL lags.</strong> The transparency portal’s TVL seems to do nothing but jump on 19 October, but the USDrf that retail bought on the pool or borrowed on Liqwid had been rising steadily since launch. The cumulative figure is $630k.</li>
+  <li><strong>How demand becomes TVL.</strong> Retail buys USDrf on the pool, USDCx piles up, the market maker mints new USDrf against it and puts it back. Only then does TVL step up.</li>
+  <li><strong>Only two ways for retail to get USDrf.</strong> Buy it on the SundaeSwap pool, or borrow it on Liqwid. Retail cannot mint.</li>
+  <li><strong>77% is at work in DeFi.</strong> Strike takes 30% in one strategy, Liqwid 30% across four, and just holding sUSDrf in a wallet is 13%. “Most of it’s in DeFi.”</li>
+  <li><strong>The supply side is what is short.</strong> As more people borrow on Liqwid, utilisation rises toward the point where the rate jumps (the kink). RealFi pays incentives to people who supply USDrf and USDCx to Liqwid.</li>
+  <li><strong>Every yield figure came with a caveat.</strong> The chat’s “45% APR” was not verified, “12.2%” was one day’s sUSDrf yield, and the data lead said plainly that he has not done a comprehensive survey.</li>
+  <li><strong>Four follow-ups.</strong> Who the market maker is (not said), how the pool’s USDCx reaches the reserves (treasury’s purview), whether the USDrf borrow rate is subsidised (unknown), and when R-Points can be claimed (soon, no date).</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-ground"><span class="n">01</span>Ground rules — all on-chain, as of 27 October</a></li>
+  <li><a href="#en-demand"><span class="n">02</span>Retail demand leads, TVL lags</a></li>
+  <li><a href="#en-mint"><span class="n">03</span>The market maker turns demand into a mint</a></li>
+  <li><a href="#en-venues"><span class="n">04</span>Where retail’s USDrf sits — 77% in DeFi</a></li>
+  <li><a href="#en-strategies"><span class="n">05</span>The ten strategies</a></li>
+  <li><a href="#en-supply"><span class="n">06</span>The supply side — utilisation, the kink, incentives</a></li>
+  <li><a href="#en-returns"><span class="n">07</span>What the returns actually are</a></li>
+  <li><a href="#en-campaign"><span class="n">08</span>An education campaign, and R-Points</a></li>
+  <li><a href="#en-usdm"><span class="n">09</span>From the stage — USDM and the other stablecoins’ borrow rates</a></li>
+  <li><a href="#en-overall"><span class="n">10</span>The big picture</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">12</span>Left open</a></li>
+</ol>
+</div>
+
+<h2 id="en-ground">1. Ground rules — all on-chain, as of 27 October</h2>
+<p class="deck">“What people did,” not “what to do.” Only data anyone can verify.</p>
+
+<p>The speaker leads RealFi’s data function and described two responsibilities: the data platform that feeds the transparency portal and partners, and the internal insights, analytics and monitoring that support the team. This session, he said, simply shares what the team has been looking at internally.</p>
+
+<p>Two ground rules were set. <strong>All of the data is pulled off the blockchain</strong>: “you can verify it, you can question my assumptions — nothing here is really proprietary.” And <strong>it is descriptive, not prescriptive</strong>. When the host later asked whether the charts could be tweeted or were under Chatham House rules, the answer was “this is all on-chain data; it’s my method for following the money, but we can see the transactions.” <span class="badge">slide</span> Every figure is a snapshot as of 27 October 2026, with some venue APIs used alongside the chain.</p>
+
+<p><span class="badge">added</span> The number #11 is not said on the call but appears on the official announcement (“OFFICE HOURS #11”). <a href="../2026-10-09-office-hours-mainnet/">#10 on 9 October</a> was the guide to what you can do right after mainnet; this, four weeks later, is the first look at what people actually did.</p>
+
+<h2 id="en-demand">2. Retail demand leads, TVL lags</h2>
+<p class="deck">TVL only jumped on 19 October. Retail’s net inflows had been climbing well before that.</p>
+
+<p>The first point: <strong>retail demand and TVL are related but not the same thing</strong>. On the transparency portal, TVL “appears quite flat except for a jump on 19 October,” so “it doesn’t really look like a ton is going on.” But that is just USDrf in circulation, and <strong>TVL is a lagging indicator of demand</strong>.</p>
+
+<p>What the team monitors as a KPI instead is <strong>“retail demand,”</strong> defined as “all USDrf that retail is able to take out of institutional hands.” Retail cannot mint, so there are only two ways to acquire it: buying on the SundaeSwap pool, or borrowing from the pools on Liqwid. Net retail inflows since launch show “a very different picture to TVL”: steadily increasing, with a sharp rise <strong>well before 19 October</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Cumulative net retail inflows from launch to 27 October as a line, with how TVL appears drawn as a step. Retail inflows rise from about 15 October; TVL steps up once, on 19 October">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">Cumulative net retail inflows (1–27 October), and how TVL appears</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">Our simplified redrawing of the slide’s chart. Figures as of 27 October 2026</text>
+
+  <line x1="60" y1="240" x2="640" y2="240" class="d-line"/>
+  <line x1="60" y1="70" x2="60" y2="240" class="d-line"/>
+  <text x="54" y="244" class="d-s" text-anchor="end">0</text>
+  <text x="54" y="162" class="d-s" text-anchor="end">$300k</text>
+  <text x="54" y="80" class="d-s" text-anchor="end">$600k</text>
+  <text x="60" y="258" class="d-s" text-anchor="middle">1 Oct</text>
+  <text x="206" y="258" class="d-s" text-anchor="middle">9 Oct</text>
+  <text x="335" y="258" class="d-s" text-anchor="middle">15 Oct</text>
+  <text x="460" y="258" class="d-s" text-anchor="middle">19 Oct</text>
+  <text x="640" y="258" class="d-s" text-anchor="middle">27 Oct</text>
+
+  <line x1="460" y1="70" x2="460" y2="240" class="d-line" stroke-dasharray="4 4"/>
+
+  <polyline points="60,233 150,222 206,200 310,198 335,189 357,167 380,153 420,131 460,123 482,101 520,95 545,84 585,86 610,72 640,69" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <text x="560" y="60" class="d-s d-a" text-anchor="middle">Net retail inflows: $630k cumulative</text>
+
+  <polyline points="60,228 460,228 460,142 640,142" fill="none" class="d-line" stroke-width="2.5"/>
+  <text x="560" y="134" class="d-s" text-anchor="middle">How TVL appears (schematic)</text>
+  <text x="560" y="150" class="d-s" text-anchor="middle">one step up on 19 Oct</text>
+
+  <text x="340" y="284" class="d-s" text-anchor="middle">Inflows pick up “around 15 October”; on the 19th the market maker mints and TVL catches up (section 3)</text>
+</svg>
+<p class="figcap"><span class="badge">slide</span> The shape of the line and the “$630k” are read from the slide’s chart; on the call it was described only as “steadily increasing with a sharp jump well before 19 October.” The TVL line shares no axis — it just gives shape to “flat, then a jump on the 19th.”</p>
+</div>
+
+<h2 id="en-mint">3. The market maker turns demand into a mint</h2>
+<p class="deck">The pool tips, USDCx piles up, the market maker mints USDrf against it and restores the pool. That is when TVL moves.</p>
+
+<p>Why the lag exists was explained in full, “maybe this is common knowledge to everyone, but I think it just helps.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="The three steps from retail demand to TVL: retail buys USDrf on the pool and USDCx piles up; the market maker mints new USDrf against the USDCx; the new USDrf goes back into the pool and TVL steps up">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">How demand becomes TVL (arranged from the call)</text>
+
+  <rect x="16" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="114" y="80" class="d-t" text-anchor="middle">① Retail buys</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">on the SundaeSwap pool,</text>
+  <text x="114" y="120" class="d-s" text-anchor="middle">USDCx in, USDrf out</text>
+  <text x="114" y="138" class="d-s" text-anchor="middle">USDrf leaves, USDCx piles up</text>
+
+  <line x1="212" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="242" y="56" width="196" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="80" class="d-t d-a" text-anchor="middle">② Market maker mints</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">takes the excess USDCx,</text>
+  <text x="340" y="120" class="d-s" text-anchor="middle">brings it to RealFi,</text>
+  <text x="340" y="138" class="d-s" text-anchor="middle">mints new USDrf against it</text>
+
+  <line x1="438" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="468" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="566" y="80" class="d-t" text-anchor="middle">③ Back into the pool</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">the new USDrf rebalances</text>
+  <text x="566" y="120" class="d-s" text-anchor="middle">the pool</text>
+  <text x="566" y="138" class="d-s" text-anchor="middle">and TVL steps up</text>
+
+  <text x="340" y="190" class="d-s" text-anchor="middle">19 October = “the pools became imbalanced enough that we said to the market maker, ‘time to mint some USDrf’”</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">Retail cannot mint. Its only routes to USDrf are this pool and borrowing on Liqwid</text>
+</svg>
+<p class="figcap">The call’s explanation laid out in three steps. <span class="badge">slide</span> The chart of both sides of the pool showed the USDrf side thinning toward 18 October and restored on the 19th.</p>
+</div>
+
+<p>To the chat’s <strong>“who is the market maker”</strong>, the answer declined names — “I don’t know what I’m allowed to say, so I don’t want to name an institution” — and gave only the mechanics: when the linear swap becomes imbalanced, the market maker buys the USDCx off it, brings it to RealFi and says “mint all of this excess USDCx into USDrf,” then puts it back to rebalance. <span class="badge">added</span> The call refers to the pool as “the linear pool” or “the linear swap”; it is the SundaeSwap USDrf/USDCx pool, and the name is kept as heard.</p>
+
+<p>To <strong>“what happens to the USDCx the pool receives”</strong>: it sits in the pool, and the market maker, having LP’d into it, has a claim on it; retail LPs have a claim too, but “the bulk of it right now is the market maker.” To the follow-up — <strong>is that USDCx burned to release USDC and moved into the off-chain reserve vehicles</strong> — the answer was “it is used; that’s the purview of the treasury and investment team, and ultimately that extra USDCx is invested. I’m not sure of the exact technical details of how that flows.” The host promised to follow up.</p>
+
+<h2 id="en-venues">4. Where retail’s USDrf sits — 77% in DeFi</h2>
+<p class="deck">Strike and Liqwid cover “pretty much 80%.” A fifth just sits in wallets.</p>
+
+<p>Part 2 asks what people are doing with USDrf, by “venue” — the call’s word, kept here. The promising thing, in the speaker’s view, is that people are not only buying USDrf and holding it (“a valid use case”) but <strong>using it to participate in Cardano DeFi — Strike, Liqwid</strong>. “The TVL that RealFi is getting is also contributing to DeFi TVL across the ecosystem.”</p>
+
+<p>On the venue-by-venue chart, <strong>“the big yellow-orange lump” is Strike</strong>, taking off around 13 October — “that is what drove a lot of the retail inflows.” The green is Liqwid: USDrf staked and posted as collateral. The top layer is people holding staked USDrf in their wallets for the base yield. “Strike and Liqwid cover pretty much 80% of retail USDrf. Most of it’s in DeFi.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 286" role="img" aria-label="Where retail’s USDrf sat on 27 October 2026: Strike about $285k, Liqwid about $150k, wallets about $130k, the SundaeSwap pool about $30k. Of roughly $600k, 77% is in DeFi">
+  <text x="340" y="24" class="d-t" text-anchor="middle">Where retail’s USDrf sits (27 October 2026, about $600k)</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">Read by us from the last day of the slide’s stacked chart. Approximate</text>
+
+  <text x="16" y="86" class="d-s">Strike (sUSDrf as collateral)</text>
+  <rect x="200" y="70" width="326" height="26" rx="4" class="d-box-accent"/>
+  <text x="536" y="88" class="d-s">about $285k</text>
+
+  <text x="16" y="128" class="d-s">Liqwid (collateral + supplied)</text>
+  <rect x="200" y="112" width="172" height="26" rx="4" class="d-box"/>
+  <text x="382" y="130" class="d-s">about $150k</text>
+
+  <text x="16" y="170" class="d-s">Held in wallets</text>
+  <rect x="200" y="154" width="149" height="26" rx="4" class="d-box-plain"/>
+  <text x="359" y="172" class="d-s">about $130k (the fifth that is not “at work”)</text>
+
+  <text x="16" y="212" class="d-s">SundaeSwap pool</text>
+  <rect x="200" y="196" width="34" height="26" rx="4" class="d-box"/>
+  <text x="244" y="214" class="d-s">about $30k</text>
+
+  <text x="340" y="256" class="d-s" text-anchor="middle">Strike + Liqwid + pool = 77% at work in DeFi. The Strike layer appears around 13 October and peaks within two weeks</text>
+  <text x="340" y="276" class="d-s" text-anchor="middle">Categories follow the slide’s legend (pending cooldowns and orders are small and omitted)</text>
+</svg>
+<p class="figcap"><span class="badge">slide</span> The amounts are our reading of the chart’s final-day heights; what was said aloud was only “pretty much 80% in Strike and Liqwid.” The slide’s own title was “77% of retail’s USDrf is put to work in DeFi; the other fifth sits in wallets.”</p>
+</div>
+
+<p><span class="badge">added</span> The venue names are used without introduction. Strike is a perpetual-futures exchange on Cardano — the call mentions “yields from Strike’s perp trading exchange.” Liqwid is lending. Indigo is a synthetic-assets protocol, appearing in the strategy list as “swap USDrf for iUSD.” USDM, USDA and Djed are other Cardano stablecoins.</p>
+
+<h2 id="en-strategies">5. The ten strategies</h2>
+<p class="deck">Follow the money and group what people did. Strike takes 30% in one strategy, Liqwid 30% across four.</p>
+
+<p>Starting from the two routes by which retail got USDrf — bought on the pool, borrowed on Liqwid — the speaker <strong>“followed the money”</strong> and grouped where it ended up into “strategies,” the call’s word, kept here.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 392" role="img" aria-label="The ten strategies ranked by amount: deposit on Strike $282k, 30%, is the largest; then hold in wallet $121k; four Liqwid strategies; the SundaeSwap pool; Indigo; bridged to EVM; other">
+  <text x="340" y="24" class="d-t" text-anchor="middle">The ten strategies (gross, launch to 27 October; $944k in total)</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">Our redrawing of the slide’s ranking. Amounts in thousands of dollars</text>
+
+  <text x="16" y="78" class="d-s">Strike · deposit the sUSDrf</text>
+  <rect x="300" y="62" width="300" height="22" rx="4" class="d-box-accent"/>
+  <text x="608" y="78" class="d-s">282 · 30%</text>
+
+  <text x="16" y="108" class="d-s">Wallet · hold the sUSDrf</text>
+  <rect x="300" y="92" width="129" height="22" rx="4" class="d-box-plain"/>
+  <text x="437" y="108" class="d-s">121 · 13%</text>
+
+  <text x="16" y="138" class="d-s">Liqwid · borrow USDCx, bridge to EVM</text>
+  <rect x="300" y="122" width="109" height="22" rx="4" class="d-box"/>
+  <text x="417" y="138" class="d-s">102 · 11%</text>
+
+  <text x="16" y="168" class="d-s">Liqwid · loop</text>
+  <rect x="300" y="152" width="77" height="22" rx="4" class="d-box"/>
+  <text x="385" y="168" class="d-s">72 · 8%</text>
+
+  <text x="16" y="198" class="d-s">Liqwid · carry (lend other stablecoins)</text>
+  <rect x="300" y="182" width="64" height="22" rx="4" class="d-box"/>
+  <text x="372" y="198" class="d-s">60 · 6%</text>
+
+  <text x="16" y="228" class="d-s">SundaeSwap · add liquidity to the pool</text>
+  <rect x="300" y="212" width="61" height="22" rx="4" class="d-box-plain"/>
+  <text x="369" y="228" class="d-s">57 · 6%</text>
+
+  <text x="16" y="258" class="d-s">Indigo · swap for iUSD</text>
+  <rect x="300" y="242" width="54" height="22" rx="4" class="d-box-plain"/>
+  <text x="362" y="258" class="d-s">51 · 5%</text>
+
+  <text x="16" y="288" class="d-s">Liqwid · borrow USDrf, repay a USDCx loan</text>
+  <rect x="300" y="272" width="48" height="22" rx="4" class="d-box"/>
+  <text x="356" y="288" class="d-s">45 · 5%</text>
+
+  <text x="16" y="318" class="d-s">To EVM · borrow on Liqwid, sell, bridge USDC</text>
+  <rect x="300" y="302" width="43" height="22" rx="4" class="d-box-plain"/>
+  <text x="351" y="318" class="d-s">40 · 4%</text>
+
+  <text x="16" y="348" class="d-s">Other</text>
+  <rect x="300" y="332" width="121" height="22" rx="4" class="d-box-plain"/>
+  <text x="429" y="348" class="d-s">114 · 12%</text>
+
+  <text x="340" y="380" class="d-s" text-anchor="middle">Sources: $598k bought on the pool + $346k borrowed on Liqwid. Gross, so collateral and loans are both counted</text>
+</svg>
+<p class="figcap"><span class="badge">slide</span> Amounts and shares are from the slide’s ranking; aloud, only “30% in Strike,” “8% looping” and the description of each strategy were said. The slide’s note explains why the total is $944k rather than the $630k of net inflows: when someone posts sUSDrf on Liqwid and borrows against it, both the collateral and the loan are counted. “Bridge” means the bridge burned the USDCx and the money left Cardano for EVM.</p>
+</div>
+
+<p>Each strategy was described on the call as follows.</p>
+
+<ul>
+  <li><strong>Deposit on Strike (30%).</strong> Stake USDrf and deposit the sUSDrf on Strike, earning “RealFi yields plus yields from Strike’s perp trading exchange.” “By far the dominant strategy” as of 27 October</li>
+  <li><strong>Hold in wallet (13%).</strong> Hold staked USDrf and earn the RealFi staking yield</li>
+  <li><strong>Borrow on Liqwid, bridge to EVM (11%).</strong> Post sUSDrf, borrow USDCx, bridge it across and participate in EVM DeFi</li>
+  <li><strong>Loop (8%).</strong> Post sUSDrf, borrow USDCx, swap into more USDrf, stake, repeat — the move <a href="../2026-10-09-office-hours-mainnet/#en-loop">the Head of Product walked through in #10</a></li>
+  <li><strong>Carry (6%).</strong> Borrow USDrf on Liqwid, swap into USDM, USDA or Djed, supply that back to Liqwid — because “the interest rate you were paying to borrow USDrf at the time was lower than the APY on supplying the stablecoin.” An arbitrage of stablecoin rates</li>
+  <li><strong>Add liquidity (6%).</strong> Supply USDrf to the SundaeSwap pool, “always great for RealFi because more liquidity is better”</li>
+  <li><strong>Refinance (5%).</strong> With USDrf borrow rates low, borrow USDrf, sell it for USDCx and repay a USDCx loan — “using the low USDrf borrow rates to refinance a USDCx loan”</li>
+</ul>
+
+<p><span class="badge">added</span> The carry and the refinance both rest on USDrf’s borrow rate being lower than others’. As section 6 explains, that rate rises as more people borrow, so these two are <strong>strategies that disappear when rates move</strong>. The speaker himself dated them: “at the time.”</p>
+
+<h2 id="en-supply">6. The supply side — utilisation, the kink, incentives</h2>
+<p class="deck">As borrowing grows the rate jumps. So suppliers get points.</p>
+
+<p>The host brought up a one-to-one call from earlier in the week — “there are times when what RealFi might want to see as a protocol is people supplying” — and asked for the explanation again. The call uses “utilization rate” and “the kink,” so this page does too.</p>
+
+<p>As more people borrow on Liqwid, borrowed USDrf approaches supplied USDrf and <strong>utilisation gets very high</strong>; as supply runs short the interest rate rises, “and it hits the kink, where suddenly it probably doesn’t make sense as a trade anymore.” So <strong>supplying USDrf into the Liqwid pool</strong> helps the ecosystem, for two reasons: suppliers get incentives and points, and there is more supply for retail to borrow at a reasonable rate.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="Schematic of utilisation against the borrow rate: the rate rises gently at low utilisation and sharply past the kink; more supply lowers utilisation and moves away from the kink">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">“The kink” — utilisation and the borrow rate (schematic)</text>
+
+  <line x1="80" y1="210" x2="620" y2="210" class="d-line" marker-end="url(#e3)"/>
+  <line x1="80" y1="210" x2="80" y2="50" class="d-line" marker-end="url(#e3)"/>
+  <text x="620" y="232" class="d-s" text-anchor="end">Utilisation (USDrf borrowed ÷ USDrf supplied)</text>
+  <text x="74" y="46" class="d-s" text-anchor="end">Rate</text>
+
+  <polyline points="80,200 440,170 560,60" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <circle cx="440" cy="170" r="5" class="d-box-accent"/>
+  <text x="440" y="192" class="d-s d-a" text-anchor="middle">the kink</text>
+  <text x="520" y="112" class="d-s" text-anchor="end">past here the rate jumps and</text>
+  <text x="520" y="128" class="d-s" text-anchor="end">“it doesn’t make sense as a trade”</text>
+
+  <line x1="400" y1="100" x2="250" y2="100" class="d-line-accent" marker-end="url(#e3)"/>
+  <text x="325" y="90" class="d-s" text-anchor="middle">more supply lowers utilisation</text>
+
+  <text x="340" y="254" class="d-s" text-anchor="middle">“We’re not there just yet, but we’re not far away.” Suppliers get RealFi incentives and points</text>
+</svg>
+<p class="figcap"><span class="badge">added</span> The curve is the generic shape of a variable-rate lending market, where the slope changes at a set utilisation; it is not Liqwid’s actual parameters. What the call said is only that “as supply is close to running out, the interest rate goes up, and it hits the kink.”</p>
+</div>
+
+<p>The other supply is <strong>stablecoins</strong>. Many people want to post sUSDrf and borrow USDM, Djed or USDCx against it; if too few people supply those, “those interest rates very quickly become prohibitive. We’re not there just yet, but we’re not far away either.” So RealFi <strong>also offers incentives for supplying USDCx into the Liqwid pool for RealFi</strong> — you earn the supply yield plus RealFi’s incentives.</p>
+
+<div class="term">
+<p class="term-name">Utilisation and the kink <small>utilization rate / kink</small></p>
+<p><span class="badge">added</span> Utilisation is the share of a pool’s supplied assets that is currently borrowed. Lending protocols raise the borrow rate as utilisation rises, to discourage over-borrowing and attract supply. In most designs the rate’s slope steepens sharply above a set utilisation — often around 80–90% — and that bend is the kink. Think of a car park whose price is low while there is space and jumps as it fills. In one line: the closer to the kink, the worse for borrowers and the better for suppliers.</p>
+</div>
+
+<p><span class="badge">added</span> <a href="../2026-08-06-office-hours-gtm/#en-liquidity">#5</a> called liquidity a matter of life and death, and <a href="../2026-07-31-data-and-insights/#en-liquidity">#4</a> sorted it into three views. This session looks at the supply side in one concrete place: Liqwid’s rates.</p>
+
+<h2 id="en-returns">7. What the returns actually are</h2>
+<p class="deck">Three numbers came up. Each with a caveat, and no comprehensive survey.</p>
+
+<p>The host asked what returns people can find at the moment. The answer was careful: <strong>“I haven’t done a comprehensive survey. I couldn’t tell you really what the returns of the various strategies are.”</strong> Only three figures appear in the session.</p>
+
+<ul>
+  <li><strong>“45% APR.”</strong> A chat participant’s example for “a user looping on Liqwid,” with a screenshot. The data lead said he would look it up later; the host said he had not verified it. <strong>Left unverified</strong></li>
+  <li><strong>“Like 12.2%.”</strong> The sUSDrf yield recently posted on X — “but that was a specific day, so it does change”</li>
+  <li><strong>“27%,” “30%.”</strong> The <strong>borrow</strong> rates for USDM, Djed and USDA on Liqwid, cited by the participant who came up on stage. Costs, not yields (section 9)</li>
+</ul>
+
+<p>“I wouldn’t confidently be able to tell you ‘this is what you can earn through looping or through Strike,’ because they change day by day” is the session’s conclusion on returns. <span class="badge">added</span> The “roughly 8.5%” in <a href="../2026-10-09-office-hours-mainnet/#en-yield">#10</a> was likewise a dated figure. This archive records all of them as numbers given on the call, not as promises or solicitations. The deck’s last slide says the same: “Not investment advice: what the chain shows people did. Every strategy carries risk.”</p>
+
+<details class="explain">
+<summary>A naive question — is “45% from looping” a real number?</summary>
+<div class="explain-body">
+  <p><span class="badge">added</span> The reasoning below is ours, not from the call.</p>
+  <h4>The number is possible, on conditions</h4>
+  <p>The chat screenshot was a Liqwid screen showing “Net APR 45.28% (est.)” over “30 days.” In a loop you hold a position several times your capital, so if the sUSDrf yield is stacked with Liqwid supply incentives and R-Points-type rewards, a large estimated APR per unit of capital is not implausible.</p>
+  <h4>But it is an estimate, and it does not persist</h4>
+  <p>The “est.” annualises the rates and rewards of that moment. As section 6 explains, USDrf and USDCx borrow rates rise as more people borrow, which shrinks a loop’s net yield. And the liquidation risk explained in <a href="../2026-10-09-office-hours-mainnet/#en-loop">#10</a> does not show up in an APR.</p>
+  <h4>How to check from outside</h4>
+  <p>Switch the same screen between “7 days / 30 days / 90 days” and see whether the number holds across periods. On the call, nobody verified it.</p>
+</div>
+</details>
+
+<h2 id="en-campaign">8. An education campaign, and R-Points</h2>
+<p class="deck">Show what the product can do and watch retail demand rise. R-Points claims are “close, but no date.”</p>
+
+<p>The host revealed that the <a href="../2026-09-21-office-hours-ambassador/#en-handshake">Decentralized Adventures campaign introduced in #9</a> is being prepared with Cardano KOLs (“I don’t want to spoil it, so I’m gonna keep it high level”). The aim: “educate people in Cardano that there are these big returns.” He then asked what a good education campaign would look like from the data.</p>
+
+<p>The answer: <strong>“all of these trades and strategies, to an unsophisticated user, are quite complicated,”</strong> so a good campaign would show what the product can do, how versatile it is, and the risks and rewards — and the hoped-for result would be “an uptake in retail demand, more participation in these strategies, and ultimately stimulating Cardano DeFi.”</p>
+
+<p>When the host steered toward “the lowest risk is the supply side, right?”, the data lead replied <strong>“I don’t know if I’d be comfortable saying that. You’d have to look at it on a case-by-case basis,”</strong> and the host withdrew: “I’m being unfair to Liam. I retract my comment.” <span class="badge">added</span> The claim that supplying is low-risk does not stand on this call.</p>
+
+<p>On R-Points, the host’s understanding: the team is working toward letting people claim them, timing is with the team, “they are close” — he is trying to align the Decentralized Adventures campaign with it — “but I can’t put a date on it.” To a chat comment that the writer’s use of RealFi is skewed by R-Points and will change when allocations change, the data lead said <strong>“that’s 100% the design”</strong>: “the things we need to stimulate the ecosystem aren’t necessarily, from day one, the things that make perfect sense to users. So we’re adding a cherry on top to kickstart that ecosystem.”</p>
+
+<h2 id="en-usdm">9. From the stage — USDM and the other stablecoins’ borrow rates</h2>
+<p class="deck">Only USDrf is cheap to borrow. Is it subsidised? Could the other stablecoins be too?</p>
+
+<p>A participant who came up near the end (“obviously I’m a USDM guy”) made a specific point. On Liqwid, borrow rates for USDM, Djed and USDA are 27–30%, “exceedingly high,” while USDrf’s is low and the gap between its supply APY and borrow APR is tight. <strong>“Is this being artificially subsidised? And if so, could the other stables also be subsidised to spur participation?”</strong></p>
+
+<p>The answer was candid: <strong>“Honestly, I don’t know if it’s subsidised. That would probably be better answered by GTM or someone from product.”</strong> On lower borrow rates for the other stablecoins: “I definitely don’t see how it could hurt — 30% is incredibly prohibitive; more stablecoins in circulation is good for everyone,” though “I’d have to think a little bit more about what the impact would be on RealFi. We maybe would need a few more pools of some sort to really unlock that.”</p>
+
+<p>The participant added that “Linear V4 is just getting started” and that the AlphaGrowth team will use it for vaults, managed vaults and rehypothecation, so the next step would be “a couple other pools” to help what RealFi is doing. <span class="badge">added</span> What “Linear V4” refers to is not explained on the call. On USDM, the host described it as “I think the first native stablecoin on Cardano — a much-loved project,” and the chat’s point about whether USDM’s total supply can handle large inflows into USDrf was deferred: “that’s the USDM question you and me were gonna catch up on. We just haven’t got to it yet.”</p>
+
+<h2 id="en-overall">10. The big picture</h2>
+<p class="deck">Demand → mint → TVL, and USDrf into DeFi. What is short is supply.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="The session in one picture: retail demand becomes TVL through the market maker’s mint on top; where retail’s USDrf went in the middle (Strike 30%, Liqwid 30%, wallets 13%, other); the supply shortfall and the follow-ups at the bottom">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">The session in one picture (figures as of 27 October 2026)</text>
+
+  <rect x="16" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="116" y="68" class="d-t" text-anchor="middle">Retail demand</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">$630k net, rising weekly</text>
+  <line x1="216" y1="74" x2="236" y2="74" class="d-line-accent" marker-end="url(#e4)"/>
+  <rect x="240" y="44" width="200" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="68" class="d-t d-a" text-anchor="middle">Market maker mints</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">when the pool tips (19 Oct)</text>
+  <line x1="440" y1="74" x2="460" y2="74" class="d-line-accent" marker-end="url(#e4)"/>
+  <rect x="464" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="564" y="68" class="d-t" text-anchor="middle">TVL</text>
+  <text x="564" y="90" class="d-s" text-anchor="middle">steps up, late</text>
+
+  <line x1="116" y1="104" x2="116" y2="128" class="d-line-accent" marker-end="url(#e4)"/>
+  <rect x="16" y="132" width="648" height="76" rx="8" class="d-box-plain"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">Where retail’s USDrf went — 77% into DeFi</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">Strike 30% / Liqwid (to EVM, loop, carry, refinance) 30% / held in wallets 13% / pool, Indigo, other</text>
+  <text x="340" y="198" class="d-s" text-anchor="middle">“RealFi’s TVL is also contributing to DeFi TVL across the ecosystem”</text>
+
+  <rect x="16" y="224" width="316" height="64" rx="8" class="d-box-warn"/>
+  <text x="174" y="248" class="d-t d-w" text-anchor="middle">What is short: supply</text>
+  <text x="174" y="270" class="d-s d-w" text-anchor="middle">incentives for supplying USDrf and stablecoins</text>
+  <rect x="348" y="224" width="316" height="64" rx="8" class="d-box-plain"/>
+  <text x="506" y="248" class="d-t" text-anchor="middle">Follow-ups</text>
+  <text x="506" y="270" class="d-s" text-anchor="middle">market maker / USDCx’s path / rate subsidy / R-Points</text>
+</svg>
+<p class="figcap">#10 was the guide to what you can do; this is the first record of what people actually did.</p>
+</div>
+
+<h2 id="en-qa">11. Q&amp;A</h2>
+<p class="deck">Six from the chat, one from the stage. Most came from the same participant.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>How does Strike’s product create demand, and is it included in these charts?</p>
+<p class="qa-a" data-by="Answered">It is. Retail sees Strike’s yields, buys USDrf on the pool and takes it to Strike; the move from around 15 October is Strike taking off. It is counted as “bought USDrf on the pool,” not as “went to Strike” (<a href="#en-demand">section 2</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>Who is the market maker, and are they buying USDCx within our market or minting and rebalancing?</p>
+<p class="qa-a" data-by="Mechanics only">No name. The mechanics: buy the USDCx off the imbalanced pool, bring it to RealFi to mint USDrf, put that back (<a href="#en-mint">section 3</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant M</span>45% APR for a user looping on Liqwid (with a screenshot).</p>
+<p class="qa-a" data-by="Unverified">“I’ll have to look it up later”; the host: “I haven’t verified.” Not checked on the call (<a href="#en-returns">section 7</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>When someone swaps USDCx for USDrf, what happens to the USDCx the pool or market maker receives? Is it burned to release USDC and moved into the off-chain reserve vehicles, or does it stay on-chain?</p>
+<p class="qa-a" data-by="Partly answered, follow-up">It sits in the pool, with the market maker holding the claim as LP. The excess USDCx is ultimately invested (“we do invest it”), but how it flows is the treasury and investment team’s purview and not known to the speaker. The host promised to follow up.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>Can USDM’s total supply handle large inflows into USDrf? Could the Liqwid carry protect USDM liquidity?</p>
+<p class="qa-a" data-by="Deferred">“That’s the USDM question you and me were gonna catch up on. We just haven’t got to it yet.” Not answered on the call.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant N</span>My use of RealFi is skewed by R-Points; when allocations change, my strategies will change.</p>
+<p class="qa-a" data-by="Answered">“Completely fair — that’s 100% the design.” A “cherry on top” to kickstart the ecosystem (<a href="#en-campaign">section 8</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K (on stage)</span>USDM, Djed and USDA borrow rates are 27–30%, exceedingly high, while USDrf’s is low. Is it artificially subsidised? Could the other stables be subsidised too?</p>
+<p class="qa-a" data-by="Could not answer">“I don’t know if it’s subsidised — better answered by GTM or someone from product.” Lower rates on the other stables “couldn’t hurt,” but the impact on RealFi needs more thought (<a href="#en-usdm">section 9</a>).</p>
+</div>
+
+<h2 id="en-pending">12. Left open</h2>
+<p class="deck">A data session, so what went unanswered sits outside the data.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Withheld</span>Who the market maker is.</p>
+<p class="qa-a" data-by="No name">“I don’t know what I’m allowed to say, so I don’t want to name an institution.” Only the mechanics were given.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Follow-up</span>By what path does the pool’s USDCx reach the reserves, and when is new USDrf considered fully backed?</p>
+<p class="qa-a" data-by="After the call">“We do invest it” is as far as it went; whether it is burned, who manages the process and how long capital takes to reach the yield-generating vehicle are “the purview of the treasury and investment team.” The host took a screenshot and promised to follow up.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Could not answer</span>Is the USDrf borrow rate subsidised?</p>
+<p class="qa-a" data-by="Outside remit">“I don’t know — better answered by GTM or someone from product.” Whether to subsidise the other stablecoins went only as far as “couldn’t hurt, but the impact on RealFi needs thought.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Timing only</span>When R-Points can be claimed.</p>
+<p class="qa-a" data-by="No date">“Close, but I can’t put a date on it — these things change.” The conversion rate <a href="../2026-10-09-office-hours-mainnet/#en-points">#10 said would be published within weeks</a> was not mentioned.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unverified</span>“45% APR,” and the actual returns of each strategy.</p>
+<p class="qa-a" data-by="No survey">“I haven’t done a comprehensive survey.” The sUSDrf yield posted on X, “like 12.2%,” was “a specific day.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Chat only</span>The EVM launch date.</p>
+<p class="qa-a" data-by="Not read out">After the call ended, a chat message quoted an announcement — “RealFi launches on Ethereum Mainnet via AlphaGrowth vaults on December 1st” — and asked for the latest update and whether it will be on time. <strong>It was not read out on the call and nobody answered it.</strong> <span class="badge">added</span> This is the first time the date appears in this archive. The source is the quoted announcement, not checked by us (as of 6 November 2026).</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Deferred</span>USDM’s total supply and its resilience to inflows into USDrf.</p>
+<p class="qa-a" data-by="One-to-one">“The USDM question you and me were gonna catch up on.” No public explanation is planned.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Announced only</span>The Decentralized Adventures campaign, the blog post, publishing the data.</p>
+<p class="qa-a" data-by="No timing">In preparation with KOLs, “I don’t want to spoil it.” The host will “write this up” and show examples “once I’ve got some of this stuff published.” No timing for any of it.</p>
+</div>
+
+<div class="note">
+<p><strong>About this page.</strong> People named in the chat, addressed by name, or who came up on stage appear as <code>Participant A–N</code>; colleagues mentioned by name appear by role. The source has neither speaker labels nor timestamps, so speakers were assigned from context.</p>
+<p><strong>A 12-slide deck was screen-shared.</strong> The slides themselves are not reproduced; their content appears only as figures redrawn by us. Three marks: no mark means it was said aloud on the call; <span class="badge">slide</span> means it was on screen but not spoken (every figure as of 27 October 2026); <span class="badge">added</span> means we wrote it and it was not said on the call.</p>
+<p>Every yield figure on this page was given on the call or in its chat and is recorded with its source. None is a promise or a solicitation.</p>
+<p>For the exact wording, see the <a href="./transcript-en.html">English transcript</a>; to read straight through in Japanese, the <a href="./transcript-ja.html">Japanese transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All sessions</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">RealFi Office Hours アーカイブ</span><span class="l-en">RealFi Office Hours archive</span></p>
+</footer>
+
+</div>
+</body>
+</html>

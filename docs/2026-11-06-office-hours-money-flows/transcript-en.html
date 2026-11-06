@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RealFi Office Hours #11 — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #11</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-11-06</span>
+  <span>Discord</span>
+  <span>Money Flows &amp; DeFi Strategies</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> The two people who spoke — <code>Ben</code>, the host, and <code>Liam</code>, who leads the data function — <strong>are named</strong>. People named in the chat, addressed by name, or who came up on stage near the end appear as <code>Participant A–N</code> in order of appearance; colleagues mentioned by name appear as <code>[a colleague]</code>. The Head of Product who spoke in #10 is referred to by name, as on that page.</p>
+<p>The source has <strong>neither speaker labels nor timestamps</strong>. Its paragraphs are separated by blank lines, but those are not speaker breaks — the speaker often changes mid-paragraph. <strong>Speakers are assigned from context</strong>, and short exchanges where the attribution is less certain, such as the connection trouble at the start, are marked <em>(inferred)</em>.</p>
+<p><strong>Proper nouns were checked by the requester; two remaining mis-hearings (a name the host appears to get wrong once, and an organisation name) were corrected here.</strong> Apart from that and the anonymisation, the wording is unchanged. <strong>A 12-slide deck was screen-shared.</strong> This page contains only what was said aloud; the slides’ content appears on the summary page only as figures redrawn by us.</p>
+</div>
+
+<!--content-->
+
+<div class="sec">Opening: mic trouble</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Testing. Is my mic working? Okay. Hello, everybody. RealFi office hours. Exciting. Just waiting for Liam to come and give us the download. Huh, see if I can pull him up here. Ah, there he is.</p>
+  <p>Welcome, Liam, sir. Uh, let's see if I can get you up onto the main stage. You should have an option. You've done this before, I know. You should be able to request to come up to the stage.</p>
+  <p>You know what? Discord should really have a drag and drop function. That would be amazing if it did. Just trying to inv- ah, here we go. Invite you to speak. Right, Liam. Ah, can you hear me? Liam?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, welcome everybody that's, uh, that's joining the, the audience. Uh, in the top right we've got the chat box.</p>
+  <p>If this is your first Discord s- stage, though I know some of you are regulars, so you'll be able to ask us questions as we're gonna go through.</p>
+  <p>Um, and Liam, when your mic is working, just, uh, say something with dulcet tones. Uh, either I can't hear Liam or his mic isn't working.</p>
+  <p>So can someone tell me in chat whether you can hear my voice? Can you hear me? Okay, great. So you can hear me.</p>
+  <p>So Liam, uh, we can't hear you, so I'm gonna give you a couple of minutes to sort out your mic situation.</p>
+  <p>But I was just on a call with Liam, and he sounded brilliant, so, um, so I don't know why the Discord stage is taking a dislike to us. All right.</p>
+  <p>Liam's gonna have a really interesting office hours for us today. Yep, no sound, Liam.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, if you can hear me, Liam, in the, uh, bottom of your screen, you've got a bunch of options like, uh, microphone, video, this kind of stuff. You've probably got three dots and a horizontal line.</p>
+  <p>If you click that and you go to voice and video settings, what you'd wanna do is just make sure when that opens that you've got the right microphone selected and the right headphones selected.</p>
+  <p>And if that's still not working, then, um, I think it's traditional. Uh... Oh, you can't hear me? You can't hear me. I'll rejoin. Okay. Liam's gonna rejoin.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>This is like the good old days of X Spaces. Does anyone remember that? In fact, I think it's the current state of X Spaces. Okay.</p>
+  <p>Well, while we're waiting for Liam to come back and join us, I have been working with some well-known KOLs in Cardano on the campaign for ambassadors. Uh, super exciting.</p>
+  <p>I certainly shouldn't give away too much, but, um, that's in the pipelines. [Participant A] can't know anything. Well, now I don't know if I should restart my own Discord. But will that kill the stage?</p>
+  <p>That's what, that's what I wonder. Can everyone else hear me? [Participant B], [Participant C], [Participant D], [Participant E]? You can all hear me, okay. I'm gonna assume that, I'm gonna assume everybody's here.</p>
+  <p>I, I'm just trying to fill the, uh, fill the s- fill the soundscape with some noise while we wait for... [Participant F]'s in the audience. [Participant G], absolute legend.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Lots of, uh, alpha in the pipelines that I'm not allowed to talk about. Who else have we got? [Participant H] from Japan. One of the VLOGs. [Participant I].</p>
+  <p>Probably the biggest Cardano, uh, RealFi, uh, passionate community member. Super committed. Okay. Liam, I can see you. I'm gonna invite you to speak again, and we'll see if this works.</p>
+  <p>Come up to the stage, Liam, and bless us with your data. Okay, Liam. Okay. I can't hear Liam, so, uh, what I'm gonna do is I'm gonna restart myself.</p>
+  <p>Maybe it's an issue with the host or something like this. Uh, so give me two seconds, guys. Hopefully, the main stage will continue, um, but I will be back in about two minutes. Optimistic, [Participant J].</p>
+  <p>I'm still not hearing anything. 20 second. Wait for 20 second. Just one minute. Uh, last note. Okay, testing. Uh, I'm back. Hopefully my mic's working, and now if I invite Liam on stage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Ben, I, I can hear you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Ah, great. Okay, one second. I can hear you. Fantastic. Um, my headphones just need to turn on. Sorry about this, Liam.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Oh yeah, loud and clear. Yeah, clear.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Uh, no, I'm still here. I, I'm waiting on, um, Ben.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>We're good. We've finally got it working. Um, okay, great.</p></div>
+</div>
+
+<div class="sec">Introductions: what the data function does</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Liam, I always say the best RealFi office hours are the ones that start with, uh, technical difficulties, so this is a really good omen. Um, welcome back.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Thanks. How have you been? Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah, pretty good. Uh, launch has been, um, an exciting time. It's been crazy, yeah. Been really busy.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, so walk us through, um ... Let's do a little bit of an intro first.</p>
+  <p>Let's, let everybody know who you are. Tell us a bit about, uh, the function that you, uh, fulfill in RealFi and then, um, tell us about what we're gonna talk about today.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Sure. Um, yeah.</p>
+  <p>So I lead the data function at RealFi. Uh, I would broadly say we're kind of responsible for, for two areas.</p>
+  <p>One would be, um, you know, a lot of the data, uh, users see, um, on the transparency portal or that we provide to partners, so essentially the data platform that, that provides that data wherever it needs to go.</p>
+  <p>And then also internally we're responsible for, um, you know, generating insights, analytics, monitoring f- for the team to, to do their jobs and, and kind of support them in any way, uh, that data can help.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, definitely. I mean, I've, I've learnt from you as well, Liam, I don't mind saying. Um, I love some of the reports you put internally. So, um, definitely, uh ...</p>
+  <p>well, one of the best I've worked anyway. So talk me through what you've got for us today. What are we gonna talk about?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Sure.</p>
+  <p>Yeah, so, um, I think I'm actually just sharing kind of, the kind of things we've been looking at internally and that we've been interested in, which is since launch, uh, we've had retail demand.</p>
+  <p>So really just looking at, at what does that retail demand look like? How has that affected TVL both, uh, yeah, for RealFi and more broadly across the ecosystem?</p>
+  <p>And, and then drilling down into that, which is what are retail users actually doing with our product?</p>
+  <p>So looking into the various venues and, and, uh, kind of strategies they're deploying USDrf into.</p></div>
+</div>
+
+<div class="sec">Today&#x27;s topic</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, that's great. And, um, and how are we gonna do it?</p>
+  <p>Have you got something prepared or should we, uh, should we improv? I've got some questions or you-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah. I've, I've got a deck. Happy to talk through that. But yeah, if ...</p>
+  <p>Also, if you have any questions, anyone in the audience has any questions, happy to take those as they come up.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Fantastic. I'll keep my eyes open.</p>
+  <p>If you do have a question, let us know and, um, I'll, and I'll put it to Liam.</p>
+  <p>Uh, if you want to share your screen, Liam, you should see like a monitor icon with an arrow at the bottom of the-</p></div>
+</div>
+
+<div class="sec">Screen-share trouble</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. All got it ... this screen. Cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Okay, awesome.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I'm putting you on a Mac screen. Cool. Can, uh, can everyone see this?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, still loading for me. All right. Okay.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Maybe while we wait, um, for that to load, what I'll say is that all of this data is actually pulled, um, off the blockchain, so you can verify it, you can question my assumptions.</p>
+  <p>Um, but yeah, nothing here is, is really proprietary, so have a look for yourself.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, can you ... I don't know for other people, but for me it says the stream failed.</p>
+  <p>Can you, uh, stop sharing and then just restart?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah, let me do that. It's clip share. Stop stream.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>There we go. I see it now. Everyone else good?</p>
+  <p>I'm two steps behind you, uh, Liam, just trying to catch up. Uh, it's still loading for me, but if other people can see it, let me know in chat and we'll proceed.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>I just wanna make sure that, uh, the audience can see. I could potentially- Um, just- -try dropping... Sorry, go ahead. Yeah, yeah. It says, it's, uh, failed to start. What do you wanna try?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I can drop the resolution and the streaming and frame rate. Let me see if that helps.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Or if you want me to, let me dig the link out in Slack, and I can always share it and you can do the, uh, you know, next slide um, format thing. Benj. No? Let's have a look.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>No, yeah, still failed to, um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Hmm. Restream. Well, can I, can I sh- can I share the link with you, then maybe you can try it and, and you can just talk?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. I can just- I can just, uh...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, that's fine. I'm just signing into my, um...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Okay, Ben, I'm sharing the deck on Slack.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Thank you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I mean, Ben, you said that, um, you said technical difficulties mean a good talk, so then I, I think this is gonna be excellent.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>It's, it's the modern, modern-day omen, right?</p>
+  <p>Save us from o- looking at the entrails of a Uh, like, give me two seconds. Uh. Yeah. Sorry for the, uh, delay, guys, uh, for everyone listening. I have got the link. ... from the private match.</p>
+  <p>Okay, great. Let me... I'm gonna share my screen. You tell me if it works for you guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I'm gonna stop sharing mine.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. Yeah, stop sharing yours, and then I'll take the conch. Okay. Is this good?</p>
+  <p>Can everybody see my screen?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Not yet. Yes. Okay, great. Okay. Yeah, okay. Cool. Um, okay. Let me talk through it, and then, uh... Well, I, I need to see. Okay. So Ben, first slide, um... Yeah. Yeah.</p>
+  <p>So, so like, like I said, what I'm showing here is really just... Oh, now mine's not starting. So slide two, Ben. Essentially, as I said, everything here...</p>
+  <p>Are, are you able to just kind of go through the slides as I talk, and, and you can figure out what I'm looking at?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, yeah. I'm just gonna click next, and you can tell me if I get it wrong.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Okay.</p></div>
+</div>
+
+<div class="sec">Ground rules: all on-chain data</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so on second slide. Yeah. So yeah.</p>
+  <p>So like I said, just everything here is on chain data, and, and I'm really just looking at the various venues where people are, are deploying tokens, um, and yeah, may- using some APIs from, from these venues.</p></div>
+</div>
+
+<div class="sec">Retail demand and TVL are not the same thing</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So the first... Next slide. So- Yeah ... the first point I wanna make is, is how retail demand and TVL are, as I think we all know, related, but they are not the same.</p>
+  <p>And I think what's actually interesting is if you look at TVL or, uh, like as is shown on the transparency portal, that doesn't actually tell the full picture.</p>
+  <p>Retail demand is actually a leading indicator for TVL. So next slide. Um, so you should now be looking at the TVL chart, right? Yes. Okay. So yeah, if you...</p>
+  <p>This is kind of how it looks on the transparency portal right now, and TVL appears quite flat except for a jump on, on 19 October. So it doesn't really look like a ton of go- is going on.</p>
+  <p>That's really just the USDrf in circulation. So yeah, it doesn't look like much is changing. But as I said, TVL is actually a lagging indicator of demand. So next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>What we're looking at here is, is what we call retail demand, and this is actually a, a, a key metric that we monitor as, as one of our KPIs.</p>
+  <p>So how I define me- retail demand is this is all stable, all USDrf that retail is able to kind of take out of institutional hands.</p>
+  <p>So that's buying it off the, off the s- off the linear pool on SundaeSwap, and that's borrowing it from the, um, the pools on Liqwid. 'Cause, 'cause retail can't mint.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>You know, so these are the only venues through, through which retail can acquire USDrf.</p>
+  <p>So if you look at net retail, net f- net retail inflows since launch, what you actually see is, is a very different picture to TVL.</p>
+  <p>You see it's been steadily increasing with a sharp jump actually well before 19th October. And if you remember, 19th October is when we saw that TVL jump. So it was flat jump TVL increase.</p>
+  <p>It's a very different picture when you look at retail demand. So next slide please, Ben.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Is this slide six with retail demand? Slide six.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah, great.</p>
+  <p>So it should be the one with the orange and the blue.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>You got it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="sec">How the market maker turns demand into a mint</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so just to explain the mechanics of, of what's actually happening here, why there's that lag, and look, I mean, I, I don't know, maybe this is common knowledge to everyone, but I think it just helps to explain.</p>
+  <p>Essentially, we have a market maker, and when the, when the linear swap- When, when retail purchases USDrf, uh, they give us USDCx. The, the USDrf, USDCx, uh, becomes imbalanced.</p>
+  <p>We have an excess of USDCx, so then the, the market maker will take that USDCx, m- mint USDrf with it, and put it back into the pool. So that's essentially what we're seeing here.</p>
+  <p>That, that big jump on 19th October, that's when the retail demand flowed to such a level that the pools became imbalanced enough that we said to the market maker, "Okay, time to mint some U- USDrf." And then that is when TVL increases.</p>
+  <p>So what I'm just trying to demonstrate here, summarizing, is that TVL is interesting, but it doesn't show the full picture. Retail demand is what's actually more telling and what grows TVL.</p>
+  <p>So, so that's the metric we want to look at internally for launch. Is that clear to everyone? Any questions?</p></div>
+</div>
+
+<div class="sec">Q: does Strike create demand?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Let me check. Yeah, [Participant I]'s got a question. Hit it. Hit us up, [Participant I].</p>
+  <p>Uh, [Participant K] says, "How does Strike product create demand, and is it included in these charts?"</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>It is. You, you'll see that now.</p>
+  <p>But essentially what's happening is retail users, they see Strike, they, they see the yields, they want to participate, so they are buying USDrf off the linear swap so that they can take it and then participate in Strike.</p>
+  <p>So essentially, that dip we started seeing starting in 15 October, that was when Strike really started taking off. So we saw more people buying USDrf off the linear swap.</p>
+  <p>So yes, it is, it is counted, but it's not counted because they di- went to Strike, it's just counted because they bought USDrf off the pool to do whatever they wanted to do with it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Cool.</p></div>
+</div>
+
+<div class="sec">Part 2: what people do with USDrf</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, great. Uh, next slide. Yeah, next slide. Okay. Part two. Okay. Yep.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so, so [Participant I], I guess this touches on your question.</p>
+  <p>It, it, it's not just enough for us to know, um, you know, what does retail demand look like.</p>
+  <p>We want to know what are people doing with it, what's driving this retail demand, what are the use cases.</p>
+  <p>And the promising thing, in my perspective, is that it's not just that people are buying USDrf and holding it in their wallets, which of course is a valid use case, and if that's what works for you, you know, that's fantastic.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>But it's also nice to see that people are using our product to participate in Cardano DeFi, things like Strike, Liqwid.</p>
+  <p>So that essentially means that the TVL that, uh, RealFi is getting is also contributing to DeFi TVL across the, um, across the, across the ecosystem. I, I see there's a question there.</p>
+  <p>Uh, can I take that, Ben?</p></div>
+</div>
+
+<div class="sec">Q: who is the market maker?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, who- Yeah, sure, sure. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Who is the market maker, and are they buying new USDCx within our market or they're minting new USDCx and then rebalancing the linear pool?</p>
+  <p>So I don't know, [Participant K], if I c- I don't, I don't wanna say give names 'cause I don't know what I'm allowed to say and not say, so I don't wanna name a institution.</p>
+  <p>But essentially how it works is that, uh, they, they will buy USDCx off the linear swap, so when it becomes imbalanced, and then they will take that USDCx to us and say, "Okay, now mint all of this excess USDCx into USDrf," and then they put it back into the, the linear swap, rebalancing it.</p>
+  <p>Yeah, [Participant K], let me know if that makes sense, but I'll, I'll keep going for, for now. Um, yeah. So like I said, what are people actually doing with USDrf? Next slide, Ben.</p>
+  <p>So you should see the stacked area chart, number eight.</p></div>
+</div>
+
+<div class="sec">Where retail USDrf sits</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yes.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Okay.</p>
+  <p>So what we're looking at here is over time since launch, where was the USD, the retail USDrf actually sitting, in which v- in which DeFi venues in Cardano?</p>
+  <p>So the big yellow orange lump there, that is Strike. And as I said, you can see that big takeoff around 13th October. That is what drove a lot of the, the USDrf inflows.</p>
+  <p>I mean, sorry, the retail inflows. The other kind of, I don't know what you'd call it, like aquamarine greeny section, that is, uh, Liqwid.</p>
+  <p>So there people have taken USDrf, bought it off the pool or got it from any source, and then they have staked that, and then they've deposited that into Liqwid as collateral.</p>
+  <p>So really those are the two biggest uses we see for USDrf across the Cardano ecosystem. That's, just repeating it, it's staked USDrf in Liqwid and staked USDrf in Strike.</p>
+  <p>There is a significant portion, that top portion, which is people holding staked USDrf in their wallets, so I think just really just earning the base, uh, staking yield. But yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>That makes sense.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So that's essentially... Yeah. And, and just to, to repeat the title, so essentially Strike and Liqwid covers m- pretty much 80% of, of ref- of, of, of retail USDrf. So most of it's in DeFi.</p></div>
+</div>
+
+<div class="sec">The supply side: Liqwid utilisation and the kink</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And we had a, we had a really interesting one-to-one call earlier in the week where you were explaining, um, I think I'd done a service safari, so I'd gone onto Liqwid Finance, and I was doing like looping to, to demonstrate something Clay had said on the RealFi office hours.</p>
+  <p>Um, and you were explaining to me actually, you know, uh, there are times when, you know, what a RealFi might wanna see as a protocol is, is people supplying, right?</p>
+  <p>Is that something worth- Oh, for sure ... me revisiting? Yeah. Can you explain that to me again?</p>
+  <p>Because for an idiot like me, I know there's so- sophisticated people like [Participant L] in the audience, but you, you gotta talk to the lowest common denominator as well, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Okay. Yeah.</p>
+  <p>So, so I mean, there's really... Yeah, so, so there's different kinds of borrowing, but, but as you can see, I mean, if you go back to slide- Mm. Mm. Okay. You ...</p>
+  <p>Yeah, if you go back to slide number five, Ben. Sure. Is it five? Um, no, sorry, uh, slide six. Okay. So I didn't have the figures there. Right. My apologies. You can go back to n- number eight.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>That's it. Save it. Um, retail inflows really come from two places. It came from people buying USDrf off the linear swap.</p>
+  <p>But it also, you know, th- that's h- how does a h- how does a retail user with no USDrf, how do they first get USDrf?</p>
+  <p>Off the linear swap, they give USDCx for USDrf, or they can borrow USDrf- Or- ... off Liqwid. Those are really the two routes.</p>
+  <p>So what's happening is a lot of people have borrowed off Liqwid, but now the, um, because as more people borrow, essentially demand starts approaching the supply, the utilization rate, what, is what they call it, gets very high.</p>
+  <p>And as the borrowed USDrf versus the supplied USDrf starts getting very close and, and supply is close to ma- uh, running out, the interest rate goes up.</p>
+  <p>So, so borrowing starts becoming less and less attractive, a- and it, it essentially hit, hits the kink, where suddenly at that point it, it, it probably doesn't make sense as a trade anymore.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So the one thing which helps stimulate the Real- RealFi and Cardano DeFi ecosystem is people supplying USDrf into the Liqwid pool because, A, you get some incentives and points for doing that, so, you know, you get to participate in RealFi's, uh, you know, growth and story.</p>
+  <p>But also it, it, it, yeah, it adds more supply that retail users can then borrow off Liqwid if that's what they want to do at a reasonable exchange rate. That's one.</p>
+  <p>The other area, and you'll see it come up later, is, um, is supplying stable coins to Liqwid because a lot of people want to give USDrf, uh, sUSDrf as collateral and borrow stable coins against that.</p>
+  <p>That could be a USDM, a Djed, USDCx. So again, as long as there's a healthy supply of those stable coins that they can borrow against, they can get reasonable interest rates.</p>
+  <p>But, uh, you know, if not enough people are supplying stable coins then those interest rates very quickly become prohibitive. We're not there just yet, but we're not far away either.</p>
+  <p>So we do also offer incentives for people to supply USDCx into the Liqwid pool for RealFi, and that just makes the interest rates more attractive for everyone, stimulates the ecosystem.</p>
+  <p>You earn yields on supplying your USDCx as well as incentives from, from RealFi.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>That was great. Thank you. Next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>You're welcome. Um, yeah. Okay.</p></div>
+</div>
+
+<div class="sec">The ten strategies</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So what I'm looking at here, remember I said there's essentially two routes through which a retail user can acquire USDrf. That's borrowing off Liqwid or, or buying off the linear swap for USDCx.</p>
+  <p>And what I did here is I kind of followed the money. I saw of people buying USDrf off the, off the linear swap, where did it end up? Or people borrowing USDrf off Liqwid, where did it end up?</p>
+  <p>And we can kind of see here, this is what I'm calling strategies. I, I've essentially grouped various usage patterns into financial strategies.</p>
+  <p>So you can see a large bulk of it is sitting in Strike. Um, I think we can actually go to the next slide. I mean, just maybe one before you do that, Ben. Mm. Just note the colors.</p>
+  <p>So really the, the yellow is Strike, the, the, the green on the right is Liqwid. So the predominant strategies right now do involve Strike and Liqwid.</p>
+  <p>And the next one-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And are, are we allowed to tweet this or, uh, is this, uh, is this Chatham House Rules?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I mean, maybe check with the rest of the marketing team. Ah. But I don't see the problem.</p>
+  <p>Okay. I mean, this is all, this is all on chain data. It, it's my method for following the money, but, but this is nothing that's private. We can see the transactions.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Awesome. Okay, next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so if what we're looking at here... So o- on the previous slide, I was splitting the flows by where people got the money.</p>
+  <p>But what we're looking at now is we're just looking at kind of the amount of capital in the various strategies, irrespective of where the money came from.</p>
+  <p>And we see a similar pattern, which is essentially 30% of retail USDrf is sitting in Strike.</p>
+  <p>That is by far the dominant strategy at the time I, I, I got this data, which was on the 27th of October.</p>
+  <p>I think it might have changed somewhat since then, but, but this is the picture as it was there.</p>
+  <p>So 30% people holding, uh, in Strike, and what this essentially is, is they are taking USDrf, they're staking it, then they're depositing it in Strike, where they then earn RealFi yields plus, uh, yields from Strike's, uh, kind of perp trading exchange.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Um, the, the second most dominant strategy is, is just like I've said, holding, holding staked USDrf in your wallet and just earning the RealFi staking yield.</p>
+  <p>The, the next strategies involve Liqwid, and here what people are doing is essentially they are taking USD S- they are taking USDrf, staking it, and then they're posting it to Liqwid as collateral.</p>
+  <p>So now they are earning the staking yield on that sUSDrf, and then against that sUSDrf, they are borrowing, uh, various things.</p>
+  <p>So for example, some people are borrowing USDCx and bridging it across to EVM where they participate in EVM DeFi. Um, some people, this is what, uh, Ben's tutorial about is looping a lot of ...</p>
+  <p>So what 8% of capital is being used to borrow USDCx against it, swap into more USDrf, stake that for S USD, uh, S- sUSDrf and repeat the cycle.</p>
+  <p>Um, a lot of people we saw were doing carry trades, so essentially they would take the USDrf, they would borrow it off Liqwid, and then they would swap that into other stable coins on Cardano like USDM, USDA, Djed, and then they would supply that back into Liqwid.</p>
+  <p>And the reason for this is that the- So- ... the interest rate you are paying to borrow USDrf at the time was lower than the interest or the APY you are earning on supplying the stable coin.</p>
+  <p>So essentially they were arbitraging the stable coin interest rates. Um, yeah, look, I think the other strategies aren't that interesting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Uh, people supplying LP to the pool, which is always great for real... Sorry. People supplying USDrf into the linear swap, which is always great for RealFi because more liquidity is better.</p>
+  <p>Some people using Indigo, and then again, because the USDrf interest rates on Liqwid were quite low, we had people borrowing USDrf, selling it for USDCx, and then using that USDCx to kind of repay a US- USDCx loan.</p>
+  <p>So they were using the low USDrf borrow rates to kind of refinance a USDCx loan. Yeah, I think that's kind of the most interesting part. Yeah. Any questions?</p>
+  <p>Uh, I know there's a lot of detail there. Anything anyone wants to dig into in more detail? Any of those strategies they want to ask about?</p></div>
+</div>
+
+<div class="sec">Q: 45% APR, and where the USDCx goes</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>[Participant M] is, uh, talking about 45% APR for a user looping on Liqwid. Just having a look at this. Yeah. I'll have to look up- Yeah. Right ... later. Right.</p>
+  <p>Um, and then, uh, [Participant K] is saying, uh, when someone swaps USDCx for USDrf through a DEX- Yeah ... what happens to the USDCx received by the pool or market maker?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Well, it's just sitting on the pool. So- Mm. So then the market maker who has LP'd into the pool, they essentially have a claim on some of that USDCx.</p>
+  <p>But what they will do is they will then, like I said, they will, to mint more USDrf, they will then, um, essentially, they will essentially swap, they will swap, they will essentially, you know, they will take USDCx off the pool and swap it back in.</p>
+  <p>But, but yeah, they, the, the LP owns it essentially, which would be ...</p>
+  <p>I mean, retail can also, um, LP, so retail also has some, a claim on it, but the, the bulk of it right now is the market maker.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Here's a, a follow on question, um, which is, uh, maybe you've answered it, but I don't think so.</p>
+  <p>Is that USDCx ultimately burned through xReserve to release the underlying USDC, which is then convertible or transferred into the off-chain reserve vehicles generating yield?</p>
+  <p>Or does the USDCx remain on chain as liquidity or collateral while USDrf is issued against it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Wait, let me, let me try catch that again. I don't- Right. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Can you- It's in the, it's in the chat, but yeah, I didn't want to read the whole ... I'll give it a go. Um, is that USDCx- USDrf ... ultimately burned- Yeah. USDrf ...</p>
+  <p>through xReserve to release the underlying USDC- To find ... which is then converted or transferred into the off-chain reserve vehicles generating the yield?</p>
+  <p>Or, or does the USDCx remain on chain as liquidity or collateral while USDrf is issued against it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so, so, so this, it, it, it is used.</p>
+  <p>So, so this is more the, uh, purview of the treasury and investment team because yes, ultimately that extra USDCx is then, uh, invested.</p>
+  <p>Um, I'm not sure the, the exact technical details of, of, of how that, of how that flows.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay. So then [Participant K]- We do invest it Okay.</p>
+  <p>I'm gonna screenshot that for you, [Participant K], so I can follow up and, uh, get back to you, uh, on that. Let me get down the chat a little bit.</p>
+  <p>And if, if you want, if I didn't, if we didn't answer that, uh, to your satisfaction, [Participant K], let me know. Um, great info.</p></div>
+</div>
+
+<div class="sec">On USDM</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>[Participant B] is saying, uh, [Participant K] saying issues for USDM as total supply and whether or not it handles large inflows to USDrf out of USDM. Uh, yeah. Um, okay. Let's go. Uh, not yet.</p>
+  <p>[Participant K], if I've missed a question there, just, just type it again, basically. Um, uh, yeah, I think there's a USDM question, [Participant K], that you and me were gonna catch up on.</p>
+  <p>We just haven't got to it yet. If for anyone that isn't familiar- USDM, uh, is, uh, I think, was it the first native, uh, stable coin, um, on Cardano, [Participant K]? You might correct me, but yeah, it was.</p>
+  <p>So they're, you know, a much loved, uh, project in Cardano. Um, so back to you, Liam. Sorry, um, for, uh, hogging the mic there, but, uh- It's okay ... slide, uh, 11, am I guessing?</p>
+  <p>Yeah Is my memory good? This first part?</p></div>
+</div>
+
+<div class="sec">Wrap-up</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah. Um, and look, that's really just the wrap up. I mean, this is what I thought was- Mm-hmm ...</p>
+  <p>for me, most interesting, is seeing what people are doing with our product. Um- Mm ...</p>
+  <p>but yeah, really just summarize, uh, you know, TVL may look uninteresting, but behind it there's actually retail demand, which tells a more compelling story.</p>
+  <p>Um, and, and this retail demand is flowing to Cardano DeFi, which, which is good- Mm ... for the whole ecosystem.</p>
+  <p>And the reason for presenting these, these strategies for you is just so, you know, anyone out there who's interested in our product, they can see what others are doing with it, and if one's interesting to you, you know, educa- educate yourself.</p>
+  <p>'Cause obviously each of these has their own risks and rewards, so educate yourself on, on those and, you know, it's up to you whether you, you want to use them, but I think it's just compelling to show what people are doing with that.</p></div>
+</div>
+
+<div class="sec">An education campaign, and “the returns”</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, I mean, I just don't know. Inherently a selfish person, aren't we all, Liam? So my I'm gonna use some of your time now.</p>
+  <p>There, I, I know everybody on the audience is gonna be reasonably sophisticated, definitely some of them are.</p>
+  <p>Um, but, uh, something I'm working on is Decentralized Adventures, uh, with, um, is [Participant D] in the call? Yeah, he said, so he's, uh, he's with me too. Um, we want to get out into the community.</p>
+  <p>We're gonna work with some KOLs. I don't want to spoil it, so I'm gonna keep a high level.</p>
+  <p>Um, but essentially we wanna educate people in Cardano that there are these, um, these big returns, right, um, of effect. Can you walk us through what the returns are at the minute?</p>
+  <p>I, I had a snapshot. I don't know if you've got more current data, but from my perspective, and [Participant K] you can chip in as well, but I felt like for a long time, uh, DeFi was nascent in Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, and one of the reasons amongst others is that, you know, you need big returns. You know, where there's a yield, there's a way, right? And now with RealFi, there is, there are big returns.</p>
+  <p>I'd, I'd haven't verified 45% that I saw higher up in the chat, but what, what, what are the returns at the moment that people will find out there, Liam, if you don't mind talking about it?</p>
+  <p>If you do-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Well, I've, I've, I've- ... then just mute ... I haven't done a, a- Mm ... comprehensive survey.</p>
+  <p>Like I'm not, you know, I, I couldn't tell you really what the returns of the various strategies are. I, I would have to look- Mm ... into that in more detail.</p>
+  <p>I mean, I think, I think we recently posted the, the, the sUSDrf yield on X- Mm. That's right ... and yeah, I couldn't It was at like 12.2% ...</p>
+  <p>something around there, but, but I, I wouldn't be able to, I wouldn't confidently be able to tell you, "This is what you can earn through looping through Strike," 'cause obviously- Have ...</p>
+  <p>they change day by day, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>I think, I think though for DeFi from a Cardano perspective, um, growth is, is very much about capital productivity and, and there being these returns, but now that it exists, right?</p>
+  <p>And I think it is 12.2%, but that was a specific day, so you know, it does change, right? Um- Mm-hmm ... it's about like getting people to come out and try it, right?</p>
+  <p>So, and letting people know that those returns are there. Um, so that's kind of what I'm thinking about.</p>
+  <p>In simple terms, like what would a good educational campaign do, uh, from your point of view in terms of the data?</p>
+  <p>Or to reframe the question, looking ahead over the next few months, what would you hope such a campaign showed in the data when you were reviewing it? I'm trying to understand- I mean- ...</p>
+  <p>the, yeah ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>well look, I mean, I mean what I would like to see is, is people...</p>
+  <p>'Cause look, all of these trades and strategies to, to an unsophisticated user, I mean, they, they are quite complicated. It may not be apparent- Mm ...</p>
+  <p>all the things you can do, what having a, a yield bearing stable coin enables.</p>
+  <p>So I guess for me, a good educational campaign would show users what they can do with our product, how versatile it is, um, again, the risks and rewards, and then it would be great to see as a result of this, a- an uptake in, in retail demand, more participation in these strategies, um, and ultimately like stimulating Cardano DeFi.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>'Cause they, where I was kind of leading you, um, unfairly, was in my mind, I was like I'd listen to all these strategies and stuff, but I would be like, if I was in DeFi and I wanted to try it in Cardano, like, what is the lowest risk?</p>
+  <p>Like what, if somebody was saying to me... And I think the answer's the supply side, right?</p>
+  <p>That you were saying to me on that call, but about supplying the, um, USDrf is reasonably low risk, um, compared to more complicated strategies.</p>
+  <p>Um, so this is the kind of thing that I was interested in, you know? Um, does that line up- I don't know ... with, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I don't know if I'd be comfortable saying that.</p>
+  <p>Um, [a colleague], I, I see you're on the call. I, I don't know if am I, I mean, is that a fair statement or, or do you agree? I mean, I think you'd have to look at it on a case by case basis.</p>
+  <p>I think it depends on the, on the pool</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>and I'm being unfair to Liam. Yeah, I, I, I retract my comment because I'm not trying to put you on the spot.</p>
+  <p>But, uh, but definitely one of the things I think about, uh, education, just getting more people involved in DeFi and Cardano, right?</p>
+  <p>Like, everybody that's been in Cardano for years knows that not enough people are actually using...</p>
+  <p>If, if half the people that were on X stirring up drama, right were actually using the product in the DeFi, we'd have so much more, more volume, right? Like on chain. So, um- Yeah ...</p>
+  <p>I think that's kind of, yeah Where I'm going. Yeah. Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>And, and, and stablecoin supply is, I mean, I think we all know stablecoin supply is, is, is, is really the key metric.</p>
+  <p>It's, it's, it's the key, at least how I view it, it's a key limiting factor on, on Cardano DeFi, more stablecoins, so I think we know it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Mm. Uh, so a question about rPoints.</p>
+  <p>Um, at the moment, uh, this is my understanding, like, uh, we're trying to get to a point where we can go out and let people, uh, claim them, but the- that's with the team in terms of the actual timelines.</p>
+  <p>Uh, they are close because I'm trying to get my, um, Decentralized Adventures campaign, um, uh, aligned with it, right?</p>
+  <p>So I'm gonna go out to the SPOs and let them know when the team gives me the green light, um, and say, "Okay.</p>
+  <p>Hey, like, let's get your delegators and, and, uh, the rest of the community to understand how they can, uh, convert them." Right?</p>
+  <p>So it is gonna be reasonably soon, but I, I can't put a date on it just because, uh, these things change, you know? Um- Um.</p></div>
+</div>
+
+<div class="sec">A comment: R-Points shape behaviour</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Can, can I, can I quickly just address a, a comment from [Participant N], if, if I have time?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, please.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Um, so [Participant N], you're saying that personally, your use of RealFi is skewed from the rPoints, uh, as in when rPoints allocations change, that your strategies will change, and, and that's completely fair.</p>
+  <p>I mean, that's why we've done the rPoints, because we understand that maybe the, the things we need to stimulate the ecosystem aren't necessarily from day one the things that, that makes perfect sense to users.</p>
+  <p>So we're essentially adding a cherry on top to, to kickstart that ecosystem. So yeah, that's, that's, that's 100% the design and, and I'm glad that you see it that way, [Participant N].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay. Cool.</p>
+  <p>Um, there's any other questions? Um, [Participant C], I read your, uh, I read your... I don't know what that is, label like mom, and I, and I read Mom Ben. Like, like my mom's in the chat. Um, yeah.</p>
+  <p>Any other questions, guys? Um, if anybody wants to come up sp- stage, I think maybe we've got five, five, 10 more minutes, um, if Liam, if you've got the time, but otherwise...</p>
+  <p>Ah, [Participant K] is coming up. Hang on.</p></div>
+</div>
+
+<div class="sec">From the stage: USDM, borrow rates, subsidies</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>I've got time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>[Participant K], legend.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Hey, guys. Man. What's going on? Can you hear me okay? Check, check.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yes, sir. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Okay. Okay. Uh, first off, great presentation.</p>
+  <p>Sorry about all the questions. I always have a lot of them. Uh, I do apologize.</p>
+  <p>I've been that way for seven years, or, or probably actually longer, but seven years here, and, and, uh, I just can't seem to shake it.</p>
+  <p>Uh, so, uh, I am curious though, uh, this is mostly DeFi strategies in order to help people understand a little bit better the risks associated with it, and also potentially how to actually make some money doing this, uh, which is exceedingly helpful, so thank you guys for doing this.</p>
+  <p>This is absolutely amazing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Um, what I'm curious about is, obviously I'm a USDM guy, so I'm looking for USDM to be utilized, and right now it's, it's prohibitive, uh, when it comes to the borrow rate.</p>
+  <p>Uh, um, supply rate's great, you know, as far as the APY goes, but it's the borrow rate's at 27%, exceedingly high. Um, Djed's at 30%, that borrow rate's exceedingly high.</p>
+  <p>USDA is at 30%, exceedingly high. Um, the only one that seems to be relatively low, and the gap between the APY and the APR are exceedingly s- uh, tight, right?</p>
+  <p>Um, where the gaps between the others are, uh, much higher, uh, or much larger. So is this being artificially subsidized? Uh, and if so, um, what's the...</p>
+  <p>Obviously you want, you wanna drive use for USDrf, I get it.</p>
+  <p>Um, but could it be helpful if the other stables were also potentially subsidized in order to spur, um, potential, uh, participation where you might not see it currently yet?</p>
+  <p>It might be tapping out, I'm not even sure, as far as, you know, the utilization of it and people are actually engaged in doing these particular looping strategies.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Sure.</p>
+  <p>Um, [Participant K], honestly, I, I, I don't know if it's, if it's subsidized. I, I couldn't give you an answer. I, I think that would probably be better answered by, by, uh, GTM or someone from product.</p>
+  <p>[a colleague], I see you. Um, in terms of would the, would lower borrow rates on the other stable coins be beneficial? I mean, I, I definitely don't see how it could be hurt, um, how it could hurt.</p>
+  <p>Um, I think, like I said, any way to put more stable coins in circulation, people using them, because you're right, 30% is, is incredibly prohibitive.</p>
+  <p>So yeah, more stable coins in circulation is good for everyone. Uh, yeah, I'd have to think a little bit more about what the impact would be on RealFi.</p>
+  <p>Like, we maybe would need a few more pools of some sort to really unlock that. But in general, across Cardano DeFi, I mean, no doubt that lower-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>I immediately thought the same thing.</p>
+  <p>Um, Linear V4 is just getting started. I'm exceedingly excited about it.</p>
+  <p>I know that the AlphaGrowth team is also going to be utilizing it quite heavily because it's really the only vehicle that actually, um, works to what it is they want to do with vaults, managed vaults, things like that, rehypo- rehypothecation, things of that nature.</p>
+  <p>So I think the, the next step would be is to create, uh, a, a couple other pools that would- Oh, yeah ... uh, be able to help, um, with what RealFi's doing.</p>
+  <p>'Cause I do believe right now that, uh, the yield that it's giving, the amount of, um...</p>
+  <p>I'm sure it's making Ben's job really easy when it comes to, uh, promoting this particular product, 'cause it's self-promoting itself because of the yield that's benefiting from it.</p>
+  <p>Um, if we start to see other stables in the ecosystem actually participate, then that liquidity is then, you know, um, the amount of liquidity increases with it, um, which makes it better- Good ...</p>
+  <p>for the UX, for the user. So yeah, uh, definitely it, it makes sense. So hopefully, um- Those conversations, I'm sure those ... Actually, I'm not hopefully.</p>
+  <p>I'm sure those conversations are happening internally, um, with what you guys are doing, and then you providing new loop strategy-- looping strategies, um- Yeah, exactly ...</p>
+  <p>and ideas ways to make money, exceedingly helpful. Thank you for doing this stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>You're welcome. Thank you for the, for the kind words.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Welcome to the age of DeFi, guys.</p>
+  <p>It's been a long time coming.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Big time, man.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, I, I might follow up with you about [Participant K], though, about just some ideas around kind of community engagement. Okay.</p>
+  <p>Um, once, uh, I've, once I've got some of this stuff, uh, published then I can give you some examples.</p>
+  <p>But I think it's, like, a lot of fun to be had, and, um, you know, people need rational hope, right? Uh, and I think this is what kind of RealFi and DeFi can do.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>A- and it's the reason we're all here, I think. Um, well, one of. I can think of a few others, you know? Um, okay. So, uh, any last words, [Participant K], Liam? Any other questions from the audience? Yeah.</p>
+  <p>Okay, great. I will, I will write this up, and we'll do a little blog post, um, as is the tradition. I really appreciate you coming on again, Liam. Um, always enjoy listening to you.</p>
+  <p>Thank you so much. And [Participant K], thanks for coming up to talk. It's always way better when people come up and, uh, we can chat, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Absolutely, man.</p>
+  <p>It's, ever since, uh, Consensus Austin when I got to meet you for the first time at-- before that with, you know, along with, uh, those AMAs that we were always in all the time. Uh, and so- ...</p>
+  <p>it's been, we've been doing this for a long time. And Liam, pleasure getting to meet you. Get- getting to meet you, uh, virtually here.</p>
+  <p>Uh, and, uh, yeah, look forward to some of the new things that, uh, you come up with. And I agree with Ben. Um, the more we produce, um, consistency, right?</p>
+  <p>Which then produces trust, uh, which then gives the ability for the user to think that what they're doing, they feel more secure in what they're doing.</p>
+  <p>It's been super hard to get people to over that particular line. Mm. You know, 'cause they're always- Mm ...</p>
+  <p>worried about losing funds, especially in today's climate w- with the Binance hack that's just recently happened, right? I can't imagine that produced any amount of confidence in anybody.</p>
+  <p>Uh, quite the opposite, you know? So it just makes it really hard for us- You know- ... as a, an industry ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>one of the great things the RealFi team did was made me go and use a product in different ways. It's like- ... I think, like, it ...</p>
+  <p>I'd, I would've, I would've done it anyway, Liam, I promise, right? But I, no, I was made to go and do it. Um, it was, and it, it was really good because it's like you can ...</p>
+  <p>From my point of view, you could listen to people talking about DeFi strategies and, like, maybe they're s- they're traders or they're, they're really familiar with those concepts, you know?</p>
+  <p>But if you're learning it for the first time, like when I started doing looping for the first time, like, that probably took me half day, I'm embarrassed to admit.</p>
+  <p>But we're, we're all friends here, right? I can, I can share with you guys. So, but n- once I got the hang of it, I was like, "Oh, this is really cool," right?</p>
+  <p>And you need these kind of, you need these kind of base block experiences in which to develop more sophisticated thinking.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And I think there is just that gap between a lot of people that got into, uh ... I, I'm, so my origins are in Cardano, and this is the RealFi community for sure, right?</p>
+  <p>So we're the RealFi community here, but personally, my origins were in Cardano. And, um, I think that you can get involved in ...</p>
+  <p>The reason people join a project isn't why they stay, and you can get involved for all kinds of reasons. People are building or into the governance stuff or, you know.</p>
+  <p>So I think getting, getting those kind of, um, broad, broad experiences and skill sets, um, to try something like that is, is a really important first step.</p>
+  <p>And that's what I was gonna follow up with you later about, [Participant K].</p>
+  <p>I've been building a campaign with the team, so I wanna give you a bit of insight into that and see whether or not we might collaborate on that, you know? Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>That works. Thanks, man.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah.</p>
+  <p>No, sorry for taking the last word. It's selfish of me, but yeah. Um, right. Everyone, thank you so much for joining.</p>
+  <p>And, um, you definitely, you're gonna see stuff happening in the near future, so thank you, and I will see you all soon. Thanks, Liam.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Thanks, [Participant K].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K <em>(inferred)</em></div>
+  <div class="turn-body"><p>Thanks, guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Thanks, everyone.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the anonymisation and the corrected proper nouns noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All sessions</a>
+</nav>
+
+<footer>
+  <p>RealFi Office Hours archive</p>
+</footer>
+
+</div>
+</body>
+</html>

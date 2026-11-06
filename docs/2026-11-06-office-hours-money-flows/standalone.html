@@ -1,0 +1,3570 @@
+<title>RealFi Office Hours #11 — Money Flows &amp; DeFi Strategies — まとめ / Summary</title>
+<style>
+/* Cardano セッションのアーカイブ — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.35rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* RealFi Office Hours の通し番号。カードの見出しの上に小さく出す */
+.card-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+
+/* 全文は畳んでおく。開くまでは、このページはまとめだけの長さで開く。 */
+details.part { display: block; }
+details.part > summary.part-head { cursor: pointer; list-style: none; margin: 0; }
+details.part > summary.part-head::-webkit-details-marker { display: none; }
+details.part[open] > summary.part-head { margin-bottom: 2rem; }
+details.part > summary.part-head::after {
+  content: "開く"; margin-left: auto; white-space: nowrap;
+  font-size: .75rem; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .75rem;
+}
+details.part[open] > summary.part-head::after { content: "閉じる"; }
+:root[data-lang="en"] details.part > summary.part-head::after { content: "Open"; }
+:root[data-lang="en"] details.part[open] > summary.part-head::after { content: "Close"; }
+details.part > summary.part-head:hover { background: var(--surface-alt); }
+details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<script>
+// 全文は畳んであるので、リンクや印刷で中に入るときは開いておく。
+(function () {
+  function openTo(el) {
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+  }
+  function openHash() {
+    if (!location.hash) return;
+    try { openTo(document.querySelector(location.hash)); } catch (e) {}
+  }
+  window.addEventListener('hashchange', openHash);
+  window.addEventListener('DOMContentLoaded', openHash);
+  window.addEventListener('beforeprint', function () {
+    var all = document.querySelectorAll('details');
+    for (var i = 0; i < all.length; i++) all[i].open = true;
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">RealFi Office Hours #11</p>
+<h1><span class="l-ja">Money Flows &amp; DeFi Strategies — 小口の需要が TVL を動かし、その USDrf の 77% は DeFi で働いている</span><span class="l-en">Money Flows &amp; DeFi Strategies — retail demand moves TVL, and 77% of that USDrf is at work in DeFi</span></h1>
+<p class="meta"><span>2026-11-06</span><span>Discord</span><span><span class="l-ja">登壇 2 名（ステージから 1 名）</span><span class="l-en">Two speakers (one from the stage)</span></span>
+</p>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>ローンチからの 4 週間、オンチェーンのデータで「お金がどこに流れたか」を追った回です。<br>
+  <strong>TVL は平坦に見えるが、小口の需要は毎週増えていて、それが市場メーカーの mint を通じて TVL になる</strong>。そして小口の USDrf の 77% は、Strike・Liqwid・SundaeSwap で働いている。数字はすべて 10 月 27 日時点です。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>小口の需要が先、TVL は後。</strong>透明性ポータルの TVL は 10 月 19 日に跳ねただけに見えるが、小口がプールで買ったり Liqwid で借りたりした USDrf の累計は、ローンチからその日までに着実に増えていた、と説明されました。累計は 63 万ドル。</li>
+  <li><strong>需要が TVL に変わる仕組み。</strong>小口がプールで USDrf を買うと USDCx が余る。市場メーカーがその USDCx で新しい USDrf を mint してプールに戻す。その時点で初めて TVL が増える。</li>
+  <li><strong>小口が USDrf を手に入れる経路は 2 つだけ。</strong>SundaeSwap のプールで買うか、Liqwid で借りるか。小口は mint できない。</li>
+  <li><strong>77% は DeFi で働いている。</strong>Strike に 30%、Liqwid に 4 つの戦略で 30%、ウォレットで持つだけが 13%。「ほとんどが DeFi にある」と。</li>
+  <li><strong>足りないのは供給側。</strong>Liqwid で借りる人が増えて利用率が上がると、金利が急に上がる点（キンク）に近づく。USDrf と USDCx を Liqwid に供給する人にインセンティブを出している、と。</li>
+  <li><strong>利回りの数字は、どれも留保つき。</strong>チャットの「45% APR」は未確認、「12.2%」は特定の日の sUSDrf の利回り。データ責任者は「包括的な調査はしていない」と明言しています。</li>
+  <li><strong>持ち帰りが 4 つ。</strong>市場メーカーの名前（言わない）、プールの USDCx が準備資産に行く経路（トレジャリーの管轄）、USDrf の借入金利が補助されているか（分からない）、R-Points の請求時期（近いが日付は言えない）。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#ground"><span class="n">01</span>前提 — すべてオンチェーン、10 月 27 日時点</a></li>
+  <li><a href="#demand"><span class="n">02</span>小口の需要は先行指標、TVL は遅行指標</a></li>
+  <li><a href="#mint"><span class="n">03</span>市場メーカーが需要を mint に変える</a></li>
+  <li><a href="#venues"><span class="n">04</span>小口の USDrf はどこにあるか — 77% は DeFi</a></li>
+  <li><a href="#strategies"><span class="n">05</span>10 の戦略</a></li>
+  <li><a href="#supply"><span class="n">06</span>供給側 — 利用率、キンク、インセンティブ</a></li>
+  <li><a href="#returns"><span class="n">07</span>利回りは「いくら」なのか</a></li>
+  <li><a href="#campaign"><span class="n">08</span>教育キャンペーンと R-Points</a></li>
+  <li><a href="#usdm"><span class="n">09</span>ステージから — USDM と他のステーブルの借入金利</a></li>
+  <li><a href="#overall"><span class="n">10</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">12</span>持ち帰りになった論点</a></li>
+</ol>
+</div>
+
+<h2 id="ground">1. 前提 — すべてオンチェーン、10 月 27 日時点</h2>
+<p class="deck">「何をすべきか」ではなく「人々が何をしたか」。検証できるデータだけ。</p>
+
+<p>話し手は RealFi のデータ機能を率いる立場で、担当は 2 つと説明されました。透明性ポータルやパートナーに出すデータを届ける「データ基盤」と、チームのためのインサイト・分析・モニタリング。今回はその社内で見てきたものを、そのまま共有する、と。</p>
+
+<p>前提が 2 つ置かれました。<strong>データはすべてブロックチェーンから引いたもの</strong>で、「検証できるし、私の前提を疑ってもらって構わない。独占的なものは何もない」。もう 1 つは、<strong>これは記述であって指示ではない</strong>こと。後半で「ツイートしていいか、チャタムハウスルールか」と聞かれたときも、「すべてオンチェーンのデータ。お金の追い方は私の手法だが、取引は誰でも見られる」と答えています。<span class="badge">スライド</span>数字はすべて 2026 年 10 月 27 日時点のスナップショットで、venue ごとの API も一部使っている、と。</p>
+
+<p><span class="badge">補足</span>コール中ではこの回を <strong>#11</strong> と呼んでいませんが、公式の告知に「OFFICE HOURS #11」とあります。前回 <a href="../2026-10-09-office-hours-mainnet/">#10（10 月 9 日）</a>は mainnet 直後の「いま何ができるか」の案内で、この回はその 4 週間後に「実際に何が起きたか」を数字で見る回です。</p>
+
+<h2 id="demand">2. 小口の需要は先行指標、TVL は遅行指標</h2>
+<p class="deck">TVL は 10 月 19 日に跳ねただけ。小口の純流入は、その前から着実に増えていた。</p>
+
+<p>最初の論点は、<strong>小口の需要と TVL は関係はあるが同じものではない</strong>、ということでした。透明性ポータルの TVL は「10 月 19 日の跳ね上がりを除けばかなり平坦」に見え、「たいしたことが起きていないように見える」。しかしそれは流通している USDrf の量にすぎず、<strong>TVL は需要の遅行指標</strong>だ、と。</p>
+
+<p>代わりに社内で KPI として監視しているのが<strong>「小口の需要（retail demand）」</strong>です。定義は「小口が機関の手から取り出すことのできた USDrf のすべて」。小口は mint できないので、手に入れる経路は SundaeSwap のプールで買うか、Liqwid のプールから借りるかの 2 つしかない。この純流入をローンチから累計すると、TVL とは「まったく違う絵」になり、<strong>10 月 19 日よりかなり前から急な伸び</strong>がある、と説明されました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="ローンチから 10 月 27 日までの小口の純流入の累計を折れ線で、TVL の見え方を段差で示した図。小口の流入は 10 月 15 日ごろから伸び、TVL は 10 月 19 日に 1 段上がるだけ">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">小口の純流入の累計（10 月 1 日〜27 日）と、TVL の見え方</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">スライドのチャートをこちらで簡略に描き直したもの。数値は 2026 年 10 月 27 日時点</text>
+
+  <line x1="60" y1="240" x2="640" y2="240" class="d-line"/>
+  <line x1="60" y1="70" x2="60" y2="240" class="d-line"/>
+  <text x="54" y="244" class="d-s" text-anchor="end">0</text>
+  <text x="54" y="162" class="d-s" text-anchor="end">30 万</text>
+  <text x="54" y="80" class="d-s" text-anchor="end">60 万</text>
+  <text x="60" y="258" class="d-s" text-anchor="middle">10/1</text>
+  <text x="206" y="258" class="d-s" text-anchor="middle">10/9</text>
+  <text x="335" y="258" class="d-s" text-anchor="middle">10/15</text>
+  <text x="460" y="258" class="d-s" text-anchor="middle">10/19</text>
+  <text x="640" y="258" class="d-s" text-anchor="middle">10/27</text>
+
+  <line x1="460" y1="70" x2="460" y2="240" class="d-line" stroke-dasharray="4 4"/>
+
+  <polyline points="60,233 150,222 206,200 310,198 335,189 357,167 380,153 420,131 460,123 482,101 520,95 545,84 585,86 610,72 640,69" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <text x="600" y="60" class="d-s d-a" text-anchor="middle">小口の純流入 累計 63 万ドル</text>
+
+  <polyline points="60,228 460,228 460,142 640,142" fill="none" class="d-line" stroke-width="2.5"/>
+  <text x="560" y="134" class="d-s" text-anchor="middle">TVL の見え方（模式図）</text>
+  <text x="560" y="150" class="d-s" text-anchor="middle">10/19 に 1 段上がるだけ</text>
+
+  <text x="340" y="284" class="d-s" text-anchor="middle">「10 月 15 日ごろ」から小口の流入が伸び、19 日に市場メーカーが mint して TVL が追いつく（3 節）</text>
+</svg>
+<p class="figcap"><span class="badge">スライド</span>折れ線の形と「63 万ドル」はスライドのチャートから読み取ったもので、コール中では「着実に増え、19 日よりかなり前に急な伸びがある」とだけ語られています。TVL の線は縦軸を共有しない模式図で、「平坦で、19 日に跳ねる」という説明を形にしただけです。</p>
+</div>
+
+<h2 id="mint">3. 市場メーカーが需要を mint に変える</h2>
+<p class="deck">プールが傾くと USDCx が余る。市場メーカーがそれで USDrf を mint して戻す。その時点で TVL が増える。</p>
+
+<p>なぜ遅れが出るのか、仕組みが説明されました。「皆が知っていることかもしれないが」と前置きしたうえで。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="小口の需要が TVL になるまでの 3 段階の流れ。小口がプールで USDrf を買って USDCx が余る、市場メーカーが USDCx で USDrf を mint する、新しい USDrf がプールに戻って TVL が増える">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">需要が TVL に変わるまで（コール中の説明をもとに整理）</text>
+
+  <rect x="16" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="114" y="80" class="d-t" text-anchor="middle">① 小口が買う</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">SundaeSwap のプールで</text>
+  <text x="114" y="120" class="d-s" text-anchor="middle">USDCx を渡して USDrf を得る</text>
+  <text x="114" y="138" class="d-s" text-anchor="middle">USDrf が減り、USDCx が余る</text>
+
+  <line x1="212" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="242" y="56" width="196" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="80" class="d-t d-a" text-anchor="middle">② 市場メーカーが mint</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">余った USDCx を取り出し</text>
+  <text x="340" y="120" class="d-s" text-anchor="middle">RealFi に持ち込んで</text>
+  <text x="340" y="138" class="d-s" text-anchor="middle">新しい USDrf を mint する</text>
+
+  <line x1="438" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="468" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="566" y="80" class="d-t" text-anchor="middle">③ プールに戻す</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">新しい USDrf がプールに入り</text>
+  <text x="566" y="120" class="d-s" text-anchor="middle">バランスが戻る</text>
+  <text x="566" y="138" class="d-s" text-anchor="middle">ここで TVL が 1 段上がる</text>
+
+  <text x="340" y="190" class="d-s" text-anchor="middle">10 月 19 日の跳ね上がり＝「不均衡が十分に大きくなり、市場メーカーに『そろそろ mint しよう』と言った時点」</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">小口は mint できない。小口が USDrf を手に入れる経路は、このプールか Liqwid での借入だけ</text>
+</svg>
+<p class="figcap">コール中の説明をそのまま 3 段に並べたものです。<span class="badge">スライド</span>プールの両側の推移を示すチャートでは、USDrf 側が 10 月 18 日にかけて細り、19 日に戻っていました。</p>
+</div>
+
+<p>チャットからの<strong>「市場メーカーは誰か」</strong>という問いには、「何を言ってよいか分からないので機関の名前は出さない」と断ったうえで、仕組みだけが答えられました。リニア・スワップが不均衡になると、市場メーカーがそこから USDCx を買い、RealFi に持ち込んで「余った USDCx を全部 USDrf に mint してくれ」と言い、それをスワップに戻してリバランスする、と。<span class="badge">補足</span>コール中ではこのプールを「リニア・プール」「リニア・スワップ」と呼んでいます。SundaeSwap の USDrf/USDCx のプールのことで、名前は聞こえたまま残しています。</p>
+
+<p>続く<strong>「プールが受け取った USDCx はどうなるのか」</strong>には、「プールにそのまま置かれていて、LP を入れている市場メーカーがその一部に請求権を持つ。小口も LP できるので請求権はあるが、大半は市場メーカー」。さらに<strong>「その USDCx は最終的に焼却されて裏付けの USDC になり、オフチェーンの準備資産に行くのか」</strong>という問いには、「使われる。トレジャリーと投資チームの管轄で、余った USDCx は最終的に投資される。ただ、どう流れるかの技術的な細部は分からない」と答え、進行役がフォローアップを約束しました。</p>
+
+<h2 id="venues">4. 小口の USDrf はどこにあるか — 77% は DeFi</h2>
+<p class="deck">Strike と Liqwid で「ほぼ 80%」。ウォレットに置くだけの人は 5 分の 1。</p>
+
+<p>Part 2 は「人々は USDrf で何をしているか」。コール中ではこれを「venue（場所）」ごとに見ているので、以下もその言葉で書きます。有望だと述べられたのは、人々が USDrf を買ってウォレットに置いているだけではなく、<strong>Strike や Liqwid といった Cardano の DeFi に参加している</strong>こと。「RealFi が得ている TVL が、エコシステム全体の DeFi の TVL にも貢献している」と。</p>
+
+<p>venue 別の推移では、<strong>黄色がかった大きな塊が Strike</strong>で、10 月 13 日ごろに大きく立ち上がり、「これが小口の流入の多くを生んだ」。緑が Liqwid で、USDrf をステークして担保として預けたもの。いちばん上の層が、ステーク済みの USDrf をウォレットに持って基本の利回りだけを得ている人たち。「Strike と Liqwid で小口の USDrf のほぼ 80%。大半が DeFi にある」とまとめられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 286" role="img" aria-label="2026 年 10 月 27 日時点で小口の USDrf がどの venue にあるかの内訳。Strike 約 28.5 万ドル、Liqwid 約 15 万ドル、ウォレット約 13 万ドル、SundaeSwap のプール約 3 万ドル。合計約 60 万ドルのうち 77% が DeFi">
+  <text x="340" y="24" class="d-t" text-anchor="middle">小口の USDrf はどこにあるか（2026 年 10 月 27 日時点、約 60 万ドル）</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">スライドの積み上げグラフの最終日をこちらで読み取ったもの。概数</text>
+
+  <text x="16" y="86" class="d-s">Strike（sUSDrf を担保に）</text>
+  <rect x="200" y="70" width="326" height="26" rx="4" class="d-box-accent"/>
+  <text x="536" y="88" class="d-s">約 28.5 万ドル</text>
+
+  <text x="16" y="128" class="d-s">Liqwid（担保・供給）</text>
+  <rect x="200" y="112" width="172" height="26" rx="4" class="d-box"/>
+  <text x="382" y="130" class="d-s">約 15 万ドル</text>
+
+  <text x="16" y="170" class="d-s">ウォレットに置くだけ</text>
+  <rect x="200" y="154" width="149" height="26" rx="4" class="d-box-plain"/>
+  <text x="359" y="172" class="d-s">約 13 万ドル（この 5 分の 1 が「働いていない」分）</text>
+
+  <text x="16" y="212" class="d-s">SundaeSwap のプール</text>
+  <rect x="200" y="196" width="34" height="26" rx="4" class="d-box"/>
+  <text x="244" y="214" class="d-s">約 3 万ドル</text>
+
+  <text x="340" y="256" class="d-s" text-anchor="middle">Strike + Liqwid + プール ＝ 77% が DeFi で働いている。Strike の層は 10 月 13 日ごろに現れ、2 週間で最大に</text>
+  <text x="340" y="276" class="d-s" text-anchor="middle">内訳はスライドの凡例どおり（保留中の cooldown・注文は小さいので省略）</text>
+</svg>
+<p class="figcap"><span class="badge">スライド</span>金額はチャートの最終日の高さからこちらが読み取った概数で、コール中で口に出されたのは「Strike と Liqwid でほぼ 80%」だけです。スライドの見出しは「77% は DeFi で働き、残りの 5 分の 1 はウォレットにある」でした。</p>
+</div>
+
+<p><span class="badge">補足</span>venue の名前は、コール中で説明なしに使われています。Strike は Cardano の無期限先物（perp）取引所で、コール中で「Strike の perp 取引所からの利回り」と触れられています。Liqwid はレンディング。Indigo は合成資産のプロトコルで、戦略の一覧に「USDrf を iUSD にスワップ」として出てきます。USDM・USDA・Djed は Cardano 上の他のステーブルコインです。</p>
+
+<h2 id="strategies">5. 10 の戦略</h2>
+<p class="deck">お金を追いかけて、使い方を「戦略」にまとめた。Strike が 1 つで 30%、Liqwid が 4 つで 30%。</p>
+
+<p>小口が USDrf を手に入れた 2 つの経路——プールで買う、Liqwid で借りる——から<strong>「お金を追いかけて」</strong>、行き着いた先を使い方ごとにまとめたのが「戦略」です。コール中でそう呼んでいるので、以下もその言葉で書きます。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 392" role="img" aria-label="小口の資金が向かった 10 の戦略を金額順に並べた横棒グラフ。Strike に預ける 28.2 万ドル 30% が最大、以下ウォレットで持つ 12.1 万ドル、Liqwid の 4 戦略、SundaeSwap のプール、Indigo、EVM へのブリッジ、その他">
+  <text x="340" y="24" class="d-t" text-anchor="middle">10 の戦略（グロス、ローンチ〜10 月 27 日。合計 94.4 万ドル）</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">スライドのランキングをこちらで描き直したもの。金額は千ドル単位</text>
+
+  <text x="16" y="78" class="d-s">Strike · sUSDrf を預ける</text>
+  <rect x="300" y="62" width="300" height="22" rx="4" class="d-box-accent"/>
+  <text x="608" y="78" class="d-s">282 · 30%</text>
+
+  <text x="16" y="108" class="d-s">ウォレット · sUSDrf を持つ</text>
+  <rect x="300" y="92" width="129" height="22" rx="4" class="d-box-plain"/>
+  <text x="437" y="108" class="d-s">121 · 13%</text>
+
+  <text x="16" y="138" class="d-s">Liqwid · USDCx を借りて EVM へ</text>
+  <rect x="300" y="122" width="109" height="22" rx="4" class="d-box"/>
+  <text x="417" y="138" class="d-s">102 · 11%</text>
+
+  <text x="16" y="168" class="d-s">Liqwid · ループ</text>
+  <rect x="300" y="152" width="77" height="22" rx="4" class="d-box"/>
+  <text x="385" y="168" class="d-s">72 · 8%</text>
+
+  <text x="16" y="198" class="d-s">Liqwid · キャリー（他のステーブルを供給）</text>
+  <rect x="300" y="182" width="64" height="22" rx="4" class="d-box"/>
+  <text x="372" y="198" class="d-s">60 · 6%</text>
+
+  <text x="16" y="228" class="d-s">SundaeSwap · プールに流動性</text>
+  <rect x="300" y="212" width="61" height="22" rx="4" class="d-box-plain"/>
+  <text x="369" y="228" class="d-s">57 · 6%</text>
+
+  <text x="16" y="258" class="d-s">Indigo · iUSD にスワップ</text>
+  <rect x="300" y="242" width="54" height="22" rx="4" class="d-box-plain"/>
+  <text x="362" y="258" class="d-s">51 · 5%</text>
+
+  <text x="16" y="288" class="d-s">Liqwid · USDrf を借りて USDCx 借入を返済</text>
+  <rect x="300" y="272" width="48" height="22" rx="4" class="d-box"/>
+  <text x="356" y="288" class="d-s">45 · 5%</text>
+
+  <text x="16" y="318" class="d-s">EVM へ · Liqwid で借りて売り、USDC を送る</text>
+  <rect x="300" y="302" width="43" height="22" rx="4" class="d-box-plain"/>
+  <text x="351" y="318" class="d-s">40 · 4%</text>
+
+  <text x="16" y="348" class="d-s">その他</text>
+  <rect x="300" y="332" width="121" height="22" rx="4" class="d-box-plain"/>
+  <text x="429" y="348" class="d-s">114 · 12%</text>
+
+  <text x="340" y="380" class="d-s" text-anchor="middle">出どころ：プールで買った 59.8 万ドル ＋ Liqwid で借りた 34.6 万ドル。グロスなので、担保と借入は二重に数えている</text>
+</svg>
+<p class="figcap"><span class="badge">スライド</span>金額と割合はスライドのランキングのもので、コール中で口に出されたのは「Strike に 30%」「ループが 8%」と各戦略の説明だけです。合計が純流入の 63 万ドルではなく 94.4 万ドルなのは、sUSDrf を Liqwid に預けて借りると担保と借入の両方を数えるから、とスライドの注記にありました。「ブリッジ」は、ブリッジが USDCx を焼却してお金が Cardano から EVM に出た、という意味です。</p>
+</div>
+
+<p>各戦略の中身は、コール中で次のように説明されました。</p>
+
+<ul>
+  <li><strong>Strike に預ける（30%）。</strong>USDrf をステークし、sUSDrf を Strike に預ける。「RealFi の利回りに加えて、Strike の perp 取引所からの利回りを得る」。10 月 27 日時点で「圧倒的に主要な戦略」</li>
+  <li><strong>ウォレットで持つ（13%）。</strong>ステーク済みの USDrf を持って、RealFi のステーキング利回りだけを得る</li>
+  <li><strong>Liqwid で借りて EVM へ（11%）。</strong>sUSDrf を担保に USDCx を借り、EVM にブリッジして EVM の DeFi に参加する</li>
+  <li><strong>ループ（8%）。</strong>sUSDrf を担保に USDCx を借り、USDrf に替えてまたステークし、繰り返す。<a href="../2026-10-09-office-hours-mainnet/#loop">#10 で Head of Product が説明した</a>のと同じ動き</li>
+  <li><strong>キャリー取引（6%）。</strong>Liqwid で USDrf を借り、USDM・USDA・Djed に替えて Liqwid に供給し直す。「当時、USDrf を借りる金利が、ステーブルコインを供給して得る金利より低かったから」。つまりステーブルコインの金利差の裁定</li>
+  <li><strong>プールに流動性（6%）。</strong>SundaeSwap のプールに USDrf を供給する。「RealFi にとって常にありがたい」</li>
+  <li><strong>借り換え（5%）。</strong>USDrf の借入金利が低かったので、USDrf を借りて USDCx に売り、USDCx の借入を返す。「USDrf の低い金利で USDCx の借入を借り換えていた」</li>
+</ul>
+
+<p><span class="badge">補足</span>キャリー取引と借り換えは、どちらも「USDrf の借入金利が他より低い」ことを前提にした動きです。6 節のとおり、借りる人が増えれば USDrf の金利は上がるので、この 2 つは<strong>金利の状況しだいで消える戦略</strong>です。データ責任者自身も「当時は」と時点を限定して語っています。</p>
+
+<h2 id="supply">6. 供給側 — 利用率、キンク、インセンティブ</h2>
+<p class="deck">借りる人が増えると金利が急に上がる。だから供給する人にポイントを出している。</p>
+
+<p>進行役が「RealFi がプロトコルとして見たいのは供給する人だ、という場面がある」という先週の話を持ち出し、もう一度説明を求めました。コール中ではこの話で「利用率（utilization rate）」「キンク」という言葉を使っているので、以下もその言葉で書きます。</p>
+
+<p>Liqwid で借りる人が増えると、借りられた USDrf が供給された USDrf に近づき、<strong>利用率が非常に高くなる</strong>。供給が尽きかけると金利が上がり、「キンクに当たると、その時点でおそらく取引として成り立たなくなる」。だから<strong>USDrf を Liqwid に供給すること</strong>がエコシステムを刺激する、と。理由は 2 つ。供給するとインセンティブとポイントがもらえること、そして小口が妥当な金利で借りられる供給が増えること。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="利用率と借入金利の関係を示す模式図。利用率が低いうちは金利がゆるやかに上がり、キンクを超えると急に上がる。供給が増えると利用率が下がりキンクから遠ざかる">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">「キンク」— 利用率と借入金利の関係（コール中の説明を模式図にしたもの）</text>
+
+  <line x1="80" y1="210" x2="620" y2="210" class="d-line" marker-end="url(#m3)"/>
+  <line x1="80" y1="210" x2="80" y2="50" class="d-line" marker-end="url(#m3)"/>
+  <text x="620" y="232" class="d-s" text-anchor="end">利用率（借りられた USDrf ÷ 供給された USDrf）</text>
+  <text x="74" y="46" class="d-s" text-anchor="end">金利</text>
+
+  <polyline points="80,200 440,170 560,60" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <circle cx="440" cy="170" r="5" class="d-box-accent"/>
+  <text x="440" y="192" class="d-s d-a" text-anchor="middle">キンク</text>
+  <text x="520" y="112" class="d-s" text-anchor="end">ここから金利が急に上がり</text>
+  <text x="520" y="128" class="d-s" text-anchor="end">「取引として成り立たなくなる」</text>
+
+  <line x1="400" y1="100" x2="250" y2="100" class="d-line-accent" marker-end="url(#m3)"/>
+  <text x="325" y="90" class="d-s" text-anchor="middle">供給が増えると利用率が下がる</text>
+
+  <text x="340" y="254" class="d-s" text-anchor="middle">「まだそこまでは行っていないが、遠くもない」。供給する側に RealFi からインセンティブとポイント</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>曲線の形は、変動金利型のレンディングで一般的な「ある利用率を境に金利の傾きが変わる」設計をこちらで描いたもので、Liqwid の実際のパラメータではありません。コール中で語られたのは「供給が尽きかけると金利が上がり、キンクに当たる」という説明だけです。</p>
+</div>
+
+<p>もう 1 つの供給は<strong>ステーブルコイン</strong>です。多くの人が sUSDrf を担保に USDM・Djed・USDCx などを借りたがっているので、その供給が足りなければ「金利はすぐに法外になる。まだそこまでは行っていないが、遠くもない」。だから RealFi は、<strong>Liqwid の RealFi 向けプールに USDCx を供給する人にもインセンティブを出している</strong>、と。供給すれば利回りに加えて RealFi からのインセンティブも付く、という説明でした。</p>
+
+<div class="term">
+<p class="term-name">利用率とキンク <small>utilization rate / kink</small></p>
+<p><span class="badge">補足</span>利用率は、プールに供給された資産のうち借りられている割合です。レンディングのプロトコルでは、利用率が上がるほど借入金利を上げて、借りすぎを抑え、供給を呼び込みます。多くの設計では、ある利用率（たとえば 80〜90%）を境に金利の上がり方が急になり、その折れ目を「キンク」と呼びます。駐車場の料金にたとえると、空きが多いうちは安く、満車に近づくと急に高くなる仕組みです。一言でいうと、キンクに近づくほど借りる側は不利になり、供給する側は有利になります。</p>
+</div>
+
+<p><span class="badge">補足</span><a href="../2026-08-06-office-hours-gtm/#liquidity">#5</a> では流動性が「死活問題」として語られ、<a href="../2026-07-31-data-and-insights/#liquidity">#4</a> では流動性を 3 つの視点で整理していました。この回はその「供給側」を、Liqwid の金利という具体的な場所で見たものです。</p>
+
+<h2 id="returns">7. 利回りは「いくら」なのか</h2>
+<p class="deck">語られた数字は 3 つ。どれも留保つきで、包括的な調査はされていない。</p>
+
+<p>進行役が「今、人々が見つけられるリターンはどのくらいか」と聞いた場面があります。答えは慎重でした。<strong>「包括的な調査はしていない。さまざまな戦略のリターンが実際いくらかは言えない」</strong>。この回で出た数字は、次の 3 つだけです。</p>
+
+<ul>
+  <li><strong>「45% APR」。</strong>チャットの参加者が「Liqwid でループしているユーザー」の例として挙げたもので、スクリーンショット付き。データ責任者は「あとで調べる」、進行役は「確認していない」と、どちらも<strong>未確認のまま</strong>にしています</li>
+  <li><strong>「12.2% くらい」。</strong>最近 X に投稿した sUSDrf の利回り。「でも特定の日の話で、日ごとに変わる」</li>
+  <li><strong>「27%」「30%」。</strong>ステージに上がった参加者が挙げた、Liqwid での USDM・Djed・USDA の<strong>借入</strong>金利。利回りではなくコストの数字です（9 節）</li>
+</ul>
+
+<p>「ループや Strike でこれだけ稼げる、とは自信を持って言えない。日ごとに変わるので」という言葉が、この回の利回りについての結論です。<span class="badge">補足</span><a href="../2026-10-09-office-hours-mainnet/#yield">#10</a> の「およそ 8.5%」も同じく時点つきの数字でした。このアーカイブでは、いずれも「コール中で挙げられた数字」として記録しており、約束でも勧誘でもありません。スライドの末尾にも「投資助言ではない。チェーンが示す、人々がしたこと。どの戦略にもリスクがある」とあります。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「ループで 45%」は、本当にあり得る数字なのか？</summary>
+<div class="explain-body">
+  <p><span class="badge">補足</span>以下はこちらで足した考え方です。コール中の発言ではありません。</p>
+  <h4>数字そのものは、条件しだいであり得る</h4>
+  <p>チャットのスクリーンショットは Liqwid の画面で、「Net APR 45.28%（推定）」「30 日」と表示されていました。ループでは、元手に対して何倍ものポジションを持つので、sUSDrf の利回りに Liqwid の供給インセンティブや R-Points 相当の報酬が重なれば、元手あたりの推定 APR が大きくなること自体は不自然ではありません。</p>
+  <h4>ただし「推定」であり、持続しない</h4>
+  <p>画面の「est.」は、その時点の金利と報酬が続いたと仮定した年率換算です。6 節のとおり、借りる人が増えれば USDrf や USDCx の借入金利は上がり、ループの純利回りは縮みます。また <a href="../2026-10-09-office-hours-mainnet/#loop">#10</a> で説明された清算リスクは、APR の数字には出てきません。</p>
+  <h4>外から見分けるには</h4>
+  <p>同じ画面の「7 days / 30 days / 90 days」を切り替えて、期間を変えても数字が安定しているかを見るのが一つの方法です。コール中では、この数字は誰も検証していません。</p>
+</div>
+</details>
+
+<h2 id="campaign">8. 教育キャンペーンと R-Points</h2>
+<p class="deck">「何ができるか」を見せて、小口の需要が増えるのを見たい。R-Points の請求は「近いが日付は言えない」。</p>
+
+<p>進行役は、<a href="../2026-09-21-office-hours-ambassador/#handshake">#9 で紹介された Decentralized Adventures</a> のキャンペーンを Cardano の KOL と準備中だと明かしました（「ネタバレしたくないので高いレベルの話にとどめる」）。狙いは「Cardano の人々に、こういうリターンがあることを知ってもらう」こと。そのうえで、データの観点から良い教育キャンペーンとは何か、を聞きました。</p>
+
+<p>答えは、<strong>「こうした取引や戦略は、不慣れなユーザーにはかなり複雑」</strong>なので、プロダクトで何ができるか、どれだけ多用途か、そしてリスクとリターンを見せるもの。その結果として「小口の需要が増え、戦略への参加が増え、最終的に Cardano の DeFi が刺激される」のが見られたらいい、と。</p>
+
+<p>進行役が「いちばんリスクが低いのは供給側では」と誘導しかけた場面では、データ責任者は<strong>「それを言うのは気が引ける。ケースバイケースで見ないといけない」</strong>と答え、進行役が「不公平だった。撤回する」と引き取りました。<span class="badge">補足</span>供給側のリスクが低いという主張は、この回では成立していません。</p>
+
+<p>R-Points については、進行役の理解として「人々が請求できるところまで持っていこうとしていて、時期はチームしだい。近いはずだが日付は言えない」。チームが GO を出したら SPO に知らせ、委任者とコミュニティに換算の仕方を理解してもらう、と。チャットの「自分の使い方は R-Points の配分に左右される」という声には、データ責任者が<strong>「それが 100% 設計意図」</strong>と応じています。「エコシステムを刺激するために必要なことが、初日からユーザーにとって理にかなうとは限らない。だから上にさくらんぼを載せている」。</p>
+
+<h2 id="usdm">9. ステージから — USDM と他のステーブルの借入金利</h2>
+<p class="deck">USDrf だけ借入金利が低い。補助されているのか。他のステーブルも補助できないか。</p>
+
+<p>終盤にステージに上がった参加者（「USDM の人間」と自己紹介）から、具体的な指摘がありました。Liqwid で USDM・Djed・USDA の借入金利が 27〜30% と「極端に高い」一方、USDrf だけは低く、供給の APY と借入の APR の差も小さい。<strong>「これは人為的に補助されているのか。もしそうなら、他のステーブルも補助すれば参加を促せるのでは」</strong>。</p>
+
+<p>答えは率直でした。<strong>「補助されているかどうかは分からない。GTM かプロダクトの人のほうが答えられる」</strong>。他のステーブルの金利が下がることについては「害になるとは思えない。30% は極端に高い。ステーブルコインが増えるのは皆にとって良い」としつつ、「RealFi への影響はもう少し考える必要がある。本当に解くには、もう何個かプールが要るかもしれない」と。</p>
+
+<p>参加者は「Linear V4 は始まったばかりで、AlphaGrowth のチームもボールトや再担保化のために使うはず。次の一歩は、RealFi を支えるプールをあと 2 つ 3 つ作ること」と続けました。<span class="badge">補足</span>「Linear V4」が何を指すかは、コール中で説明されていません。USDM については、進行役が「Cardano で最初のネイティブなステーブルコインだったと思う。とても愛されているプロジェクト」と紹介し、チャットにあった「USDM の総供給量が、USDrf への大きな流入に耐えられるか」という論点は「あなたと私で話そうと言っていた件。まだそこまで行けていない」と持ち越しになりました。</p>
+
+<h2 id="overall">10. 全体像</h2>
+<p class="deck">需要 → mint → TVL、そして USDrf は DeFi へ。足りないのは供給側。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="この回の全体像。上段は小口の需要が市場メーカーの mint を通じて TVL になる流れ、中段は小口の USDrf の行き先（Strike 30%、Liqwid 30%、ウォレット 13%、その他）、下段は供給側の不足と持ち帰りの論点">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">この回の全体像（数値は 2026 年 10 月 27 日時点）</text>
+
+  <rect x="16" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="116" y="68" class="d-t" text-anchor="middle">小口の需要</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">純流入 63 万ドル・毎週増加</text>
+  <line x1="216" y1="74" x2="236" y2="74" class="d-line-accent" marker-end="url(#m4)"/>
+  <rect x="240" y="44" width="200" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="68" class="d-t d-a" text-anchor="middle">市場メーカーが mint</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">プールが傾いたとき（10/19）</text>
+  <line x1="440" y1="74" x2="460" y2="74" class="d-line-accent" marker-end="url(#m4)"/>
+  <rect x="464" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="564" y="68" class="d-t" text-anchor="middle">TVL</text>
+  <text x="564" y="90" class="d-s" text-anchor="middle">遅れて 1 段上がる</text>
+
+  <line x1="116" y1="104" x2="116" y2="128" class="d-line-accent" marker-end="url(#m4)"/>
+  <rect x="16" y="132" width="648" height="76" rx="8" class="d-box-plain"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">小口の USDrf の行き先 — 77% が DeFi</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">Strike 30% ／ Liqwid（EVM へ・ループ・キャリー・借り換え）30% ／ ウォレットで持つ 13% ／ プール・Indigo・その他</text>
+  <text x="340" y="198" class="d-s" text-anchor="middle">「RealFi の TVL が、Cardano の DeFi の TVL にもなっている」</text>
+
+  <rect x="16" y="224" width="316" height="64" rx="8" class="d-box-warn"/>
+  <text x="174" y="248" class="d-t d-w" text-anchor="middle">足りないのは供給側</text>
+  <text x="174" y="270" class="d-s d-w" text-anchor="middle">USDrf とステーブルの供給にインセンティブ</text>
+  <rect x="348" y="224" width="316" height="64" rx="8" class="d-box-plain"/>
+  <text x="506" y="248" class="d-t" text-anchor="middle">持ち帰り</text>
+  <text x="506" y="270" class="d-s" text-anchor="middle">市場メーカー／USDCx の行き先／金利の補助／R-Points</text>
+</svg>
+<p class="figcap">#10 が「何ができるか」の案内だったのに対し、この回は「実際に何が起きたか」の最初の記録です。</p>
+</div>
+
+<h2 id="qa">11. Q&amp;A</h2>
+<p class="deck">チャットから 6 件、ステージから 1 件。同じ参加者からの質問が多かった。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>Strike のプロダクトはどうやって需要を生むのか。この図に含まれているのか。</p>
+<p class="qa-a" data-by="回答">含まれている。小口が Strike の利回りを見て参加したくなり、プールで USDrf を買って Strike に持っていく。10 月 15 日ごろからの動きは Strike が伸び始めた時期。ただし「Strike に行ったから」ではなく「プールで買った」として数えている（<a href="#demand">2 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>市場メーカーは誰か。市場の中で USDCx を買っているのか、新しく mint してリバランスしているのか。</p>
+<p class="qa-a" data-by="仕組みのみ">名前は出さない。仕組みは、不均衡になったプールから USDCx を買い、RealFi に持ち込んで USDrf に mint し、プールに戻す（<a href="#mint">3 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者M</span>Liqwid でループしているユーザーで 45% APR（スクリーンショット付き）。</p>
+<p class="qa-a" data-by="未確認">データ責任者「あとで調べる」、進行役「確認していない」。この回では検証されていません（<a href="#returns">7 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>DEX で USDCx を USDrf にスワップしたとき、プールや市場メーカーが受け取った USDCx はどうなるのか。最終的に焼却されて裏付けの USDC になり、オフチェーンの準備資産に行くのか。それともオンチェーンに残るのか。</p>
+<p class="qa-a" data-by="一部回答・持ち帰り">プールに置かれ、LP を入れている市場メーカーが請求権を持つ。余った USDCx は最終的に投資される（「投資はしている」）が、どう流れるかの技術的な細部はトレジャリーと投資チームの管轄で分からない。進行役がフォローアップを約束。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K</span>USDM の総供給量が、USDrf への大きな流入に耐えられるか。Liqwid のキャリー取引は USDM の流動性を守れるか。</p>
+<p class="qa-a" data-by="持ち越し">「あなたと私で話そうと言っていた件。まだそこまで行けていない」。この回では答えられていません。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者N</span>自分の RealFi の使い方は R-Points に左右されていて、配分が変われば戦略も変わる。</p>
+<p class="qa-a" data-by="回答">「まったく妥当。それが 100% 設計意図」。エコシステムを始動させるための「上に載せたさくらんぼ」だと（<a href="#campaign">8 節</a>）。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">参加者K（ステージ）</span>USDM・Djed・USDA の借入金利は 27〜30% と極端に高いのに、USDrf だけ低い。人為的に補助されているのか。他のステーブルも補助すれば参加を促せるのでは。</p>
+<p class="qa-a" data-by="回答できず">「補助されているかは分からない。GTM かプロダクトの人のほうが答えられる」。他のステーブルの金利が下がるのは「害になるとは思えない」が、RealFi への影響は要検討（<a href="#usdm">9 節</a>）。</p>
+</div>
+
+<h2 id="pending">12. 持ち帰りになった論点</h2>
+<p class="deck">データの回なので、答えられなかったのは「データの外側」のこと。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">意図的に非開示</span>市場メーカーは誰か。</p>
+<p class="qa-a" data-by="名前なし">「何を言ってよいか分からないので、機関の名前は出さない」。仕組みだけが説明されました。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">持ち帰り</span>プールの USDCx は、どの経路で準備資産に行き、いつ「完全に裏付けられた」ことになるのか。</p>
+<p class="qa-a" data-by="コール後に">「投資はしている」までで、焼却の有無、管理者、資本が運用先に届くまでの時間は「トレジャリーと投資チームの管轄で分からない」。進行役がスクリーンショットを撮ってフォローアップすると約束。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">回答できず</span>USDrf の借入金利は補助されているのか。</p>
+<p class="qa-a" data-by="担当外">「分からない。GTM かプロダクトの人のほうが答えられる」。他のステーブルへの補助の是非も、「害はないと思うが、RealFi への影響は要検討」まで。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期のみ</span>R-Points はいつ請求できるのか。</p>
+<p class="qa-a" data-by="日付なし">「近いはずだが、日付は言えない。こういうことは変わる」。<a href="../2026-10-09-office-hours-mainnet/#points">#10</a> で「数週間のうちに換算レートを公表」とされていた件は、この回では触れられていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未確認</span>「45% APR」と、各戦略の実際のリターン。</p>
+<p class="qa-a" data-by="調査なし">「包括的な調査はしていない」。X に投稿した sUSDrf の利回り「12.2% くらい」も「特定の日の話」。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">チャットのみ</span>EVM ローンチの日付。</p>
+<p class="qa-a" data-by="読み上げられず">コール終了後のチャットに「RealFi は 12 月 1 日に AlphaGrowth のボールト経由で Ethereum mainnet にローンチする」という告知を引用して「最新情報は？ 予定どおりか？」という質問がありましたが、<strong>コール中では読み上げられておらず、誰も答えていません</strong>。<span class="badge">補足</span>この日付は、このアーカイブでは初出です。出典は告知の引用で、こちらでは確認していません（2026 年 11 月 6 日時点）。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">持ち越し</span>USDM の総供給量と、USDrf への流入への耐性。</p>
+<p class="qa-a" data-by="個別に">「あなたと私で話そうと言っていた件」。公開の場での説明は予定されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">予告のみ</span>Decentralized Adventures のキャンペーン、ブログ記事、データの公開。</p>
+<p class="qa-a" data-by="時期なし">KOL と準備中で「ネタバレしたくない」。進行役は「書き起こしてブログにする」「この辺のものが公開できたら例を見せられる」と。いずれも時期は示されていません。</p>
+</div>
+
+<div class="note">
+<p><strong>このページについて。</strong>チャットで名前が挙がった方、呼びかけられた方、ステージに上がった方は <code>参加者A〜N</code> に、社内で名前が挙がった人物は役割に置き換えています。原本には話者ラベルも時刻もなく、話者は文脈から割り当てました。</p>
+<p><strong>スライド（12 枚）が画面共有されました。</strong>スライドそのものは再現せず、こちらで描き直した図としてだけ載せています。マークの意味は 3 つです。マークなしはコール中に音声で語られたこと、<span class="badge">スライド</span>は画面に映っていたが口には出されなかったこと（数値はすべて 2026 年 10 月 27 日時点）、<span class="badge">補足</span>はこちらで足したものでコール中の発言ではありません。</p>
+<p>利回りに関する数字は、いずれもコール中やチャットで挙げられたものを、出所とともに記録したものです。約束でも勧誘でもありません。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Four weeks after launch, this session follows the money on-chain.<br>
+  <strong>TVL looks flat, but retail demand grew every week, and it becomes TVL only when the market maker mints</strong>. And 77% of retail’s USDrf is at work on Strike, Liqwid and SundaeSwap. Every figure is as of 27 October.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Retail demand leads, TVL lags.</strong> The transparency portal’s TVL seems to do nothing but jump on 19 October, but the USDrf that retail bought on the pool or borrowed on Liqwid had been rising steadily since launch. The cumulative figure is $630k.</li>
+  <li><strong>How demand becomes TVL.</strong> Retail buys USDrf on the pool, USDCx piles up, the market maker mints new USDrf against it and puts it back. Only then does TVL step up.</li>
+  <li><strong>Only two ways for retail to get USDrf.</strong> Buy it on the SundaeSwap pool, or borrow it on Liqwid. Retail cannot mint.</li>
+  <li><strong>77% is at work in DeFi.</strong> Strike takes 30% in one strategy, Liqwid 30% across four, and just holding sUSDrf in a wallet is 13%. “Most of it’s in DeFi.”</li>
+  <li><strong>The supply side is what is short.</strong> As more people borrow on Liqwid, utilisation rises toward the point where the rate jumps (the kink). RealFi pays incentives to people who supply USDrf and USDCx to Liqwid.</li>
+  <li><strong>Every yield figure came with a caveat.</strong> The chat’s “45% APR” was not verified, “12.2%” was one day’s sUSDrf yield, and the data lead said plainly that he has not done a comprehensive survey.</li>
+  <li><strong>Four follow-ups.</strong> Who the market maker is (not said), how the pool’s USDCx reaches the reserves (treasury’s purview), whether the USDrf borrow rate is subsidised (unknown), and when R-Points can be claimed (soon, no date).</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-ground"><span class="n">01</span>Ground rules — all on-chain, as of 27 October</a></li>
+  <li><a href="#en-demand"><span class="n">02</span>Retail demand leads, TVL lags</a></li>
+  <li><a href="#en-mint"><span class="n">03</span>The market maker turns demand into a mint</a></li>
+  <li><a href="#en-venues"><span class="n">04</span>Where retail’s USDrf sits — 77% in DeFi</a></li>
+  <li><a href="#en-strategies"><span class="n">05</span>The ten strategies</a></li>
+  <li><a href="#en-supply"><span class="n">06</span>The supply side — utilisation, the kink, incentives</a></li>
+  <li><a href="#en-returns"><span class="n">07</span>What the returns actually are</a></li>
+  <li><a href="#en-campaign"><span class="n">08</span>An education campaign, and R-Points</a></li>
+  <li><a href="#en-usdm"><span class="n">09</span>From the stage — USDM and the other stablecoins’ borrow rates</a></li>
+  <li><a href="#en-overall"><span class="n">10</span>The big picture</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">12</span>Left open</a></li>
+</ol>
+</div>
+
+<h2 id="en-ground">1. Ground rules — all on-chain, as of 27 October</h2>
+<p class="deck">“What people did,” not “what to do.” Only data anyone can verify.</p>
+
+<p>The speaker leads RealFi’s data function and described two responsibilities: the data platform that feeds the transparency portal and partners, and the internal insights, analytics and monitoring that support the team. This session, he said, simply shares what the team has been looking at internally.</p>
+
+<p>Two ground rules were set. <strong>All of the data is pulled off the blockchain</strong>: “you can verify it, you can question my assumptions — nothing here is really proprietary.” And <strong>it is descriptive, not prescriptive</strong>. When the host later asked whether the charts could be tweeted or were under Chatham House rules, the answer was “this is all on-chain data; it’s my method for following the money, but we can see the transactions.” <span class="badge">slide</span> Every figure is a snapshot as of 27 October 2026, with some venue APIs used alongside the chain.</p>
+
+<p><span class="badge">added</span> The number #11 is not said on the call but appears on the official announcement (“OFFICE HOURS #11”). <a href="../2026-10-09-office-hours-mainnet/">#10 on 9 October</a> was the guide to what you can do right after mainnet; this, four weeks later, is the first look at what people actually did.</p>
+
+<h2 id="en-demand">2. Retail demand leads, TVL lags</h2>
+<p class="deck">TVL only jumped on 19 October. Retail’s net inflows had been climbing well before that.</p>
+
+<p>The first point: <strong>retail demand and TVL are related but not the same thing</strong>. On the transparency portal, TVL “appears quite flat except for a jump on 19 October,” so “it doesn’t really look like a ton is going on.” But that is just USDrf in circulation, and <strong>TVL is a lagging indicator of demand</strong>.</p>
+
+<p>What the team monitors as a KPI instead is <strong>“retail demand,”</strong> defined as “all USDrf that retail is able to take out of institutional hands.” Retail cannot mint, so there are only two ways to acquire it: buying on the SundaeSwap pool, or borrowing from the pools on Liqwid. Net retail inflows since launch show “a very different picture to TVL”: steadily increasing, with a sharp rise <strong>well before 19 October</strong>.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Cumulative net retail inflows from launch to 27 October as a line, with how TVL appears drawn as a step. Retail inflows rise from about 15 October; TVL steps up once, on 19 October">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">Cumulative net retail inflows (1–27 October), and how TVL appears</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">Our simplified redrawing of the slide’s chart. Figures as of 27 October 2026</text>
+
+  <line x1="60" y1="240" x2="640" y2="240" class="d-line"/>
+  <line x1="60" y1="70" x2="60" y2="240" class="d-line"/>
+  <text x="54" y="244" class="d-s" text-anchor="end">0</text>
+  <text x="54" y="162" class="d-s" text-anchor="end">$300k</text>
+  <text x="54" y="80" class="d-s" text-anchor="end">$600k</text>
+  <text x="60" y="258" class="d-s" text-anchor="middle">1 Oct</text>
+  <text x="206" y="258" class="d-s" text-anchor="middle">9 Oct</text>
+  <text x="335" y="258" class="d-s" text-anchor="middle">15 Oct</text>
+  <text x="460" y="258" class="d-s" text-anchor="middle">19 Oct</text>
+  <text x="640" y="258" class="d-s" text-anchor="middle">27 Oct</text>
+
+  <line x1="460" y1="70" x2="460" y2="240" class="d-line" stroke-dasharray="4 4"/>
+
+  <polyline points="60,233 150,222 206,200 310,198 335,189 357,167 380,153 420,131 460,123 482,101 520,95 545,84 585,86 610,72 640,69" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <text x="560" y="60" class="d-s d-a" text-anchor="middle">Net retail inflows: $630k cumulative</text>
+
+  <polyline points="60,228 460,228 460,142 640,142" fill="none" class="d-line" stroke-width="2.5"/>
+  <text x="560" y="134" class="d-s" text-anchor="middle">How TVL appears (schematic)</text>
+  <text x="560" y="150" class="d-s" text-anchor="middle">one step up on 19 Oct</text>
+
+  <text x="340" y="284" class="d-s" text-anchor="middle">Inflows pick up “around 15 October”; on the 19th the market maker mints and TVL catches up (section 3)</text>
+</svg>
+<p class="figcap"><span class="badge">slide</span> The shape of the line and the “$630k” are read from the slide’s chart; on the call it was described only as “steadily increasing with a sharp jump well before 19 October.” The TVL line shares no axis — it just gives shape to “flat, then a jump on the 19th.”</p>
+</div>
+
+<h2 id="en-mint">3. The market maker turns demand into a mint</h2>
+<p class="deck">The pool tips, USDCx piles up, the market maker mints USDrf against it and restores the pool. That is when TVL moves.</p>
+
+<p>Why the lag exists was explained in full, “maybe this is common knowledge to everyone, but I think it just helps.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-label="The three steps from retail demand to TVL: retail buys USDrf on the pool and USDCx piles up; the market maker mints new USDrf against the USDCx; the new USDrf goes back into the pool and TVL steps up">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="26" class="d-t" text-anchor="middle">How demand becomes TVL (arranged from the call)</text>
+
+  <rect x="16" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="114" y="80" class="d-t" text-anchor="middle">① Retail buys</text>
+  <text x="114" y="102" class="d-s" text-anchor="middle">on the SundaeSwap pool,</text>
+  <text x="114" y="120" class="d-s" text-anchor="middle">USDCx in, USDrf out</text>
+  <text x="114" y="138" class="d-s" text-anchor="middle">USDrf leaves, USDCx piles up</text>
+
+  <line x1="212" y1="106" x2="238" y2="106" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="242" y="56" width="196" height="100" rx="8" class="d-box-accent"/>
+  <text x="340" y="80" class="d-t d-a" text-anchor="middle">② Market maker mints</text>
+  <text x="340" y="102" class="d-s" text-anchor="middle">takes the excess USDCx,</text>
+  <text x="340" y="120" class="d-s" text-anchor="middle">brings it to RealFi,</text>
+  <text x="340" y="138" class="d-s" text-anchor="middle">mints new USDrf against it</text>
+
+  <line x1="438" y1="106" x2="464" y2="106" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="468" y="56" width="196" height="100" rx="8" class="d-box"/>
+  <text x="566" y="80" class="d-t" text-anchor="middle">③ Back into the pool</text>
+  <text x="566" y="102" class="d-s" text-anchor="middle">the new USDrf rebalances</text>
+  <text x="566" y="120" class="d-s" text-anchor="middle">the pool</text>
+  <text x="566" y="138" class="d-s" text-anchor="middle">and TVL steps up</text>
+
+  <text x="340" y="190" class="d-s" text-anchor="middle">19 October = “the pools became imbalanced enough that we said to the market maker, ‘time to mint some USDrf’”</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">Retail cannot mint. Its only routes to USDrf are this pool and borrowing on Liqwid</text>
+</svg>
+<p class="figcap">The call’s explanation laid out in three steps. <span class="badge">slide</span> The chart of both sides of the pool showed the USDrf side thinning toward 18 October and restored on the 19th.</p>
+</div>
+
+<p>To the chat’s <strong>“who is the market maker”</strong>, the answer declined names — “I don’t know what I’m allowed to say, so I don’t want to name an institution” — and gave only the mechanics: when the linear swap becomes imbalanced, the market maker buys the USDCx off it, brings it to RealFi and says “mint all of this excess USDCx into USDrf,” then puts it back to rebalance. <span class="badge">added</span> The call refers to the pool as “the linear pool” or “the linear swap”; it is the SundaeSwap USDrf/USDCx pool, and the name is kept as heard.</p>
+
+<p>To <strong>“what happens to the USDCx the pool receives”</strong>: it sits in the pool, and the market maker, having LP’d into it, has a claim on it; retail LPs have a claim too, but “the bulk of it right now is the market maker.” To the follow-up — <strong>is that USDCx burned to release USDC and moved into the off-chain reserve vehicles</strong> — the answer was “it is used; that’s the purview of the treasury and investment team, and ultimately that extra USDCx is invested. I’m not sure of the exact technical details of how that flows.” The host promised to follow up.</p>
+
+<h2 id="en-venues">4. Where retail’s USDrf sits — 77% in DeFi</h2>
+<p class="deck">Strike and Liqwid cover “pretty much 80%.” A fifth just sits in wallets.</p>
+
+<p>Part 2 asks what people are doing with USDrf, by “venue” — the call’s word, kept here. The promising thing, in the speaker’s view, is that people are not only buying USDrf and holding it (“a valid use case”) but <strong>using it to participate in Cardano DeFi — Strike, Liqwid</strong>. “The TVL that RealFi is getting is also contributing to DeFi TVL across the ecosystem.”</p>
+
+<p>On the venue-by-venue chart, <strong>“the big yellow-orange lump” is Strike</strong>, taking off around 13 October — “that is what drove a lot of the retail inflows.” The green is Liqwid: USDrf staked and posted as collateral. The top layer is people holding staked USDrf in their wallets for the base yield. “Strike and Liqwid cover pretty much 80% of retail USDrf. Most of it’s in DeFi.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 286" role="img" aria-label="Where retail’s USDrf sat on 27 October 2026: Strike about $285k, Liqwid about $150k, wallets about $130k, the SundaeSwap pool about $30k. Of roughly $600k, 77% is in DeFi">
+  <text x="340" y="24" class="d-t" text-anchor="middle">Where retail’s USDrf sits (27 October 2026, about $600k)</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">Read by us from the last day of the slide’s stacked chart. Approximate</text>
+
+  <text x="16" y="86" class="d-s">Strike (sUSDrf as collateral)</text>
+  <rect x="200" y="70" width="326" height="26" rx="4" class="d-box-accent"/>
+  <text x="536" y="88" class="d-s">about $285k</text>
+
+  <text x="16" y="128" class="d-s">Liqwid (collateral + supplied)</text>
+  <rect x="200" y="112" width="172" height="26" rx="4" class="d-box"/>
+  <text x="382" y="130" class="d-s">about $150k</text>
+
+  <text x="16" y="170" class="d-s">Held in wallets</text>
+  <rect x="200" y="154" width="149" height="26" rx="4" class="d-box-plain"/>
+  <text x="359" y="172" class="d-s">about $130k (the fifth that is not “at work”)</text>
+
+  <text x="16" y="212" class="d-s">SundaeSwap pool</text>
+  <rect x="200" y="196" width="34" height="26" rx="4" class="d-box"/>
+  <text x="244" y="214" class="d-s">about $30k</text>
+
+  <text x="340" y="256" class="d-s" text-anchor="middle">Strike + Liqwid + pool = 77% at work in DeFi. The Strike layer appears around 13 October and peaks within two weeks</text>
+  <text x="340" y="276" class="d-s" text-anchor="middle">Categories follow the slide’s legend (pending cooldowns and orders are small and omitted)</text>
+</svg>
+<p class="figcap"><span class="badge">slide</span> The amounts are our reading of the chart’s final-day heights; what was said aloud was only “pretty much 80% in Strike and Liqwid.” The slide’s own title was “77% of retail’s USDrf is put to work in DeFi; the other fifth sits in wallets.”</p>
+</div>
+
+<p><span class="badge">added</span> The venue names are used without introduction. Strike is a perpetual-futures exchange on Cardano — the call mentions “yields from Strike’s perp trading exchange.” Liqwid is lending. Indigo is a synthetic-assets protocol, appearing in the strategy list as “swap USDrf for iUSD.” USDM, USDA and Djed are other Cardano stablecoins.</p>
+
+<h2 id="en-strategies">5. The ten strategies</h2>
+<p class="deck">Follow the money and group what people did. Strike takes 30% in one strategy, Liqwid 30% across four.</p>
+
+<p>Starting from the two routes by which retail got USDrf — bought on the pool, borrowed on Liqwid — the speaker <strong>“followed the money”</strong> and grouped where it ended up into “strategies,” the call’s word, kept here.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 392" role="img" aria-label="The ten strategies ranked by amount: deposit on Strike $282k, 30%, is the largest; then hold in wallet $121k; four Liqwid strategies; the SundaeSwap pool; Indigo; bridged to EVM; other">
+  <text x="340" y="24" class="d-t" text-anchor="middle">The ten strategies (gross, launch to 27 October; $944k in total)</text>
+  <text x="340" y="42" class="d-s" text-anchor="middle">Our redrawing of the slide’s ranking. Amounts in thousands of dollars</text>
+
+  <text x="16" y="78" class="d-s">Strike · deposit the sUSDrf</text>
+  <rect x="300" y="62" width="300" height="22" rx="4" class="d-box-accent"/>
+  <text x="608" y="78" class="d-s">282 · 30%</text>
+
+  <text x="16" y="108" class="d-s">Wallet · hold the sUSDrf</text>
+  <rect x="300" y="92" width="129" height="22" rx="4" class="d-box-plain"/>
+  <text x="437" y="108" class="d-s">121 · 13%</text>
+
+  <text x="16" y="138" class="d-s">Liqwid · borrow USDCx, bridge to EVM</text>
+  <rect x="300" y="122" width="109" height="22" rx="4" class="d-box"/>
+  <text x="417" y="138" class="d-s">102 · 11%</text>
+
+  <text x="16" y="168" class="d-s">Liqwid · loop</text>
+  <rect x="300" y="152" width="77" height="22" rx="4" class="d-box"/>
+  <text x="385" y="168" class="d-s">72 · 8%</text>
+
+  <text x="16" y="198" class="d-s">Liqwid · carry (lend other stablecoins)</text>
+  <rect x="300" y="182" width="64" height="22" rx="4" class="d-box"/>
+  <text x="372" y="198" class="d-s">60 · 6%</text>
+
+  <text x="16" y="228" class="d-s">SundaeSwap · add liquidity to the pool</text>
+  <rect x="300" y="212" width="61" height="22" rx="4" class="d-box-plain"/>
+  <text x="369" y="228" class="d-s">57 · 6%</text>
+
+  <text x="16" y="258" class="d-s">Indigo · swap for iUSD</text>
+  <rect x="300" y="242" width="54" height="22" rx="4" class="d-box-plain"/>
+  <text x="362" y="258" class="d-s">51 · 5%</text>
+
+  <text x="16" y="288" class="d-s">Liqwid · borrow USDrf, repay a USDCx loan</text>
+  <rect x="300" y="272" width="48" height="22" rx="4" class="d-box"/>
+  <text x="356" y="288" class="d-s">45 · 5%</text>
+
+  <text x="16" y="318" class="d-s">To EVM · borrow on Liqwid, sell, bridge USDC</text>
+  <rect x="300" y="302" width="43" height="22" rx="4" class="d-box-plain"/>
+  <text x="351" y="318" class="d-s">40 · 4%</text>
+
+  <text x="16" y="348" class="d-s">Other</text>
+  <rect x="300" y="332" width="121" height="22" rx="4" class="d-box-plain"/>
+  <text x="429" y="348" class="d-s">114 · 12%</text>
+
+  <text x="340" y="380" class="d-s" text-anchor="middle">Sources: $598k bought on the pool + $346k borrowed on Liqwid. Gross, so collateral and loans are both counted</text>
+</svg>
+<p class="figcap"><span class="badge">slide</span> Amounts and shares are from the slide’s ranking; aloud, only “30% in Strike,” “8% looping” and the description of each strategy were said. The slide’s note explains why the total is $944k rather than the $630k of net inflows: when someone posts sUSDrf on Liqwid and borrows against it, both the collateral and the loan are counted. “Bridge” means the bridge burned the USDCx and the money left Cardano for EVM.</p>
+</div>
+
+<p>Each strategy was described on the call as follows.</p>
+
+<ul>
+  <li><strong>Deposit on Strike (30%).</strong> Stake USDrf and deposit the sUSDrf on Strike, earning “RealFi yields plus yields from Strike’s perp trading exchange.” “By far the dominant strategy” as of 27 October</li>
+  <li><strong>Hold in wallet (13%).</strong> Hold staked USDrf and earn the RealFi staking yield</li>
+  <li><strong>Borrow on Liqwid, bridge to EVM (11%).</strong> Post sUSDrf, borrow USDCx, bridge it across and participate in EVM DeFi</li>
+  <li><strong>Loop (8%).</strong> Post sUSDrf, borrow USDCx, swap into more USDrf, stake, repeat — the move <a href="../2026-10-09-office-hours-mainnet/#en-loop">the Head of Product walked through in #10</a></li>
+  <li><strong>Carry (6%).</strong> Borrow USDrf on Liqwid, swap into USDM, USDA or Djed, supply that back to Liqwid — because “the interest rate you were paying to borrow USDrf at the time was lower than the APY on supplying the stablecoin.” An arbitrage of stablecoin rates</li>
+  <li><strong>Add liquidity (6%).</strong> Supply USDrf to the SundaeSwap pool, “always great for RealFi because more liquidity is better”</li>
+  <li><strong>Refinance (5%).</strong> With USDrf borrow rates low, borrow USDrf, sell it for USDCx and repay a USDCx loan — “using the low USDrf borrow rates to refinance a USDCx loan”</li>
+</ul>
+
+<p><span class="badge">added</span> The carry and the refinance both rest on USDrf’s borrow rate being lower than others’. As section 6 explains, that rate rises as more people borrow, so these two are <strong>strategies that disappear when rates move</strong>. The speaker himself dated them: “at the time.”</p>
+
+<h2 id="en-supply">6. The supply side — utilisation, the kink, incentives</h2>
+<p class="deck">As borrowing grows the rate jumps. So suppliers get points.</p>
+
+<p>The host brought up a one-to-one call from earlier in the week — “there are times when what RealFi might want to see as a protocol is people supplying” — and asked for the explanation again. The call uses “utilization rate” and “the kink,” so this page does too.</p>
+
+<p>As more people borrow on Liqwid, borrowed USDrf approaches supplied USDrf and <strong>utilisation gets very high</strong>; as supply runs short the interest rate rises, “and it hits the kink, where suddenly it probably doesn’t make sense as a trade anymore.” So <strong>supplying USDrf into the Liqwid pool</strong> helps the ecosystem, for two reasons: suppliers get incentives and points, and there is more supply for retail to borrow at a reasonable rate.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="Schematic of utilisation against the borrow rate: the rate rises gently at low utilisation and sharply past the kink; more supply lowers utilisation and moves away from the kink">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">“The kink” — utilisation and the borrow rate (schematic)</text>
+
+  <line x1="80" y1="210" x2="620" y2="210" class="d-line" marker-end="url(#e3)"/>
+  <line x1="80" y1="210" x2="80" y2="50" class="d-line" marker-end="url(#e3)"/>
+  <text x="620" y="232" class="d-s" text-anchor="end">Utilisation (USDrf borrowed ÷ USDrf supplied)</text>
+  <text x="74" y="46" class="d-s" text-anchor="end">Rate</text>
+
+  <polyline points="80,200 440,170 560,60" fill="none" class="d-line-accent" stroke-width="2.5"/>
+  <circle cx="440" cy="170" r="5" class="d-box-accent"/>
+  <text x="440" y="192" class="d-s d-a" text-anchor="middle">the kink</text>
+  <text x="520" y="112" class="d-s" text-anchor="end">past here the rate jumps and</text>
+  <text x="520" y="128" class="d-s" text-anchor="end">“it doesn’t make sense as a trade”</text>
+
+  <line x1="400" y1="100" x2="250" y2="100" class="d-line-accent" marker-end="url(#e3)"/>
+  <text x="325" y="90" class="d-s" text-anchor="middle">more supply lowers utilisation</text>
+
+  <text x="340" y="254" class="d-s" text-anchor="middle">“We’re not there just yet, but we’re not far away.” Suppliers get RealFi incentives and points</text>
+</svg>
+<p class="figcap"><span class="badge">added</span> The curve is the generic shape of a variable-rate lending market, where the slope changes at a set utilisation; it is not Liqwid’s actual parameters. What the call said is only that “as supply is close to running out, the interest rate goes up, and it hits the kink.”</p>
+</div>
+
+<p>The other supply is <strong>stablecoins</strong>. Many people want to post sUSDrf and borrow USDM, Djed or USDCx against it; if too few people supply those, “those interest rates very quickly become prohibitive. We’re not there just yet, but we’re not far away either.” So RealFi <strong>also offers incentives for supplying USDCx into the Liqwid pool for RealFi</strong> — you earn the supply yield plus RealFi’s incentives.</p>
+
+<div class="term">
+<p class="term-name">Utilisation and the kink <small>utilization rate / kink</small></p>
+<p><span class="badge">added</span> Utilisation is the share of a pool’s supplied assets that is currently borrowed. Lending protocols raise the borrow rate as utilisation rises, to discourage over-borrowing and attract supply. In most designs the rate’s slope steepens sharply above a set utilisation — often around 80–90% — and that bend is the kink. Think of a car park whose price is low while there is space and jumps as it fills. In one line: the closer to the kink, the worse for borrowers and the better for suppliers.</p>
+</div>
+
+<p><span class="badge">added</span> <a href="../2026-08-06-office-hours-gtm/#en-liquidity">#5</a> called liquidity a matter of life and death, and <a href="../2026-07-31-data-and-insights/#en-liquidity">#4</a> sorted it into three views. This session looks at the supply side in one concrete place: Liqwid’s rates.</p>
+
+<h2 id="en-returns">7. What the returns actually are</h2>
+<p class="deck">Three numbers came up. Each with a caveat, and no comprehensive survey.</p>
+
+<p>The host asked what returns people can find at the moment. The answer was careful: <strong>“I haven’t done a comprehensive survey. I couldn’t tell you really what the returns of the various strategies are.”</strong> Only three figures appear in the session.</p>
+
+<ul>
+  <li><strong>“45% APR.”</strong> A chat participant’s example for “a user looping on Liqwid,” with a screenshot. The data lead said he would look it up later; the host said he had not verified it. <strong>Left unverified</strong></li>
+  <li><strong>“Like 12.2%.”</strong> The sUSDrf yield recently posted on X — “but that was a specific day, so it does change”</li>
+  <li><strong>“27%,” “30%.”</strong> The <strong>borrow</strong> rates for USDM, Djed and USDA on Liqwid, cited by the participant who came up on stage. Costs, not yields (section 9)</li>
+</ul>
+
+<p>“I wouldn’t confidently be able to tell you ‘this is what you can earn through looping or through Strike,’ because they change day by day” is the session’s conclusion on returns. <span class="badge">added</span> The “roughly 8.5%” in <a href="../2026-10-09-office-hours-mainnet/#en-yield">#10</a> was likewise a dated figure. This archive records all of them as numbers given on the call, not as promises or solicitations. The deck’s last slide says the same: “Not investment advice: what the chain shows people did. Every strategy carries risk.”</p>
+
+<details class="explain">
+<summary>A naive question — is “45% from looping” a real number?</summary>
+<div class="explain-body">
+  <p><span class="badge">added</span> The reasoning below is ours, not from the call.</p>
+  <h4>The number is possible, on conditions</h4>
+  <p>The chat screenshot was a Liqwid screen showing “Net APR 45.28% (est.)” over “30 days.” In a loop you hold a position several times your capital, so if the sUSDrf yield is stacked with Liqwid supply incentives and R-Points-type rewards, a large estimated APR per unit of capital is not implausible.</p>
+  <h4>But it is an estimate, and it does not persist</h4>
+  <p>The “est.” annualises the rates and rewards of that moment. As section 6 explains, USDrf and USDCx borrow rates rise as more people borrow, which shrinks a loop’s net yield. And the liquidation risk explained in <a href="../2026-10-09-office-hours-mainnet/#en-loop">#10</a> does not show up in an APR.</p>
+  <h4>How to check from outside</h4>
+  <p>Switch the same screen between “7 days / 30 days / 90 days” and see whether the number holds across periods. On the call, nobody verified it.</p>
+</div>
+</details>
+
+<h2 id="en-campaign">8. An education campaign, and R-Points</h2>
+<p class="deck">Show what the product can do and watch retail demand rise. R-Points claims are “close, but no date.”</p>
+
+<p>The host revealed that the <a href="../2026-09-21-office-hours-ambassador/#en-handshake">Decentralized Adventures campaign introduced in #9</a> is being prepared with Cardano KOLs (“I don’t want to spoil it, so I’m gonna keep it high level”). The aim: “educate people in Cardano that there are these big returns.” He then asked what a good education campaign would look like from the data.</p>
+
+<p>The answer: <strong>“all of these trades and strategies, to an unsophisticated user, are quite complicated,”</strong> so a good campaign would show what the product can do, how versatile it is, and the risks and rewards — and the hoped-for result would be “an uptake in retail demand, more participation in these strategies, and ultimately stimulating Cardano DeFi.”</p>
+
+<p>When the host steered toward “the lowest risk is the supply side, right?”, the data lead replied <strong>“I don’t know if I’d be comfortable saying that. You’d have to look at it on a case-by-case basis,”</strong> and the host withdrew: “I’m being unfair to Liam. I retract my comment.” <span class="badge">added</span> The claim that supplying is low-risk does not stand on this call.</p>
+
+<p>On R-Points, the host’s understanding: the team is working toward letting people claim them, timing is with the team, “they are close” — he is trying to align the Decentralized Adventures campaign with it — “but I can’t put a date on it.” To a chat comment that the writer’s use of RealFi is skewed by R-Points and will change when allocations change, the data lead said <strong>“that’s 100% the design”</strong>: “the things we need to stimulate the ecosystem aren’t necessarily, from day one, the things that make perfect sense to users. So we’re adding a cherry on top to kickstart that ecosystem.”</p>
+
+<h2 id="en-usdm">9. From the stage — USDM and the other stablecoins’ borrow rates</h2>
+<p class="deck">Only USDrf is cheap to borrow. Is it subsidised? Could the other stablecoins be too?</p>
+
+<p>A participant who came up near the end (“obviously I’m a USDM guy”) made a specific point. On Liqwid, borrow rates for USDM, Djed and USDA are 27–30%, “exceedingly high,” while USDrf’s is low and the gap between its supply APY and borrow APR is tight. <strong>“Is this being artificially subsidised? And if so, could the other stables also be subsidised to spur participation?”</strong></p>
+
+<p>The answer was candid: <strong>“Honestly, I don’t know if it’s subsidised. That would probably be better answered by GTM or someone from product.”</strong> On lower borrow rates for the other stablecoins: “I definitely don’t see how it could hurt — 30% is incredibly prohibitive; more stablecoins in circulation is good for everyone,” though “I’d have to think a little bit more about what the impact would be on RealFi. We maybe would need a few more pools of some sort to really unlock that.”</p>
+
+<p>The participant added that “Linear V4 is just getting started” and that the AlphaGrowth team will use it for vaults, managed vaults and rehypothecation, so the next step would be “a couple other pools” to help what RealFi is doing. <span class="badge">added</span> What “Linear V4” refers to is not explained on the call. On USDM, the host described it as “I think the first native stablecoin on Cardano — a much-loved project,” and the chat’s point about whether USDM’s total supply can handle large inflows into USDrf was deferred: “that’s the USDM question you and me were gonna catch up on. We just haven’t got to it yet.”</p>
+
+<h2 id="en-overall">10. The big picture</h2>
+<p class="deck">Demand → mint → TVL, and USDrf into DeFi. What is short is supply.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="The session in one picture: retail demand becomes TVL through the market maker’s mint on top; where retail’s USDrf went in the middle (Strike 30%, Liqwid 30%, wallets 13%, other); the supply shortfall and the follow-ups at the bottom">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="340" y="24" class="d-t" text-anchor="middle">The session in one picture (figures as of 27 October 2026)</text>
+
+  <rect x="16" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="116" y="68" class="d-t" text-anchor="middle">Retail demand</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">$630k net, rising weekly</text>
+  <line x1="216" y1="74" x2="236" y2="74" class="d-line-accent" marker-end="url(#e4)"/>
+  <rect x="240" y="44" width="200" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="68" class="d-t d-a" text-anchor="middle">Market maker mints</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">when the pool tips (19 Oct)</text>
+  <line x1="440" y1="74" x2="460" y2="74" class="d-line-accent" marker-end="url(#e4)"/>
+  <rect x="464" y="44" width="200" height="60" rx="8" class="d-box"/>
+  <text x="564" y="68" class="d-t" text-anchor="middle">TVL</text>
+  <text x="564" y="90" class="d-s" text-anchor="middle">steps up, late</text>
+
+  <line x1="116" y1="104" x2="116" y2="128" class="d-line-accent" marker-end="url(#e4)"/>
+  <rect x="16" y="132" width="648" height="76" rx="8" class="d-box-plain"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">Where retail’s USDrf went — 77% into DeFi</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">Strike 30% / Liqwid (to EVM, loop, carry, refinance) 30% / held in wallets 13% / pool, Indigo, other</text>
+  <text x="340" y="198" class="d-s" text-anchor="middle">“RealFi’s TVL is also contributing to DeFi TVL across the ecosystem”</text>
+
+  <rect x="16" y="224" width="316" height="64" rx="8" class="d-box-warn"/>
+  <text x="174" y="248" class="d-t d-w" text-anchor="middle">What is short: supply</text>
+  <text x="174" y="270" class="d-s d-w" text-anchor="middle">incentives for supplying USDrf and stablecoins</text>
+  <rect x="348" y="224" width="316" height="64" rx="8" class="d-box-plain"/>
+  <text x="506" y="248" class="d-t" text-anchor="middle">Follow-ups</text>
+  <text x="506" y="270" class="d-s" text-anchor="middle">market maker / USDCx’s path / rate subsidy / R-Points</text>
+</svg>
+<p class="figcap">#10 was the guide to what you can do; this is the first record of what people actually did.</p>
+</div>
+
+<h2 id="en-qa">11. Q&amp;A</h2>
+<p class="deck">Six from the chat, one from the stage. Most came from the same participant.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>How does Strike’s product create demand, and is it included in these charts?</p>
+<p class="qa-a" data-by="Answered">It is. Retail sees Strike’s yields, buys USDrf on the pool and takes it to Strike; the move from around 15 October is Strike taking off. It is counted as “bought USDrf on the pool,” not as “went to Strike” (<a href="#en-demand">section 2</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>Who is the market maker, and are they buying USDCx within our market or minting and rebalancing?</p>
+<p class="qa-a" data-by="Mechanics only">No name. The mechanics: buy the USDCx off the imbalanced pool, bring it to RealFi to mint USDrf, put that back (<a href="#en-mint">section 3</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant M</span>45% APR for a user looping on Liqwid (with a screenshot).</p>
+<p class="qa-a" data-by="Unverified">“I’ll have to look it up later”; the host: “I haven’t verified.” Not checked on the call (<a href="#en-returns">section 7</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>When someone swaps USDCx for USDrf, what happens to the USDCx the pool or market maker receives? Is it burned to release USDC and moved into the off-chain reserve vehicles, or does it stay on-chain?</p>
+<p class="qa-a" data-by="Partly answered, follow-up">It sits in the pool, with the market maker holding the claim as LP. The excess USDCx is ultimately invested (“we do invest it”), but how it flows is the treasury and investment team’s purview and not known to the speaker. The host promised to follow up.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K</span>Can USDM’s total supply handle large inflows into USDrf? Could the Liqwid carry protect USDM liquidity?</p>
+<p class="qa-a" data-by="Deferred">“That’s the USDM question you and me were gonna catch up on. We just haven’t got to it yet.” Not answered on the call.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant N</span>My use of RealFi is skewed by R-Points; when allocations change, my strategies will change.</p>
+<p class="qa-a" data-by="Answered">“Completely fair — that’s 100% the design.” A “cherry on top” to kickstart the ecosystem (<a href="#en-campaign">section 8</a>).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Participant K (on stage)</span>USDM, Djed and USDA borrow rates are 27–30%, exceedingly high, while USDrf’s is low. Is it artificially subsidised? Could the other stables be subsidised too?</p>
+<p class="qa-a" data-by="Could not answer">“I don’t know if it’s subsidised — better answered by GTM or someone from product.” Lower rates on the other stables “couldn’t hurt,” but the impact on RealFi needs more thought (<a href="#en-usdm">section 9</a>).</p>
+</div>
+
+<h2 id="en-pending">12. Left open</h2>
+<p class="deck">A data session, so what went unanswered sits outside the data.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Withheld</span>Who the market maker is.</p>
+<p class="qa-a" data-by="No name">“I don’t know what I’m allowed to say, so I don’t want to name an institution.” Only the mechanics were given.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Follow-up</span>By what path does the pool’s USDCx reach the reserves, and when is new USDrf considered fully backed?</p>
+<p class="qa-a" data-by="After the call">“We do invest it” is as far as it went; whether it is burned, who manages the process and how long capital takes to reach the yield-generating vehicle are “the purview of the treasury and investment team.” The host took a screenshot and promised to follow up.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Could not answer</span>Is the USDrf borrow rate subsidised?</p>
+<p class="qa-a" data-by="Outside remit">“I don’t know — better answered by GTM or someone from product.” Whether to subsidise the other stablecoins went only as far as “couldn’t hurt, but the impact on RealFi needs thought.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Timing only</span>When R-Points can be claimed.</p>
+<p class="qa-a" data-by="No date">“Close, but I can’t put a date on it — these things change.” The conversion rate <a href="../2026-10-09-office-hours-mainnet/#en-points">#10 said would be published within weeks</a> was not mentioned.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unverified</span>“45% APR,” and the actual returns of each strategy.</p>
+<p class="qa-a" data-by="No survey">“I haven’t done a comprehensive survey.” The sUSDrf yield posted on X, “like 12.2%,” was “a specific day.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Chat only</span>The EVM launch date.</p>
+<p class="qa-a" data-by="Not read out">After the call ended, a chat message quoted an announcement — “RealFi launches on Ethereum Mainnet via AlphaGrowth vaults on December 1st” — and asked for the latest update and whether it will be on time. <strong>It was not read out on the call and nobody answered it.</strong> <span class="badge">added</span> This is the first time the date appears in this archive. The source is the quoted announcement, not checked by us (as of 6 November 2026).</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Deferred</span>USDM’s total supply and its resilience to inflows into USDrf.</p>
+<p class="qa-a" data-by="One-to-one">“The USDM question you and me were gonna catch up on.” No public explanation is planned.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Announced only</span>The Decentralized Adventures campaign, the blog post, publishing the data.</p>
+<p class="qa-a" data-by="No timing">In preparation with KOLs, “I don’t want to spoil it.” The host will “write this up” and show examples “once I’ve got some of this stuff published.” No timing for any of it.</p>
+</div>
+
+<div class="note">
+<p><strong>About this page.</strong> People named in the chat, addressed by name, or who came up on stage appear as <code>Participant A–N</code>; colleagues mentioned by name appear by role. The source has neither speaker labels nor timestamps, so speakers were assigned from context.</p>
+<p><strong>A 12-slide deck was screen-shared.</strong> The slides themselves are not reproduced; their content appears only as figures redrawn by us. Three marks: no mark means it was said aloud on the call; <span class="badge">slide</span> means it was on screen but not spoken (every figure as of 27 October 2026); <span class="badge">added</span> means we wrote it and it was not said on the call.</p>
+<p>Every yield figure on this page was given on the call or in its chat and is recorded with its source. None is a promise or a solicitation.</p>
+<p>For the exact wording, see the <a href="#en">English transcript</a>; to read straight through in Japanese, the <a href="#ja">Japanese transcript</a>.</p>
+</div>
+</div>
+</section>
+
+<details class="part" id="ja">
+<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
+<div class="sec">冒頭 — マイクのトラブル</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>テスト。マイクは動いている？ よし。皆さん、こんにちは。RealFi Office Hours です。わくわくするね。Liam が来てデータを話してくれるのを待っているところ。ステージに上げられるか見てみる。ああ、いた。</p>
+  <p>ようこそ、Liam。メインステージに上げられるか試してみる。選択肢が出ているはず。前にもやったことがあるよね。ステージに上がるリクエストができるはず。</p>
+  <p>Discord はドラッグ＆ドロップの機能を付けるべきだね。あったら最高なのに。招待しようとして——ほら、できた。「発言に招待」。さあ、Liam。聞こえる？ Liam？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>聴衆として参加してくれている皆さん、ようこそ。右上にチャットボックスがある。</p>
+  <p>Discord のステージが初めての人も——常連の人も多いと思うけれど——進めながら質問できる。</p>
+  <p>Liam、マイクが動いたら、何か一言。……Liam の声が聞こえないか、マイクが動いていないかのどちらかだ。</p>
+  <p>誰か、私の声が聞こえているかチャットで教えて。聞こえる？ よし。聞こえているね。</p>
+  <p>Liam、こちらからは聞こえないので、マイクの状況を整えるのに数分あげる。</p>
+  <p>さっきまで Liam と別の通話をしていて、そのときは完璧に聞こえていたんだけど、Discord のステージがどうも私たちを嫌っているらしい。</p>
+  <p>今日の Liam の Office Hours は本当に面白いものになるはず。うん、音は出ていないよ、Liam。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Liam、聞こえていたら、画面の下にマイクやビデオなどの選択肢がある。点が 3 つと横線のアイコンがあるはず。</p>
+  <p>それをクリックして「音声とビデオの設定」に行き、開いたら正しいマイクと正しいヘッドホンが選ばれているか確認してほしい。</p>
+  <p>それでも動かなければ、昔ながらの手段だ。……「聞こえない？」「聞こえない。入り直す」。OK。Liam が入り直すそうだ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>まるで昔の X スペースだね。覚えている人いる？ というか、今の X スペースもこの状態だと思う。さて。</p>
+  <p>Liam が戻ってくるのを待つあいだに——私は Cardano の有名な KOL 何人かと、アンバサダーのキャンペーンに取り組んでいる。とても楽しみ。</p>
+  <p>言いすぎてはいけないけれど、仕込み中だ。参加者A は何も知らないはず。さて、自分の Discord を再起動すべきか迷う。ステージが落ちないだろうか。</p>
+  <p>それが気になる。皆は私の声が聞こえる？ 参加者B、参加者C、参加者D、参加者E？ 皆聞こえているね、OK。皆いるものとして進める。</p>
+  <p>待っているあいだ、音で場をつないでいるだけ。参加者F もいる。参加者G、伝説の人。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>話せないアルファが仕込み中にたくさんある。ほかに誰がいる？ 日本からの参加者H。VLOG の 1 人。参加者I。</p>
+  <p>おそらく Cardano と RealFi でいちばん熱心なコミュニティメンバー。本当にコミットしている。よし。Liam、見えているよ。もう一度発言に招待する。これでうまくいくか見てみよう。</p>
+  <p>ステージに上がって、データで私たちを祝福して、Liam。……Liam。……Liam の声が聞こえないので、私のほうを再起動する。</p>
+  <p>ホスト側の問題かもしれない。2 秒待って。メインステージは続いているはず。2 分ほどで戻る。楽観的だね、参加者J。</p>
+  <p>まだ何も聞こえない。「20 秒」「20 秒待って」「1 分だけ」。最後のメモ。テスト。戻った。マイクが動いているといいんだけど。さあ、Liam をステージに招待すると——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Ben、聞こえます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ああ、よかった。ちょっと待って。聞こえる。最高。ヘッドホンの電源を入れないと。ごめん、Liam。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ええ、はっきり聞こえます。クリアです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>いえ、まだいます。Ben を待っているところです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>大丈夫。ようやく動いた。よし。</p></div>
+</div>
+
+<div class="sec">自己紹介 — データ機能の役割</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Liam、いつも言っているんだけど、いちばん良い RealFi Office Hours は技術トラブルで始まる回なんだ。だから今日はとても良い兆しだ。おかえり。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ありがとう。調子はどう？ ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ええ、かなり良いです。ローンチはわくわくする時間でした。めちゃくちゃでしたね。本当に忙しかった。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>では、順に話してもらおう。まず少し自己紹介から。</p>
+  <p>あなたが誰で、RealFi でどんな役割を担っているか皆に伝えて、それから今日話すことを教えてほしい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>はい。</p>
+  <p>私は RealFi のデータ機能を率いています。大きく言うと 2 つの領域を担当しています。</p>
+  <p>1 つは、ユーザーが透明性ポータルで見るデータや、パートナーに提供するデータ。つまり、データを必要な場所へ届けるデータ基盤です。</p>
+  <p>もう 1 つは社内向けで、チームが仕事をするためのインサイト、分析、モニタリングを作り、データで支えられることは何でも支える役割です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そうだね。私も Liam から学んできたと、正直に言っておく。社内向けのレポートのいくつかは大好きだ。</p>
+  <p>一緒に働いてきた中で最高の一人だ。今日は何を話してくれる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>はい。</p>
+  <p>実は、社内で見てきて、興味を持ってきたことをそのまま共有するつもりです。ローンチ以来、小口（リテール）の需要がありました。</p>
+  <p>その小口の需要はどんな形をしているのか。RealFi にとっても、エコシステム全体にとっても、TVL にどう影響したのか。</p>
+  <p>さらに掘り下げて、小口のユーザーは実際に私たちのプロダクトで何をしているのか。</p>
+  <p>つまり、USDrf をどの場所（venue）に、どんな戦略で投入しているかを見ていきます。</p></div>
+</div>
+
+<div class="sec">今日のテーマ</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いいね。で、どうやって進める？</p>
+  <p>何か用意してある？ それとも即興で？ 私のほうで質問はいくつか用意してあるけど——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ええ、デッキがあります。それに沿って話せます。でも——</p>
+  <p>聴衆の誰かから質問があれば、出てきた時点で喜んで受けます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>素晴らしい。目を光らせておく。</p>
+  <p>質問があれば知らせて。私が Liam に投げる。</p>
+  <p>Liam、画面を共有するなら、下にモニターと矢印のアイコンがあるはず——</p></div>
+</div>
+
+<div class="sec">画面共有のトラブル</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ、分かりました。この画面。OK。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>よし、いいね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Mac の画面を出しています。皆さん見えていますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>私のところではまだ読み込み中。よし。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>読み込みを待つあいだに言っておくと、このデータはすべてブロックチェーンから引いたものなので、検証できますし、私の前提を疑ってもらって構いません。</p>
+  <p>ここにあるものに、独占的なものは本当に何もありません。自分で見てみてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ほかの人は分からないけれど、私のところでは「ストリームに失敗」と出ている。</p>
+  <p>共有を止めて、もう一度始めてもらえる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ええ、そうします。クリップ共有です。ストリーム停止。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>出た。見えるようになった。ほかの皆は大丈夫？</p>
+  <p>私は 2 歩遅れていて、Liam、追いつこうとしているところ。私のところではまだ読み込み中だけど、ほかの人が見えているならチャットで教えて。そうしたら進める。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>聴衆に見えていることを確かめたいだけ。できれば——解像度を落として——ごめん、どうぞ。……「開始に失敗」と出ている。何を試す？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>解像度と、ストリーミングのフレームレートを落とせます。それで直るか見てみます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>それか、私が Slack からリンクを掘り出して共有して、「次のスライド」方式でやることもできる。だめ？ 見てみよう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>いや、まだ「失敗」のまま——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(推定)</em></div>
+  <div class="turn-body"><p>うーん。再ストリーム。……リンクを共有するので、そちらで試してもらえますか。私はただ話します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。私が——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ、それでいい。今サインインしているところ——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Ben、Slack でデッキを共有しました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ありがとう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Ben、技術トラブルは良い回の印だと言っていましたよね。だったら今日は最高の回になるはずです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>現代版の吉兆だね。</p>
+  <p>動物の内臓を読む占いの代わりに。2 秒待って。遅れてごめん、皆。リンクは受け取った。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>私の共有は止めます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そう、そちらは止めて。私が引き継ぐ。これでいい？</p>
+  <p>皆、私の画面が見える？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(推定)</em></div>
+  <div class="turn-body"><p>まだ。はい。よし。OK。では話していきます。……ただ、私のほうで見る必要が——。Ben、最初のスライド。</p>
+  <p>さっき言ったように、ここで見せているのは——あ、今度は私のほうが始まらない。Ben、2 枚目。要するに、さっき言ったとおり、ここにあるものはすべて——</p>
+  <p>私が話すのに合わせてスライドを進めてもらえますか。私が何を見ているかは分かるはずなので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ああ、いいよ。「次へ」を押していくから、間違えたら言って。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(推定)</em></div>
+  <div class="turn-body"><p>OK。</p></div>
+</div>
+
+<div class="sec">前提 — すべてオンチェーンのデータ</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>では 2 枚目です。</p>
+  <p>さっき言ったように、ここにあるのはすべてオンチェーンのデータです。人々がトークンを投入しているさまざまな venue を見ていて、一部はその venue の API も使っています。</p></div>
+</div>
+
+<div class="sec">小口の需要と TVL は同じではない</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>最初に——次のスライド——最初に言いたいのは、小口の需要と TVL は、皆さんご存じのとおり関係はあるけれど、同じものではない、ということです。</p>
+  <p>面白いのは、TVL だけを見ると——透明性ポータルに出ているように——全体像は分からない、ということです。</p>
+  <p>小口の需要は、TVL の先行指標なんです。次のスライド。TVL のチャートが見えているはずですね？ はい。OK。</p>
+  <p>これは今の透明性ポータルの見え方で、TVL は 10 月 19 日の跳ね上がりを除けばかなり平坦に見えます。たいしたことが起きていないように見える。</p>
+  <p>これは流通している USDrf の量にすぎません。だから、あまり変化していないように見える。でもさっき言ったとおり、TVL は需要の遅行指標なんです。次のスライド。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ここで見ているのが、私たちが「小口の需要（retail demand）」と呼んでいるもので、KPI の 1 つとして監視している重要な指標です。</p>
+  <p>私の定義では、小口の需要とは、小口が機関の手から取り出すことのできた USDrf のすべてです。</p>
+  <p>つまり、SundaeSwap のリニア・プールで買う分と、Liqwid のプールから借りる分。小口は mint できないので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>小口が USDrf を手に入れられる venue は、この 2 つしかありません。</p>
+  <p>ローンチ以来の小口の純流入を見ると、TVL とはまったく違う絵が見えます。</p>
+  <p>着実に増えていて、10 月 19 日よりかなり前に急な伸びがあります。思い出してください、10 月 19 日は TVL が跳ねた日です。TVL は平坦、跳ねる、増える。</p>
+  <p>小口の需要で見ると、まったく違う絵になる。では次のスライドをお願いします、Ben。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>小口の需要のある 6 枚目？ 6 枚目。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ええ、そうです。</p>
+  <p>オレンジと青のやつです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>そのとおり。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="sec">市場メーカーが需要を mint に変える仕組み</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ここで実際に何が起きているのか、なぜ遅れが出るのか、仕組みを説明します。皆が知っていることかもしれませんが、説明したほうが分かりやすいと思うので。</p>
+  <p>私たちには市場メーカー（マーケットメイカー）がいます。小口がリニア・スワップで USDrf を買うと、相手は私たちに USDCx を渡します。USDrf と USDCx のバランスが崩れる。</p>
+  <p>USDCx が余るので、市場メーカーがその USDCx で USDrf を mint して、プールに戻します。ここで見えているのは、要するにそれです。</p>
+  <p>10 月 19 日の大きな跳ね上がりは、小口の需要が流れ込んでプールの不均衡が十分に大きくなり、市場メーカーに「そろそろ USDrf を mint しよう」と言った時点です。そのときに TVL が増えます。</p>
+  <p>ここで示したかったのは、要約すると、TVL は興味深いけれど全体像は示さない、ということです。小口の需要のほうが物語っていて、それが TVL を増やす。</p>
+  <p>だからローンチに関して社内で見たいのは、この指標なんです。皆さん分かりましたか？ 質問は？</p></div>
+</div>
+
+<div class="sec">Q: Strike は需要を生むのか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>確認する。参加者I から質問だ。どうぞ、参加者I。</p>
+  <p>参加者K の質問。「Strike のプロダクトはどうやって需要を生むのか。この図に含まれているのか」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>含まれています。この後で見えます。</p>
+  <p>要するに、小口のユーザーが Strike を見て、利回りを見て、参加したいと思い、リニア・スワップで USDrf を買って、それを持って Strike に参加する。</p>
+  <p>10 月 15 日ごろから見え始めた落ち込みは、Strike が本格的に伸び始めた時期です。リニア・スワップで USDrf を買う人が増えた。</p>
+  <p>ですから、含まれています。ただし「Strike に行ったから」として数えているのではなく、何に使うにせよ「プールで USDrf を買った」として数えています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>いいね。</p></div>
+</div>
+
+<div class="sec">Part 2 — 人々は USDrf で何をしているか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>よし。次のスライド。次へ。OK。Part 2。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>参加者I、これはあなたの質問に触れる話だと思います。</p>
+  <p>小口の需要がどんな形かを知るだけでは足りません。</p>
+  <p>人々がそれで何をしているのか、何がこの需要を生んでいるのか、ユースケースは何か、を知りたい。</p>
+  <p>私の目から見て有望なのは、人々が USDrf を買ってウォレットに置いているだけではない、ということです。もちろんそれも正当な使い方で、それが合う人にはそれで良い。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>でも、人々が私たちのプロダクトを使って Cardano の DeFi——Strike や Liqwid——に参加しているのを見られるのはうれしいことです。</p>
+  <p>つまり、RealFi が得ている TVL が、エコシステム全体の DeFi の TVL にも貢献している、ということです。質問が来ていますね。</p>
+  <p>Ben、取ってもいいですか？</p></div>
+</div>
+
+<div class="sec">Q: 市場メーカーは誰か</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>誰——ええ、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>「市場メーカーは誰か。私たちの市場の中で新しい USDCx を買っているのか、それとも新しい USDCx を mint してリニア・プールをリバランスしているのか」</p>
+  <p>参加者K、名前は挙げないでおきます。何を言ってよくて何を言ってはいけないか分からないので、機関の名前は出しません。</p>
+  <p>ただ仕組みとしては、リニア・スワップが不均衡になると、彼らはそこから USDCx を買い、その USDCx を私たちに持ってきて「この余った USDCx を全部 USDrf に mint してくれ」と言い、それをリニア・スワップに戻してリバランスします。</p>
+  <p>参加者K、それで分かるか教えてください。ひとまず先に進みます。人々は USDrf で実際に何をしているのか。Ben、次のスライド。</p>
+  <p>積み上げ面グラフの 8 枚目が見えるはずです。</p></div>
+</div>
+
+<div class="sec">小口の USDrf はどこに置かれているか</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>はい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>OK。</p>
+  <p>ここで見ているのは、ローンチ以来、小口の USDrf が Cardano のどの DeFi の venue に置かれていたか、の推移です。</p>
+  <p>大きな黄色がかったオレンジの塊が Strike です。さっき言ったとおり、10 月 13 日ごろに大きく立ち上がっているのが見えます。これが USDrf の流入——失礼、小口の流入——の多くを生みました。</p>
+  <p>もう 1 つの、アクアマリンというか緑がかった部分、それが Liqwid です。</p>
+  <p>ここでは、プールで買ったにせよどこかで手に入れたにせよ、USDrf をステークして、それを Liqwid に担保として預けています。</p>
+  <p>つまり、Cardano のエコシステム全体で見た USDrf の 2 大用途はこれです。繰り返すと、Liqwid にあるステーク済み USDrf と、Strike にあるステーク済み USDrf。</p>
+  <p>かなりの部分——いちばん上の層——はステーク済み USDrf をウォレットに持っている人たちで、基本のステーキング利回りだけを得ているのだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>なるほど。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>要するに——そう、タイトルを繰り返すと、Strike と Liqwid で小口の USDrf のほぼ 80% を占めています。大半が DeFi にある。</p></div>
+</div>
+
+<div class="sec">供給側 — Liqwid の利用率と「キンク」</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>今週はじめ、1 対 1 の通話で面白い話をしたよね。私はサービス・サファリをやっていて、Liqwid Finance に行って、Clay が RealFi Office Hours で言っていたことを示すためにループをやっていた。</p>
+  <p>そのときあなたが説明してくれたのは、RealFi がプロトコルとして見たいのは「供給する人」だ、という場面があるということ。</p>
+  <p>それはもう一度——ええ、もちろん——取り上げる価値がある？ もう一度説明してもらえる？</p>
+  <p>私のような素人のために。聴衆には参加者L のような洗練された人もいるけれど、いちばん分からない人に向けて話す必要もあるでしょう？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>OK。</p>
+  <p>借り方にはいくつか種類があります。でも、見てのとおり——スライドに戻ると——</p>
+  <p>Ben、5 枚目に戻ってもらえますか。……いや、すみません、6 枚目。……そこには数字がなかった。失礼。8 枚目に戻してください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>そうです、それ。小口の流入は 2 つの場所から来ます。1 つはリニア・スワップで USDrf を買う人。</p>
+  <p>でも、USDrf を持っていない小口ユーザーは、最初にどうやって USDrf を手に入れるか。</p>
+  <p>リニア・スワップで USDCx を渡して USDrf を得るか、Liqwid で USDrf を借りるか。本当にこの 2 つの経路しかない。</p>
+  <p>そして今起きているのは、多くの人が Liqwid で借りている、ということです。ただ、借りる人が増えるにつれて需要が供給に近づき、いわゆる利用率が非常に高くなる。</p>
+  <p>借りられた USDrf と供給された USDrf が近づいて、供給が尽きかけると、金利が上がります。</p>
+  <p>だから借りることがだんだん魅力的でなくなり、「キンク（屈曲点）」に当たると、その時点でおそらく取引として成り立たなくなる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ですから、RealFi と Cardano の DeFi のエコシステムを刺激するのに役立つことの 1 つが、USDrf を Liqwid のプールに供給することです。A、供給するとインセンティブとポイントがもらえるので、RealFi の成長の物語に参加できる。</p>
+  <p>B、小口ユーザーが Liqwid で借りたいときに、妥当な金利で借りられる供給が増える。それが 1 つ。</p>
+  <p>もう 1 つ——あとで出てきますが——ステーブルコインを Liqwid に供給すること。多くの人が sUSDrf を担保に出して、ステーブルコインを借りたがっているので。</p>
+  <p>USDM でも Djed でも USDCx でも。借りる相手のステーブルコインの供給が健全であるかぎり、妥当な金利で借りられる。</p>
+  <p>でも、ステーブルコインを供給する人が足りなければ、その金利はすぐに法外になります。まだそこまでは行っていませんが、遠くもない。</p>
+  <p>だから私たちは、RealFi 向けの Liqwid プールに USDCx を供給する人にもインセンティブを出しています。それで全員の金利が魅力的になり、エコシステムが刺激される。</p>
+  <p>USDCx を供給すれば利回りが得られるし、RealFi からのインセンティブも付く。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>素晴らしかった。ありがとう。次のスライド。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>どういたしまして。OK。</p></div>
+</div>
+
+<div class="sec">10 の戦略</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ここで見ているのは——小口ユーザーが USDrf を手に入れる経路は 2 つ、と言いましたね。Liqwid で借りるか、リニア・スワップで USDCx と交換して買うか。</p>
+  <p>ここでは、お金を追いかけました。リニア・スワップで USDrf を買った人のお金はどこに行き着いたか。Liqwid で借りた人のお金はどこに行き着いたか。</p>
+  <p>ここで見えるのが、私が「戦略」と呼んでいるものです。さまざまな利用パターンを、金融の戦略ごとにまとめました。</p>
+  <p>大きな塊が Strike にあるのが分かります。次のスライドに進んでもいいんですが、その前に 1 つだけ、Ben。色に注目してください。</p>
+  <p>黄色が Strike、右の緑が Liqwid。今の主要な戦略は Strike と Liqwid を含むものです。</p>
+  <p>次は——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>これはツイートしていい？ それともチャタムハウスルール？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>マーケティングチームの他のメンバーに確認してもらったほうがいいかもしれません。でも問題はないと思います。</p>
+  <p>これはすべてオンチェーンのデータです。お金の追い方は私の手法ですが、非公開のものは何もない。取引は誰でも見られます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>いいね。次のスライド。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>前のスライドでは、お金の出どころで流れを分けていました。</p>
+  <p>ここでは、出どころに関係なく、それぞれの戦略にある資本の量だけを見ています。</p>
+  <p>同じパターンが見えます。小口の USDrf の 30% が Strike にある。</p>
+  <p>このデータを取った時点——10 月 27 日——では、これが圧倒的に主要な戦略でした。</p>
+  <p>その後いくらか変わっているかもしれませんが、その時点の絵はこうでした。</p>
+  <p>30% が Strike に。中身は、USDrf をステークして、それを Strike に預け、RealFi の利回りに加えて Strike の無期限先物（perp）取引所からの利回りを得る、というものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>2 番目に多い戦略は、さっき言ったとおり、ステーク済みの USDrf をウォレットに持って、RealFi のステーキング利回りだけを得ること。</p>
+  <p>次の戦略群は Liqwid を使うもので、USDrf をステークして、Liqwid に担保として出す。</p>
+  <p>その sUSDrf でステーキング利回りを得ながら、それを担保にいろいろ借りる。</p>
+  <p>たとえば、USDCx を借りて EVM にブリッジし、EVM の DeFi に参加する人がいる。Ben のチュートリアルの題材だったループもあって——</p>
+  <p>資本の 8% が、担保に USDCx を借り、さらに USDrf に替えて sUSDrf にステークし、これを繰り返す、という使われ方をしています。</p>
+  <p>キャリー取引をする人も多く見ました。Liqwid で USDrf を借り、それを USDM、USDA、Djed といった Cardano の他のステーブルコインに替えて、Liqwid に供給し直す。</p>
+  <p>理由は、当時 USDrf を借りるために払う金利が、ステーブルコインを供給して得る金利（APY）より低かったからです。</p>
+  <p>つまり、ステーブルコインの金利差を裁定していた。ほかの戦略はそれほど面白くないと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>プールに LP を供給する人——失礼、リニア・スワップに USDrf を供給する人。これは RealFi にとって常にありがたい。流動性は多いほどいいので。</p>
+  <p>Indigo を使う人もいます。それから、Liqwid の USDrf の金利がかなり低かったので、USDrf を借りて USDCx に売り、その USDCx で USDCx の借入を返す人もいました。</p>
+  <p>低い USDrf の借入金利を使って、USDCx の借入を借り換えていたわけです。いちばん面白いのはそのあたりだと思います。質問は？</p>
+  <p>細かいところがたくさんあったので。どれか、もっと掘り下げたい戦略はありますか？</p></div>
+</div>
+
+<div class="sec">Q: 45% APR、USDCx の行き先</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>参加者M が、Liqwid でループしているユーザーの 45% APR の話をしている。今見ているところ。——ええ、あとで調べないと——そうだね。</p>
+  <p>それから参加者K が、「誰かが DEX で USDCx を USDrf にスワップしたとき、プールや市場メーカーが受け取った USDCx はどうなるのか」。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>プールにそのまま置かれています。それで、プールに LP を入れている市場メーカーが、その USDCx の一部に対する請求権を持つことになる。</p>
+  <p>ただ、さっき言ったとおり、もっと USDrf を mint するために、彼らはプールから USDCx を取り出して、戻してスワップする。</p>
+  <p>つまり、持っているのは本質的に LP で——</p>
+  <p>小口も LP できるので小口にも一部の請求権はありますが、今のところ大半は市場メーカーです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>続きの質問がある。もう答えたかもしれないけれど、たぶん違う。</p>
+  <p>「その USDCx は最終的に xReserve で焼却されて裏付けの USDC が解放され、それが利回りを生むオフチェーンの準備資産の器に変換・移転されるのか。</p>
+  <p>それとも、USDCx はオンチェーンに流動性や担保として残り、それに対して USDrf が発行されるのか」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>待って、もう一度聞かせてください。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>チャットにあるんだけど、全部は読みたくなかった。もう一度読む。「その USDCx は最終的に焼却され——</p>
+  <p>xReserve を通じて裏付けの USDC が解放され、それが利回りを生むオフチェーンの準備資産の器に変換・移転されるのか。</p>
+  <p>それとも、USDCx はオンチェーンに流動性や担保として残り、それに対して USDrf が発行されるのか」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>それは、使われます。</p>
+  <p>これはトレジャリーと投資チームの管轄で、ええ、最終的にその余った USDCx は投資されます。</p>
+  <p>ただ、それがどう流れるかの正確な技術的な細部は分かりません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>OK。では参加者K——「投資はしています」——OK。</p>
+  <p>参加者K、スクリーンショットを撮っておくので、フォローアップして返事をする。チャットを少し下まで見させて。</p>
+  <p>参加者K、答えが満足いくものでなかったら教えて。「素晴らしい情報」。</p></div>
+</div>
+
+<div class="sec">USDM について</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者B が——参加者K の USDM の件、総供給量と、USDM から USDrf への大きな流入に耐えられるかどうか。ええ。——まだだね。</p>
+  <p>参加者K、質問を見落としていたら、もう一度打ってほしい。USDM の件は、あなたと私で話そうと言っていた件だと思う。</p>
+  <p>まだそこまで行けていない。知らない人のために——USDM は、Cardano で最初のネイティブなステーブルコインだったと思う。参加者K が訂正してくれるかもしれないけれど、そうだったはず。</p>
+  <p>Cardano でとても愛されているプロジェクトだ。では Liam に戻す。マイクを独占してごめん。スライドは 11 枚目かな？</p></div>
+</div>
+
+<div class="sec">まとめ</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>ええ。これは本当にまとめです。私にとっていちばん面白かったのは——</p>
+  <p>人々が私たちのプロダクトで何をしているかを見ることでした。</p>
+  <p>まとめると、TVL は面白く見えないかもしれないが、その裏には小口の需要があって、そちらのほうが説得力のある物語を語っている。</p>
+  <p>そしてこの小口の需要は Cardano の DeFi に流れていて、エコシステム全体にとって良いことです。</p>
+  <p>こうした戦略を見せたのは、私たちのプロダクトに興味がある人が、ほかの人が何をしているかを見られるように。興味のある戦略があれば、自分で学んでほしい。</p>
+  <p>どれにもそれぞれのリスクとリターンがあるので、そこを学んだうえで、使うかどうかは自分で決めてほしい。ただ、人々がこれで何をしているかを見せるのは、説得力があると思うんです。</p></div>
+</div>
+
+<div class="sec">教育キャンペーンと「リターン」</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>私は根っからの利己的な人間で——皆そうでしょう、Liam？——だから、ここからはあなたの時間を少し使わせてもらう。</p>
+  <p>聴衆はそれなりに洗練されている、少なくとも一部の人は確実に。</p>
+  <p>私が取り組んでいるのは Decentralized Adventures で——参加者D はいる？ いるね、彼も一緒にやっている。コミュニティに出ていきたい。</p>
+  <p>KOL と組む。ネタバレしたくないので高いレベルの話にとどめるけれど。</p>
+  <p>要するに、Cardano の人々に、こういう大きなリターンがあることを知ってもらいたい。今のリターンがどうなっているか説明してもらえる？</p>
+  <p>私は以前のスナップショットを持っている。もっと新しいデータがあるかは分からない。私の見方では——参加者K も口を挟んでくれていい——長いあいだ Cardano の DeFi は未成熟だった。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>理由の 1 つは、他にもあるけれど、大きなリターンが要る、ということ。利回りあるところに道あり、でしょう？ そして今、RealFi で大きなリターンがある。</p>
+  <p>チャットの上のほうで見た 45% は確認していないけれど、Liam、話して構わなければ、今、人々が見つけられるリターンはどのくらい？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>私は——包括的な調査はしていません。</p>
+  <p>さまざまな戦略のリターンが実際いくらかは言えない。もっと詳しく調べないと。</p>
+  <p>最近 X で sUSDrf の利回りを投稿したと思います——そうだね——12.2% くらいだった——</p>
+  <p>そのあたりでした。でも「ループや Strike でこれだけ稼げる」とは自信を持って言えません。</p>
+  <p>日ごとに変わるので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ただ、Cardano の視点で DeFi を見ると、成長は資本の生産性と、こういうリターンがあることにかかっていて、今はそれが存在する。</p>
+  <p>12.2% だったと思うけれど、それは特定の日の話で、変わる。</p>
+  <p>人々に出てきて試してもらうこと、そういうリターンがあることを知ってもらうことだと思う。それが私の考えていること。</p>
+  <p>簡単に言うと、データの観点から、良い教育キャンペーンは何をするべき？</p>
+  <p>言い換えると、この先数か月、そういうキャンペーンのデータをレビューするとき、何が見えてほしい？ 私が理解したいのは——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>私が見たいのは——</p>
+  <p>こうした取引や戦略は、不慣れなユーザーにはかなり複雑です。何ができるのか、利回りの付くステーブルコインが何を可能にするのか、見えていないかもしれない。</p>
+  <p>だから私にとって良い教育キャンペーンとは、私たちのプロダクトで何ができるか、どれだけ多用途か、そしてリスクとリターンをユーザーに見せるもの。その結果として小口の需要が増え、こうした戦略への参加が増え、最終的に Cardano の DeFi が刺激される、というのが見られたらいい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>私が不公平にも誘導しようとしていたのは、こういう戦略を聞いて、もし自分が DeFi にいて Cardano で試したいなら、いちばんリスクの低いものは何か、ということ。</p>
+  <p>答えは供給側だと思う。</p>
+  <p>あの通話であなたが言っていたのは、USDrf を供給するのは、複雑な戦略に比べればリスクが低い、ということだった。</p>
+  <p>そういうことに興味がある。これは合っている？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>それを言うのは、ちょっと気が引けます。</p>
+  <p>同僚、通話にいますね。公平な言い方か、同意するか——ケースバイケースで見ないといけないと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>プールによるし、Liam に不公平だった。撤回する。困らせるつもりはなかった。</p>
+  <p>でも、私が考えていることの 1 つは、教育と、Cardano の DeFi にもっと人を関わらせること。</p>
+  <p>Cardano に何年もいる人は皆知っているけれど、実際にプロダクトを使っている人が足りていない。</p>
+  <p>X で騒いでいる人の半分でも DeFi で実際にプロダクトを使っていたら、オンチェーンの出来高はずっと多かったはず。</p>
+  <p>そういう方向の話。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>それと、ステーブルコインの供給が本当に重要な指標だということは、皆知っていると思います。</p>
+  <p>少なくとも私の見方では、Cardano の DeFi を制約している要因で、もっとステーブルコインが要る。皆分かっていることだと思いますが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>R-Points について質問がある。</p>
+  <p>今の私の理解では、人々が請求できるところまで持っていこうとしていて、実際の時期はチームしだい。</p>
+  <p>近いはず。私の Decentralized Adventures のキャンペーンをそれに合わせようとしているから。</p>
+  <p>チームが GO を出したら SPO に知らせて、「委任者とコミュニティに、どう換算するかを理解してもらおう」と言うつもり。</p>
+  <p>だからかなり近いけれど、日付は言えない。こういうことは変わるので。</p></div>
+</div>
+
+<div class="sec">R-Points が行動を変える、という声</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>参加者N のコメントに、時間があれば手短に答えてもいいですか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ええ、どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>参加者N、あなたの RealFi の使い方は R-Points に偏っていて、R-Points の配分が変われば戦略も変わる、ということですね。それはまったく妥当です。</p>
+  <p>R-Points を作ったのはそのためです。エコシステムを刺激するために必要なことが、初日からユーザーにとって完全に理にかなうとは限らない、と分かっているので。</p>
+  <p>エコシステムを始動させるために、上にさくらんぼを載せているわけです。それが 100% 設計意図で、そう見てもらえてうれしいです、参加者N。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>OK。</p>
+  <p>ほかに質問は？ 参加者C、あなたの——ラベルが「mom」みたいに見えて、「Mom Ben」と読んでしまった。母がチャットにいるのかと。</p>
+  <p>ほかに質問は？ ステージに上がりたい人がいれば、あと 5 分か 10 分くらい——Liam に時間があれば——</p></div>
+</div>
+
+<div class="sec">ステージから — USDM、借入金利、補助</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(推定)</em></div>
+  <div class="turn-body"><p>時間はあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者K、伝説の人。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>やあ、皆さん。聞こえますか？ チェック、チェック。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>聞こえる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>OK。まず、素晴らしいプレゼンでした。</p>
+  <p>質問が多くてすみません。いつもたくさんあって。</p>
+  <p>7 年——たぶんもっと長く——ここで 7 年そうしてきて、直らないんです。</p>
+  <p>これは主に、リスクをもう少しよく理解するための、そして実際にお金を稼ぐための DeFi 戦略で、とても役に立つ。本当にありがとう。</p>
+  <p>素晴らしい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>気になるのは——私は USDM の人間なので、USDM が使われてほしいのですが、今は借入金利が高すぎて使えない。</p>
+  <p>供給の APY は良いのですが、借入金利が 27% と極端に高い。Djed は 30%、これも極端に高い。</p>
+  <p>USDA も 30%。比較的低くて、APY と APR の差が極端に小さいのは 1 つだけですよね。</p>
+  <p>ほかはその差がはるかに大きい。これは人為的に補助されているのですか？ もしそうなら——</p>
+  <p>USDrf の利用を増やしたいのは分かります。</p>
+  <p>でも、他のステーブルも補助すれば、まだ参加が見えていないところで参加を促せるのでは？</p>
+  <p>利用率やループ戦略に実際に関わっている人という点で、頭打ちになっているかもしれないし、よく分からないのですが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>はい。</p>
+  <p>参加者K、正直、補助されているかどうかは分かりません。答えられない。GTM かプロダクトの人のほうが答えられると思います。</p>
+  <p>同僚、見えていますね。他のステーブルコインの借入金利が下がれば有益か、という点は——害になるとは思えません。</p>
+  <p>さっき言ったとおり、ステーブルコインをもっと流通させて使ってもらう方法なら何でも。おっしゃるとおり、30% は極端に高い。</p>
+  <p>ステーブルコインが増えるのは皆にとって良い。RealFi への影響はもう少し考える必要があります。</p>
+  <p>それを本当に解くには、もう何個かプールが要るかもしれない。でも Cardano の DeFi 全体で見れば、下がったほうがいいのは間違いない——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>私も同じことをすぐ思いました。</p>
+  <p>Linear V4 は始まったばかりで、とても楽しみです。</p>
+  <p>AlphaGrowth のチームもかなり使うはずです。ボールト、運用型ボールト、再担保化といった彼らのやりたいことに本当に合う唯一の手段なので。</p>
+  <p>だから次の一歩は、RealFi のやっていることを支えられるプールを、あと 2 つ 3 つ作ることだと思います。</p>
+  <p>今の利回りは——</p>
+  <p>Ben の仕事を本当に楽にしているはず。利回りのおかげで、プロダクトが自分で自分を宣伝しているので。</p>
+  <p>エコシステムの他のステーブルも参加し始めれば流動性が増えて——</p>
+  <p>ユーザーの UX が良くなる。だから筋は通っています。願わくは——いや、願わくは、ではなく。</p>
+  <p>社内でそういう話は確実に進んでいると思います。そこに新しいループ戦略や——</p>
+  <p>稼ぎ方のアイデアを提供してくれるのは、とても助かります。ありがとう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>どういたしまして。温かい言葉をありがとう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>DeFi の時代へようこそ、皆さん。</p>
+  <p>長かった。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>本当に。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>参加者K、コミュニティのエンゲージメントのアイデアについて、あとでフォローアップするかもしれない。</p>
+  <p>この辺のものが公開できたら、例を見せられる。</p>
+  <p>楽しいことがたくさんある。人には「根拠のある希望」が要るでしょう？ RealFi と DeFi にできるのはそれだと思う。</p></div>
+</div>
+
+<div class="sec">締め</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>それが皆がここにいる理由だと思う。まあ、理由の 1 つ。他にもいくつか思いつくけれど。さて、最後に一言、参加者K、Liam？ 聴衆からほかに質問は？</p>
+  <p>よし。これは書き起こして、いつものように短いブログ記事にする。また来てくれて本当にありがとう、Liam。聞くのはいつも楽しい。</p>
+  <p>本当にありがとう。参加者K、上がって話してくれてありがとう。人が上がってきて話せると、ずっと良くなる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>もちろん。</p>
+  <p>Consensus Austin で初めて会ったとき以来——その前からいつも一緒にいた AMA も含めて——</p>
+  <p>長いあいだこれをやってきましたね。Liam、お会いできてよかった。バーチャルですが。</p>
+  <p>これから出てくる新しいものを楽しみにしています。Ben に同意します。一貫して出し続けることで——</p>
+  <p>信頼が生まれ、ユーザーは自分のやっていることに安心できるようになる。</p>
+  <p>その一線を越えてもらうのは本当に難しかった。</p>
+  <p>皆、資金を失うことを常に心配している。とくに今の状況では、最近の Binance のハッキングもあって。あれで誰かの信頼が高まったとは思えない。</p>
+  <p>まったく逆。だから業界として、本当に難しくなる——</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>RealFi のチームの素晴らしいところの 1 つは、私にプロダクトをいろいろな使い方で使わせたこと。</p>
+  <p>Liam、どうせ自分でもやったはずだけど、約束するけど——いや、やらされたんだ。それが本当に良かった。</p>
+  <p>私の見方では、DeFi 戦略について話す人の話は聞けるけれど、その人たちはトレーダーだったり、そういう概念に慣れていたりする。</p>
+  <p>でも初めて学ぶなら——私が初めてループをやったときは、半日かかった。恥ずかしいけれど。</p>
+  <p>皆友達だから言える。でもコツをつかんだら「これは本当にすごい」と思った。</p>
+  <p>より高度な考え方を育てるには、こういう土台になる体験が要る。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>多くの人とのあいだに、そのギャップがあると思う。私の出発点は Cardano で、ここは間違いなく RealFi のコミュニティだけれど。</p>
+  <p>ここは RealFi のコミュニティで、でも個人的には Cardano が出発点だった。関わり方はいろいろある。</p>
+  <p>プロジェクトに入る理由と、残る理由は違う。作っている人、ガバナンスに興味がある人、いろいろな理由で関わる。</p>
+  <p>だから、こういう幅広い経験とスキルを得て、何かを試してみることが、本当に大事な最初の一歩だと思う。</p>
+  <p>それが、参加者K、あとでフォローアップしようと思っていたこと。</p>
+  <p>チームとキャンペーンを作っているので、少し中身を見せて、一緒にやれるかどうか話したい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K</div>
+  <div class="turn-body"><p>いいですね。ありがとう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ええ。</p>
+  <p>最後の言葉を取ってごめん。利己的だけど。皆さん、参加してくれて本当にありがとう。</p>
+  <p>近いうちに動きがあるのを見ることになる。ありがとう、また会いましょう。ありがとう、Liam。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(推定)</em></div>
+  <div class="turn-body"><p>どうも。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>ありがとう、参加者K。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">参加者K <em>(推定)</em></div>
+  <div class="turn-body"><p>ありがとう、皆さん。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(推定)</em></div>
+  <div class="turn-body"><p>皆さん、ありがとう。</p></div>
+</div>
+</details>
+
+<details class="part lang-en" id="en">
+<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">固有名詞の誤変換を修正済み</span><span class="l-en">Obvious proper-noun misrecognitions corrected</span></span></summary>
+<div class="sec">Opening: mic trouble</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Testing. Is my mic working? Okay. Hello, everybody. RealFi office hours. Exciting. Just waiting for Liam to come and give us the download. Huh, see if I can pull him up here. Ah, there he is.</p>
+  <p>Welcome, Liam, sir. Uh, let's see if I can get you up onto the main stage. You should have an option. You've done this before, I know. You should be able to request to come up to the stage.</p>
+  <p>You know what? Discord should really have a drag and drop function. That would be amazing if it did. Just trying to inv- ah, here we go. Invite you to speak. Right, Liam. Ah, can you hear me? Liam?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, welcome everybody that's, uh, that's joining the, the audience. Uh, in the top right we've got the chat box.</p>
+  <p>If this is your first Discord s- stage, though I know some of you are regulars, so you'll be able to ask us questions as we're gonna go through.</p>
+  <p>Um, and Liam, when your mic is working, just, uh, say something with dulcet tones. Uh, either I can't hear Liam or his mic isn't working.</p>
+  <p>So can someone tell me in chat whether you can hear my voice? Can you hear me? Okay, great. So you can hear me.</p>
+  <p>So Liam, uh, we can't hear you, so I'm gonna give you a couple of minutes to sort out your mic situation.</p>
+  <p>But I was just on a call with Liam, and he sounded brilliant, so, um, so I don't know why the Discord stage is taking a dislike to us. All right.</p>
+  <p>Liam's gonna have a really interesting office hours for us today. Yep, no sound, Liam.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, if you can hear me, Liam, in the, uh, bottom of your screen, you've got a bunch of options like, uh, microphone, video, this kind of stuff. You've probably got three dots and a horizontal line.</p>
+  <p>If you click that and you go to voice and video settings, what you'd wanna do is just make sure when that opens that you've got the right microphone selected and the right headphones selected.</p>
+  <p>And if that's still not working, then, um, I think it's traditional. Uh... Oh, you can't hear me? You can't hear me. I'll rejoin. Okay. Liam's gonna rejoin.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>This is like the good old days of X Spaces. Does anyone remember that? In fact, I think it's the current state of X Spaces. Okay.</p>
+  <p>Well, while we're waiting for Liam to come back and join us, I have been working with some well-known KOLs in Cardano on the campaign for ambassadors. Uh, super exciting.</p>
+  <p>I certainly shouldn't give away too much, but, um, that's in the pipelines. [Participant A] can't know anything. Well, now I don't know if I should restart my own Discord. But will that kill the stage?</p>
+  <p>That's what, that's what I wonder. Can everyone else hear me? [Participant B], [Participant C], [Participant D], [Participant E]? You can all hear me, okay. I'm gonna assume that, I'm gonna assume everybody's here.</p>
+  <p>I, I'm just trying to fill the, uh, fill the s- fill the soundscape with some noise while we wait for... [Participant F]'s in the audience. [Participant G], absolute legend.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Lots of, uh, alpha in the pipelines that I'm not allowed to talk about. Who else have we got? [Participant H] from Japan. One of the VLOGs. [Participant I].</p>
+  <p>Probably the biggest Cardano, uh, RealFi, uh, passionate community member. Super committed. Okay. Liam, I can see you. I'm gonna invite you to speak again, and we'll see if this works.</p>
+  <p>Come up to the stage, Liam, and bless us with your data. Okay, Liam. Okay. I can't hear Liam, so, uh, what I'm gonna do is I'm gonna restart myself.</p>
+  <p>Maybe it's an issue with the host or something like this. Uh, so give me two seconds, guys. Hopefully, the main stage will continue, um, but I will be back in about two minutes. Optimistic, [Participant J].</p>
+  <p>I'm still not hearing anything. 20 second. Wait for 20 second. Just one minute. Uh, last note. Okay, testing. Uh, I'm back. Hopefully my mic's working, and now if I invite Liam on stage.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Ben, I, I can hear you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Ah, great. Okay, one second. I can hear you. Fantastic. Um, my headphones just need to turn on. Sorry about this, Liam.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Oh yeah, loud and clear. Yeah, clear.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Uh, no, I'm still here. I, I'm waiting on, um, Ben.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>We're good. We've finally got it working. Um, okay, great.</p></div>
+</div>
+
+<div class="sec">Introductions: what the data function does</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Liam, I always say the best RealFi office hours are the ones that start with, uh, technical difficulties, so this is a really good omen. Um, welcome back.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Thanks. How have you been? Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah, pretty good. Uh, launch has been, um, an exciting time. It's been crazy, yeah. Been really busy.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, so walk us through, um ... Let's do a little bit of an intro first.</p>
+  <p>Let's, let everybody know who you are. Tell us a bit about, uh, the function that you, uh, fulfill in RealFi and then, um, tell us about what we're gonna talk about today.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Sure. Um, yeah.</p>
+  <p>So I lead the data function at RealFi. Uh, I would broadly say we're kind of responsible for, for two areas.</p>
+  <p>One would be, um, you know, a lot of the data, uh, users see, um, on the transparency portal or that we provide to partners, so essentially the data platform that, that provides that data wherever it needs to go.</p>
+  <p>And then also internally we're responsible for, um, you know, generating insights, analytics, monitoring f- for the team to, to do their jobs and, and kind of support them in any way, uh, that data can help.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, definitely. I mean, I've, I've learnt from you as well, Liam, I don't mind saying. Um, I love some of the reports you put internally. So, um, definitely, uh ...</p>
+  <p>well, one of the best I've worked anyway. So talk me through what you've got for us today. What are we gonna talk about?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Sure.</p>
+  <p>Yeah, so, um, I think I'm actually just sharing kind of, the kind of things we've been looking at internally and that we've been interested in, which is since launch, uh, we've had retail demand.</p>
+  <p>So really just looking at, at what does that retail demand look like? How has that affected TVL both, uh, yeah, for RealFi and more broadly across the ecosystem?</p>
+  <p>And, and then drilling down into that, which is what are retail users actually doing with our product?</p>
+  <p>So looking into the various venues and, and, uh, kind of strategies they're deploying USDrf into.</p></div>
+</div>
+
+<div class="sec">Today&#x27;s topic</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, that's great. And, um, and how are we gonna do it?</p>
+  <p>Have you got something prepared or should we, uh, should we improv? I've got some questions or you-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah. I've, I've got a deck. Happy to talk through that. But yeah, if ...</p>
+  <p>Also, if you have any questions, anyone in the audience has any questions, happy to take those as they come up.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Fantastic. I'll keep my eyes open.</p>
+  <p>If you do have a question, let us know and, um, I'll, and I'll put it to Liam.</p>
+  <p>Uh, if you want to share your screen, Liam, you should see like a monitor icon with an arrow at the bottom of the-</p></div>
+</div>
+
+<div class="sec">Screen-share trouble</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. All got it ... this screen. Cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Okay, awesome.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I'm putting you on a Mac screen. Cool. Can, uh, can everyone see this?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, still loading for me. All right. Okay.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Maybe while we wait, um, for that to load, what I'll say is that all of this data is actually pulled, um, off the blockchain, so you can verify it, you can question my assumptions.</p>
+  <p>Um, but yeah, nothing here is, is really proprietary, so have a look for yourself.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Uh, can you ... I don't know for other people, but for me it says the stream failed.</p>
+  <p>Can you, uh, stop sharing and then just restart?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah, let me do that. It's clip share. Stop stream.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>There we go. I see it now. Everyone else good?</p>
+  <p>I'm two steps behind you, uh, Liam, just trying to catch up. Uh, it's still loading for me, but if other people can see it, let me know in chat and we'll proceed.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>I just wanna make sure that, uh, the audience can see. I could potentially- Um, just- -try dropping... Sorry, go ahead. Yeah, yeah. It says, it's, uh, failed to start. What do you wanna try?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I can drop the resolution and the streaming and frame rate. Let me see if that helps.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Or if you want me to, let me dig the link out in Slack, and I can always share it and you can do the, uh, you know, next slide um, format thing. Benj. No? Let's have a look.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>No, yeah, still failed to, um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Hmm. Restream. Well, can I, can I sh- can I share the link with you, then maybe you can try it and, and you can just talk?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. I can just- I can just, uh...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, that's fine. I'm just signing into my, um...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Okay, Ben, I'm sharing the deck on Slack.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Thank you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I mean, Ben, you said that, um, you said technical difficulties mean a good talk, so then I, I think this is gonna be excellent.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>It's, it's the modern, modern-day omen, right?</p>
+  <p>Save us from o- looking at the entrails of a Uh, like, give me two seconds. Uh. Yeah. Sorry for the, uh, delay, guys, uh, for everyone listening. I have got the link. ... from the private match.</p>
+  <p>Okay, great. Let me... I'm gonna share my screen. You tell me if it works for you guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I'm gonna stop sharing mine.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah. Yeah, stop sharing yours, and then I'll take the conch. Okay. Is this good?</p>
+  <p>Can everybody see my screen?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Not yet. Yes. Okay, great. Okay. Yeah, okay. Cool. Um, okay. Let me talk through it, and then, uh... Well, I, I need to see. Okay. So Ben, first slide, um... Yeah. Yeah.</p>
+  <p>So, so like, like I said, what I'm showing here is really just... Oh, now mine's not starting. So slide two, Ben. Essentially, as I said, everything here...</p>
+  <p>Are, are you able to just kind of go through the slides as I talk, and, and you can figure out what I'm looking at?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, yeah. I'm just gonna click next, and you can tell me if I get it wrong.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Okay.</p></div>
+</div>
+
+<div class="sec">Ground rules: all on-chain data</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so on second slide. Yeah. So yeah.</p>
+  <p>So like I said, just everything here is on chain data, and, and I'm really just looking at the various venues where people are, are deploying tokens, um, and yeah, may- using some APIs from, from these venues.</p></div>
+</div>
+
+<div class="sec">Retail demand and TVL are not the same thing</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So the first... Next slide. So- Yeah ... the first point I wanna make is, is how retail demand and TVL are, as I think we all know, related, but they are not the same.</p>
+  <p>And I think what's actually interesting is if you look at TVL or, uh, like as is shown on the transparency portal, that doesn't actually tell the full picture.</p>
+  <p>Retail demand is actually a leading indicator for TVL. So next slide. Um, so you should now be looking at the TVL chart, right? Yes. Okay. So yeah, if you...</p>
+  <p>This is kind of how it looks on the transparency portal right now, and TVL appears quite flat except for a jump on, on 19 October. So it doesn't really look like a ton of go- is going on.</p>
+  <p>That's really just the USDrf in circulation. So yeah, it doesn't look like much is changing. But as I said, TVL is actually a lagging indicator of demand. So next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>What we're looking at here is, is what we call retail demand, and this is actually a, a, a key metric that we monitor as, as one of our KPIs.</p>
+  <p>So how I define me- retail demand is this is all stable, all USDrf that retail is able to kind of take out of institutional hands.</p>
+  <p>So that's buying it off the, off the s- off the linear pool on SundaeSwap, and that's borrowing it from the, um, the pools on Liqwid. 'Cause, 'cause retail can't mint.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>You know, so these are the only venues through, through which retail can acquire USDrf.</p>
+  <p>So if you look at net retail, net f- net retail inflows since launch, what you actually see is, is a very different picture to TVL.</p>
+  <p>You see it's been steadily increasing with a sharp jump actually well before 19th October. And if you remember, 19th October is when we saw that TVL jump. So it was flat jump TVL increase.</p>
+  <p>It's a very different picture when you look at retail demand. So next slide please, Ben.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Is this slide six with retail demand? Slide six.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah, great.</p>
+  <p>So it should be the one with the orange and the blue.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>You got it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="sec">How the market maker turns demand into a mint</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so just to explain the mechanics of, of what's actually happening here, why there's that lag, and look, I mean, I, I don't know, maybe this is common knowledge to everyone, but I think it just helps to explain.</p>
+  <p>Essentially, we have a market maker, and when the, when the linear swap- When, when retail purchases USDrf, uh, they give us USDCx. The, the USDrf, USDCx, uh, becomes imbalanced.</p>
+  <p>We have an excess of USDCx, so then the, the market maker will take that USDCx, m- mint USDrf with it, and put it back into the pool. So that's essentially what we're seeing here.</p>
+  <p>That, that big jump on 19th October, that's when the retail demand flowed to such a level that the pools became imbalanced enough that we said to the market maker, "Okay, time to mint some U- USDrf." And then that is when TVL increases.</p>
+  <p>So what I'm just trying to demonstrate here, summarizing, is that TVL is interesting, but it doesn't show the full picture. Retail demand is what's actually more telling and what grows TVL.</p>
+  <p>So, so that's the metric we want to look at internally for launch. Is that clear to everyone? Any questions?</p></div>
+</div>
+
+<div class="sec">Q: does Strike create demand?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Let me check. Yeah, [Participant I]'s got a question. Hit it. Hit us up, [Participant I].</p>
+  <p>Uh, [Participant K] says, "How does Strike product create demand, and is it included in these charts?"</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>It is. You, you'll see that now.</p>
+  <p>But essentially what's happening is retail users, they see Strike, they, they see the yields, they want to participate, so they are buying USDrf off the linear swap so that they can take it and then participate in Strike.</p>
+  <p>So essentially, that dip we started seeing starting in 15 October, that was when Strike really started taking off. So we saw more people buying USDrf off the linear swap.</p>
+  <p>So yes, it is, it is counted, but it's not counted because they di- went to Strike, it's just counted because they bought USDrf off the pool to do whatever they wanted to do with it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Cool.</p></div>
+</div>
+
+<div class="sec">Part 2: what people do with USDrf</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay, great. Uh, next slide. Yeah, next slide. Okay. Part two. Okay. Yep.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so, so [Participant I], I guess this touches on your question.</p>
+  <p>It, it, it's not just enough for us to know, um, you know, what does retail demand look like.</p>
+  <p>We want to know what are people doing with it, what's driving this retail demand, what are the use cases.</p>
+  <p>And the promising thing, in my perspective, is that it's not just that people are buying USDrf and holding it in their wallets, which of course is a valid use case, and if that's what works for you, you know, that's fantastic.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>But it's also nice to see that people are using our product to participate in Cardano DeFi, things like Strike, Liqwid.</p>
+  <p>So that essentially means that the TVL that, uh, RealFi is getting is also contributing to DeFi TVL across the, um, across the, across the ecosystem. I, I see there's a question there.</p>
+  <p>Uh, can I take that, Ben?</p></div>
+</div>
+
+<div class="sec">Q: who is the market maker?</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, who- Yeah, sure, sure. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Who is the market maker, and are they buying new USDCx within our market or they're minting new USDCx and then rebalancing the linear pool?</p>
+  <p>So I don't know, [Participant K], if I c- I don't, I don't wanna say give names 'cause I don't know what I'm allowed to say and not say, so I don't wanna name a institution.</p>
+  <p>But essentially how it works is that, uh, they, they will buy USDCx off the linear swap, so when it becomes imbalanced, and then they will take that USDCx to us and say, "Okay, now mint all of this excess USDCx into USDrf," and then they put it back into the, the linear swap, rebalancing it.</p>
+  <p>Yeah, [Participant K], let me know if that makes sense, but I'll, I'll keep going for, for now. Um, yeah. So like I said, what are people actually doing with USDrf? Next slide, Ben.</p>
+  <p>So you should see the stacked area chart, number eight.</p></div>
+</div>
+
+<div class="sec">Where retail USDrf sits</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yes.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Okay.</p>
+  <p>So what we're looking at here is over time since launch, where was the USD, the retail USDrf actually sitting, in which v- in which DeFi venues in Cardano?</p>
+  <p>So the big yellow orange lump there, that is Strike. And as I said, you can see that big takeoff around 13th October. That is what drove a lot of the, the USDrf inflows.</p>
+  <p>I mean, sorry, the retail inflows. The other kind of, I don't know what you'd call it, like aquamarine greeny section, that is, uh, Liqwid.</p>
+  <p>So there people have taken USDrf, bought it off the pool or got it from any source, and then they have staked that, and then they've deposited that into Liqwid as collateral.</p>
+  <p>So really those are the two biggest uses we see for USDrf across the Cardano ecosystem. That's, just repeating it, it's staked USDrf in Liqwid and staked USDrf in Strike.</p>
+  <p>There is a significant portion, that top portion, which is people holding staked USDrf in their wallets, so I think just really just earning the base, uh, staking yield. But yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>That makes sense.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So that's essentially... Yeah. And, and just to, to repeat the title, so essentially Strike and Liqwid covers m- pretty much 80% of, of ref- of, of, of retail USDrf. So most of it's in DeFi.</p></div>
+</div>
+
+<div class="sec">The supply side: Liqwid utilisation and the kink</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And we had a, we had a really interesting one-to-one call earlier in the week where you were explaining, um, I think I'd done a service safari, so I'd gone onto Liqwid Finance, and I was doing like looping to, to demonstrate something Clay had said on the RealFi office hours.</p>
+  <p>Um, and you were explaining to me actually, you know, uh, there are times when, you know, what a RealFi might wanna see as a protocol is, is people supplying, right?</p>
+  <p>Is that something worth- Oh, for sure ... me revisiting? Yeah. Can you explain that to me again?</p>
+  <p>Because for an idiot like me, I know there's so- sophisticated people like [Participant L] in the audience, but you, you gotta talk to the lowest common denominator as well, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Okay. Yeah.</p>
+  <p>So, so I mean, there's really... Yeah, so, so there's different kinds of borrowing, but, but as you can see, I mean, if you go back to slide- Mm. Mm. Okay. You ...</p>
+  <p>Yeah, if you go back to slide number five, Ben. Sure. Is it five? Um, no, sorry, uh, slide six. Okay. So I didn't have the figures there. Right. My apologies. You can go back to n- number eight.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>That's it. Save it. Um, retail inflows really come from two places. It came from people buying USDrf off the linear swap.</p>
+  <p>But it also, you know, th- that's h- how does a h- how does a retail user with no USDrf, how do they first get USDrf?</p>
+  <p>Off the linear swap, they give USDCx for USDrf, or they can borrow USDrf- Or- ... off Liqwid. Those are really the two routes.</p>
+  <p>So what's happening is a lot of people have borrowed off Liqwid, but now the, um, because as more people borrow, essentially demand starts approaching the supply, the utilization rate, what, is what they call it, gets very high.</p>
+  <p>And as the borrowed USDrf versus the supplied USDrf starts getting very close and, and supply is close to ma- uh, running out, the interest rate goes up.</p>
+  <p>So, so borrowing starts becoming less and less attractive, a- and it, it essentially hit, hits the kink, where suddenly at that point it, it, it probably doesn't make sense as a trade anymore.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So the one thing which helps stimulate the Real- RealFi and Cardano DeFi ecosystem is people supplying USDrf into the Liqwid pool because, A, you get some incentives and points for doing that, so, you know, you get to participate in RealFi's, uh, you know, growth and story.</p>
+  <p>But also it, it, it, yeah, it adds more supply that retail users can then borrow off Liqwid if that's what they want to do at a reasonable exchange rate. That's one.</p>
+  <p>The other area, and you'll see it come up later, is, um, is supplying stable coins to Liqwid because a lot of people want to give USDrf, uh, sUSDrf as collateral and borrow stable coins against that.</p>
+  <p>That could be a USDM, a Djed, USDCx. So again, as long as there's a healthy supply of those stable coins that they can borrow against, they can get reasonable interest rates.</p>
+  <p>But, uh, you know, if not enough people are supplying stable coins then those interest rates very quickly become prohibitive. We're not there just yet, but we're not far away either.</p>
+  <p>So we do also offer incentives for people to supply USDCx into the Liqwid pool for RealFi, and that just makes the interest rates more attractive for everyone, stimulates the ecosystem.</p>
+  <p>You earn yields on supplying your USDCx as well as incentives from, from RealFi.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>That was great. Thank you. Next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>You're welcome. Um, yeah. Okay.</p></div>
+</div>
+
+<div class="sec">The ten strategies</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So what I'm looking at here, remember I said there's essentially two routes through which a retail user can acquire USDrf. That's borrowing off Liqwid or, or buying off the linear swap for USDCx.</p>
+  <p>And what I did here is I kind of followed the money. I saw of people buying USDrf off the, off the linear swap, where did it end up? Or people borrowing USDrf off Liqwid, where did it end up?</p>
+  <p>And we can kind of see here, this is what I'm calling strategies. I, I've essentially grouped various usage patterns into financial strategies.</p>
+  <p>So you can see a large bulk of it is sitting in Strike. Um, I think we can actually go to the next slide. I mean, just maybe one before you do that, Ben. Mm. Just note the colors.</p>
+  <p>So really the, the yellow is Strike, the, the, the green on the right is Liqwid. So the predominant strategies right now do involve Strike and Liqwid.</p>
+  <p>And the next one-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And are, are we allowed to tweet this or, uh, is this, uh, is this Chatham House Rules?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I mean, maybe check with the rest of the marketing team. Ah. But I don't see the problem.</p>
+  <p>Okay. I mean, this is all, this is all on chain data. It, it's my method for following the money, but, but this is nothing that's private. We can see the transactions.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Awesome. Okay, next slide.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so if what we're looking at here... So o- on the previous slide, I was splitting the flows by where people got the money.</p>
+  <p>But what we're looking at now is we're just looking at kind of the amount of capital in the various strategies, irrespective of where the money came from.</p>
+  <p>And we see a similar pattern, which is essentially 30% of retail USDrf is sitting in Strike.</p>
+  <p>That is by far the dominant strategy at the time I, I, I got this data, which was on the 27th of October.</p>
+  <p>I think it might have changed somewhat since then, but, but this is the picture as it was there.</p>
+  <p>So 30% people holding, uh, in Strike, and what this essentially is, is they are taking USDrf, they're staking it, then they're depositing it in Strike, where they then earn RealFi yields plus, uh, yields from Strike's, uh, kind of perp trading exchange.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Um, the, the second most dominant strategy is, is just like I've said, holding, holding staked USDrf in your wallet and just earning the RealFi staking yield.</p>
+  <p>The, the next strategies involve Liqwid, and here what people are doing is essentially they are taking USD S- they are taking USDrf, staking it, and then they're posting it to Liqwid as collateral.</p>
+  <p>So now they are earning the staking yield on that sUSDrf, and then against that sUSDrf, they are borrowing, uh, various things.</p>
+  <p>So for example, some people are borrowing USDCx and bridging it across to EVM where they participate in EVM DeFi. Um, some people, this is what, uh, Ben's tutorial about is looping a lot of ...</p>
+  <p>So what 8% of capital is being used to borrow USDCx against it, swap into more USDrf, stake that for S USD, uh, S- sUSDrf and repeat the cycle.</p>
+  <p>Um, a lot of people we saw were doing carry trades, so essentially they would take the USDrf, they would borrow it off Liqwid, and then they would swap that into other stable coins on Cardano like USDM, USDA, Djed, and then they would supply that back into Liqwid.</p>
+  <p>And the reason for this is that the- So- ... the interest rate you are paying to borrow USDrf at the time was lower than the interest or the APY you are earning on supplying the stable coin.</p>
+  <p>So essentially they were arbitraging the stable coin interest rates. Um, yeah, look, I think the other strategies aren't that interesting.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Uh, people supplying LP to the pool, which is always great for real... Sorry. People supplying USDrf into the linear swap, which is always great for RealFi because more liquidity is better.</p>
+  <p>Some people using Indigo, and then again, because the USDrf interest rates on Liqwid were quite low, we had people borrowing USDrf, selling it for USDCx, and then using that USDCx to kind of repay a US- USDCx loan.</p>
+  <p>So they were using the low USDrf borrow rates to kind of refinance a USDCx loan. Yeah, I think that's kind of the most interesting part. Yeah. Any questions?</p>
+  <p>Uh, I know there's a lot of detail there. Anything anyone wants to dig into in more detail? Any of those strategies they want to ask about?</p></div>
+</div>
+
+<div class="sec">Q: 45% APR, and where the USDCx goes</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>[Participant M] is, uh, talking about 45% APR for a user looping on Liqwid. Just having a look at this. Yeah. I'll have to look up- Yeah. Right ... later. Right.</p>
+  <p>Um, and then, uh, [Participant K] is saying, uh, when someone swaps USDCx for USDrf through a DEX- Yeah ... what happens to the USDCx received by the pool or market maker?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Well, it's just sitting on the pool. So- Mm. So then the market maker who has LP'd into the pool, they essentially have a claim on some of that USDCx.</p>
+  <p>But what they will do is they will then, like I said, they will, to mint more USDrf, they will then, um, essentially, they will essentially swap, they will swap, they will essentially, you know, they will take USDCx off the pool and swap it back in.</p>
+  <p>But, but yeah, they, the, the LP owns it essentially, which would be ...</p>
+  <p>I mean, retail can also, um, LP, so retail also has some, a claim on it, but the, the bulk of it right now is the market maker.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Here's a, a follow on question, um, which is, uh, maybe you've answered it, but I don't think so.</p>
+  <p>Is that USDCx ultimately burned through xReserve to release the underlying USDC, which is then convertible or transferred into the off-chain reserve vehicles generating yield?</p>
+  <p>Or does the USDCx remain on chain as liquidity or collateral while USDrf is issued against it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Wait, let me, let me try catch that again. I don't- Right. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Can you- It's in the, it's in the chat, but yeah, I didn't want to read the whole ... I'll give it a go. Um, is that USDCx- USDrf ... ultimately burned- Yeah. USDrf ...</p>
+  <p>through xReserve to release the underlying USDC- To find ... which is then converted or transferred into the off-chain reserve vehicles generating the yield?</p>
+  <p>Or, or does the USDCx remain on chain as liquidity or collateral while USDrf is issued against it?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>So, so, so, so this, it, it, it is used.</p>
+  <p>So, so this is more the, uh, purview of the treasury and investment team because yes, ultimately that extra USDCx is then, uh, invested.</p>
+  <p>Um, I'm not sure the, the exact technical details of, of, of how that, of how that flows.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay. So then [Participant K]- We do invest it Okay.</p>
+  <p>I'm gonna screenshot that for you, [Participant K], so I can follow up and, uh, get back to you, uh, on that. Let me get down the chat a little bit.</p>
+  <p>And if, if you want, if I didn't, if we didn't answer that, uh, to your satisfaction, [Participant K], let me know. Um, great info.</p></div>
+</div>
+
+<div class="sec">On USDM</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>[Participant B] is saying, uh, [Participant K] saying issues for USDM as total supply and whether or not it handles large inflows to USDrf out of USDM. Uh, yeah. Um, okay. Let's go. Uh, not yet.</p>
+  <p>[Participant K], if I've missed a question there, just, just type it again, basically. Um, uh, yeah, I think there's a USDM question, [Participant K], that you and me were gonna catch up on.</p>
+  <p>We just haven't got to it yet. If for anyone that isn't familiar- USDM, uh, is, uh, I think, was it the first native, uh, stable coin, um, on Cardano, [Participant K]? You might correct me, but yeah, it was.</p>
+  <p>So they're, you know, a much loved, uh, project in Cardano. Um, so back to you, Liam. Sorry, um, for, uh, hogging the mic there, but, uh- It's okay ... slide, uh, 11, am I guessing?</p>
+  <p>Yeah Is my memory good? This first part?</p></div>
+</div>
+
+<div class="sec">Wrap-up</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Yeah. Um, and look, that's really just the wrap up. I mean, this is what I thought was- Mm-hmm ...</p>
+  <p>for me, most interesting, is seeing what people are doing with our product. Um- Mm ...</p>
+  <p>but yeah, really just summarize, uh, you know, TVL may look uninteresting, but behind it there's actually retail demand, which tells a more compelling story.</p>
+  <p>Um, and, and this retail demand is flowing to Cardano DeFi, which, which is good- Mm ... for the whole ecosystem.</p>
+  <p>And the reason for presenting these, these strategies for you is just so, you know, anyone out there who's interested in our product, they can see what others are doing with it, and if one's interesting to you, you know, educa- educate yourself.</p>
+  <p>'Cause obviously each of these has their own risks and rewards, so educate yourself on, on those and, you know, it's up to you whether you, you want to use them, but I think it's just compelling to show what people are doing with that.</p></div>
+</div>
+
+<div class="sec">An education campaign, and “the returns”</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Oh, I mean, I just don't know. Inherently a selfish person, aren't we all, Liam? So my I'm gonna use some of your time now.</p>
+  <p>There, I, I know everybody on the audience is gonna be reasonably sophisticated, definitely some of them are.</p>
+  <p>Um, but, uh, something I'm working on is Decentralized Adventures, uh, with, um, is [Participant D] in the call? Yeah, he said, so he's, uh, he's with me too. Um, we want to get out into the community.</p>
+  <p>We're gonna work with some KOLs. I don't want to spoil it, so I'm gonna keep a high level.</p>
+  <p>Um, but essentially we wanna educate people in Cardano that there are these, um, these big returns, right, um, of effect. Can you walk us through what the returns are at the minute?</p>
+  <p>I, I had a snapshot. I don't know if you've got more current data, but from my perspective, and [Participant K] you can chip in as well, but I felt like for a long time, uh, DeFi was nascent in Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, and one of the reasons amongst others is that, you know, you need big returns. You know, where there's a yield, there's a way, right? And now with RealFi, there is, there are big returns.</p>
+  <p>I'd, I'd haven't verified 45% that I saw higher up in the chat, but what, what, what are the returns at the moment that people will find out there, Liam, if you don't mind talking about it?</p>
+  <p>If you do-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Well, I've, I've, I've- ... then just mute ... I haven't done a, a- Mm ... comprehensive survey.</p>
+  <p>Like I'm not, you know, I, I couldn't tell you really what the returns of the various strategies are. I, I would have to look- Mm ... into that in more detail.</p>
+  <p>I mean, I think, I think we recently posted the, the, the sUSDrf yield on X- Mm. That's right ... and yeah, I couldn't It was at like 12.2% ...</p>
+  <p>something around there, but, but I, I wouldn't be able to, I wouldn't confidently be able to tell you, "This is what you can earn through looping through Strike," 'cause obviously- Have ...</p>
+  <p>they change day by day, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>I think, I think though for DeFi from a Cardano perspective, um, growth is, is very much about capital productivity and, and there being these returns, but now that it exists, right?</p>
+  <p>And I think it is 12.2%, but that was a specific day, so you know, it does change, right? Um- Mm-hmm ... it's about like getting people to come out and try it, right?</p>
+  <p>So, and letting people know that those returns are there. Um, so that's kind of what I'm thinking about.</p>
+  <p>In simple terms, like what would a good educational campaign do, uh, from your point of view in terms of the data?</p>
+  <p>Or to reframe the question, looking ahead over the next few months, what would you hope such a campaign showed in the data when you were reviewing it? I'm trying to understand- I mean- ...</p>
+  <p>the, yeah ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>well look, I mean, I mean what I would like to see is, is people...</p>
+  <p>'Cause look, all of these trades and strategies to, to an unsophisticated user, I mean, they, they are quite complicated. It may not be apparent- Mm ...</p>
+  <p>all the things you can do, what having a, a yield bearing stable coin enables.</p>
+  <p>So I guess for me, a good educational campaign would show users what they can do with our product, how versatile it is, um, again, the risks and rewards, and then it would be great to see as a result of this, a- an uptake in, in retail demand, more participation in these strategies, um, and ultimately like stimulating Cardano DeFi.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>'Cause they, where I was kind of leading you, um, unfairly, was in my mind, I was like I'd listen to all these strategies and stuff, but I would be like, if I was in DeFi and I wanted to try it in Cardano, like, what is the lowest risk?</p>
+  <p>Like what, if somebody was saying to me... And I think the answer's the supply side, right?</p>
+  <p>That you were saying to me on that call, but about supplying the, um, USDrf is reasonably low risk, um, compared to more complicated strategies.</p>
+  <p>Um, so this is the kind of thing that I was interested in, you know? Um, does that line up- I don't know ... with, yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>I don't know if I'd be comfortable saying that.</p>
+  <p>Um, [a colleague], I, I see you're on the call. I, I don't know if am I, I mean, is that a fair statement or, or do you agree? I mean, I think you'd have to look at it on a case by case basis.</p>
+  <p>I think it depends on the, on the pool</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>and I'm being unfair to Liam. Yeah, I, I, I retract my comment because I'm not trying to put you on the spot.</p>
+  <p>But, uh, but definitely one of the things I think about, uh, education, just getting more people involved in DeFi and Cardano, right?</p>
+  <p>Like, everybody that's been in Cardano for years knows that not enough people are actually using...</p>
+  <p>If, if half the people that were on X stirring up drama, right were actually using the product in the DeFi, we'd have so much more, more volume, right? Like on chain. So, um- Yeah ...</p>
+  <p>I think that's kind of, yeah Where I'm going. Yeah. Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>And, and, and stablecoin supply is, I mean, I think we all know stablecoin supply is, is, is, is really the key metric.</p>
+  <p>It's, it's, it's the key, at least how I view it, it's a key limiting factor on, on Cardano DeFi, more stablecoins, so I think we know it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Mm. Uh, so a question about rPoints.</p>
+  <p>Um, at the moment, uh, this is my understanding, like, uh, we're trying to get to a point where we can go out and let people, uh, claim them, but the- that's with the team in terms of the actual timelines.</p>
+  <p>Uh, they are close because I'm trying to get my, um, Decentralized Adventures campaign, um, uh, aligned with it, right?</p>
+  <p>So I'm gonna go out to the SPOs and let them know when the team gives me the green light, um, and say, "Okay.</p>
+  <p>Hey, like, let's get your delegators and, and, uh, the rest of the community to understand how they can, uh, convert them." Right?</p>
+  <p>So it is gonna be reasonably soon, but I, I can't put a date on it just because, uh, these things change, you know? Um- Um.</p></div>
+</div>
+
+<div class="sec">A comment: R-Points shape behaviour</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Can, can I, can I quickly just address a, a comment from [Participant N], if, if I have time?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah, please.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Um, so [Participant N], you're saying that personally, your use of RealFi is skewed from the rPoints, uh, as in when rPoints allocations change, that your strategies will change, and, and that's completely fair.</p>
+  <p>I mean, that's why we've done the rPoints, because we understand that maybe the, the things we need to stimulate the ecosystem aren't necessarily from day one the things that, that makes perfect sense to users.</p>
+  <p>So we're essentially adding a cherry on top to, to kickstart that ecosystem. So yeah, that's, that's, that's 100% the design and, and I'm glad that you see it that way, [Participant N].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Okay. Cool.</p>
+  <p>Um, there's any other questions? Um, [Participant C], I read your, uh, I read your... I don't know what that is, label like mom, and I, and I read Mom Ben. Like, like my mom's in the chat. Um, yeah.</p>
+  <p>Any other questions, guys? Um, if anybody wants to come up sp- stage, I think maybe we've got five, five, 10 more minutes, um, if Liam, if you've got the time, but otherwise...</p>
+  <p>Ah, [Participant K] is coming up. Hang on.</p></div>
+</div>
+
+<div class="sec">From the stage: USDM, borrow rates, subsidies</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>I've got time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>[Participant K], legend.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Hey, guys. Man. What's going on? Can you hear me okay? Check, check.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yes, sir. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Okay. Okay. Uh, first off, great presentation.</p>
+  <p>Sorry about all the questions. I always have a lot of them. Uh, I do apologize.</p>
+  <p>I've been that way for seven years, or, or probably actually longer, but seven years here, and, and, uh, I just can't seem to shake it.</p>
+  <p>Uh, so, uh, I am curious though, uh, this is mostly DeFi strategies in order to help people understand a little bit better the risks associated with it, and also potentially how to actually make some money doing this, uh, which is exceedingly helpful, so thank you guys for doing this.</p>
+  <p>This is absolutely amazing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Um, what I'm curious about is, obviously I'm a USDM guy, so I'm looking for USDM to be utilized, and right now it's, it's prohibitive, uh, when it comes to the borrow rate.</p>
+  <p>Uh, um, supply rate's great, you know, as far as the APY goes, but it's the borrow rate's at 27%, exceedingly high. Um, Djed's at 30%, that borrow rate's exceedingly high.</p>
+  <p>USDA is at 30%, exceedingly high. Um, the only one that seems to be relatively low, and the gap between the APY and the APR are exceedingly s- uh, tight, right?</p>
+  <p>Um, where the gaps between the others are, uh, much higher, uh, or much larger. So is this being artificially subsidized? Uh, and if so, um, what's the...</p>
+  <p>Obviously you want, you wanna drive use for USDrf, I get it.</p>
+  <p>Um, but could it be helpful if the other stables were also potentially subsidized in order to spur, um, potential, uh, participation where you might not see it currently yet?</p>
+  <p>It might be tapping out, I'm not even sure, as far as, you know, the utilization of it and people are actually engaged in doing these particular looping strategies.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>Sure.</p>
+  <p>Um, [Participant K], honestly, I, I, I don't know if it's, if it's subsidized. I, I couldn't give you an answer. I, I think that would probably be better answered by, by, uh, GTM or someone from product.</p>
+  <p>[a colleague], I see you. Um, in terms of would the, would lower borrow rates on the other stable coins be beneficial? I mean, I, I definitely don't see how it could be hurt, um, how it could hurt.</p>
+  <p>Um, I think, like I said, any way to put more stable coins in circulation, people using them, because you're right, 30% is, is incredibly prohibitive.</p>
+  <p>So yeah, more stable coins in circulation is good for everyone. Uh, yeah, I'd have to think a little bit more about what the impact would be on RealFi.</p>
+  <p>Like, we maybe would need a few more pools of some sort to really unlock that. But in general, across Cardano DeFi, I mean, no doubt that lower-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>I immediately thought the same thing.</p>
+  <p>Um, Linear V4 is just getting started. I'm exceedingly excited about it.</p>
+  <p>I know that the AlphaGrowth team is also going to be utilizing it quite heavily because it's really the only vehicle that actually, um, works to what it is they want to do with vaults, managed vaults, things like that, rehypo- rehypothecation, things of that nature.</p>
+  <p>So I think the, the next step would be is to create, uh, a, a couple other pools that would- Oh, yeah ... uh, be able to help, um, with what RealFi's doing.</p>
+  <p>'Cause I do believe right now that, uh, the yield that it's giving, the amount of, um...</p>
+  <p>I'm sure it's making Ben's job really easy when it comes to, uh, promoting this particular product, 'cause it's self-promoting itself because of the yield that's benefiting from it.</p>
+  <p>Um, if we start to see other stables in the ecosystem actually participate, then that liquidity is then, you know, um, the amount of liquidity increases with it, um, which makes it better- Good ...</p>
+  <p>for the UX, for the user. So yeah, uh, definitely it, it makes sense. So hopefully, um- Those conversations, I'm sure those ... Actually, I'm not hopefully.</p>
+  <p>I'm sure those conversations are happening internally, um, with what you guys are doing, and then you providing new loop strategy-- looping strategies, um- Yeah, exactly ...</p>
+  <p>and ideas ways to make money, exceedingly helpful. Thank you for doing this stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam</div>
+  <div class="turn-body"><p>You're welcome. Thank you for the, for the kind words.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Welcome to the age of DeFi, guys.</p>
+  <p>It's been a long time coming.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Big time, man.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Um, I, I might follow up with you about [Participant K], though, about just some ideas around kind of community engagement. Okay.</p>
+  <p>Um, once, uh, I've, once I've got some of this stuff, uh, published then I can give you some examples.</p>
+  <p>But I think it's, like, a lot of fun to be had, and, um, you know, people need rational hope, right? Uh, and I think this is what kind of RealFi and DeFi can do.</p></div>
+</div>
+
+<div class="sec">Closing</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>A- and it's the reason we're all here, I think. Um, well, one of. I can think of a few others, you know? Um, okay. So, uh, any last words, [Participant K], Liam? Any other questions from the audience? Yeah.</p>
+  <p>Okay, great. I will, I will write this up, and we'll do a little blog post, um, as is the tradition. I really appreciate you coming on again, Liam. Um, always enjoy listening to you.</p>
+  <p>Thank you so much. And [Participant K], thanks for coming up to talk. It's always way better when people come up and, uh, we can chat, you know?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>Absolutely, man.</p>
+  <p>It's, ever since, uh, Consensus Austin when I got to meet you for the first time at-- before that with, you know, along with, uh, those AMAs that we were always in all the time. Uh, and so- ...</p>
+  <p>it's been, we've been doing this for a long time. And Liam, pleasure getting to meet you. Get- getting to meet you, uh, virtually here.</p>
+  <p>Uh, and, uh, yeah, look forward to some of the new things that, uh, you come up with. And I agree with Ben. Um, the more we produce, um, consistency, right?</p>
+  <p>Which then produces trust, uh, which then gives the ability for the user to think that what they're doing, they feel more secure in what they're doing.</p>
+  <p>It's been super hard to get people to over that particular line. Mm. You know, 'cause they're always- Mm ...</p>
+  <p>worried about losing funds, especially in today's climate w- with the Binance hack that's just recently happened, right? I can't imagine that produced any amount of confidence in anybody.</p>
+  <p>Uh, quite the opposite, you know? So it just makes it really hard for us- You know- ... as a, an industry ...</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>one of the great things the RealFi team did was made me go and use a product in different ways. It's like- ... I think, like, it ...</p>
+  <p>I'd, I would've, I would've done it anyway, Liam, I promise, right? But I, no, I was made to go and do it. Um, it was, and it, it was really good because it's like you can ...</p>
+  <p>From my point of view, you could listen to people talking about DeFi strategies and, like, maybe they're s- they're traders or they're, they're really familiar with those concepts, you know?</p>
+  <p>But if you're learning it for the first time, like when I started doing looping for the first time, like, that probably took me half day, I'm embarrassed to admit.</p>
+  <p>But we're, we're all friends here, right? I can, I can share with you guys. So, but n- once I got the hang of it, I was like, "Oh, this is really cool," right?</p>
+  <p>And you need these kind of, you need these kind of base block experiences in which to develop more sophisticated thinking.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>And I think there is just that gap between a lot of people that got into, uh ... I, I'm, so my origins are in Cardano, and this is the RealFi community for sure, right?</p>
+  <p>So we're the RealFi community here, but personally, my origins were in Cardano. And, um, I think that you can get involved in ...</p>
+  <p>The reason people join a project isn't why they stay, and you can get involved for all kinds of reasons. People are building or into the governance stuff or, you know.</p>
+  <p>So I think getting, getting those kind of, um, broad, broad experiences and skill sets, um, to try something like that is, is a really important first step.</p>
+  <p>And that's what I was gonna follow up with you later about, [Participant K].</p>
+  <p>I've been building a campaign with the team, so I wanna give you a bit of insight into that and see whether or not we might collaborate on that, you know? Um-</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K</div>
+  <div class="turn-body"><p>That works. Thanks, man.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Yeah.</p>
+  <p>No, sorry for taking the last word. It's selfish of me, but yeah. Um, right. Everyone, thank you so much for joining.</p>
+  <p>And, um, you definitely, you're gonna see stuff happening in the near future, so thank you, and I will see you all soon. Thanks, Liam.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Liam <em>(inferred)</em></div>
+  <div class="turn-body"><p>Cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben</div>
+  <div class="turn-body"><p>Thanks, [Participant K].</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Participant K <em>(inferred)</em></div>
+  <div class="turn-body"><p>Thanks, guys.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Ben <em>(inferred)</em></div>
+  <div class="turn-body"><p>Thanks, everyone.</p></div>
+</div>
+</details>
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+</nav>
+
+<footer>
+<p><span class="l-ja">RealFi Office Hours アーカイブ<br>この回は公開されている録画にもとづくため、チャタムハウスルールの対象ではなく、発言者は実名のまま扱っています。</span><span class="l-en">RealFi Office Hours archive<br>This session is based on a publicly published recording, so it is not covered by the Chatham House Rule and the speakers are named.</span></p>
+</footer>
+
+</div>
