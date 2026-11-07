@@ -904,7 +904,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>需要が TVL に変わる仕組み。</strong>小口がプールで USDrf を買うと USDCx が余る。市場メーカーがその USDCx で新しい USDrf を mint してプールに戻す。その時点で初めて TVL が増える。</li>
   <li><strong>小口が USDrf を手に入れる経路は 2 つだけ。</strong>SundaeSwap のプールで買うか、Liqwid で借りるか。小口は mint できない。</li>
   <li><strong>77% は DeFi で働いている。</strong>Strike に 30%、Liqwid に 4 つの戦略で 30%、ウォレットで持つだけが 13%。「ほとんどが DeFi にある」と。</li>
-  <li><strong>足りないのは供給側。</strong>Liqwid で借りる人が増えて利用率が上がると、金利が急に上がる点（キンク）に近づく。USDrf と USDCx を Liqwid に供給する人にインセンティブを出している、と。</li>
+  <li><strong>足りないのは供給側。</strong>Liqwid で借りる人が増えて、供給されている USDrf のほとんどが借りられてしまうと、借入の金利が急に高くなる。だから RealFi は、USDrf と USDCx を Liqwid に供給する人にインセンティブを出している、と。</li>
   <li><strong>利回りの数字は、どれも留保つき。</strong>チャットの「45% APR」は未確認、「12.2%」は特定の日の sUSDrf の利回り。データ責任者は「包括的な調査はしていない」と明言しています。</li>
   <li><strong>持ち帰りが 4 つ。</strong>市場メーカーの名前（言わない）、プールの USDCx が準備資産に行く経路（トレジャリーの管轄）、USDrf の借入金利が補助されているか（分からない）、R-Points の請求時期（近いが日付は言えない）。</li>
 </ul>
@@ -1133,9 +1133,9 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="supply">6. 供給側 — 利用率、キンク、インセンティブ</h2>
 <p class="deck">借りる人が増えると金利が急に上がる。だから供給する人にポイントを出している。</p>
 
-<p>進行役が「RealFi がプロトコルとして見たいのは供給する人だ、という場面がある」という先週の話を持ち出し、もう一度説明を求めました。コール中ではこの話で「利用率（utilization rate）」「キンク」という言葉を使っているので、以下もその言葉で書きます。</p>
+<p>進行役が「RealFi がプロトコルとして見たいのは供給する人だ、という場面がある」という先週の話を持ち出し、もう一度説明を求めました。コール中ではこの話で「利用率（utilization rate）」と「キンク（kink）」という言葉を使っています。利用率は、供給された USDrf のうち借りられている割合。キンクは、利用率がある水準を超えると借入金利の上がり方が急になる、その折れ目のことです。以下もその言葉で書きます。</p>
 
-<p>Liqwid で借りる人が増えると、借りられた USDrf が供給された USDrf に近づき、<strong>利用率が非常に高くなる</strong>。供給が尽きかけると金利が上がり、「キンクに当たると、その時点でおそらく取引として成り立たなくなる」。だから<strong>USDrf を Liqwid に供給すること</strong>がエコシステムを刺激する、と。理由は 2 つ。供給するとインセンティブとポイントがもらえること、そして小口が妥当な金利で借りられる供給が増えること。</p>
+<p>Liqwid で借りる人が増えると、借りられた USDrf が供給された USDrf に近づき、<strong>利用率が非常に高くなる</strong>。供給が尽きかけると金利が上がり、「キンクに当たる（金利が急に上がり始める折れ目を越える）と、その時点でおそらく取引として成り立たなくなる」。だから<strong>USDrf を Liqwid に供給すること</strong>がエコシステムを刺激する、と。理由は 2 つ。供給するとインセンティブとポイントがもらえること、そして小口が妥当な金利で借りられる供給が増えること。</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 262" role="img" aria-label="利用率と借入金利の関係を示す模式図。利用率が低いうちは金利がゆるやかに上がり、キンクを超えると急に上がる。供給が増えると利用率が下がりキンクから遠ざかる">
@@ -1363,7 +1363,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
   <li><strong>How demand becomes TVL.</strong> Retail buys USDrf on the pool, USDCx piles up, the market maker mints new USDrf against it and puts it back. Only then does TVL step up.</li>
   <li><strong>Only two ways for retail to get USDrf.</strong> Buy it on the SundaeSwap pool, or borrow it on Liqwid. Retail cannot mint.</li>
   <li><strong>77% is at work in DeFi.</strong> Strike takes 30% in one strategy, Liqwid 30% across four, and just holding sUSDrf in a wallet is 13%. “Most of it’s in DeFi.”</li>
-  <li><strong>The supply side is what is short.</strong> As more people borrow on Liqwid, utilisation rises toward the point where the rate jumps (the kink). RealFi pays incentives to people who supply USDrf and USDCx to Liqwid.</li>
+  <li><strong>The supply side is what is short.</strong> As more people borrow on Liqwid and most of the supplied USDrf is taken, the borrow rate climbs sharply. So RealFi pays incentives to people who supply USDrf and USDCx to Liqwid.</li>
   <li><strong>Every yield figure came with a caveat.</strong> The chat’s “45% APR” was not verified, “12.2%” was one day’s sUSDrf yield, and the data lead said plainly that he has not done a comprehensive survey.</li>
   <li><strong>Four follow-ups.</strong> Who the market maker is (not said), how the pool’s USDCx reaches the reserves (treasury’s purview), whether the USDrf borrow rate is subsidised (unknown), and when R-Points can be claimed (soon, no date).</li>
 </ul>
@@ -1592,7 +1592,7 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <h2 id="en-supply">6. The supply side — utilisation, the kink, incentives</h2>
 <p class="deck">As borrowing grows the rate jumps. So suppliers get points.</p>
 
-<p>The host brought up a one-to-one call from earlier in the week — “there are times when what RealFi might want to see as a protocol is people supplying” — and asked for the explanation again. The call uses “utilization rate” and “the kink,” so this page does too.</p>
+<p>The host brought up a one-to-one call from earlier in the week — “there are times when what RealFi might want to see as a protocol is people supplying” — and asked for the explanation again. The call uses “utilization rate” and “the kink.” Utilisation is the share of supplied USDrf that is currently borrowed; the kink is the bend in the rate curve above which the borrow rate climbs steeply. This page uses both words.</p>
 
 <p>As more people borrow on Liqwid, borrowed USDrf approaches supplied USDrf and <strong>utilisation gets very high</strong>; as supply runs short the interest rate rises, “and it hits the kink, where suddenly it probably doesn’t make sense as a trade anymore.” So <strong>supplying USDrf into the Liqwid pool</strong> helps the ecosystem, for two reasons: suppliers get incentives and points, and there is more supply for retail to borrow at a reasonable rate.</p>
 
